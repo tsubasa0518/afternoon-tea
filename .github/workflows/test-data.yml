@@ -1,0 +1,24 @@
+name: Test offline data and HTML pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, codex/data-html-foundation]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Run offline tests (standard library only)
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify protected files and master extraction
+        run: |
+          python3 -c 'from afternoon_tea.pipeline import protected_files; from afternoon_tea.master import load_master; protected_files(); print(load_master()["counts"])'
