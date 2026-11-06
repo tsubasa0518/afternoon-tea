@@ -19,6 +19,7 @@ from urllib.parse import parse_qs, quote, unquote, urljoin, urlsplit
 from urllib.request import Request, urlopen
 from urllib.robotparser import RobotFileParser
 
+from .read_only import ReadOnlyTransport, ForbiddenOperation
 from .data import create_data
 from .master import ROOT, dumps, load_master
 from .pipeline import protected_files, staging_directory
@@ -95,6 +96,8 @@ class Browser:
         self.last_request = {}
         self.robots = {}
         self.errors = []
+        self.transport = ReadOnlyTransport()
+        self.blocked_hosts = set()
 
     def _rate_limit(self, host):
         elapsed = time.monotonic() - self.last_request.get(host, 0)
@@ -109,7 +112,7 @@ class Browser:
         self._rate_limit(host)
         self.count += 1
         request = Request(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "ja,en;q=0.8"})
-        with urlopen(request, timeout=self.timeout) as response:
+        with self.transport.open(url, timeout=self.timeout, headers=dict(request.header_items())) as response:
             final_url = response.geturl()
             if urlsplit(final_url).hostname != host:
                 raise RuntimeError("cross_host_redirect")
@@ -120,20 +123,34 @@ class Browser:
             if len(raw) > MAX_BYTES:
                 raise RuntimeError("page_too_large")
             charset = response.headers.get_content_charset() or "utf-8"
-            return raw.decode(charset, errors="replace")
+            text = raw.decode(charset, errors="replace")
+            if any(marker in text.lower() for marker in ("captcha", "verify you are human", "access denied", "アクセスが制限")):
+                self.blocked_hosts.add(host)
+                raise RuntimeError("access_challenge_stop_host")
+            return text
 
     def fetch(self, url):
+        try:
+            from .read_only import check_url
+            check_url(url)
+        except ForbiddenOperation as error:
+            self.errors.append({"url": url, "error": str(error), "status": "blocked"})
+            raise
         host = urlsplit(url).hostname
+        if host in self.blocked_hosts:
+            raise RuntimeError("host_stopped_after_access_denial")
         if not host or urlsplit(url).scheme != "https":
             raise ValueError("HTTPS_URL_required")
         # robots.txt failures are treated conservatively: no page fetch.
         if host not in self.robots:
             robots_url = "https://" + host + "/robots.txt"
             try:
+                if self.count >= self.max_requests:
+                    raise RuntimeError("request_budget_exhausted")
                 self._rate_limit(host)
                 self.count += 1
                 req = Request(robots_url, headers={"User-Agent": USER_AGENT})
-                with urlopen(req, timeout=self.timeout) as response:
+                with self.transport.open(robots_url, timeout=self.timeout, headers=dict(req.header_items())) as response:
                     if response.geturl() != robots_url:
                         raise RuntimeError("robots_redirect")
                     body = response.read(200_001)
@@ -152,6 +169,8 @@ class Browser:
             return self._open(url)
         except HTTPError as error:
             # Do not circumvent blocks, CAPTCHA or 429. Record instead.
+            if error.code in (403, 429):
+                self.blocked_hosts.add(host)
             raise RuntimeError("HTTP_" + str(error.code)) from error
 
     def query(self, shop_name, domain):

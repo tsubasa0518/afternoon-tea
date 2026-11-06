@@ -1,3 +1,9 @@
+# 現在の読み取り専用実行経路
+
+`python3 -m afternoon_tea.public_research --limit 14 --seconds 180`
+
+予約操作はAGENTS.mdにより全面禁止。Bing依存の旧コマンドは現在の通信許可リストでは実行しない。最新の結果と未実装範囲は [read_only_research.md](read_only_research.md) を参照。以下は過去の試運転記録であり、過去のカレンダー操作による根拠を再利用しない。
+
 # Step 6: ライブWeb調査・証拠収集（試作）
 
 ## 実行
