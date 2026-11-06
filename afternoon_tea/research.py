@@ -220,6 +220,17 @@ def research_one(browser, shop, checked):
     return {"attempts": attempts, "evidence": evidence, "status": "unresolved"}
 
 
+def _checkpoint(output, dataset, audit, today):
+    """Atomically retain the latest partial evidence; never write outside .staging."""
+    output.mkdir(parents=True, exist_ok=True)
+    for name, content in (("data_" + today + ".json", dumps(dataset)),
+                          ("audit.json", dumps(audit))):
+        target = output / name
+        temporary = output / ("." + name + ".tmp")
+        temporary.write_text(content, encoding="utf-8")
+        temporary.replace(target)
+
+
 def run(start=None, max_shops=None, delay=2.0, timeout=15.0, max_requests=400, browser=None):
     protected_files()
     master = load_master()
@@ -231,28 +242,53 @@ def run(start=None, max_shops=None, delay=2.0, timeout=15.0, max_requests=400, b
         raise ValueError("research_date_must_be_today_JST")
     browser = browser or Browser(delay=delay, timeout=timeout, max_requests=max_requests)
     dataset["metadata"]["purpose"] = "research"
+    run_stamp = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).strftime("%Y%m%dT%H%M%S%f%z")
+    output = staging_directory() / ("research-" + today + "-" + run_stamp)
     audit = {"checked_on": today, "period": dataset["period"], "by_shop": {}, "limitations": [],
-             "all_tokyo_coverage_verified": False, "final_unverified_candidates": 0}
+             "all_tokyo_coverage_verified": False, "final_unverified_candidates": None,
+             "candidate_resolution": "not_started", "area_discovery": "not_started",
+             "run_id": run_stamp, "attempted_shops": 0, "requests": 0}
+    _checkpoint(output, dataset, audit, today)
     count = 0
+    attempted_ids = set()
+    errors_by_shop = {}
     for area in dataset["areas"]:
         for cat in ("cafe", "hotel", "lux"):
             for shop in area["cats"][cat]["shops"]:
                 if max_shops is not None and count >= max_shops:
                     continue
                 count += 1
+                attempted_ids.add(shop["master_id"])
                 result = research_one(browser, shop, today)
                 audit["by_shop"][shop["master_id"]] = {"name": shop["master_name"], "area": area["name"],
                                                        **result}
-                # Preserve unknown data: no auto-confirmation from keyword heuristics.
+                # Search snippets and page clues are not field-level verification. Preserve
+                # the unconfirmed record and distinguish transport/access failures from
+                # pages that need human review.
+                reasons = [item.get("error") for item in result["attempts"]
+                           if item.get("status") == "failed"]
+                if result["status"] == "requires_plan_review":
+                    error = "予約ページとAT記載の手掛かりあり。期間・各項目の根拠を個別確認できず未確定"
+                elif reasons:
+                    error = "検索未完了: " + "; ".join(dict.fromkeys(reasons))
+                else:
+                    error = "指定3サイトで掲載条件を確認できず。除外判定には追加確認が必要"
                 shop["research"].update(status="failed", attempted_on=today,
-                                        error="Web evidence requires independent booking/menu review",
-                                        checked_on=None, evidence={})
+                                        error=error, checked_on=None, evidence={})
                 shop["links_note"] = "取得失敗"
+                errors_by_shop[shop["master_id"]] = error
+                audit["attempted_shops"] = count
+                audit["requests"] = browser.count
+                audit["transport_errors"] = browser.errors
+                _checkpoint(output, dataset, audit, today)
     missing = [shop["name"] for a in dataset["areas"] for cat in a["cats"].values()
                for shop in cat["shops"] if shop["research"]["status"] != "confirmed"]
+    unattempted = [shop["master_id"] for a in dataset["areas"] for cat in a["cats"].values()
+                   for shop in cat["shops"] if shop["master_id"] not in attempted_ids]
     dataset["notes"]["status"] = (
-        "調査は未完了。掲載条件の検証を終えた店は0件。"
-        "検索結果・キーワード一致を予約プラン確認済みとして扱わない。"
+        f"調査未完了。70店中{count}店を検索試行、予約プランの項目検証済み0店。"
+        "検索結果・キーワード一致を確認済みとして扱わない。"
+        f"未試行{len(unattempted)}店、未解決・取得失敗を含む未検証{len(missing)}店。"
         "未検証店：" + "／".join(missing))
     dataset["notes"]["pending_candidates"] = copy.deepcopy(master["candidates"])
     dataset["candidates"] = []  # Unverified candidates are NEVER rendered or presented as verified.
@@ -260,17 +296,33 @@ def run(start=None, max_shops=None, delay=2.0, timeout=15.0, max_requests=400, b
     audit["attempted_shops"] = count
     audit["confirmed_shops"] = 0
     audit["unverified_shops"] = len(missing)
+    audit["failed_shops"] = sum(shop["research"]["status"] == "failed"
+                                 for a in dataset["areas"] for cat in a["cats"].values()
+                                 for shop in cat["shops"])
+    audit["unattempted_shops"] = len(unattempted)
+    audit["unattempted_master_ids"] = unattempted
+    audit["shop_errors"] = errors_by_shop
+    audit["area_status"] = [
+        {"no": a["no"], "name": a["name"],
+         "master_shops": sum(len(g["shops"]) for g in a["cats"].values()),
+         "attempted": sum(s["id"] in attempted_ids for g in a["cats"].values()
+                          for s in g["shops"]),
+         "confirmed": 0, "coverage": "incomplete"}
+        for a in master["areas"]]
+    audit["candidate_count_master"] = len(master["candidates"])
+    audit["candidate_resolution"] = "unresolved_not_researched"
+    audit["area_discovery"] = "not_performed"
     audit["requests"] = browser.count
     audit["transport_errors"] = browser.errors
-    audit["limitations"].append("No verified plan data; therefore no updated HTML can be published.")
+    audit["limitations"].extend([
+        "All-area listings, hotel inventory, opening news, and new-store discovery were not performed.",
+        "Master candidates were retained as unresolved; no candidate was confirmed or excluded.",
+        "Search-result excerpts and automated text clues are not booking-plan verification.",
+        "No verified plan data; therefore no updated HTML can be published.",
+    ])
     validate_data(dataset, master)
     protected_files()
-    output = staging_directory() / ("research-" + today)
-    if output.exists():
-        raise FileExistsError("既存調査を上書きしません: " + str(output))
-    output.mkdir()
-    (output / ("data_" + today + ".json")).write_text(dumps(dataset), encoding="utf-8")
-    (output / "audit.json").write_text(dumps(audit), encoding="utf-8")
+    _checkpoint(output, dataset, audit, today)
     return output, audit
 
 
