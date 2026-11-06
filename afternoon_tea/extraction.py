@@ -48,6 +48,13 @@ def extract(raw,url,checked):
     elif site=='tc':
         blocks=root.find(cls='menu-item')
         title=first(root.find('title'));identity['店名']=title.split(' - TableCheck')[0]
+        venues=[n.text for n in root.find(cls='modal-body') if '〒' in n.text and len(n.text)<400]
+        if len(venues)==1:identity['施設情報']=venues[0]
+        role=re.search(r'ロビーラウンジ[「｢]([^」｣]+)[」｣]',text)
+        if role and normalize(role.group(1)) in normalize(identity['店名']):
+            identity['ジャンル']='ラウンジ';identity['分類根拠']=role.group()
+        elif 'ラウンジ' in identity['店名']:
+            identity['ジャンル']='ラウンジ';identity['分類根拠']=identity['店名']
     else:
         # Only explicit plan detail pages; overview text cannot establish a plan.
         if re.fullmatch(r'/\d+/plan\d+/?',urlsplit(url).path):
@@ -55,6 +62,8 @@ def extract(raw,url,checked):
         identity['店名']=first(root.find('h1'))
     result={'site':site,'url':url,'checked_on':checked,'sha256':hashlib.sha256(raw.encode()).hexdigest(),
             'identity':identity,'plans':[],'status':'unresolved','reasons':[]}
+    rating=first(root.find(cls='rdheader-rating__score-val-dtl')) if site=='tb' else ''
+    if re.fullmatch(r'[1-5]\.\d{1,2}',rating):result['rating']=observation(float(rating),rating,url,checked)
     seen=set()
     for block in blocks:
         b=block.text
@@ -70,7 +79,7 @@ def extract(raw,url,checked):
         if site=='ik':
             m=re.search(r'メニュー (.+?) (?:プラン紹介|キャンセルポリシー)',b);menu=m.group(1) if m else ''
         # Specific menu content is required; generic AT/booking words are insufficient.
-        menu_ok=bool(menu and re.search('スコーン|マカロン|ケーキ|サンド|タルト|セイボリー',menu))
+        menu_ok=bool(menu and re.search('スコーン|マカロン|ケーキ|サンド|タルト|セイボリー|scone|macaron|cake|sandwich|tart|savory',menu,re.I))
         booking_nodes=(block.find(cls='course-dtl__reserve-btn') if site=='tb' else
                        block.find(cls='menu-item-order-select') if site=='tc' else
                        [n for n in block.find('button') if 'このプランを予約する' in n.text])
@@ -110,12 +119,25 @@ def extract(raw,url,checked):
         seen.add(key)
         result['plans'].append({'plan':plan,'fields':fields,'menu':observation(menu,menu,url,checked),
                                 'booking':observation(booking,first(booking_nodes),url,checked),'meal':meal,
-                                'eligible_document':eligible,'unknown_fields':[k for k,v in plan.items() if v is None]})
+                                'eligible_document':eligible,'menu_verified':menu_ok,'booking_verified':booking,'unknown_fields':[k for k,v in plan.items() if v is None]})
     if not result['plans']:result['reasons'].append('supported_plan_structure_not_found')
     return result
 
+def venue_match(result,source):
+    # Exact facility and lounge components, corroborated by the venue's postal block.
+    # Role labels and floor numbers are descriptors, not alternative shop identities.
+    identity=result['identity'];title=identity.get('店名','');venue=identity.get('施設情報','')
+    m=re.fullmatch(r'(.+?)（(.+)）',source['name'])
+    if not m or not re.search(r'〒\d{3}-\d{4}.*東京都',venue):return False
+    hotel=re.sub(r'\s*\d+F$', '',m.group(1))
+    lounge=re.sub(r'^ロビーラウンジ\s*','',m.group(2))
+    pieces=[normalize(v) for v in re.split(r' / | - ',title)]
+    if normalize(hotel) not in pieces or normalize(lounge) not in pieces:return False
+    return normalize(hotel) in normalize(venue) and normalize(lounge) in normalize(venue)
+
 def match_master(result,source):
     """Exact identity plus station evidence; separate hotel lounges must both match."""
+    if result.get('site')=='tc' and venue_match(result,source):return True
     name=normalize(result['identity'].get('店名',''));expected=source['name']
     parts=re.split('[（(]',expected);base=normalize(parts[0])
     if not base or name not in (base,normalize(expected)):return False
@@ -132,14 +154,16 @@ def apply_page(dataset,master,raw,url):
     if len(matches)!=1:
         result['reasons'].append('identity_not_uniquely_matched');return result
     area,cat,source=matches[0]
-    genres=re.split('[、／/]',result['identity'].get('ジャンル',''))
+    if result.get('rating',{}).get('value',3)<3:
+        result['reasons'].append('known_rating_below_3');return result
+    genres=[g.strip() for g in re.split('[、／/]',result['identity'].get('ジャンル','')) if g.strip()]
     spec=__import__('pathlib').Path(__file__).resolve().parents[1]/'research_spec.md'
     banned=[]
     for line in spec.read_text().splitlines():
         if line.startswith('- ') and ('系：' in line or line.startswith('- その他：')):banned.extend(line.split('：',1)[1].split('／'))
     if any(g in banned for g in genres):
         result['reasons'].append('excluded_genre');return result
-    if not any(g in ('カフェ','ラウンジ','喫茶','スイーツ','アフタヌーンティー') for g in genres):
+    if genres and not any(g in ('カフェ','ラウンジ','喫茶','スイーツ','アフタヌーンティー') for g in genres):
         result['reasons'].append('classification_not_verified');return result
     plans=[p for p in result['plans'] if p['eligible_document']]
     start,end=dataset['period']['start'],dataset['period']['end']
@@ -156,12 +180,15 @@ def apply_page(dataset,master,raw,url):
         result['reasons'].append('hotel_identity_not_verified');return result
     shop['plans']=[p['plan'] for p in plans];shop['links']=[{'site':result['site'],'url':url}];shop['links_note']='確認済み'
     evidence={}
+    if 'rating' in result:
+        shop['tabelog']=result['rating']['value'];evidence['/tabelog']={k:result['rating'][k] for k in ('url','checked_on','quote')}
     for i,p in enumerate(plans):
         for k,v in p['fields'].items():evidence[f'/plans/{i}/{k}']={k2:v[k2] for k2 in ('url','checked_on','quote')}
     p=plans[0]
     evidence['reservation']={'url':url,'checked_on':dataset['generated'],'quote':p['menu']['quote'],'booking_quote':p['booking']['quote'],'booking':True,'menu':True,'meal':p['meal']}
-    evidence['classification']={'url':url,'checked_on':dataset['generated'],'quote':result['identity']['ジャンル']}
+    evidence['classification']={'url':url,'checked_on':dataset['generated'],'quote':result['identity'].get('分類根拠') or result['identity'].get('ジャンル') or result['identity'].get('施設情報') or result['identity']['店名']}
     shop['research'].update(status='confirmed',checked_on=dataset['generated'],in_hotel=in_hotel,error=None,evidence=evidence,genres=genres)
+    shop['research']['identity_evidence']={'url':url,'checked_on':dataset['generated'],'quote':result['identity'].get('施設情報',result['identity'].get('交通手段',''))}
     target=expected_category(shop)
     for g in group_area['cats'].values():
         if shop in g['shops']:g['shops'].remove(shop)
