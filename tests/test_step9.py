@@ -73,3 +73,13 @@ vm.runInNewContext(code,{document:doc,window:{}});sweet.click();if(card.hidden)t
   raw=(Path(__file__).parent/'fixtures/ikyu_overview_excerpt.html').read_text()
   r=extract(raw,'https://restaurant.ikyu.com/101719/','2026-11-06')
   self.assertEqual(r['plans'],[])
+ def test_forbidden_operation_stops_pilot_before_next_source(self):
+  from unittest.mock import patch
+  from afternoon_tea import step9
+  from afternoon_tea.read_only import ForbiddenOperation
+  with patch('afternoon_tea.step9.Browser.fetch',side_effect=ForbiddenOperation('blocked_before_network')) as fetch:
+   out,audit=step9.run()
+   try:
+    self.assertEqual(fetch.call_count,1);self.assertEqual(audit['stop_reason'],'forbidden_operation_detected')
+    self.assertEqual(audit['result'],'no_confirmed_stores');self.assertNotIn('html',audit)
+   finally:shutil.rmtree(out)

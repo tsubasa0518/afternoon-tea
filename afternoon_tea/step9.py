@@ -5,6 +5,7 @@ from .master import load_master,dumps
 from .pipeline import staging_directory,protected_files,build
 from .research import Browser
 from .extraction import apply_page
+from .read_only import ForbiddenOperation
 
 TARGETS=[('master-070','https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve'),
          ('master-010','https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve')]
@@ -47,9 +48,11 @@ def run():
         try:
             raw=browser.fetch(url);(out/(mid+'.html')).write_text(raw)
             r=apply_page(data,master,raw,url);row.update(fetch='success',extraction=r,diagnosis=diagnosis(r))
+        except ForbiddenOperation as error:
+            row.update(fetch='blocked',reason=str(error),forbidden=True,diagnosis={'page_codes':['A'],'plans':[]})
         except Exception as error:row.update(fetch='failed',reason=str(error),diagnosis={'page_codes':['A'],'plans':[]})
         audit['pages'].append(row);save()
-        if browser.transport.audit:audit['stop_reason']='forbidden_operation_detected';break
+        if row.get('forbidden') or browser.transport.audit:audit['stop_reason']='forbidden_operation_detected';break
     unknown=[s for a in data['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']!='confirmed']
     confirmed=[s for a in data['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']=='confirmed']
     data['notes']['status']='調査未完了。確認済み店舗でも価格・期間・曜日・評価の不明値は保持。未確認店舗：'+'／'.join(s['name'] for s in unknown)
