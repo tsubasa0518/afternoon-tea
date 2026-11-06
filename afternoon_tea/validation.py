@@ -174,7 +174,7 @@ def validate_data(data, master):
             require(group.get("status") in ("ok", "none", "unchecked"), "分類statusが不正")
             shops = list_at(group.get("shops"), "shops")
             state = object_at(group.get("research"), "分類research")
-            require(state.get("status") in ("unresearched", "failed", "confirmed"), "分類の調査状態が不正")
+            require(state.get("status") in ("unresearched", "failed", "confirmed", "partial"), "分類の調査状態が不正")
             checks = object_at(state.get("checks"), "checks")
             for key, evidence in checks.items():
                 proof(evidence, "checks." + key, start, generated)
@@ -185,9 +185,17 @@ def validate_data(data, master):
                 require(not shops and state["status"] == "confirmed" and required <= set(checks),
                         "該当なしの厳格チェックが未完了です")
             if group["status"] == "ok":
-                require(shops and state["status"] == "confirmed", "okには店舗と確認済み分類が必要です")
+                require(shops and state["status"] in ("confirmed", "partial"), "okには確認済み店舗が必要です")
+                shop_states = [s.get("research", {}).get("status") for s in shops]
+                if state["status"] == "confirmed":
+                    require(all(value == "confirmed" for value in shop_states),
+                            "confirmed分類に未確認店舗が混在しています")
+                else:
+                    require("confirmed" in shop_states and
+                            any(value != "confirmed" for value in shop_states),
+                            "partial分類は確認済み・未確認店舗の混在が必要です")
             elif group["status"] == "unchecked":
-                require(state["status"] != "confirmed", "未確認分類の状態が矛盾しています")
+                require(state["status"] in ("unresearched", "failed"), "未確認分類の状態が矛盾しています")
             if state["status"] == "failed":
                 require(isinstance(state.get("error"), str) and state["error"].strip(), "分類の取得失敗理由が必要です")
             for shop in shops:
@@ -270,7 +278,8 @@ def validate_data(data, master):
                             "未調査・取得失敗を確定情報に変換しないでください")
                     require(research.get("in_hotel") is None and not evidence and research.get("checked_on") is None,
                             "未調査・取得失敗に確認済み情報は持たせられません")
-                    require(group["status"] == "unchecked" and shop["name"] in notes["status"], "未調査店を確認状況に列挙してください")
+                    require(group["status"] in ("unchecked", "ok") and shop["name"] in notes["status"],
+                            "未調査店を確認状況に列挙してください")
                     if status == "failed":
                         require(isinstance(research.get("error"), str) and research["error"].strip(), "取得失敗理由が必要です")
                         attempted = date_at(research.get("attempted_on"), "attempted_on")

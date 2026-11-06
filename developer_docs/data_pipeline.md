@@ -123,8 +123,10 @@ python3 /path/to/repository/build_html.py data_YYYY-MM-DD.json
 一休の根拠`meal`は`lunch/breakfast`のみです。ホテル内外、最安プランの9,000円基準を検証します。
 同じホテルの別ラウンジは`name + shop`で区別し、`master_id`と予約URLの重複も検知します。
 
-分類全体の`ok`は分類調査が完了した時だけ使います。途中でも確認できた店は掲載可能で、分類は
-`unchecked`を保てます。`none`には空の店舗配列と次の根拠キーが必要です。
+分類に確認済み店舗がある場合は`ok`を使います。確認済み店と未確認店が混在するときは
+分類調査を`partial`にし、HTMLカードには確認済み店舗だけを出します。未確認店はJSONと
+`notes.status`に残します。確認済み店がない分類は`unchecked`です。`none`は店舗がないことを
+全件調査で確認できた場合に限り、空の店舗配列と次の根拠キーを要求します。
 
 - 全分類：`ikyu_area_list`、`tabelog_area_list`、`tabelog_station_search`
 - ホテル分類：加えて`hotel_list`、`hotel_openings`、`hotel_at_checks`
