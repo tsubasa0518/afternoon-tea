@@ -31,12 +31,12 @@ class AllFilterOptionsTests(unittest.TestCase):
             self.assertTrue(all(b['text'].endswith('0') for b in buttons))
             self.assertTrue(all('disabled' not in b['attrs'] for b in buttons))
             self.assertNotIn('halloween',[b['key'] for b in buttons])
-    def test_counts_are_distinct_shop_counts_from_current_input(self):
+    def test_sweet_counts_are_distinct_plans_and_store_sweets_are_not_inherited(self):
         data=fixture();a=data['shops'][0]
-        data['shops']=[{**a,'sweets':['scone','scone','xmas'],'plans':[{'sweets':['scone']},{'sweets':['choco']}]},
-                       {**a,'sweets':['parfait'],'plans':[{'season':['xmas']}]}]
+        data['shops']=[{**a,'sweets':['ichigo','xmas'],'plans':[{'menu':'scone scone'},{'menu':'chocolate scone'}]},
+                       {**a,'sweets':['ichigo'],'plans':[{'menu':'parfait','season':['xmas']}]}]
         buttons={b['key']:b['text'] for b in Buttons(r.render(data,FAILURES)).buttons}
-        for key,count in {'scone':1,'xmas':2,'choco':1,'parfait':1,'ichigo':0,'melon':0,'macaron':0}.items():
+        for key,count in {'scone':2,'xmas':2,'choco':1,'parfait':1,'ichigo':0,'melon':0,'macaron':0}.items():
             self.assertTrue(buttons[key].endswith(str(count)),(key,buttons[key]))
     def test_zero_badge_is_styled_without_hiding_the_button(self):
         result=r.render(fixture(),FAILURES)

@@ -157,7 +157,7 @@ class EnrichmentTests(unittest.TestCase):
     def test_unknown_and_negated_text_do_not_invent_availability_or_tags(self):
         for p in ({'plan_name':'TEST ONLY AT'},{'plan_name':'平日限定ではありません'},{'menu':'マカロンは含まれません'}):
             result=e.enrich_plan(p,self.shop())
-            self.assertNotIn('weekday_available',result);self.assertNotIn('sweets',result)
+            self.assertNotIn('weekday_available',result);self.assertEqual(result['sweets'],[])
     def test_weekend_and_every_day_conditions(self):
         for title,wd,we in [('土日祝限定',False,True),('全日提供',True,True),('平日限定 土日祝限定',None,None)]:
             result=e.enrich_plan({'plan_name':title},self.shop())

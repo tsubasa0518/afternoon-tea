@@ -54,7 +54,7 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertIn('class="card c-unknown"',result)
     def test_multiple_plans_and_dynamic_sweet_counts(self):
         source=fixture();source['shops'][0]['sweets']=['scone','xmas']
-        source['shops'][0]['plans']=[{'plan_name':'TEST 1','price_yen':1000},{'plan_name':'TEST 2','price_yen':2000}]
+        source['shops'][0]['plans']=[{'plan_name':'TEST 1','menu':'スコーン','price_yen':1000},{'plan_name':'TEST 2','price_yen':2000}]
         result=r.render(source,FAILURES)
         self.assertIn('プラン1／2',result);self.assertIn('プラン2／2',result)
         self.assertIn('data-sw="scone" aria-pressed="false">スコーン<span class="bc">1</span>',result)

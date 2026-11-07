@@ -104,7 +104,7 @@ class PriceCategoryTests(unittest.TestCase):
             enriched=enrich(data)
             self.assertEqual(enriched['shops'][0]['category'],expected)
             self.assertIsNone(enriched['shops'][0]['category_price_yen'])
-            self.assertEqual(enriched['shops'][0]['plans'],original['shops'][0]['plans'])
+            self.assertTrue(all(enriched['shops'][0]['plans'][0][key]==value for key,value in original['shops'][0]['plans'][0].items()))
             self.assertEqual(data,original)
             self.assertEqual(enrich(enriched),enriched)
             html=render(enriched,FAILURES)

@@ -14,6 +14,7 @@ from .routine_site import ROOT, json_bytes, validate_json, validate_html_bytes, 
 from .weekly_review import review, day
 from .price_category import classify, regular_price
 from .country_themes import display as country_display
+from .sweet_tags import tags as sweet_tags
 
 TEMPLATES=Path(__file__).with_name('templates')
 SITES = [("ik", "一休.com"), ("tb", "食べログ"), ("tc", "TableCheck")]
@@ -62,8 +63,13 @@ def amount(plan):
     return regular_price(plan)
 
 
-def plan_tags(plan):
-    return tags(plan.get('sweets',plan.get('sw')))+tags(plan.get('season'))
+def plan_tags(plan, shop=None):
+    # Only event metadata may fall back to a shop; sweets always belong to the plan.
+    shop = shop or {}
+    events = tags(plan.get('season', shop.get('season')))
+    if 'season' not in plan:events += [t for t in tags(shop.get('sweets')) if t in EVENTS]
+    events += [t for t in tags(plan.get('sweets')) if t in EVENTS]
+    return sorted(set(sweet_tags(plan) + [t for t in events if t in EVENTS]))
 
 
 def info_link(url, label=None):
@@ -83,8 +89,8 @@ def plan_html(plan,shop,index,total,generated):
     price=amount(plan)
     wd=condition(plan,shop,('weekday_available','weekday','wd'))
     we=condition(plan,shop,('weekend_available','weekend','we'))
-    sw=plan_tags(plan)
-    specified=int(any(k in plan for k in ('sweets','sw','season')))
+    sw=plan_tags(plan,shop)
+    specified=1
     attrs=f'data-tags-specified="{specified}" data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-pk="{int(price is not None)}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
     out=[f'<div class="plan" {attrs}><div class="plan-hd"><span class="pno">プラン{index+1}／{total}</span><p class="pper{ " na" if not first and not last else ""}">{esc(dates)}</p>{badge}</div>',
          f'<p class="theme">{SVG_TEA}<span>{esc(plan.get("plan_name",plan.get("theme")))}</span></p>']
@@ -112,8 +118,8 @@ def plan_html(plan,shop,index,total,generated):
 
 def card(shop,plans,generated):
     cat=category(shop);label,cls=CLASSES[cat]
-    shop_sw=tags(shop.get('sweets'))+tags(shop.get('season'))
-    sw=sorted(set(shop_sw+[t for p in plans for t in plan_tags(p)]))
+    shop_sw=[t for t in tags(shop.get('sweets'))+tags(shop.get('season')) if t in EVENTS]
+    sw=sorted(set(shop_sw+[t for p in plans for t in plan_tags(p,shop)]))
     wd=any(condition(p,shop,('weekday_available','weekday','wd'))=='on' for p in plans)
     we=any(condition(p,shop,('weekend_available','weekend','we'))=='on' for p in plans)
     pk=any(amount(p) is not None for p in plans)
@@ -155,7 +161,9 @@ def render(research,failures):
         no=shop.get('area_no')
         if type(no) is not int:no=area_names.get(shop.get('area'))
         target=groups[no] if no in groups else unassigned
-        target.append((category(shop),markup));tot[category(shop)]+=1;swc.update(sw)
+        target.append((category(shop),markup));tot[category(shop)]+=1
+        swc.update(t for t in sw if t in EVENTS)
+        for plan in plans:swc.update(t for t in plan_tags(plan,shop) if t not in EVENTS)
     per=research['period'];start,end=day(per['start']),day(per['end'])
     stats=''.join(f'<div class="stat s-{cat}"><b>{tot[cat]}</b><span>{label}</span></div>' for cat,label,cls in CATS)
     hero=f'<div class="hero"><div class="hero-in"><div><h1>東京 アフタヌーンティー</h1><p class="period">{start.year}年{start.month}月{start.day}日〜{end.year}年{end.month}月{end.day}日<small>（40日間）</small></p><p class="lead legendline"><span class="lg"><span class="chip on">平日</span> 提供あり</span><span class="lg"><span class="chip no">土日祝 ✕</span> そのプランでは提供なし</span></p></div><div class="stats">{stats}</div></div></div>'

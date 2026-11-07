@@ -22,7 +22,7 @@ apply=function(){
   let count=0;
   card.querySelectorAll('.plan').forEach(plan=>{
    const title=plan.querySelector('.theme');
-   const tags=(plan.dataset.tagsSpecified==='1'?(plan.dataset.sw||''):(card.dataset.shopSw||'')).split(' ');
+   const tags=(plan.dataset.sw||'').split(' ');
    const tagsMatch=(!sweets.length||sweets.some(k=>tags.includes(k)))&&(!events.length||events.some(k=>tags.includes(k)));
    const ok=storeMatches&&tagsMatch&&normalizeText(title?title.textContent:'').includes(theme)&&priceMatches(plan)&&(!st.x.pk||plan.dataset.pk==='1')&&(!st.x.wd||plan.dataset.wd==='1')&&(!st.x.we||plan.dataset.we==='1');
    plan.hidden=!ok;if(ok)count++;
