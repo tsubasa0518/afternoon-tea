@@ -51,7 +51,7 @@ class RoutineRendererTests(unittest.TestCase):
         source['shops']=[{**shop,'category':'lux','plans':[{'price_yen':price}]} for price in (6000,6001,10000,None)]
         result=r.render(source,FAILURES)
         for cat in ['cafe','hotel','lux']:self.assertIn(f'class="stat s-{cat}"><b>1</b>',result)
-        self.assertIn('class="card c-unknown"',result);self.assertIn('分類未確認：1店舗',result)
+        self.assertIn('class="card c-unknown"',result)
     def test_multiple_plans_and_dynamic_sweet_counts(self):
         source=fixture();source['shops'][0]['sweets']=['scone','xmas']
         source['shops'][0]['plans']=[{'plan_name':'TEST 1','price_yen':1000},{'plan_name':'TEST 2','price_yen':2000}]
@@ -62,7 +62,30 @@ class RoutineRendererTests(unittest.TestCase):
     def test_outside_plan_is_omitted_without_mutating_evidence(self):
         source=fixture();source['shops'][0]['plans'] += [{'plan_name':'OUTSIDE ONLY','start':'2026-12-19','end':'2026-12-25'}]
         before=copy.deepcopy(source);result=r.render(source,FAILURES)
-        self.assertNotIn('OUTSIDE ONLY',result);self.assertIn('1プランは掲載対象から除きました',result);self.assertEqual(source,before)
+        self.assertNotIn('OUTSIDE ONLY',result);self.assertEqual(source,before)
+    def test_research_notice_is_never_rendered_and_json_is_preserved(self):
+        failures={'schema_version':1,'generated_at':None,'failures':[{
+            'name':'TEST unresearched venue','area':'TEST area','checked_at':'2026-11-07T15:55:22+09:00',
+            'sources':[],'status':'unresearched','reason':'TEST restriction audit only','retry':True}]}
+        for count in (0,1):
+            source=fixture();source['note']='TEST research note must remain in JSON only'
+            source['shops']=source['shops'][:count]
+            if count:source['shops'][0]['plans'].append({'plan_name':'OUTSIDE ONLY','start':'2026-12-19'})
+            before=copy.deepcopy((source,failures))
+            for _ in range(2):
+                result=r.render(source,failures)
+                for removed in ['<div class="aside">','<div class="box">',source['note'],
+                                'TEST restriction audit only','未調査店舗','分類は原則として価格帯',
+                                '掲載なしはAT提供なしを意味しません','プランは掲載対象から除きました']:
+                    self.assertNotIn(removed,result)
+                if count:
+                    self.assertIn('class="card c-unknown"',result)
+                    self.assertIn('料金 未確認',result)
+                self.assertEqual((source,failures),before)
+        template=(r.TEMPLATES/'routine.html').read_text()
+        self.assertNotIn('$notice',template)
+        self.assertNotIn('class="aside"',template)
+
     def test_text_and_attribute_injection_is_escaped(self):
         source=fixture();source['shops'][0]['name']='</h4><script>alert(1)</script>'
         source['shops'][0]['plans'][0]['plan_name']='" onmouseover="alert(1)<img src=x>'
@@ -97,7 +120,10 @@ class RoutineRendererTests(unittest.TestCase):
             shutil.copy(r.ROOT/'data/store_master.json',root/'data/store_master.json')
             (root/'site/research.json').write_text(json.dumps(fixture()));(root/'site/search_failures.json').write_text(json.dumps(FAILURES))
             before={p.name:p.read_bytes() for p in (root/'site').iterdir()}
-            with patch.object(r,'ROOT',root):r.generate()
+            with patch.object(r,'ROOT',root):
+                r.generate();first=target_text=(root/'site/index.html').read_text()
+                r.generate();self.assertEqual((root/'site/index.html').read_text(),first)
+                self.assertNotIn('<div class="aside">',target_text)
             for name,raw in before.items():self.assertEqual((root/'site'/name).read_bytes(),raw)
             self.assertEqual(set(p.name for p in (root/'site').iterdir()),{'index.html','research.json','search_failures.json'})
             self.assertEqual(validate_site({'site/'+p.name:p.read_bytes() for p in (root/'site').iterdir()})['shops'],1)
