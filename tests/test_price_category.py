@@ -33,12 +33,12 @@ class PriceCategoryTests(unittest.TestCase):
         data['shops'][0]['plans'][0]['evidence_quote']='50%OFF 5,000円'
         self.assertEqual(enrich(data,{'areas':[]})['shops'][0]['category'],'unknown')
 
-    def test_plan_links_and_source_dates_and_official_site(self):
+    def test_plan_information_links_and_official_site(self):
         data=fixture();shop=data['shops'][0]
         shop['source_url']='https://www.example.com/afternoon-tea/'
         shop['plans']=[{'plan_name':'First','source_url':'https://restaurant.ikyu.com/123456/plan111111','price_yen':5000,'checked_at':'2026-11-06T10:00:00+09:00'}, {'plan_name':'Second','source_url':'https://www.example.com/winter-tea/','price_yen':10000}]
         result=render(data,FAILURES)
-        for value in ['プラン1／2','プラン2／2','https://www.example.com/winter-tea/','2026-11-06T10:00:00+09:00','提供期間 未確認']:
+        for value in ['プラン1／2','プラン2／2','https://www.example.com/winter-tea/','提供期間 未確認']:
             self.assertIn(value,result)
 
     def test_explicit_public_hosts_keep_transport_prohibitions(self):

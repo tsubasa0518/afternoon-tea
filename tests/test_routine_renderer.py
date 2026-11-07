@@ -86,6 +86,33 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertNotIn('$notice',template)
         self.assertNotIn('class="aside"',template)
 
+    def test_card_evidence_display_is_omitted_but_links_and_json_remain(self):
+        urls=['https://restaurant.ikyu.com/123456/plan111111',
+              'https://www.tablecheck.com/ja/shops/test-only/reserve',
+              'https://tabelog.com/tokyo/A1301/A130101/12345678/',
+              'https://www.example.com/afternoon-tea/']
+        for price,label in [(5000,'カフェ'),(7000,'ホテル'),(10000,'ホテル（高級）')]:
+            data=fixture();base=data['shops'][0]
+            data['shops']=[{**base,'name':'TEST venue '+str(i),'source_url':url,
+                            'checked_at':'2026-11-06T09:00:00+09:00','evidence_quote':'TEST shop evidence',
+                            'plans':[{'plan_name':'TEST plan','source_url':url,'booking_url_info_only':url,
+                                      'checked_at':'2026-11-06T10:00:00+09:00','evidence_quote':'TEST plan evidence',
+                                      'price_yen':price,'start':'2026-11-07','end':'2026-12-01',
+                                      'weekday_available':True}]} for i,url in enumerate(urls)]
+            before=copy.deepcopy(data)
+            for _ in range(2):
+                result=r.render(data,FAILURES)
+                for removed in ['出典：','確認日時：','2026-11-06T09:00:00+09:00',
+                                '2026-11-06T10:00:00+09:00','TEST shop evidence','TEST plan evidence']:
+                    self.assertNotIn(removed,result)
+                for url in urls:
+                    self.assertEqual(result.count('href="'+url+'"'),2)
+                self.assertEqual(result.count('<p class="rnote">'+label+'</p>'),4)
+                self.assertIn('プランの予約・情報ページ',result)
+                self.assertIn('2026/11/7〜2026/12/1',result)
+                self.assertIn('data-wd="1"',result)
+                self.assertEqual(data,before)
+
     def test_text_and_attribute_injection_is_escaped(self):
         source=fixture();source['shops'][0]['name']='</h4><script>alert(1)</script>'
         source['shops'][0]['plans'][0]['plan_name']='" onmouseover="alert(1)<img src=x>'

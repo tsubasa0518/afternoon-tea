@@ -103,8 +103,6 @@ def plan_html(plan,shop,index,total,generated):
     if plan.get('menu'):out.append('<p class="dtxt">メニュー：'+esc(plan['menu'])+'</p>')
     url = plan.get('booking_url_info_only') or plan.get('source_url')
     if url:out.append('<div class="links">'+info_link(url, 'プランの予約・情報ページ')+'</div>')
-    source = plan.get('source_url') or shop.get('source_url')
-    if source:out.append('<p class="rnote">出典：'+info_link(source)+' ／ 確認日時：'+esc(plan.get('checked_at') or shop.get('checked_at'))+'</p>')
     out.append('</div>')
     return ''.join(out)
 
@@ -120,7 +118,7 @@ def card(shop,plans,generated):
          f'<div class="top"><header><h4>{esc(shop.get("name"))}</h4>']
     if shop.get('hotel_name'):out.append('<p class="shop">'+esc(shop['hotel_name'])+'</p>')
     out.append('</header></div>')
-    out.append(f'<p class="rnote">{esc(label)} ／ 確認日時：{esc(shop.get("checked_at"))}</p>')
+    out.append(f'<p class="rnote">{esc(label)}</p>')
     out.append(f'<p class="loc">{SVG_LOC}{esc(shop.get("station"))}</p>')
     if shop.get('address'):out.append('<p class="rnote">'+esc(shop['address'])+'</p>')
     out.append('<div class="meet"><p><span class="mk">駅の出口・徒歩</span>'+esc(shop.get('exit',shop.get('access')))+'</p></div>')
