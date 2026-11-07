@@ -21,7 +21,7 @@ PATTERNS = {
 COMPILED = {key: re.compile(pattern, re.I) for key, pattern in PATTERNS.items()}
 FIELDS = ('plan_name', 'theme', 'theme_name', 'menu', 'description', 'explanation', 'evidence_quote', 'note')
 EXTRA = re.compile(r'追加料金|別料金|オプション|別売|追加注文|単品|アラカルト|通常(?:の)?ランチ|ランチメニュー|他(?:の)?プラン|別プラン|他店|別店舗|他店舗|\boptional\b|\badd[- ]on\b|\ba la carte\b|\blunch menu\b', re.I)
-NEGATIVE = re.compile(r'含まれません|含まれない|含まない|提供(?:しません|されません|しない|されない|終了)|販売終了|不使用|未提供|対象外|\bnot (?:included|available|served)\b|\bunavailable\b|\bwithout\b', re.I)
+NEGATIVE = re.compile(r'含まれません|含まれない|含まれていません|含まない|ありません|ございません|付いていません|提供(?:しません|されません|しない|されない|終了)|販売終了|不使用|未提供|対象外|\bnot (?:included|available|served)\b|\bunavailable\b|\bwithout\b', re.I)
 OTHER = re.compile(r'チーズケーキ|ティラミス|プリン|カヌレ|フィナンシェ|マドレーヌ|バクラヴァ|バクラバ|杏仁豆腐|エッグタルト|\bcheesecake\b|\btiramisu\b|\bpudding\b|\bcanele\b|\bbaklava\b', re.I)
 POSITIVE_HEADING = re.compile(r'アフタヌーン|AT本体|プラン本体|対象プラン|メニュー|スイーツ|デザート|セイボリー|\bmenu\b|\bsweets?\b|\bdesserts?\b|\bafternoon tea\b', re.I)
 
@@ -42,7 +42,7 @@ def option_scope(text):
 def menu_scope(text):
     text = option_scope(text)
     # Non-menu restrictions must not negate an actual dessert in the same clause.
-    return re.sub(r'(?:アルコール|予約|提供期間|提供時間|料金|人数|時間制限|砂糖|生クリーム|乳製品|小麦|グルテン)(?:は|を|が)?\s*(?:含まれません|不使用|なし|未確認|未定|提供しません)', '', text)
+    return re.sub(r'(?:アルコール|予約|提供期間|提供時間|料金|人数|時間制限|砂糖|生クリーム|乳製品|小麦|グルテン)(?:は|を|が)?\s*(?:含まれません|含まれていません|ありません|ございません|不使用|なし|未確認|未定|提供しません)', '', text)
 
 
 def eligible_clauses(plan):
