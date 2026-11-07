@@ -15,10 +15,23 @@ class SafetyTests(unittest.TestCase):
  def test_duplicate(self):a=self.areas('complete');a[0]['no']=2;self.assertFalse(area_metrics(a)['valid'])
  def test_mixed(self):a=self.areas('complete');a[0]['discovery_status']='incomplete';self.assertEqual(area_metrics(a)['completion_rate'],13/14)
  def fixture(self):
-  shop={'master_id':'TEST_ONLY','research':{'status':'confirmed'}};data={'generated':'2026-11-07','areas':[{'cats':{'cafe':{'shops':[shop]}}}]}
-  r={'run_id':'TEST_RUN','restored_from_previous':False,'fetched_at':'2026-11-07T07:00:01+09:00','verified_at':'2026-11-07T07:00:02+09:00','shop_sha256':digest(shop)}
-  audit={'current_run':{'id':'TEST_RUN','started_at':'2026-11-07T07:00:00+09:00','generated_at':'2026-11-07T07:00:03+09:00','receipts':{'TEST_ONLY':r},'reservation_audit':{'complete':True,'violations':[]}}}
-  return data,audit,r
+  from afternoon_tea.run_context import RunContext
+  from afternoon_tea.communication_audit import identity
+  from afternoon_tea.master import dumps
+  from afternoon_tea.data import JST
+  import datetime as dt,hashlib
+  ctx=RunContext(run_id='TEST_RUN');url='https://www.tablecheck.com/ja/shops/test/reserve'
+  shop={'master_id':'TEST_ONLY','research':{'status':'confirmed'},'links':[{'url':url}]}
+  rid=ctx.journal.begin(url,'GET');ctx.journal.finish(rid,'http_success',http_status=200)
+  doc=ctx.journal.record('document',resource=identity(url),status='success',request_id=rid,page_sha256='test-page-hash')
+  evidence={'item_id':'TEST_ONLY','url':url,'extraction':{'master_id':'TEST_ONLY','status':'confirmed','sha256':'test-page-hash'}}
+  key=hashlib.sha256(dumps(evidence).encode()).hexdigest()
+  ctx.confirm(shop,evidence,'evidence/'+key+'.json',doc,dt.datetime.now(JST).isoformat())
+  from types import SimpleNamespace
+  browser=SimpleNamespace(count=1,communication_audit=ctx.journal,transport=SimpleNamespace(communication_audit=ctx.journal))
+  run=ctx.snapshot(browser)
+  data={'generated':dt.datetime.now(JST).date().isoformat(),'metadata':{'run_id':ctx.id,'generated_at':run['generated_at']},'areas':[{'cats':{'cafe':{'shops':[shop]}}}]}
+  return data,{'current_run':run},run['receipts']['TEST_ONLY']
  def test_current_evidence(self):d,a,r=self.fixture();self.assertTrue(current_evidence(d,a))
  def test_restored(self):d,a,r=self.fixture();r['restored_from_previous']=True;self.assertFalse(current_evidence(d,a))
  def test_old_run(self):d,a,r=self.fixture();r['run_id']='OLD';self.assertFalse(current_evidence(d,a))
@@ -47,7 +60,7 @@ class SafetyTests(unittest.TestCase):
     rehearse(b,target,'test-run','test-commit',flags,auth,True);self.assertEqual(target.read_text(),'TEST_ONLY new HTML')
 
  def test_date_only_refresh_rejected(self):
-  d,a,r=self.fixture();d['generated']='2026-11-08';self.assertFalse(current_evidence(d,a))
+  d,a,r=self.fixture();d['generated']='2000-01-01';self.assertFalse(current_evidence(d,a))
  def test_prepare_keeps_research_quality_separate_from_authorization(self):
   from afternoon_tea.publication_bundle import prepare,verify
   root=ROOT/'.staging';root.mkdir(exist_ok=True)

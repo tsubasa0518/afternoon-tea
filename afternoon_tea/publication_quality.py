@@ -2,6 +2,8 @@
 import argparse, datetime as dt, json
 from pathlib import Path
 from .master import ROOT, load_master
+from .data import JST
+from .read_only import check_url
 from .pipeline import protected_files
 from .validation import load_json, validate_data
 from .html_validation import validate_html
@@ -14,7 +16,7 @@ DEFAULTS={"min_confirmed_shops":1,"min_master_review_rate":1.0,"min_area_researc
 def card_count(html): return len(Document(html).root.find('article'))
 def check(ok, evidence): return {"status":"pass" if ok else "fail","evidence":evidence}
 def evaluate(data,audit,html,baseline_html,config,now=None,approval=False):
- now=now or dt.date.today();master=load_master();checks={}; errors=[]
+ now=now or dt.datetime.now(JST).date();master=load_master();checks={}; errors=[]
  try:
   summary=validate_data(data,master); checks['json_14_areas']=check(True,summary)
  except Exception as e:summary={};checks['json_14_areas']=check(False,str(e));errors.append('json_validation')
@@ -35,10 +37,22 @@ def evaluate(data,audit,html,baseline_html,config,now=None,approval=False):
  checks['current_run_evidence']=check(current_evidence(data,audit),{'required':'Current run receipts, exact shop hashes and fetched/verified timestamps; restored data is not fresh'})
  master_items=[x for x in audit.get('items',[]) if x.get('kind')=='master'];reviewed=sum(x.get('status') in ('confirmed','excluded') for x in master_items)/len(master_items) if master_items else 0
  checks['master_coverage']=check(reviewed>=config['min_master_review_rate'] and counts['unresolved']/max(1,len(master_items))<=config['max_unresolved_master_rate'],{'reviewed_rate':reviewed,'unresolved':counts['unresolved'],'master_total':len(master_items)})
- checks['priority_audit']=check(bool(audit.get('items')) and all(len(x.get('attempts',[])) for x in audit['items'] if x.get('status')=='confirmed'),{'confirmed':len(confirmed),'audit_items':len(audit.get('items',[]))})
+ priority_missing=[]
+ item_index={x.get('id'):x for x in audit.get('items',[])}
+ for shop in confirmed:
+  site=shop['links'][0]['site'];expected=['ik','tb','tc'][:['ik','tb','tc'].index(site)+1]
+  attempts=item_index.get(shop['master_id'],{}).get('attempts',[])
+  if [a.get('site') for a in attempts]!=expected or any(a.get('status') not in ('confirmed','excluded','verified_absent') for a in attempts):priority_missing.append(shop['master_id'])
+ checks['priority_audit']=check(bool(confirmed) and not priority_missing,{'incomplete_master_ids':priority_missing})
+ try:
+  for shop in confirmed:check_url(shop['links'][0]['url'])
+  url_safe=True
+ except (ValueError,RuntimeError):url_safe=False
+ checks['read_only_reservation_urls']=check(url_safe,{'anonymous_public_document_paths_only':True})
  before,after=card_count(baseline_html),card_count(html);drop=max(0,(before-after)/max(1,before))
  checks['baseline_delta']=check(drop<=config['max_shop_drop_rate'],{'previous_shops':before,'candidate_shops':after,'drop_rate':drop,'new_shops':max(0,after-before)})
  checks['minimum_shops']=check(len(confirmed)>=config['min_confirmed_shops'],len(confirmed))
+ checks['no_expired_plans']=check(not any(p.get('end') and p['end']<str(now) for s in confirmed for p in s['plans']),{'as_of':str(now)})
  checks['interrupted_run']=check(not audit.get('stop_reason') and audit.get('last_run',{}).get('complete_coverage') is True,audit.get('last_run',{}))
  checks['test_data_absent']=check(data.get('metadata',{}).get('purpose')=='research' and not any('TEST_ONLY' in str(s) for s in confirmed),data.get('metadata',{}).get('purpose'))
  checks['initial_migration_approval']=check(not config['require_first_migration_approval'] or approval,{'required':config['require_first_migration_approval'],'provided':approval})
@@ -47,7 +61,17 @@ def evaluate(data,audit,html,baseline_html,config,now=None,approval=False):
  hard_complete=(len(confirmed)>0 and len(master_items)==70 and counts['unresolved']==0 and counts['failed']==0 and counts['unresearched']==0 and len(areas)==14 and all(x.get('discovery_status')=='complete' for x in areas) and drop<=0.5 and (not config['require_first_migration_approval'] or approval))
  all_pass=structural and hard_complete and all(v['status']=='pass' for k,v in checks.items() if k not in ('json_14_areas','html_structure'))
  status='APPROVED_FOR_PUBLICATION' if all_pass else 'REVIEW_REQUIRED' if structural and len(confirmed)>0 else 'STAGING_VALID'
- return {'status':status,'publishable':status=='APPROVED_FOR_PUBLICATION','score':round(sum(v['status']=='pass' for v in checks.values())/len(checks),3),'checks':checks,'metrics':{'confirmed_shops':len(confirmed),'confirmed_plans':plans,'previous_shops':before,'candidate_shops':after,'master_review_rate':reviewed,'area_exploration_rate':area_rate,'area_started_rate':rates['started_rate'],'area_completion_rate':rates['completion_rate'],'unresolved':counts['unresolved'],'failed':counts['failed'],'expired_plans':sum(bool(p.get('end') and p['end']<str(now)) for s in confirmed for p in s.get('plans',[]))},'failed_reasons':[k for k,v in checks.items() if v['status']=='fail'],'next_step':'No publication action is performed by this program.'}
+ accuracy_names=('json_14_areas','html_structure','confirmed_evidence','safe_unique_urls','freshness','current_run_evidence','priority_audit','read_only_reservation_urls','test_data_absent','no_expired_plans')
+ accuracy={'passed':all(checks[k]['status']=='pass' for k in accuracy_names),'conditions':{k:checks[k] for k in accuracy_names}}
+ coverage={'area_started_rate':rates['started_rate'],'area_completion_rate':rates['completion_rate'],'areas':[{'no':a.get('no'),'stations':a.get('stations',[]),'station_search_status':a.get('station_search_status','not_tracked'),'status':a.get('discovery_status')} for a in areas],
+ 'master_review_rate':reviewed,'states':counts,'route_establishment_rate':sum(any(p.get('fetch')=='success' for a in x.get('attempts',[]) for p in a.get('pages',[])) for x in audit.get('items',[]))/max(1,len(audit.get('items',[]))),
+ 'new_confirmed_shops':sum(s.get('new') is True for s in confirmed),'baseline_delta':checks['baseline_delta']['evidence']}
+ constraints={}
+ for event in audit.get('current_run',{}).get('reservation_audit',{}).get('events',[]):
+  reason=event.get('reason')
+  if reason:constraints[reason]=constraints.get(reason,0)+1
+ coverage['access_constraints']=constraints
+ return {'accuracy':accuracy,'coverage':coverage,'run_id':audit.get('current_run',{}).get('id'),'status':status,'publishable':status=='APPROVED_FOR_PUBLICATION','score':None,'score_note':'Retired mixed score; accuracy and coverage are evaluated independently','decision_category':'PUBLICATION_BLOCKED' if not accuracy['passed'] else 'COVERAGE_REVIEW_REQUIRED' if status!='APPROVED_FOR_PUBLICATION' else 'ELIGIBLE_PENDING_AUTHORIZATION','checks':checks,'metrics':{'confirmed_shops':len(confirmed),'confirmed_plans':plans,'previous_shops':before,'candidate_shops':after,'master_review_rate':reviewed,'area_exploration_rate':area_rate,'area_started_rate':rates['started_rate'],'area_completion_rate':rates['completion_rate'],'unresolved':counts['unresolved'],'failed':counts['failed'],'expired_plans':sum(bool(p.get('end') and p['end']<str(now)) for s in confirmed for p in s.get('plans',[]))},'failed_reasons':[k for k,v in checks.items() if v['status']=='fail'],'next_step':'No publication action is performed by this program.'}
 
 def report_destination(value):
  path=Path(value)

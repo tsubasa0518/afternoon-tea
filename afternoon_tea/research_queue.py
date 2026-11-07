@@ -84,7 +84,7 @@ def public_links(raw,url):
     return result
 
 
-def process(item,state,master,browser,directory,deadline):
+def process(item,state,master,browser,directory,deadline,context=None):
     attempts=[];any_fetch=False;any_document=False;errors=[]
     for site in ('ik','tb','tc'):
         urls=list(item['sources'][site]);seen=set();records=[]
@@ -110,7 +110,11 @@ def process(item,state,master,browser,directory,deadline):
                 key=hashlib.sha256(dumps(evidence).encode()).hexdigest()
                 atomic_json(Path(directory)/'evidence'/(key+'.json'),evidence)
                 any_document=True
-                if result['status']=='confirmed' and candidate_data is not None:state['data']=candidate_data
+                if result['status']=='confirmed' and candidate_data is not None:
+                    if context:
+                        shop=next(s for a in candidate_data['areas'] for g in a['cats'].values() for s in g['shops'] if s['master_id']==item['id'])
+                        context.confirm(shop,evidence,'evidence/'+key+'.json',getattr(browser,'last_document',None),dt.datetime.now(JST).isoformat())
+                    state['data']=candidate_data
                 records.append({'url':url,'fetch':'success','evidence':'evidence/'+key+'.json','result':result['status'],'reasons':result['reasons']})
                 item['partial_attempts']=attempts+[{'site':site,'pages':records}]
                 links=public_links(raw,url)
@@ -144,8 +148,19 @@ def process(item,state,master,browser,directory,deadline):
     item.update(status='unresolved' if any_document or not errors else 'failed',reason='No eligible current plan verified; '+('; '.join(dict.fromkeys(errors)) if errors else 'source discovery/identity/menu incomplete'),attempts=attempts)
 
 
-def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retry=False):
+def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retry=False,context=None,fresh=False):
     protected_files();master=load_master();now=dt.datetime.now(JST);state=load_state(directory,master,str(now.date()))
+    if fresh:
+        from .data import create_data
+        state['previous_confirmed']={s['master_id']:copy.deepcopy(s) for a in state['data']['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']=='confirmed'}
+        state['data']=create_data(master,state['day']);state['data']['metadata']['purpose']='research'
+        for item in state['items']:
+            item['history'].append({'day':state['day'],'status':item['status'],'reason':item.get('reason'),'scope':'previous_execution'})
+            item['status']='unresearched'
+    if context:
+        state.pop('current_run',None)
+        state['data']['metadata']['run_id']=context.id
+        state['data']['metadata']['generated_at']=dt.datetime.now(JST).isoformat()
     if retry:
         for item in state['items']:
             if item['status'] in ('unresolved','failed'):item['status']='unresearched'
@@ -163,7 +178,7 @@ def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retr
     for item in pending[:limit]:
         if time.monotonic()>=deadline:
             state['stop_reason']='time_budget';save_state(directory,state,master);break
-        try:process(item,state,master,browser,directory,deadline)
+        try:process(item,state,master,browser,directory,deadline,context)
         except TimeoutError as e:state['stop_reason']=str(e);save_state(directory,state,master);break
         except ForbiddenOperation as e:
             state['stop_reason']='forbidden_operation';item.update(status='failed',reason=str(e));save_state(directory,state,master);break
@@ -171,6 +186,7 @@ def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retr
         item['history'].append({'day':state['day'],'status':item['status'],'reason':item.get('reason'),'checked_at':item['checked_at']})
         state['events'].append({'id':item['id'],'status':item['status'],'checked_at':item['checked_at'],'attempts':copy.deepcopy(item.get('attempts',[]))})
         save_state(directory,state,master)
+    if any(x['status']=='unresearched' for x in state['items']) and not state.get('stop_reason'):state['stop_reason']='shop_limit_or_pending_discoveries'
     # Current-page discoveries are separate queued candidates, not automatically confirmed shops.
     for found in list(state['discovery']):
         add_discovery(state,found['url'],found['label'],found['area'],found['source_url'],found['checked_at'])
@@ -181,7 +197,10 @@ def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retr
         if findings:
             area['discovery_status']='incomplete'
             area['reason']='Encountered public AT links; full station/area/hotel-opening searches remain incomplete'
-    state['diff']=differences(state);state['last_run']={'processed':done,'requests':browser.count,'finished_at':dt.datetime.now(JST).isoformat(),'complete_coverage':False,'reservation_operations':0}
+    if context:
+        state['current_run']=context.snapshot(browser)
+        state['data']['metadata']['generated_at']=state['current_run']['generated_at']
+    state['diff']=differences(state);state['last_run']={'processed':done,'requests':browser.count,'finished_at':dt.datetime.now(JST).isoformat(),'complete_coverage':False,'reservation_operations':state.get('current_run',{}).get('reservation_audit',{}).get('operations_executed')}
     save_state(directory,state,master)
     out=staging_directory()/('queue-'+now.strftime('%Y%m%dT%H%M%S%f'));out.mkdir()
     atomic_json(out/('data_'+state['day']+'.json'),state['data']);atomic_json(out/'audit.json',{k:v for k,v in state.items() if k!='data'})
@@ -195,8 +214,8 @@ def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retr
     save_state(directory,state,master)
     return out,state
 
-def run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retry=False):
-    with store_lock(directory):return _run(limit,seconds,max_requests,directory,browser,retry)
+def run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retry=False,context=None,fresh=False):
+    with store_lock(directory):return _run(limit,seconds,max_requests,directory,browser,retry,context,fresh)
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--limit',type=int,default=75);p.add_argument('--seconds',type=int,default=600);p.add_argument('--max-requests',type=int,default=180);p.add_argument('--retry-unresolved',action='store_true');a=p.parse_args()
