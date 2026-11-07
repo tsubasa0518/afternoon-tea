@@ -3,6 +3,9 @@ on:
   pull_request_target:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, edited]
+  workflow_run:
+    workflows: [Test offline data and HTML pipeline]
+    types: [completed]
 permissions:
   contents: read
 concurrency:
@@ -11,11 +14,12 @@ concurrency:
 jobs:
   validate-and-merge:
     if: >-
+      github.event_name == 'workflow_run' || (
       !github.event.pull_request.draft &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') &&
       startsWith(github.event.pull_request.title, '[weekly-site]') &&
-      github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner)
+      github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner))
     runs-on: ubuntu-latest
     timeout-minutes: 8
     permissions:
@@ -32,7 +36,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate three files, merge expected head, dispatch publication
-        run: python3 -m afternoon_tea.routine_site intake
+        run: |
+          if [ "$EVENT_NAME" = workflow_run ]; then
+            python3 -m afternoon_tea.routine_ci_resume
+          else
+            python3 -m afternoon_tea.routine_site intake
+          fi
         env:
+          EVENT_NAME: ${{ github.event_name }}
           GH_TOKEN: ${{ github.token }}
           ROUTINE_AUTHOR: ${{ vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner }}

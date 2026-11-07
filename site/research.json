@@ -467,7 +467,9 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-004",
@@ -507,7 +509,9 @@
             "choco"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-005",
@@ -534,7 +538,9 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-006",
@@ -561,7 +567,9 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-008",
@@ -1394,7 +1402,9 @@
             "ichigo"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-061",
@@ -2063,7 +2073,9 @@
             "collab"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-080",
@@ -2406,7 +2418,9 @@
             "kuri"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-088",
@@ -2444,7 +2458,9 @@
             "grape"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-092",
@@ -2610,7 +2626,9 @@
             }
           }
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-098",
@@ -2639,7 +2657,9 @@
           "weekday_available": true,
           "weekend_available": false
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-099",
@@ -2666,7 +2686,9 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-100",
@@ -2704,7 +2726,9 @@
             "scone"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-101",
@@ -2752,7 +2776,9 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-102",
@@ -2779,7 +2805,9 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "master-060",
@@ -3125,7 +3153,9 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
     },
     {
       "id": "priority-118",

@@ -195,6 +195,15 @@ def dispatch_publication(api, number, head_sha, merge_sha):
     return 'requested'
 
 
+def technical_ci(api, head):
+    runs=api.get('/actions/workflows/test-data.yml/runs?event=pull_request&head_sha='+head+'&per_page=100')['workflow_runs']
+    runs=[r for r in runs if r.get('head_sha')==head and r.get('event')=='pull_request']
+    if not runs:return 'pending'
+    latest=max(runs,key=lambda r:(r['id'],r.get('run_attempt',1)))
+    if latest.get('status')!='completed':return 'pending'
+    return 'success' if latest.get('conclusion')=='success' else 'failed'
+
+
 def intake(api,number,author,sleep=time.sleep):
     number=str(int(number));pr=api.get('/pulls/'+number)
     require(not pr['draft'] and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==REPO and pr['head']['repo'] and pr['head']['repo']['full_name']==REPO and pr['head']['ref'].startswith(BRANCH_PREFIX) and pr['user']['login']==author and pr['title'].startswith('[weekly-site]'),'pr_not_a_trusted_routine')
@@ -215,12 +224,16 @@ def intake(api,number,author,sleep=time.sleep):
         if latest.get('merged') is True:
             merge_sha=latest.get('merge_commit_sha');break
         require(latest['state']=='open','pr_no_longer_open')
+        ci=technical_ci(api,pr['head']['sha'])
+        if ci!='success':
+            return {**report,'pr':number,'merge':'ci_'+ci,'head_sha':pr['head']['sha']}
+        require(latest.get('mergeable') is not False,'pr_merge_conflict')
         try:
             merged=api.call('PUT','/pulls/'+number+'/merge',{'sha':pr['head']['sha'],'merge_method':'squash'})
             require(merged.get('merged') is True,'merge_not_completed');merge_sha=merged.get('sha');break
         except HTTPError as e:
             if e.code!=405 or attempt==9:raise
-            sleep(15)  # Required CI may still be running; no protection changes.
+            sleep(15)  # GitHub merge readiness/protection; CI was independently checked.
     # Explicit dispatch is supported even when GITHUB_TOKEN performed the merge.
     dispatch=dispatch_publication(api,number,pr['head']['sha'],merge_sha)
     return {**report,'pr':number,'dispatch':dispatch}
@@ -258,7 +271,8 @@ def main():
         elif a.command=='intake':
             event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
             report=intake(API(),event['number'],os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0])
-            print(report);write_summary('自動マージ成功・公開開始要求済み（公開結果はdeploy.ymlを確認）',report)
+            print(report);write_summary(report.get('merge','自動マージ成功・公開開始要求済み（公開結果はdeploy.ymlを確認）'),report)
+            if report.get('merge')=='ci_failed':raise ValueError('latest_head_technical_ci_failed')
         elif a.command=='prepare':
             report=prepare();print(report);write_summary('HTML公開準備成功（デプロイ前）',report)
         else:

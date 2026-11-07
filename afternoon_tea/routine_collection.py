@@ -135,6 +135,11 @@ def run(queue, directory, browser, seconds=600, discovery_fraction=.2, clock=tim
                     if target not in seen and target not in state['pending_lists']:
                         state['pending_lists'].append(target)
             save()
+        state['discovery_budget']={'fraction':discovery_fraction,'request_limit':discovery_request_limit,
+            'requests_used':browser.count,'pages_attempted':len(state['discovery_pages']),
+            'fallback_required':not any(p.get('result')=='fetched' for p in state['discovery_pages']),
+            'fallback_reason':'If lists are blocked, use permitted public search/official news for all 14 areas; never retry blocked hosts or invent new discoveries.'}
+        save()
         done = {d['queue_id'] for d in state['documents'] if d.get('result') not in (None, 'budget_pending', 'safety_stop')}
         # Do not cap at 14. Requests and wall time are the only collection limits.
         for number, area, task in rounds(queue, done):
@@ -157,7 +162,23 @@ def run(queue, directory, browser, seconds=600, discovery_fraction=.2, clock=tim
                            reason='No safe source hint; use permitted shop/station discovery')
             else:
                 row['url'] = urls[0]
-                fetch(urls[0], row)
+                raw=fetch(urls[0], row)
+                if raw:
+                    # Collect every explicitly identified safe AT detail, not just the first.
+                    # Only static public plan URLs; no action/booking links are followed.
+                    import re
+                    from .research_queue import public_links
+                    from urllib.parse import urlsplit
+                    details=[u for u,label in public_links(raw,urls[0])
+                             if urlsplit(u).hostname=='restaurant.ikyu.com' and re.fullmatch(r'/[0-9]+/plan[0-9]+',urlsplit(u).path)]
+                    row['discovered_plan_urls']=details
+                    row['plan_pages']=[]
+                    for detail in details:
+                        if clock()>=deadline or browser.count>=browser.max_requests:
+                            row['plans_incomplete']=True;break
+                        record={'url':detail,'scope':'AT_plan_detail'}
+                        row['plan_pages'].append(record)
+                        fetch(detail,record);save()
             save()
     except TimeoutError as exc:
         state['stop_reason'] = str(exc)
