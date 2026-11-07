@@ -109,3 +109,22 @@ class CurrentRunTests(unittest.TestCase):
    html=out/('afternoon_tea_tokyo_'+data['generated']+'.html');m=prepare(d/'data.json',d/'audit.json',html,root.parent/'docs/index.html',Path(t)/'bundle',ctx.id,'TEST_COMMIT')
    self.assertEqual(m['run_id'],ctx.id);self.assertEqual(m['files']['index.html'],sha(html.read_bytes()))
    q=json.loads((Path(t)/'bundle/quality_report.json').read_text());self.assertFalse(q['publishable']);self.assertTrue(q['checks']['current_run_evidence']['status']=='pass')
+ def test_standalone_transport_also_audits_success(self):
+  t=ReadOnlyTransport();t.opener=Mock();t.opener.open.return_value=Response(URL,'TEST_ONLY')
+  with t.open(URL) as response:response.read()
+  s=t.communication_audit.snapshot();self.assertTrue(s['complete']);self.assertEqual(s['requests'],1)
+ def test_fresh_reset_preserves_prior_day_comparison(self):
+  from afternoon_tea.research_store import save_state
+  from afternoon_tea.research_queue import run
+  from afternoon_tea.extraction import apply_page
+  from unittest.mock import Mock
+  import shutil
+  master=load_master();today=dt.datetime.now(JST).date();previous=new_state(master,str(today-dt.timedelta(days=1)))
+  previous['data']['metadata']['purpose']='research';apply_page(previous['data'],master,RAW,URL)
+  state=new_state(master,str(today),previous)
+  self.assertIn('master-070',state['previous_confirmed'])
+  with tempfile.TemporaryDirectory() as tmp:
+   save_state(tmp,state,master);browser=Mock();browser.count=0;browser.fetch.side_effect=RuntimeError('HTTP_403')
+   out,result=run(limit=1,seconds=10,directory=tmp,browser=browser,fresh=True)
+   try:self.assertIn({'id':'master-070','change':'no_current_confirmation'},result['diff'])
+   finally:shutil.rmtree(out)

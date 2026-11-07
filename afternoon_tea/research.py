@@ -98,7 +98,7 @@ class Browser:
         self.robots = {}
         self.errors = []
         self.transport = ReadOnlyTransport(audit)
-        self.communication_audit = audit
+        self.communication_audit = self.transport.communication_audit
         self.blocked_hosts = set()
 
     def _rate_limit(self, host):

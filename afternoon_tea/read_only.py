@@ -44,6 +44,10 @@ def check_url(url, method="GET"):
 class ReadOnlyTransport:
     def __init__(self, communication_audit=None):
         self.audit = []
+        if communication_audit is None:
+            from .communication_audit import CommunicationAudit
+            import uuid
+            communication_audit=CommunicationAudit(uuid.uuid4().hex)
         self.communication_audit = communication_audit
         self.last_request_id = None
         self.opener = build_opener(NoRedirect())  # no CookieProcessor, no credentials

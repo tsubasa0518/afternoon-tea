@@ -152,7 +152,9 @@ def _run(limit=75,seconds=600,max_requests=180,directory=STORE,browser=None,retr
     protected_files();master=load_master();now=dt.datetime.now(JST);state=load_state(directory,master,str(now.date()))
     if fresh:
         from .data import create_data
-        state['previous_confirmed']={s['master_id']:copy.deepcopy(s) for a in state['data']['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']=='confirmed'}
+        current_confirmed={s['master_id']:copy.deepcopy(s) for a in state['data']['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']=='confirmed'}
+        if current_confirmed:state['previous_confirmed']=current_confirmed
+        else:state.setdefault('previous_confirmed',{})
         state['data']=create_data(master,state['day']);state['data']['metadata']['purpose']='research'
         for item in state['items']:
             item['history'].append({'day':state['day'],'status':item['status'],'reason':item.get('reason'),'scope':'previous_execution'})
