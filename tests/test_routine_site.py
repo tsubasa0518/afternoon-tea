@@ -15,7 +15,7 @@ def files(n=0, failures=0):
 
 class FakeAPI:
     def __init__(self):
-        self.pr={'state':'open','draft':False,'title':'[weekly-site] mock','changed_files':1,'user':{'login':'tsubasa0518'},'base':{'ref':'main','repo':{'full_name':r.REPO}},'head':{'repo':{'full_name':r.REPO},'ref':'claude/test','sha':'a'*40},'merged':False}
+        self.pr={'state':'open','draft':False,'title':'[weekly-site] mock','changed_files':1,'user':{'login':'tsubasa0518'},'base':{'ref':'main','repo':{'full_name':r.REPO}},'head':{'repo':{'full_name':r.REPO},'ref':'claude/weekly-afternoon-tea-20261107','sha':'a'*40},'merged':False}
         self.changed=[{'filename':'site/index.html','status':'modified'}]
         self.content=files(2,76);self.calls=[];self.denied=False
     def get(self,path):
@@ -34,7 +34,7 @@ class RoutineSiteTests(unittest.TestCase):
     def test_two_shops_and_76_unresolved_are_publishable(self):
         result=r.validate_site(files(2,76));self.assertEqual(result['shops'],2);self.assertEqual(result['search_failures'],76)
     def test_zero_shops_normal_explanation_is_valid(self):
-        f=files();f['site/index.html']=HTML.replace(b'Information unavailable','今週は確認できた店舗情報がありません'.encode());r.validate_site(f)
+        f=files();f['site/index.html']=HTML.replace(b'Information unavailable','今週確認できた情報はありません'.encode());r.validate_site(f)
     def test_unknown_prices_and_incomplete_coverage_do_not_block(self):r.validate_site(files(2))
     def test_empty_or_broken_html_rejected(self):
         for html in (b'',b'<html><body>oops',b'<html><head><title>x</title></head><body></div></html>', b'<html><head><title>x</title></head><body></body></html>', b'<html></html><head><title>x</title></head><body>x</body>'):
@@ -63,7 +63,7 @@ class RoutineSiteTests(unittest.TestCase):
         r.validate_html_bytes((r.ROOT/'docs/index.html').read_bytes())
     def test_merge_then_explicit_dispatch_with_expected_sha(self):
         api=FakeAPI();r.intake(api,1,'tsubasa0518');self.assertEqual([x[0] for x in api.calls],['PUT','POST'])
-        self.assertEqual(api.calls[0][2]['sha'],'a'*40);self.assertEqual(api.calls[1][1],'/actions/workflows/publish-site.yml/dispatches')
+        self.assertEqual(api.calls[0][2]['sha'],'a'*40);self.assertEqual(api.calls[1][1],'/actions/workflows/deploy.yml/dispatches')
         self.assertEqual(api.calls[1][2],{'ref':'main'})
     def test_already_merged_rerun_dispatches_without_second_merge(self):
         api=FakeAPI();api.pr.update(merged=True,state='closed');r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),1);self.assertEqual(api.calls[0][0],'POST')
@@ -73,7 +73,7 @@ class RoutineSiteTests(unittest.TestCase):
             with self.assertRaises(ValueError):r.intake(api,1,'tsubasa0518')
             self.assertFalse(api.calls)
     def test_workflow_change_or_deleted_file_rejected(self):
-        for f in ({'filename':'.github/workflows/publish-site.yml','status':'modified'},{'filename':'site/index.html','status':'removed'}):
+        for f in ({'filename':'.github/workflows/deploy.yml','status':'modified'},{'filename':'site/index.html','status':'removed'}):
             api=FakeAPI();api.changed=[f]
             with self.assertRaises(ValueError):r.intake(api,1,'tsubasa0518')
             self.assertFalse(api.calls)
@@ -102,20 +102,52 @@ class RoutineSiteTests(unittest.TestCase):
                 self.url=req.full_url;return Response(HTML)
         op=Opener();r.verify_public(r.sha(HTML),1,op);self.assertEqual(op.url,r.SITE)
         with self.assertRaises(ValueError):r.verify_public('0'*64,1,op)
-    def test_prepare_preserves_previous_site_and_never_writes_docs(self):
-        class Response(io.BytesIO):status=200
-        class Opener:
-            def open(self,*a,**k):return Response(HTML)
+    def test_prepare_is_offline_and_never_writes_docs(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             for path,value in files(2).items():
                 (root/path).parent.mkdir(exist_ok=True);(root/path).write_bytes(value)
-            with patch.object(r,'ROOT',root),patch.object(r.urllib.request,'build_opener',return_value=Opener()):report=r.prepare()
-            self.assertEqual((root/'.staging/routine-delivery/previous/index.html').read_bytes(),HTML)
+            with patch.object(r,'ROOT',root),patch.object(r.urllib.request,'build_opener') as network:report=r.prepare()
+            network.assert_not_called()
+            self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),HTML)
             self.assertEqual(report['sha256'],r.sha(HTML));self.assertFalse((root/'docs').exists())
+    def test_weekly_two_then_zero_shops_replace_same_staging_html(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            for count in (2,0):
+                content=files(count,76)
+                body=''.join('<article>Test-only shop '+str(i)+'</article>' for i in range(count)) if count else '今週確認できた情報はありません'
+                content['site/index.html']=HTML.replace(b'<p>Information unavailable</p>',body.encode())
+                for path,value in content.items():
+                    (root/path).parent.mkdir(exist_ok=True);(root/path).write_bytes(value)
+                with patch.object(r,'ROOT',root):report=r.prepare()
+                self.assertEqual(report['shops'],count);self.assertEqual(report['search_failures'],76)
+                self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),content['site/index.html'])
+            self.assertIn('今週確認できた情報はありません',(root/'.staging/routine-delivery/site/index.html').read_text())
+    def test_old_claude_prefix_is_not_an_authorized_weekly_branch(self):
+        api=FakeAPI();api.pr['head']['ref']='claude/other-task'
+        with self.assertRaisesRegex(ValueError,'pr_not_a_trusted_routine'):r.intake(api,1,'tsubasa0518')
+        self.assertFalse(api.calls)
+    def test_weekly_retry_branch_is_valid(self):
+        api=FakeAPI();api.pr['head']['ref']='claude/weekly-afternoon-tea-20261107-retry'
+        r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),2)
+    def test_escaped_json_credentials_rejected(self):
+        value=b'{"schema_version":1,"shops":[],"note":"gh\\u0070_'+b'a'*36+b'"}'
+        with self.assertRaises(ValueError):r.validate_json(value)
+    def test_non_standard_json_numbers_rejected(self):
+        for value in (b'NaN',b'Infinity',b'-Infinity'):
+            with self.assertRaises(ValueError):r.validate_json(b'{"schema_version":1,"shops":[],"value":'+value+b'}')
+    def test_invalid_html_prevents_preparing_an_artifact(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);content=files();content['site/index.html']=b''
+            for path,value in content.items():
+                (root/path).parent.mkdir(exist_ok=True);(root/path).write_bytes(value)
+            with patch.object(r,'ROOT',root),self.assertRaises(ValueError):r.prepare()
+            self.assertFalse((root/'.staging/routine-delivery/site/index.html').exists())
     def test_workflow_is_trusted_and_single_publication_route(self):
-        auto=(r.ROOT/'.github/workflows/auto-publish-weekly.yml').read_text();pub=(r.ROOT/'.github/workflows/publish-site.yml').read_text();old=(r.ROOT/'.github/workflows/deploy.yml').read_text()
+        auto=(r.ROOT/'.github/workflows/auto-merge-weekly.yml').read_text();pub=(r.ROOT/'.github/workflows/deploy.yml').read_text()
         self.assertIn('pull_request_target:',auto);self.assertIn('ref: ${{ github.sha }}',auto);self.assertNotIn('pull_request.head.sha',auto)
         self.assertIn('actions: write',auto);self.assertNotIn('pages: write',auto)
         self.assertIn('group: github-pages',pub);self.assertIn('cancel-in-progress: false',pub);self.assertNotIn('publication_quality',pub)
-        self.assertNotIn('deploy-pages@',old);self.assertNotIn('push:',old);self.assertIn("paths: ['site/**']",pub)
+        self.assertFalse((r.ROOT/'.github/workflows/publish-site.yml').exists());self.assertFalse((r.ROOT/'.github/workflows/auto-publish-weekly.yml').exists());self.assertIn("paths: ['site/**']",pub)
+        self.assertIn("head.ref, 'claude/weekly-afternoon-tea-'",auto);self.assertNotIn('rollback',pub)

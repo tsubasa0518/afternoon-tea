@@ -3,7 +3,7 @@
   "original_prompt.txt": "9e70a74cea54e336d3e79dacd2476ca472d0bc7a6f086aec67dfe01975c2f00b",
   "build_html.py": "86d7714fa6485e2999d69cbccb56a11eb92ff10ef8b55e7fed97bb1aabfb0246",
   "docs/index.html": "a40fa9cbc36c98b4d031b7d7723debf634bebc452a809bb8b3338b4dbae0a727",
-  ".github/workflows/deploy.yml": "c7bd8990f5bdc12bef07b6dc8b143f78e81665134354baac59e034448950934c",
+  ".github/workflows/deploy.yml": "3c68650600f5b7ae43751a13f325620afdfa3497d4563a7119dd12667dc32f6d",
   "afternoon_tea_tokyo_2026-11-06.html": "a40fa9cbc36c98b4d031b7d7723debf634bebc452a809bb8b3338b4dbae0a727",
   "backups/legacy-deploy.yml.txt": "23b40527050a6bc6203d20d3d05c00f0ecf4a16c8ba2dc987935546e4abb159f"
 }

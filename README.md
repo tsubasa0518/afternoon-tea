@@ -5,11 +5,11 @@ Claude Code Routines（Cloud Scheduled Tasks）が毎週月曜07:17 JSTに調査
 公開URL: [東京アフタヌーンティー](https://tsubasa0518.github.io/afternoon-tea/)
 
 - 更新対象: `site/index.html`, `site/research.json`, `site/search_failures.json`
-- 自動取り込み: `.github/workflows/auto-publish-weekly.yml`
-- 公開: `.github/workflows/publish-site.yml`（マージ後に明示的に起動）
+- 自動取り込み: `.github/workflows/auto-merge-weekly.yml`
+- 公開: `.github/workflows/deploy.yml`（マージ後に明示的に起動）
 - 店舗数0・2や未確認情報が残る場合も、説明を含む正常なHTMLを公開します。情報は捏造しません。
 - 予約・仮予約・決済は全面禁止。匿名の安全な公開ページの読み取りだけを行います。
-- 元120店舗HTMLは`docs/index.html`に保管し、旧deploy.ymlは公開しない廃止通知に変更しています。
+- 元120店舗HTMLは`docs/index.html`に保管し、deploy.ymlはsite/index.htmlを公開する方式へ変更しています。
 
 [最初の設定・運用・停止・復旧方法](developer_docs/weekly_automation.md)と[Claudeへ貼るプロンプト全文](developer_docs/claude_weekly_prompt.md)を参照してください。
 

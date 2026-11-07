@@ -1,10 +1,55 @@
-name: Legacy deployment retired
-# Kept as a non-deploying notice. publish-site.yml is the only Pages publisher.
+name: Publish site to GitHub Pages
 on:
   workflow_dispatch:
-permissions: {}
+  push:
+    branches: [main]
+    paths: ['site/**']
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 jobs:
-  retired:
+  publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
-      - run: echo 'Legacy deployment is retired. Run publish-site.yml instead.'
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify immutable legacy backup and research sources
+        run: python3 -c 'from afternoon_tea.pipeline import protected_files; protected_files()'
+      - name: Validate latest main and prepare HTML
+        run: |
+          export SOURCE_COMMIT="$(git rev-parse HEAD)"
+          python3 -m afternoon_tea.routine_site prepare
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .staging/routine-delivery/site
+      - name: Deploy validated HTML
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify public URL and exact HTML bytes
+        id: verify
+        run: python3 -m afternoon_tea.routine_site verify
+      - name: Save publication record and HTML
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-publication-${{ github.run_id }}
+          path: .staging/routine-delivery/
+          include-hidden-files: true
+          retention-days: 30
+          if-no-files-found: warn

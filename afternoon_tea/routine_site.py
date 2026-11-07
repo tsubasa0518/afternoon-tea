@@ -17,6 +17,7 @@ from .read_only import NoRedirect
 ROOT=Path(__file__).resolve().parents[1]
 REPO='tsubasa0518/afternoon-tea'
 SITE='https://tsubasa0518.github.io/afternoon-tea/'
+BRANCH_PREFIX='claude/weekly-afternoon-tea-'
 ALLOWED={'site/index.html','site/research.json','site/search_failures.json'}
 MAX_HTML=5_000_000
 VOID={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
@@ -87,7 +88,8 @@ def validate_html_bytes(value):
     return {'bytes':len(value),'sha256':sha(value),'resources':parser.resources,'technical_validation':'passed'}
 
 def validate_json(value, failures=False):
-    require(len(value)<=2_000_000,'json_too_large');scan(value);data=json.loads(value)
+    require(len(value)<=2_000_000,'json_too_large');scan(value);data=json.loads(value,parse_constant=lambda x:require(False,'non_finite_json_number'))
+    scan(json_bytes(data))
     require(isinstance(data,dict) and data.get('schema_version')==1,'invalid_json_document')
     key='failures' if failures else 'shops'
     require(isinstance(data.get(key),list),'json_records_required')
@@ -137,7 +139,7 @@ class API:
         f=self.files(commit)[path];require(f['mode']=='100644' and f['type']=='blob','non_regular_file');return self.blob(f['sha'])
 def intake(api,number,author,sleep=time.sleep):
     number=str(int(number));pr=api.get('/pulls/'+number)
-    require(not pr['draft'] and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==REPO and pr['head']['repo'] and pr['head']['repo']['full_name']==REPO and pr['head']['ref'].startswith('claude/') and pr['user']['login']==author and pr['title'].startswith('[weekly-site]'),'pr_not_a_trusted_routine')
+    require(not pr['draft'] and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==REPO and pr['head']['repo'] and pr['head']['repo']['full_name']==REPO and pr['head']['ref'].startswith(BRANCH_PREFIX) and pr['user']['login']==author and pr['title'].startswith('[weekly-site]'),'pr_not_a_trusted_routine')
     require(pr['state']=='open' or pr.get('merged') is True,'pr_closed_without_merge')
     require(1<=pr['changed_files']<=3,'routine_change_allowlist')
     changed=api.get('/pulls/'+number+'/files?per_page=100')
@@ -161,23 +163,20 @@ def intake(api,number,author,sleep=time.sleep):
             if e.code!=405 or attempt==9:raise
             sleep(15)  # Required CI may still be running; no protection changes.
     # Explicit dispatch is supported even when GITHUB_TOKEN performed the merge.
-    api.call('POST','/actions/workflows/publish-site.yml/dispatches',{'ref':'main'})
+    api.call('POST','/actions/workflows/deploy.yml/dispatches',{'ref':'main'})
     return {**report,'pr':number,'dispatch':'requested'}
 
 
 def prepare():
     base=ROOT/'.staging/routine-delivery';base.mkdir(parents=True,exist_ok=True)
-    require(not base.is_symlink() and base.resolve().is_relative_to((ROOT/'.staging').resolve()),'unsafe_delivery_directory')
+    require(not base.is_symlink() and base.resolve().is_relative_to(ROOT.resolve()/'.staging'),'unsafe_delivery_directory')
     files={p:(ROOT/p).read_bytes() for p in ALLOWED}
     require(all(not (ROOT/p).is_symlink() for p in ALLOWED),'site_symlink_forbidden')
     report=validate_site(files)
-    # Snapshot the actually served page before changing it, for immediate rollback.
-    with urllib.request.build_opener(NoRedirect()).open(urllib.request.Request(SITE,headers={'Cache-Control':'no-cache'}),timeout=30) as r:
-        require(r.status==200,'cannot_snapshot_previous_site');previous=r.read(MAX_HTML+1)
-    validate_html_bytes(previous)
-    for directory,content in [('site',files['site/index.html']),('previous',previous)]:
-        (base/directory).mkdir(exist_ok=True);(base/directory/'index.html').write_bytes(content)
-    report.update(previous_html_sha256=sha(previous),source_commit=os.environ.get('SOURCE_COMMIT'),workflow_run_id=os.environ.get('GITHUB_RUN_ID'),url=SITE)
+    (base/'site').mkdir(exist_ok=True)
+    require(not (base/'site').is_symlink(),'unsafe_delivery_directory')
+    (base/'site/index.html').write_bytes(files['site/index.html'])
+    report.update(source_commit=os.environ.get('SOURCE_COMMIT'),workflow_run_id=os.environ.get('GITHUB_RUN_ID'),url=SITE)
     (base/'report.json').write_bytes(json_bytes(report));return report
 
 
@@ -194,16 +193,15 @@ def verify_public(expected,attempts=6,opener=None,sleep=time.sleep):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','intake','prepare','verify','verify-rollback'));a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','intake','prepare','verify'));a=p.parse_args()
     if a.command=='validate':print(validate_site({p:(ROOT/p).read_bytes() for p in ALLOWED}))
     elif a.command=='intake':
         event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text());print(intake(API(),event['number'],os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0]))
     elif a.command=='prepare':print(prepare())
     else:
         base=ROOT/'.staging/routine-delivery';report=json.loads((base/'report.json').read_text())
-        rollback=a.command=='verify-rollback';path=base/('previous' if rollback else 'site')/'index.html'
-        expected=report['previous_html_sha256' if rollback else 'sha256']
+        path=base/'site/index.html';expected=report['sha256']
         require(sha(path.read_bytes())==expected,'delivery_bytes_changed')
         observations=verify_public(expected)
-        (base/('rollback.json' if rollback else 'public-verification.json')).write_bytes(json_bytes(observations))
+        (base/'public-verification.json').write_bytes(json_bytes(observations))
 if __name__=='__main__':main()
