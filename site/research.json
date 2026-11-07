@@ -322,9 +322,12 @@
           }
         }
       ],
-      "category": "unknown",
-      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
-      "category_price_yen": null
+      "category": "hotel",
+      "category_source": "unknown regular price; facility fallback: data/store_master.json#master-008; hotel location confirmed by user; saved facility information, no fresh web verification",
+      "category_price_yen": null,
+      "hotel_name": "マンダリン オリエンタル 東京",
+      "facility_type": "hotel",
+      "facility_source": "data/store_master.json#master-008; hotel location confirmed by user; saved facility information, no fresh web verification"
     },
     {
       "id": "master-009",
@@ -398,9 +401,12 @@
           "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
         }
       ],
-      "category": "unknown",
-      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
-      "category_price_yen": null
+      "category": "hotel",
+      "category_source": "unknown regular price; facility fallback: data/store_master.json#master-010; hotel location confirmed by user; saved facility information, no fresh web verification",
+      "category_price_yen": null,
+      "hotel_name": "パレスホテル東京",
+      "facility_type": "hotel",
+      "facility_source": "data/store_master.json#master-010; hotel location confirmed by user; saved facility information, no fresh web verification"
     },
     {
       "id": "master-011",
@@ -3342,9 +3348,12 @@
           }
         }
       ],
-      "category": "unknown",
-      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
-      "category_price_yen": null
+      "category": "hotel",
+      "category_source": "unknown regular price; facility fallback: data/store_master.json#master-065; hotel location confirmed by user; saved facility information, no fresh web verification",
+      "category_price_yen": null,
+      "hotel_name": "東京ドームホテル",
+      "facility_type": "hotel",
+      "facility_source": "data/store_master.json#master-065; hotel location confirmed by user; saved facility information, no fresh web verification"
     },
     {
       "id": "priority-116",

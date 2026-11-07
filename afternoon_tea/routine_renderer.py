@@ -43,7 +43,7 @@ def tags(value):
 
 
 def category(shop):
-    return classify(shop.get('plans', []))[0]
+    return classify(shop.get('plans', []), shop)[0]
 
 
 def condition(plan,shop,keys):
@@ -168,9 +168,9 @@ def render(research,failures):
     filters+='''<div class="search-fields"><label for="shop-search">店舗・ホテル名<input id="shop-search" type="search" autocomplete="off"></label><label for="theme-search">プラン名・テーマ<input id="theme-search" type="search" autocomplete="off"></label><label for="price-filter">料金帯<select id="price-filter"><option value="all">すべて</option><option value="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option value="high">10,000円以上</option><option value="unknown">料金未確認</option></select></label></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
     count=sum(tot.values());unresearched=sum(f['status']=='unresearched' and f.get('scope','shop')=='shop' for f in failures['failures'])
     notice=f'<div class="box"><p class="lead">確認日時：{esc(stamp)} ／ 掲載 {count}店舗・{plan_count}プラン ／ 未調査店舗 {unresearched}件。掲載なしはAT提供なしを意味しません。料金・期間・曜日の不明値は未確認です。予約操作・空席確認は行っていません。</p>'
-    notice+='<p class="rnote">分類は施設の種類ではなく価格帯です。対象期間内の確認済みプランの最安通常価格で、カフェ：6,000円以下／ホテル：6,001〜9,999円／ホテル（高級）：10,000円以上。通常価格不明は分類未確認です。</p>'
+    notice+='<p class="rnote">分類は原則として価格帯です。対象期間内の確認済みプランの最安通常価格で、カフェ：6,000円以下／ホテル：6,001〜9,999円／ホテル（高級）：10,000円以上。通常価格不明の場合のみ、確認済みの施設情報でホテル内はホテル、それ以外はカフェに分類します。施設情報も不明なら分類未確認です。料金は推定しません。</p>'
     if research.get('note'):notice+='<p class="rnote">'+esc(research['note'])+'</p>'
-    if tot['unknown']:notice+='<p class="rnote">分類未確認：'+str(tot['unknown'])+'店舗。通常価格が確認できないため分類していません。</p>'
+    if tot['unknown']:notice+='<p class="rnote">分類未確認：'+str(tot['unknown'])+'店舗。通常価格・施設情報を確認できないため分類していません。</p>'
     if outside:notice+='<p class="rnote">対象期間と重ならない'+str(len(outside))+'プランは掲載対象から除きました。</p>'
     notice+='</div>'
     empty='<p class="none" id="no-results" hidden>条件に合う掲載情報はありません。絞り込みを変更してください。</p>'

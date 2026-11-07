@@ -172,11 +172,11 @@ class EnrichmentTests(unittest.TestCase):
         result=e.enrich_plan(p,self.shop())
         self.assertIsNone(result['price_yen']);self.assertNotIn('discount_price_yen',result)
         self.assertEqual(e.enrich_plan(result,self.shop()),result)
-    def test_master_category_cannot_classify_unknown_price(self):
+    def test_master_facility_classifies_unknown_price_with_exact_identity(self):
         master=read(ROOT/'data/store_master.json');source=master['areas'][0]['cats']['cafe']['shops'][0]
         d={'period':{'start':'2026-11-07','end':'2026-12-17'},'shops':[{'id':source['id'],'name':source['name'],'plans':[]}, {'id':source['id'],'name':'OTHER LOUNGE','plans':[]}]}
         result=e.enrich(d,master)
-        self.assertEqual(result['shops'][0]['category'],'unknown')
+        self.assertEqual(result['shops'][0]['category'],'cafe')
         self.assertEqual(result['shops'][1]['category'],'unknown')
     def test_current_six_records_and_rendered_filters_are_fixed_without_new_confirmation(self):
         d=read(ROOT/'tests/fixtures/post26_six.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
