@@ -32,28 +32,17 @@
 
 ---
 
-## 2. 調査の対象と方法（指定134件＋マスター＋新規店舗）
+## 2. 調査の対象と方法（14エリア・店舗数の上限なし）
 
-### 調査対象
+対象は `data/store_master.json` が定義する東京14エリア全体です。120店舗・指定134件・既存マスターは検索を効率化する参考リストで、調査対象の限定や件数目標ではありません。
 
-毎週の調査キューは **全156タスク** です。
+毎回、エリア名・対象駅とアフタヌーンティー、ホテル、カフェ、ティーサロン、レストラン、季節等を組み合わせて公開情報を探索します。一休.com、食べログ、TableCheck、公式の新メニュー・開業案内等から既存店と新店舗を確認します。順番や検索方法はClaudeが判断し、既存リストの巡回だけで終了しません。探索済み・未探索範囲は14エリアごとに記録します。
 
-| 区分 | 件数 | 説明 |
-| --- | ---: | --- |
-| A. ユーザー指定リスト | 134 | 予約先一覧120件＋未検証候補14件。`data/priority_sources.json`（ID: `priority-001`〜`120`、`priority-candidate-01`〜`14`） |
-| B. 店舗マスター／候補の追加分 | 22 | 70店舗のマスター＋5候補（`data/store_master.json`）のうち、指定リストと重複しないもの。重複する50マスター＋3候補はAに統合（対応表 `data/priority_master_matches.json`） |
-| C. 新規店舗の探索 | 枠を確保 | リスト外のホテル・ラウンジ・カフェ・季節ATを探す。見つけただけでは「確認済み」にしない |
+同一店舗の異なるテーマ・曜日・時間等の複数プランを個別に保存します。公開情報でAT提供を確認できれば期間未確認でも掲載できます。未確認を提供なしと扱いません。価格・メニュー・期間は根拠を残し、推定で埋めません。
 
-指定134件のうち、エリア別の内訳は [developer_docs/priority_sources.md](developer_docs/priority_sources.md) にあります。指定リストの `historical_url`（過去のURL）は**調べ始める手がかり**であり、現在もATがある証拠ではありません。
+分類は施設の種類ではなく、対象期間内の確認済みプランの最安通常価格です。カフェは6,000円以下、ホテルは6,001〜9,999円、ホテル（高級）は10,000円以上。不明は分類未確認です。割引価格は分離し、JSON補完時とHTML生成時に毎回再計算します。
 
-### 調べる順番と予約サイトの優先順位
-
-1. **前週に未調査だった店舗・エリアを優先**し、14エリアから1件ずつ順番に巡回します（最初の数店舗だけで終わりません）。
-2. 時間と要求数が残る限り2巡目・3巡目へ進みます（`afternoon_tea/routine_collection.py`）。
-3. 収集予算の20%は最初から**新規店舗探索**に確保します。公開されているAT一覧・エリア一覧・公式ホテル案内などから新しいURLを集め、`new_url_candidates` として保存します。店舗とエリアの同一性を確認するまで「新規店舗数」には数えません。
-4. 各店舗は **一休.com → 食べログ → TableCheck** の順で確認します。先に条件を満たしたら後ろのサイトは深掘りしません。
-   - 一休.comはランチ・朝食・ティー区分のATが対象です。ティー区分は、AT名・具体的なメニュー・ネット予約の導線が同じプランで確認できる場合のみ採用します。
-   - パフェ単品、通常のランチ／ディナーはATとして数えません。
+最新の運用手順は [claude_weekly_prompt.md](developer_docs/claude_weekly_prompt.md) です。旧調査キュー・収集CLI・指定リストの完全性監査は任意の補助で、公開条件にはしません。
 
 ### 安全ルール（必ず守る）
 
@@ -67,7 +56,7 @@
 | ファイル | 役割 |
 | --- | --- |
 | `site/research.json` | 確認できた店舗・プラン（根拠の原文・出典URL・確認日時つき） |
-| `site/search_failures.json` | 134件ほか全タスクの状態、未調査・制限・情報不足の理由、14エリアの探索記録 |
+| `site/search_failures.json` | 店舗・14エリアの探索状態、未調査・制限・情報不足の理由、14エリアの探索記録 |
 | `site/index.html` | 上の2つのJSONから**固定テンプレートで自動生成**されるサイト本体（手書き禁止） |
 
 ---
@@ -100,8 +89,8 @@ flowchart TD
 | :-: | --- | --- | --- |
 | ① | Claude Routines | 毎週月曜 07:17 JST（Asia/Tokyo）にクラウド上でタスクが起動し、このリポジトリを取得します。 | Claude側の設定（スケジュール・GitHub接続） |
 | ② | Claude | 最新の `AGENTS.md`（安全規則）と `developer_docs/claude_weekly_prompt.md`（毎週の手順書）を読み、手順書の最新版に従います。 | `AGENTS.md`, `CLAUDE.md` |
-| ③ | Claude | 調査期間（実行日〜40日後）をコードで確定し、156タスクの調査キューを作ります（ネットワーク接続なし）。 | `python3 -m afternoon_tea.weekly_review --period` / `python3 -m afternoon_tea.priority_research prepare` |
-| ④ | Claude | 14エリアを巡回し、公開ページを匿名GETで取得。一休→食べログ→TableCheckの順で確認し、新規探索枠も使います。最後の約10分は仕上げ用に残します。 | `python3 -m afternoon_tea.routine_collection --seconds … --max-requests …` |
+| ③ | Claude | 調査期間（実行日〜40日後）をコードで確定し、14エリアの対象駅と前週データを読みます。 | `python3 -m afternoon_tea.weekly_review --period` |
+| ④ | Claude | 14エリアで既存店・新店舗・複数プランを調べ、公開ページを匿名GETで取得。仕上げ時間を確保します。 | `afternoon_tea.research.Browser`（既存収集CLIも任意利用可） |
 | ⑤ | Claude | 根拠を確認できた店舗だけを `site/research.json` に、全タスクの状態を `site/search_failures.json` に保存します。 | `site/research.json`, `site/search_failures.json` |
 | ⑥ | Claude | 根拠のあるカテゴリ・スイーツ・季節・曜日・通常価格を補完 → 日付確認 → 固定テンプレートでHTML生成 → 技術検証。 | `routine_enrichment` → `weekly_review` → `routine_renderer generate` → `routine_site validate` |
 | ⑦ | Claude | `claude/weekly-afternoon-tea-YYYYMMDD` ブランチへpushし、`[weekly-site] YYYY-MM-DD 自動更新` というタイトルの通常PR（Draftではない）を `main` 宛てに作成します。本文に調査件数・14エリアの探索状況を書きます。 | GitHub PR |

@@ -29,7 +29,7 @@ class ProductionTests(unittest.TestCase):
         ids=[]
         for shop in d['shops']:
             self.assertIsInstance(shop['name'],str);ids.append(shop['id'])
-            self.assertIn(shop.get('category'),(None,'cafe','hotel','lux'))
+            self.assertIn(shop.get('category'),(None,'unknown','cafe','hotel','lux'))
             r.resource(shop['source_url']);self.assertTrue(shop['checked_at'])
             for p in shop['plans']:
                 self.assertIsInstance(p['plan_name'],str)
@@ -62,13 +62,13 @@ class CollectionDetailsTests(unittest.TestCase):
         self.assertTrue(state['discovery_budget']['fallback_required'])
         self.assertEqual(len(state['documents'][0]['plan_pages']),2)
         self.assertFalse(any('plan333333' in x for x in b.urls))
-    def test_exact_historical_category_does_not_copy_plan_data(self):
+    def test_historical_category_cannot_classify_unknown_price(self):
         from afternoon_tea.routine_enrichment import enrich
-        d={'shops':[{'id':'unknown','name':'TEST cafe','source_url':'https://restaurant.ikyu.com/123456/plan111111','plans':[]}]}
+        d={'period':{'start':'2026-11-07','end':'2026-12-17'},'shops':[{'id':'unknown','name':'TEST cafe','source_url':'https://restaurant.ikyu.com/123456/plan111111','plans':[]}]}
         reference='<article data-cat="cafe"><h4>TEST cafe</h4><a href="https://restaurant.ikyu.com/123456/plan222222">old</a></article>'
         master={'areas':[]}
-        out=enrich(d,master,reference);self.assertEqual(out['shops'][0]['category'],'cafe');self.assertEqual(out['shops'][0]['plans'],[])
-        d['shops'][0]['name']='Other cafe';self.assertNotIn('category',enrich(d,master,reference)['shops'][0])
+        out=enrich(d,master,reference);self.assertEqual(out['shops'][0]['category'],'unknown');self.assertEqual(out['shops'][0]['plans'],[])
+        d['shops'][0]['name']='Other cafe';self.assertEqual(enrich(d,master,reference)['shops'][0]['category'],'unknown')
 
 class InferredYearTests(unittest.TestCase):
     def test_inferred_year_is_not_confirmed_period(self):

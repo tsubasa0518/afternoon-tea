@@ -8,7 +8,7 @@ function priceMatches(plan){
  if(key==='all')return true;
  if(raw===undefined||raw==='')return key==='unknown';
  const price=Number(raw);if(!Number.isFinite(price))return key==='unknown';
- return key==='low'?price<=8000:key==='mid'?price>8000&&price<=10000:key==='high'?price>10000:false;
+ return key==='low'?price<=6000:key==='mid'?price>6000&&price<10000:key==='high'?price>=10000:false;
 }
 apply=function(){
  let shops=0,plans=0;

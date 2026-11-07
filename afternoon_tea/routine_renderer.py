@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 from .data import JST
 from .routine_site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
 from .weekly_review import review, day
+from .price_category import classify, regular_price
 
 TEMPLATES=Path(__file__).with_name('templates')
 SITES = [("ik", "一休.com"), ("tb", "食べログ"), ("tc", "TableCheck")]
@@ -42,8 +43,7 @@ def tags(value):
 
 
 def category(shop):
-    value=shop.get('category')
-    return value if isinstance(value,str) and value in CLASSES else 'unknown'
+    return classify(shop.get('plans', []))[0]
 
 
 def condition(plan,shop,keys):
@@ -58,12 +58,18 @@ def condition(plan,shop,keys):
 
 
 def amount(plan):
-    value=plan.get('price_yen',plan.get('price_min'))
-    return value if type(value) in (int,float) and value>=0 else None
+    return regular_price(plan)
 
 
 def plan_tags(plan):
     return tags(plan.get('sweets',plan.get('sw')))+tags(plan.get('season'))
+
+
+def info_link(url, label=None):
+    resource(url)
+    site = HOSTS.get(urlsplit(url).hostname)
+    label = label or dict(SITES).get(site, '公式・情報ページ')
+    return f'<a class="lk lk-{site or "official"}" href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(label)}{SVG_EXT}</a>'
 
 
 def plan_html(plan,shop,index,total,generated):
@@ -95,6 +101,10 @@ def plan_html(plan,shop,index,total,generated):
     out.append('<div class="when"><div class="chips" aria-label="提供日">'+''.join(chips)+'</div>'+f'<p class="time">{SVG_CLK}<span>{esc(time)}</span></p></div>')
     if plan.get('note'):out.append('<p class="dtxt">'+esc(plan['note'])+'</p>')
     if plan.get('menu'):out.append('<p class="dtxt">メニュー：'+esc(plan['menu'])+'</p>')
+    url = plan.get('booking_url_info_only') or plan.get('source_url')
+    if url:out.append('<div class="links">'+info_link(url, 'プランの予約・情報ページ')+'</div>')
+    source = plan.get('source_url') or shop.get('source_url')
+    if source:out.append('<p class="rnote">出典：'+info_link(source)+' ／ 確認日時：'+esc(plan.get('checked_at') or shop.get('checked_at'))+'</p>')
     out.append('</div>')
     return ''.join(out)
 
@@ -116,9 +126,7 @@ def card(shop,plans,generated):
     out.append('<div class="meet"><p><span class="mk">駅の出口・徒歩</span>'+esc(shop.get('exit',shop.get('access')))+'</p></div>')
     url=shop.get('booking_url_info_only') or shop.get('source_url')
     if url:
-        resource(url);site=HOSTS.get(urlsplit(url).hostname)
-        if site is None:raise ValueError('booking URL must use Ikyu, Tabelog or TableCheck')
-        out.append(f'<div class="links" aria-label="予約・情報サイト"><a class="lk lk-{site}" href="{esc(url)}" target="_blank" rel="noopener noreferrer">{dict(SITES)[site]}{SVG_EXT}</a></div>')
+        out.append('<div class="links" aria-label="予約・情報サイト">'+info_link(url)+'</div>')
     else:out.append('<p class="rnote">予約情報リンク 未確認</p>')
     if sw:out.append('<p class="swt" aria-label="店舗の確認済みタグ">'+''.join('<span>'+esc(LABELS[k])+'</span>' for k in sw)+'</p>')
     else:out.append('<p class="rnote">スイーツ・季節分類 未確認</p>')
@@ -141,6 +149,7 @@ def render(research,failures):
     for si,shop in enumerate(research['shops']):
         plans=[p for pi,p in enumerate(shop.get('plans',[])) if (si,pi) not in outside]
         if not plans:continue
+        shop={**shop,'plans':plans}
         markup,sw=card(shop,plans,generated)
         no=shop.get('area_no')
         if type(no) is not int:no=area_names.get(shop.get('area'))
@@ -156,11 +165,12 @@ def render(research,failures):
     nav=''.join(f'<a class="area-btn" href="#a{a["no"]}">{esc(a["name"]).replace("・","・<wbr>")}</a>' for a in master['areas'])
     row=lambda label,body,aria:f'<div class="frow" role="group" aria-label="{aria}"><span class="lb">{label}</span><div class="btns">{body}</div></div>'
     filters='<div class="fpanel" id="top"><div class="fpanel-in">'+row('分類',cats,'分類で絞り込み')+row('条件','<button class="fb f-x" data-x="wd" aria-pressed="false">平日に行ける</button><button class="fb f-x" data-x="we" aria-pressed="false">土日祝に行ける</button><button class="fb f-x" data-x="pk" aria-pressed="false">値段確認済</button>','条件で絞り込み')+row('スイーツ',buttons(set(LABELS)-EVENTS),'スイーツで絞り込み')+row('イベント<br>季節',buttons(EVENTS-{'halloween'}),'イベント・季節で絞り込み')+f'<nav class="frow" aria-label="エリア"><span class="lb">場所</span><div class="btns">{nav}</div></nav>'
-    filters+='''<div class="search-fields"><label for="shop-search">店舗・ホテル名<input id="shop-search" type="search" autocomplete="off"></label><label for="theme-search">プラン名・テーマ<input id="theme-search" type="search" autocomplete="off"></label><label for="price-filter">料金帯<select id="price-filter"><option value="all">すべて</option><option value="low">8,000円以下</option><option value="mid">8,001〜10,000円</option><option value="high">10,001円以上</option><option value="unknown">料金未確認</option></select></label></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
+    filters+='''<div class="search-fields"><label for="shop-search">店舗・ホテル名<input id="shop-search" type="search" autocomplete="off"></label><label for="theme-search">プラン名・テーマ<input id="theme-search" type="search" autocomplete="off"></label><label for="price-filter">料金帯<select id="price-filter"><option value="all">すべて</option><option value="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option value="high">10,000円以上</option><option value="unknown">料金未確認</option></select></label></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
     count=sum(tot.values());unresearched=sum(f['status']=='unresearched' and f.get('scope','shop')=='shop' for f in failures['failures'])
     notice=f'<div class="box"><p class="lead">確認日時：{esc(stamp)} ／ 掲載 {count}店舗・{plan_count}プラン ／ 未調査店舗 {unresearched}件。掲載なしはAT提供なしを意味しません。料金・期間・曜日の不明値は未確認です。予約操作・空席確認は行っていません。</p>'
+    notice+='<p class="rnote">分類は施設の種類ではなく価格帯です。対象期間内の確認済みプランの最安通常価格で、カフェ：6,000円以下／ホテル：6,001〜9,999円／ホテル（高級）：10,000円以上。通常価格不明は分類未確認です。</p>'
     if research.get('note'):notice+='<p class="rnote">'+esc(research['note'])+'</p>'
-    if tot['unknown']:notice+='<p class="rnote">分類未確認：'+str(tot['unknown'])+'店舗。価格や名称からカテゴリを推測していません。</p>'
+    if tot['unknown']:notice+='<p class="rnote">分類未確認：'+str(tot['unknown'])+'店舗。通常価格が確認できないため分類していません。</p>'
     if outside:notice+='<p class="rnote">対象期間と重ならない'+str(len(outside))+'プランは掲載対象から除きました。</p>'
     notice+='</div>'
     empty='<p class="none" id="no-results" hidden>条件に合う掲載情報はありません。絞り込みを変更してください。</p>'

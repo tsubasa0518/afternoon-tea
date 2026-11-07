@@ -42,13 +42,13 @@ class RoutineRendererTests(unittest.TestCase):
     def test_reference_card_and_plan_dom_and_unknown_values(self):
         result=r.render(fixture(),FAILURES)
         self.assertNotIn('cafe VAVA',result)
-        for value in ['class="card c-hotel"','class="plan"','class="when"','class="price"','class="links"','class="meet"','class="top"','class="plans"','class="totop"']:
+        for value in ['class="card c-unknown"','class="plan"','class="when"','class="price"','class="links"','class="meet"','class="top"','class="plans"','class="totop"']:
             self.assertIn(value,result)
         for value in ['料金 未確認','提供期間 未確認','平日 未確認','土日祝 未確認','提供時間・利用時間 未確認','スイーツ・季節分類 未確認']:
             self.assertIn(value,result)
-    def test_categories_counts_and_unknown_category_are_not_inferred(self):
+    def test_categories_use_regular_price_even_with_stale_venue_categories(self):
         source=fixture();shop=source['shops'][0]
-        source['shops']=[{**shop,'category':key} for key in ['cafe','hotel','lux']]+[{**shop,'category':None,'name':'Hotel name is not category evidence','plans':[{'price_yen':99000}]}]
+        source['shops']=[{**shop,'category':'lux','plans':[{'price_yen':price}]} for price in (6000,6001,10000,None)]
         result=r.render(source,FAILURES)
         for cat in ['cafe','hotel','lux']:self.assertIn(f'class="stat s-{cat}"><b>1</b>',result)
         self.assertIn('class="card c-unknown"',result);self.assertIn('分類未確認：1店舗',result)
@@ -72,7 +72,7 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertIn('&lt;img src=x&gt;',result)
         self.assertEqual(result.count('<script>'),1)
     def test_unsafe_booking_link_is_rejected(self):
-        for url in ['javascript:alert(1)','https://tablecheck.com.evil.test/x','https://user:pass@tablecheck.com/x']:
+        for url in ['javascript:alert(1)','https://user:pass@tablecheck.com/x']:
             source=fixture();source['shops'][0]['source_url']=url
             with self.assertRaises(ValueError):r.render(source,FAILURES)
     def test_shop_time_is_not_assigned_to_each_plan(self):
