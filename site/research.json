@@ -5,7 +5,8 @@
   "note": "初期HTMLは旧120店舗版の完全なコピーです。今回新たに調査した情報ではありません。",
   "shops": [],
   "automation_check": {
-    "purpose": "Automatic PR merge and explicit publication dispatch test. No new research performed.",
-    "html_unchanged": true
+    "purpose": "Verify weekly-afternoon-tea branch auto-merge and explicit deploy.yml dispatch. No new research performed.",
+    "html_unchanged": true,
+    "workflow": "deploy.yml"
   }
 }
