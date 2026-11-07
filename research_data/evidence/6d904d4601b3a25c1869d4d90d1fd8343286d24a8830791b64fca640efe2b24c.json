@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/105756/",
+  "checked_at": "2026-11-07T00:09:37.881100+09:00",
+  "item_id": "master-011",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/105756/",
+    "checked_on": "2026-11-07",
+    "sha256": "e37477ab0bf8e813efbc40deda0869aa3b10988c48da9836e1c9e44e111bf7e5",
+    "identity": {
+      "店名": "ザ・ラウンジ by アマン／アマン東京"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

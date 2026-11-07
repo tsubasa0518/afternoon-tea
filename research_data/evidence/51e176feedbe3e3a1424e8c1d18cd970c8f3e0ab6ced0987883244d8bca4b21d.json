@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/117546/",
+  "checked_at": "2026-11-07T00:20:41.773934+09:00",
+  "item_id": "master-049",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/117546/",
+    "checked_on": "2026-11-07",
+    "sha256": "f752d49f850a8950581820f8d1d022311d7a4443c3fa5f1999cf313d75c329bf",
+    "identity": {
+      "店名": "TAVERN by the green／ザ ストリングス 表参道 2F",
+      "ジャンル原文": "AFT",
+      "ジャンル": "AFT",
+      "分類根拠": "AFT"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

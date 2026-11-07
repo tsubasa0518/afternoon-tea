@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/106767/",
+  "checked_at": "2026-11-07T00:10:10.613086+09:00",
+  "item_id": "master-058",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/106767/",
+    "checked_on": "2026-11-07",
+    "sha256": "717c6da80dce9142d6043d1913b2a0ff0da04e239129e6c978b911d22cfd6171",
+    "identity": {
+      "店名": "Lounge Momiji／グランドプリンスホテル新高輪"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

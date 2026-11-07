@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/112520/",
+  "checked_at": "2026-11-07T00:08:50.821090+09:00",
+  "item_id": "master-001",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/112520/",
+    "checked_on": "2026-11-07",
+    "sha256": "a34384d1fa83dec018504833ef15352e7e839c8ac6f30dcaf8e8aef9e4137322",
+    "identity": {
+      "店名": "cafe VAVA"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+  "checked_at": "2026-11-07T00:14:59.224418+09:00",
+  "item_id": "master-026",
+  "extraction": {
+    "site": "tc",
+    "url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+    "checked_on": "2026-11-07",
+    "sha256": "970e0dc8084ec991c231635717fcecdce49a71f97c0cc01b4c7e2f9c9ec39183",
+    "identity": {
+      "店名": "Opuses（オウパセズ）ザ ロイヤルパークキャンバス銀座8",
+      "施設情報": "Opuses（オウパセズ）ザ ロイヤルパークキャンバス銀座8 〒104-0061 東京都中央区銀座8-9-4 14階 ザ ロイヤルパーク キャンバス 銀座8"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/117546/",
+  "checked_at": "2026-11-07T00:10:06.221004+09:00",
+  "item_id": "master-049",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/117546/",
+    "checked_on": "2026-11-07",
+    "sha256": "693f4c049e4550b951a8e5a995ea6add55b04901cecfd35dd56d0b0e3f80033b",
+    "identity": {
+      "店名": "TAVERN by the green／ザ ストリングス 表参道 2F"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

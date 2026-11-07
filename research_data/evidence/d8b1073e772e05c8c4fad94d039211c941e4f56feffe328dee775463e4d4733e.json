@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/100485/",
+  "checked_at": "2026-11-07T00:15:08.657021+09:00",
+  "item_id": "master-035",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/100485/",
+    "checked_on": "2026-11-07",
+    "sha256": "315540d7ee6bdd2f6a2376732d8a5fc1f5b36b14a92d40903c09e2fef4ef684b",
+    "identity": {
+      "店名": "ザ・ロビーラウンジ＆バー／ザ・リッツ・カールトン東京",
+      "ジャンル原文": "ロビーラウンジ",
+      "ジャンル": "ロビーラウンジ",
+      "分類根拠": "ロビーラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

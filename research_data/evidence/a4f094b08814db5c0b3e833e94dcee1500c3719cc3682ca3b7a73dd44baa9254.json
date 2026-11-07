@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/106682/",
+  "checked_at": "2026-11-07T00:15:05.633238+09:00",
+  "item_id": "master-031",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/106682/",
+    "checked_on": "2026-11-07",
+    "sha256": "059128da64a33eadae746e0a3108b8f16f623febb99ee0199aabe9630527aef9",
+    "identity": {
+      "店名": "レヴィータ＆イルミード／ザ・プリンスギャラリー 東京紀尾井町，ラグジュアリーコレクションホテル",
+      "ジャンル原文": "ラウンジ・バー",
+      "ジャンル": "ラウンジ・バー",
+      "分類根拠": "ラウンジ・バー"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

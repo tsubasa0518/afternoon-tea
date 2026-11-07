@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/115189/",
+  "checked_at": "2026-11-07T00:08:53.917841+09:00",
+  "item_id": "master-005",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/115189/",
+    "checked_on": "2026-11-07",
+    "sha256": "01ee59fc1728cb8cc948aa7a5efa8fd314c4ed69bfe865eea8164fa12b5d99e2",
+    "identity": {
+      "店名": "THE LOUNGE／フォーシーズンズホテル東京大手町"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

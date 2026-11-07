@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/100543/",
+  "checked_at": "2026-11-07T00:20:26.173201+09:00",
+  "item_id": "master-024",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/100543/",
+    "checked_on": "2026-11-07",
+    "sha256": "87d4db5f3f05a503370aa236a37f9994e1de565f80bd0ffbf342abe3d4119c2c",
+    "identity": {
+      "店名": "ザ・ロビー／ザ・ペニンシュラ東京",
+      "ジャンル原文": "コンチネンタルダイニング",
+      "ジャンル": "コンチネンタルダイニング",
+      "分類根拠": "コンチネンタルダイニング"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

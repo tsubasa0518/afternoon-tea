@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/107848/",
+  "checked_at": "2026-11-07T00:09:40.906631+09:00",
+  "item_id": "master-015",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/107848/",
+    "checked_on": "2026-11-07",
+    "sha256": "3e50bbe2a694f0dc14d120de5baa4ddef3961996ef6927830c097d240aeb43f0",
+    "identity": {
+      "店名": "REIKASAI GINZA"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/102901/",
+  "checked_at": "2026-11-07T00:08:56.040493+09:00",
+  "item_id": "master-006",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/102901/",
+    "checked_on": "2026-11-07",
+    "sha256": "d0e308f2ef77466f6d557a8edc68b5b583f4452ab671dc5e22727de623a2be98",
+    "identity": {
+      "店名": "Bar & Cafe Camellia／東京ステーションホテル"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

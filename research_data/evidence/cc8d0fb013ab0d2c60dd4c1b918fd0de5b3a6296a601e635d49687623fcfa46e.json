@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/122745/",
+  "checked_at": "2026-11-07T00:15:17.022608+09:00",
+  "item_id": "master-052",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/122745/",
+    "checked_on": "2026-11-07",
+    "sha256": "b1a38843897ce65457cfb8dede2dfb73b1b96270e4881fd4397860710b06533d",
+    "identity": {
+      "店名": "PAYSAGE代官山本店",
+      "ジャンル原文": "パティスリー・カフェ",
+      "ジャンル": "パティスリー・カフェ",
+      "分類根拠": "パティスリー・カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

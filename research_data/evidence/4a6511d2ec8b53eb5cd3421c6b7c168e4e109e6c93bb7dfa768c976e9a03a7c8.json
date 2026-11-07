@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/125030/",
+  "checked_at": "2026-11-07T00:20:35.256749+09:00",
+  "item_id": "master-034",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/125030/",
+    "checked_on": "2026-11-07",
+    "sha256": "1339d31c790f6ce0ab63ab7499dfd4c51fea1ad6652366e46eb1976f9cadca72",
+    "identity": {
+      "店名": "ジャヌ ラウンジ＆ガーデンテラス／ジャヌ東京",
+      "ジャンル原文": "ラウンジ",
+      "ジャンル": "ラウンジ",
+      "分類根拠": "ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

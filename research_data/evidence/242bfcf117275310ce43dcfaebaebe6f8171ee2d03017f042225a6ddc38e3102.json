@@ -1,0 +1,22 @@
+{
+  "url": "https://restaurant.ikyu.com/154158/",
+  "checked_at": "2026-11-07T00:15:25.070543+09:00",
+  "item_id": "discovered-e6e942d70e66f643",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/154158/",
+    "checked_on": "2026-11-07",
+    "sha256": "285c9584d97ce36df569c5afc0d68cf3a5624792a30a8783f28c44c8b00c0f35",
+    "identity": {
+      "店名": "文明堂カフェ",
+      "ジャンル原文": "カフェ",
+      "ジャンル": "カフェ",
+      "分類根拠": "カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found"
+    ]
+  }
+}

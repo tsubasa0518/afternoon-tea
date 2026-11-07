@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/146488/",
+  "checked_at": "2026-11-07T00:09:55.316300+09:00",
+  "item_id": "master-030",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/146488/",
+    "checked_on": "2026-11-07",
+    "sha256": "dc151a4500601164d3ed289a4587b9fca93f0e2ecdbf38305a83f66087dc91ca",
+    "identity": {
+      "店名": "Vue Mer（ビュメール）／フェアモント東京"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/101456/",
+  "checked_at": "2026-11-07T00:20:27.180501+09:00",
+  "item_id": "master-025",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/101456/",
+    "checked_on": "2026-11-07",
+    "sha256": "6961f241aa646d9fc1c3a7bf9f05ea37f11c299ea9eb1b96e2c928be7a59f1b2",
+    "identity": {
+      "店名": "インペリアルラウンジ アクア／帝国ホテル 東京",
+      "ジャンル原文": "ラウンジ／スイーツ",
+      "ジャンル": "ラウンジ／スイーツ",
+      "分類根拠": "ラウンジ／スイーツ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}
