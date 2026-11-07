@@ -1,132 +1,181 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T16:55:11+09:00",
+  "generated_at": "2026-11-07T17:50:14+09:00",
   "status": "partial_research",
   "period": {
     "start": "2026-11-07",
     "end": "2026-12-17"
   },
-  "note": "今回の実行で匿名GETにより再取得・確認できた2店舗のみ掲載。未調査の店舗は検索失敗ファイルに記録。過去実行のデータは最新情報として流用していない。パレスホテル東京の『クリスマスエディション』（提供2026-12-19〜12-25、10,000円/13,000円・税込サ別）は対象期間（〜2026-12-17）外のため掲載から除外。",
+  "note": "今回の実行で指定リストの一部（14エリアの先頭店舗）を匿名GETで確認した結果のみ掲載。前週の掲載店舗は今回確認していないため引き継いでいない。未調査・情報不足・アクセス拒否は検索失敗ファイルに記録。新規店舗の探索は未実施。",
   "shops": [
     {
-      "id": "master-010",
-      "name": "ザ パレス ラウンジ（パレスホテル東京）",
+      "id": "master-001",
+      "name": "cafe VAVA（日本橋髙島屋S.C. 新館3F）",
       "area_no": 1,
       "area": "丸の内・日本橋",
-      "station": "二重橋前駅",
-      "address": "東京都千代田区丸の内1-1-1",
-      "source_site": "TableCheck",
-      "source_url": "https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve",
-      "checked_at": "2026-11-07T16:55:11+09:00",
-      "booking_url_info_only": "https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve",
+      "station": "日本橋駅",
+      "exit": "日本橋駅 B4出口（日本橋髙島屋S.C.に直結）／東京駅 八重洲北口（徒歩5分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/112520/plan12815171",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/112520/plan12815171",
+      "priority_ids": [
+        "priority-001"
+      ],
       "plans": [
         {
-          "plan_name": "秋のアフタヌーンティー \"Stones\"",
-          "price_yen": 9000,
-          "price_note": "税込・サービス料別",
-          "start": "2026-09-01",
-          "end": "2026-11-30",
-          "note": "12月1日から冬メニューに変更予定（ページ記載）",
-          "evidence_quote": "秋のアフタヌーンティー \"Stones\" 2026年9月1日～11月30日 9,000円"
-        },
-        {
-          "plan_name": "アフタヌーンティー \"Stones\"（通常）",
-          "price_yen": 9000,
-          "price_note": "税込・サービス料別",
+          "plan_name": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食）",
+          "price_yen": 4950,
+          "price_note": "税サ込（1人あたり）",
           "start": null,
           "end": null,
-          "note": "提供期間の記載なし。予約可能日は12月18日以前、12月26日〜31日、2027年1月4日以降（ページ記載）。グラスシャンパーニュ付きは12,000円。クリスマスエディション(12/19〜12/25)は対象期間外",
-          "evidence_quote": "アフタヌーンティー \"Stones\"（通常） 9,000円"
-        },
-        {
-          "plan_name": "シャインマスカットパフェ スイーツセット",
-          "price_yen": 7500,
-          "price_note": "税込・サービス料別",
-          "start": "2026-09-01",
-          "end": "2026-11-30",
-          "note": "コーヒーまたは紅茶付き、90分制",
-          "evidence_quote": "シャインマスカットパフェ スイーツセット 2026年9月1日～11月30日 7,500円"
-        },
-        {
-          "plan_name": "3種の苺パフェ スイーツセット",
-          "price_yen": 6500,
-          "price_note": "税込・サービス料別",
-          "start": "2026-12-01",
-          "end": "2027-04-30",
-          "note": "入荷状況により変更の可能性あり、90分制",
-          "evidence_quote": "3種の苺パフェ スイーツセット 2026年12月1日～2027年4月30日 6,500円"
-        },
-        {
-          "plan_name": "3種の苺パフェ シャンパーニュセット",
-          "price_yen": 10000,
-          "price_note": "税込・サービス料別",
-          "start": "2026-12-01",
-          "end": "2027-04-30",
-          "note": "乾杯グラスシャンパーニュ付き、90分制",
-          "evidence_quote": "3種の苺パフェ シャンパーニュセット 10,000円"
+          "note": "平日限定30食（ページ記載）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950 円"
         }
       ],
-      "sweets": [
-        "parfait",
-        "xmas"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+    },
+    {
+      "id": "master-031",
+      "name": "ザ・プリンスギャラリー 東京紀尾井町（レヴィータ）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅・永田町駅",
+      "exit": "赤坂見附駅／永田町駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106682/plan12867585",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106682/plan12867585",
+      "priority_ids": [
+        "priority-060"
       ],
-      "weekday": null,
-      "weekend": null,
-      "time_note": "アフタヌーンティーは予約時間から2時間半（ページ記載）。曜日条件はプランごとの記載なし＝未確認",
-      "category": "lux",
-      "category_source": "data/store_master.json#master-010"
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+          "price_yen": 7200,
+          "price_note": "税サ込（最大21%OFF表示。通常9,200円）。ページの「7,200円〜」を下限として記録",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜"
+        }
+      ],
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+    },
+    {
+      "id": "master-034",
+      "name": "ジャヌ東京（ジャヌ ラウンジ＆ガーデンテラス）",
+      "area_no": 5,
+      "area": "六本木・麻布・広尾",
+      "station": "六本木一丁目駅・神谷町駅",
+      "exit": "神谷町駅（麻布台ヒルズ方面の出口）［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/125030/plan12830252",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/125030/plan12830252",
+      "priority_ids": [
+        "priority-073"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー＋モクテル含むカフェフリー（平日）",
+          "price_yen": 8800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-21",
+          "end": "2026-12-25",
+          "note": "11月21日〜12月25日提供（ページ記載）。平日のみ（プラン名記載）",
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800 円"
+        }
+      ],
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+    },
+    {
+      "id": "master-052",
+      "name": "PAYSAGE 代官山本店",
+      "area_no": 9,
+      "area": "恵比寿・代官山・中目黒",
+      "station": "代官山駅",
+      "exit": "代官山駅（約100m）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/122745/plan12804614",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/122745/plan12804614",
+      "priority_ids": [
+        "priority-105"
+      ],
+      "plans": [
+        {
+          "plan_name": "PAYSAGE AFTERNOON TEA ー秋・Automneー",
+          "price_yen": 7500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "秋限定のアフタヌーンティー（ページ記載）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "PAYSAGE AFTERNOON TEA ー秋・Automneー 税サ込 7,500 円"
+        }
+      ],
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+    },
+    {
+      "id": "master-058",
+      "name": "グランドプリンスホテル新高輪（Lounge Momiji）",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "品川駅",
+      "exit": "品川駅 高輪口［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106767/plan12803588",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106767/plan12803588",
+      "priority_ids": [
+        "priority-107"
+      ],
+      "plans": [
+        {
+          "plan_name": "Autumn Harvest Afternoon Tea＋2時間制（平日限定）",
+          "price_yen": 6000,
+          "price_note": "税サ込（タイムセール価格。通常7,345円、18%OFF表示）",
+          "start": null,
+          "end": null,
+          "note": "タイムセール期間 2026年11月12日13:00まで（ページ記載）。プラン自体の提供期間は未確認",
+          "evidence_quote": "Autumn Harvest Afternoon Tea＋2時間制（平日限定） タイムセール 18 % OFF 7,345円 税サ込 6,000 円"
+        }
+      ],
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
     },
     {
       "id": "master-070",
-      "name": "ル・ジャルダン（ホテル椿山荘東京）",
+      "name": "ホテル椿山荘東京（ロビーラウンジ ル・ジャルダン）",
       "area_no": 14,
       "area": "池袋・目白",
-      "station": "目白駅",
-      "address": "東京都文京区関口2-10-8",
+      "station": "江戸川橋駅",
+      "exit": "江戸川橋駅 1a出口（徒歩約10分）／目白駅から都営バス約10分",
+      "address": null,
       "source_site": "TableCheck",
-      "source_url": "https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve",
-      "checked_at": "2026-11-07T16:55:11+09:00",
-      "booking_url_info_only": "https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve",
+      "source_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+      "checked_at": "2026-11-07T17:50:14+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+      "priority_ids": [
+        "priority-120"
+      ],
       "plans": [
         {
-          "plan_name": "クリスマスアフタヌーンティー",
+          "plan_name": "アフタヌーンティー2026（クリスマス）",
           "price_yen": 7800,
-          "price_note": "税込・サービス料別",
+          "price_note": "税込・サービス料別（ページ表記 Svc excl. / tax incl.）",
           "start": "2026-11-01",
           "end": "2027-01-07",
-          "note": "2時間制、12/26からホリデー版。約20種の茶葉おかわり自由（ページ記載）",
-          "evidence_quote": "クリスマスアフタヌーンティー 7,800円 2026/11/1-2027/1/7"
-        },
-        {
-          "plan_name": "イブニングハイティー",
-          "price_yen": 8300,
-          "price_note": "税込・サービス料別",
-          "start": "2026-11-01",
-          "end": "2027-01-07",
-          "note": "ディナー帯、シャンパーニュで乾杯付き",
-          "evidence_quote": "イブニングハイティー 8,300円"
-        },
-        {
-          "plan_name": "Premiumイブニングハイティー",
-          "price_yen": 9800,
-          "price_note": "税込・サービス料別",
-          "start": "2026-11-16",
-          "end": "2027-01-07",
-          "note": "2名以上、ローストビーフ・オマール海老のメイン付き",
-          "evidence_quote": "Premiumイブニングハイティー 9,800円"
+          "note": "Valid Dates Nov 01 ~ Jan 07, 2027（ページ記載）。ランチ・ティー提供（ページ記載）",
+          "evidence_quote": "アフタヌーンティー2026 Valid Dates Nov 01 ~ Jan 07, 2027 ¥ 7,800 (Svc excl. / tax incl.)"
         }
       ],
-      "sweets": [
-        "xmas",
-        "scone",
-        "choco"
-      ],
-      "weekday": null,
-      "weekend": null,
-      "time_note": "ランチ・ティータイム／ディナー帯。曜日条件の記載なし＝未確認",
-      "category": "lux",
-      "category_source": "data/store_master.json#master-070"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
     }
   ],
-  "out_of_period_removed": 2
+  "out_of_period_removed": []
 }
