@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/103135/",
+  "checked_at": "2026-11-07T00:20:47.074089+09:00",
+  "item_id": "master-059",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/103135/",
+    "checked_on": "2026-11-07",
+    "sha256": "a7c72f3e5c12cadb6807a289f3238e6aa4a576e191eb9c9f7fcbc867588f6c42",
+    "identity": {
+      "店名": "Lounge＆Dining G／東京マリオットホテル",
+      "ジャンル原文": "グリルダイニング",
+      "ジャンル": "グリルダイニング",
+      "分類根拠": "グリルダイニング"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

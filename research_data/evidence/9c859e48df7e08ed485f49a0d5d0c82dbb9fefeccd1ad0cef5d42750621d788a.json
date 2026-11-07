@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/115154/",
+  "checked_at": "2026-11-07T00:15:16.038253+09:00",
+  "item_id": "master-051",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/115154/",
+    "checked_on": "2026-11-07",
+    "sha256": "70deb3b7976cc4e04fc51b46bf619ecf03347fdd3d3168773006c0cd26371e9d",
+    "identity": {
+      "店名": "TOKYO AFTERNOON TEA／THE AOYAMA GRAND HOTEL",
+      "ジャンル原文": "アフタヌーンティー",
+      "ジャンル": "アフタヌーンティー",
+      "分類根拠": "アフタヌーンティー"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/108615/",
+  "checked_at": "2026-11-07T00:10:09.868571+09:00",
+  "item_id": "master-054",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/108615/",
+    "checked_on": "2026-11-07",
+    "sha256": "51532f55a3d39eb42ac11f1f4994a456a583d179e6decc5c74c4a4027a5db06e",
+    "identity": {
+      "店名": "ROTISSERIE BLUE"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

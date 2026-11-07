@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/108054/",
+  "checked_at": "2026-11-07T00:20:48.921567+09:00",
+  "item_id": "master-063",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/108054/",
+    "checked_on": "2026-11-07",
+    "sha256": "1ae2e8d79f5d57474c5e39bb6989abfb6544539a0c0b154eb6b2683faf8e77ff",
+    "identity": {
+      "店名": "ラ・ラナリータ 吾妻橋店",
+      "ジャンル原文": "イタリア料理",
+      "ジャンル": "イタリアン",
+      "分類根拠": "イタリア料理"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/103485/",
+  "checked_at": "2026-11-07T00:15:06.678264+09:00",
+  "item_id": "master-032",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/103485/",
+    "checked_on": "2026-11-07",
+    "sha256": "33e203ba9838f5e7a2f5e4ed6900ceca0ab55dfb58e2314ffaafc2c0ab07d303",
+    "identity": {
+      "店名": "ザ タヴァン グリル＆ラウンジ／アンダーズ 東京",
+      "ジャンル原文": "グリル料理",
+      "ジャンル": "グリル料理",
+      "分類根拠": "グリル料理"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "url": "https://restaurant.ikyu.com/101719/",
+  "checked_at": "2026-11-07T00:15:26.096589+09:00",
+  "item_id": "discovered-616ff47461178ccb",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/101719/",
+    "checked_on": "2026-11-07",
+    "sha256": "d96fff8bc073d628700a7adc161c34a3ad4435c73e67b5a7079981b9dc30a00e",
+    "identity": {
+      "店名": "アルポルトカフェ日本橋高島屋店",
+      "住所": "東京都 中央区日本橋2-4-1 日本橋タカシマヤB2",
+      "交通手段": "東京メトロ 銀座 線 日本橋 駅 B1出口直結「日本橋高島屋」のB2階です。 ＪＲ 線 東京 駅 八重洲口 徒歩10分",
+      "ジャンル原文": "イタリア料理",
+      "ジャンル": "イタリアン",
+      "分類根拠": "イタリア料理"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found"
+    ]
+  }
+}

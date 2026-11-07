@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/101099/",
+  "checked_at": "2026-11-07T00:20:15.145577+09:00",
+  "item_id": "master-008",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/101099/",
+    "checked_on": "2026-11-07",
+    "sha256": "726484d91d6a3c14cdd08d929f59bfadb836294b6f5b49bd01e75997e204ec8c",
+    "identity": {
+      "店名": "オリエンタルラウンジ／マンダリン オリエンタル 東京",
+      "ジャンル原文": "ラウンジ",
+      "ジャンル": "ラウンジ",
+      "分類根拠": "ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

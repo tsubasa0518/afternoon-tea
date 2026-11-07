@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/110781/",
+  "checked_at": "2026-11-07T00:20:11.076474+09:00",
+  "item_id": "master-002",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/110781/",
+    "checked_on": "2026-11-07",
+    "sha256": "25802941630d792a84cfefa6f09ca98fddf9ba26936595f63adb19c307edd192",
+    "identity": {
+      "店名": "ロッシニテラス／東京會舘 丸の内本舘",
+      "ジャンル原文": "オールデイダイニング",
+      "ジャンル": "オールデイダイニング",
+      "分類根拠": "オールデイダイニング"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

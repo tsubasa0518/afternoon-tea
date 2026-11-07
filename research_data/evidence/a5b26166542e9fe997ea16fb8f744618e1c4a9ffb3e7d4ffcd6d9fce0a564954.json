@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/102169/",
+  "checked_at": "2026-11-07T00:14:53.426950+09:00",
+  "item_id": "master-018",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/102169/",
+    "checked_on": "2026-11-07",
+    "sha256": "d2a54c08da16aae9614be29306c0f83a6e3938632ffd3553c4b7f2ecf1a67a62",
+    "identity": {
+      "店名": "HIGASHIYA GINZA",
+      "ジャンル原文": "茶房・カフェ",
+      "ジャンル": "茶房・カフェ",
+      "分類根拠": "茶房・カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

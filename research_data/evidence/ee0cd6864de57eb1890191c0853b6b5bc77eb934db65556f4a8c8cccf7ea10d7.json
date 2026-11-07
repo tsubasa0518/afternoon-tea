@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/107408/",
+  "checked_at": "2026-11-07T00:20:22.107499+09:00",
+  "item_id": "master-017",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/107408/",
+    "checked_on": "2026-11-07",
+    "sha256": "e8509e4f3598e4e8e4e62e7845e05e0f6d6553b6966ce74169c4fb6338615086",
+    "identity": {
+      "店名": "ザ・グラン ラウンジ",
+      "ジャンル原文": "カフェ・ラウンジ",
+      "ジャンル": "カフェ・ラウンジ",
+      "分類根拠": "カフェ・ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

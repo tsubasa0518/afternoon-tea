@@ -1,0 +1,30 @@
+{
+  "url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+  "checked_at": "2026-11-07T00:20:42.547793+09:00",
+  "item_id": "master-050",
+  "extraction": {
+    "site": "tb",
+    "url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+    "checked_on": "2026-11-07",
+    "sha256": "4d175b3cc208b14ca814580a44d1cf13031591e92602fb65d650d3102e123647",
+    "identity": {
+      "店名": "HAUTE COUTURE CAFE OMOTESANDO （オート クチュール カフェ オモテサンドウ）",
+      "ジャンル": "カフェ、ケーキ、創作料理",
+      "住所": "東京都 港区 北青山 3-9-19 2F 大きな地図を見る 周辺のお店を探す",
+      "交通手段": "表参道駅A1から徒歩２分 A1出口を出ると左手奥にブルガリが見えます。ブルガリとBOSSの間を左に曲がります。 まっすぐ歩いて頂くと左側にUNITED NUDE TOKYOがあり、UNITED NUDE TOKYOの建物の1つ奥のガラス張りの3階建ての建物の2階です！テラスにお花が見えております！ ※当店は建物の都合上、エレベーターの設置がなく、階段でのご移動をお願いしております。 ご不便をおかけいたしますが、ご了承くださいませ。 表参道駅から262m"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ],
+    "rating": {
+      "value": 3.44,
+      "url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+      "checked_on": "2026-11-07",
+      "quote": "3.44",
+      "status": "observed"
+    }
+  }
+}

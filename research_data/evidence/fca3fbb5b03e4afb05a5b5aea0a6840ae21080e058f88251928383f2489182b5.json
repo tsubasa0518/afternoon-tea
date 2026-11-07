@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/112712/",
+  "checked_at": "2026-11-07T00:14:51.426488+09:00",
+  "item_id": "master-016",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/112712/",
+    "checked_on": "2026-11-07",
+    "sha256": "6284e338f56cbd04af9fce5c8c02628f952721e599c68518838933c48d8661c2",
+    "identity": {
+      "店名": "BON BONHEUR",
+      "ジャンル原文": "カフェ",
+      "ジャンル": "カフェ",
+      "分類根拠": "カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

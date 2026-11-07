@@ -32,7 +32,7 @@ def check_url(url, method="GET"):
     if path == "/robots.txt":
         return
     patterns = {
-        "restaurant.ikyu.com": r"/(?:\d+(?:/plan\d+)?/?|t/[^?]+|area/[^?]+)",
+        "restaurant.ikyu.com": r"/(?:\d+(?:/plan\d+)?/?|t/[^?]+|area/[^?]+|s-tokyo/)",
         "tabelog.com": r"/tokyo/(?:a\d+/)*(?:\d+/(?:party/(?:\d+/)?)?|rstlst/[^?]*)",
         "tablecheck.com": r"/(?:ja|en)/(?:shops/[a-z0-9_-]+/reserve|[a-z0-9_-]+)/?",
         "www.tablecheck.com": r"/(?:ja|en)/(?:shops/[a-z0-9_-]+/reserve|[a-z0-9_-]+)/?",

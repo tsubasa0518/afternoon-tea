@@ -1,0 +1,30 @@
+{
+  "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+  "checked_at": "2026-11-07T00:20:40.246793+09:00",
+  "item_id": "master-044",
+  "extraction": {
+    "site": "tb",
+    "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+    "checked_on": "2026-11-07",
+    "sha256": "caac08e8a9ca483a2148efd6b40859be1769519ad4c34c0ac573829179a0be5f",
+    "identity": {
+      "店名": "サロン ド テ ジャンナッツ （JANAT）",
+      "ジャンル": "カフェ、ケーキ",
+      "住所": "東京都 渋谷区 神宮前 5-46-10 大きな地図を見る 周辺のお店を探す",
+      "交通手段": "表参道駅から徒歩7分 表参道駅から415m 表参道駅から373m"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ],
+    "rating": {
+      "value": 3.54,
+      "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+      "checked_on": "2026-11-07",
+      "quote": "3.54",
+      "status": "observed"
+    }
+  }
+}

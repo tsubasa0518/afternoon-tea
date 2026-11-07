@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/109114/",
+  "checked_at": "2026-11-07T00:20:25.124459+09:00",
+  "item_id": "master-022",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/109114/",
+    "checked_on": "2026-11-07",
+    "sha256": "dcfd3b12557205d46e60b4004dc82c3f101f6d4df7d3c2164b6671edf11288e3",
+    "identity": {
+      "店名": "NAMIKI667／ハイアット セントリック 銀座 東京",
+      "ジャンル原文": "ダイニング＆バー",
+      "ジャンル": "ダイニング＆バー",
+      "分類根拠": "ダイニング＆バー"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

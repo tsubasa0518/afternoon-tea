@@ -1,0 +1,20 @@
+{
+  "url": "https://restaurant.ikyu.com/108054/",
+  "checked_at": "2026-11-07T00:10:13.610474+09:00",
+  "item_id": "master-063",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/108054/",
+    "checked_on": "2026-11-07",
+    "sha256": "c772e07f43af74e0ceabd482121a10c93770875862056d53f54c42a6589070c8",
+    "identity": {
+      "店名": "ラ・ラナリータ 吾妻橋店"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

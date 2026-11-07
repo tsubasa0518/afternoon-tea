@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/108615/",
+  "checked_at": "2026-11-07T00:15:18.088763+09:00",
+  "item_id": "master-054",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/108615/",
+    "checked_on": "2026-11-07",
+    "sha256": "ba4d4f7bc72cea497724bf1ceff05d591b7ef875baf9ac27593920a2d8d6641e",
+    "identity": {
+      "店名": "ROTISSERIE BLUE",
+      "ジャンル原文": "ビストロ",
+      "ジャンル": "ビストロ",
+      "分類根拠": "ビストロ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}
