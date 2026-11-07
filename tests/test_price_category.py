@@ -38,7 +38,7 @@ class PriceCategoryTests(unittest.TestCase):
         shop['source_url']='https://www.example.com/afternoon-tea/'
         shop['plans']=[{'plan_name':'First','source_url':'https://restaurant.ikyu.com/123456/plan111111','price_yen':5000,'checked_at':'2026-11-06T10:00:00+09:00'}, {'plan_name':'Second','source_url':'https://www.example.com/winter-tea/','price_yen':10000}]
         result=render(data,FAILURES)
-        for value in ['プラン1／2','プラン2／2','https://www.example.com/winter-tea/','2026-11-06T10:00:00+09:00','提供期間 未確認','分類は原則として価格帯']:
+        for value in ['プラン1／2','プラン2／2','https://www.example.com/winter-tea/','2026-11-06T10:00:00+09:00','提供期間 未確認']:
             self.assertIn(value,result)
 
     def test_explicit_public_hosts_keep_transport_prohibitions(self):

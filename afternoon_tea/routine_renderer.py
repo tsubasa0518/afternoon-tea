@@ -144,7 +144,7 @@ def render(research,failures):
     stamp=research.get('generated_at')
     generated=dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
     master=json.loads((ROOT/'data/store_master.json').read_text())
-    groups={a['no']:[] for a in master['areas']};unassigned=[];tot=Counter();swc=Counter();plan_count=0
+    groups={a['no']:[] for a in master['areas']};unassigned=[];tot=Counter();swc=Counter()
     area_names={a['name']:a['no'] for a in master['areas']}
     for si,shop in enumerate(research['shops']):
         plans=[p for pi,p in enumerate(shop.get('plans',[])) if (si,pi) not in outside]
@@ -154,7 +154,7 @@ def render(research,failures):
         no=shop.get('area_no')
         if type(no) is not int:no=area_names.get(shop.get('area'))
         target=groups[no] if no in groups else unassigned
-        target.append((category(shop),markup));tot[category(shop)]+=1;swc.update(sw);plan_count+=len(plans)
+        target.append((category(shop),markup));tot[category(shop)]+=1;swc.update(sw)
     per=research['period'];start,end=day(per['start']),day(per['end'])
     stats=''.join(f'<div class="stat s-{cat}"><b>{tot[cat]}</b><span>{label}</span></div>' for cat,label,cls in CATS)
     hero=f'<div class="hero"><div class="hero-in"><div><h1>東京 アフタヌーンティー</h1><p class="period">{start.year}年{start.month}月{start.day}日〜{end.year}年{end.month}月{end.day}日<small>（40日間）</small></p><p class="lead legendline"><span class="lg"><span class="chip on">平日</span> 提供あり</span><span class="lg"><span class="chip no">土日祝 ✕</span> そのプランでは提供なし</span></p></div><div class="stats">{stats}</div></div></div>'
@@ -166,13 +166,7 @@ def render(research,failures):
     row=lambda label,body,aria:f'<div class="frow" role="group" aria-label="{aria}"><span class="lb">{label}</span><div class="btns">{body}</div></div>'
     filters='<div class="fpanel" id="top"><div class="fpanel-in">'+row('分類',cats,'分類で絞り込み')+row('条件','<button class="fb f-x" data-x="wd" aria-pressed="false">平日に行ける</button><button class="fb f-x" data-x="we" aria-pressed="false">土日祝に行ける</button><button class="fb f-x" data-x="pk" aria-pressed="false">値段確認済</button>','条件で絞り込み')+row('スイーツ',buttons(set(LABELS)-EVENTS),'スイーツで絞り込み')+row('イベント<br>季節',buttons(EVENTS-{'halloween'}),'イベント・季節で絞り込み')+f'<nav class="frow" aria-label="エリア"><span class="lb">場所</span><div class="btns">{nav}</div></nav>'
     filters+='''<div class="search-fields"><label for="shop-search">店舗・ホテル名<input id="shop-search" type="search" autocomplete="off"></label><label for="theme-search">プラン名・テーマ<input id="theme-search" type="search" autocomplete="off"></label><label for="price-filter">料金帯<select id="price-filter"><option value="all">すべて</option><option value="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option value="high">10,000円以上</option><option value="unknown">料金未確認</option></select></label></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
-    count=sum(tot.values());unresearched=sum(f['status']=='unresearched' and f.get('scope','shop')=='shop' for f in failures['failures'])
-    notice=f'<div class="box"><p class="lead">確認日時：{esc(stamp)} ／ 掲載 {count}店舗・{plan_count}プラン ／ 未調査店舗 {unresearched}件。掲載なしはAT提供なしを意味しません。料金・期間・曜日の不明値は未確認です。予約操作・空席確認は行っていません。</p>'
-    notice+='<p class="rnote">分類は原則として価格帯です。対象期間内の確認済みプランの最安通常価格で、カフェ：6,000円以下／ホテル：6,001〜9,999円／ホテル（高級）：10,000円以上。通常価格不明の場合のみ、確認済みの施設情報でホテル内はホテル、それ以外はカフェに分類します。施設情報も不明なら分類未確認です。料金は推定しません。</p>'
-    if research.get('note'):notice+='<p class="rnote">'+esc(research['note'])+'</p>'
-    if tot['unknown']:notice+='<p class="rnote">分類未確認：'+str(tot['unknown'])+'店舗。通常価格・施設情報を確認できないため分類していません。</p>'
-    if outside:notice+='<p class="rnote">対象期間と重ならない'+str(len(outside))+'プランは掲載対象から除きました。</p>'
-    notice+='</div>'
+    count=sum(tot.values())
     empty='<p class="none" id="no-results" hidden>条件に合う掲載情報はありません。絞り込みを変更してください。</p>'
     if not count:empty+='<p class="none">今週は確認できた情報がありません</p>'
     areas=[]
@@ -188,7 +182,7 @@ def render(research,failures):
     for area in master['areas']:areas.append(area_html(area['no'],area['name'],groups[area['no']],area['stations']))
     if unassigned:areas.append(area_html(0,'エリア未確認',unassigned))
     template=Template((TEMPLATES/'routine.html').read_text())
-    result=template.substitute(css=(TEMPLATES/'routine.css').read_text(),extra_css=(TEMPLATES/'routine_extra.css').read_text(),js=(TEMPLATES/'routine.js').read_text(),extra_js=(TEMPLATES/'routine_extra.js').read_text(),hero=hero,filters=filters,notice=notice,empty=empty,areas='\n'.join(areas))
+    result=template.substitute(css=(TEMPLATES/'routine.css').read_text(),extra_css=(TEMPLATES/'routine_extra.css').read_text(),js=(TEMPLATES/'routine.js').read_text(),extra_js=(TEMPLATES/'routine_extra.js').read_text(),hero=hero,filters=filters,empty=empty,areas='\n'.join(areas))
     validate_html_bytes(result.encode())
     return result
 
