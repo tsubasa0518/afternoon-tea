@@ -8,3 +8,10 @@ class WeeklyWorkflowTests(unittest.TestCase):
  def test_schedule_requires_explicit_enable(self):self.assertIn("vars.WEEKLY_RESEARCH_ENABLED == 'true'",(ROOT/'.github/workflows/weekly-research.yml').read_text())
  def test_enabled_schedule_persists_state(self):self.assertIn("github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'",(ROOT/'.github/workflows/weekly-research.yml').read_text())
  def test_no_pages_publication_or_deploy_workflow_change(self):self.assertFalse((ROOT/'.github/workflows/weekly-research.yml').read_text().find('deploy-pages')>=0)
+ def test_dispatch_defaults_to_dry_run_without_persist(self):
+  workflow=(ROOT/'.github/workflows/weekly-research.yml').read_text()
+  self.assertIn('default: true',workflow);self.assertIn('default: false',workflow)
+  self.assertIn('inputs.dry_run == false && inputs.persist_state == true',workflow)
+ def test_schedule_commit_requires_explicit_enable(self):
+  workflow=(ROOT/'.github/workflows/weekly-research.yml').read_text()
+  self.assertIn("github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'",workflow)

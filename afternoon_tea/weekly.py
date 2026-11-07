@@ -19,12 +19,15 @@ def run():
   atomic_json(out/'audit.json',{'day':day,'error':str(e),'items':state.get('items',[]),'areas':state.get('areas',[]),'stop_reason':'exception'})
  data=out/('data_'+day+'.json');audit=out/'audit.json'
  if data.exists():
-  artifacts=sorted((ROOT/'.staging').glob('validated-*/afternoon_tea_tokyo_'+day+'.html'))
-  if artifacts:
-   html=artifacts[-1];report=out/'quality_report.json'
+  artifact_meta=json.loads((out/'artifact.json').read_text()) if (out/'artifact.json').exists() else {}
+  html=Path(artifact_meta.get('html_directory',''))/('afternoon_tea_tokyo_'+day+'.html')
+  if html.is_file():
+   report=out/'quality_report.json'
    proc=subprocess.run([sys.executable,'-m','afternoon_tea.publication_quality','--data',str(data),'--audit',str(audit),'--html',str(html),'--report',str(report)],capture_output=True,text=True)
    if proc.returncode not in (0,2):errors.append('quality_cli:'+proc.stderr)
  else:errors.append('data_missing')
+ unknown=[{'id':x.get('id'),'name':x.get('name'),'status':x.get('status'),'reason':x.get('reason')} for x in state.get('items',[]) if x.get('status') in ('unresolved','failed','unresearched')]
+ atomic_json(out/'unresolved.json',unknown)
  summary={'day':day,'period_end':(started.date()+dt.timedelta(days=40)).isoformat(),'discovery':discovery,'queue':state.get('last_run',{}),'counts':{k:sum(x.get('status')==k for x in state.get('items',[])) for k in ('confirmed','excluded','unresolved','failed','unresearched')},'errors':errors,'reservation_operations':0,'published':False}
  atomic_json(out/'summary.json',summary);return out,summary,2 if errors else 0
 if __name__=='__main__':
