@@ -13,7 +13,7 @@ jobs:
     if: >-
       !github.event.pull_request.draft &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      startsWith(github.event.pull_request.head.ref, 'claude/') &&
+      startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') &&
       startsWith(github.event.pull_request.title, '[weekly-site]') &&
       github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner)
     runs-on: ubuntu-latest

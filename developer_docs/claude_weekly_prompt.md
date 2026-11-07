@@ -18,16 +18,16 @@ AGENTS.md、research_spec.md、developer_docs/weekly_automation.md、前回のsi
 
 確認できた店舗・プラン・メニュー・価格・提供期間・テーマ・曜日・出典URL・確認日時・根拠原文をsite/research.jsonへ保存します。schema_versionは1、generated_atはJST等タイムゾーン付きISO日時、shopsは配列です。不明な価格/期間はnull、HTMLでは未確認と表示します。前週の情報を再確認なしに最新確認済みとしてコピーしません。複数の季節プランは区別し、期限切れと重複を掲載しません。
 
-検索失敗や未調査はsite/search_failures.jsonへ保存します。schema_version:1, generated_at, failures配列を使い、各記録にname, area, checked_at（タイムゾーン付きISO日時）, sources（公開URL配列）, status, reason, retry（true/false）を入れます。statusはinformation_insufficient / access_denied / site_restriction / no_results / unresearched / confirmedです。取得失敗はATなしの証拠ではありません。未調査エリアも記録します。
+検索失敗や未調査はsite/search_failures.jsonへ保存します。schema_version:1, generated_at, failures配列を使い、各記録にname, area, checked_at（タイムゾーン付きISO日時）, sources（公開URL配列）, status, reason, retry（true/false）を入れます。statusはinformation_insufficient / access_denied / site_restriction / no_results / unresearched / confirmedです。取得失敗はATなしの証拠ではありません。未調査エリアと対象駅も記録し、必要に応じてstationとscope（shop/site/area/station）を追加します。
 
 今回確認できた情報からsite/index.htmlを完成させます。既存の色・カード・エリア/分類/スイーツのフィルター等のデザインを可能な限り維持します。単独HTMLとし、CSS・フィルターJavaScriptはインライン、画像は埋め込みます。任意のGoogle Fonts以外の外部アセットや外部JavaScript、フォーム、自動ネットワーク通信を含めません。予約URLは情報としてリンク表示するだけです。3ファイル以外の追加アセットを作りません。
 
-店舗数が少ない、未解決/取得失敗が残る、調査範囲が不完全、旧120店から減少、従来の品質判定REVIEW_REQUIREDでもHTMLを完成してください。店舗を1件も確認できなければ「今週は確認できた店舗情報がありません」と表示する正常なページにします。未確認情報を捏造して件数を増やしません。実行日・掲載件数・調査範囲の限界を明記します。
+店舗数が少ない、未解決/取得失敗が残る、調査範囲が不完全、旧120店から減少、従来の品質判定REVIEW_REQUIREDでもHTMLを完成してください。店舗を1件も確認できなければ「今週確認できた情報はありません」と表示する正常なページにします。未確認情報を捏造して件数を増やしません。実行日・掲載件数・調査範囲の限界を明記します。
 
-調査は実行枠の前半から進め、遅くとも終了余裕10分を残してHTML/JSONの完成・検証・PR作成へ移ります。時間切れになりそうならその時点までの確認情報で完成し、残りをunresearchedとして記録してください。HTML生成ができない場合は壊れたHTMLをコミットせず、前回HTMLを保持し、失敗理由をsearch_failuresへ記録します。
+調査は実行枠の前半から進め、遅くとも終了余裕10分を残してHTML/JSONの完成・検証・PR作成へ移ります。時間切れになりそうならその時点までの確認情報で完成し、残りをunresearchedとして記録してください。HTML生成ができない場合は壊れたHTMLをコミットせず、前回HTMLを保持し、失敗理由をsearch_failuresへ記録します。この場合は公開用PRを作成せず、記録の保存先と原因を報告してエラーとして終了します。調査未完了・0店舗はこの例外ではなく、説明付きHTMLを完成させてPRを作成します。
 
 python3 -m afternoon_tea.routine_site validate を実行してください。技術検証エラーは3ファイルの範囲で直します。従来のpublication_quality.pyは公開の必須条件ではありません。git diffで上記3ファイル以外の変更がないことを確認してください。
 
-実行ごとにclaude/で始まる専用ブランチへコミット・pushし、main宛ての通常PR（draftではない）を必ず作成してください。タイトルは必ず[weekly-site]で始め、JST調査日を含めます。本文に確認店舗数・プラン数・未確認数・調査範囲・失敗理由・検証結果を書きます。GitHub Actionsが安全な自動マージと公開を担当します。PRの承認、権限変更、ワークフロー変更、Pages直接公開はしません。
+HTML完成と技術検証が成功したら、JST実行日のYYYYMMDDを使ってclaude/weekly-afternoon-tea-YYYYMMDDブランチへコミット・pushし、main宛ての通常PR（draftではない）を必ず作成してください。クラウドで別のブランチ名から開始しても、この接頭辞を持つpush先を使います。同じ日の再実行では既存の未マージPRを更新するか、日付の後ろに実行識別子を付けて衝突を避けます。タイトルは[weekly-site] YYYY-MM-DD 自動更新とします。本文に確認店舗数・プラン数・未確認数・調査範囲・失敗理由・検証結果を書きます。GitHub Actionsが安全な自動マージと公開を担当します。PRの承認、権限変更、ワークフロー変更、Pages直接公開はしません。
 
 最後にPR URLと調査結果を報告してください。pushやPR作成権限がなく失敗した場合は実行済みとせず、その理由を報告します。
