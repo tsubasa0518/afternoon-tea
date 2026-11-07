@@ -1,2492 +1,3807 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-11-07T17:50:14+09:00",
-  "failures": [
-    {
-      "queue_id": "priority-001",
-      "priority_id": "priority-001",
-      "name": "cafe VAVA",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://restaurant.ikyu.com/112520/plan12815171"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/112520/plan12815171",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://restaurant.ikyu.com/112520/plan12815171",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950 円"
-    },
-    {
-      "queue_id": "priority-002",
-      "priority_id": "priority-002",
-      "name": "ROSSINI TERRACE（東京會舘）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-007",
-      "priority_id": "priority-007",
-      "name": "丸ノ内ホテル / ポム・ダダン（8F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-012",
-      "priority_id": "priority-012",
-      "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-013",
-      "priority_id": "priority-013",
-      "name": "東京ステーションホテル / ロビーラウンジ",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-014",
-      "priority_id": "priority-014",
-      "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-016",
-      "priority_id": "priority-016",
-      "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-017",
-      "priority_id": "priority-017",
-      "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-019",
-      "priority_id": "priority-019",
-      "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-020",
-      "priority_id": "priority-020",
-      "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-003",
-      "priority_id": "priority-003",
-      "name": "真不同 HONG KONG TEA ROOM 1946",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-004",
-      "priority_id": "priority-004",
-      "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-005",
-      "priority_id": "priority-005",
-      "name": "文明堂カフェ",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-006",
-      "priority_id": "priority-006",
-      "name": "アルポルトカフェ 日本橋高島屋店",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-008",
-      "priority_id": "priority-008",
-      "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-009",
-      "priority_id": "priority-009",
-      "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-010",
-      "priority_id": "priority-010",
-      "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-011",
-      "priority_id": "priority-011",
-      "name": "HAMACHO HOTEL / SESSiON（1F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-015",
-      "priority_id": "priority-015",
-      "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-018",
-      "priority_id": "priority-018",
-      "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-021",
-      "priority_id": "priority-021",
-      "name": "ブルガリ ホテル 東京 / ブルガリ ラウンジ（40F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-003",
-      "name": "レゾナンス（東京ビルTOKIA 2F）",
-      "area": "丸の内・日本橋",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-022",
-      "priority_id": "priority-022",
-      "name": "GINZA TENSHODO CAFE（天賞堂カフェ）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://restaurant.ikyu.com/155237"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/155237",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。アフタヌーンティーの説明文はあるがプラン名・料金・期間を確定できず"
-        }
-      ],
-      "reason": "本文は取得。アフタヌーンティーの説明文はあるがプラン名・料金・期間を確定できず",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-023",
-      "priority_id": "priority-023",
-      "name": "REIKASAI GINZA（ポーラ銀座ビル 9F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-024",
-      "priority_id": "priority-024",
-      "name": "ボン ボヌール（銀座三越 4F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-025",
-      "priority_id": "priority-025",
-      "name": "ザ・グラン ラウンジ（GINZA SIX 13F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-026",
-      "priority_id": "priority-026",
-      "name": "HIGASHIYA GINZA（ポーラ銀座ビル 2F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-027",
-      "priority_id": "priority-027",
-      "name": "LOUANGE TOKYO Le Musée",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-038",
-      "priority_id": "priority-038",
-      "name": "ハイアット セントリック 銀座 東京 / NAMIKI667（3F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-042",
-      "priority_id": "priority-042",
-      "name": "ザ・ペニンシュラ東京 / ザ・ロビー",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-043",
-      "priority_id": "priority-043",
-      "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-028",
-      "priority_id": "priority-028",
-      "name": "ル サロン ド ニナス 日比谷",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-029",
-      "priority_id": "priority-029",
-      "name": "dunhill BAR",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-030",
-      "priority_id": "priority-030",
-      "name": "BVLGARI GINZA CAFE（ブルガリ ギンザ カフェ）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-031",
-      "priority_id": "priority-031",
-      "name": "Tea Bloomy 銀座",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-032",
-      "priority_id": "priority-032",
-      "name": "NOTES BY YAMAHA",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-033",
-      "priority_id": "priority-033",
-      "name": "GINZA CAFE",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-034",
-      "priority_id": "priority-034",
-      "name": "CAFe&BAR STROPSe",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-035",
-      "priority_id": "priority-035",
-      "name": "DRAWING HOUSE OF HIBIYA（東京ミッドタウン日比谷 6F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-036",
-      "priority_id": "priority-036",
-      "name": "tcc GINZA",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-037",
-      "priority_id": "priority-037",
-      "name": "Brasserie ニーケ",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-039",
-      "priority_id": "priority-039",
-      "name": "東京エディション銀座 / Sophie at EDITION",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-040",
-      "priority_id": "priority-040",
-      "name": "コートヤード・マリオット銀座東武ホテル / RISTASIX",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-041",
-      "priority_id": "priority-041",
-      "name": "帝国ホテル 東京 / ランデブーラウンジ",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-013",
-      "name": "ロイヤルクリスタルカフェ 銀座店（B1F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-019",
-      "name": "アルマーニ リストランテ（アルマーニ銀座タワー 10F）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-021",
-      "name": "ミレニアム 三井ガーデンホテル 東京 B1F（現代里山料理 ZEN HOUSE）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-023",
-      "name": "三井ガーデンホテル銀座プレミア 16F（RISTORANTE E'VOLTA il cielo）",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-044",
-      "priority_id": "priority-044",
-      "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve"
-      ],
-      "attempts": [
-        {
-          "url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。確認できた料金行はディナーコース等で、アフタヌーンティー単体の料金・期間を確定できず"
-        }
-      ],
-      "reason": "本文は取得。確認できた料金行はディナーコース等で、アフタヌーンティー単体の料金・期間を確定できず",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-045",
-      "priority_id": "priority-045",
-      "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-047",
-      "priority_id": "priority-047",
-      "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-049",
-      "priority_id": "priority-049",
-      "name": "コンラッド東京 / トゥエンティエイト（28F）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-050",
-      "priority_id": "priority-050",
-      "name": "フェアモント東京 / Vue Mer（ビュメール）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-046",
-      "priority_id": "priority-046",
-      "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-048",
-      "priority_id": "priority-048",
-      "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-051",
-      "priority_id": "priority-051",
-      "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-052",
-      "priority_id": "priority-052",
-      "name": "ホテル ザ セレスティン 東京芝 / Cafe&Bar Lounge Celecroix（1F）",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-053",
-      "priority_id": "priority-053",
-      "name": "第一ホテル東京 / ロビーラウンジ",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-054",
-      "priority_id": "priority-054",
-      "name": "芝パークホテル / ザ ダイニング",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-055",
-      "priority_id": "priority-055",
-      "name": "パークホテル東京 / アートカラーズダイニング",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-056",
-      "priority_id": "priority-056",
-      "name": "メズム東京、オートグラフ コレクション / ウィスク",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-057",
-      "priority_id": "priority-057",
-      "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-058",
-      "priority_id": "priority-058",
-      "name": "東京プリンスホテル / ティーサロン ピカケ",
-      "area": "新橋・汐留・浜松町",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-060",
-      "priority_id": "priority-060",
-      "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://restaurant.ikyu.com/106682/plan12867585"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/106682/plan12867585",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://restaurant.ikyu.com/106682/plan12867585",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜"
-    },
-    {
-      "queue_id": "priority-063",
-      "priority_id": "priority-063",
-      "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-059",
-      "priority_id": "priority-059",
-      "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-061",
-      "priority_id": "priority-061",
-      "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-062",
-      "priority_id": "priority-062",
-      "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-064",
-      "priority_id": "priority-064",
-      "name": "アンダーズ 東京 / ペストリーショップ（1F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-065",
-      "priority_id": "priority-065",
-      "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-066",
-      "priority_id": "priority-066",
-      "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-067",
-      "priority_id": "priority-067",
-      "name": "オークラ東京 / バーラウンジ スターライト",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-068",
-      "priority_id": "priority-068",
-      "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-069",
-      "priority_id": "priority-069",
-      "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-070",
-      "priority_id": "priority-070",
-      "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-01",
-      "priority_id": "priority-candidate-01",
-      "name": "RITUEL 虎ノ門（RITUEL Brasserie & Cafe 虎ノ門）",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-073",
-      "priority_id": "priority-073",
-      "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://restaurant.ikyu.com/125030/plan12830252"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/125030/plan12830252",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://restaurant.ikyu.com/125030/plan12830252",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800 円"
-    },
-    {
-      "queue_id": "priority-074",
-      "priority_id": "priority-074",
-      "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-071",
-      "priority_id": "priority-071",
-      "name": "グランド ハイアット 東京 / フィオレンティーナ",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-072",
-      "priority_id": "priority-072",
-      "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-03",
-      "priority_id": "priority-candidate-03",
-      "name": "Orby Restaurant",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-033",
-      "name": "Restaurant THE MOON",
-      "area": "六本木・麻布・広尾",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-077",
-      "priority_id": "priority-077",
-      "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://restaurant.ikyu.com/103306/plan12792401"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/103306/plan12792401",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。シャインマスカットAT（土日祝）の名称は確認、料金・期間の抽出が不十分"
-        }
-      ],
-      "reason": "本文は取得。シャインマスカットAT（土日祝）の名称は確認、料金・期間の抽出が不十分",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-085",
-      "priority_id": "priority-085",
-      "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-075",
-      "priority_id": "priority-075",
-      "name": "OPERA（東京オペラシティ54F）",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-076",
-      "priority_id": "priority-076",
-      "name": "ル サロン ド ニナス 小田急百貨店新宿",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-078",
-      "priority_id": "priority-078",
-      "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-079",
-      "priority_id": "priority-079",
-      "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-080",
-      "priority_id": "priority-080",
-      "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-081",
-      "priority_id": "priority-081",
-      "name": "京王プラザホテル / オールデイダイニング 樹林",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-082",
-      "priority_id": "priority-082",
-      "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-083",
-      "priority_id": "priority-083",
-      "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-084",
-      "priority_id": "priority-084",
-      "name": "ヒルトン東京 / メトロポリタングリル",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-02",
-      "priority_id": "priority-candidate-02",
-      "name": "アプローズスクエア東京迎賓館",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-037",
-      "name": "新宿プリンスホテル 25F（和風ダイニング＆バー FUGA）",
-      "area": "新宿・代々木",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-086",
-      "priority_id": "priority-086",
-      "name": "ザ・レギャン・トーキョー",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://restaurant.ikyu.com/100272/plan12814237"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/100272/plan12814237",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。AT＋カフェフリーの名称は確認、掲載の「来店期間」が2025年の記載で今回期間との関係が不明"
-        }
-      ],
-      "reason": "本文は取得。AT＋カフェフリーの名称は確認、掲載の「来店期間」が2025年の記載で今回期間との関係が不明",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-089",
-      "priority_id": "priority-089",
-      "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-090",
-      "priority_id": "priority-090",
-      "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-091",
-      "priority_id": "priority-091",
-      "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-087",
-      "priority_id": "priority-087",
-      "name": "BLACK TERRACE",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-088",
-      "priority_id": "priority-088",
-      "name": "LA COCORICO 渋谷",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-092",
-      "priority_id": "priority-092",
-      "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-039",
-      "name": "Legato（E・スペースタワー 15F）",
-      "area": "渋谷・代々木公園",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-093",
-      "priority_id": "priority-093",
-      "name": "サロン ド テ ジャンナッツ",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "access_denied",
-      "sources": [],
-      "attempts": [
-        {
-          "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "HTTP 403",
-          "reason": "匿名GETで403。制限を回避せず、別ホストへ迂回しない"
-        }
-      ],
-      "reason": "食べログ公開ページが403で拒否。今回は情報を確認できず（AT提供なしの証拠ではない）",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-094",
-      "priority_id": "priority-094",
-      "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-095",
-      "priority_id": "priority-095",
-      "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-096",
-      "priority_id": "priority-096",
-      "name": "HAUTE COUTURE CAFE OMOTESANDO",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-104",
-      "priority_id": "priority-104",
-      "name": "THE AOYAMA GRAND HOTEL / TOKYO AFTERNOON TEA",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-097",
-      "priority_id": "priority-097",
-      "name": "St.GRACE Lounge & Dining",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-098",
-      "priority_id": "priority-098",
-      "name": "アニヴェルセルカフェ 表参道",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-099",
-      "priority_id": "priority-099",
-      "name": "茶洒 金田中",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-100",
-      "priority_id": "priority-100",
-      "name": "BRASSERIE CAFE LE CONTE",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-101",
-      "priority_id": "priority-101",
-      "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-102",
-      "priority_id": "priority-102",
-      "name": "ARMANI / CAFFE 表参道",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-103",
-      "priority_id": "priority-103",
-      "name": "The Burn",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-04",
-      "priority_id": "priority-candidate-04",
-      "name": "資生堂パーラー ザ・ハラジュク",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-05",
-      "priority_id": "priority-candidate-05",
-      "name": "コロンバン 原宿サロン",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-06",
-      "priority_id": "priority-candidate-06",
-      "name": "L2126",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-07",
-      "priority_id": "priority-candidate-07",
-      "name": "CAFE THE KNOT（カフェ ザ ノット）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-045",
-      "name": "A to Z cafe（equboビル 5F）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-046",
-      "name": "カフェ＆ダイニング ゼルコヴァ（ザ ストリングス 表参道）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-047",
-      "name": "IL LUPINO PRIME（ののあおやま 2F）",
-      "area": "青山・表参道・原宿",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-105",
-      "priority_id": "priority-105",
-      "name": "PAYSAGE 代官山本店",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://restaurant.ikyu.com/122745/plan12804614"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/122745/plan12804614",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://restaurant.ikyu.com/122745/plan12804614",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "PAYSAGE AFTERNOON TEA ー秋・Automneー 税サ込 7,500 円"
-    },
-    {
-      "queue_id": "priority-106",
-      "priority_id": "priority-106",
-      "name": "ROTISSERIE★BLUE",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-053",
-      "name": "カフェ アクイーユ 恵比寿店",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-055",
-      "name": "マディソン ニューヨーク キッチン",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-056",
-      "name": "336 ébisu（クーカイ・テラス 1F）",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-057",
-      "name": "ウェスティンホテル東京（ザ・ラウンジ）",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-candidate-01",
-      "name": "HAUTE COUTURE CAFE（中目黒・目黒川沿い）",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-107",
-      "priority_id": "priority-107",
-      "name": "グランドプリンスホテル新高輪 / Lounge Momiji",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://restaurant.ikyu.com/106767/plan12803588"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/106767/plan12803588",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://restaurant.ikyu.com/106767/plan12803588",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "Autumn Harvest Afternoon Tea＋2時間制（平日限定） タイムセール 18 % OFF 7,345円 税サ込 6,000 円"
-    },
-    {
-      "queue_id": "priority-108",
-      "priority_id": "priority-108",
-      "name": "東京マリオットホテル / Lounge & Dining G",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-109",
-      "priority_id": "priority-109",
-      "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-110",
-      "priority_id": "priority-110",
-      "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-111",
-      "priority_id": "priority-111",
-      "name": "JWマリオット・ホテル東京 / JWラウンジ",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-08",
-      "priority_id": "priority-candidate-08",
-      "name": "グランドプリンスホテル高輪 ラウンジ 光明",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-061",
-      "name": "THE Tender HOUSE DINING",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-062",
-      "name": "ALL DAY DINING FUDO",
-      "area": "品川・田町・五反田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-112",
-      "priority_id": "priority-112",
-      "name": "ラ・ラナリータ 吾妻橋店",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://restaurant.ikyu.com/108054/plan12187749"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/108054/plan12187749",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。「アフタヌーンティーセット」（ランチ区分）の価格は見えるが、ATとしての提供期間・内容が不明確"
-        }
-      ],
-      "reason": "本文は取得。「アフタヌーンティーセット」（ランチ区分）の価格は見えるが、ATとしての提供期間・内容が不明確",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-113",
-      "priority_id": "priority-113",
-      "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-114",
-      "priority_id": "priority-114",
-      "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-115",
-      "priority_id": "priority-115",
-      "name": "ホテルイースト21東京 / ロビーラウンジ",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-09",
-      "priority_id": "priority-candidate-09",
-      "name": "ラ ココリコ 上野本店",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-10",
-      "priority_id": "priority-candidate-10",
-      "name": "望水楼",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-11",
-      "priority_id": "priority-candidate-11",
-      "name": "上野 アクアリウムレストラン Nautilus",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-12",
-      "priority_id": "priority-candidate-12",
-      "name": "くくりひめ珈琲",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-candidate-13",
-      "priority_id": "priority-candidate-13",
-      "name": "THE LOUNGE（旧店名 ラウンジミモザ／浅草ビューホテル）",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-candidate-02",
-      "name": "Bistro NOHGA（NOHGA HOTEL）",
-      "area": "上野・浅草・押上",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-117",
-      "priority_id": "priority-117",
-      "name": "東京ドームホテル / アーティスト カフェ",
-      "area": "水道橋・御茶ノ水・神田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://restaurant.ikyu.com/101056/plan12789046"
-      ],
-      "attempts": [
-        {
-          "url": "https://restaurant.ikyu.com/101056/plan12789046",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。9/1～12/7（平日限定）のAT名称は確認、来店期間が2025年の記載で今回期間との関係が不明"
-        }
-      ],
-      "reason": "本文は取得。9/1～12/7（平日限定）のAT名称は確認、来店期間が2025年の記載で今回期間との関係が不明",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-116",
-      "priority_id": "priority-116",
-      "name": "VMG CAFE 九段会館テラス",
-      "area": "水道橋・御茶ノ水・神田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-118",
-      "priority_id": "priority-118",
-      "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
-      "area": "水道橋・御茶ノ水・神田",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-119",
-      "priority_id": "priority-119",
-      "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
-      "area": "飯田橋・神楽坂・四ツ谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "information_insufficient",
-      "sources": [
-        "https://www.tablecheck.com/en/hotel-edmont-beltempo"
-      ],
-      "attempts": [
-        {
-          "url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得（情報不足）",
-          "reason": "本文は取得。確認できた料金行は通常メニュー等で、ATプランの名称・料金・期間を確定できず"
-        }
-      ],
-      "reason": "本文は取得。確認できた料金行は通常メニュー等で、ATプランの名称・料金・期間を確定できず",
-      "retry": true
-    },
-    {
-      "queue_id": "master-066",
-      "name": "SOMBREUIL TOKYO",
-      "area": "飯田橋・神楽坂・四ツ谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-068",
-      "name": "リーガロイヤルホテル東京（ガーデンラウンジ）",
-      "area": "飯田橋・神楽坂・四ツ谷",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "priority-120",
-      "priority_id": "priority-120",
-      "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
-      "area": "池袋・目白",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "confirmed",
-      "sources": [
-        "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve"
-      ],
-      "attempts": [
-        {
-          "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
-          "checked_at": "2026-11-07T17:50:14+09:00",
-          "result": "取得・プラン確認",
-          "reason": "本文取得。料金・プラン名を根拠原文で確認（期間は上記shopsのplan参照）"
-        }
-      ],
-      "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）",
-      "retry": true,
-      "evidence_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
-      "verified_at": "2026-11-07T17:50:14+09:00",
-      "evidence_quote": "アフタヌーンティー2026 Valid Dates Nov 01 ~ Jan 07, 2027 ¥ 7,800 (Svc excl. / tax incl.)"
-    },
-    {
-      "queue_id": "priority-candidate-14",
-      "priority_id": "priority-candidate-14",
-      "name": "RACINES Boulangerie & Bistro（ラシーヌ）",
-      "area": "池袋・目白",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "queue_id": "master-069",
-      "name": "ホテルメトロポリタン 25F（ダイニング＆バー オーヴェスト）",
-      "area": "池袋・目白",
-      "scope": "shop",
-      "run_id": "20261107T174644533243",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "reason": "今回未調査。AT提供なしを意味しない。",
-      "retry": true
-    },
-    {
-      "name": "丸の内・日本橋",
-      "area": "丸の内・日本橋",
-      "scope": "area",
-      "station": "東京・大手町・二重橋前",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 東京・大手町・二重橋前）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "銀座・有楽町・日比谷",
-      "area": "銀座・有楽町・日比谷",
-      "scope": "area",
-      "station": "銀座・銀座一丁目・有楽町",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 銀座・銀座一丁目・有楽町）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "新橋・汐留・浜松町",
-      "area": "新橋・汐留・浜松町",
-      "scope": "area",
-      "station": "新橋・汐留・浜松町",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 新橋・汐留・浜松町）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "赤坂・永田町・虎ノ門",
-      "area": "赤坂・永田町・虎ノ門",
-      "scope": "area",
-      "station": "赤坂・赤坂見附・永田町",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 赤坂・赤坂見附・永田町）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "六本木・麻布・広尾",
-      "area": "六本木・麻布・広尾",
-      "scope": "area",
-      "station": "六本木・六本木一丁目・神谷町",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 六本木・六本木一丁目・神谷町）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "新宿・代々木",
-      "area": "新宿・代々木",
-      "scope": "area",
-      "station": "新宿・新宿三丁目・西新宿",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 新宿・新宿三丁目・西新宿）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "渋谷・代々木公園",
-      "area": "渋谷・代々木公園",
-      "scope": "area",
-      "station": "渋谷・神泉・代々木公園",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 渋谷・神泉・代々木公園）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "青山・表参道・原宿",
-      "area": "青山・表参道・原宿",
-      "scope": "area",
-      "station": "表参道・外苑前・青山一丁目",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 表参道・外苑前・青山一丁目）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "恵比寿・代官山・中目黒",
-      "area": "恵比寿・代官山・中目黒",
-      "scope": "area",
-      "station": "恵比寿・代官山・中目黒",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 恵比寿・代官山・中目黒）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "品川・田町・五反田",
-      "area": "品川・田町・五反田",
-      "scope": "area",
-      "station": "品川・高輪ゲートウェイ・田町",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 品川・高輪ゲートウェイ・田町）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "上野・浅草・押上",
-      "area": "上野・浅草・押上",
-      "scope": "area",
-      "station": "上野・御徒町・浅草",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 上野・御徒町・浅草）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "水道橋・御茶ノ水・神田",
-      "area": "水道橋・御茶ノ水・神田",
-      "scope": "area",
-      "station": "水道橋・後楽園・御茶ノ水",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 水道橋・後楽園・御茶ノ水）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "飯田橋・神楽坂・四ツ谷",
-      "area": "飯田橋・神楽坂・四ツ谷",
-      "scope": "area",
-      "station": "飯田橋・神楽坂・牛込神楽坂",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 飯田橋・神楽坂・牛込神楽坂）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
-    },
-    {
-      "name": "池袋・目白",
-      "area": "池袋・目白",
-      "scope": "area",
-      "station": "池袋・目白・東池袋",
-      "checked_at": "2026-11-07T17:50:14+09:00",
-      "status": "unresearched",
-      "sources": [],
-      "attempts": [],
-      "run_id": "20261107T174644533243",
-      "retry": true,
-      "reason": "エリア探索は未実施（対象駅: 池袋・目白・東池袋）。指定リストの店舗詳細のみ確認。エリア一覧・新規店舗探索は今回未着手"
+ "schema_version": 1,
+ "generated_at": "2026-11-07T18:36:38+09:00",
+ "failures": [
+  {
+   "queue_id": "priority-002",
+   "priority_id": "priority-002",
+   "name": "ROSSINI TERRACE（東京會舘）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/110781/plan12803085"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110781/plan12803085",
+     "checked_at": "2026-11-07T18:25:55+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
     }
-  ]
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/110781/plan12803085",
+   "verified_at": "2026-11-07T18:25:55+09:00",
+   "evidence_quote": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー 税サ込 6,325円"
+  },
+  {
+   "queue_id": "priority-003",
+   "priority_id": "priority-003",
+   "name": "真不同 HONG KONG TEA ROOM 1946",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/122278/plan12649319"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/122278/plan12649319",
+     "checked_at": "2026-11-07T18:25:57+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/122278/plan12649319",
+   "verified_at": "2026-11-07T18:25:57+09:00",
+   "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円"
+  },
+  {
+   "queue_id": "priority-004",
+   "priority_id": "priority-004",
+   "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/112311/plan12739895"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/112311/plan12739895",
+     "checked_at": "2026-11-07T18:26:00+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/112311/plan12739895",
+   "verified_at": "2026-11-07T18:26:00+09:00",
+   "evidence_quote": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日） 6,800円 税サ込 6,052円"
+  },
+  {
+   "queue_id": "priority-005",
+   "priority_id": "priority-005",
+   "name": "文明堂カフェ",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/154158/plan12866695"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/154158/plan12866695",
+     "checked_at": "2026-11-07T18:26:03+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/154158/plan12866695",
+   "verified_at": "2026-11-07T18:26:03+09:00",
+   "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円"
+  },
+  {
+   "queue_id": "priority-006",
+   "priority_id": "priority-006",
+   "name": "アルポルトカフェ 日本橋高島屋店",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101719/plan12384641"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101719/plan12384641",
+     "checked_at": "2026-11-07T18:26:06+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101719/plan12384641",
+   "verified_at": "2026-11-07T18:26:06+09:00",
+   "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円"
+  },
+  {
+   "queue_id": "priority-007",
+   "priority_id": "priority-007",
+   "name": "丸ノ内ホテル / ポム・ダダン（8F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100179/plan12815376"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100179/plan12815376",
+     "checked_at": "2026-11-07T18:26:10+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100179/plan12815376",
+   "verified_at": "2026-11-07T18:26:10+09:00",
+   "evidence_quote": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”＋カフェフリー（120分滞在・平日） 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-008",
+   "priority_id": "priority-008",
+   "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/117086/plan12872041"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/117086/plan12872041",
+     "checked_at": "2026-11-07T18:26:13+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/117086/plan12872041",
+   "verified_at": "2026-11-07T18:26:13+09:00",
+   "evidence_quote": "【11/1～平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円"
+  },
+  {
+   "queue_id": "priority-009",
+   "priority_id": "priority-009",
+   "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/115187/plan12845039"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115187/plan12845039",
+     "checked_at": "2026-11-07T18:26:16+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/115187/plan12845039",
+   "verified_at": "2026-11-07T18:26:16+09:00",
+   "evidence_quote": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日） 税サ込 9,300円"
+  },
+  {
+   "queue_id": "priority-010",
+   "priority_id": "priority-010",
+   "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102990/plan12850481"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102990/plan12850481",
+     "checked_at": "2026-11-07T18:26:19+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102990/plan12850481",
+   "verified_at": "2026-11-07T18:26:19+09:00",
+   "evidence_quote": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制） 8,500円 税サ込 6,300円"
+  },
+  {
+   "queue_id": "priority-011",
+   "priority_id": "priority-011",
+   "name": "HAMACHO HOTEL / SESSiON（1F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/112036/plan12822858"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/112036/plan12822858",
+     "checked_at": "2026-11-07T18:26:22+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/112036/plan12822858",
+   "verified_at": "2026-11-07T18:26:22+09:00",
+   "evidence_quote": "【土日祝/数量限定】SESSiONアフタヌーンティープラン 税サ込 5,500円"
+  },
+  {
+   "queue_id": "priority-012",
+   "priority_id": "priority-012",
+   "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/115189/plan12835763"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115189/plan12835763",
+     "checked_at": "2026-11-07T18:26:24+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/115189/plan12835763",
+   "verified_at": "2026-11-07T18:26:24+09:00",
+   "evidence_quote": "フェスティブアフタヌーンティー （11/16～）（平日限定） 税サ込 9,800円"
+  },
+  {
+   "queue_id": "priority-013",
+   "priority_id": "priority-013",
+   "name": "東京ステーションホテル / ロビーラウンジ",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102900/plan12787122"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102900/plan12787122",
+     "checked_at": "2026-11-07T18:26:27+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102900/plan12787122",
+   "verified_at": "2026-11-07T18:26:27+09:00",
+   "evidence_quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定） 税サ込 7,900円"
+  },
+  {
+   "queue_id": "priority-014",
+   "priority_id": "priority-014",
+   "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102901/plan12854246"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102901/plan12854246",
+     "checked_at": "2026-11-07T18:26:30+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102901/plan12854246",
+   "verified_at": "2026-11-07T18:26:30+09:00",
+   "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円"
+  },
+  {
+   "queue_id": "priority-015",
+   "priority_id": "priority-015",
+   "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102902/plan12857218"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102902/plan12857218",
+     "checked_at": "2026-11-07T18:26:33+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102902/plan12857218",
+   "verified_at": "2026-11-07T18:26:33+09:00",
+   "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円"
+  },
+  {
+   "queue_id": "priority-016",
+   "priority_id": "priority-016",
+   "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101099/plan12875698"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101099/plan12875698",
+     "checked_at": "2026-11-07T18:26:36+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101099/plan12875698",
+   "verified_at": "2026-11-07T18:26:36+09:00",
+   "evidence_quote": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17） 11,385円 税サ込 9,108円"
+  },
+  {
+   "queue_id": "priority-017",
+   "priority_id": "priority-017",
+   "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100707/plan12791492"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100707/plan12791492",
+     "checked_at": "2026-11-07T18:26:39+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100707/plan12791492",
+   "verified_at": "2026-11-07T18:26:39+09:00",
+   "evidence_quote": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30） 税サ込 9,867円"
+  },
+  {
+   "queue_id": "priority-018",
+   "priority_id": "priority-018",
+   "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
+   ],
+   "attempts": [
+    {
+     "url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
+     "checked_at": "2026-11-07T18:32:12+09:00",
+     "result": "取得・プラン確認",
+     "reason": "公開ページ本文を確認。日時人数選択・予約操作なし"
+    }
+   ],
+   "reason": "TableCheckの公開店舗ページで、プラン名・料金・（記載があれば）提供期間を根拠付きで確認（予約操作なし）。",
+   "retry": false,
+   "evidence_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
+   "verified_at": "2026-11-07T18:32:12+09:00",
+   "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
+  },
+  {
+   "queue_id": "priority-019",
+   "priority_id": "priority-019",
+   "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/105756/plan12854308"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/105756/plan12854308",
+     "checked_at": "2026-11-07T18:26:42+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/105756/plan12854308",
+   "verified_at": "2026-11-07T18:26:42+09:00",
+   "evidence_quote": "クリスマス アフタヌーンティー 2026 11.16～12.18 税サ込 13,000円"
+  },
+  {
+   "queue_id": "priority-020",
+   "priority_id": "priority-020",
+   "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106795/plan12250640"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106795/plan12250640",
+     "checked_at": "2026-11-07T18:26:45+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106795/plan12250640",
+   "verified_at": "2026-11-07T18:26:45+09:00",
+   "evidence_quote": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30） 税サ込 10,350円"
+  },
+  {
+   "queue_id": "priority-021",
+   "priority_id": "priority-021",
+   "name": "ブルガリ ホテル 東京 / ブルガリ ラウンジ（40F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/145203/plan12877502"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/145203/plan12877502",
+     "checked_at": "2026-11-07T18:26:48+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プラン名「キャンセル料のみカード決済」にATの明記なし（メニュー本文のみ）。AT該当の確認不足のため掲載しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-001",
+   "priority_id": "priority-001",
+   "name": "cafe VAVA",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/112520/plan12815171"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/112520/plan12815171",
+     "checked_at": "2026-11-07T18:26:50+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/112520/plan12815171",
+   "verified_at": "2026-11-07T18:26:50+09:00",
+   "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950円"
+  },
+  {
+   "queue_id": "master-003",
+   "name": "レゾナンス（東京ビルTOKIA 2F）",
+   "area": "丸の内・日本橋",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-023",
+   "priority_id": "priority-023",
+   "name": "REIKASAI GINZA（ポーラ銀座ビル 9F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/107848"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/107848",
+     "checked_at": "2026-11-07T18:33:28+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-024",
+   "priority_id": "priority-024",
+   "name": "ボン ボヌール（銀座三越 4F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/112712"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/112712",
+     "checked_at": "2026-11-07T18:33:30+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-025",
+   "priority_id": "priority-025",
+   "name": "ザ・グラン ラウンジ（GINZA SIX 13F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/107408"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/107408",
+     "checked_at": "2026-11-07T18:33:32+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-026",
+   "priority_id": "priority-026",
+   "name": "HIGASHIYA GINZA（ポーラ銀座ビル 2F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/102169"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102169",
+     "checked_at": "2026-11-07T18:33:35+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-027",
+   "priority_id": "priority-027",
+   "name": "LOUANGE TOKYO Le Musée",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/120986"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/120986",
+     "checked_at": "2026-11-07T18:33:37+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-028",
+   "priority_id": "priority-028",
+   "name": "ル サロン ド ニナス 日比谷",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/121277"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/121277",
+     "checked_at": "2026-11-07T18:33:39+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-029",
+   "priority_id": "priority-029",
+   "name": "dunhill BAR",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/110448"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110448",
+     "checked_at": "2026-11-07T18:33:41+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-030",
+   "priority_id": "priority-030",
+   "name": "BVLGARI GINZA CAFE（ブルガリ ギンザ カフェ）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/146478"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/146478",
+     "checked_at": "2026-11-07T18:33:44+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-031",
+   "priority_id": "priority-031",
+   "name": "Tea Bloomy 銀座",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/147847"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/147847",
+     "checked_at": "2026-11-07T18:33:46+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-032",
+   "priority_id": "priority-032",
+   "name": "NOTES BY YAMAHA",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/155386"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/155386",
+     "checked_at": "2026-11-07T18:33:48+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-033",
+   "priority_id": "priority-033",
+   "name": "GINZA CAFE",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/120875"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/120875",
+     "checked_at": "2026-11-07T18:33:50+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-034",
+   "priority_id": "priority-034",
+   "name": "CAFe&BAR STROPSe",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/148825"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/148825",
+     "checked_at": "2026-11-07T18:33:53+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-035",
+   "priority_id": "priority-035",
+   "name": "DRAWING HOUSE OF HIBIYA（東京ミッドタウン日比谷 6F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/109953"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/109953",
+     "checked_at": "2026-11-07T18:33:55+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-036",
+   "priority_id": "priority-036",
+   "name": "tcc GINZA",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/106638"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106638",
+     "checked_at": "2026-11-07T18:33:57+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-037",
+   "priority_id": "priority-037",
+   "name": "Brasserie ニーケ",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/151317"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/151317",
+     "checked_at": "2026-11-07T18:34:00+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-038",
+   "priority_id": "priority-038",
+   "name": "ハイアット セントリック 銀座 東京 / NAMIKI667（3F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/109114"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/109114",
+     "checked_at": "2026-11-07T18:34:02+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-039",
+   "priority_id": "priority-039",
+   "name": "東京エディション銀座 / Sophie at EDITION",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/123411"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/123411",
+     "checked_at": "2026-11-07T18:34:04+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-040",
+   "priority_id": "priority-040",
+   "name": "コートヤード・マリオット銀座東武ホテル / RISTASIX",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/122628"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/122628",
+     "checked_at": "2026-11-07T18:34:07+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-041",
+   "priority_id": "priority-041",
+   "name": "帝国ホテル 東京 / ランデブーラウンジ",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/117183"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/117183",
+     "checked_at": "2026-11-07T18:34:09+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-042",
+   "priority_id": "priority-042",
+   "name": "ザ・ペニンシュラ東京 / ザ・ロビー",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/100543"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100543",
+     "checked_at": "2026-11-07T18:34:11+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-043",
+   "priority_id": "priority-043",
+   "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/101456"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101456",
+     "checked_at": "2026-11-07T18:34:13+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-022",
+   "priority_id": "priority-022",
+   "name": "GINZA TENSHODO CAFE（天賞堂カフェ）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/155237"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/155237",
+     "checked_at": "2026-11-07T18:34:16+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-013",
+   "name": "ロイヤルクリスタルカフェ 銀座店（B1F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-019",
+   "name": "アルマーニ リストランテ（アルマーニ銀座タワー 10F）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-021",
+   "name": "ミレニアム 三井ガーデンホテル 東京 B1F（現代里山料理 ZEN HOUSE）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-023",
+   "name": "三井ガーデンホテル銀座プレミア 16F（RISTORANTE E'VOLTA il cielo）",
+   "area": "銀座・有楽町・日比谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-045",
+   "priority_id": "priority-045",
+   "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103334/plan12844256"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103334/plan12844256",
+     "checked_at": "2026-11-07T18:27:44+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103334/plan12844256",
+   "verified_at": "2026-11-07T18:27:44+09:00",
+   "evidence_quote": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間） 税サ込 9,200円"
+  },
+  {
+   "queue_id": "priority-046",
+   "priority_id": "priority-046",
+   "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101762/plan12844646"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101762/plan12844646",
+     "checked_at": "2026-11-07T18:27:48+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101762/plan12844646",
+   "verified_at": "2026-11-07T18:27:48+09:00",
+   "evidence_quote": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月） 税サ込 12,650円"
+  },
+  {
+   "queue_id": "priority-047",
+   "priority_id": "priority-047",
+   "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102281/plan12794313"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102281/plan12794313",
+     "checked_at": "2026-11-07T18:27:50+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102281/plan12794313",
+   "verified_at": "2026-11-07T18:27:50+09:00",
+   "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
+  },
+  {
+   "queue_id": "priority-048",
+   "priority_id": "priority-048",
+   "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/114993/plan12793685"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/114993/plan12793685",
+     "checked_at": "2026-11-07T18:27:54+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/114993/plan12793685",
+   "verified_at": "2026-11-07T18:27:54+09:00",
+   "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円"
+  },
+  {
+   "queue_id": "priority-049",
+   "priority_id": "priority-049",
+   "name": "コンラッド東京 / トゥエンティエイト（28F）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100854/plan12805497"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100854/plan12805497",
+     "checked_at": "2026-11-07T18:27:57+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100854/plan12805497",
+   "verified_at": "2026-11-07T18:27:57+09:00",
+   "evidence_quote": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日） 8,500円 税サ込 6,800円"
+  },
+  {
+   "queue_id": "priority-050",
+   "priority_id": "priority-050",
+   "name": "フェアモント東京 / Vue Mer（ビュメール）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/146488/plan12856413"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/146488/plan12856413",
+     "checked_at": "2026-11-07T18:28:00+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/146488/plan12856413",
+   "verified_at": "2026-11-07T18:28:00+09:00",
+   "evidence_quote": "【Xmas 2026】クリスマス アフタヌーンティー（平日） 税サ込 9,700円"
+  },
+  {
+   "queue_id": "priority-051",
+   "priority_id": "priority-051",
+   "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100352/plan12878493"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100352/plan12878493",
+     "checked_at": "2026-11-07T18:28:04+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100352/plan12878493",
+   "verified_at": "2026-11-07T18:28:04+09:00",
+   "evidence_quote": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR） 12,700円 税サ込 7,000円"
+  },
+  {
+   "queue_id": "priority-052",
+   "priority_id": "priority-052",
+   "name": "ホテル ザ セレスティン 東京芝 / Cafe&Bar Lounge Celecroix（1F）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/108677/plan12879632"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/108677/plan12879632",
+     "checked_at": "2026-11-07T18:28:07+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プランページを取得したがプラン名「飲み放題」はATと判断できる根拠が不足。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-053",
+   "priority_id": "priority-053",
+   "name": "第一ホテル東京 / ロビーラウンジ",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/116751/plan12845493"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/116751/plan12845493",
+     "checked_at": "2026-11-07T18:28:10+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/116751/plan12845493",
+   "verified_at": "2026-11-07T18:28:10+09:00",
+   "evidence_quote": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前） 税サ込 7,500円"
+  },
+  {
+   "queue_id": "priority-054",
+   "priority_id": "priority-054",
+   "name": "芝パークホテル / ザ ダイニング",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/116186/plan11960212"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/116186/plan11960212",
+     "checked_at": "2026-11-07T18:28:13+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/116186/plan11960212",
+   "verified_at": "2026-11-07T18:28:13+09:00",
+   "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円"
+  },
+  {
+   "queue_id": "priority-055",
+   "priority_id": "priority-055",
+   "name": "パークホテル東京 / アートカラーズダイニング",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101111/plan12808461"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101111/plan12808461",
+     "checked_at": "2026-11-07T18:28:16+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101111/plan12808461",
+   "verified_at": "2026-11-07T18:28:16+09:00",
+   "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-056",
+   "priority_id": "priority-056",
+   "name": "メズム東京、オートグラフ コレクション / ウィスク",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/119094/plan12819792"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/119094/plan12819792",
+     "checked_at": "2026-11-07T18:28:19+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/119094/plan12819792",
+   "verified_at": "2026-11-07T18:28:19+09:00",
+   "evidence_quote": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日） 7,000円 税サ込 5,600円"
+  },
+  {
+   "queue_id": "priority-057",
+   "priority_id": "priority-057",
+   "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/151824/plan12826471"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/151824/plan12826471",
+     "checked_at": "2026-11-07T18:28:22+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/151824/plan12826471",
+   "verified_at": "2026-11-07T18:28:22+09:00",
+   "evidence_quote": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー 税サ込 3,850円"
+  },
+  {
+   "queue_id": "priority-058",
+   "priority_id": "priority-058",
+   "name": "東京プリンスホテル / ティーサロン ピカケ",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/109387/plan12893769"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/109387/plan12893769",
+     "checked_at": "2026-11-07T18:28:25+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/109387/plan12893769",
+   "verified_at": "2026-11-07T18:28:25+09:00",
+   "evidence_quote": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分） 税サ込 7,684円"
+  },
+  {
+   "queue_id": "priority-044",
+   "priority_id": "priority-044",
+   "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+   "area": "新橋・汐留・浜松町",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve"
+   ],
+   "attempts": [
+    {
+     "url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+     "checked_at": "2026-11-07T18:32:18+09:00",
+     "result": "取得・プラン確認",
+     "reason": "公開ページ本文を確認。日時人数選択・予約操作なし"
+    }
+   ],
+   "reason": "TableCheckの公開店舗ページで、プラン名・料金・（記載があれば）提供期間を根拠付きで確認（予約操作なし）。",
+   "retry": false,
+   "evidence_url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+   "verified_at": "2026-11-07T18:32:18+09:00",
+   "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)"
+  },
+  {
+   "queue_id": "priority-059",
+   "priority_id": "priority-059",
+   "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/151564/plan12874283"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/151564/plan12874283",
+     "checked_at": "2026-11-07T18:28:28+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/151564/plan12874283",
+   "verified_at": "2026-11-07T18:28:28+09:00",
+   "evidence_quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定 4,800円 税サ込 3,840円"
+  },
+  {
+   "queue_id": "priority-061",
+   "priority_id": "priority-061",
+   "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106680/plan11947457"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106680/plan11947457",
+     "checked_at": "2026-11-07T18:28:32+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106680/plan11947457",
+   "verified_at": "2026-11-07T18:28:32+09:00",
+   "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円"
+  },
+  {
+   "queue_id": "priority-062",
+   "priority_id": "priority-062",
+   "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106681/plan12867603"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106681/plan12867603",
+     "checked_at": "2026-11-07T18:28:35+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106681/plan12867603",
+   "verified_at": "2026-11-07T18:28:35+09:00",
+   "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円"
+  },
+  {
+   "queue_id": "priority-063",
+   "priority_id": "priority-063",
+   "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103485/plan12829832"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103485/plan12829832",
+     "checked_at": "2026-11-07T18:28:38+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103485/plan12829832",
+   "verified_at": "2026-11-07T18:28:38+09:00",
+   "evidence_quote": "栗と抹茶のアフタヌーンティー（ 平日限定） 税サ込 8,970円"
+  },
+  {
+   "queue_id": "priority-064",
+   "priority_id": "priority-064",
+   "name": "アンダーズ 東京 / ペストリーショップ（1F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/123366/plan12533202"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/123366/plan12533202",
+     "checked_at": "2026-11-07T18:28:41+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/123366/plan12533202",
+   "verified_at": "2026-11-07T18:28:41+09:00",
+   "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円"
+  },
+  {
+   "queue_id": "priority-065",
+   "priority_id": "priority-065",
+   "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/105131/plan12861297"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/105131/plan12861297",
+     "checked_at": "2026-11-07T18:28:44+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/105131/plan12861297",
+   "verified_at": "2026-11-07T18:28:44+09:00",
+   "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 9,000円"
+  },
+  {
+   "queue_id": "priority-066",
+   "priority_id": "priority-066",
+   "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/122872/plan12874649"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/122872/plan12874649",
+     "checked_at": "2026-11-07T18:28:47+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/122872/plan12874649",
+   "verified_at": "2026-11-07T18:28:47+09:00",
+   "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 8,500円"
+  },
+  {
+   "queue_id": "priority-067",
+   "priority_id": "priority-067",
+   "name": "オークラ東京 / バーラウンジ スターライト",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/113419/plan12865828"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/113419/plan12865828",
+     "checked_at": "2026-11-07T18:28:50+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/113419/plan12865828",
+   "verified_at": "2026-11-07T18:28:50+09:00",
+   "evidence_quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円"
+  },
+  {
+   "queue_id": "priority-068",
+   "priority_id": "priority-068",
+   "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/152275/plan12805394"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/152275/plan12805394",
+     "checked_at": "2026-11-07T18:28:54+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/152275/plan12805394",
+   "verified_at": "2026-11-07T18:28:54+09:00",
+   "evidence_quote": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日） 6,900円 税サ込 5,865円"
+  },
+  {
+   "queue_id": "priority-069",
+   "priority_id": "priority-069",
+   "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge"
+   ],
+   "attempts": [
+    {
+     "url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
+     "checked_at": "2026-11-07T18:32:24+09:00",
+     "result": "取得・プラン確認",
+     "reason": "公開ページ本文を確認。日時人数選択・予約操作なし"
+    }
+   ],
+   "reason": "TableCheckの公開店舗ページで、プラン名・料金・（記載があれば）提供期間を根拠付きで確認（予約操作なし）。",
+   "retry": false,
+   "evidence_url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
+   "verified_at": "2026-11-07T18:32:24+09:00",
+   "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込"
+  },
+  {
+   "queue_id": "priority-070",
+   "priority_id": "priority-070",
+   "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/115758/plan12817748"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115758/plan12817748",
+     "checked_at": "2026-11-07T18:28:57+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/115758/plan12817748",
+   "verified_at": "2026-11-07T18:28:57+09:00",
+   "evidence_quote": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席 税サ込 8,800円"
+  },
+  {
+   "queue_id": "priority-candidate-01",
+   "priority_id": "priority-candidate-01",
+   "name": "RITUEL 虎ノ門（RITUEL Brasserie & Cafe 虎ノ門）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/123927"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/123927",
+     "checked_at": "2026-11-07T18:34:18+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-060",
+   "priority_id": "priority-060",
+   "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+   "area": "赤坂・永田町・虎ノ門",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106682/plan12867585"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106682/plan12867585",
+     "checked_at": "2026-11-07T18:29:02+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106682/plan12867585",
+   "verified_at": "2026-11-07T18:29:02+09:00",
+   "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円"
+  },
+  {
+   "queue_id": "priority-071",
+   "priority_id": "priority-071",
+   "name": "グランド ハイアット 東京 / フィオレンティーナ",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/100433/plan12807839"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100433/plan12807839",
+     "checked_at": "2026-11-07T18:29:06+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プランページを取得したがプラン名「栗や洋梨、かぼちゃ、シャインマスカットなど秋の味覚13品＆カフェフリー（土日祝・」はATと判断できる根拠が不足。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-072",
+   "priority_id": "priority-072",
+   "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102168/plan12861883"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102168/plan12861883",
+     "checked_at": "2026-11-07T18:29:09+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102168/plan12861883",
+   "verified_at": "2026-11-07T18:29:09+09:00",
+   "evidence_quote": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日） 税サ込 4,800円"
+  },
+  {
+   "queue_id": "priority-074",
+   "priority_id": "priority-074",
+   "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100485/plan12809200"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100485/plan12809200",
+     "checked_at": "2026-11-07T18:29:12+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100485/plan12809200",
+   "verified_at": "2026-11-07T18:29:12+09:00",
+   "evidence_quote": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定） 税サ込 8,000円"
+  },
+  {
+   "queue_id": "priority-candidate-03",
+   "priority_id": "priority-candidate-03",
+   "name": "Orby Restaurant",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/145150"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/145150",
+     "checked_at": "2026-11-07T18:34:20+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-073",
+   "priority_id": "priority-073",
+   "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/125030/plan12830252"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/125030/plan12830252",
+     "checked_at": "2026-11-07T18:29:17+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/125030/plan12830252",
+   "verified_at": "2026-11-07T18:29:17+09:00",
+   "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800円"
+  },
+  {
+   "queue_id": "master-033",
+   "name": "Restaurant THE MOON",
+   "area": "六本木・麻布・広尾",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-075",
+   "priority_id": "priority-075",
+   "name": "OPERA（東京オペラシティ54F）",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/139315/plan12805547"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/139315/plan12805547",
+     "checked_at": "2026-11-07T18:34:23+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "プランページのタイトルにプラン名はあるが料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-076",
+   "priority_id": "priority-076",
+   "name": "ル サロン ド ニナス 小田急百貨店新宿",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/109753/plan12750169"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/109753/plan12750169",
+     "checked_at": "2026-11-07T18:29:24+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/109753/plan12750169",
+   "verified_at": "2026-11-07T18:29:24+09:00",
+   "evidence_quote": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット 税サ込 3,300円"
+  },
+  {
+   "queue_id": "priority-078",
+   "priority_id": "priority-078",
+   "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103985/plan12797665"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103985/plan12797665",
+     "checked_at": "2026-11-07T18:29:27+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103985/plan12797665",
+   "verified_at": "2026-11-07T18:29:27+09:00",
+   "evidence_quote": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」 税サ込 5,900円"
+  },
+  {
+   "queue_id": "priority-079",
+   "priority_id": "priority-079",
+   "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/115611/plan12880133"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115611/plan12880133",
+     "checked_at": "2026-11-07T18:29:29+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/115611/plan12880133",
+   "verified_at": "2026-11-07T18:29:29+09:00",
+   "evidence_quote": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割） 8,050円 税サ込 6,440円"
+  },
+  {
+   "queue_id": "priority-080",
+   "priority_id": "priority-080",
+   "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103085/plan12829652"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103085/plan12829652",
+     "checked_at": "2026-11-07T18:29:32+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103085/plan12829652",
+   "verified_at": "2026-11-07T18:29:32+09:00",
+   "evidence_quote": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定） 税サ込 6,900円"
+  },
+  {
+   "queue_id": "priority-081",
+   "priority_id": "priority-081",
+   "name": "京王プラザホテル / オールデイダイニング 樹林",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101733/plan12813470"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101733/plan12813470",
+     "checked_at": "2026-11-07T18:29:36+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101733/plan12813470",
+   "verified_at": "2026-11-07T18:29:36+09:00",
+   "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円"
+  },
+  {
+   "queue_id": "priority-082",
+   "priority_id": "priority-082",
+   "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/121396/plan12791558"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/121396/plan12791558",
+     "checked_at": "2026-11-07T18:29:39+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/121396/plan12791558",
+   "verified_at": "2026-11-07T18:29:39+09:00",
+   "evidence_quote": "【9/5～ 土日祝日限定】オータムアフターヌーンティー 税サ込 8,200円"
+  },
+  {
+   "queue_id": "priority-083",
+   "priority_id": "priority-083",
+   "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/147317/plan12827569"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/147317/plan12827569",
+     "checked_at": "2026-11-07T18:29:42+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/147317/plan12827569",
+   "verified_at": "2026-11-07T18:29:42+09:00",
+   "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円"
+  },
+  {
+   "queue_id": "priority-084",
+   "priority_id": "priority-084",
+   "name": "ヒルトン東京 / メトロポリタングリル",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103989/plan12800314"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103989/plan12800314",
+     "checked_at": "2026-11-07T18:29:45+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103989/plan12800314",
+   "verified_at": "2026-11-07T18:29:45+09:00",
+   "evidence_quote": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー 税サ込 7,800円"
+  },
+  {
+   "queue_id": "priority-085",
+   "priority_id": "priority-085",
+   "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/147880/plan12810808"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/147880/plan12810808",
+     "checked_at": "2026-11-07T18:29:48+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/147880/plan12810808",
+   "verified_at": "2026-11-07T18:29:48+09:00",
+   "evidence_quote": "オータム アフタヌーンティー（3時間制 ／9月28日～） 11,385円 税サ込 9,867円"
+  },
+  {
+   "queue_id": "priority-candidate-02",
+   "priority_id": "priority-candidate-02",
+   "name": "アプローズスクエア東京迎賓館",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/105535"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/105535",
+     "checked_at": "2026-11-07T18:34:25+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-077",
+   "priority_id": "priority-077",
+   "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/103306/plan12792401"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103306/plan12792401",
+     "checked_at": "2026-11-07T18:29:53+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/103306/plan12792401",
+   "verified_at": "2026-11-07T18:29:53+09:00",
+   "evidence_quote": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝） 税サ込 6,000円"
+  },
+  {
+   "queue_id": "master-037",
+   "name": "新宿プリンスホテル 25F（和風ダイニング＆バー FUGA）",
+   "area": "新宿・代々木",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-087",
+   "priority_id": "priority-087",
+   "name": "BLACK TERRACE",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/110056/plan12824068"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110056/plan12824068",
+     "checked_at": "2026-11-07T18:29:56+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/110056/plan12824068",
+   "verified_at": "2026-11-07T18:29:56+09:00",
+   "evidence_quote": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店） 税サ込 5,500円"
+  },
+  {
+   "queue_id": "priority-088",
+   "priority_id": "priority-088",
+   "name": "LA COCORICO 渋谷",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106388/plan12793689"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106388/plan12793689",
+     "checked_at": "2026-11-07T18:29:59+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106388/plan12793689",
+   "verified_at": "2026-11-07T18:29:59+09:00",
+   "evidence_quote": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄） 2,980円 税サ込 2,384円"
+  },
+  {
+   "queue_id": "priority-089",
+   "priority_id": "priority-089",
+   "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/107718/plan12255764"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/107718/plan12255764",
+     "checked_at": "2026-11-07T18:30:02+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/107718/plan12255764",
+   "verified_at": "2026-11-07T18:30:02+09:00",
+   "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-090",
+   "priority_id": "priority-090",
+   "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101738/plan12685902"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101738/plan12685902",
+     "checked_at": "2026-11-07T18:30:05+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101738/plan12685902",
+   "verified_at": "2026-11-07T18:30:05+09:00",
+   "evidence_quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制 税サ込 8,000円"
+  },
+  {
+   "queue_id": "priority-091",
+   "priority_id": "priority-091",
+   "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/115887/plan12652208"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115887/plan12652208",
+     "checked_at": "2026-11-07T18:30:08+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/115887/plan12652208",
+   "verified_at": "2026-11-07T18:30:08+09:00",
+   "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円"
+  },
+  {
+   "queue_id": "priority-092",
+   "priority_id": "priority-092",
+   "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/110458/plan12861712"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110458/plan12861712",
+     "checked_at": "2026-11-07T18:30:11+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/110458/plan12861712",
+   "verified_at": "2026-11-07T18:30:11+09:00",
+   "evidence_quote": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制） 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-086",
+   "priority_id": "priority-086",
+   "name": "ザ・レギャン・トーキョー",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/100272/plan12814237"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/100272/plan12814237",
+     "checked_at": "2026-11-07T18:30:14+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/100272/plan12814237",
+   "verified_at": "2026-11-07T18:30:14+09:00",
+   "evidence_quote": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー 税サ込 4,800円"
+  },
+  {
+   "queue_id": "master-039",
+   "name": "Legato（E・スペースタワー 15F）",
+   "area": "渋谷・代々木公園",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-094",
+   "priority_id": "priority-094",
+   "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/110765/plan12817990"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110765/plan12817990",
+     "checked_at": "2026-11-07T18:30:17+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/110765/plan12817990",
+   "verified_at": "2026-11-07T18:30:17+09:00",
+   "evidence_quote": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30） 税サ込 5,500円"
+  },
+  {
+   "queue_id": "priority-095",
+   "priority_id": "priority-095",
+   "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/117546/plan12844393"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/117546/plan12844393",
+     "checked_at": "2026-11-07T18:30:20+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/117546/plan12844393",
+   "verified_at": "2026-11-07T18:30:20+09:00",
+   "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定） 税サ込 6,800円"
+  },
+  {
+   "queue_id": "priority-096",
+   "priority_id": "priority-096",
+   "name": "HAUTE COUTURE CAFE OMOTESANDO",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1306/A130602/13285588/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+     "checked_at": "2026-11-07T18:32:27+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-097",
+   "priority_id": "priority-097",
+   "name": "St.GRACE Lounge & Dining",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/105173/plan12868701"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/105173/plan12868701",
+     "checked_at": "2026-11-07T18:30:24+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/105173/plan12868701",
+   "verified_at": "2026-11-07T18:30:24+09:00",
+   "evidence_quote": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日） 税サ込 5,900円"
+  },
+  {
+   "queue_id": "priority-098",
+   "priority_id": "priority-098",
+   "name": "アニヴェルセルカフェ 表参道",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/121853/plan12839132"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/121853/plan12839132",
+     "checked_at": "2026-11-07T18:30:26+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/121853/plan12839132",
+   "verified_at": "2026-11-07T18:30:26+09:00",
+   "evidence_quote": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店） 税サ込 6,900円"
+  },
+  {
+   "queue_id": "priority-099",
+   "priority_id": "priority-099",
+   "name": "茶洒 金田中",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/102572/plan12631502"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/102572/plan12631502",
+     "checked_at": "2026-11-07T18:30:30+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/102572/plan12631502",
+   "verified_at": "2026-11-07T18:30:30+09:00",
+   "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円"
+  },
+  {
+   "queue_id": "priority-100",
+   "priority_id": "priority-100",
+   "name": "BRASSERIE CAFE LE CONTE",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/113312/plan11876844"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/113312/plan11876844",
+     "checked_at": "2026-11-07T18:30:32+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/113312/plan11876844",
+   "verified_at": "2026-11-07T18:30:32+09:00",
+   "evidence_quote": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー 税サ込 3,400円"
+  },
+  {
+   "queue_id": "priority-101",
+   "priority_id": "priority-101",
+   "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/153938/plan12888059"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/153938/plan12888059",
+     "checked_at": "2026-11-07T18:30:35+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/153938/plan12888059",
+   "verified_at": "2026-11-07T18:30:35+09:00",
+   "evidence_quote": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間） 税サ込 8,500円"
+  },
+  {
+   "queue_id": "priority-102",
+   "priority_id": "priority-102",
+   "name": "ARMANI / CAFFE 表参道",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/125128/plan12302624"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/125128/plan12302624",
+     "checked_at": "2026-11-07T18:30:38+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/125128/plan12302624",
+   "verified_at": "2026-11-07T18:30:38+09:00",
+   "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-103",
+   "priority_id": "priority-103",
+   "name": "The Burn",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/111035/plan12820092"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/111035/plan12820092",
+     "checked_at": "2026-11-07T18:30:41+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プランページを取得したがプラン名「飲み放題」はATと判断できる根拠が不足。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-104",
+   "priority_id": "priority-104",
+   "name": "THE AOYAMA GRAND HOTEL / TOKYO AFTERNOON TEA",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/115154/plan11363502/"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/115154/plan11363502/",
+     "checked_at": "2026-11-07T18:34:28+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "プランページのタイトルにプラン名はあるが料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-04",
+   "priority_id": "priority-candidate-04",
+   "name": "資生堂パーラー ザ・ハラジュク",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/116898"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/116898",
+     "checked_at": "2026-11-07T18:34:30+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-05",
+   "priority_id": "priority-candidate-05",
+   "name": "コロンバン 原宿サロン",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1303/A130301/13297982/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1303/A130301/13297982/",
+     "checked_at": "2026-11-07T18:32:30+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-06",
+   "priority_id": "priority-candidate-06",
+   "name": "L2126",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/155628"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/155628",
+     "checked_at": "2026-11-07T18:34:33+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "店舗ページのみ取得でプラン・料金は本文に含まれず（JS描画）、料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-07",
+   "priority_id": "priority-candidate-07",
+   "name": "CAFE THE KNOT（カフェ ザ ノット）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "historical_urlがssl.tabelog.com（seed_policy=false）のため辿らず、食べログ正規検索も他の403により未実施。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-093",
+   "priority_id": "priority-093",
+   "name": "サロン ド テ ジャンナッツ",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1306/A130602/13141883/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+     "checked_at": "2026-11-07T18:32:33+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-045",
+   "name": "A to Z cafe（equboビル 5F）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-046",
+   "name": "カフェ＆ダイニング ゼルコヴァ（ザ ストリングス 表参道）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-047",
+   "name": "IL LUPINO PRIME（ののあおやま 2F）",
+   "area": "青山・表参道・原宿",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-106",
+   "priority_id": "priority-106",
+   "name": "ROTISSERIE★BLUE",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/108615/plan12771604"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/108615/plan12771604",
+     "checked_at": "2026-11-07T18:34:36+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "プランページのタイトルにプラン名はあるが料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-105",
+   "priority_id": "priority-105",
+   "name": "PAYSAGE 代官山本店",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/122745/plan12804614"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/122745/plan12804614",
+     "checked_at": "2026-11-07T18:30:55+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プラン名「PAYSAGE AFTERNOON TEA ー秋・Automneー」にATの明記なし（メニュー本文のみ）。AT該当の確認不足のため掲載しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-053",
+   "name": "カフェ アクイーユ 恵比寿店",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-055",
+   "name": "マディソン ニューヨーク キッチン",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-056",
+   "name": "336 ébisu（クーカイ・テラス 1F）",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-057",
+   "name": "ウェスティンホテル東京（ザ・ラウンジ）",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-candidate-01",
+   "name": "HAUTE COUTURE CAFE（中目黒・目黒川沿い）",
+   "area": "恵比寿・代官山・中目黒",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-108",
+   "priority_id": "priority-108",
+   "name": "東京マリオットホテル / Lounge & Dining G",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/103135/plan12786141"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/103135/plan12786141",
+     "checked_at": "2026-11-07T18:34:39+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "プランページのタイトルにプラン名はあるが料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-109",
+   "priority_id": "priority-109",
+   "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/106908/plan12847292"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106908/plan12847292",
+     "checked_at": "2026-11-07T18:31:01+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/106908/plan12847292",
+   "verified_at": "2026-11-07T18:31:01+09:00",
+   "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
+  },
+  {
+   "queue_id": "priority-110",
+   "priority_id": "priority-110",
+   "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/113851/plan12847981"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/113851/plan12847981",
+     "checked_at": "2026-11-07T18:31:04+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/113851/plan12847981",
+   "verified_at": "2026-11-07T18:31:04+09:00",
+   "evidence_quote": "クリスマス アフタヌーンティー（11/1～12/28）（平日） 8,096円 税サ込 6,500円"
+  },
+  {
+   "queue_id": "priority-111",
+   "priority_id": "priority-111",
+   "name": "JWマリオット・ホテル東京 / JWラウンジ",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/149035/plan12825529"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/149035/plan12825529",
+     "checked_at": "2026-11-07T18:31:07+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/149035/plan12825529",
+   "verified_at": "2026-11-07T18:31:07+09:00",
+   "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円"
+  },
+  {
+   "queue_id": "priority-candidate-08",
+   "priority_id": "priority-candidate-08",
+   "name": "グランドプリンスホテル高輪 ラウンジ 光明",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/107385/plan12420483"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/107385/plan12420483",
+     "checked_at": "2026-11-07T18:31:10+09:00",
+     "result": "取得(200)",
+     "reason": "プラン名からAT該当を確認できず"
+    }
+   ],
+   "reason": "プランページを取得したがプラン名「【彩雅～Saika～】和洋スイーツセット＋カフェ1杯」はATと判断できる根拠が不足。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-107",
+   "priority_id": "priority-107",
+   "name": "グランドプリンスホテル新高輪 / Lounge Momiji",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "information_insufficient",
+   "sources": [
+    "https://restaurant.ikyu.com/106767/plan12803588"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/106767/plan12803588",
+     "checked_at": "2026-11-07T18:34:43+09:00",
+     "result": "取得(200)・プラン詳細なし",
+     "reason": "本文取得。AT掲載条件の根拠不足"
+    }
+   ],
+   "reason": "プランページのタイトルにプラン名はあるが料金・提供期間・メニューの根拠原文を取得できず掲載判断不可。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-061",
+   "name": "THE Tender HOUSE DINING",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-062",
+   "name": "ALL DAY DINING FUDO",
+   "area": "品川・田町・五反田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-113",
+   "priority_id": "priority-113",
+   "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/151232/plan12798243"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/151232/plan12798243",
+     "checked_at": "2026-11-07T18:31:16+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/151232/plan12798243",
+   "verified_at": "2026-11-07T18:31:16+09:00",
+   "evidence_quote": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可） 税サ込 8,000円"
+  },
+  {
+   "queue_id": "priority-114",
+   "priority_id": "priority-114",
+   "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/110552/plan12838920"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/110552/plan12838920",
+     "checked_at": "2026-11-07T18:31:18+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/110552/plan12838920",
+   "verified_at": "2026-11-07T18:31:18+09:00",
+   "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円"
+  },
+  {
+   "queue_id": "priority-115",
+   "priority_id": "priority-115",
+   "name": "ホテルイースト21東京 / ロビーラウンジ",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/117061/plan12855775"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/117061/plan12855775",
+     "checked_at": "2026-11-07T18:31:22+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/117061/plan12855775",
+   "verified_at": "2026-11-07T18:31:22+09:00",
+   "evidence_quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制） 税サ込 6,000円"
+  },
+  {
+   "queue_id": "priority-candidate-09",
+   "priority_id": "priority-candidate-09",
+   "name": "ラ ココリコ 上野本店",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1311/A131101/13123339/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1311/A131101/13123339/",
+     "checked_at": "2026-11-07T18:32:36+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-10",
+   "priority_id": "priority-candidate-10",
+   "name": "望水楼",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1311/A131101/13298837/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1311/A131101/13298837/",
+     "checked_at": "2026-11-07T18:32:39+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-11",
+   "priority_id": "priority-candidate-11",
+   "name": "上野 アクアリウムレストラン Nautilus",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1311/A131101/13267852/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1311/A131101/13267852/",
+     "checked_at": "2026-11-07T18:32:43+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-12",
+   "priority_id": "priority-candidate-12",
+   "name": "くくりひめ珈琲",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1311/A131102/13257967/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1311/A131102/13257967/",
+     "checked_at": "2026-11-07T18:32:46+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-13",
+   "priority_id": "priority-candidate-13",
+   "name": "THE LOUNGE（旧店名 ラウンジミモザ／浅草ビューホテル）",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1311/A131102/13127202/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1311/A131102/13127202/",
+     "checked_at": "2026-11-07T18:32:49+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-112",
+   "priority_id": "priority-112",
+   "name": "ラ・ラナリータ 吾妻橋店",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/108054/plan12187749"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/108054/plan12187749",
+     "checked_at": "2026-11-07T18:31:24+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/108054/plan12187749",
+   "verified_at": "2026-11-07T18:31:24+09:00",
+   "evidence_quote": "【アフタヌーンティーセット】 税サ込 5,800円"
+  },
+  {
+   "queue_id": "master-candidate-02",
+   "name": "Bistro NOHGA（NOHGA HOTEL）",
+   "area": "上野・浅草・押上",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-116",
+   "priority_id": "priority-116",
+   "name": "VMG CAFE 九段会館テラス",
+   "area": "水道橋・御茶ノ水・神田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/120847/plan12815369"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/120847/plan12815369",
+     "checked_at": "2026-11-07T18:31:27+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/120847/plan12815369",
+   "verified_at": "2026-11-07T18:31:27+09:00",
+   "evidence_quote": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月） 税サ込 4,950円"
+  },
+  {
+   "queue_id": "priority-118",
+   "priority_id": "priority-118",
+   "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
+   "area": "水道橋・御茶ノ水・神田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/105246/plan12798669"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/105246/plan12798669",
+     "checked_at": "2026-11-07T18:31:31+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/105246/plan12798669",
+   "verified_at": "2026-11-07T18:31:31+09:00",
+   "evidence_quote": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月） 税サ込 4,300円"
+  },
+  {
+   "queue_id": "priority-117",
+   "priority_id": "priority-117",
+   "name": "東京ドームホテル / アーティスト カフェ",
+   "area": "水道橋・御茶ノ水・神田",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://restaurant.ikyu.com/101056/plan12789046"
+   ],
+   "attempts": [
+    {
+     "url": "https://restaurant.ikyu.com/101056/plan12789046",
+     "checked_at": "2026-11-07T18:31:33+09:00",
+     "result": "取得・プラン確認",
+     "reason": "本文取得。プラン名・料金・期間表記を確認（予約操作なし）"
+    }
+   ],
+   "reason": "今回の公開ページで、プラン名・料金を根拠付きで確認。期間は各プランのstart/endを参照（未確認はnull）。",
+   "retry": false,
+   "evidence_url": "https://restaurant.ikyu.com/101056/plan12789046",
+   "verified_at": "2026-11-07T18:31:33+09:00",
+   "evidence_quote": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定） 6,300円 税サ込 5,700円"
+  },
+  {
+   "queue_id": "priority-119",
+   "priority_id": "priority-119",
+   "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+   "area": "飯田橋・神楽坂・四ツ谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://www.tablecheck.com/en/hotel-edmont-beltempo"
+   ],
+   "attempts": [
+    {
+     "url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
+     "checked_at": "2026-11-07T18:32:53+09:00",
+     "result": "取得・プラン確認",
+     "reason": "公開ページ本文を確認。日時人数選択・予約操作なし"
+    }
+   ],
+   "reason": "TableCheckの公開店舗ページで、プラン名・料金・（記載があれば）提供期間を根拠付きで確認（予約操作なし）。",
+   "retry": false,
+   "evidence_url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
+   "verified_at": "2026-11-07T18:32:53+09:00",
+   "evidence_quote": "Afternoon tea Set … ¥6,800 Svc & tax incl."
+  },
+  {
+   "queue_id": "master-066",
+   "name": "SOMBREUIL TOKYO",
+   "area": "飯田橋・神楽坂・四ツ谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "master-068",
+   "name": "リーガロイヤルホテル東京（ガーデンラウンジ）",
+   "area": "飯田橋・神楽坂・四ツ谷",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-candidate-14",
+   "priority_id": "priority-candidate-14",
+   "name": "RACINES Boulangerie & Bistro（ラシーヌ）",
+   "area": "池袋・目白",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "access_denied",
+   "sources": [
+    "https://tabelog.com/tokyo/A1305/A130501/13100821/"
+   ],
+   "attempts": [
+    {
+     "url": "https://tabelog.com/tokyo/A1305/A130501/13100821/",
+     "checked_at": "2026-11-07T18:32:56+09:00",
+     "result": "HTTP 403",
+     "reason": "匿名GETが拒否されたため中断・再試行/迂回なし"
+    }
+   ],
+   "reason": "食べログの公開ページが403で拒否された。回避せず中断。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "queue_id": "priority-120",
+   "priority_id": "priority-120",
+   "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+   "area": "池袋・目白",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "confirmed",
+   "sources": [
+    "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve"
+   ],
+   "attempts": [
+    {
+     "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+     "checked_at": "2026-11-07T18:33:01+09:00",
+     "result": "取得・プラン確認",
+     "reason": "公開ページ本文を確認。日時人数選択・予約操作なし"
+    }
+   ],
+   "reason": "TableCheckの公開店舗ページで、プラン名・料金・（記載があれば）提供期間を根拠付きで確認（予約操作なし）。",
+   "retry": false,
+   "evidence_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+   "verified_at": "2026-11-07T18:33:01+09:00",
+   "evidence_quote": "Christmas Afternoon Tea ¥ 7,800 (Svc excl. / tax incl.) Valid Dates Nov 01 ~ Jan 07, 2027"
+  },
+  {
+   "queue_id": "master-069",
+   "name": "ホテルメトロポリタン 25F（ダイニング＆バー オーヴェスト）",
+   "area": "池袋・目白",
+   "scope": "shop",
+   "run_id": "20261107T181846935314",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "status": "unresearched",
+   "sources": [],
+   "attempts": [],
+   "reason": "指定URLのないマスター追加分。今回は新規探索枠・時間の都合で未着手。AT提供なしを意味しない。",
+   "retry": true
+  },
+  {
+   "name": "丸の内・日本橋（エリア探索）",
+   "area": "丸の内・日本橋",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [
+    "https://restaurant.ikyu.com/s-tokyo/"
+   ],
+   "status": "unresearched",
+   "station": "東京、大手町、二重橋前、日本橋、三越前、京橋",
+   "reason": "対象駅: 東京、大手町、二重橋前、日本橋、三越前、京橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 試した入口: https://restaurant.ikyu.com/s-tokyo/ はランキングページ(200)でエリア別AT一覧が得られず探索に不使用。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "銀座・有楽町・日比谷（エリア探索）",
+   "area": "銀座・有楽町・日比谷",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "銀座、銀座一丁目、有楽町、日比谷、東銀座",
+   "reason": "対象駅: 銀座、銀座一丁目、有楽町、日比谷、東銀座。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "新橋・汐留・浜松町（エリア探索）",
+   "area": "新橋・汐留・浜松町",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "新橋、汐留、浜松町、大門、御成門、竹芝、芝公園",
+   "reason": "対象駅: 新橋、汐留、浜松町、大門、御成門、竹芝、芝公園。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "赤坂・永田町・虎ノ門（エリア探索）",
+   "area": "赤坂・永田町・虎ノ門",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "赤坂、赤坂見附、永田町、虎ノ門、虎ノ門ヒルズ、溜池山王、国会議事堂前",
+   "reason": "対象駅: 赤坂、赤坂見附、永田町、虎ノ門、虎ノ門ヒルズ、溜池山王、国会議事堂前。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "六本木・麻布・広尾（エリア探索）",
+   "area": "六本木・麻布・広尾",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "六本木、六本木一丁目、神谷町、麻布十番、広尾",
+   "reason": "対象駅: 六本木、六本木一丁目、神谷町、麻布十番、広尾。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "新宿・代々木（エリア探索）",
+   "area": "新宿・代々木",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "新宿、新宿三丁目、西新宿、都庁前、南新宿、代々木、西武新宿",
+   "reason": "対象駅: 新宿、新宿三丁目、西新宿、都庁前、南新宿、代々木、西武新宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "渋谷・代々木公園（エリア探索）",
+   "area": "渋谷・代々木公園",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "渋谷、神泉、代々木公園、代々木八幡",
+   "reason": "対象駅: 渋谷、神泉、代々木公園、代々木八幡。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "青山・表参道・原宿（エリア探索）",
+   "area": "青山・表参道・原宿",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "表参道、外苑前、青山一丁目、明治神宮前、原宿",
+   "reason": "対象駅: 表参道、外苑前、青山一丁目、明治神宮前、原宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "恵比寿・代官山・中目黒（エリア探索）",
+   "area": "恵比寿・代官山・中目黒",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "恵比寿、代官山、中目黒",
+   "reason": "対象駅: 恵比寿、代官山、中目黒。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "品川・田町・五反田（エリア探索）",
+   "area": "品川・田町・五反田",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "品川、高輪ゲートウェイ、田町、三田、五反田、大崎、白金台",
+   "reason": "対象駅: 品川、高輪ゲートウェイ、田町、三田、五反田、大崎、白金台。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "上野・浅草・押上（エリア探索）",
+   "area": "上野・浅草・押上",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "上野、御徒町、浅草、田原町、押上、とうきょうスカイツリー",
+   "reason": "対象駅: 上野、御徒町、浅草、田原町、押上、とうきょうスカイツリー。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "水道橋・御茶ノ水・神田（エリア探索）",
+   "area": "水道橋・御茶ノ水・神田",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "水道橋、後楽園、御茶ノ水、神田、淡路町",
+   "reason": "対象駅: 水道橋、後楽園、御茶ノ水、神田、淡路町。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "飯田橋・神楽坂・四ツ谷（エリア探索）",
+   "area": "飯田橋・神楽坂・四ツ谷",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "飯田橋、神楽坂、牛込神楽坂、四ツ谷、市ケ谷、早稲田",
+   "reason": "対象駅: 飯田橋、神楽坂、牛込神楽坂、四ツ谷、市ケ谷、早稲田。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  },
+  {
+   "name": "池袋・目白（エリア探索）",
+   "area": "池袋・目白",
+   "checked_at": "2026-11-07T18:36:38+09:00",
+   "scope": "area",
+   "sources": [],
+   "status": "unresearched",
+   "station": "池袋、目白、東池袋、江戸川橋",
+   "reason": "対象駅: 池袋、目白、東池袋、江戸川橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。",
+   "retry": true,
+   "attempts": [],
+   "new_found": 0
+  }
+ ]
 }
