@@ -20,6 +20,7 @@ class FakeAPI:
         self.content=files(2,76);self.calls=[];self.denied=False;self.comments=[];self.runs=[]
     def get(self,path):
         if '/comments?' in path:return copy.deepcopy(self.comments)
+        if '/test-data.yml/runs?' in path:return {'workflow_runs':[{'id':1,'head_sha':self.pr['head']['sha'],'event':'pull_request','status':'completed','conclusion':'success'}]}
         if '/runs?' in path:return {'workflow_runs':copy.deepcopy(self.runs)}
         if '/files?' in path:return self.changed
         return copy.deepcopy(self.pr)

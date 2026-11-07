@@ -69,7 +69,7 @@ def plan_tags(plan):
 def plan_html(plan,shop,index,total,generated):
     first,last=day(plan.get('start')),day(plan.get('end'))
     date=lambda x:f'{x.year}/{x.month}/{x.day}' if x else '未確認'
-    dates=(date(first)+'〜'+date(last)) if first or last else '提供期間 未確認'
+    dates=(date(first)+'〜'+date(last)) if first and last else '提供期間 未確認'+('（'+date(first)+'〜'+date(last)+'）' if first or last else '')
     badge=''
     if generated and first and first>generated:badge='<span class="pst soon">これから</span>'
     elif generated and first and last and first<=generated<=last:badge='<span class="pst now">提供期間内</span>'

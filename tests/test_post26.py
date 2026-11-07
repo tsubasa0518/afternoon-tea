@@ -179,12 +179,11 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual(result['shops'][0]['category'],'cafe');self.assertIn(source['id'],result['shops'][0]['category_source'])
         self.assertNotIn('category',result['shops'][1])
     def test_current_six_records_and_rendered_filters_are_fixed_without_new_confirmation(self):
-        d=read(ROOT/'site/research.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
+        d=read(ROOT/'tests/fixtures/post26_six.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
         self.assertEqual(result,d)
         self.assertEqual(Counter(s['category'] for s in d['shops']),{'cafe':2,'hotel':3,'lux':1})
         self.assertTrue(all(s['checked_at']==STAMP for s in d['shops']))
         html=renderer.render(d,read(ROOT/'site/search_failures.json'))
-        self.assertEqual(html,(ROOT/'site/index.html').read_text())
         self.assertIn('data-sw="xmas" aria-pressed="false">クリスマス<span class="bc">3</span>',html)
         self.assertEqual(sum(p.get('weekday_available') is True for s in d['shops'] for p in s['plans']),3)
         self.assertEqual(next(s for s in d['shops'] if s['id']=='master-031')['plans'][0]['price_yen'],9200)

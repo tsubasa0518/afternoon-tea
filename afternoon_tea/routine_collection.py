@@ -135,18 +135,23 @@ def run(queue, directory, browser, seconds=600, discovery_fraction=.2, clock=tim
                     if target not in seen and target not in state['pending_lists']:
                         state['pending_lists'].append(target)
             save()
-        done = {d['queue_id'] for d in state['documents'] if d.get('result') not in (None, 'budget_pending', 'safety_stop')}
+        state['discovery_budget']={'fraction':discovery_fraction,'request_limit':discovery_request_limit,
+            'requests_used':browser.count,'pages_attempted':len(state['discovery_pages']),
+            'fallback_required':not any(p.get('result')=='fetched' for p in state['discovery_pages']),
+            'fallback_reason':'If lists are blocked, use permitted public search/official news for all 14 areas; never retry blocked hosts or invent new discoveries.'}
+        save()
+        done = {d['queue_id'] for d in state['documents'] if d.get('result') not in (None, 'budget_pending', 'safety_stop') and not d.get('plans_incomplete')}
         # Do not cap at 14. Requests and wall time are the only collection limits.
         for number, area, task in rounds(queue, done):
             if clock() >= deadline:
                 state['stop_reason'] = 'time_budget'; break
             if browser.count >= browser.max_requests:
                 state['stop_reason'] = 'request_budget'; break
-            row = next((d for d in state['documents'] if d['queue_id'] == task['id'] and d.get('result') == 'budget_pending'), None)
+            row = next((d for d in state['documents'] if d['queue_id'] == task['id'] and (d.get('result') == 'budget_pending' or d.get('plans_incomplete'))), None)
             if row is None:
                 row = {'queue_id': task['id'], 'area_no': area['no'], 'round': number}
                 state['documents'].append(row)
-            else:
+            elif not row.get('plans_incomplete'):
                 previous = {k: v for k,v in row.items() if k != 'previous_collection_attempts'}
                 history = row.get('previous_collection_attempts', []) + [previous]
                 row.clear(); row.update(queue_id=task['id'], area_no=area['no'], round=number, previous_collection_attempts=history)
@@ -157,7 +162,34 @@ def run(queue, directory, browser, seconds=600, discovery_fraction=.2, clock=tim
                            reason='No safe source hint; use permitted shop/station discovery')
             else:
                 row['url'] = urls[0]
-                fetch(urls[0], row)
+                if row.get('plans_incomplete') and row.get('sha256'):
+                    page=directory/'pages'/(row['sha256']+'.html')
+                    if page.is_symlink() or page.parent.is_symlink():raise ValueError('unsafe saved page')
+                    raw=page.read_text()
+                    if hashlib.sha256(raw.encode()).hexdigest()!=row['sha256']:raise ValueError('corrupt saved page')
+                else:
+                    raw=fetch(urls[0], row)
+                if raw:
+                    # Collect every explicitly identified safe AT detail, not just the first.
+                    # Only static public plan URLs; no action/booking links are followed.
+                    import re
+                    from .research_queue import public_links
+                    from urllib.parse import urlsplit
+                    details=[u for u,label in public_links(raw,urls[0])
+                             if urlsplit(u).hostname=='restaurant.ikyu.com' and re.fullmatch(r'/[0-9]+/plan[0-9]+',urlsplit(u).path)]
+                    row['discovered_plan_urls']=details
+                    row.setdefault('plan_pages',[])
+                    row['plans_incomplete']=True
+                    for detail in details:
+                        record=next((p for p in row['plan_pages'] if p['url']==detail),None)
+                        if record and record.get('result') not in (None,'budget_pending','safety_stop'):continue
+                        if clock()>=deadline or browser.count>=browser.max_requests:
+                            row['plans_incomplete']=True;break
+                        if record is None:
+                            record={'url':detail,'scope':'AT_plan_detail'}
+                            row['plan_pages'].append(record)
+                        fetch(detail,record);save()
+                    row['plans_incomplete']=any(not any(p['url']==u and p.get('result') not in (None,'budget_pending','safety_stop') for p in row['plan_pages']) for u in details)
             save()
     except TimeoutError as exc:
         state['stop_reason'] = str(exc)
@@ -166,7 +198,7 @@ def run(queue, directory, browser, seconds=600, discovery_fraction=.2, clock=tim
         save()
         raise
     finally:
-        completed = {d['queue_id'] for d in state['documents'] if d.get('result') not in (None,'safety_stop','budget_pending')}
+        completed = {d['queue_id'] for d in state['documents'] if d.get('result') not in (None,'safety_stop','budget_pending') and not d.get('plans_incomplete')}
         state['remaining_queue_ids'] = [t['id'] for a in queue['areas'] for t in a['tasks'] if t['id'] not in completed]
         state['last_round'] = max((d.get('round',0) for d in state['documents']), default=0)
         state['needs_source_queue_ids'] = [d['queue_id'] for d in state['documents'] if d.get('result') == 'source_needed']
