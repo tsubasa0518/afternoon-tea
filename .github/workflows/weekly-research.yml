@@ -45,7 +45,7 @@ jobs:
           if-no-files-found: warn
   persist:
     needs: research
-    if: always() && needs.research.result == 'success' && github.event_name == 'workflow_dispatch'
+    if: always() && needs.research.result == 'success' && (github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
