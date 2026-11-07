@@ -129,9 +129,9 @@ class QueueTests(unittest.TestCase):
   check_url('https://restaurant.ikyu.com/s-tokyo/')
   with self.assertRaises(ForbiddenOperation):check_url('https://restaurant.ikyu.com/s-tokyo/?num_guests=2')
   with self.assertRaises(ForbiddenOperation):check_url('https://restaurant.ikyu.com/s-tokyo/','POST')
- def test_tea_only_plan_is_not_followed_even_with_lunch_navigation(self):
+ def test_tea_at_plan_is_followed_without_borrowing_lunch_navigation(self):
   raw='<div>ティー アフタヌーンティー<a href="/123456/plan99999">詳細をみる</a></div><nav>ランチ</nav>'
-  self.assertFalse(public_links(raw,'https://restaurant.ikyu.com/123456/'))
+  self.assertTrue(public_links(raw,'https://restaurant.ikyu.com/123456/'))
  def test_previous_day_snapshot_is_preserved_on_new_run(self):
   m=load_master();s=new_state(m,'2026-11-06');s['items'][0].update(status='failed',reason='TEST_ONLY old failure')
   with tempfile.TemporaryDirectory() as tmp:

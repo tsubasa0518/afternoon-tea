@@ -92,3 +92,21 @@ def load_master():
     if stored != extracted:
         raise ValueError("store_master.json が仕様と不一致です。extract で再生成してください")
     return stored
+
+
+def load_master_snapshot(source_sha):
+    """Validate archived evidence against its original master, never re-date it."""
+    current = load_master()
+    if source_sha == current['source_sha256']:
+        return current
+    if not isinstance(source_sha, str) or not re.fullmatch(r'[0-9a-f]{64}', source_sha):
+        raise ValueError('invalid historical master hash')
+    name = 'data/master_history/' + source_sha + '.json'
+    manifest = json.loads((ROOT/'data/protected_hashes.json').read_text())
+    raw = (ROOT/name).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != manifest.get(name):
+        raise ValueError('untrusted historical master snapshot')
+    result = json.loads(raw)
+    if result['source_sha256'] != source_sha:
+        raise ValueError('historical master source mismatch')
+    return result

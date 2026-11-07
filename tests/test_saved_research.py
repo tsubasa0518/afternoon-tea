@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import unittest
-from afternoon_tea.master import ROOT,load_master
+from afternoon_tea.master import ROOT,load_master_snapshot
 from afternoon_tea.validation import validate_data
 class SavedResearchTests(unittest.TestCase):
  def test_persisted_checkpoint_and_evidence(self):
@@ -12,7 +12,7 @@ class SavedResearchTests(unittest.TestCase):
   self.assertEqual(sum(x['kind']=='master' for x in state['items']),70)
   self.assertEqual(sum(x['kind']=='candidate' for x in state['items']),5)
   self.assertEqual(len({x['id'] for x in state['items']}),len(state['items']))
-  self.assertEqual(state['data']['generated'],state['day']);validate_data(state['data'],load_master())
+  self.assertEqual(state['data']['generated'],state['day']);validate_data(state['data'],load_master_snapshot(state['master_sha256']))
   for a in state['data']['areas']:
    for g in a['cats'].values():
     for shop in g['shops']:

@@ -76,7 +76,7 @@ def public_links(raw,url):
                 plan_links=[n for n in context.find('a') if re.search(r'/\d+/plan\d+',n.attrs.get('href',''))]
                 meal=re.match(r'^(ランチ|朝食|ディナー|ティー)(?:\s|$)',text)
                 if len(text)<1800 and len(plan_links)<=1 and re.search(r'アフタヌーンティー|afternoon\s+tea',text,re.I) and meal:
-                    verified=meal.group(1) in ('ランチ','朝食');break
+                    verified=meal.group(1) in ('ランチ','朝食','ティー');break
                 if not context.parent:break
                 context=context.parent
             if not verified:continue

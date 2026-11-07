@@ -139,11 +139,19 @@ def extract(raw,url,checked):
         booking=bool(booking_nodes)
         price=first(block.find(cls='course-dtl__price-num')) if site=='tb' else first(block.find(cls='menu-item-price'))
         if site=='ik':
-            m=re.search(r'(?:通常価格|税サ込)\s*[¥￥]?\s*[\d,]+\s*円',b);price=m.group() if m else ''
-        # Never convert tax-exclusive prices or choose between competing prices.
-        if price and not re.search('税抜|割引|OFF|オフ|→',price,re.I) and re.search('税サ込|税・サービス料込|税金・サービス料込み',price):
+            # Scope the displayed prices to this plan header, not overview budgets.
+            m=re.search(re.escape(title)+r'(.{0,400}?)メニュー',b)
+            price=m.group(1).strip() if m else ''
+        # Explicit regular price wins over a discount. Never reverse-calculate OFF.
+        normal=re.findall(r'通常(?:価格|料金)\s*(?:税サ込)?\s*[¥￥]?\s*([0-9][0-9,]*)\s*円',price)
+        if site=='ik' and not normal:
+            normal=re.findall(r'(?:OFF|オフ)\s*([0-9][0-9,]*)円\s*税サ込\s*[0-9][0-9,]*\s*円',price,re.I)
+        tax_inclusive=bool(re.search('税サ込|税・サービス料込|税金・サービス料込み',price))
+        if len(normal)==1 and tax_inclusive and not re.search('税抜',price):
+            put('price_min',int(normal[0].replace(',','')),price);put('price_text',price,price)
+        elif price and not re.search('税抜|割引|OFF|オフ|→',price+' '+title,re.I) and tax_inclusive:
             nums=re.findall(r'[0-9][0-9,]*',price)
-            if len(nums)==1 and (not re.search('割引|OFF|オフ',title,re.I) or '通常価格' in price):
+            if len(nums)==1:
                 put('price_min',int(nums[0].replace(',','')),price);put('price_text',price,price)
         table={first(tr.find('th')):first(tr.find('td')) for tr in block.find('tr')}
         days=table.get('利用可能曜日') or first(block.find(cls='menu-item-days'))
@@ -175,8 +183,8 @@ def extract(raw,url,checked):
         if site=='ik':
             # Meal band must be explicit adjacent to the plan heading; unrelated lunch links do not qualify.
             m=re.search(r'(ランチ|朝食|ディナー|ティー)\s*'+re.escape(title),b)
-            meal={'ランチ':'lunch','朝食':'breakfast'}.get(m.group(1)) if m else None
-        eligible=menu_ok and booking and (site!='ik' or meal in ('lunch','breakfast'))
+            meal={'ランチ':'lunch','朝食':'breakfast','ティー':'tea'}.get(m.group(1)) if m else None
+        eligible=menu_ok and booking and (site!='ik' or meal in ('lunch','breakfast','tea'))
         key=(normalize(title),plan['start'],plan['end'],plan['price_min'],plan['days_text'],plan['time_text'],menu)
         if key in seen:continue
         seen.add(key)
