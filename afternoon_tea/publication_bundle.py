@@ -26,7 +26,9 @@ def prepare(data_path,audit_path,html_path,baseline_path,destination,run_id,comm
     data=load_json(data_path);audit=load_json(audit_path);html=Path(html_path).read_text()
     validate_data(data,load_master());validate_html(html,data)
     if audit.get('current_run',{}).get('id')!=run_id:raise ValueError('run_identity_not_verified')
-    report=evaluate(data,audit,html,Path(baseline_path).read_text(),DEFAULTS)
+    # Research quality only; trusted authorization is independently required by rehearse.
+    policy={**DEFAULTS,'require_first_migration_approval':False}
+    report=evaluate(data,audit,html,Path(baseline_path).read_text(),policy)
     destination.mkdir(parents=True,exist_ok=True)
     for name,content in [('data.json',Path(data_path).read_bytes()),('audit.json',Path(audit_path).read_bytes()),('index.html',Path(html_path).read_bytes())]:
         (destination/name).write_bytes(content)

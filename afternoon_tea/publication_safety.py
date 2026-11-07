@@ -16,6 +16,8 @@ def current_evidence(data,audit):
     try:
         run=audit['current_run'];start=dt.datetime.fromisoformat(run['started_at']);end=dt.datetime.fromisoformat(run['generated_at'])
         if not start.tzinfo or not end.tzinfo or start>end:return False
+        day=dt.date.fromisoformat(data['generated'])
+        if start.date()!=day or end.date()!=day:return False
         shops=[s for a in data['areas'] for g in a['cats'].values() for s in g['shops'] if s['research']['status']=='confirmed']
         receipts=run['receipts']
         if not shops or len(receipts)!=len(shops):return False
