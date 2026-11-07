@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T18:36:38+09:00",
+ "generated_at": "2026-11-07T18:39:46+09:00",
  "failures": [
   {
    "queue_id": "priority-002",
@@ -9,7 +9,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/110781/plan12803085"
@@ -35,7 +35,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/122278/plan12649319"
@@ -61,7 +61,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/112311/plan12739895"
@@ -87,7 +87,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/154158/plan12866695"
@@ -113,7 +113,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101719/plan12384641"
@@ -139,7 +139,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100179/plan12815376"
@@ -165,7 +165,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/117086/plan12872041"
@@ -191,7 +191,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/115187/plan12845039"
@@ -217,7 +217,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102990/plan12850481"
@@ -243,7 +243,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/112036/plan12822858"
@@ -269,7 +269,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/115189/plan12835763"
@@ -295,7 +295,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102900/plan12787122"
@@ -321,7 +321,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102901/plan12854246"
@@ -347,7 +347,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102902/plan12857218"
@@ -373,7 +373,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101099/plan12875698"
@@ -399,7 +399,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100707/plan12791492"
@@ -425,7 +425,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
@@ -451,7 +451,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/105756/plan12854308"
@@ -477,7 +477,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106795/plan12250640"
@@ -503,7 +503,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/145203/plan12877502"
@@ -526,7 +526,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/112520/plan12815171"
@@ -551,7 +551,7 @@
    "area": "丸の内・日本橋",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -565,7 +565,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/107848"
@@ -588,7 +588,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/112712"
@@ -611,7 +611,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/107408"
@@ -634,7 +634,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/102169"
@@ -657,7 +657,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/120986"
@@ -680,7 +680,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/121277"
@@ -703,7 +703,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/110448"
@@ -726,7 +726,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/146478"
@@ -749,7 +749,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/147847"
@@ -772,7 +772,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/155386"
@@ -795,7 +795,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/120875"
@@ -818,7 +818,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/148825"
@@ -841,7 +841,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/109953"
@@ -864,7 +864,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/106638"
@@ -887,7 +887,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/151317"
@@ -910,7 +910,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/109114"
@@ -933,7 +933,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/123411"
@@ -956,7 +956,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/122628"
@@ -979,7 +979,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/117183"
@@ -1002,7 +1002,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/100543"
@@ -1025,7 +1025,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/101456"
@@ -1048,7 +1048,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/155237"
@@ -1070,7 +1070,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -1083,7 +1083,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -1096,7 +1096,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -1109,7 +1109,7 @@
    "area": "銀座・有楽町・日比谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -1123,7 +1123,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103334/plan12844256"
@@ -1149,7 +1149,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101762/plan12844646"
@@ -1175,7 +1175,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102281/plan12794313"
@@ -1201,7 +1201,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/114993/plan12793685"
@@ -1227,7 +1227,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100854/plan12805497"
@@ -1253,7 +1253,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/146488/plan12856413"
@@ -1279,7 +1279,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100352/plan12878493"
@@ -1305,7 +1305,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/108677/plan12879632"
@@ -1328,7 +1328,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/116751/plan12845493"
@@ -1354,7 +1354,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/116186/plan11960212"
@@ -1380,7 +1380,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101111/plan12808461"
@@ -1406,7 +1406,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/119094/plan12819792"
@@ -1432,7 +1432,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/151824/plan12826471"
@@ -1458,7 +1458,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/109387/plan12893769"
@@ -1484,7 +1484,7 @@
    "area": "新橋・汐留・浜松町",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve"
@@ -1510,7 +1510,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/151564/plan12874283"
@@ -1536,7 +1536,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106680/plan11947457"
@@ -1562,7 +1562,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106681/plan12867603"
@@ -1588,7 +1588,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103485/plan12829832"
@@ -1614,7 +1614,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/123366/plan12533202"
@@ -1640,7 +1640,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/105131/plan12861297"
@@ -1666,7 +1666,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/122872/plan12874649"
@@ -1692,7 +1692,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/113419/plan12865828"
@@ -1718,7 +1718,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/152275/plan12805394"
@@ -1744,7 +1744,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge"
@@ -1770,7 +1770,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/115758/plan12817748"
@@ -1796,7 +1796,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/123927"
@@ -1819,7 +1819,7 @@
    "area": "赤坂・永田町・虎ノ門",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106682/plan12867585"
@@ -1845,7 +1845,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/100433/plan12807839"
@@ -1868,7 +1868,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102168/plan12861883"
@@ -1894,7 +1894,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100485/plan12809200"
@@ -1920,7 +1920,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/145150"
@@ -1943,7 +1943,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/125030/plan12830252"
@@ -1968,7 +1968,7 @@
    "area": "六本木・麻布・広尾",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -1982,7 +1982,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/139315/plan12805547"
@@ -2005,7 +2005,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/109753/plan12750169"
@@ -2031,7 +2031,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103985/plan12797665"
@@ -2057,7 +2057,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/115611/plan12880133"
@@ -2083,7 +2083,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103085/plan12829652"
@@ -2109,7 +2109,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101733/plan12813470"
@@ -2135,7 +2135,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/121396/plan12791558"
@@ -2161,7 +2161,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/147317/plan12827569"
@@ -2187,7 +2187,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103989/plan12800314"
@@ -2213,7 +2213,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/147880/plan12810808"
@@ -2239,7 +2239,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/105535"
@@ -2262,7 +2262,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/103306/plan12792401"
@@ -2287,7 +2287,7 @@
    "area": "新宿・代々木",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2301,7 +2301,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/110056/plan12824068"
@@ -2327,7 +2327,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106388/plan12793689"
@@ -2353,7 +2353,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/107718/plan12255764"
@@ -2379,7 +2379,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101738/plan12685902"
@@ -2405,7 +2405,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/115887/plan12652208"
@@ -2431,7 +2431,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/110458/plan12861712"
@@ -2457,7 +2457,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/100272/plan12814237"
@@ -2482,7 +2482,7 @@
    "area": "渋谷・代々木公園",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2496,7 +2496,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/110765/plan12817990"
@@ -2522,7 +2522,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/117546/plan12844393"
@@ -2548,7 +2548,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1306/A130602/13285588/"
@@ -2571,7 +2571,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/105173/plan12868701"
@@ -2597,7 +2597,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/121853/plan12839132"
@@ -2623,7 +2623,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/102572/plan12631502"
@@ -2649,7 +2649,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/113312/plan11876844"
@@ -2675,7 +2675,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/153938/plan12888059"
@@ -2701,7 +2701,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/125128/plan12302624"
@@ -2727,7 +2727,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/111035/plan12820092"
@@ -2750,7 +2750,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/115154/plan11363502/"
@@ -2773,7 +2773,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/116898"
@@ -2796,7 +2796,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1303/A130301/13297982/"
@@ -2819,7 +2819,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/155628"
@@ -2842,7 +2842,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2856,7 +2856,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1306/A130602/13141883/"
@@ -2878,7 +2878,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2891,7 +2891,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2904,7 +2904,7 @@
    "area": "青山・表参道・原宿",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2918,7 +2918,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/108615/plan12771604"
@@ -2941,7 +2941,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/122745/plan12804614"
@@ -2963,7 +2963,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2976,7 +2976,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -2989,7 +2989,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3002,7 +3002,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3015,7 +3015,7 @@
    "area": "恵比寿・代官山・中目黒",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3029,7 +3029,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/103135/plan12786141"
@@ -3052,7 +3052,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/106908/plan12847292"
@@ -3078,7 +3078,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/113851/plan12847981"
@@ -3104,7 +3104,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/149035/plan12825529"
@@ -3130,7 +3130,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/107385/plan12420483"
@@ -3153,7 +3153,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "information_insufficient",
    "sources": [
     "https://restaurant.ikyu.com/106767/plan12803588"
@@ -3175,7 +3175,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3188,7 +3188,7 @@
    "area": "品川・田町・五反田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3202,7 +3202,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/151232/plan12798243"
@@ -3228,7 +3228,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/110552/plan12838920"
@@ -3254,7 +3254,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/117061/plan12855775"
@@ -3280,7 +3280,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1311/A131101/13123339/"
@@ -3303,7 +3303,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1311/A131101/13298837/"
@@ -3326,7 +3326,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1311/A131101/13267852/"
@@ -3349,7 +3349,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1311/A131102/13257967/"
@@ -3372,7 +3372,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1311/A131102/13127202/"
@@ -3395,7 +3395,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/108054/plan12187749"
@@ -3420,7 +3420,7 @@
    "area": "上野・浅草・押上",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3434,7 +3434,7 @@
    "area": "水道橋・御茶ノ水・神田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/120847/plan12815369"
@@ -3460,7 +3460,7 @@
    "area": "水道橋・御茶ノ水・神田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/105246/plan12798669"
@@ -3486,7 +3486,7 @@
    "area": "水道橋・御茶ノ水・神田",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://restaurant.ikyu.com/101056/plan12789046"
@@ -3512,7 +3512,7 @@
    "area": "飯田橋・神楽坂・四ツ谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://www.tablecheck.com/en/hotel-edmont-beltempo"
@@ -3537,7 +3537,7 @@
    "area": "飯田橋・神楽坂・四ツ谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3550,7 +3550,7 @@
    "area": "飯田橋・神楽坂・四ツ谷",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3564,7 +3564,7 @@
    "area": "池袋・目白",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "access_denied",
    "sources": [
     "https://tabelog.com/tokyo/A1305/A130501/13100821/"
@@ -3587,7 +3587,7 @@
    "area": "池袋・目白",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "confirmed",
    "sources": [
     "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve"
@@ -3612,7 +3612,7 @@
    "area": "池袋・目白",
    "scope": "shop",
    "run_id": "20261107T181846935314",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "status": "unresearched",
    "sources": [],
    "attempts": [],
@@ -3622,7 +3622,7 @@
   {
    "name": "丸の内・日本橋（エリア探索）",
    "area": "丸の内・日本橋",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [
     "https://restaurant.ikyu.com/s-tokyo/"
@@ -3637,7 +3637,7 @@
   {
    "name": "銀座・有楽町・日比谷（エリア探索）",
    "area": "銀座・有楽町・日比谷",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3650,7 +3650,7 @@
   {
    "name": "新橋・汐留・浜松町（エリア探索）",
    "area": "新橋・汐留・浜松町",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3663,7 +3663,7 @@
   {
    "name": "赤坂・永田町・虎ノ門（エリア探索）",
    "area": "赤坂・永田町・虎ノ門",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3676,7 +3676,7 @@
   {
    "name": "六本木・麻布・広尾（エリア探索）",
    "area": "六本木・麻布・広尾",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3689,7 +3689,7 @@
   {
    "name": "新宿・代々木（エリア探索）",
    "area": "新宿・代々木",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3702,7 +3702,7 @@
   {
    "name": "渋谷・代々木公園（エリア探索）",
    "area": "渋谷・代々木公園",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3715,7 +3715,7 @@
   {
    "name": "青山・表参道・原宿（エリア探索）",
    "area": "青山・表参道・原宿",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3728,7 +3728,7 @@
   {
    "name": "恵比寿・代官山・中目黒（エリア探索）",
    "area": "恵比寿・代官山・中目黒",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3741,7 +3741,7 @@
   {
    "name": "品川・田町・五反田（エリア探索）",
    "area": "品川・田町・五反田",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3754,7 +3754,7 @@
   {
    "name": "上野・浅草・押上（エリア探索）",
    "area": "上野・浅草・押上",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3767,7 +3767,7 @@
   {
    "name": "水道橋・御茶ノ水・神田（エリア探索）",
    "area": "水道橋・御茶ノ水・神田",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3780,7 +3780,7 @@
   {
    "name": "飯田橋・神楽坂・四ツ谷（エリア探索）",
    "area": "飯田橋・神楽坂・四ツ谷",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
@@ -3793,7 +3793,7 @@
   {
    "name": "池袋・目白（エリア探索）",
    "area": "池袋・目白",
-   "checked_at": "2026-11-07T18:36:38+09:00",
+   "checked_at": "2026-11-07T18:39:46+09:00",
    "scope": "area",
    "sources": [],
    "status": "unresearched",
