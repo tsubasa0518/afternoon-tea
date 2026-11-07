@@ -37,7 +37,7 @@ class RoutineSiteTests(unittest.TestCase):
         f=files();f['site/index.html']=HTML.replace(b'Information unavailable','今週は確認できた店舗情報がありません'.encode());r.validate_site(f)
     def test_unknown_prices_and_incomplete_coverage_do_not_block(self):r.validate_site(files(2))
     def test_empty_or_broken_html_rejected(self):
-        for html in (b'',b'<html><body>oops',b'<html><head><title>x</title></head><body></div></html>'):
+        for html in (b'',b'<html><body>oops',b'<html><head><title>x</title></head><body></div></html>', b'<html><head><title>x</title></head><body></body></html>', b'<html></html><head><title>x</title></head><body>x</body>'):
             with self.assertRaises(ValueError):r.validate_html_bytes(html)
     def test_missing_json_or_extra_file_rejected(self):
         for key in r.ALLOWED:

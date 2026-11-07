@@ -11,7 +11,7 @@ import re
 import time
 import urllib.request
 from urllib.error import HTTPError
-from urllib.parse import urlsplit,unquote
+from urllib.parse import urlsplit
 from .read_only import NoRedirect
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -47,9 +47,16 @@ def resource(url,asset=False):
     if asset:require(p.hostname in ('fonts.googleapis.com','fonts.gstatic.com'),'use_embedded_assets_or_google_fonts')
 
 class StaticHTML(HTMLParser):
-    def __init__(self):super().__init__(convert_charrefs=True);self.stack=[];self.seen=set();self.resources=[]
+    def __init__(self):super().__init__(convert_charrefs=True);self.stack=[];self.seen=set();self.resources=[];self.body_text=[]
     def handle_starttag(self,tag,attrs):
-        attrs=dict(attrs);self.seen.add(tag)
+        attrs=dict(attrs)
+        if tag in ('html','head','body','title'):
+            require(tag not in self.seen,'duplicate_document_element')
+            parent={'html':None,'head':'html','body':'html','title':'head'}[tag]
+            require((self.stack[-1] if self.stack else None)==parent,'invalid_document_structure')
+            if tag=='body':require('head' in self.seen,'missing_document_head')
+        else:require(bool(self.stack),'element_outside_html')
+        self.seen.add(tag)
         require(tag not in ('form','iframe','object','embed','base'),'active_form_or_embedded_content_forbidden')
         require(not any(k.lower().startswith('on') for k in attrs),'inline_event_handler_forbidden')
         if tag=='script':require(not attrs.get('src'),'external_script_forbidden')
@@ -61,6 +68,8 @@ class StaticHTML(HTMLParser):
     def handle_startendtag(self,tag,attrs):
         self.handle_starttag(tag,attrs)
         if tag not in VOID:self.handle_endtag(tag)
+    def handle_data(self,data):
+        if 'body' in self.stack and not set(self.stack)&{'script','style'}:self.body_text.append(data)
     def handle_endtag(self,tag):
         if tag in VOID:return
         require(bool(self.stack) and self.stack[-1]==tag,'unbalanced_html_tags')
@@ -70,6 +79,7 @@ def validate_html_bytes(value):
     require(0<len(value)<=MAX_HTML,'html_missing_empty_or_too_large')
     text=scan(value);parser=StaticHTML();parser.feed(text);parser.close()
     require(not parser.stack and {'html','head','body','title'}<=parser.seen,'html_document_incomplete')
+    require(''.join(parser.body_text).strip(),'blank_page_forbidden')
     for target in re.findall(r'url\(\s*[\"\x27]?([^\)\"\x27]+)',text,re.I):resource(target.strip(),asset=True)
     # Inline script is allowed for static filters, but must not drive network/forms.
     require(not re.search(r'\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon|eval)\b|document\.cookie|(?:local|session)Storage',text),'network_or_session_script_forbidden')
