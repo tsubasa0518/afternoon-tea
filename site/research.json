@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T15:55:22+09:00",
+  "generated_at": "2026-11-07T16:55:11+09:00",
   "status": "partial_research",
   "period": {
     "start": "2026-11-07",
     "end": "2026-12-17"
   },
-  "note": "今回の実行で再取得・確認できた2店舗のみ掲載。未調査の店舗は検索失敗ファイルに記録。過去実行のデータは最新情報として流用していない。",
+  "note": "今回の実行で匿名GETにより再取得・確認できた2店舗のみ掲載。未調査の店舗は検索失敗ファイルに記録。過去実行のデータは最新情報として流用していない。パレスホテル東京の『クリスマスエディション』（提供2026-12-19〜12-25、10,000円/13,000円・税込サ別）は対象期間（〜2026-12-17）外のため掲載から除外。",
   "shops": [
     {
       "id": "master-010",
@@ -17,7 +17,7 @@
       "address": "東京都千代田区丸の内1-1-1",
       "source_site": "TableCheck",
       "source_url": "https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve",
-      "checked_at": "2026-11-07T15:55:22+09:00",
+      "checked_at": "2026-11-07T16:55:11+09:00",
       "booking_url_info_only": "https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve",
       "plans": [
         {
@@ -35,7 +35,7 @@
           "price_note": "税込・サービス料別",
           "start": null,
           "end": null,
-          "note": "提供期間の記載なし。予約可能日は12月18日以前、12月26日〜31日、2027年1月4日以降（ページ記載）。グラスシャンパーニュ付きは12,000円",
+          "note": "提供期間の記載なし。予約可能日は12月18日以前、12月26日〜31日、2027年1月4日以降（ページ記載）。グラスシャンパーニュ付きは12,000円。クリスマスエディション(12/19〜12/25)は対象期間外",
           "evidence_quote": "アフタヌーンティー \"Stones\"（通常） 9,000円"
         },
         {
@@ -85,7 +85,7 @@
       "address": "東京都文京区関口2-10-8",
       "source_site": "TableCheck",
       "source_url": "https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve",
-      "checked_at": "2026-11-07T15:55:22+09:00",
+      "checked_at": "2026-11-07T16:55:11+09:00",
       "booking_url_info_only": "https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve",
       "plans": [
         {
@@ -127,5 +127,6 @@
       "category": "lux",
       "category_source": "data/store_master.json#master-070"
     }
-  ]
+  ],
+  "out_of_period_removed": 2
 }
