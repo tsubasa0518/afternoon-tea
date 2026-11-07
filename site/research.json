@@ -31,10 +31,48 @@
           "start": null,
           "end": null,
           "note": "平日限定30食（ページ記載）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950 円"
+          "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950 円",
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/112520/plan12815171",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食)\n【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食) 税サ込 4,950 円\n<お食事メニュー> ※ある日の一例\n・自家製フルーツサンド\n・自家製マカロン\n・自家製ミニタルトやテリーヌショコラ(季節のより内容変更あり)\n・自家製スコーン(いちごジャムとマスカルポーネチーズと一緒に)\n・ニューカレドニア産天使の海老を使ったミニバーガー\n・北海道ソフトクリーム",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/112520/plan12815171",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食)\n【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食) 税サ込 4,950 円\n<お食事メニュー> ※ある日の一例\n・自家製フルーツサンド\n・自家製マカロン\n・自家製ミニタルトやテリーヌショコラ(季節のより内容変更あり)\n・自家製スコーン(いちごジャムとマスカルポーネチーズと一緒に)\n・ニューカレドニア産天使の海老を使ったミニバーガー\n・北海道ソフトクリーム",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/112520/plan12815171",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "・自家製マカロン\n・自家製ミニタルトやテリーヌショコラ(季節のより内容変更あり)\n・自家製スコーン(いちごジャムとマスカルポーネチーズと一緒に)",
+              "origin": "menu"
+            }
+          },
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "＜お食事メニュー＞ ※ある日の一例\n・自家製フルーツサンド\n・自家製マカロン\n・自家製ミニタルトやテリーヌショコラ（季節のより内容変更あり）\n・自家製スコーン（いちごジャムとマスカルポーネチーズと一緒に）\n・ニューカレドニア産天使の海老を使ったミニバーガー\n・北海道ソフトクリーム",
+          "menu_evidence": {
+            "url": "https://restaurant.ikyu.com/112520/plan12815171",
+            "checked_at": "2026-11-07T17:50:14+09:00",
+            "quote": "＜お食事メニュー＞ ※ある日の一例\n・自家製フルーツサンド\n・自家製マカロン\n・自家製ミニタルトやテリーヌショコラ（季節のより内容変更あり）\n・自家製スコーン（いちごジャムとマスカルポーネチーズと一緒に）\n・ニューカレドニア産天使の海老を使ったミニバーガー\n・北海道ソフトクリーム",
+            "retrieval_record": "https://claude.ai/code/session_01C7FU3b9iGoXwkjv3YRFy7R",
+            "note": "PR #26の同一実行ログに保存された取得原文の抜粋。今回再取得したものではない。メニューは一例・変更可能性あり。"
+          },
+          "sweets": [
+            "choco",
+            "ichigo",
+            "macaron",
+            "scone"
+          ]
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "cafe",
+      "category_source": "data/store_master.json#master-001 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     },
     {
       "id": "master-031",
@@ -54,15 +92,41 @@
       "plans": [
         {
           "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
-          "price_yen": 7200,
-          "price_note": "税サ込（最大21%OFF表示。通常9,200円）。ページの「7,200円〜」を下限として記録",
+          "price_yen": 9200,
+          "price_note": "通常価格 9,200円。税サ込。参考割引価格7,200円〜(最大21%OFF)。",
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜"
+          "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/106682/plan12867585",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+              "origin": "plan_name"
+            },
+            "discount_price_yen": {
+              "url": "https://restaurant.ikyu.com/106682/plan12867585",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜",
+              "origin": "evidence_quote"
+            },
+            "price_yen": {
+              "url": "https://restaurant.ikyu.com/106682/plan12867585",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 最大 21 % OFF 9,200円 税サ込 7,200 円 〜",
+              "origin": "evidence_quote"
+            }
+          },
+          "season": [
+            "xmas"
+          ],
+          "discount_price_yen": 7200
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "lux",
+      "category_source": "data/store_master.json#master-031 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     },
     {
       "id": "master-034",
@@ -87,10 +151,37 @@
           "start": "2026-11-21",
           "end": "2026-12-25",
           "note": "11月21日〜12月25日提供（ページ記載）。平日のみ（プラン名記載）",
-          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800 円"
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800 円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー+モクテル含むカフェフリー(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー+モクテル含むカフェフリー(平日)\n【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日) 税サ込 8,800 円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー+モクテル含むカフェフリー(平日)\n【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日) 税サ込 8,800 円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ],
+          "weekday_available": true,
+          "weekend_available": false
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "hotel",
+      "category_source": "data/store_master.json#master-034 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     },
     {
       "id": "master-052",
@@ -115,10 +206,23 @@
           "start": null,
           "end": null,
           "note": "秋限定のアフタヌーンティー（ページ記載）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "PAYSAGE AFTERNOON TEA ー秋・Automneー 税サ込 7,500 円"
+          "evidence_quote": "PAYSAGE AFTERNOON TEA ー秋・Automneー 税サ込 7,500 円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/122745/plan12804614",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "PAYSAGE AFTERNOON TEA ー秋・Automneー",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "season"
+          ]
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "cafe",
+      "category_source": "data/store_master.json#master-052 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     },
     {
       "id": "master-058",
@@ -138,15 +242,74 @@
       "plans": [
         {
           "plan_name": "Autumn Harvest Afternoon Tea＋2時間制（平日限定）",
-          "price_yen": 6000,
-          "price_note": "税サ込（タイムセール価格。通常7,345円、18%OFF表示）",
+          "price_yen": 7345,
+          "price_note": "通常価格 7,345円。税サ込。参考タイムセール価格6,000円(18%OFF)。",
           "start": null,
           "end": null,
           "note": "タイムセール期間 2026年11月12日13:00まで（ページ記載）。プラン自体の提供期間は未確認",
-          "evidence_quote": "Autumn Harvest Afternoon Tea＋2時間制（平日限定） タイムセール 18 % OFF 7,345円 税サ込 6,000 円"
+          "evidence_quote": "Autumn Harvest Afternoon Tea＋2時間制（平日限定） タイムセール 18 % OFF 7,345円 税サ込 6,000 円",
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "Autumn Harvest Afternoon Tea+2時間制(平日限定)\nAutumn Harvest Afternoon Tea+2時間制(平日限定) タイムセール 18 % OFF 7,345円 税サ込 6,000 円\n■アミューズ\n・ぶどうのアミューズ\n■プティフール\n・かぼちゃとレーズンのチーズケーキ\n・栗のパンドジェンヌ\n・さつまいもとりんごのヴェリーヌ\n・栗のモンブランカヌレ\n・さつまいものマドレーヌ\n・かぼちゃのムース",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "Autumn Harvest Afternoon Tea+2時間制(平日限定)\nAutumn Harvest Afternoon Tea+2時間制(平日限定) タイムセール 18 % OFF 7,345円 税サ込 6,000 円\n■アミューズ\n・ぶどうのアミューズ\n■プティフール\n・かぼちゃとレーズンのチーズケーキ\n・栗のパンドジェンヌ\n・さつまいもとりんごのヴェリーヌ\n・栗のモンブランカヌレ\n・さつまいものマドレーヌ\n・かぼちゃのムース",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "discount_price_yen": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "Autumn Harvest Afternoon Tea+2時間制(平日限定) タイムセール 18 % OFF 7,345円 税サ込 6,000 円",
+              "origin": "evidence_quote"
+            },
+            "price_yen": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "Autumn Harvest Afternoon Tea+2時間制(平日限定) タイムセール 18 % OFF 7,345円 税サ込 6,000 円",
+              "origin": "evidence_quote"
+            },
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "・ぶどうのアミューズ\n・かぼちゃとレーズンのチーズケーキ\n・栗のパンドジェンヌ",
+              "origin": "menu"
+            },
+            "season": {
+              "url": "https://restaurant.ikyu.com/106767/plan12803588",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "Autumn Harvest Afternoon Tea+2時間制(平日限定)",
+              "origin": "plan_name"
+            }
+          },
+          "weekday_available": true,
+          "weekend_available": false,
+          "discount_price_yen": 6000,
+          "menu": "■アミューズ\n・ぶどうのアミューズ\n■プティフール\n・かぼちゃとレーズンのチーズケーキ\n・栗のパンドジェンヌ\n・さつまいもとりんごのヴェリーヌ\n・栗のモンブランカヌレ\n・さつまいものマドレーヌ\n・かぼちゃのムース",
+          "menu_evidence": {
+            "url": "https://restaurant.ikyu.com/106767/plan12803588",
+            "checked_at": "2026-11-07T17:50:14+09:00",
+            "quote": "■アミューズ\n・ぶどうのアミューズ\n■プティフール\n・かぼちゃとレーズンのチーズケーキ\n・栗のパンドジェンヌ\n・さつまいもとりんごのヴェリーヌ\n・栗のモンブランカヌレ\n・さつまいものマドレーヌ\n・かぼちゃのムース",
+            "retrieval_record": "https://claude.ai/code/session_01C7FU3b9iGoXwkjv3YRFy7R",
+            "note": "PR #26の同一実行ログに保存された取得原文の抜粋。今回再取得したものではない。メニューは一例・変更可能性あり。"
+          },
+          "sweets": [
+            "grape",
+            "imo",
+            "kuri"
+          ],
+          "season": [
+            "season"
+          ]
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "hotel",
+      "category_source": "data/store_master.json#master-058 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     },
     {
       "id": "master-070",
@@ -171,11 +334,42 @@
           "start": "2026-11-01",
           "end": "2027-01-07",
           "note": "Valid Dates Nov 01 ~ Jan 07, 2027（ページ記載）。ランチ・ティー提供（ページ記載）",
-          "evidence_quote": "アフタヌーンティー2026 Valid Dates Nov 01 ~ Jan 07, 2027 ¥ 7,800 (Svc excl. / tax incl.)"
+          "evidence_quote": "アフタヌーンティー2026 Valid Dates Nov 01 ~ Jan 07, 2027 ¥ 7,800 (Svc excl. / tax incl.)",
+          "structured_evidence": {
+            "season": {
+              "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "アフタヌーンティー2026(クリスマス)",
+              "origin": "plan_name"
+            },
+            "sweets": {
+              "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+              "checked_at": "2026-11-07T17:50:14+09:00",
+              "quote": "クリスマスツリーやゆきだるまなどの愛らしいスイーツをチョコレートやベリーを用いて冬仕様",
+              "origin": "menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ],
+          "menu": "クリスマスツリーやゆきだるまなどの愛らしいスイーツをチョコレートやベリーを用いて冬仕様\n●アフタヌーンティースタンド\n(上段)ペストリー 4種\n・ピスターシュ ブロニー",
+          "menu_evidence": {
+            "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+            "checked_at": "2026-11-07T17:50:14+09:00",
+            "quote": "クリスマスツリーやゆきだるまなどの愛らしいスイーツをチョコレートやベリーを用いて冬仕様\n●アフタヌーンティースタンド\n(上段)ペストリー 4種\n・ピスターシュ ブロニー",
+            "retrieval_record": "https://claude.ai/code/session_01C7FU3b9iGoXwkjv3YRFy7R",
+            "note": "PR #26の同一実行ログに保存された取得原文の抜粋。今回再取得したものではない。メニューは一例・変更可能性あり。"
+          },
+          "sweets": [
+            "choco"
+          ]
         }
       ],
-      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認"
+      "time_note": "提供時間・曜日の確認はプラン説明文に従う。未記載の項目は未確認",
+      "category": "hotel",
+      "category_source": "data/store_master.json#master-070 (as_of 2026-10-02; hotel tier uses current regular price, unknown => hotel)"
     }
   ],
-  "out_of_period_removed": []
+  "out_of_period_removed": [],
+  "transformation_note": "PR #26の保存済み原文と店舗マスターから構造化項目を補完。新規調査・確認日の更新は行っていない。"
 }

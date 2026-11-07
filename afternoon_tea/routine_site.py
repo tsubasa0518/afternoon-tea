@@ -171,6 +171,30 @@ class API:
         return {x['path']:x for x in tree['tree']}
     def read(self,commit,path):
         f=self.files(commit)[path];require(f['mode']=='100644' and f['type']=='blob','non_regular_file');return self.blob(f['sha'])
+def dispatch_publication(api, number, head_sha, merge_sha):
+    """Serialized intake jobs deduplicate by a durable bot receipt and run SHA.
+
+    A failed dispatch leaves no success receipt and can be retried. If dispatch
+    succeeded but saving its receipt failed, the Actions run is the recovery proof.
+    """
+    marker='<!-- weekly-site-dispatch:'+head_sha+' -->'
+    for page in range(1, 11):
+        comments=api.get('/issues/'+number+'/comments?per_page=100&page='+str(page))
+        require(isinstance(comments,list),'invalid_dispatch_receipts')
+        if any(c.get('user',{}).get('login')=='github-actions[bot]' and c.get('body','').startswith(marker+'\n') for c in comments):
+            return 'already_requested'
+        if len(comments)<100:break
+    else:raise ValueError('dispatch_receipt_pagination_limit')
+    if merge_sha:
+        runs=api.get('/actions/workflows/deploy.yml/runs?head_sha='+merge_sha+'&event=workflow_dispatch&per_page=100')
+        require(isinstance(runs,dict) and isinstance(runs.get('workflow_runs'),list),'invalid_publication_history')
+        if any(r.get('head_sha')==merge_sha and r.get('event')=='workflow_dispatch' for r in runs['workflow_runs']):
+            return 'already_requested'
+    api.call('POST','/actions/workflows/deploy.yml/dispatches',{'ref':'main'})
+    api.call('POST','/issues/'+number+'/comments',{'body':marker+'\n検証済みheadのPages公開を要求しました。head: '+head_sha+' / merge: '+str(merge_sha)})
+    return 'requested'
+
+
 def intake(api,number,author,sleep=time.sleep):
     number=str(int(number));pr=api.get('/pulls/'+number)
     require(not pr['draft'] and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==REPO and pr['head']['repo'] and pr['head']['repo']['full_name']==REPO and pr['head']['ref'].startswith(BRANCH_PREFIX) and pr['user']['login']==author and pr['title'].startswith('[weekly-site]'),'pr_not_a_trusted_routine')
@@ -188,17 +212,18 @@ def intake(api,number,author,sleep=time.sleep):
     for attempt in range(10):
         latest=api.get('/pulls/'+number)
         require(latest['head']['sha']==pr['head']['sha'],'pr_head_changed')
-        if latest.get('merged') is True:break
+        if latest.get('merged') is True:
+            merge_sha=latest.get('merge_commit_sha');break
         require(latest['state']=='open','pr_no_longer_open')
         try:
             merged=api.call('PUT','/pulls/'+number+'/merge',{'sha':pr['head']['sha'],'merge_method':'squash'})
-            require(merged.get('merged') is True,'merge_not_completed');break
+            require(merged.get('merged') is True,'merge_not_completed');merge_sha=merged.get('sha');break
         except HTTPError as e:
             if e.code!=405 or attempt==9:raise
             sleep(15)  # Required CI may still be running; no protection changes.
     # Explicit dispatch is supported even when GITHUB_TOKEN performed the merge.
-    api.call('POST','/actions/workflows/deploy.yml/dispatches',{'ref':'main'})
-    return {**report,'pr':number,'dispatch':'requested'}
+    dispatch=dispatch_publication(api,number,pr['head']['sha'],merge_sha)
+    return {**report,'pr':number,'dispatch':dispatch}
 
 
 def prepare():
