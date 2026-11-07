@@ -72,7 +72,9 @@
       ],
       "weekday": null,
       "weekend": null,
-      "time_note": "アフタヌーンティーは予約時間から2時間半（ページ記載）。曜日条件はプランごとの記載なし＝未確認"
+      "time_note": "アフタヌーンティーは予約時間から2時間半（ページ記載）。曜日条件はプランごとの記載なし＝未確認",
+      "category": "lux",
+      "category_source": "data/store_master.json#master-010"
     },
     {
       "id": "master-070",
@@ -121,7 +123,9 @@
       ],
       "weekday": null,
       "weekend": null,
-      "time_note": "ランチ・ティータイム／ディナー帯。曜日条件の記載なし＝未確認"
+      "time_note": "ランチ・ティータイム／ディナー帯。曜日条件の記載なし＝未確認",
+      "category": "lux",
+      "category_source": "data/store_master.json#master-070"
     }
   ]
 }

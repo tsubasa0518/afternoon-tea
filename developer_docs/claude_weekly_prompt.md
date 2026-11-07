@@ -39,22 +39,27 @@ search_failures.jsonの各記録にname, area, checked_at, sources, status, reas
 
 全14エリアについて対象駅、実際に試した入口URL、探索できた範囲、残った未調査範囲をscope:area/stationのreason等に記録します。探索未実施ならunresearched、一覧を見たが詳細が不十分ならinformation_insufficientです。ページ取得だけで店舗・エリアを確認完了にしません。取得失敗や掲載なしを「AT提供なし」の証拠にしません。
 
-## HTMLとスマートフォン操作
+## 固定デザインでHTMLを生成
 
-既存の色・カード・注意書きを保ち、単独HTMLにします。CSSとフィルターJavaScriptはインライン、画像は埋め込みます。任意のGoogle Fonts以外の外部アセット・外部JavaScript・自動通信・フォームを入れません。HTML用に外部取得文をエスケープし、実行コードに混ぜません。
+**HTMLのデザインを変更してはいけません。必ず固定HTML生成器を使用し、research.jsonとsearch_failures.jsonからsite/index.htmlを生成してください。**
 
-エリア絞り込み、店舗・ホテル名検索、季節/テーマ（プラン名）検索、料金帯を、情報がある範囲で維持します。テーマと料金の組合せは同一プランで判定し、別プランの条件を混ぜて一致させません。価格不明は0円扱いせず「料金未確認」で区別します。サービス料等の条件を表示します。絞り込みで調査範囲の注意書きまで隠さず、表示件数・該当なし・解除ボタン、入力ラベル、44px程度のタッチ操作領域を保ちます。スマートフォンで横にはみ出さないようにします。
+JSON更新後に `python3 -m afternoon_tea.routine_renderer generate` を実行します。HTMLを手書きしたり、既存HTMLのCSS・JavaScript・カード・フィルター・data属性を自分で書き換えたりしません。テンプレートやPython生成器の編集も禁止です。デザインはリポジトリの固定テンプレートで管理します。
 
-店舗0件でも「今週確認できた情報はありません」と書いた正常なHTMLを作成します。少数店舗、未解決、未調査エリア、旧品質判定REVIEW_REQUIREDは公開を止める理由ではありません。実行日・掲載件数・調査範囲の限界を明記します。
+任意項目として店舗のcategory（cafe / hotel / lux）、category_source、hotel_name、exit、access、sweets、season、各プランのsweets/season、weekday_available/weekend_available（true / false / null）、time_note等を追加できます。既存のweekday/weekend、price_yen、plan_name、start/end等も利用できます。カテゴリ・スイーツ・季節・曜日は確認根拠がある値だけを保存し、価格・店名・見た目から推測しません。カテゴリ不明は省略またはnullにし、生成器の「分類未確認」表示を使います。保存済みマスターの分類を使う場合はその出典をcategory_sourceに記録し、今回再確認したと偽りません。
+
+店舗共通の時間補足を全プランの提供時間だと決め付けません。プランごとの時間・スイーツ・曜日が確認できた場合はそのプランに記録します。税・サービス料の条件や未知の期間はそのまま保持します。
+
+生成器は14エリア、元HTMLの色・カテゴリ・カード・色付きプラン・料金・期間・駅情報・情報リンク・ダークモード・スマートフォン表示・フィルター・上部へ戻る操作を固定出力します。店舗が0件でも説明付きHTMLを作ります。未調査・少数店舗・REVIEW_REQUIRED等は生成や公開を止める理由ではありません。
 
 ## 完成とPR
 
 調査時間を使い切る前に完成へ移り、未着手はunresearchedとして残します。次を順に実行します。
 
-1. `python3 -m afternoon_tea.routine_site validate` — HTML/JSONの技術検証。
-2. `python3 -m afternoon_tea.weekly_review` — 日付の軽量な事前確認。期間外や日付不正があれば、該当プランのJSON・HTML・件数を修正して再確認します。unknown_periodsは不合格ではなく、未確認として保持します。この確認は厳格な公開品質ゲートではありません。
-3. エリア、名前、テーマ、料金、組合せ、解除、0件表示をローカルで確認し、店舗/プラン数がJSONとHTMLで一致するか確認します。予約リンクは操作しません。
-4. git diffで3ファイル以外を変更していないことを確認します。
+1. `python3 -m afternoon_tea.weekly_review` — 日付の事前確認。期間外・不正日付はJSONを修正し、unknown_periodsは未知のまま保持します。
+2. `python3 -m afternoon_tea.routine_renderer generate` — 固定テンプレートからHTMLを生成します。手作業でHTMLを書き換えません。
+3. `python3 -m afternoon_tea.routine_site validate` — 既存のHTML/JSON技術検証を実行します。
+4. エリアジャンプ、カテゴリ、曜日、価格確認済み、スイーツ・季節、名前・テーマ・料金、解除、0件表示をローカルで確認します。予約リンクは操作しません。修正が必要ならJSONを直して生成器を再実行します。
+5. git diffでsite内の3ファイル以外を変更していないことを確認します。
 
 HTML生成自体が失敗したら壊れたファイルや公開用PRを作らず、失敗理由の保存先を報告してエラー終了します。調査が途中・0店舗の場合は生成失敗ではなく、説明付きHTMLを完成してPRを作ります。
 

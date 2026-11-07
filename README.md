@@ -1,9 +1,10 @@
 # 東京アフタヌーンティー：毎週自動更新
 
-Claude Code Routines（Cloud Scheduled Tasks）が毎週月曜07:17 JSTに調査・HTML/JSON生成・PR作成を行い、GitHub Actionsが3ファイル限定の技術検証、自動マージ、GitHub Pages公開を行います。Codexの定期実行は不要です。
+Claude Code Routines（Cloud Scheduled Tasks）が毎週月曜07:17 JSTに調査・JSON更新・固定生成器によるHTML生成・PR作成を行い、GitHub Actionsが3ファイル限定の技術検証、自動マージ、GitHub Pages公開を行います。Codexの定期実行は不要です。
 
 公開URL: [東京アフタヌーンティー](https://tsubasa0518.github.io/afternoon-tea/)
 
+- デザイン: 元HTMLのCSS・JavaScriptを固定テンプレートとして再利用。毎週HTMLを自由に書き直しません。
 - 更新対象: `site/index.html`, `site/research.json`, `site/search_failures.json`
 - 自動取り込み: `.github/workflows/auto-merge-weekly.yml`
 - 公開: `.github/workflows/deploy.yml`（マージ後に明示的に起動）
@@ -14,6 +15,7 @@ Claude Code Routines（Cloud Scheduled Tasks）が毎週月曜07:17 JSTに調査
 [最初の設定・運用・停止・復旧方法](developer_docs/weekly_automation.md)と[Claudeへ貼るプロンプト全文](developer_docs/claude_weekly_prompt.md)を参照してください。
 
 ```sh
+python3 -m afternoon_tea.routine_renderer generate
 python3 -m afternoon_tea.routine_site validate
 python3 -m unittest discover -s tests -v
 ```

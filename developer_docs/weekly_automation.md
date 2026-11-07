@@ -1,10 +1,10 @@
 # 毎週の自動更新
 
-Claude Codeが調査とHTML作成、GitHubが検証・取り込み・公開を担当します。Codexの定期実行やOpenAI APIは使用しません。
+Claude Codeが調査とJSON更新・固定生成器の実行、GitHubが検証・取り込み・公開を担当します。Codexの定期実行やOpenAI APIは使用しません。
 
 ```mermaid
 flowchart TD
-  A[月曜07:17 JST Claudeのクラウドタスク] --> B[調査と3ファイル生成]
+  A[月曜07:17 JST Claudeのクラウドタスク] --> B[調査とJSON更新・固定HTML生成]
   B --> C[claude/weekly-afternoon-tea-で始まるブランチからweekly-site PR]
   C --> D[main側コードで技術検証]
   D -->|合格| E[自動マージ]
@@ -120,3 +120,39 @@ PR本文に実行日・期間・店舗/プラン数・未調査/取得状況と1
 ```
 
 毎週月曜日07:17 JSTの既存スケジュールやGitHubの自動マージ・公開設定を変更する必要はありません。
+
+
+## 元HTMLの固定デザインを使う
+
+デザインの正本は`afternoon_tea_tokyo_2026-11-06.html`です。添付のHomepage:example.htmlと内容が同一であることも確認しました。過去の120店舗情報は移植していません。
+
+```sh
+python3 -m afternoon_tea.weekly_review
+python3 -m afternoon_tea.routine_renderer generate
+python3 -m afternoon_tea.routine_site validate
+```
+
+生成器はネットワーク接続せず、site内のJSONを読み、検証後にindex.htmlだけを一時ファイルから安全に置き換えます。生成に失敗した場合は既存HTMLを維持します。build_html.pyと保護済みの元HTMLは変更していません。
+
+`afternoon_tea/templates/routine.css`と`routine.js`は元HTMLからそのまま分離したCSS・基本JSです。routine.htmlが全体構造、routine_extra.css/jsが未確認値・検索・表示件数等の補助です。色、hero、3カテゴリの集計、14エリア、カテゴリ別見出し、card/plan/when/price/links、季節/スイーツ/曜日/価格確認フィルター、エリアジャンプ、ダークモード、上部へ戻る構造を再利用しています。
+
+JSONの任意項目は後方互換です。categoryはcafe/hotel/luxで、欠落した場合は分類未確認として表示します。現在の2店舗のcategoryは既存store_masterの分類を出典付きで明示しました。価格からカテゴリを推定していません。スイーツ・季節はJSONで指定された分類だけを使います。駅出口・曜日・時間等が不明なら未確認と表示します。店舗共通の時間補足は個別プランの確定時間に流用しません。
+
+今回の掲載は2店舗・8プランです。既知の対象期間外1プランを除いた修正を維持しています。元120店舗の料金・期間・駅出口は流用していません。0店舗でも14エリアと未確認表示が崩れず、店舗数の少なさを公開停止条件にしません。
+
+### Routineに登録する指示の更新
+
+既存RoutineのスケジュールとGitHub接続を維持し、指示文を以下へ置き換えてください。GitHubのドキュメント更新だけで登録済み指示文も変わったとは判断しないでください。
+
+```text
+毎回tsubasa0518/afternoon-teaの最新mainを取得し、AGENTS.mdと
+ developer_docs/claude_weekly_prompt.mdを全文読み、最新版に従って週次調査を行ってください。
+変更はsite/research.json、site/search_failures.json、site/index.htmlだけです。
+HTMLのデザインは変更せず、JSON更新後に必ず
+python3 -m afternoon_tea.routine_renderer generate
+を実行してsite/index.htmlを生成してください。HTML/CSS/JavaScriptを手書きしないでください。
+日付確認・技術検証後に指定のclaude/weekly-afternoon-tea-ブランチと
+[weekly-site]タイトルでPRを作成してください。予約操作やアクセス制限の回避は禁止です。
+```
+
+毎週の作業は「調査→JSON更新→固定生成器→技術検証→PR」です。デザイン変更が必要なときだけ、別の開発PRでテンプレートを修正します。GitHub側の自動マージ・Pages公開ワークフローは従来のままです。

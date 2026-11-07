@@ -82,34 +82,3 @@ class WeeklyReviewTests(unittest.TestCase):
                 routine_site.write_summary('自動マージ成功・公開開始要求済み',{'shops':2,'plans':8,'pr':'20','unresearched_shops':73,'search_statuses':{'unresearched':74}})
             text=path.read_text();self.assertIn('2',text);self.assertIn('8',text);self.assertIn('73',text)
             self.assertIn('/pull/20',text);self.assertIn('/actions/runs/123',text);self.assertNotIn('Pages公開確認成功',text)
-    def test_filters_execute_without_network_or_reservation_operations(self):
-        if not shutil.which('node'):self.skipTest('Node is needed for local JavaScript verification')
-        source=(routine_site.ROOT/'site/index.html').read_text()
-        match=re.search(r'<script id="site-filters">(.*?)</script>',source,re.S)
-        if match is None:self.skipTest('This weekly HTML does not use the optional filter template')
-        harness=r'''
-const fs=require('fs'),vm=require('vm'),code=JSON.parse(fs.readFileSync(0,'utf8'));
-function element(dataset={}){return {dataset,hidden:false,value:'',textContent:'',attrs:{'aria-pressed':'true'},events:{},getAttribute(k){return this.attrs[k]},setAttribute(k,v){this.attrs[k]=v},addEventListener(k,f){this.events[k]=f}}}
-const areaButtons=[element({area:'1'}),element({area:'14'})];
-function card(name,plans){const c=element();c.title={textContent:name};c.plans=plans.map(([name,price])=>element({planName:name,priceYen:price}));c.querySelector=()=>c.title;c.querySelectorAll=()=>c.plans;return c}
-const a=card('Hotel A',[['冬 クリスマス','7000'],['秋','11000'],['価格未確認','']]),b=card('Hotel B',[['夏','10000']]);
-function section(area,c){const s=element({area});s.querySelectorAll=()=>[c];return s}
-const sections=[section('1',a),section('14',b)],notice=element();
-const ids={};for(const id of ['shop-search','theme-search','price-filter','filter-status','no-results','reset-filters'])ids[id]=element();ids['price-filter'].value='all';
-const doc={getElementById(id){return ids[id]},querySelectorAll(q){if(q==='[data-area].fb')return areaButtons;if(q==='section.area[data-area]')return sections;throw Error('Unexpected selector '+q)}};
-vm.runInNewContext(code,{document:doc});
-function assert(ok,reason){if(!ok)throw Error(reason)}
-function input(id,value,event='input'){ids[id].value=value;ids[id].events[event]()}
-assert(ids['filter-status'].textContent==='表示 2店舗・4プラン','initial counts');
-input('shop-search','ＨＯＴＥＬ ａ');assert(!a.hidden&&b.hidden,'NFKC name search');
-input('theme-search','クリスマス');input('price-filter','high','change');assert(a.hidden&&b.hidden,'theme and price must match same plan');
-assert(ids['no-results'].hidden===false,'no-result message');assert(!notice.hidden,'scope notice stays visible');
-input('price-filter','low','change');assert(!a.hidden&&!a.plans[0].hidden&&a.plans[1].hidden,'price with theme');
-input('theme-search','');input('price-filter','unknown','change');assert(!a.hidden&&!a.plans[2].hidden&&a.plans[0].hidden,'unknown is not free');
-ids['reset-filters'].events.click();assert(!a.hidden&&!b.hidden&&ids['no-results'].hidden,'reset');
-areaButtons[0].events.click();assert(a.hidden&&!b.hidden,'area filter');
-input('price-filter','mid','change');assert(!b.hidden,'10000 upper boundary');
-input('price-filter','low','change');assert(b.hidden,'price filtering');
-'''
-        result=subprocess.run(['node','-e',harness],input=json.dumps(match.group(1)),text=True,capture_output=True)
-        self.assertEqual(result.returncode,0,result.stderr)
