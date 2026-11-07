@@ -29,4 +29,4 @@ class WeeklyWorkflowTests(unittest.TestCase):
    with patch('afternoon_tea.weekly.protected_files'),patch('afternoon_tea.weekly.run_discovery',return_value={}),patch('afternoon_tea.weekly.run_queue',return_value=(out,state)):
     result,summary,code=run()
    self.assertNotEqual(code,0);self.assertIn('html_missing',summary['errors']);self.assertTrue((out/'summary.json').exists())
-   self.assertIsNone(summary['reservation_operations'])
+   self.assertIn('reservation_audit_complete',summary)

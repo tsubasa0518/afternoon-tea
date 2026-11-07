@@ -9,6 +9,7 @@ import argparse
 import copy
 import datetime as dt
 import html
+import hashlib
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -16,7 +17,7 @@ import re
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, quote, unquote, urljoin, urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import Request
 from urllib.robotparser import RobotFileParser
 
 from .read_only import ReadOnlyTransport, ForbiddenOperation
@@ -88,7 +89,7 @@ def site_url(url, site):
 
 
 class Browser:
-    def __init__(self, delay=2.0, timeout=15.0, max_requests=400):
+    def __init__(self, delay=2.0, timeout=15.0, max_requests=400, audit=None):
         self.delay = delay
         self.timeout = timeout
         self.max_requests = max_requests
@@ -96,7 +97,8 @@ class Browser:
         self.last_request = {}
         self.robots = {}
         self.errors = []
-        self.transport = ReadOnlyTransport()
+        self.transport = ReadOnlyTransport(audit)
+        self.communication_audit = self.transport.communication_audit
         self.blocked_hosts = set()
 
     def _rate_limit(self, host):
@@ -129,12 +131,24 @@ class Browser:
                 raise RuntimeError("access_challenge_stop_host")
             return text
 
-    def fetch(self, url):
+    def fetch(self,url):
+        try:
+            value=self._fetch(url)
+            if self.communication_audit:
+                from .communication_audit import identity
+                self.last_document=self.communication_audit.record('document',resource=identity(url),status='success',request_id=self.transport.last_request_id,page_sha256=hashlib.sha256(value.encode()).hexdigest())
+            return value
+        except Exception as e:
+            if self.communication_audit:self.communication_audit.decision(url,str(e).split(':',1)[0] if isinstance(e,ForbiddenOperation) else type(e).__name__ if not isinstance(e,RuntimeError) else str(e),violation=isinstance(e,ForbiddenOperation))
+            raise
+
+    def _fetch(self, url):
         try:
             from .read_only import check_url
             check_url(url)
         except ForbiddenOperation as error:
-            self.errors.append({"url": url, "error": str(error), "status": "blocked"})
+            from .communication_audit import identity
+            self.errors.append({"resource": identity(url), "error": str(error).split(":",1)[0], "status": "blocked"})
             raise
         host = urlsplit(url).hostname
         if host in self.blocked_hosts:
@@ -159,6 +173,8 @@ class Browser:
                 robots = RobotFileParser()
                 robots.parse(body.decode("utf-8", errors="replace").splitlines())
                 self.robots[host] = robots
+            except ForbiddenOperation:
+                raise
             except (HTTPError, URLError, OSError, RuntimeError) as error:
                 self.robots[host] = None
                 self.errors.append({"url": robots_url, "error": type(error).__name__ + ": " + str(error)})
