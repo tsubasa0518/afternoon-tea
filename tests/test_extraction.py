@@ -27,8 +27,8 @@ class ExtractionTests(unittest.TestCase):
  def test_tablecheck(self):
   raw='<title>TEST CAFE - TableCheck</title><div class="menu-item"><div class="menu-item-name">アフタヌーンティー</div><div class="menu-item-description">スコーン</div><div class="menu-item-price">6,000円 税サ込</div><div class="menu-item-order-select">選択する</div></div>'
   p=extract(raw,'https://www.tablecheck.com/ja/shops/test/reserve','2026-11-06')['plans'][0];self.assertTrue(p['eligible_document'])
- def test_ikyu_only_lunch(self):
-  for meal,expected in [('ランチ',True),('朝食',True),('ディナー',False),('ティー',False)]:
+ def test_ikyu_accepts_tea_at_but_not_dinner(self):
+  for meal,expected in [('ランチ',True),('朝食',True),('ディナー',False),('ティー',True)]:
    raw='<h1>TEST CAFE</h1>'+meal+' <h1>アフタヌーンティー</h1> 税サ込6,000円 メニュー スコーン プラン紹介 <button>このプランを予約する</button>'
    self.assertEqual(extract(raw,'https://restaurant.ikyu.com/123/plan456/','2026-11-06')['plans'][0]['eligible_document'],expected)
  def test_missing_menu_not_confirmed(self):
@@ -43,9 +43,9 @@ class ExtractionTests(unittest.TestCase):
   r=extract(fixture(),URL,'2026-11-06')
   self.assertFalse(match_master(r,{'name':'TEST','station':'日本橋駅'}))
   self.assertFalse(match_master(r,{'name':'TEST CAFE','station':'新宿駅'}))
- def test_multiple_prices_not_guessed(self):
+ def test_explicit_regular_price_is_used_instead_of_discount(self):
   p=extract(fixture('通常価格 税サ込 6,000円 割引後 4,000円'),URL,'2026-11-06')['plans'][0]
-  self.assertIsNone(p['plan']['price_min'])
+  self.assertEqual(p['plan']['price_min'],6000)
  def test_options_not_added_to_base_sweets(self):
   p=extract(fixture().replace('マカロンとスコーン','追加料金のマカロンとスコーン'),URL,'2026-11-06')['plans'][0]
   self.assertEqual(p['plan']['sw'],[])

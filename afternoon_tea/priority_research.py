@@ -229,9 +229,19 @@ def main():
     if not directory.is_relative_to(ROOT.resolve() / '.staging'):
         parser.error('workdir must be under .staging')
     if args.command == 'prepare':
+        if (directory/'collection.json').exists():
+            parser.error('existing collection: resume it, or choose a new --workdir; do not overwrite its queue')
         queue = prepare(read(ROOT / 'data/priority_sources.json'), read(ROOT / 'data/store_master.json'),
                         read(ROOT / 'data/priority_master_matches.json'), args.run_id,
                         dt.datetime.now(JST).isoformat(), read(args.failures))
+        # Existing checkpoints supply URL hints only, never current prices or confirmation.
+        history = read(ROOT/'research_data/state.json') if (ROOT/'research_data/state.json').exists() else {}
+        old = {x['id']: x for x in history.get('items', [])}
+        for area in queue['areas']:
+            for task in area['tasks']:
+                task['source_hints'] = list(dict.fromkeys(url for mid in task.get('master_ids', [])
+                    for site in ('ik', 'tb', 'tc') for url in old.get(mid, {}).get('sources', {}).get(site, [])
+                    if seed_policy(url)['allowed_by_read_only_url_policy']))
         atomic_json(directory / 'queue.json', queue)
         atomic_json(directory / 'failures_template.json', queue['failures_template'])
         for area in queue['areas']:

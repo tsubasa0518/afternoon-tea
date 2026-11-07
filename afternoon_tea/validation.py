@@ -302,8 +302,8 @@ def validate_data(data, master):
                     proof(reservation, "reservation", start, generated, links[0]["url"])
                     require(reservation.get("booking") is True and reservation.get("menu") is True,
                             "ATの予約ページとメニューの確認が必要です")
-                    require(links[0]["site"] != "ik" or reservation.get("meal") in ("lunch", "breakfast"),
-                            "一休はランチ・朝食だけが対象です")
+                    require(links[0]["site"] != "ik" or reservation.get("meal") in ("lunch", "breakfast", "tea"),
+                            "一休はATメニューと予約根拠のあるランチ・朝食・ティーが対象です")
                     for key in ("name", "shop", "station", "exit", "tabelog"):
                         if (base is None or shop[key] != base[key]) and known(shop[key]):
                             require("/" + key in evidence, key + "の変更根拠がありません")

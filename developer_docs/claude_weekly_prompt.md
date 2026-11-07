@@ -1,6 +1,6 @@
 # 毎週の東京アフタヌーンティー更新
 
-最新mainを取得し、AGENTS.md、research_spec.md、この指示書、developer_docs/weekly_automation.md、data/priority_sources.json、data/store_master.json、前週のsite/内3ファイルを読んでください。起動時に必ずこのリポジトリの最新指示書を読み直し、登録済みRoutine内の古い詳細より今回の指示書を優先してください。毎週月曜日07:17 JSTに東京14エリアのATを調査し、HTML/JSONと公開用PRを完成させます。
+最新mainを取得し、AGENTS.md、CLAUDE.md、research_spec.md、この指示書、developer_docs/weekly_automation.md、data/priority_sources.json、data/store_master.json、前週のsite/内3ファイルを読んでください。起動時に必ずこのリポジトリの最新指示書を読み直し、登録済みRoutine内の古い詳細より今回の指示書を優先してください。毎週月曜日07:17 JSTに東京14エリアのATを調査し、HTML/JSONと公開用PRを完成させます。
 
 ## 安全規則と変更範囲
 
@@ -30,13 +30,25 @@
 
 最初に終了時刻を確認し、最後の10分（短い枠なら最後の3分の1）をJSON・固定HTML・検証・PR用に残します。Aの未調査を優先しつつ、Cと14エリアの入口探索を省略しないよう予算を先に分けます。件数達成のため安全規則・時間制限を破りません。終了時に未処理はunresearchedとして残します。
 
+### 必須：先頭14件で止めず、2巡目・3巡目へ進む
+
+`python3 -m afternoon_tea.routine_collection --seconds 600 --max-requests 240` を使用します。secondsは残り時間から最後の10分（短い枠なら最後の3分の1）の完成時間を引いた範囲で指定してください。これは調査ページと発見用の公開一覧を取得して.stagingへ保存するCLIで、confirmedへの昇格・HTML生成・公開はしません。ReadOnlyTransport、robots判定、ホスト単位の403/429停止、要求数上限を共有します。同じページを本文抽出のためだけに再取得せず、保存HTMLを読みます。
+
+`routine_collection.rounds()` は各エリアから1件ずつ巡回し、時間・要求数が残れば**2巡目・3巡目以降も156件の未処理タスクがなくなるまで**続けます。各エリアのtasks[0]だけを処理する独自ループへ置き換えてはいけません。取得経路のない追加22件は、許可された店舗名・駅名検索でURLを探し、source_neededを「ATなし」にしません。前週未調査を優先する既存キュー順を維持します。
+
+新規探索用に収集時間と要求数の20%を先に確保し、既存の許可された公開AT一覧と、そこから取得できた正規のエリア一覧を探索します。新しいURLはnew_url_candidatesとして保存し、店舗・エリア同一性を確認するまでは「新規店舗数」に加えません。.stagingのcollected-area-NN.jsonには全14エリアの対象駅と新規ホテル・カフェ探索語も出ます。**一覧が取得不能・一部エリアの入口が見つからない場合も、許可された公開検索で各エリアの新規開業ホテル・カフェ・季節ATを探す枠を使います。** 新規探索を単なる「時間が余ったら」の任意作業に戻しません。正当な取得経路がなければ、実際に試した経路と制限・未実施範囲を記録します。
+
+途中経過はcollection.json、collected-area-NN.json、原文pages/*.html、communication-*.jsonlへ各ページ後に保存します。中断後は同じworkdirでCLIを再実行すると未収集タスクから再開します。prepareを再実行して途中状態を上書きしません。別run_idの状態の混用は拒否します。既存collection.jsonがある場所でprepareをやり直すと保護のため停止します。別実行を開始する場合はprepare・収集・reportに共通の新しい `--workdir .staging/priority-research-実行ID` を指定します。CLIがsource_needed、fetch_failed、制限を記録しても店舗は未確認のままです。HTTP取得成功をconfirmedや調査完了に変換しません。
+
+収集ログ・原文は.stagingのみとし、コミットしません。通信件数・禁止操作検出の要約（監査のcomplete、violations、requests、chain_sha256、run_idと監査範囲）をsite/search_failures.jsonの任意のcommunication_summaryに保存します。完全な通信台帳を保存していない範囲まで「予約操作0回を証明」と主張しません。安全違反・コード例外は正常終了として扱わず、調査不能と技術異常を分けます。
+
 ### エリア分担と途中保存
 
-可能ならresearch_spec.mdの9担当・3波の分担を再利用します。第1波：①1 ②2 ③3・4、第2波：④5・6 ⑤7 ⑥8、第3波：⑦9・10 ⑧11・12 ⑨13・14。担当には該当area-NN.json、安全規則、今回の期間を渡します。同一サービスへの同時アクセス・要求数を制御し、制限を増やしません。サブエージェントが使えなければ同じ順で逐次処理します。
+可能ならresearch_spec.mdの9担当・3波の分担を再利用します。第1波：①1 ②2 ③3・4、第2波：④5・6 ⑤7 ⑥8、第3波：⑦9・10 ⑧11・12 ⑨13・14。担当には該当area-NN.json、collected-area-NN.json、安全規則、今回の期間を渡します。利用可能なら9担当を上記3波で起動し、保存済み原文の解析・未収集URL発見を分担します。HTTP取得は中央の収集CLIに集約し、サブエージェントごとに同じURLを再取得しません。同一サービスへの同時アクセス・要求数を制御し、制限を増やしません。サブエージェントが使えなければ同じ順で逐次処理します。
 
 各エリア終了時に .staging/priority-research/frag_N.json 等へshopsとfailuresを保存し、最後の1回だけの保存にしません。親が全担当分を統合します。作業ファイルはコミットしません。failures_template.jsonの各店舗行へ結果を反映し、担当が未完了でも134行をすべて残します。前週の状態は調査順序の参考だけに使い、今回のconfirmedへコピーしません。
 
-店舗ごとの確認順は一休→食べログ→TableCheckです。一休はランチ・朝食のATだけを採用します。先行サイトが未確認・アクセス不能なら、その事実を記録して次へ進みます。先行サイトで条件を満たしたら後順位サイトを深掘りしません。パフェ単品や通常のランチ/ディナーをATプランとして件数に加えません。
+店舗ごとの確認順は一休→食べログ→TableCheckです。一休はランチ・朝食・ティー区分のATを対象にします。ティー区分でも具体的ATメニューと公開ネット予約導線を同じプランで確認し、ディナー・汎用ティーセット・予約ページだけの掲載はしません。先行サイトが未確認・アクセス不能なら、その事実を記録して次へ進みます。先行サイトで条件を満たしたら後順位サイトを深掘りしません。パフェ単品や通常のランチ/ディナーをATプランとして件数に加えません。
 
 同じアクセス制限が繰り返されるサービスへ無意味な要求を続けません。別ホスト・非公式API・認証情報で迂回しません。正当に使える別サービスや公式の探索資料へ移り、取得不能範囲を記録します。予約ボタンは原文上の存在を確認するだけで操作しません。
 
@@ -74,6 +86,13 @@ JSON更新後に `python3 -m afternoon_tea.routine_renderer generate` を実行�
 
 任意項目として店舗のcategory（cafe / hotel / lux）、category_source、hotel_name、exit、access、sweets、season、各プランのsweets/season、weekday_available/weekend_available（true / false / null）、time_note等を追加できます。既存のweekday/weekend、price_yen、plan_name、start/end等も利用できます。カテゴリ・スイーツ・季節・曜日は確認根拠がある値だけを保存し、価格・店名・見た目から推測しません。カテゴリ不明は省略またはnullにし、生成器の「分類未確認」表示を使います。保存済みマスターの分類を使う場合はその出典をcategory_sourceに記録し、今回再確認したと偽りません。
 
+JSON整理後に `python3 -m afternoon_tea.routine_enrichment` を実行します。保存済みのプラン名・evidence_quote・menuから明記されたスイーツ・季節・曜日を構造化し、同一ID・同一名称のマスター店舗にはcategory/category_sourceを補います。カテゴリのホテル内外はマスターを参考とし、ホテルの9000円基準には今回の通常価格を使い、不明ならホテルとします。マスターを今回再確認したとは記録しません。
+
+- 確認したメニュー原文をplan.menuへ保存し、確認日・URLを保持します。たとえばスコーン、マカロン、いちご、栗等をsweetsへ、クリスマスをseason:["xmas"]へ入れます。本文にあるがフィルター項目へ転記し忘れることを避けます。
+- 「平日限定」「（平日）」がそのプランの条件ならweekday_available:true / weekend_available:falseへ入れます。未知はnullのままで、単に平日・土日という言葉があるだけでは断定しません。
+- price_yenは**通常価格**です。割引価格はdiscount_price_yenへ分離します。原文に通常9,200円・割引7,200円とあればprice_yen:9200とします。割引価格しか分からなければ通常価格はnullとし、割引率から逆算しません。税・サービス料条件も原文どおりです。
+- 補助コードのstructured_evidenceは値の出典・日時・原文を残します。自動抽出が保守的に空欄にした項目は保存原文を読み、根拠付きで補います。確認日時の更新やconfirmed昇格を自動補完で行いません。
+
 店舗共通の時間補足を全プランの提供時間だと決め付けません。プランごとの時間・スイーツ・曜日が確認できた場合はそのプランに記録します。税・サービス料の条件や未知の期間はそのまま保持します。
 
 生成器は14エリア、元HTMLの色・カテゴリ・カード・色付きプラン・料金・期間・駅情報・情報リンク・ダークモード・スマートフォン表示・フィルター・上部へ戻る操作を固定出力します。店舗が0件でも説明付きHTMLを作ります。未調査・少数店舗・REVIEW_REQUIRED等は生成や公開を止める理由ではありません。
@@ -83,11 +102,12 @@ JSON更新後に `python3 -m afternoon_tea.routine_renderer generate` を実行�
 調査時間を使い切る前に完成へ移り、未着手はunresearchedとして残します。次を順に実行します。
 
 1. `python3 -m afternoon_tea.priority_research report` — 指定134件の全状態・当回証拠・重複を確認。未調査行は消しません。
-2. `python3 -m afternoon_tea.weekly_review` — 日付の事前確認。期間外・不正日付はJSONを修正し、unknown_periodsは未知のまま保持します。
-3. `python3 -m afternoon_tea.routine_renderer generate` — 固定テンプレートからHTMLを生成します。手作業でHTMLを書き換えません。
-4. `python3 -m afternoon_tea.routine_site validate` — 既存のHTML/JSON技術検証を実行します。
-5. エリアジャンプ、カテゴリ、曜日、価格確認済み、スイーツ・季節、名前・テーマ・料金、解除、0件表示をローカルで確認します。予約リンクは操作しません。修正が必要ならJSONを直して生成器を再実行します。
-6. git diffでsite内の3ファイル以外を変更していないことを確認します。
+2. `python3 -m afternoon_tea.routine_enrichment` — 根拠のあるカテゴリ・スイーツ・季節・曜日・通常価格を補完し、割引と分離。
+3. `python3 -m afternoon_tea.weekly_review` — 日付の事前確認。期間外・不正日付はJSONを修正し、unknown_periodsは未知のまま保持します。
+4. `python3 -m afternoon_tea.routine_renderer generate` — 固定テンプレートからHTMLを生成します。手作業でHTMLを書き換えません。
+5. `python3 -m afternoon_tea.routine_site validate` — 既存のHTML/JSON技術検証を実行します。
+6. エリアジャンプ、カテゴリ、曜日、価格確認済み、スイーツ・季節、名前・テーマ・料金、解除、0件表示をローカルで確認します。予約リンクは操作しません。修正が必要ならJSONを直して生成器を再実行します。
+7. git diffでsite内の3ファイル以外を変更していないことを確認します。
 
 HTML生成自体が失敗したら壊れたファイルや公開用PRを作らず、失敗理由の保存先を報告してエラー終了します。調査が途中・0店舗の場合は生成失敗ではなく、説明付きHTMLを完成してPRを作ります。
 
@@ -101,3 +121,5 @@ PR本文には次の3区分を必ず記載します。実行の証拠がない�
 - **【指定134件の調査】** 指定134件、今回試みた件数、confirmed、information_insufficient、site_restriction、access_denied、no_results、excluded、unresearchedの各件数。
 - **【東京14エリアの調査】** 探索したエリア数、各エリアの対象駅・入口URL・探索範囲・確認済み店舗数、新規発見数、新規確認数、未調査範囲、掲載店舗総数・ATプラン総数。
 - **【公開】** 固定HTML生成結果、JSON技術検証結果、PR URL（作成後に本文へ追記）。自動マージ・Pagesの成功は実際のActions結果を確認した場合だけ記載します。
+
+PR本文には実行した巡回数、収集済み件数、source_needed件数、新規探索の実行経路と件数も載せます。1巡だけの場合は時間・要求数・取得制限等、実際の終了理由を明記します。毎回先頭1件だけを扱うことを調査完了としません。

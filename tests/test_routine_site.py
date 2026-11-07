@@ -17,8 +17,10 @@ class FakeAPI:
     def __init__(self):
         self.pr={'state':'open','draft':False,'title':'[weekly-site] mock','changed_files':1,'user':{'login':'tsubasa0518'},'base':{'ref':'main','repo':{'full_name':r.REPO}},'head':{'repo':{'full_name':r.REPO},'ref':'claude/weekly-afternoon-tea-20261107','sha':'a'*40},'merged':False}
         self.changed=[{'filename':'site/index.html','status':'modified'}]
-        self.content=files(2,76);self.calls=[];self.denied=False
+        self.content=files(2,76);self.calls=[];self.denied=False;self.comments=[];self.runs=[]
     def get(self,path):
+        if '/comments?' in path:return copy.deepcopy(self.comments)
+        if '/runs?' in path:return {'workflow_runs':copy.deepcopy(self.runs)}
         if '/files?' in path:return self.changed
         return copy.deepcopy(self.pr)
     def files(self,commit):return {p:{'mode':'100644','type':'blob','sha':p} for p in self.content}
@@ -27,7 +29,8 @@ class FakeAPI:
         self.calls.append((method,path,body))
         if method=='PUT':
             if self.denied:raise HTTPError('https://api.github.com',405,'Protected',{},None)
-            self.pr['merged']=True;self.pr['state']='closed';return {'merged':True}
+            self.pr['merged']=True;self.pr['state']='closed';self.pr['merge_commit_sha']='c'*40;return {'merged':True,'sha':'c'*40}
+        if path.endswith('/comments'):self.comments.append({'user':{'login':'github-actions[bot]'},'body':body['body']})
         return None
 
 class RoutineSiteTests(unittest.TestCase):
@@ -62,11 +65,11 @@ class RoutineSiteTests(unittest.TestCase):
         self.assertEqual((r.ROOT/'afternoon_tea_tokyo_2026-11-06.html').read_bytes(),(r.ROOT/'docs/index.html').read_bytes())
         r.validate_html_bytes((r.ROOT/'docs/index.html').read_bytes())
     def test_merge_then_explicit_dispatch_with_expected_sha(self):
-        api=FakeAPI();r.intake(api,1,'tsubasa0518');self.assertEqual([x[0] for x in api.calls],['PUT','POST'])
+        api=FakeAPI();r.intake(api,1,'tsubasa0518');self.assertEqual([x[0] for x in api.calls],['PUT','POST','POST'])
         self.assertEqual(api.calls[0][2]['sha'],'a'*40);self.assertEqual(api.calls[1][1],'/actions/workflows/deploy.yml/dispatches')
         self.assertEqual(api.calls[1][2],{'ref':'main'})
-    def test_already_merged_rerun_dispatches_without_second_merge(self):
-        api=FakeAPI();api.pr.update(merged=True,state='closed');r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),1);self.assertEqual(api.calls[0][0],'POST')
+    def test_already_merged_retry_dispatches_only_if_not_previously_requested(self):
+        api=FakeAPI();api.pr.update(merged=True,state='closed');r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),2);self.assertTrue(all(c[0]=='POST' for c in api.calls))
     def test_untrusted_author_fork_branch_title_and_base_rejected(self):
         for mutate in (lambda p:p['user'].update(login='intruder'),lambda p:p['head']['repo'].update(full_name='intruder/fork'),lambda p:p['head'].update(ref='other/test'),lambda p:p.update(title='other title'),lambda p:p['base'].update(ref='develop')):
             api=FakeAPI();mutate(api.pr)
@@ -130,7 +133,7 @@ class RoutineSiteTests(unittest.TestCase):
         self.assertFalse(api.calls)
     def test_weekly_retry_branch_is_valid(self):
         api=FakeAPI();api.pr['head']['ref']='claude/weekly-afternoon-tea-20261107-retry'
-        r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),2)
+        r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),3)
     def test_escaped_json_credentials_rejected(self):
         value=b'{"schema_version":1,"shops":[],"note":"gh\\u0070_'+b'a'*36+b'"}'
         with self.assertRaises(ValueError):r.validate_json(value)

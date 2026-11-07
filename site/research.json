@@ -1,2485 +1,3248 @@
 {
- "schema_version": 1,
- "generated_at": "2026-11-07T18:39:46+09:00",
- "status": "partial_research",
- "period": {
-  "start": "2026-11-07",
-  "end": "2026-12-17"
- },
- "note": "今回の実行で指定134件の各historical_urlを匿名GETで確認した結果のみ掲載（一休.com・TableCheck）。食べログは403のため未確認、新規店舗探索は未実施。前週の掲載店舗は引き継いでいない。未調査・情報不足・アクセス拒否はsearch_failures.jsonに記録。",
- "shops": [
-  {
-   "id": "master-001",
-   "name": "cafe VAVA",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "日本橋駅",
-   "exit": "日本橋駅 B4出口（日本橋髙島屋S.C.に直結）／東京駅 八重洲北口（徒歩5分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/112520/plan12815171",
-   "checked_at": "2026-11-07T18:26:50+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/112520/plan12815171",
-   "priority_ids": [
-    "priority-001"
-   ],
-   "plans": [
-    {
-     "plan_name": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食）",
-     "price_yen": 4950,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-002",
-   "name": "ROSSINI TERRACE（東京會舘）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "二重橋前駅",
-   "exit": "二重橋前駅 B5出口（地下通路でビル直結）／東京駅（徒歩3分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/110781/plan12803085",
-   "checked_at": "2026-11-07T18:25:55+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/110781/plan12803085",
-   "priority_ids": [
-    "priority-002"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー",
-     "price_yen": 6325,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-09-16",
-     "end": "2026-11-30",
-     "note": "提供期間: 2026-09-16〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー 税サ込 6,325円"
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-004",
-   "name": "丸ノ内ホテル / ポム・ダダン（8F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 丸の内北口（徒歩1分。OAZO側の丸ノ内ホテル専用入口から7Fフロント経由で8F）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100179/plan12815376",
-   "checked_at": "2026-11-07T18:26:10+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100179/plan12815376",
-   "priority_ids": [
-    "priority-007"
-   ],
-   "plans": [
-    {
-     "plan_name": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”＋カフェフリー（120分滞在・平日）",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”＋カフェフリー（120分滞在・平日） 税サ込 6,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-005",
-   "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "大手町駅",
-   "exit": "大手町駅 C4出口（直結）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/115189/plan12835763",
-   "checked_at": "2026-11-07T18:26:24+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/115189/plan12835763",
-   "priority_ids": [
-    "priority-012"
-   ],
-   "plans": [
-    {
-     "plan_name": "フェスティブアフタヌーンティー （11/16～）（平日限定）",
-     "price_yen": 9800,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-16",
-     "end": null,
-     "note": "提供期間: 2026-11-16〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "フェスティブアフタヌーンティー （11/16～）（平日限定） 税サ込 9,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-006",
-   "name": "東京ステーションホテル / ロビーラウンジ",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 丸の内南口（ホテル直結）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102900/plan12787122",
-   "checked_at": "2026-11-07T18:26:27+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102900/plan12787122",
-   "priority_ids": [
-    "priority-013"
-   ],
-   "plans": [
-    {
-     "plan_name": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定）",
-     "price_yen": 7900,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定） 税サ込 7,900円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-007",
-   "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 丸の内南口（徒歩1分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102901/plan12854246",
-   "checked_at": "2026-11-07T18:26:30+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102901/plan12854246",
-   "priority_ids": [
-    "priority-014"
-   ],
-   "plans": [
-    {
-     "plan_name": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-008",
-   "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "三越前駅",
-   "exit": "三越前駅 A7出口（直結）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101099/plan12875698",
-   "checked_at": "2026-11-07T18:26:36+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101099/plan12875698",
-   "priority_ids": [
-    "priority-016"
-   ],
-   "plans": [
-    {
-     "plan_name": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17）",
-     "price_yen": 11385,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-11-16",
-     "end": "2026-12-17",
-     "note": "ページ上は11,385円(通常)→9,108円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-16〜2026-12-17（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17） 11,385円 税サ込 9,108円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-009",
-   "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 八重洲北口（徒歩2分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100707/plan12791492",
-   "checked_at": "2026-11-07T18:26:39+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100707/plan12791492",
-   "priority_ids": [
-    "priority-017"
-   ],
-   "plans": [
-    {
-     "plan_name": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30）",
-     "price_yen": 9867,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-01",
-     "end": "2026-11-30",
-     "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30） 税サ込 9,867円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-010",
-   "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "大手町駅・二重橋前駅",
-   "exit": "大手町駅 C13b出口（地下通路で直結）／東京駅 丸の内北口（徒歩8分）",
-   "address": null,
-   "source_site": "TableCheck",
-   "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
-   "checked_at": "2026-11-07T18:32:12+09:00",
-   "booking_url_info_only": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
-   "priority_ids": [
-    "priority-018"
-   ],
-   "plans": [
-    {
-     "plan_name": "Afternoon Tea \"Stones\" Autumn（秋）",
-     "price_yen": null,
-     "price_note": "料金は原文の対応が曖昧なため未確認",
-     "start": "2026-09-01",
-     "end": "2026-11-30",
-     "note": "TableCheck掲載の提供期間。12/1から冬メニューに変更と記載",
-     "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-011",
-   "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "大手町駅",
-   "exit": "大手町駅（東西線 西口改札前から地下通路で直結）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/105756/plan12854308",
-   "checked_at": "2026-11-07T18:26:42+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/105756/plan12854308",
-   "priority_ids": [
-    "priority-019"
-   ],
-   "plans": [
-    {
-     "plan_name": "クリスマス アフタヌーンティー 2026 11.16～12.18",
-     "price_yen": 13000,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-16",
-     "end": "2026-12-18",
-     "note": "提供期間: 2026-11-16〜2026-12-18（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "クリスマス アフタヌーンティー 2026 11.16～12.18 税サ込 13,000円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-012",
-   "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "大手町駅・二重橋前駅",
-   "exit": "大手町駅 C13b出口（地下通路で直結）／東京駅 丸の内北口（徒歩8分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106795/plan12250640",
-   "checked_at": "2026-11-07T18:26:45+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106795/plan12250640",
-   "priority_ids": [
-    "priority-020"
-   ],
-   "plans": [
-    {
-     "plan_name": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30）",
-     "price_yen": 10350,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30） 税サ込 10,350円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-003",
-   "name": "真不同 HONG KONG TEA ROOM 1946",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/122278/plan12649319",
-   "checked_at": "2026-11-07T18:25:57+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/122278/plan12649319",
-   "priority_ids": [
-    "priority-003"
-   ],
-   "plans": [
-    {
-     "plan_name": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン）",
-     "price_yen": 4600,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円"
-    }
-   ]
-  },
-  {
-   "id": "priority-004",
-   "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "三越前駅",
-   "exit": "三越前駅 徒歩3分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/112311/plan12739895",
-   "checked_at": "2026-11-07T18:26:00+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/112311/plan12739895",
-   "priority_ids": [
-    "priority-004"
-   ],
-   "plans": [
-    {
-     "plan_name": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日）",
-     "price_yen": 6800,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は6,800円(通常)→6,052円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日） 6,800円 税サ込 6,052円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ]
-  },
-  {
-   "id": "priority-005",
-   "name": "文明堂カフェ",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "三越前駅",
-   "exit": "三越前駅 出口A4から徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/154158/plan12866695",
-   "checked_at": "2026-11-07T18:26:03+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/154158/plan12866695",
-   "priority_ids": [
-    "priority-005"
-   ],
-   "plans": [
-    {
-     "plan_name": "文明堂づくしのAfternoon Tea",
-     "price_yen": 4000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円"
-    }
-   ]
-  },
-  {
-   "id": "priority-006",
-   "name": "アルポルトカフェ 日本橋高島屋店",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "日本橋駅",
-   "exit": "日本橋駅 B1出口直結「日本橋高島屋」のB2階です。",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101719/plan12384641",
-   "checked_at": "2026-11-07T18:26:06+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101719/plan12384641",
-   "priority_ids": [
-    "priority-006"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク",
-     "price_yen": 2400,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円"
-    }
-   ]
-  },
-  {
-   "id": "priority-008",
-   "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 八重洲南口から徒歩4分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/117086/plan12872041",
-   "checked_at": "2026-11-07T18:26:13+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/117086/plan12872041",
-   "priority_ids": [
-    "priority-008"
-   ],
-   "plans": [
-    {
-     "plan_name": "【11/1～平日限定】抹茶 アフタヌーンティー",
-     "price_yen": 7900,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-11-01",
-     "end": null,
-     "note": "ページ上は7,900円(通常)→7,110円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【11/1～平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-009",
-   "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "大手町駅",
-   "exit": "大手町駅 C4・C5出口より地下通路で直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/115187/plan12845039",
-   "checked_at": "2026-11-07T18:26:16+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/115187/plan12845039",
-   "priority_ids": [
-    "priority-009"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日）",
-     "price_yen": 9300,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-16",
-     "end": null,
-     "note": "提供期間: 2026-11-16〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日） 税サ込 9,300円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-010",
-   "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "水天宮前駅",
-   "exit": "水天宮前駅 4番出口より直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102990/plan12850481",
-   "checked_at": "2026-11-07T18:26:19+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102990/plan12850481",
-   "priority_ids": [
-    "priority-010"
-   ],
-   "plans": [
-    {
-     "plan_name": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制）",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-11-01",
-     "end": "2026-11-30",
-     "note": "ページ上は8,500円(通常)→6,300円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制） 8,500円 税サ込 6,300円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-011",
-   "name": "HAMACHO HOTEL / SESSiON（1F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "水天宮前駅",
-   "exit": "水天宮前駅 5番出口を出てスカイツリー方面へ進み浜町中ノ橋交差点を右折。左手側「HAMACHO HOTEL」の1階です。",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/112036/plan12822858",
-   "checked_at": "2026-11-07T18:26:22+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/112036/plan12822858",
-   "priority_ids": [
-    "priority-011"
-   ],
-   "plans": [
-    {
-     "plan_name": "【土日祝/数量限定】SESSiONアフタヌーンティープラン",
-     "price_yen": 5500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【土日祝/数量限定】SESSiONアフタヌーンティープラン 税サ込 5,500円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ]
-  },
-  {
-   "id": "priority-015",
-   "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
-   "area_no": 1,
-   "area": "丸の内・日本橋",
-   "station": "東京駅",
-   "exit": "東京駅 丸の内南口直結、新幹線中央乗換口より徒歩約1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102902/plan12857218",
-   "checked_at": "2026-11-07T18:26:33+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102902/plan12857218",
-   "priority_ids": [
-    "priority-015"
-   ],
-   "plans": [
-    {
-     "plan_name": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー",
-     "price_yen": 11000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円"
-    }
-   ]
-  },
-  {
-   "id": "master-026",
-   "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "新橋駅",
-   "exit": "銀座駅 A4出口（徒歩約5分）／新橋駅（徒歩5分）",
-   "address": null,
-   "source_site": "TableCheck",
-   "source_url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
-   "checked_at": "2026-11-07T18:32:18+09:00",
-   "booking_url_info_only": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
-   "priority_ids": [
-    "priority-044"
-   ],
-   "plans": [
-    {
-     "plan_name": "【TEA】アフターヌーンティーセット（約16種ドリンク）",
-     "price_yen": 4620,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "15:00-17:00 / 15:30-17:30。提供期間の日付はページに記載なし＝期間未確認",
-     "time_note": "15:00-17:00 / 15:30-17:30",
-     "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-027",
-   "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "大門駅・御成門駅",
-   "exit": "芝公園駅／赤羽橋駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103334/plan12844256",
-   "checked_at": "2026-11-07T18:27:44+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103334/plan12844256",
-   "priority_ids": [
-    "priority-045"
-   ],
-   "plans": [
-    {
-     "plan_name": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間）",
-     "price_yen": 9200,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間） 税サ込 9,200円"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-028",
-   "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "竹芝駅",
-   "exit": "竹芝駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102281/plan12794313",
-   "checked_at": "2026-11-07T18:27:50+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102281/plan12794313",
-   "priority_ids": [
-    "priority-047"
-   ],
-   "plans": [
-    {
-     "plan_name": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒",
-     "price_yen": 9487,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-029",
-   "name": "コンラッド東京 / トゥエンティエイト（28F）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "汐留駅",
-   "exit": "汐留駅（直結。出口番号は要確認）／新橋駅",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100854/plan12805497",
-   "checked_at": "2026-11-07T18:27:57+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100854/plan12805497",
-   "priority_ids": [
-    "priority-049"
-   ],
-   "plans": [
-    {
-     "plan_name": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日）",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-10-01",
-     "end": null,
-     "note": "ページ上は8,500円(通常)→6,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-10-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日） 8,500円 税サ込 6,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-030",
-   "name": "フェアモント東京 / Vue Mer（ビュメール）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "竹芝駅",
-   "exit": "竹芝駅／浜松町駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/146488/plan12856413",
-   "checked_at": "2026-11-07T18:28:00+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/146488/plan12856413",
-   "priority_ids": [
-    "priority-050"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas 2026】クリスマス アフタヌーンティー（平日）",
-     "price_yen": 9700,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas 2026】クリスマス アフタヌーンティー（平日） 税サ込 9,700円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-046",
-   "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "浜松町駅",
-   "exit": "浜松町駅 南口（金杉橋方面）から徒歩12分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101762/plan12844646",
-   "checked_at": "2026-11-07T18:27:48+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101762/plan12844646",
-   "priority_ids": [
-    "priority-046"
-   ],
-   "plans": [
-    {
-     "plan_name": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月）",
-     "price_yen": 12650,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月） 税サ込 12,650円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-048",
-   "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "竹芝駅",
-   "exit": "竹芝駅 ホテル直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/114993/plan12793685",
-   "checked_at": "2026-11-07T18:27:54+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/114993/plan12793685",
-   "priority_ids": [
-    "priority-048"
-   ],
-   "plans": [
-    {
-     "plan_name": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒",
-     "price_yen": 10183,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は10,183円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円"
-    }
-   ]
-  },
-  {
-   "id": "priority-051",
-   "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "新橋駅",
-   "exit": "新橋駅 新橋駅汐留口より徒歩3分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100352/plan12878493",
-   "checked_at": "2026-11-07T18:28:04+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100352/plan12878493",
-   "priority_ids": [
-    "priority-051"
-   ],
-   "plans": [
-    {
-     "plan_name": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR）",
-     "price_yen": 12700,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は12,700円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR） 12,700円 税サ込 7,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-053",
-   "name": "第一ホテル東京 / ロビーラウンジ",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "新橋駅",
-   "exit": "新橋駅 徒歩2分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/116751/plan12845493",
-   "checked_at": "2026-11-07T18:28:10+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/116751/plan12845493",
-   "priority_ids": [
-    "priority-053"
-   ],
-   "plans": [
-    {
-     "plan_name": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前）",
-     "price_yen": 7500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前） 税サ込 7,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-054",
-   "name": "芝パークホテル / ザ ダイニング",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "浜松町駅",
-   "exit": "浜松町駅 徒歩8分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/116186/plan11960212",
-   "checked_at": "2026-11-07T18:28:13+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/116186/plan11960212",
-   "priority_ids": [
-    "priority-054"
-   ],
-   "plans": [
-    {
-     "plan_name": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー",
-     "price_yen": 6325,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円"
-    }
-   ]
-  },
-  {
-   "id": "priority-055",
-   "name": "パークホテル東京 / アートカラーズダイニング",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "汐留駅",
-   "exit": "汐留駅 7・8番出口直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101111/plan12808461",
-   "checked_at": "2026-11-07T18:28:16+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101111/plan12808461",
-   "priority_ids": [
-    "priority-055"
-   ],
-   "plans": [
-    {
-     "plan_name": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約）",
-     "price_yen": 7000,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は7,000円(通常)→6,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円"
-    }
-   ]
-  },
-  {
-   "id": "priority-056",
-   "name": "メズム東京、オートグラフ コレクション / ウィスク",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "竹芝駅",
-   "exit": "竹芝駅 徒歩3分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/119094/plan12819792",
-   "checked_at": "2026-11-07T18:28:19+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/119094/plan12819792",
-   "priority_ids": [
-    "priority-056"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日）",
-     "price_yen": 7000,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は7,000円(通常)→5,600円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日） 7,000円 税サ込 5,600円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-057",
-   "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "新橋駅",
-   "exit": "新橋駅 出口1から徒歩3分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/151824/plan12826471",
-   "checked_at": "2026-11-07T18:28:22+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/151824/plan12826471",
-   "priority_ids": [
-    "priority-057"
-   ],
-   "plans": [
-    {
-     "plan_name": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー",
-     "price_yen": 3850,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-09-15",
-     "end": "2026-12-14",
-     "note": "提供期間: 2026-09-15〜2026-12-14（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー 税サ込 3,850円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-058",
-   "name": "東京プリンスホテル / ティーサロン ピカケ",
-   "area_no": 3,
-   "area": "新橋・汐留・浜松町",
-   "station": "浜松町駅",
-   "exit": "浜松町駅 駅北出口より送迎バスあり。",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/109387/plan12893769",
-   "checked_at": "2026-11-07T18:28:25+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/109387/plan12893769",
-   "priority_ids": [
-    "priority-058"
-   ],
-   "plans": [
-    {
-     "plan_name": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分）",
-     "price_yen": 7684,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分） 税サ込 7,684円"
-    }
-   ]
-  },
-  {
-   "id": "master-031",
-   "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "赤坂見附駅・永田町駅",
-   "exit": "赤坂見附駅／永田町駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106682/plan12867585",
-   "checked_at": "2026-11-07T18:29:02+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106682/plan12867585",
-   "priority_ids": [
-    "priority-060"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
-     "price_yen": 9200,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は9,200円(通常)→7,200円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-032",
-   "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "虎ノ門ヒルズ駅",
-   "exit": "虎ノ門ヒルズ駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103485/plan12829832",
-   "checked_at": "2026-11-07T18:28:38+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103485/plan12829832",
-   "priority_ids": [
-    "priority-063"
-   ],
-   "plans": [
-    {
-     "plan_name": "栗と抹茶のアフタヌーンティー（ 平日限定）",
-     "price_yen": 8970,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "栗と抹茶のアフタヌーンティー（ 平日限定） 税サ込 8,970円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-059",
-   "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "虎ノ門ヒルズ駅",
-   "exit": "虎ノ門ヒルズ駅 Ａ２から徒歩0分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/151564/plan12874283",
-   "checked_at": "2026-11-07T18:28:28+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/151564/plan12874283",
-   "priority_ids": [
-    "priority-059"
-   ],
-   "plans": [
-    {
-     "plan_name": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定",
-     "price_yen": 4800,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は4,800円(通常)→3,840円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定 4,800円 税サ込 3,840円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ]
-  },
-  {
-   "id": "priority-061",
-   "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "赤坂・永田町・虎ノ門エリア（駅は原文から未確認）",
-   "exit": null,
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106680/plan11947457",
-   "checked_at": "2026-11-07T18:28:32+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106680/plan11947457",
-   "priority_ids": [
-    "priority-061"
-   ],
-   "plans": [
-    {
-     "plan_name": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション",
-     "price_yen": 9200,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は9,200円(通常)→7,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円"
-    }
-   ]
-  },
-  {
-   "id": "priority-062",
-   "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "赤坂見附駅",
-   "exit": "赤坂見附駅 赤坂地下歩道D紀尾井町方面口から徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106681/plan12867603",
-   "checked_at": "2026-11-07T18:28:35+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106681/plan12867603",
-   "priority_ids": [
-    "priority-062"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
-     "price_yen": 9200,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は9,200円(通常)→7,200円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円"
-    }
-   ]
-  },
-  {
-   "id": "priority-064",
-   "name": "アンダーズ 東京 / ペストリーショップ（1F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "虎ノ門ヒルズ駅",
-   "exit": "虎ノ門ヒルズ駅 中目黒方面 地下鉄歩行者通路経由で 徒歩 約3分 、北千住方面 A2出口より 徒歩 約4分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/123366/plan12533202",
-   "checked_at": "2026-11-07T18:28:41+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/123366/plan12533202",
-   "priority_ids": [
-    "priority-064"
-   ],
-   "plans": [
-    {
-     "plan_name": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格）",
-     "price_yen": 3850,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円"
-    }
-   ]
-  },
-  {
-   "id": "priority-065",
-   "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "溜池山王駅",
-   "exit": "溜池山王駅 13番出口より徒歩1分（溜池山王駅より約5分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/105131/plan12861297",
-   "checked_at": "2026-11-07T18:28:44+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/105131/plan12861297",
-   "priority_ids": [
-    "priority-065"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
-     "price_yen": 9000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 9,000円"
-    }
-   ]
-  },
-  {
-   "id": "priority-066",
-   "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "溜池山王駅",
-   "exit": "溜池山王駅 13番出口より徒歩1分（溜池山王駅より約5分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/122872/plan12874649",
-   "checked_at": "2026-11-07T18:28:47+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/122872/plan12874649",
-   "priority_ids": [
-    "priority-066"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 8,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-067",
-   "name": "オークラ東京 / バーラウンジ スターライト",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "虎ノ門ヒルズ駅",
-   "exit": "虎ノ門ヒルズ駅 出口A2より徒歩5分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/113419/plan12865828",
-   "checked_at": "2026-11-07T18:28:50+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/113419/plan12865828",
-   "priority_ids": [
-    "priority-067"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-068",
-   "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "虎ノ門ヒルズ駅",
-   "exit": "虎ノ門ヒルズ駅 A2から徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/152275/plan12805394",
-   "checked_at": "2026-11-07T18:28:54+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/152275/plan12805394",
-   "priority_ids": [
-    "priority-068"
-   ],
-   "plans": [
-    {
-     "plan_name": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日）",
-     "price_yen": 6900,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は6,900円(通常)→5,865円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日） 6,900円 税サ込 5,865円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-069",
-   "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "赤坂・永田町・虎ノ門エリア（駅は原文から未確認）",
-   "exit": null,
-   "address": null,
-   "source_site": "TableCheck",
-   "source_url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
-   "checked_at": "2026-11-07T18:32:24+09:00",
-   "booking_url_info_only": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
-   "priority_ids": [
-    "priority-069"
-   ],
-   "plans": [
-    {
-     "plan_name": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00/15:00入店・2.5時間制）",
-     "price_yen": 9867,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込"
-    }
-   ]
-  },
-  {
-   "id": "priority-070",
-   "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
-   "area_no": 4,
-   "area": "赤坂・永田町・虎ノ門",
-   "station": "神谷町駅",
-   "exit": "神谷町駅 直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/115758/plan12817748",
-   "checked_at": "2026-11-07T18:28:57+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/115758/plan12817748",
-   "priority_ids": [
-    "priority-070"
-   ],
-   "plans": [
-    {
-     "plan_name": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席",
-     "price_yen": 8800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席 税サ込 8,800円"
-    }
-   ]
-  },
-  {
-   "id": "master-034",
-   "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
-   "area_no": 5,
-   "area": "六本木・麻布・広尾",
-   "station": "六本木一丁目駅・神谷町駅",
-   "exit": "神谷町駅（麻布台ヒルズ方面の出口）［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/125030/plan12830252",
-   "checked_at": "2026-11-07T18:29:17+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/125030/plan12830252",
-   "priority_ids": [
-    "priority-073"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日）",
-     "price_yen": 8800,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-21",
-     "end": "2026-12-25",
-     "note": "提供期間: 2026-11-21〜2026-12-25（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-035",
-   "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
-   "area_no": 5,
-   "area": "六本木・麻布・広尾",
-   "station": "六本木駅",
-   "exit": "六本木駅（東京ミッドタウン直結）［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100485/plan12809200",
-   "checked_at": "2026-11-07T18:29:12+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100485/plan12809200",
-   "priority_ids": [
-    "priority-074"
-   ],
-   "plans": [
-    {
-     "plan_name": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定）",
-     "price_yen": 8000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定） 税サ込 8,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-072",
-   "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
-   "area_no": 5,
-   "area": "六本木・麻布・広尾",
-   "station": "六本木駅",
-   "exit": "六本木駅 2番出口 西麻布方面 徒歩10分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102168/plan12861883",
-   "checked_at": "2026-11-07T18:29:09+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102168/plan12861883",
-   "priority_ids": [
-    "priority-072"
-   ],
-   "plans": [
-    {
-     "plan_name": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日）",
-     "price_yen": 4800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日） 税サ込 4,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "master-036",
-   "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅・南新宿駅",
-   "exit": "新宿駅 南口（南改札から徒歩3分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103306/plan12792401",
-   "checked_at": "2026-11-07T18:29:53+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103306/plan12792401",
-   "priority_ids": [
-    "priority-077"
-   ],
-   "plans": [
-    {
-     "plan_name": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝）",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝） 税サ込 6,000円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-038",
-   "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "西新宿駅",
-   "exit": "都庁前駅（徒歩約7分）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/147880/plan12810808",
-   "checked_at": "2026-11-07T18:29:48+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/147880/plan12810808",
-   "priority_ids": [
-    "priority-085"
-   ],
-   "plans": [
-    {
-     "plan_name": "オータム アフタヌーンティー（3時間制 ／9月28日～）",
-     "price_yen": 11385,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-09-28",
-     "end": null,
-     "note": "ページ上は11,385円(通常)→9,867円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-28〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "オータム アフタヌーンティー（3時間制 ／9月28日～） 11,385円 税サ込 9,867円"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-candidate-04",
-   "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "西新宿駅",
-   "exit": "西新宿駅 C8出口より徒歩2分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103985/plan12797665",
-   "checked_at": "2026-11-07T18:29:27+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103985/plan12797665",
-   "priority_ids": [
-    "priority-078"
-   ],
-   "plans": [
-    {
-     "plan_name": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」",
-     "price_yen": 5900,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」 税サ込 5,900円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "master-candidate-05",
-   "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅",
-   "exit": "新宿駅 南口から徒歩10分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/115611/plan12880133",
-   "checked_at": "2026-11-07T18:29:29+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/115611/plan12880133",
-   "priority_ids": [
-    "priority-079"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割）",
-     "price_yen": 8050,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は8,050円(通常)→6,440円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割） 8,050円 税サ込 6,440円"
-    }
-   ]
-  },
-  {
-   "id": "priority-076",
-   "name": "ル サロン ド ニナス 小田急百貨店新宿",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅",
-   "exit": "新宿駅 西口直結 小田急百貨店 M2階",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/109753/plan12750169",
-   "checked_at": "2026-11-07T18:29:24+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/109753/plan12750169",
-   "priority_ids": [
-    "priority-076"
-   ],
-   "plans": [
-    {
-     "plan_name": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット",
-     "price_yen": 3300,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット 税サ込 3,300円"
-    }
-   ]
-  },
-  {
-   "id": "priority-080",
-   "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅",
-   "exit": "新宿駅 西口から徒歩5分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103085/plan12829652",
-   "checked_at": "2026-11-07T18:29:32+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103085/plan12829652",
-   "priority_ids": [
-    "priority-080"
-   ],
-   "plans": [
-    {
-     "plan_name": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定）",
-     "price_yen": 6900,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定） 税サ込 6,900円"
-    }
-   ]
-  },
-  {
-   "id": "priority-081",
-   "name": "京王プラザホテル / オールデイダイニング 樹林",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅",
-   "exit": "新宿駅 西口から徒歩5分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101733/plan12813470",
-   "checked_at": "2026-11-07T18:29:36+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101733/plan12813470",
-   "priority_ids": [
-    "priority-081"
-   ],
-   "plans": [
-    {
-     "plan_name": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日）",
-     "price_yen": 3800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円"
-    }
-   ]
-  },
-  {
-   "id": "priority-082",
-   "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "西武新宿駅",
-   "exit": "西武新宿駅 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/121396/plan12791558",
-   "checked_at": "2026-11-07T18:29:39+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/121396/plan12791558",
-   "priority_ids": [
-    "priority-082"
-   ],
-   "plans": [
-    {
-     "plan_name": "【9/5～ 土日祝日限定】オータムアフターヌーンティー",
-     "price_yen": 8200,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-09-05",
-     "end": null,
-     "note": "提供期間: 2026-09-05〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【9/5～ 土日祝日限定】オータムアフターヌーンティー 税サ込 8,200円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ]
-  },
-  {
-   "id": "priority-083",
-   "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "新宿駅",
-   "exit": "新宿駅 西口より徒歩約9分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/147317/plan12827569",
-   "checked_at": "2026-11-07T18:29:42+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/147317/plan12827569",
-   "priority_ids": [
-    "priority-083"
-   ],
-   "plans": [
-    {
-     "plan_name": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー",
-     "price_yen": 7500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-084",
-   "name": "ヒルトン東京 / メトロポリタングリル",
-   "area_no": 6,
-   "area": "新宿・代々木",
-   "station": "西新宿駅",
-   "exit": "西新宿駅 C8出口より徒歩2分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/103989/plan12800314",
-   "checked_at": "2026-11-07T18:29:45+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/103989/plan12800314",
-   "priority_ids": [
-    "priority-084"
-   ],
-   "plans": [
-    {
-     "plan_name": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー",
-     "price_yen": 7800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー 税サ込 7,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "master-040",
-   "name": "ザ・レギャン・トーキョー",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅",
-   "exit": "渋谷駅（すぐ）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/100272/plan12814237",
-   "checked_at": "2026-11-07T18:30:14+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/100272/plan12814237",
-   "priority_ids": [
-    "priority-086"
-   ],
-   "plans": [
-    {
-     "plan_name": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー",
-     "price_yen": 4800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー 税サ込 4,800円"
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-041",
-   "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅・神泉駅",
-   "exit": "渋谷駅（出口は要確認）／神泉駅",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/107718/plan12255764",
-   "checked_at": "2026-11-07T18:30:02+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/107718/plan12255764",
-   "priority_ids": [
-    "priority-089"
-   ],
-   "plans": [
-    {
-     "plan_name": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30）",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-042",
-   "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅",
-   "exit": "渋谷駅（出口は要確認）／神泉駅",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101738/plan12685902",
-   "checked_at": "2026-11-07T18:30:05+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101738/plan12685902",
-   "priority_ids": [
-    "priority-090"
-   ],
-   "plans": [
-    {
-     "plan_name": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制",
-     "price_yen": 8000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制 税サ込 8,000円",
-     "weekday_available": false,
-     "weekend_available": true
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-043",
-   "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅",
-   "exit": "渋谷駅直結（渋谷マークシティ イースト内）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/115887/plan12652208",
-   "checked_at": "2026-11-07T18:30:08+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/115887/plan12652208",
-   "priority_ids": [
-    "priority-091"
-   ],
-   "plans": [
-    {
-     "plan_name": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店）",
-     "price_yen": 5000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-087",
-   "name": "BLACK TERRACE",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "神泉駅",
-   "exit": "神泉駅 徒歩8分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/110056/plan12824068",
-   "checked_at": "2026-11-07T18:29:56+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/110056/plan12824068",
-   "priority_ids": [
-    "priority-087"
-   ],
-   "plans": [
-    {
-     "plan_name": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店）",
-     "price_yen": 5500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店） 税サ込 5,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-088",
-   "name": "LA COCORICO 渋谷",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅",
-   "exit": "渋谷駅 新南口 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106388/plan12793689",
-   "checked_at": "2026-11-07T18:29:59+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106388/plan12793689",
-   "priority_ids": [
-    "priority-088"
-   ],
-   "plans": [
-    {
-     "plan_name": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄）",
-     "price_yen": 2980,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は2,980円(通常)→2,384円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄） 2,980円 税サ込 2,384円"
-    }
-   ]
-  },
-  {
-   "id": "priority-092",
-   "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
-   "area_no": 7,
-   "area": "渋谷・代々木公園",
-   "station": "渋谷駅",
-   "exit": "渋谷駅 C2出口直結",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/110458/plan12861712",
-   "checked_at": "2026-11-07T18:30:11+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/110458/plan12861712",
-   "priority_ids": [
-    "priority-092"
-   ],
-   "plans": [
-    {
-     "plan_name": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制）",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-01",
-     "end": null,
-     "note": "提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制） 税サ込 6,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "master-048",
-   "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅（出口は要確認）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/110765/plan12817990",
-   "checked_at": "2026-11-07T18:30:17+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/110765/plan12817990",
-   "priority_ids": [
-    "priority-094"
-   ],
-   "plans": [
-    {
-     "plan_name": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30）",
-     "price_yen": 5500,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-01",
-     "end": "2026-11-30",
-     "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30） 税サ込 5,500円"
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-049",
-   "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅（直結）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/117546/plan12844393",
-   "checked_at": "2026-11-07T18:30:20+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/117546/plan12844393",
-   "priority_ids": [
-    "priority-095"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定）",
-     "price_yen": 6800,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-11-18",
-     "end": null,
-     "note": "提供期間: 2026-11-18〜未確認（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定） 税サ込 6,800円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-097",
-   "name": "St.GRACE Lounge & Dining",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 A1出口 徒歩約3分 A1出口を原宿方面に進み、1つ目の信号を左折して直進。",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/105173/plan12868701",
-   "checked_at": "2026-11-07T18:30:24+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/105173/plan12868701",
-   "priority_ids": [
-    "priority-097"
-   ],
-   "plans": [
-    {
-     "plan_name": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日）",
-     "price_yen": 5900,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日） 税サ込 5,900円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-098",
-   "name": "アニヴェルセルカフェ 表参道",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 A2出口 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/121853/plan12839132",
-   "checked_at": "2026-11-07T18:30:26+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/121853/plan12839132",
-   "priority_ids": [
-    "priority-098"
-   ],
-   "plans": [
-    {
-     "plan_name": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店）",
-     "price_yen": 6900,
-     "price_note": "税サ込（1人あたり）",
-     "start": "2026-09-25",
-     "end": "2026-11-17",
-     "note": "提供期間: 2026-09-25〜2026-11-17（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店） 税サ込 6,900円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-099",
-   "name": "茶洒 金田中",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 A1出口すぐ",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/102572/plan12631502",
-   "checked_at": "2026-11-07T18:30:30+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/102572/plan12631502",
-   "priority_ids": [
-    "priority-099"
-   ],
-   "plans": [
-    {
-     "plan_name": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席）",
-     "price_yen": 5500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-100",
-   "name": "BRASSERIE CAFE LE CONTE",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 A4徒歩1分（A4出口を出て右へ、交差点の角のビル。奥のエレベーターで3Fへ。）",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/113312/plan11876844",
-   "checked_at": "2026-11-07T18:30:32+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/113312/plan11876844",
-   "priority_ids": [
-    "priority-100"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー",
-     "price_yen": 3400,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー 税サ込 3,400円"
-    }
-   ]
-  },
-  {
-   "id": "priority-101",
-   "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/153938/plan12888059",
-   "checked_at": "2026-11-07T18:30:35+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/153938/plan12888059",
-   "priority_ids": [
-    "priority-101"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間）",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間） 税サ込 8,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-102",
-   "name": "ARMANI / CAFFE 表参道",
-   "area_no": 8,
-   "area": "青山・表参道・原宿",
-   "station": "表参道駅",
-   "exit": "表参道駅 A1出口",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/125128/plan12302624",
-   "checked_at": "2026-11-07T18:30:38+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/125128/plan12302624",
-   "priority_ids": [
-    "priority-102"
-   ],
-   "plans": [
-    {
-     "plan_name": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円"
-    }
-   ]
-  },
-  {
-   "id": "master-060",
-   "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
-   "area_no": 10,
-   "area": "品川・田町・五反田",
-   "station": "白金台駅",
-   "exit": "白金台駅［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/106908/plan12847292",
-   "checked_at": "2026-11-07T18:31:01+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/106908/plan12847292",
-   "priority_ids": [
-    "priority-109"
-   ],
-   "plans": [
-    {
-     "plan_name": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー",
-     "price_yen": 9600,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は9,600円(通常)→7,900円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-110",
-   "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
-   "area_no": 10,
-   "area": "品川・田町・五反田",
-   "station": "品川駅",
-   "exit": "品川駅 徒歩1分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/113851/plan12847981",
-   "checked_at": "2026-11-07T18:31:04+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/113851/plan12847981",
-   "priority_ids": [
-    "priority-110"
-   ],
-   "plans": [
-    {
-     "plan_name": "クリスマス アフタヌーンティー（11/1～12/28）（平日）",
-     "price_yen": 8096,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-11-01",
-     "end": "2026-12-28",
-     "note": "ページ上は8,096円(通常)→6,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-12-28（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "クリスマス アフタヌーンティー（11/1～12/28）（平日） 8,096円 税サ込 6,500円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "priority-111",
-   "name": "JWマリオット・ホテル東京 / JWラウンジ",
-   "area_no": 10,
-   "area": "品川・田町・五反田",
-   "station": "高輪ゲートウェイ駅",
-   "exit": "高輪ゲートウェイ駅 徒歩で約5分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/149035/plan12825529",
-   "checked_at": "2026-11-07T18:31:07+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/149035/plan12825529",
-   "priority_ids": [
-    "priority-111"
-   ],
-   "plans": [
-    {
-     "plan_name": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き",
-     "price_yen": 8500,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円"
-    }
-   ]
-  },
-  {
-   "id": "master-063",
-   "name": "ラ・ラナリータ 吾妻橋店",
-   "area_no": 11,
-   "area": "上野・浅草・押上",
-   "station": "浅草駅",
-   "exit": "浅草駅（吾妻橋方面の出口）［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/108054/plan12187749",
-   "checked_at": "2026-11-07T18:31:24+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/108054/plan12187749",
-   "priority_ids": [
-    "priority-112"
-   ],
-   "plans": [
-    {
-     "plan_name": "【アフタヌーンティーセット】",
-     "price_yen": 5800,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【アフタヌーンティーセット】 税サ込 5,800円"
-    }
-   ],
-   "category": "cafe",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-064",
-   "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
-   "area_no": 11,
-   "area": "上野・浅草・押上",
-   "station": "浅草駅・田原町駅",
-   "exit": "浅草駅（つくばエクスプレス）［要検証］",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/151232/plan12798243",
-   "checked_at": "2026-11-07T18:31:16+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/151232/plan12798243",
-   "priority_ids": [
-    "priority-113"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可）",
-     "price_yen": 8000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可） 税サ込 8,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-114",
-   "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
-   "area_no": 11,
-   "area": "上野・浅草・押上",
-   "station": "錦糸町駅",
-   "exit": "錦糸町駅 北口を出てロータリーを越え北斎通りへ。左折し約200ｍ先左手側「東武ホテルレバント東京」の1階です。 〜1,999円",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/110552/plan12838920",
-   "checked_at": "2026-11-07T18:31:18+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/110552/plan12838920",
-   "priority_ids": [
-    "priority-114"
-   ],
-   "plans": [
-    {
-     "plan_name": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定）",
-     "price_yen": 5800,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": null,
-     "end": null,
-     "note": "ページ上は5,800円(通常)→5,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円"
-    }
-   ]
-  },
-  {
-   "id": "priority-115",
-   "name": "ホテルイースト21東京 / ロビーラウンジ",
-   "area_no": 11,
-   "area": "上野・浅草・押上",
-   "station": "東陽町駅",
-   "exit": "東陽町駅 徒歩10分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/117061/plan12855775",
-   "checked_at": "2026-11-07T18:31:22+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/117061/plan12855775",
-   "priority_ids": [
-    "priority-115"
-   ],
-   "plans": [
-    {
-     "plan_name": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制）",
-     "price_yen": 6000,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制） 税サ込 6,000円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ]
-  },
-  {
-   "id": "master-065",
-   "name": "東京ドームホテル / アーティスト カフェ",
-   "area_no": 12,
-   "area": "水道橋・御茶ノ水・神田",
-   "station": "水道橋駅・後楽園駅",
-   "exit": "水道橋駅［要検証］／後楽園駅",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/101056/plan12789046",
-   "checked_at": "2026-11-07T18:31:33+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/101056/plan12789046",
-   "priority_ids": [
-    "priority-117"
-   ],
-   "plans": [
-    {
-     "plan_name": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定）",
-     "price_yen": 6300,
-     "price_note": "税サ込（1人あたり）・通常価格",
-     "start": "2026-09-01",
-     "end": "2026-12-07",
-     "note": "ページ上は6,300円(通常)→5,700円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-01〜2026-12-07（タイトル/期間表記より。年は調査年と推定）",
-     "evidence_quote": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定） 6,300円 税サ込 5,700円",
-     "weekday_available": true,
-     "weekend_available": false
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "priority-116",
-   "name": "VMG CAFE 九段会館テラス",
-   "area_no": 12,
-   "area": "水道橋・御茶ノ水・神田",
-   "station": "九段下駅",
-   "exit": "九段下駅 115m",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/120847/plan12815369",
-   "checked_at": "2026-11-07T18:31:27+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/120847/plan12815369",
-   "priority_ids": [
-    "priority-116"
-   ],
-   "plans": [
-    {
-     "plan_name": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月）",
-     "price_yen": 4950,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月） 税サ込 4,950円"
-    }
-   ]
-  },
-  {
-   "id": "priority-118",
-   "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
-   "area_no": 12,
-   "area": "水道橋・御茶ノ水・神田",
-   "station": "新御茶ノ水駅",
-   "exit": "新御茶ノ水駅 B3a出口徒歩１分",
-   "address": null,
-   "source_site": "一休.com",
-   "source_url": "https://restaurant.ikyu.com/105246/plan12798669",
-   "checked_at": "2026-11-07T18:31:31+09:00",
-   "booking_url_info_only": "https://restaurant.ikyu.com/105246/plan12798669",
-   "priority_ids": [
-    "priority-118"
-   ],
-   "plans": [
-    {
-     "plan_name": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月）",
-     "price_yen": 4300,
-     "price_note": "税サ込（1人あたり）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月） 税サ込 4,300円"
-    }
-   ]
-  },
-  {
-   "id": "master-067",
-   "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
-   "area_no": 13,
-   "area": "飯田橋・神楽坂・四ツ谷",
-   "station": "飯田橋駅",
-   "exit": "飯田橋駅［要検証］",
-   "address": null,
-   "source_site": "TableCheck",
-   "source_url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
-   "checked_at": "2026-11-07T18:32:53+09:00",
-   "booking_url_info_only": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
-   "priority_ids": [
-    "priority-119"
-   ],
-   "plans": [
-    {
-     "plan_name": "Afternoon tea Set（ベルテンポ）",
-     "price_yen": 6800,
-     "price_note": "税サ込（Svc & tax incl.）",
-     "start": null,
-     "end": null,
-     "note": "提供期間の日付はページに記載なし＝期間未確認",
-     "evidence_quote": "Afternoon tea Set … ¥6,800 Svc & tax incl."
-    }
-   ],
-   "category": "hotel",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  },
-  {
-   "id": "master-070",
-   "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
-   "area_no": 14,
-   "area": "池袋・目白",
-   "station": "江戸川橋駅",
-   "exit": "江戸川橋駅 1a出口（徒歩約10分）／目白駅から都営バス約10分",
-   "address": null,
-   "source_site": "TableCheck",
-   "source_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
-   "checked_at": "2026-11-07T18:33:01+09:00",
-   "booking_url_info_only": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
-   "priority_ids": [
-    "priority-120"
-   ],
-   "plans": [
-    {
-     "plan_name": "Christmas Afternoon Tea（アフタヌーンティー2026）",
-     "price_yen": 7800,
-     "price_note": "税込・サービス料別（Svc excl. / tax incl.）",
-     "start": "2026-11-01",
-     "end": "2027-01-07",
-     "note": "12月26日以降はホリデーアフタヌーンティーに内容変更と記載",
-     "evidence_quote": "Christmas Afternoon Tea ¥ 7,800 (Svc excl. / tax incl.) Valid Dates Nov 01 ~ Jan 07, 2027"
-    }
-   ],
-   "category": "lux",
-   "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
-  }
- ],
- "out_of_period_removed": [
-  {
-   "priority_id": "priority-018",
-   "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
-   "plan_name": "Afternoon Tea \"Stones\" Christmas edition",
-   "start": "2026-12-19",
-   "end": "2026-12-25",
-   "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
-  }
- ]
+  "schema_version": 1,
+  "generated_at": "2026-11-07T18:39:46+09:00",
+  "status": "partial_research",
+  "period": {
+    "start": "2026-11-07",
+    "end": "2026-12-17"
+  },
+  "note": "今回の実行で指定134件の各historical_urlを匿名GETで確認した結果のみ掲載（一休.com・TableCheck）。食べログは403のため未確認、新規店舗探索は未実施。前週の掲載店舗は引き継いでいない。未調査・情報不足・アクセス拒否はsearch_failures.jsonに記録。",
+  "shops": [
+    {
+      "id": "master-001",
+      "name": "cafe VAVA",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "日本橋駅",
+      "exit": "日本橋駅 B4出口（日本橋髙島屋S.C.に直結）／東京駅 八重洲北口（徒歩5分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/112520/plan12815171",
+      "checked_at": "2026-11-07T18:26:50+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/112520/plan12815171",
+      "priority_ids": [
+        "priority-001"
+      ],
+      "plans": [
+        {
+          "plan_name": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食）",
+          "price_yen": 4950,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食） 税サ込 4,950円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/112520/plan12815171",
+              "checked_at": "2026-11-07T18:26:50+09:00",
+              "quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食)\n【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食) 税サ込 4,950円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/112520/plan12815171",
+              "checked_at": "2026-11-07T18:26:50+09:00",
+              "quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食)\n【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食) 税サ込 4,950円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-002",
+      "name": "ROSSINI TERRACE（東京會舘）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "二重橋前駅",
+      "exit": "二重橋前駅 B5出口（地下通路でビル直結）／東京駅（徒歩3分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/110781/plan12803085",
+      "checked_at": "2026-11-07T18:25:55+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/110781/plan12803085",
+      "priority_ids": [
+        "priority-002"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー",
+          "price_yen": 6325,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-09-16",
+          "end": "2026-11-30",
+          "note": "提供期間: 2026-09-16〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー 税サ込 6,325円"
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-004",
+      "name": "丸ノ内ホテル / ポム・ダダン（8F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 丸の内北口（徒歩1分。OAZO側の丸ノ内ホテル専用入口から7Fフロント経由で8F）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100179/plan12815376",
+      "checked_at": "2026-11-07T18:26:10+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100179/plan12815376",
+      "priority_ids": [
+        "priority-007"
+      ],
+      "plans": [
+        {
+          "plan_name": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”＋カフェフリー（120分滞在・平日）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”＋カフェフリー（120分滞在・平日） 税サ込 6,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/100179/plan12815376",
+              "checked_at": "2026-11-07T18:26:10+09:00",
+              "quote": "ポム・ダダンアフタヌーンティー“栗と果実の収穫祭”+カフェフリー(120分滞在・平日)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kuri"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-005",
+      "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "大手町駅",
+      "exit": "大手町駅 C4出口（直結）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/115189/plan12835763",
+      "checked_at": "2026-11-07T18:26:24+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/115189/plan12835763",
+      "priority_ids": [
+        "priority-012"
+      ],
+      "plans": [
+        {
+          "plan_name": "フェスティブアフタヌーンティー （11/16～）（平日限定）",
+          "price_yen": 9800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-16",
+          "end": null,
+          "note": "提供期間: 2026-11-16〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "フェスティブアフタヌーンティー （11/16～）（平日限定） 税サ込 9,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/115189/plan12835763",
+              "checked_at": "2026-11-07T18:26:24+09:00",
+              "quote": "フェスティブアフタヌーンティー (11/16~)(平日限定)\nフェスティブアフタヌーンティー (11/16~)(平日限定) 税サ込 9,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/115189/plan12835763",
+              "checked_at": "2026-11-07T18:26:24+09:00",
+              "quote": "フェスティブアフタヌーンティー (11/16~)(平日限定)\nフェスティブアフタヌーンティー (11/16~)(平日限定) 税サ込 9,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-006",
+      "name": "東京ステーションホテル / ロビーラウンジ",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 丸の内南口（ホテル直結）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102900/plan12787122",
+      "checked_at": "2026-11-07T18:26:27+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102900/plan12787122",
+      "priority_ids": [
+        "priority-013"
+      ],
+      "plans": [
+        {
+          "plan_name": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定）",
+          "price_yen": 7900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定） 税サ込 7,900円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/102900/plan12787122",
+              "checked_at": "2026-11-07T18:26:27+09:00",
+              "quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】(月~木曜の平日限定)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/102900/plan12787122",
+              "checked_at": "2026-11-07T18:26:27+09:00",
+              "quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】(月~木曜の平日限定)\nマロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】(月~木曜の平日限定) 税サ込 7,900円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/102900/plan12787122",
+              "checked_at": "2026-11-07T18:26:27+09:00",
+              "quote": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】(月~木曜の平日限定)\nマロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】(月~木曜の平日限定) 税サ込 7,900円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "kaki",
+            "kuri"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-007",
+      "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 丸の内南口（徒歩1分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102901/plan12854246",
+      "checked_at": "2026-11-07T18:26:30+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102901/plan12854246",
+      "priority_ids": [
+        "priority-014"
+      ],
+      "plans": [
+        {
+          "plan_name": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円"
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-008",
+      "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "三越前駅",
+      "exit": "三越前駅 A7出口（直結）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101099/plan12875698",
+      "checked_at": "2026-11-07T18:26:36+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101099/plan12875698",
+      "priority_ids": [
+        "priority-016"
+      ],
+      "plans": [
+        {
+          "plan_name": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17）",
+          "price_yen": null,
+          "price_note": "通常価格 未確認。税サ込(1人あたり)・通常価格",
+          "start": "2026-11-16",
+          "end": "2026-12-17",
+          "note": "ページ上は11,385円(通常)→9,108円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-16〜2026-12-17（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17） 11,385円 税サ込 9,108円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/101099/plan12875698",
+              "checked_at": "2026-11-07T18:26:36+09:00",
+              "quote": "【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17)\n【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17) 11,385円 税サ込 9,108円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/101099/plan12875698",
+              "checked_at": "2026-11-07T18:26:36+09:00",
+              "quote": "【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17)\n【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17) 11,385円 税サ込 9,108円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "price_yen": {
+              "url": "https://restaurant.ikyu.com/101099/plan12875698",
+              "checked_at": "2026-11-07T18:26:36+09:00",
+              "quote": "【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17) 11,385円 税サ込 9,108円",
+              "origin": "evidence_quote:regular_price_unknown"
+            }
+          }
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-009",
+      "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 八重洲北口（徒歩2分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100707/plan12791492",
+      "checked_at": "2026-11-07T18:26:39+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100707/plan12791492",
+      "priority_ids": [
+        "priority-017"
+      ],
+      "plans": [
+        {
+          "plan_name": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30）",
+          "price_yen": 9867,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30） 税サ込 9,867円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/100707/plan12791492",
+              "checked_at": "2026-11-07T18:26:39+09:00",
+              "quote": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能!(11/1~11/30)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "season"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-010",
+      "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "大手町駅・二重橋前駅",
+      "exit": "大手町駅 C13b出口（地下通路で直結）／東京駅 丸の内北口（徒歩8分）",
+      "address": null,
+      "source_site": "TableCheck",
+      "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
+      "checked_at": "2026-11-07T18:32:12+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
+      "priority_ids": [
+        "priority-018"
+      ],
+      "plans": [
+        {
+          "plan_name": "Afternoon Tea \"Stones\" Autumn（秋）",
+          "price_yen": null,
+          "price_note": "料金は原文の対応が曖昧なため未確認",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "note": "TableCheck掲載の提供期間。12/1から冬メニューに変更と記載",
+          "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-011",
+      "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "大手町駅",
+      "exit": "大手町駅（東西線 西口改札前から地下通路で直結）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/105756/plan12854308",
+      "checked_at": "2026-11-07T18:26:42+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/105756/plan12854308",
+      "priority_ids": [
+        "priority-019"
+      ],
+      "plans": [
+        {
+          "plan_name": "クリスマス アフタヌーンティー 2026 11.16～12.18",
+          "price_yen": 13000,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-16",
+          "end": "2026-12-18",
+          "note": "提供期間: 2026-11-16〜2026-12-18（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "クリスマス アフタヌーンティー 2026 11.16～12.18 税サ込 13,000円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/105756/plan12854308",
+              "checked_at": "2026-11-07T18:26:42+09:00",
+              "quote": "クリスマス アフタヌーンティー 2026 11.16~12.18",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-012",
+      "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "大手町駅・二重橋前駅",
+      "exit": "大手町駅 C13b出口（地下通路で直結）／東京駅 丸の内北口（徒歩8分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106795/plan12250640",
+      "checked_at": "2026-11-07T18:26:45+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106795/plan12250640",
+      "priority_ids": [
+        "priority-020"
+      ],
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30）",
+          "price_yen": 10350,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30） 税サ込 10,350円"
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-003",
+      "name": "真不同 HONG KONG TEA ROOM 1946",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/122278/plan12649319",
+      "checked_at": "2026-11-07T18:25:57+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/122278/plan12649319",
+      "priority_ids": [
+        "priority-003"
+      ],
+      "plans": [
+        {
+          "plan_name": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン）",
+          "price_yen": 4600,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円"
+        }
+      ]
+    },
+    {
+      "id": "priority-004",
+      "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "三越前駅",
+      "exit": "三越前駅 徒歩3分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/112311/plan12739895",
+      "checked_at": "2026-11-07T18:26:00+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/112311/plan12739895",
+      "priority_ids": [
+        "priority-004"
+      ],
+      "plans": [
+        {
+          "plan_name": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日）",
+          "price_yen": 6800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は6,800円(通常)→6,052円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日） 6,800円 税サ込 6,052円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/112311/plan12739895",
+              "checked_at": "2026-11-07T18:26:00+09:00",
+              "quote": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット(土・日・祝日)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "choco"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-005",
+      "name": "文明堂カフェ",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "三越前駅",
+      "exit": "三越前駅 出口A4から徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/154158/plan12866695",
+      "checked_at": "2026-11-07T18:26:03+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/154158/plan12866695",
+      "priority_ids": [
+        "priority-005"
+      ],
+      "plans": [
+        {
+          "plan_name": "文明堂づくしのAfternoon Tea",
+          "price_yen": 4000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円"
+        }
+      ]
+    },
+    {
+      "id": "priority-006",
+      "name": "アルポルトカフェ 日本橋高島屋店",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "日本橋駅",
+      "exit": "日本橋駅 B1出口直結「日本橋高島屋」のB2階です。",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101719/plan12384641",
+      "checked_at": "2026-11-07T18:26:06+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101719/plan12384641",
+      "priority_ids": [
+        "priority-006"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク",
+          "price_yen": 2400,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円"
+        }
+      ]
+    },
+    {
+      "id": "priority-008",
+      "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 八重洲南口から徒歩4分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/117086/plan12872041",
+      "checked_at": "2026-11-07T18:26:13+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/117086/plan12872041",
+      "priority_ids": [
+        "priority-008"
+      ],
+      "plans": [
+        {
+          "plan_name": "【11/1～平日限定】抹茶 アフタヌーンティー",
+          "price_yen": 7900,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": "2026-11-01",
+          "end": null,
+          "note": "ページ上は7,900円(通常)→7,110円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【11/1～平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/117086/plan12872041",
+              "checked_at": "2026-11-07T18:26:13+09:00",
+              "quote": "【11/1~平日限定】抹茶 アフタヌーンティー",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/117086/plan12872041",
+              "checked_at": "2026-11-07T18:26:13+09:00",
+              "quote": "【11/1~平日限定】抹茶 アフタヌーンティー\n【11/1~平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/117086/plan12872041",
+              "checked_at": "2026-11-07T18:26:13+09:00",
+              "quote": "【11/1~平日限定】抹茶 アフタヌーンティー\n【11/1~平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "wa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-009",
+      "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "大手町駅",
+      "exit": "大手町駅 C4・C5出口より地下通路で直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/115187/plan12845039",
+      "checked_at": "2026-11-07T18:26:16+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/115187/plan12845039",
+      "priority_ids": [
+        "priority-009"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日）",
+          "price_yen": 9300,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-16",
+          "end": null,
+          "note": "提供期間: 2026-11-16〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日） 税サ込 9,300円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/115187/plan12845039",
+              "checked_at": "2026-11-07T18:26:16+09:00",
+              "quote": "【Xmas2026】フェスティブアフタヌーンティー (11/16~)+ミニピザ付(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/115187/plan12845039",
+              "checked_at": "2026-11-07T18:26:16+09:00",
+              "quote": "【Xmas2026】フェスティブアフタヌーンティー (11/16~)+ミニピザ付(平日)\n【Xmas2026】フェスティブアフタヌーンティー (11/16~)+ミニピザ付(平日) 税サ込 9,300円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/115187/plan12845039",
+              "checked_at": "2026-11-07T18:26:16+09:00",
+              "quote": "【Xmas2026】フェスティブアフタヌーンティー (11/16~)+ミニピザ付(平日)\n【Xmas2026】フェスティブアフタヌーンティー (11/16~)+ミニピザ付(平日) 税サ込 9,300円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-010",
+      "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "水天宮前駅",
+      "exit": "水天宮前駅 4番出口より直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102990/plan12850481",
+      "checked_at": "2026-11-07T18:26:19+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102990/plan12850481",
+      "priority_ids": [
+        "priority-010"
+      ],
+      "plans": [
+        {
+          "plan_name": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "note": "ページ上は8,500円(通常)→6,300円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制） 8,500円 税サ込 6,300円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "priority-011",
+      "name": "HAMACHO HOTEL / SESSiON（1F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "水天宮前駅",
+      "exit": "水天宮前駅 5番出口を出てスカイツリー方面へ進み浜町中ノ橋交差点を右折。左手側「HAMACHO HOTEL」の1階です。",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/112036/plan12822858",
+      "checked_at": "2026-11-07T18:26:22+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/112036/plan12822858",
+      "priority_ids": [
+        "priority-011"
+      ],
+      "plans": [
+        {
+          "plan_name": "【土日祝/数量限定】SESSiONアフタヌーンティープラン",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【土日祝/数量限定】SESSiONアフタヌーンティープラン 税サ込 5,500円",
+          "weekday_available": false,
+          "weekend_available": true
+        }
+      ]
+    },
+    {
+      "id": "priority-015",
+      "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
+      "area_no": 1,
+      "area": "丸の内・日本橋",
+      "station": "東京駅",
+      "exit": "東京駅 丸の内南口直結、新幹線中央乗換口より徒歩約1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102902/plan12857218",
+      "checked_at": "2026-11-07T18:26:33+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102902/plan12857218",
+      "priority_ids": [
+        "priority-015"
+      ],
+      "plans": [
+        {
+          "plan_name": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー",
+          "price_yen": 11000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円"
+        }
+      ]
+    },
+    {
+      "id": "master-026",
+      "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "新橋駅",
+      "exit": "銀座駅 A4出口（徒歩約5分）／新橋駅（徒歩5分）",
+      "address": null,
+      "source_site": "TableCheck",
+      "source_url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+      "checked_at": "2026-11-07T18:32:18+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+      "priority_ids": [
+        "priority-044"
+      ],
+      "plans": [
+        {
+          "plan_name": "【TEA】アフターヌーンティーセット（約16種ドリンク）",
+          "price_yen": 4620,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "15:00-17:00 / 15:30-17:30。提供期間の日付はページに記載なし＝期間未確認",
+          "time_note": "15:00-17:00 / 15:30-17:30",
+          "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)"
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-027",
+      "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "大門駅・御成門駅",
+      "exit": "芝公園駅／赤羽橋駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103334/plan12844256",
+      "checked_at": "2026-11-07T18:27:44+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103334/plan12844256",
+      "priority_ids": [
+        "priority-045"
+      ],
+      "plans": [
+        {
+          "plan_name": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間）",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間） 税サ込 9,200円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/103334/plan12844256",
+              "checked_at": "2026-11-07T18:27:44+09:00",
+              "quote": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea(3時間)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-028",
+      "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "竹芝駅",
+      "exit": "竹芝駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102281/plan12794313",
+      "checked_at": "2026-11-07T18:27:50+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102281/plan12794313",
+      "priority_ids": [
+        "priority-047"
+      ],
+      "plans": [
+        {
+          "plan_name": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒",
+          "price_yen": 9487,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-029",
+      "name": "コンラッド東京 / トゥエンティエイト（28F）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "汐留駅",
+      "exit": "汐留駅（直結。出口番号は要確認）／新橋駅",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100854/plan12805497",
+      "checked_at": "2026-11-07T18:27:57+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100854/plan12805497",
+      "priority_ids": [
+        "priority-049"
+      ],
+      "plans": [
+        {
+          "plan_name": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": "2026-10-01",
+          "end": null,
+          "note": "ページ上は8,500円(通常)→6,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-10-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日） 8,500円 税サ込 6,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/100854/plan12805497",
+              "checked_at": "2026-11-07T18:27:57+09:00",
+              "quote": "<10/1~>アート・オブ・オータム・アフタヌーンティー(平日)\n<10/1~>アート・オブ・オータム・アフタヌーンティー(平日) 8,500円 税サ込 6,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/100854/plan12805497",
+              "checked_at": "2026-11-07T18:27:57+09:00",
+              "quote": "<10/1~>アート・オブ・オータム・アフタヌーンティー(平日)\n<10/1~>アート・オブ・オータム・アフタヌーンティー(平日) 8,500円 税サ込 6,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-030",
+      "name": "フェアモント東京 / Vue Mer（ビュメール）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "竹芝駅",
+      "exit": "竹芝駅／浜松町駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/146488/plan12856413",
+      "checked_at": "2026-11-07T18:28:00+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/146488/plan12856413",
+      "priority_ids": [
+        "priority-050"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas 2026】クリスマス アフタヌーンティー（平日）",
+          "price_yen": 9700,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas 2026】クリスマス アフタヌーンティー（平日） 税サ込 9,700円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/146488/plan12856413",
+              "checked_at": "2026-11-07T18:28:00+09:00",
+              "quote": "【Xmas 2026】クリスマス アフタヌーンティー(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/146488/plan12856413",
+              "checked_at": "2026-11-07T18:28:00+09:00",
+              "quote": "【Xmas 2026】クリスマス アフタヌーンティー(平日)\n【Xmas 2026】クリスマス アフタヌーンティー(平日) 税サ込 9,700円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/146488/plan12856413",
+              "checked_at": "2026-11-07T18:28:00+09:00",
+              "quote": "【Xmas 2026】クリスマス アフタヌーンティー(平日)\n【Xmas 2026】クリスマス アフタヌーンティー(平日) 税サ込 9,700円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-046",
+      "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "浜松町駅",
+      "exit": "浜松町駅 南口（金杉橋方面）から徒歩12分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101762/plan12844646",
+      "checked_at": "2026-11-07T18:27:48+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101762/plan12844646",
+      "priority_ids": [
+        "priority-046"
+      ],
+      "plans": [
+        {
+          "plan_name": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月）",
+          "price_yen": 12650,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月） 税サ込 12,650円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "priority-048",
+      "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "竹芝駅",
+      "exit": "竹芝駅 ホテル直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/114993/plan12793685",
+      "checked_at": "2026-11-07T18:27:54+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/114993/plan12793685",
+      "priority_ids": [
+        "priority-048"
+      ],
+      "plans": [
+        {
+          "plan_name": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒",
+          "price_yen": 10183,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は10,183円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円"
+        }
+      ]
+    },
+    {
+      "id": "priority-051",
+      "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "新橋駅",
+      "exit": "新橋駅 新橋駅汐留口より徒歩3分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100352/plan12878493",
+      "checked_at": "2026-11-07T18:28:04+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100352/plan12878493",
+      "priority_ids": [
+        "priority-051"
+      ],
+      "plans": [
+        {
+          "plan_name": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR）",
+          "price_yen": 12700,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は12,700円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR） 12,700円 税サ込 7,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/100352/plan12878493",
+              "checked_at": "2026-11-07T18:28:04+09:00",
+              "quote": "【11~12月限定】いちごのWinter Holiday Afternoon Tea+スイスSIROCCO約12種等飲み放題(平日・BAR)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "ichigo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-053",
+      "name": "第一ホテル東京 / ロビーラウンジ",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "新橋駅",
+      "exit": "新橋駅 徒歩2分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/116751/plan12845493",
+      "checked_at": "2026-11-07T18:28:10+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/116751/plan12845493",
+      "priority_ids": [
+        "priority-053"
+      ],
+      "plans": [
+        {
+          "plan_name": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前）",
+          "price_yen": 7500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前） 税サ込 7,500円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/116751/plan12845493",
+              "checked_at": "2026-11-07T18:28:10+09:00",
+              "quote": "【クリスマス アフタヌーンティー ~サンタの落とし物~】+カフェフリー(3時間滞在可能 L.O.30分前)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-054",
+      "name": "芝パークホテル / ザ ダイニング",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "浜松町駅",
+      "exit": "浜松町駅 徒歩8分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/116186/plan11960212",
+      "checked_at": "2026-11-07T18:28:13+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/116186/plan11960212",
+      "priority_ids": [
+        "priority-054"
+      ],
+      "plans": [
+        {
+          "plan_name": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー",
+          "price_yen": 6325,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円"
+        }
+      ]
+    },
+    {
+      "id": "priority-055",
+      "name": "パークホテル東京 / アートカラーズダイニング",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "汐留駅",
+      "exit": "汐留駅 7・8番出口直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101111/plan12808461",
+      "checked_at": "2026-11-07T18:28:16+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101111/plan12808461",
+      "priority_ids": [
+        "priority-055"
+      ],
+      "plans": [
+        {
+          "plan_name": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約）",
+          "price_yen": 7000,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は7,000円(通常)→6,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円"
+        }
+      ]
+    },
+    {
+      "id": "priority-056",
+      "name": "メズム東京、オートグラフ コレクション / ウィスク",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "竹芝駅",
+      "exit": "竹芝駅 徒歩3分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/119094/plan12819792",
+      "checked_at": "2026-11-07T18:28:19+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/119094/plan12819792",
+      "priority_ids": [
+        "priority-056"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日）",
+          "price_yen": 7000,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は7,000円(通常)→5,600円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日） 7,000円 税サ込 5,600円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/119094/plan12819792",
+              "checked_at": "2026-11-07T18:28:19+09:00",
+              "quote": "【アフタヌーンティープログラム】東博~カラフルアジア~(平日)\n【アフタヌーンティープログラム】東博~カラフルアジア~(平日) 7,000円 税サ込 5,600円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/119094/plan12819792",
+              "checked_at": "2026-11-07T18:28:19+09:00",
+              "quote": "【アフタヌーンティープログラム】東博~カラフルアジア~(平日)\n【アフタヌーンティープログラム】東博~カラフルアジア~(平日) 7,000円 税サ込 5,600円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "priority-057",
+      "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "新橋駅",
+      "exit": "新橋駅 出口1から徒歩3分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/151824/plan12826471",
+      "checked_at": "2026-11-07T18:28:22+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/151824/plan12826471",
+      "priority_ids": [
+        "priority-057"
+      ],
+      "plans": [
+        {
+          "plan_name": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー",
+          "price_yen": 3850,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-09-15",
+          "end": "2026-12-14",
+          "note": "提供期間: 2026-09-15〜2026-12-14（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー 税サ込 3,850円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "priority-058",
+      "name": "東京プリンスホテル / ティーサロン ピカケ",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "浜松町駅",
+      "exit": "浜松町駅 駅北出口より送迎バスあり。",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/109387/plan12893769",
+      "checked_at": "2026-11-07T18:28:25+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/109387/plan12893769",
+      "priority_ids": [
+        "priority-058"
+      ],
+      "plans": [
+        {
+          "plan_name": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分）",
+          "price_yen": 7684,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分） 税サ込 7,684円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/109387/plan12893769",
+              "checked_at": "2026-11-07T18:28:25+09:00",
+              "quote": "ショコラ×いちご アフタヌーンティー(1部 11時30分~14時30分)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "choco",
+            "ichigo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-031",
+      "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅・永田町駅",
+      "exit": "赤坂見附駅／永田町駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106682/plan12867585",
+      "checked_at": "2026-11-07T18:29:02+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106682/plan12867585",
+      "priority_ids": [
+        "priority-060"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は9,200円(通常)→7,200円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/106682/plan12867585",
+              "checked_at": "2026-11-07T18:29:02+09:00",
+              "quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-032",
+      "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "虎ノ門ヒルズ駅",
+      "exit": "虎ノ門ヒルズ駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103485/plan12829832",
+      "checked_at": "2026-11-07T18:28:38+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103485/plan12829832",
+      "priority_ids": [
+        "priority-063"
+      ],
+      "plans": [
+        {
+          "plan_name": "栗と抹茶のアフタヌーンティー（ 平日限定）",
+          "price_yen": 8970,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "栗と抹茶のアフタヌーンティー（ 平日限定） 税サ込 8,970円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/103485/plan12829832",
+              "checked_at": "2026-11-07T18:28:38+09:00",
+              "quote": "栗と抹茶のアフタヌーンティー( 平日限定)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/103485/plan12829832",
+              "checked_at": "2026-11-07T18:28:38+09:00",
+              "quote": "栗と抹茶のアフタヌーンティー( 平日限定)\n栗と抹茶のアフタヌーンティー( 平日限定) 税サ込 8,970円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/103485/plan12829832",
+              "checked_at": "2026-11-07T18:28:38+09:00",
+              "quote": "栗と抹茶のアフタヌーンティー( 平日限定)\n栗と抹茶のアフタヌーンティー( 平日限定) 税サ込 8,970円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "kuri",
+            "wa"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-059",
+      "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "虎ノ門ヒルズ駅",
+      "exit": "虎ノ門ヒルズ駅 Ａ２から徒歩0分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/151564/plan12874283",
+      "checked_at": "2026-11-07T18:28:28+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/151564/plan12874283",
+      "priority_ids": [
+        "priority-059"
+      ],
+      "plans": [
+        {
+          "plan_name": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は4,800円(通常)→3,840円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定 4,800円 税サ込 3,840円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/151564/plan12874283",
+              "checked_at": "2026-11-07T18:28:28+09:00",
+              "quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/151564/plan12874283",
+              "checked_at": "2026-11-07T18:28:28+09:00",
+              "quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定\nURBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定 4,800円 税サ込 3,840円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/151564/plan12874283",
+              "checked_at": "2026-11-07T18:28:28+09:00",
+              "quote": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定\nURBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定 4,800円 税サ込 3,840円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "ichigo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-061",
+      "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂・永田町・虎ノ門エリア（駅は原文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106680/plan11947457",
+      "checked_at": "2026-11-07T18:28:32+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106680/plan11947457",
+      "priority_ids": [
+        "priority-061"
+      ],
+      "plans": [
+        {
+          "plan_name": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は9,200円(通常)→7,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円"
+        }
+      ]
+    },
+    {
+      "id": "priority-062",
+      "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅",
+      "exit": "赤坂見附駅 赤坂地下歩道D紀尾井町方面口から徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106681/plan12867603",
+      "checked_at": "2026-11-07T18:28:35+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106681/plan12867603",
+      "priority_ids": [
+        "priority-062"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は9,200円(通常)→7,200円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー 9,200円 税サ込 7,200円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/106681/plan12867603",
+              "checked_at": "2026-11-07T18:28:35+09:00",
+              "quote": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-064",
+      "name": "アンダーズ 東京 / ペストリーショップ（1F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "虎ノ門ヒルズ駅",
+      "exit": "虎ノ門ヒルズ駅 中目黒方面 地下鉄歩行者通路経由で 徒歩 約3分 、北千住方面 A2出口より 徒歩 約4分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/123366/plan12533202",
+      "checked_at": "2026-11-07T18:28:41+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/123366/plan12533202",
+      "priority_ids": [
+        "priority-064"
+      ],
+      "plans": [
+        {
+          "plan_name": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格）",
+          "price_yen": 3850,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円"
+        }
+      ]
+    },
+    {
+      "id": "priority-065",
+      "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "溜池山王駅",
+      "exit": "溜池山王駅 13番出口より徒歩1分（溜池山王駅より約5分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/105131/plan12861297",
+      "checked_at": "2026-11-07T18:28:44+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/105131/plan12861297",
+      "priority_ids": [
+        "priority-065"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
+          "price_yen": 9000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 9,000円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/105131/plan12861297",
+              "checked_at": "2026-11-07T18:28:44+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-066",
+      "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "溜池山王駅",
+      "exit": "溜池山王駅 13番出口より徒歩1分（溜池山王駅より約5分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/122872/plan12874649",
+      "checked_at": "2026-11-07T18:28:47+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/122872/plan12874649",
+      "priority_ids": [
+        "priority-066"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー 税サ込 8,500円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/122872/plan12874649",
+              "checked_at": "2026-11-07T18:28:47+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-067",
+      "name": "オークラ東京 / バーラウンジ スターライト",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "虎ノ門ヒルズ駅",
+      "exit": "虎ノ門ヒルズ駅 出口A2より徒歩5分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/113419/plan12865828",
+      "checked_at": "2026-11-07T18:28:50+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/113419/plan12865828",
+      "priority_ids": [
+        "priority-067"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/113419/plan12865828",
+              "checked_at": "2026-11-07T18:28:50+09:00",
+              "quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー\n【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/113419/plan12865828",
+              "checked_at": "2026-11-07T18:28:50+09:00",
+              "quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー\n【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "priority-068",
+      "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "虎ノ門ヒルズ駅",
+      "exit": "虎ノ門ヒルズ駅 A2から徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/152275/plan12805394",
+      "checked_at": "2026-11-07T18:28:54+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/152275/plan12805394",
+      "priority_ids": [
+        "priority-068"
+      ],
+      "plans": [
+        {
+          "plan_name": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は6,900円(通常)→5,865円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日） 6,900円 税サ込 5,865円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/152275/plan12805394",
+              "checked_at": "2026-11-07T18:28:54+09:00",
+              "quote": "ル プリスティン アフタヌーンティー ~かぼちゃ&栗~+シグネチャーモクテル付き(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/152275/plan12805394",
+              "checked_at": "2026-11-07T18:28:54+09:00",
+              "quote": "ル プリスティン アフタヌーンティー ~かぼちゃ&栗~+シグネチャーモクテル付き(平日)\nル プリスティン アフタヌーンティー ~かぼちゃ&栗~+シグネチャーモクテル付き(平日) 6,900円 税サ込 5,865円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/152275/plan12805394",
+              "checked_at": "2026-11-07T18:28:54+09:00",
+              "quote": "ル プリスティン アフタヌーンティー ~かぼちゃ&栗~+シグネチャーモクテル付き(平日)\nル プリスティン アフタヌーンティー ~かぼちゃ&栗~+シグネチャーモクテル付き(平日) 6,900円 税サ込 5,865円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "imo",
+            "kuri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-069",
+      "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂・永田町・虎ノ門エリア（駅は原文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "TableCheck",
+      "source_url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
+      "checked_at": "2026-11-07T18:32:24+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
+      "priority_ids": [
+        "priority-069"
+      ],
+      "plans": [
+        {
+          "plan_name": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00/15:00入店・2.5時間制）",
+          "price_yen": 9867,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込"
+        }
+      ]
+    },
+    {
+      "id": "priority-070",
+      "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "神谷町駅",
+      "exit": "神谷町駅 直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/115758/plan12817748",
+      "checked_at": "2026-11-07T18:28:57+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/115758/plan12817748",
+      "priority_ids": [
+        "priority-070"
+      ],
+      "plans": [
+        {
+          "plan_name": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席",
+          "price_yen": 8800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席 税サ込 8,800円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/115758/plan12817748",
+              "checked_at": "2026-11-07T18:28:57+09:00",
+              "quote": "シャインマスカットエディションアフタヌーンティー+通常のテーブル席",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "grape"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-034",
+      "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+      "area_no": 5,
+      "area": "六本木・麻布・広尾",
+      "station": "六本木一丁目駅・神谷町駅",
+      "exit": "神谷町駅（麻布台ヒルズ方面の出口）［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/125030/plan12830252",
+      "checked_at": "2026-11-07T18:29:17+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/125030/plan12830252",
+      "priority_ids": [
+        "priority-073"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日）",
+          "price_yen": 8800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-21",
+          "end": "2026-12-25",
+          "note": "提供期間: 2026-11-21〜2026-12-25（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日） 税サ込 8,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T18:29:17+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T18:29:17+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日)\n【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日) 税サ込 8,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/125030/plan12830252",
+              "checked_at": "2026-11-07T18:29:17+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日)\n【Xmas2026】クリスマスアフタヌーンティー(11/21~12/25)+モクテル含むカフェフリー(平日) 税サ込 8,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-035",
+      "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+      "area_no": 5,
+      "area": "六本木・麻布・広尾",
+      "station": "六本木駅",
+      "exit": "六本木駅（東京ミッドタウン直結）［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100485/plan12809200",
+      "checked_at": "2026-11-07T18:29:12+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100485/plan12809200",
+      "priority_ids": [
+        "priority-074"
+      ],
+      "plans": [
+        {
+          "plan_name": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定）",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定） 税サ込 8,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/100485/plan12809200",
+              "checked_at": "2026-11-07T18:29:12+09:00",
+              "quote": "ルネサンス アート ヘヴンリーアフタヌーンティー(平日限定)\nルネサンス アート ヘヴンリーアフタヌーンティー(平日限定) 税サ込 8,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/100485/plan12809200",
+              "checked_at": "2026-11-07T18:29:12+09:00",
+              "quote": "ルネサンス アート ヘヴンリーアフタヌーンティー(平日限定)\nルネサンス アート ヘヴンリーアフタヌーンティー(平日限定) 税サ込 8,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-072",
+      "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
+      "area_no": 5,
+      "area": "六本木・麻布・広尾",
+      "station": "六本木駅",
+      "exit": "六本木駅 2番出口 西麻布方面 徒歩10分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102168/plan12861883",
+      "checked_at": "2026-11-07T18:29:09+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102168/plan12861883",
+      "priority_ids": [
+        "priority-072"
+      ],
+      "plans": [
+        {
+          "plan_name": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日）",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日） 税サ込 4,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンの秋麗アフタヌーンティー+2Hカフェフリー付き+メッセージプレート(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンの秋麗アフタヌーンティー+2Hカフェフリー付き+メッセージプレート(平日)\nショコラとマロンの秋麗アフタヌーンティー+2Hカフェフリー付き+メッセージプレート(平日) 税サ込 4,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンの秋麗アフタヌーンティー+2Hカフェフリー付き+メッセージプレート(平日)\nショコラとマロンの秋麗アフタヌーンティー+2Hカフェフリー付き+メッセージプレート(平日) 税サ込 4,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "kuri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-036",
+      "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅・南新宿駅",
+      "exit": "新宿駅 南口（南改札から徒歩3分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103306/plan12792401",
+      "checked_at": "2026-11-07T18:29:53+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103306/plan12792401",
+      "priority_ids": [
+        "priority-077"
+      ],
+      "plans": [
+        {
+          "plan_name": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝） 税サ込 6,000円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/103306/plan12792401",
+              "checked_at": "2026-11-07T18:29:53+09:00",
+              "quote": "シャインマスカットアフタヌーンティー+カフェフリー(土日祝)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/103306/plan12792401",
+              "checked_at": "2026-11-07T18:29:53+09:00",
+              "quote": "シャインマスカットアフタヌーンティー+カフェフリー(土日祝)\nシャインマスカットアフタヌーンティー+カフェフリー(土日祝) 税サ込 6,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/103306/plan12792401",
+              "checked_at": "2026-11-07T18:29:53+09:00",
+              "quote": "シャインマスカットアフタヌーンティー+カフェフリー(土日祝)\nシャインマスカットアフタヌーンティー+カフェフリー(土日祝) 税サ込 6,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "grape"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-038",
+      "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "西新宿駅",
+      "exit": "都庁前駅（徒歩約7分）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/147880/plan12810808",
+      "checked_at": "2026-11-07T18:29:48+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/147880/plan12810808",
+      "priority_ids": [
+        "priority-085"
+      ],
+      "plans": [
+        {
+          "plan_name": "オータム アフタヌーンティー（3時間制 ／9月28日～）",
+          "price_yen": 11385,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": "2026-09-28",
+          "end": null,
+          "note": "ページ上は11,385円(通常)→9,867円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-28〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "オータム アフタヌーンティー（3時間制 ／9月28日～） 11,385円 税サ込 9,867円"
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-candidate-04",
+      "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "西新宿駅",
+      "exit": "西新宿駅 C8出口より徒歩2分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103985/plan12797665",
+      "checked_at": "2026-11-07T18:29:27+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103985/plan12797665",
+      "priority_ids": [
+        "priority-078"
+      ],
+      "plans": [
+        {
+          "plan_name": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」",
+          "price_yen": 5900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」 税サ込 5,900円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "master-candidate-05",
+      "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅",
+      "exit": "新宿駅 南口から徒歩10分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/115611/plan12880133",
+      "checked_at": "2026-11-07T18:29:29+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/115611/plan12880133",
+      "priority_ids": [
+        "priority-079"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割）",
+          "price_yen": 8050,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は8,050円(通常)→6,440円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割） 8,050円 税サ込 6,440円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/115611/plan12880133",
+              "checked_at": "2026-11-07T18:29:29+09:00",
+              "quote": "【Xmas2026】ホリデーアフタヌーンティー+メッセージプレート(早割)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-076",
+      "name": "ル サロン ド ニナス 小田急百貨店新宿",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅",
+      "exit": "新宿駅 西口直結 小田急百貨店 M2階",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/109753/plan12750169",
+      "checked_at": "2026-11-07T18:29:24+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/109753/plan12750169",
+      "priority_ids": [
+        "priority-076"
+      ],
+      "plans": [
+        {
+          "plan_name": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット",
+          "price_yen": 3300,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット 税サ込 3,300円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/109753/plan12750169",
+              "checked_at": "2026-11-07T18:29:24+09:00",
+              "quote": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "collab"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-080",
+      "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅",
+      "exit": "新宿駅 西口から徒歩5分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103085/plan12829652",
+      "checked_at": "2026-11-07T18:29:32+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103085/plan12829652",
+      "priority_ids": [
+        "priority-080"
+      ],
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定） 税サ込 6,900円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/103085/plan12829652",
+              "checked_at": "2026-11-07T18:29:32+09:00",
+              "quote": "アフタヌーンティー~マロン×秋の味覚~+乾杯スパークリングワイン(11月限定)",
+              "origin": "plan_name"
+            },
+            "season": {
+              "url": "https://restaurant.ikyu.com/103085/plan12829652",
+              "checked_at": "2026-11-07T18:29:32+09:00",
+              "quote": "アフタヌーンティー~マロン×秋の味覚~+乾杯スパークリングワイン(11月限定)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kuri"
+          ],
+          "season": [
+            "season"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-081",
+      "name": "京王プラザホテル / オールデイダイニング 樹林",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅",
+      "exit": "新宿駅 西口から徒歩5分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101733/plan12813470",
+      "checked_at": "2026-11-07T18:29:36+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101733/plan12813470",
+      "priority_ids": [
+        "priority-081"
+      ],
+      "plans": [
+        {
+          "plan_name": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日）",
+          "price_yen": 3800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円"
+        }
+      ]
+    },
+    {
+      "id": "priority-082",
+      "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "西武新宿駅",
+      "exit": "西武新宿駅 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/121396/plan12791558",
+      "checked_at": "2026-11-07T18:29:39+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/121396/plan12791558",
+      "priority_ids": [
+        "priority-082"
+      ],
+      "plans": [
+        {
+          "plan_name": "【9/5～ 土日祝日限定】オータムアフターヌーンティー",
+          "price_yen": 8200,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-09-05",
+          "end": null,
+          "note": "提供期間: 2026-09-05〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【9/5～ 土日祝日限定】オータムアフターヌーンティー 税サ込 8,200円",
+          "weekday_available": false,
+          "weekend_available": true
+        }
+      ]
+    },
+    {
+      "id": "priority-083",
+      "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "新宿駅",
+      "exit": "新宿駅 西口より徒歩約9分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/147317/plan12827569",
+      "checked_at": "2026-11-07T18:29:42+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/147317/plan12827569",
+      "priority_ids": [
+        "priority-083"
+      ],
+      "plans": [
+        {
+          "plan_name": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー",
+          "price_yen": 7500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円"
+        }
+      ]
+    },
+    {
+      "id": "priority-084",
+      "name": "ヒルトン東京 / メトロポリタングリル",
+      "area_no": 6,
+      "area": "新宿・代々木",
+      "station": "西新宿駅",
+      "exit": "西新宿駅 C8出口より徒歩2分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/103989/plan12800314",
+      "checked_at": "2026-11-07T18:29:45+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/103989/plan12800314",
+      "priority_ids": [
+        "priority-084"
+      ],
+      "plans": [
+        {
+          "plan_name": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー",
+          "price_yen": 7800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー 税サ込 7,800円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "master-040",
+      "name": "ザ・レギャン・トーキョー",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅",
+      "exit": "渋谷駅（すぐ）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/100272/plan12814237",
+      "checked_at": "2026-11-07T18:30:14+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/100272/plan12814237",
+      "priority_ids": [
+        "priority-086"
+      ],
+      "plans": [
+        {
+          "plan_name": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー 税サ込 4,800円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/100272/plan12814237",
+              "checked_at": "2026-11-07T18:30:14+09:00",
+              "quote": "【苺×栗・紫芋・かぼちゃ】ストロベリー&秋の実り アフタヌーンティー+カフェフリー",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "ichigo",
+            "imo",
+            "kuri"
+          ]
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-041",
+      "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅・神泉駅",
+      "exit": "渋谷駅（出口は要確認）／神泉駅",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/107718/plan12255764",
+      "checked_at": "2026-11-07T18:30:02+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/107718/plan12255764",
+      "priority_ids": [
+        "priority-089"
+      ],
+      "plans": [
+        {
+          "plan_name": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円"
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-042",
+      "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅",
+      "exit": "渋谷駅（出口は要確認）／神泉駅",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101738/plan12685902",
+      "checked_at": "2026-11-07T18:30:05+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101738/plan12685902",
+      "priority_ids": [
+        "priority-090"
+      ],
+      "plans": [
+        {
+          "plan_name": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制 税サ込 8,000円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/101738/plan12685902",
+              "checked_at": "2026-11-07T18:30:05+09:00",
+              "quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制\n【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制 税サ込 8,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/101738/plan12685902",
+              "checked_at": "2026-11-07T18:30:05+09:00",
+              "quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制\n【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制 税サ込 8,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-043",
+      "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅",
+      "exit": "渋谷駅直結（渋谷マークシティ イースト内）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/115887/plan12652208",
+      "checked_at": "2026-11-07T18:30:08+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/115887/plan12652208",
+      "priority_ids": [
+        "priority-091"
+      ],
+      "plans": [
+        {
+          "plan_name": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店）",
+          "price_yen": 5000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円"
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-087",
+      "name": "BLACK TERRACE",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "神泉駅",
+      "exit": "神泉駅 徒歩8分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/110056/plan12824068",
+      "checked_at": "2026-11-07T18:29:56+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/110056/plan12824068",
+      "priority_ids": [
+        "priority-087"
+      ],
+      "plans": [
+        {
+          "plan_name": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店） 税サ込 5,500円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/110056/plan12824068",
+              "checked_at": "2026-11-07T18:29:56+09:00",
+              "quote": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー+2時間カフェフリーフロー(12時入店)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "ichigo",
+            "kuri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-088",
+      "name": "LA COCORICO 渋谷",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅",
+      "exit": "渋谷駅 新南口 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106388/plan12793689",
+      "checked_at": "2026-11-07T18:29:59+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106388/plan12793689",
+      "priority_ids": [
+        "priority-088"
+      ],
+      "plans": [
+        {
+          "plan_name": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄）",
+          "price_yen": 2980,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は2,980円(通常)→2,384円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄） 2,980円 税サ込 2,384円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/106388/plan12793689",
+              "checked_at": "2026-11-07T18:29:59+09:00",
+              "quote": "【期間限定】シャインマスカットのアフタヌーンティー+カフェフリー(11/30迄)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "grape"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-092",
+      "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
+      "area_no": 7,
+      "area": "渋谷・代々木公園",
+      "station": "渋谷駅",
+      "exit": "渋谷駅 C2出口直結",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/110458/plan12861712",
+      "checked_at": "2026-11-07T18:30:11+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/110458/plan12861712",
+      "priority_ids": [
+        "priority-092"
+      ],
+      "plans": [
+        {
+          "plan_name": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-01",
+          "end": null,
+          "note": "提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制） 税サ込 6,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/110458/plan12861712",
+              "checked_at": "2026-11-07T18:30:11+09:00",
+              "quote": "【チョコレートアフタヌーンティー】+モクテル+メッセージプレート付(平日・11/1~・2部制)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "choco"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-048",
+      "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅（出口は要確認）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/110765/plan12817990",
+      "checked_at": "2026-11-07T18:30:17+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/110765/plan12817990",
+      "priority_ids": [
+        "priority-094"
+      ],
+      "plans": [
+        {
+          "plan_name": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30） 税サ込 5,500円"
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-049",
+      "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅（直結）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/117546/plan12844393",
+      "checked_at": "2026-11-07T18:30:20+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/117546/plan12844393",
+      "priority_ids": [
+        "priority-095"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定）",
+          "price_yen": 6800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-18",
+          "end": null,
+          "note": "提供期間: 2026-11-18〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定） 税サ込 6,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/117546/plan12844393",
+              "checked_at": "2026-11-07T18:30:20+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18~(平日限定)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/117546/plan12844393",
+              "checked_at": "2026-11-07T18:30:20+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18~(平日限定)\n【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18~(平日限定) 税サ込 6,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/117546/plan12844393",
+              "checked_at": "2026-11-07T18:30:20+09:00",
+              "quote": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18~(平日限定)\n【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18~(平日限定) 税サ込 6,800円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-097",
+      "name": "St.GRACE Lounge & Dining",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 A1出口 徒歩約3分 A1出口を原宿方面に進み、1つ目の信号を左折して直進。",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/105173/plan12868701",
+      "checked_at": "2026-11-07T18:30:24+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/105173/plan12868701",
+      "priority_ids": [
+        "priority-097"
+      ],
+      "plans": [
+        {
+          "plan_name": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日）",
+          "price_yen": 5900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日） 税サ込 5,900円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/105173/plan12868701",
+              "checked_at": "2026-11-07T18:30:24+09:00",
+              "quote": "スノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日)\nスノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日) 税サ込 5,900円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/105173/plan12868701",
+              "checked_at": "2026-11-07T18:30:24+09:00",
+              "quote": "スノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日)\nスノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日) 税サ込 5,900円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "priority-098",
+      "name": "アニヴェルセルカフェ 表参道",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 A2出口 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/121853/plan12839132",
+      "checked_at": "2026-11-07T18:30:26+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/121853/plan12839132",
+      "priority_ids": [
+        "priority-098"
+      ],
+      "plans": [
+        {
+          "plan_name": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-09-25",
+          "end": "2026-11-17",
+          "note": "提供期間: 2026-09-25〜2026-11-17（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店） 税サ込 6,900円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ]
+    },
+    {
+      "id": "priority-099",
+      "name": "茶洒 金田中",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 A1出口すぐ",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/102572/plan12631502",
+      "checked_at": "2026-11-07T18:30:30+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/102572/plan12631502",
+      "priority_ids": [
+        "priority-099"
+      ],
+      "plans": [
+        {
+          "plan_name": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円"
+        }
+      ]
+    },
+    {
+      "id": "priority-100",
+      "name": "BRASSERIE CAFE LE CONTE",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 A4徒歩1分（A4出口を出て右へ、交差点の角のビル。奥のエレベーターで3Fへ。）",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/113312/plan11876844",
+      "checked_at": "2026-11-07T18:30:32+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/113312/plan11876844",
+      "priority_ids": [
+        "priority-100"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー",
+          "price_yen": 3400,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー 税サ込 3,400円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/113312/plan11876844",
+              "checked_at": "2026-11-07T18:30:32+09:00",
+              "quote": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 +カフェフリー",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "scone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-101",
+      "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/153938/plan12888059",
+      "checked_at": "2026-11-07T18:30:35+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/153938/plan12888059",
+      "priority_ids": [
+        "priority-101"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間） 税サ込 8,500円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/153938/plan12888059",
+              "checked_at": "2026-11-07T18:30:35+09:00",
+              "quote": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ(2時間)",
+              "origin": "plan_name"
+            },
+            "season": {
+              "url": "https://restaurant.ikyu.com/153938/plan12888059",
+              "checked_at": "2026-11-07T18:30:35+09:00",
+              "quote": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ(2時間)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kuri",
+            "parfait"
+          ],
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-102",
+      "name": "ARMANI / CAFFE 表参道",
+      "area_no": 8,
+      "area": "青山・表参道・原宿",
+      "station": "表参道駅",
+      "exit": "表参道駅 A1出口",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/125128/plan12302624",
+      "checked_at": "2026-11-07T18:30:38+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/125128/plan12302624",
+      "priority_ids": [
+        "priority-102"
+      ],
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円"
+        }
+      ]
+    },
+    {
+      "id": "master-060",
+      "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "白金台駅",
+      "exit": "白金台駅［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/106908/plan12847292",
+      "checked_at": "2026-11-07T18:31:01+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/106908/plan12847292",
+      "priority_ids": [
+        "priority-109"
+      ],
+      "plans": [
+        {
+          "plan_name": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー",
+          "price_yen": 9600,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は9,600円(通常)→7,900円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-110",
+      "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "品川駅",
+      "exit": "品川駅 徒歩1分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/113851/plan12847981",
+      "checked_at": "2026-11-07T18:31:04+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/113851/plan12847981",
+      "priority_ids": [
+        "priority-110"
+      ],
+      "plans": [
+        {
+          "plan_name": "クリスマス アフタヌーンティー（11/1～12/28）（平日）",
+          "price_yen": 8096,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": "2026-11-01",
+          "end": "2026-12-28",
+          "note": "ページ上は8,096円(通常)→6,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-12-28（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "クリスマス アフタヌーンティー（11/1～12/28）（平日） 8,096円 税サ込 6,500円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/113851/plan12847981",
+              "checked_at": "2026-11-07T18:31:04+09:00",
+              "quote": "クリスマス アフタヌーンティー(11/1~12/28)(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/113851/plan12847981",
+              "checked_at": "2026-11-07T18:31:04+09:00",
+              "quote": "クリスマス アフタヌーンティー(11/1~12/28)(平日)\nクリスマス アフタヌーンティー(11/1~12/28)(平日) 8,096円 税サ込 6,500円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/113851/plan12847981",
+              "checked_at": "2026-11-07T18:31:04+09:00",
+              "quote": "クリスマス アフタヌーンティー(11/1~12/28)(平日)\nクリスマス アフタヌーンティー(11/1~12/28)(平日) 8,096円 税サ込 6,500円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-111",
+      "name": "JWマリオット・ホテル東京 / JWラウンジ",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "高輪ゲートウェイ駅",
+      "exit": "高輪ゲートウェイ駅 徒歩で約5分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/149035/plan12825529",
+      "checked_at": "2026-11-07T18:31:07+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/149035/plan12825529",
+      "priority_ids": [
+        "priority-111"
+      ],
+      "plans": [
+        {
+          "plan_name": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円"
+        }
+      ]
+    },
+    {
+      "id": "master-063",
+      "name": "ラ・ラナリータ 吾妻橋店",
+      "area_no": 11,
+      "area": "上野・浅草・押上",
+      "station": "浅草駅",
+      "exit": "浅草駅（吾妻橋方面の出口）［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/108054/plan12187749",
+      "checked_at": "2026-11-07T18:31:24+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/108054/plan12187749",
+      "priority_ids": [
+        "priority-112"
+      ],
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】",
+          "price_yen": 5800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【アフタヌーンティーセット】 税サ込 5,800円"
+        }
+      ],
+      "category": "cafe",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-064",
+      "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+      "area_no": 11,
+      "area": "上野・浅草・押上",
+      "station": "浅草駅・田原町駅",
+      "exit": "浅草駅（つくばエクスプレス）［要検証］",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/151232/plan12798243",
+      "checked_at": "2026-11-07T18:31:16+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/151232/plan12798243",
+      "priority_ids": [
+        "priority-113"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可）",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可） 税サ込 8,000円",
+          "weekday_available": true,
+          "weekend_available": false
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-114",
+      "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
+      "area_no": 11,
+      "area": "上野・浅草・押上",
+      "station": "錦糸町駅",
+      "exit": "錦糸町駅 北口を出てロータリーを越え北斎通りへ。左折し約200ｍ先左手側「東武ホテルレバント東京」の1階です。 〜1,999円",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/110552/plan12838920",
+      "checked_at": "2026-11-07T18:31:18+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/110552/plan12838920",
+      "priority_ids": [
+        "priority-114"
+      ],
+      "plans": [
+        {
+          "plan_name": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定）",
+          "price_yen": 5800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "note": "ページ上は5,800円(通常)→5,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円"
+        }
+      ]
+    },
+    {
+      "id": "priority-115",
+      "name": "ホテルイースト21東京 / ロビーラウンジ",
+      "area_no": 11,
+      "area": "上野・浅草・押上",
+      "station": "東陽町駅",
+      "exit": "東陽町駅 徒歩10分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/117061/plan12855775",
+      "checked_at": "2026-11-07T18:31:22+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/117061/plan12855775",
+      "priority_ids": [
+        "priority-115"
+      ],
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制） 税サ込 6,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/117061/plan12855775",
+              "checked_at": "2026-11-07T18:31:22+09:00",
+              "quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法(平日限定・2.5時間制)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/117061/plan12855775",
+              "checked_at": "2026-11-07T18:31:22+09:00",
+              "quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法(平日限定・2.5時間制)\nアフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法(平日限定・2.5時間制) 税サ込 6,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/117061/plan12855775",
+              "checked_at": "2026-11-07T18:31:22+09:00",
+              "quote": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法(平日限定・2.5時間制)\nアフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法(平日限定・2.5時間制) 税サ込 6,000円",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-065",
+      "name": "東京ドームホテル / アーティスト カフェ",
+      "area_no": 12,
+      "area": "水道橋・御茶ノ水・神田",
+      "station": "水道橋駅・後楽園駅",
+      "exit": "水道橋駅［要検証］／後楽園駅",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/101056/plan12789046",
+      "checked_at": "2026-11-07T18:31:33+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/101056/plan12789046",
+      "priority_ids": [
+        "priority-117"
+      ],
+      "plans": [
+        {
+          "plan_name": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定）",
+          "price_yen": null,
+          "price_note": "通常価格 未確認。税サ込(1人あたり)・通常価格",
+          "start": "2026-09-01",
+          "end": "2026-12-07",
+          "note": "ページ上は6,300円(通常)→5,700円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-01〜2026-12-07（タイトル/期間表記より。年は調査年と推定）",
+          "evidence_quote": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定） 6,300円 税サ込 5,700円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/101056/plan12789046",
+              "checked_at": "2026-11-07T18:31:33+09:00",
+              "quote": "【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/101056/plan12789046",
+              "checked_at": "2026-11-07T18:31:33+09:00",
+              "quote": "【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定)\n【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定) 6,300円 税サ込 5,700円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/101056/plan12789046",
+              "checked_at": "2026-11-07T18:31:33+09:00",
+              "quote": "【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定)\n【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定) 6,300円 税サ込 5,700円",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "price_yen": {
+              "url": "https://restaurant.ikyu.com/101056/plan12789046",
+              "checked_at": "2026-11-07T18:31:33+09:00",
+              "quote": "【早期割引】シャインマスカット&メロンアフタヌーンティー+カフェフリー(9/1~12/7・平日限定) 6,300円 税サ込 5,700円",
+              "origin": "evidence_quote:regular_price_unknown"
+            }
+          },
+          "sweets": [
+            "grape",
+            "melon"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "priority-116",
+      "name": "VMG CAFE 九段会館テラス",
+      "area_no": 12,
+      "area": "水道橋・御茶ノ水・神田",
+      "station": "九段下駅",
+      "exit": "九段下駅 115m",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/120847/plan12815369",
+      "checked_at": "2026-11-07T18:31:27+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/120847/plan12815369",
+      "priority_ids": [
+        "priority-116"
+      ],
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月）",
+          "price_yen": 4950,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月） 税サ込 4,950円",
+          "structured_evidence": {
+            "season": {
+              "url": "https://restaurant.ikyu.com/120847/plan12815369",
+              "checked_at": "2026-11-07T18:31:27+09:00",
+              "quote": "【Xmas2026】Afternoon Tea+2時間カフェフリー(11~12月)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority-118",
+      "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
+      "area_no": 12,
+      "area": "水道橋・御茶ノ水・神田",
+      "station": "新御茶ノ水駅",
+      "exit": "新御茶ノ水駅 B3a出口徒歩１分",
+      "address": null,
+      "source_site": "一休.com",
+      "source_url": "https://restaurant.ikyu.com/105246/plan12798669",
+      "checked_at": "2026-11-07T18:31:31+09:00",
+      "booking_url_info_only": "https://restaurant.ikyu.com/105246/plan12798669",
+      "priority_ids": [
+        "priority-118"
+      ],
+      "plans": [
+        {
+          "plan_name": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月）",
+          "price_yen": 4300,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月） 税サ込 4,300円",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/105246/plan12798669",
+              "checked_at": "2026-11-07T18:31:31+09:00",
+              "quote": "【秋】ほうじ茶アフタヌーンティー(ほうじ茶スイーツなど全11品)&ワンドリンク(9月~11月)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "wa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-067",
+      "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+      "area_no": 13,
+      "area": "飯田橋・神楽坂・四ツ谷",
+      "station": "飯田橋駅",
+      "exit": "飯田橋駅［要検証］",
+      "address": null,
+      "source_site": "TableCheck",
+      "source_url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
+      "checked_at": "2026-11-07T18:32:53+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
+      "priority_ids": [
+        "priority-119"
+      ],
+      "plans": [
+        {
+          "plan_name": "Afternoon tea Set（ベルテンポ）",
+          "price_yen": 6800,
+          "price_note": "税サ込（Svc & tax incl.）",
+          "start": null,
+          "end": null,
+          "note": "提供期間の日付はページに記載なし＝期間未確認",
+          "evidence_quote": "Afternoon tea Set … ¥6,800 Svc & tax incl."
+        }
+      ],
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    },
+    {
+      "id": "master-070",
+      "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+      "area_no": 14,
+      "area": "池袋・目白",
+      "station": "江戸川橋駅",
+      "exit": "江戸川橋駅 1a出口（徒歩約10分）／目白駅から都営バス約10分",
+      "address": null,
+      "source_site": "TableCheck",
+      "source_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+      "checked_at": "2026-11-07T18:33:01+09:00",
+      "booking_url_info_only": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+      "priority_ids": [
+        "priority-120"
+      ],
+      "plans": [
+        {
+          "plan_name": "Christmas Afternoon Tea（アフタヌーンティー2026）",
+          "price_yen": 7800,
+          "price_note": "税込・サービス料別（Svc excl. / tax incl.）",
+          "start": "2026-11-01",
+          "end": "2027-01-07",
+          "note": "12月26日以降はホリデーアフタヌーンティーに内容変更と記載",
+          "evidence_quote": "Christmas Afternoon Tea ¥ 7,800 (Svc excl. / tax incl.) Valid Dates Nov 01 ~ Jan 07, 2027",
+          "structured_evidence": {
+            "season": {
+              "url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+              "checked_at": "2026-11-07T18:33:01+09:00",
+              "quote": "Christmas Afternoon Tea(アフタヌーンティー2026)",
+              "origin": "plan_name"
+            }
+          },
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+    }
+  ],
+  "out_of_period_removed": [
+    {
+      "priority_id": "priority-018",
+      "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+      "plan_name": "Afternoon Tea \"Stones\" Christmas edition",
+      "start": "2026-12-19",
+      "end": "2026-12-25",
+      "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
+    }
+  ]
 }
