@@ -12,4 +12,9 @@
 - 禁止操作を検知したら中断し、監査ログへ保存する。
 - 安全機構はモック・ローカルページで検証する。実予約システムで危険な操作を試さない。
 - ブラウザー自動操作は現時点では禁止。Pythonの読み取り専用HTTP層のみ使用する。
-- docs/index.html、build_html.py、research_spec.md、original_prompt.txt、deploy.ymlを変更しない。
+- docs/index.html、build_html.py、research_spec.md、original_prompt.txt、旧HTMLバックアップを変更しない。
+- ユーザー承認済みの公開方式: Claude Code Cloud Scheduled Tasksが調査とHTML生成を担当する。自動公開の必須条件は技術検証のみとし、店舗数・未解決件数・調査完了率・旧品質スコアを公開停止条件にしない。
+- 定期タスクの変更先はsite/index.html、site/research.json、site/search_failures.jsonの3ファイルに限定する。ワークフロー、認証・権限設定、AGENTS.md、Pythonコード、保護ハッシュは定期タスクから変更しない。
+- deploy.yml等の公開保護変更は人間が依頼した実装PRだけで行い、固定ハッシュを対応する承認済み新値へ更新する。定期タスクPRによる変更は自動取り込みを拒否する。
+- 承認済みの最終構成: claude/ブランチ・[weekly-site]タイトル・許可作成者・同一リポジトリ・上記3ファイル限定のPRをmain側のコードで検証し、自動マージ後にpublish-site.ymlを明示的に起動する。公開ジョブだけがPages公開権限を持つ。0店舗でも説明を含む正常なHTMLを公開できる。
+- 予約禁止の全規則は新しいCloud Scheduled Tasksでも適用する。旧Python週次調査を新方式の公開条件に使用しない。

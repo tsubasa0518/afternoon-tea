@@ -1,3 +1,27 @@
+# 東京アフタヌーンティー：毎週自動更新
+
+Claude Code Routines（Cloud Scheduled Tasks）が毎週月曜07:17 JSTに調査・HTML/JSON生成・PR作成を行い、GitHub Actionsが3ファイル限定の技術検証、自動マージ、GitHub Pages公開を行います。Codexの定期実行は不要です。
+
+公開URL: [東京アフタヌーンティー](https://tsubasa0518.github.io/afternoon-tea/)
+
+- 更新対象: `site/index.html`, `site/research.json`, `site/search_failures.json`
+- 自動取り込み: `.github/workflows/auto-publish-weekly.yml`
+- 公開: `.github/workflows/publish-site.yml`（マージ後に明示的に起動）
+- 店舗数0・2や未確認情報が残る場合も、説明を含む正常なHTMLを公開します。情報は捏造しません。
+- 予約・仮予約・決済は全面禁止。匿名の安全な公開ページの読み取りだけを行います。
+- 元120店舗HTMLは`docs/index.html`に保管し、旧deploy.ymlは公開しない廃止通知に変更しています。
+
+[最初の設定・運用・停止・復旧方法](developer_docs/weekly_automation.md)と[Claudeへ貼るプロンプト全文](developer_docs/claude_weekly_prompt.md)を参照してください。
+
+```sh
+python3 -m afternoon_tea.routine_site validate
+python3 -m unittest discover -s tests -v
+```
+
+以下の従来Python調査・品質判定は補助機能として残します。新しい週次公開の必須条件には使用しません。
+
+---
+
 # 東京アフタヌーンティー調査仕様（Codex・GitHub用）
 
 このパッケージは、ユーザー提供の調査仕様テキストから作成しています。

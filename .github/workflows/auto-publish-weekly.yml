@@ -1,0 +1,38 @@
+name: Auto-merge weekly site
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+permissions:
+  contents: read
+concurrency:
+  group: weekly-site-intake
+  cancel-in-progress: false
+jobs:
+  validate-and-merge:
+    if: >-
+      !github.event.pull_request.draft &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'claude/') &&
+      startsWith(github.event.pull_request.title, '[weekly-site]') &&
+      github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner)
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      # Never check out or execute PR code. github.sha is the trusted base commit.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Validate three files, merge expected head, dispatch publication
+        run: python3 -m afternoon_tea.routine_site intake
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROUTINE_AUTHOR: ${{ vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner }}
