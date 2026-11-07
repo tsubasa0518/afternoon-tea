@@ -13,6 +13,7 @@ from .data import JST
 from .routine_site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
 from .weekly_review import review, day
 from .price_category import classify, regular_price
+from .country_themes import display as country_display
 
 TEMPLATES=Path(__file__).with_name('templates')
 SITES = [("ik", "一休.com"), ("tb", "食べログ"), ("tc", "TableCheck")]
@@ -87,6 +88,8 @@ def plan_html(plan,shop,index,total,generated):
     attrs=f'data-tags-specified="{specified}" data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-pk="{int(price is not None)}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
     out=[f'<div class="plan" {attrs}><div class="plan-hd"><span class="pno">プラン{index+1}／{total}</span><p class="pper{ " na" if not first and not last else ""}">{esc(dates)}</p>{badge}</div>',
          f'<p class="theme">{SVG_TEA}<span>{esc(plan.get("plan_name",plan.get("theme")))}</span></p>']
+    country = country_display(plan, shop)
+    if country:out.append('<p class="country-theme" aria-label="テーマの国・地域">'+esc(country)+'</p>')
     if sw:out.append('<p class="swt" aria-label="スイーツ・季節">'+''.join('<span>'+esc(LABELS[k])+'</span>' for k in sw)+'</p>')
     if price is None:out.append('<div class="price"><span class="pdet">料金 未確認</span></div>')
     else:

@@ -47,7 +47,13 @@
               "quote": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食)\n【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど+5種飲み放題(平日限定30食) 税サ込 4,950円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "513cccece08b577856cbde3f8f79b4363640abd4a5a9f501170496975e1a35db",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "513cccece08b577856cbde3f8f79b4363640abd4a5a9f501170496975e1a35db"
         }
       ],
       "category": "cafe",
@@ -82,7 +88,13 @@
             "start": "2026-09-16",
             "end": "2026-11-30",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "da4aa7c49904ed0d7c2c4fc7d40da77cd60511d3573e4102fe1d4d59866c6ca0",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "da4aa7c49904ed0d7c2c4fc7d40da77cd60511d3573e4102fe1d4d59866c6ca0"
         }
       ],
       "category": "hotel",
@@ -125,7 +137,13 @@
           },
           "sweets": [
             "kuri"
-          ]
+          ],
+          "country_input_hash": "af202a0b332318c5b6cbe64a17055e7850e061ac2d75e8e583f5bcd19a7aa2fe",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "af202a0b332318c5b6cbe64a17055e7850e061ac2d75e8e583f5bcd19a7aa2fe"
         }
       ],
       "category": "cafe",
@@ -176,7 +194,13 @@
             "start": "2026-11-16",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "832a6b6aaffa144e34f0e89316a66ea7dd3d3137b08671e750fd3ab1a85ee2d3",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "832a6b6aaffa144e34f0e89316a66ea7dd3d3137b08671e750fd3ab1a85ee2d3"
         }
       ],
       "category": "hotel",
@@ -232,7 +256,13 @@
           "sweets": [
             "kaki",
             "kuri"
-          ]
+          ],
+          "country_input_hash": "41a796fd1c346a84bb1a8047c64038f1492caf07220db22e5b8e311a524cf9fa",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "41a796fd1c346a84bb1a8047c64038f1492caf07220db22e5b8e311a524cf9fa"
         }
       ],
       "category": "hotel",
@@ -262,7 +292,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円"
+          "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円",
+          "country_input_hash": "6b8c9205ef55c913dfe5f8cca5ff8bcf130786effe9fb96e355f96a82eeb1c71",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "6b8c9205ef55c913dfe5f8cca5ff8bcf130786effe9fb96e355f96a82eeb1c71"
         }
       ],
       "category": "hotel",
@@ -319,7 +355,13 @@
             "start": "2026-11-16",
             "end": "2026-12-17",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "61476ca1b6493247875a01463b01865362e6d61a0f48b3039062bd815f322609",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "61476ca1b6493247875a01463b01865362e6d61a0f48b3039062bd815f322609"
         }
       ],
       "category": "hotel",
@@ -368,7 +410,13 @@
             "start": "2026-11-01",
             "end": "2026-11-30",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "0d96fa548da04bccc6bbf8114d6ff8ac967e069e9be500f812e9188bb7c782cd",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "0d96fa548da04bccc6bbf8114d6ff8ac967e069e9be500f812e9188bb7c782cd"
         }
       ],
       "category": "hotel",
@@ -398,7 +446,13 @@
           "start": "2026-09-01",
           "end": "2026-11-30",
           "note": "TableCheck掲載の提供期間。12/1から冬メニューに変更と記載",
-          "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
+          "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)",
+          "country_input_hash": "e55fe946dbd7c0f07bdb3965e3d4790c612415aa7fe4c350db91c0aad1f0e353",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "e55fe946dbd7c0f07bdb3965e3d4790c612415aa7fe4c350db91c0aad1f0e353"
         }
       ],
       "category": "hotel",
@@ -442,7 +496,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "a3d66f47f114e2fa50e5eacedfc7c4ab5232b855e9a47a6457346bab008f3353",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "a3d66f47f114e2fa50e5eacedfc7c4ab5232b855e9a47a6457346bab008f3353"
         }
       ],
       "category": "lux",
@@ -472,7 +532,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30） 税サ込 10,350円"
+          "evidence_quote": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30） 税サ込 10,350円",
+          "country_input_hash": "79e6ce3d0a9d8052bcc26b3895a1b6a256d8016590c0445d220cbafa7de72c37",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "79e6ce3d0a9d8052bcc26b3895a1b6a256d8016590c0445d220cbafa7de72c37"
         }
       ],
       "category": "lux",
@@ -502,7 +568,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円"
+          "evidence_quote": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン） 税サ込 4,600円",
+          "country_input_hash": "e5ed0e889ad0d2053898e7b1dd36d9d01aaa628d70579b4121f9892f2cd93556",
+          "country": "中華人民共和国香港特別行政区",
+          "cc": "hk",
+          "country_source_type": "explicit",
+          "country_basis": "保存済みプラン名に「香港スイーツの贅沢アフタヌーンティーコース」とテーマ地域が明記されている。ISO 3166-1の香港（HK）を使用。",
+          "country_decision_hash": "e5ed0e889ad0d2053898e7b1dd36d9d01aaa628d70579b4121f9892f2cd93556"
         }
       ],
       "category": "cafe",
@@ -545,7 +617,13 @@
           },
           "sweets": [
             "choco"
-          ]
+          ],
+          "country_input_hash": "9b7084c798c43f478b42164cc2fdb7597060fd3ec807dec7f96559ed9b6afe91",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "9b7084c798c43f478b42164cc2fdb7597060fd3ec807dec7f96559ed9b6afe91"
         }
       ],
       "category": "hotel",
@@ -575,7 +653,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円"
+          "evidence_quote": "文明堂づくしのAfternoon Tea 税サ込 4,000円",
+          "country_input_hash": "c41c1a3c1992f82d7348a9c78ff66ebc6d8c690006ad5b7d28632ae370d39b8b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "c41c1a3c1992f82d7348a9c78ff66ebc6d8c690006ad5b7d28632ae370d39b8b"
         }
       ],
       "category": "cafe",
@@ -605,7 +689,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円"
+          "evidence_quote": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク 税サ込 2,400円",
+          "country_input_hash": "7ebcc3e81eec8292218cf12eabe1ddde0dfac631df1c7829c22e4753b416e7a1",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "7ebcc3e81eec8292218cf12eabe1ddde0dfac631df1c7829c22e4753b416e7a1"
         }
       ],
       "category": "cafe",
@@ -665,7 +755,13 @@
             "start": "2026-11-01",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "8747b78d34e7cd69f1b3f3bd8699c83f4a744f26a3c9b2681aad614f181eee6b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8747b78d34e7cd69f1b3f3bd8699c83f4a744f26a3c9b2681aad614f181eee6b"
         }
       ],
       "category": "hotel",
@@ -720,7 +816,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "6366bffb5e1c1a2f141c11c2ebf53c9b6b8a44c829a9d1fd41cbaadf0ff74d1a",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "6366bffb5e1c1a2f141c11c2ebf53c9b6b8a44c829a9d1fd41cbaadf0ff74d1a"
         }
       ],
       "category": "hotel",
@@ -757,7 +859,13 @@
             "start": "2026-11-01",
             "end": "2026-11-30",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "4410e252c1bdbed20bf5406de84d62aabc8e26cd3f3d93fbd7b0ca3f4b9e4044",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "4410e252c1bdbed20bf5406de84d62aabc8e26cd3f3d93fbd7b0ca3f4b9e4044"
         }
       ],
       "category": "hotel",
@@ -789,7 +897,13 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【土日祝/数量限定】SESSiONアフタヌーンティープラン 税サ込 5,500円",
           "weekday_available": false,
-          "weekend_available": true
+          "weekend_available": true,
+          "country_input_hash": "ba1d2cbb0e7b6ff1f615188b0073cf279b7425481fd4c43ae897c7edb768c820",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "ba1d2cbb0e7b6ff1f615188b0073cf279b7425481fd4c43ae897c7edb768c820"
         }
       ],
       "category": "cafe",
@@ -819,7 +933,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円"
+          "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円",
+          "country_input_hash": "63bb6e8033445a807ab86443320751cba95448ead151bf02d8722ec2f427d7b2",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "63bb6e8033445a807ab86443320751cba95448ead151bf02d8722ec2f427d7b2"
         }
       ],
       "category": "lux",
@@ -850,7 +970,13 @@
           "end": null,
           "note": "15:00-17:00 / 15:30-17:30。提供期間の日付はページに記載なし＝期間未確認",
           "time_note": "15:00-17:00 / 15:30-17:30",
-          "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)"
+          "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)",
+          "country_input_hash": "9c6939cc0338885f0cb81cb0fc52bbf6f48bd70f7a851835fd1db279427c3d99",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "9c6939cc0338885f0cb81cb0fc52bbf6f48bd70f7a851835fd1db279427c3d99"
         }
       ],
       "category": "cafe",
@@ -891,7 +1017,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "756899954e261692c6eb92d6784b11c420aea89ef57adf1da4b20e233b756286",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "756899954e261692c6eb92d6784b11c420aea89ef57adf1da4b20e233b756286"
         }
       ],
       "category": "hotel",
@@ -921,7 +1053,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
+          "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円",
+          "country_input_hash": "f08c8c531541ea0659cde944dbd68e1667699b1fa9e57fa1562eb7111e4947c4",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "f08c8c531541ea0659cde944dbd68e1667699b1fa9e57fa1562eb7111e4947c4"
         }
       ],
       "category": "hotel",
@@ -972,7 +1110,13 @@
             "start": "2026-10-01",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "8205e4c89bc49e61a28c63bcb50eb78b2ca6fb116aa68ab6ad13b233fb5280e7",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8205e4c89bc49e61a28c63bcb50eb78b2ca6fb116aa68ab6ad13b233fb5280e7"
         }
       ],
       "category": "hotel",
@@ -1027,7 +1171,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "169cff921a801be107ceda672c07aabe41db797c413b4deeb138bb846a1287f0",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "169cff921a801be107ceda672c07aabe41db797c413b4deeb138bb846a1287f0"
         }
       ],
       "category": "hotel",
@@ -1059,7 +1209,13 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月） 税サ込 12,650円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "country_input_hash": "6294a7084865c8ec913ac73810338aa45f78c4248c3997643fe30e2473298b42",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "6294a7084865c8ec913ac73810338aa45f78c4248c3997643fe30e2473298b42"
         }
       ],
       "category": "lux",
@@ -1089,7 +1245,13 @@
           "start": null,
           "end": null,
           "note": "ページ上は10,183円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円"
+          "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円",
+          "country_input_hash": "6ee00153606e61f7340f31406cdcfeccf9acc957a68b8c0adaabcd6e7b9827cf",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "6ee00153606e61f7340f31406cdcfeccf9acc957a68b8c0adaabcd6e7b9827cf"
         }
       ],
       "category": "lux",
@@ -1132,7 +1294,13 @@
           },
           "sweets": [
             "ichigo"
-          ]
+          ],
+          "country_input_hash": "9c5092f82a8f7ae30e3d2015def2f4e25431130b333a838ef16caf0eca451eea",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "9c5092f82a8f7ae30e3d2015def2f4e25431130b333a838ef16caf0eca451eea"
         }
       ],
       "category": "lux",
@@ -1173,7 +1341,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "4d696150ec575b8c6c7115223c8526c6b1aeaa7061288f65160922bf512199da",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "4d696150ec575b8c6c7115223c8526c6b1aeaa7061288f65160922bf512199da"
         }
       ],
       "category": "hotel",
@@ -1203,7 +1377,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円"
+          "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円",
+          "country_input_hash": "d48d3bf2a84e14e3a3b0d9ecbd9d1a4162f5cdc23a25340d49915ce63e9bf014",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "d48d3bf2a84e14e3a3b0d9ecbd9d1a4162f5cdc23a25340d49915ce63e9bf014"
         }
       ],
       "category": "hotel",
@@ -1233,7 +1413,13 @@
           "start": null,
           "end": null,
           "note": "ページ上は7,000円(通常)→6,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円"
+          "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円",
+          "country_input_hash": "35e134cc9e5052b435839bb7448d1db915ccaac37b7733d4c0f629ac402eb925",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "35e134cc9e5052b435839bb7448d1db915ccaac37b7733d4c0f629ac402eb925"
         }
       ],
       "category": "hotel",
@@ -1279,7 +1465,13 @@
               "quote": "【アフタヌーンティープログラム】東博~カラフルアジア~(平日)\n【アフタヌーンティープログラム】東博~カラフルアジア~(平日) 7,000円 税サ込 5,600円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "bad468df57ea83c96905fd43819224f4d7f3e595c9e758be14709bdc27914241",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "bad468df57ea83c96905fd43819224f4d7f3e595c9e758be14709bdc27914241"
         }
       ],
       "category": "hotel",
@@ -1316,7 +1508,13 @@
             "start": "2026-09-15",
             "end": "2026-12-14",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "39cdbf07d69c8601eba51da68d18fb3e4532729fc61c33f7668eba4ffe23b92e",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "39cdbf07d69c8601eba51da68d18fb3e4532729fc61c33f7668eba4ffe23b92e"
         }
       ],
       "category": "cafe",
@@ -1358,7 +1556,13 @@
           "sweets": [
             "choco",
             "ichigo"
-          ]
+          ],
+          "country_input_hash": "0ac77cecb5b4469c4a368eaa6dceb2768acc40ccddfae404f7ce80fa5b4345d6",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "0ac77cecb5b4469c4a368eaa6dceb2768acc40ccddfae404f7ce80fa5b4345d6"
         }
       ],
       "category": "hotel",
@@ -1399,7 +1603,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "36c52d308a78f3288571fbbf55444e5f38fed09babf183b77f9498d0c9960323",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "36c52d308a78f3288571fbbf55444e5f38fed09babf183b77f9498d0c9960323"
         }
       ],
       "category": "hotel",
@@ -1455,7 +1665,13 @@
           "sweets": [
             "kuri",
             "wa"
-          ]
+          ],
+          "country_input_hash": "ce3d1001413305013a8cebbfeb34192f3a0e59377292d75fa8b7b444b82d5e40",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "ce3d1001413305013a8cebbfeb34192f3a0e59377292d75fa8b7b444b82d5e40"
         }
       ],
       "category": "hotel",
@@ -1510,7 +1726,13 @@
           },
           "sweets": [
             "ichigo"
-          ]
+          ],
+          "country_input_hash": "b6f29bb730a6aa243fb6545092ae5c83c4ca9e00024a9d46446047bf7d3ca60b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "b6f29bb730a6aa243fb6545092ae5c83c4ca9e00024a9d46446047bf7d3ca60b"
         }
       ],
       "category": "cafe",
@@ -1540,7 +1762,13 @@
           "start": null,
           "end": null,
           "note": "ページ上は9,200円(通常)→7,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円"
+          "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円",
+          "country_input_hash": "c8be24196a5145686ad81ee5992df2d8e2efab6c27b198bc18d876a20fc753c9",
+          "country": "日本",
+          "cc": "jp",
+          "country_source_type": "explicit",
+          "country_basis": "保存済みプラン名の「和の心を愉しむ」「ジャパニーズスタイルアフタヌーンティー」が日本の文化を公式テーマとして明示している。",
+          "country_decision_hash": "c8be24196a5145686ad81ee5992df2d8e2efab6c27b198bc18d876a20fc753c9"
         }
       ],
       "category": "hotel",
@@ -1581,7 +1809,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "36c52d308a78f3288571fbbf55444e5f38fed09babf183b77f9498d0c9960323",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "36c52d308a78f3288571fbbf55444e5f38fed09babf183b77f9498d0c9960323"
         }
       ],
       "category": "hotel",
@@ -1611,7 +1845,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円"
+          "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円",
+          "country_input_hash": "055fdb9a90a455e06a117a867da7eb12fc4dda32b999715b3e51531735456246",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "055fdb9a90a455e06a117a867da7eb12fc4dda32b999715b3e51531735456246"
         }
       ],
       "category": "cafe",
@@ -1652,7 +1892,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "769d3d0231cc8648e3ac28210477adfde85572cf04c76fd6e3c134e0dad4a405",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "769d3d0231cc8648e3ac28210477adfde85572cf04c76fd6e3c134e0dad4a405"
         }
       ],
       "category": "hotel",
@@ -1693,7 +1939,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "769d3d0231cc8648e3ac28210477adfde85572cf04c76fd6e3c134e0dad4a405",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "769d3d0231cc8648e3ac28210477adfde85572cf04c76fd6e3c134e0dad4a405"
         }
       ],
       "category": "hotel",
@@ -1739,7 +1991,13 @@
               "quote": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー\n【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー 税サ込 8,500円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "61b46092cde911039ef7d5d6333f3c0a3e3df75511b94fbb1f5b04894d3d001e",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "61b46092cde911039ef7d5d6333f3c0a3e3df75511b94fbb1f5b04894d3d001e"
         }
       ],
       "category": "hotel",
@@ -1795,7 +2053,13 @@
           "sweets": [
             "imo",
             "kuri"
-          ]
+          ],
+          "country_input_hash": "1061dea3da7ebf3871187275be5fc066603c51d49fa7119a485c3963954cd4b7",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "1061dea3da7ebf3871187275be5fc066603c51d49fa7119a485c3963954cd4b7"
         }
       ],
       "category": "hotel",
@@ -1825,7 +2089,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込"
+          "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込",
+          "country_input_hash": "ed80d49c733ec20ba8b9acdf6504ef7b402abb5401eba7842bf926839f647683",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "ed80d49c733ec20ba8b9acdf6504ef7b402abb5401eba7842bf926839f647683"
         }
       ],
       "category": "hotel",
@@ -1866,7 +2136,13 @@
           },
           "sweets": [
             "grape"
-          ]
+          ],
+          "country_input_hash": "0e5fb844ff5770868411bad1ba2f9f02136ddcfda995249d9d250d99cdf33816",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "0e5fb844ff5770868411bad1ba2f9f02136ddcfda995249d9d250d99cdf33816"
         }
       ],
       "category": "hotel",
@@ -1921,7 +2197,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "d3506597e8dcc657e710cd3990e5a7da13a47f52bec4e0a55184603ba34a8427",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "d3506597e8dcc657e710cd3990e5a7da13a47f52bec4e0a55184603ba34a8427"
         }
       ],
       "category": "hotel",
@@ -1967,7 +2249,13 @@
               "quote": "ルネサンス アート ヘヴンリーアフタヌーンティー(平日限定)\nルネサンス アート ヘヴンリーアフタヌーンティー(平日限定) 税サ込 8,000円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "233994582a90c6952c15126339a6ed92bb2ac51f2ff9fc2ec89af5dddd9afb9b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "233994582a90c6952c15126339a6ed92bb2ac51f2ff9fc2ec89af5dddd9afb9b"
         }
       ],
       "category": "hotel",
@@ -2023,7 +2311,13 @@
           "sweets": [
             "choco",
             "kuri"
-          ]
+          ],
+          "country_input_hash": "44c6017a74bc46bb684ffc1f9ea5dbcd10016e6fb454c78853cd3fdcc2b4cc7d",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "44c6017a74bc46bb684ffc1f9ea5dbcd10016e6fb454c78853cd3fdcc2b4cc7d"
         }
       ],
       "category": "cafe",
@@ -2078,7 +2372,13 @@
           },
           "sweets": [
             "grape"
-          ]
+          ],
+          "country_input_hash": "12744ad4a55c6cf8db164077fa258c3fdfa0f278a5cc6b149c7113f2425a5e2e",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "12744ad4a55c6cf8db164077fa258c3fdfa0f278a5cc6b149c7113f2425a5e2e"
         }
       ],
       "category": "cafe",
@@ -2113,7 +2413,13 @@
             "start": "2026-09-28",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "bdc6db6a559f7d27f432e588c9f9586e135b036edca2e439f97f35ce499de4a4",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "bdc6db6a559f7d27f432e588c9f9586e135b036edca2e439f97f35ce499de4a4"
         }
       ],
       "category": "lux",
@@ -2145,7 +2451,13 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」 税サ込 5,900円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "country_input_hash": "8ed7babf871a7e598c8a84bff0dc377b756b14710f70c0fb307bd3f856060744",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8ed7babf871a7e598c8a84bff0dc377b756b14710f70c0fb307bd3f856060744"
         }
       ],
       "category": "cafe",
@@ -2186,7 +2498,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "88aa4e4234ec7c02857be99d9288700a2ae6498a3c87ffb3d46ff72b722d14c4",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "88aa4e4234ec7c02857be99d9288700a2ae6498a3c87ffb3d46ff72b722d14c4"
         }
       ],
       "category": "hotel",
@@ -2227,7 +2545,16 @@
           },
           "season": [
             "collab"
-          ]
+          ],
+          "country_input_hash": "d843bb7558b0b30a753ea381c58621e5ccb942117dc49d0b85f7b6246e21ca53",
+          "country": "フランス",
+          "cc": "fr",
+          "country_source_type": "inferred",
+          "country_basis": "保存済みプラン名に「マリー・アントワネット・スタイル」展とのスペシャルコラボレーションが明記され、フランス宮廷文化を主題とする強い関連が読み取れる。菓子単品や店舗名からの判定ではない。国名自体の明記はないため推測として扱う。",
+          "notes": {
+            "status": "テーマ国推測：店舗=ル サロン ド ニナス 小田急百貨店新宿 ／ プラン=マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット ／ 国=フランス (fr) ／ 根拠=保存済みプラン名に「マリー・アントワネット・スタイル」展とのスペシャルコラボレーションが明記され、フランス宮廷文化を主題とする強い関連が読み取れる。菓子単品や店舗名からの判定ではない。国名自体の明記はないため推測として扱う。"
+          },
+          "country_decision_hash": "d843bb7558b0b30a753ea381c58621e5ccb942117dc49d0b85f7b6246e21ca53"
         }
       ],
       "category": "cafe",
@@ -2277,7 +2604,13 @@
           ],
           "season": [
             "season"
-          ]
+          ],
+          "country_input_hash": "fd5b1ff9122cebb998d711a446e0e996809836c9d0ff3a8ccfdd049f52d92f8c",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "fd5b1ff9122cebb998d711a446e0e996809836c9d0ff3a8ccfdd049f52d92f8c"
         }
       ],
       "category": "hotel",
@@ -2307,7 +2640,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円"
+          "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円",
+          "country_input_hash": "6ab25345ba884e772b631f59d8d68219a6fab3ca9d2a729661c74ef7f0cafb51",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "6ab25345ba884e772b631f59d8d68219a6fab3ca9d2a729661c74ef7f0cafb51"
         }
       ],
       "category": "cafe",
@@ -2344,7 +2683,13 @@
             "start": "2026-09-05",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "85ce2df67554b4bffc242a3b5bbd93e19ae1f7d7260465f90cf5d7f2093a136c",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "85ce2df67554b4bffc242a3b5bbd93e19ae1f7d7260465f90cf5d7f2093a136c"
         }
       ],
       "category": "hotel",
@@ -2374,7 +2719,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円"
+          "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円",
+          "country_input_hash": "ed2fd2549afc3f623445a23f821747a2a8ce881d737c1c1c9920bfa181ecd667",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "ed2fd2549afc3f623445a23f821747a2a8ce881d737c1c1c9920bfa181ecd667"
         }
       ],
       "category": "hotel",
@@ -2406,7 +2757,13 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "平日 贅沢尽くしの前菜やお肉が主役！アダムとイブのミートアフタヌーンティー 税サ込 7,800円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "country_input_hash": "b62c2570b9093acf20022be3766f108a1b7fabb0aa538fe686f15033b6548f31",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "b62c2570b9093acf20022be3766f108a1b7fabb0aa538fe686f15033b6548f31"
         }
       ],
       "category": "hotel",
@@ -2449,7 +2806,13 @@
             "ichigo",
             "imo",
             "kuri"
-          ]
+          ],
+          "country_input_hash": "5bece0b4f5d8ec50bdd969b0947bbf43a0d1f9b3393cb74c6174cd92d7d5d5d7",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "5bece0b4f5d8ec50bdd969b0947bbf43a0d1f9b3393cb74c6174cd92d7d5d5d7"
         }
       ],
       "category": "cafe",
@@ -2479,7 +2842,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円"
+          "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円",
+          "country_input_hash": "a3b4954b08165de1bae1496f48f464382b4766e04b095793f6fb7da614bc614d",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "a3b4954b08165de1bae1496f48f464382b4766e04b095793f6fb7da614bc614d"
         }
       ],
       "category": "cafe",
@@ -2525,7 +2894,13 @@
               "quote": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制\n【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に!+季節のシャンパンカクテル+2時間30分制 税サ込 8,000円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "f49572204bee87d72b449bcf12e2dc65628b072891bcda34601aeb542744ca05",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "f49572204bee87d72b449bcf12e2dc65628b072891bcda34601aeb542744ca05"
         }
       ],
       "category": "hotel",
@@ -2555,7 +2930,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円"
+          "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円",
+          "country_input_hash": "82b3d8137332bae0d8c1c41a4ba458760ecf142cca99b091f8a97692d655c141",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "82b3d8137332bae0d8c1c41a4ba458760ecf142cca99b091f8a97692d655c141"
         }
       ],
       "category": "cafe",
@@ -2597,7 +2978,13 @@
           "sweets": [
             "ichigo",
             "kuri"
-          ]
+          ],
+          "country_input_hash": "0d1a0e2a8b4bf5fe8d1c60ecffbe7ec4778ee2c9ab247691b9fdcab276c426d1",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "0d1a0e2a8b4bf5fe8d1c60ecffbe7ec4778ee2c9ab247691b9fdcab276c426d1"
         }
       ],
       "category": "cafe",
@@ -2638,7 +3025,13 @@
           },
           "sweets": [
             "grape"
-          ]
+          ],
+          "country_input_hash": "a7e170aa5fb7409b24a1d92041590c9a68853a42a9a1763acde42d5bcb9dc7a7",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "a7e170aa5fb7409b24a1d92041590c9a68853a42a9a1763acde42d5bcb9dc7a7"
         }
       ],
       "category": "cafe",
@@ -2686,7 +3079,13 @@
             "start": "2026-11-01",
             "end": null,
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "32461526423a3e76976eecef5ec84ada4c48c04ffd335459ad19672f288ea4cd",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "32461526423a3e76976eecef5ec84ada4c48c04ffd335459ad19672f288ea4cd"
         }
       ],
       "category": "cafe",
@@ -2721,7 +3120,13 @@
             "start": "2026-11-01",
             "end": "2026-11-30",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "d663ee811ea4f6ed880b889ad38f024dbaff2593bb12e1a75c2e18b504b91f81",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "d663ee811ea4f6ed880b889ad38f024dbaff2593bb12e1a75c2e18b504b91f81"
         }
       ],
       "category": "cafe",
@@ -2776,7 +3181,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "3cd23d7541f85a773eb880132cd65749a9893b5683f31825465964d62366d937",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "3cd23d7541f85a773eb880132cd65749a9893b5683f31825465964d62366d937"
         }
       ],
       "category": "hotel",
@@ -2822,7 +3233,13 @@
               "quote": "スノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日)\nスノーホリデー×ジュリークローズアフタヌーンティー+カフェフリー(平日) 税サ込 5,900円",
               "origin": "plan_name/evidence_quote/menu"
             }
-          }
+          },
+          "country_input_hash": "12dc40ade8915d9a5f8d81874ca38c1984de8207c933cc5b2e1a97eb59a5e72f",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "12dc40ade8915d9a5f8d81874ca38c1984de8207c933cc5b2e1a97eb59a5e72f"
         }
       ],
       "category": "cafe",
@@ -2859,7 +3276,13 @@
             "start": "2026-09-25",
             "end": "2026-11-17",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "8f4f3f3feef50da6f00619b4857fd09c4710cec4be15d02718ca3bcf93a5af03",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8f4f3f3feef50da6f00619b4857fd09c4710cec4be15d02718ca3bcf93a5af03"
         }
       ],
       "category": "hotel",
@@ -2889,7 +3312,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円"
+          "evidence_quote": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席） 税サ込 5,500円",
+          "country_input_hash": "c3761dc1780279d6c20f57073025146d927f573dcac72a29bf4288c7962a1b95",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "c3761dc1780279d6c20f57073025146d927f573dcac72a29bf4288c7962a1b95"
         }
       ],
       "category": "cafe",
@@ -2930,7 +3359,13 @@
           },
           "sweets": [
             "scone"
-          ]
+          ],
+          "country_input_hash": "0f39ed44b73c988ef8d3e57399c747cf82e3a12009d97641455f4db2b6bd49d4",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "0f39ed44b73c988ef8d3e57399c747cf82e3a12009d97641455f4db2b6bd49d4"
         }
       ],
       "category": "cafe",
@@ -2981,7 +3416,13 @@
           ],
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "83552b6b51766266c8176ca654d3dc7db7b579223c65c32deb2057b5735f89d1",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "83552b6b51766266c8176ca654d3dc7db7b579223c65c32deb2057b5735f89d1"
         }
       ],
       "category": "hotel",
@@ -3011,7 +3452,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円"
+          "evidence_quote": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付 税サ込 6,000円",
+          "country_input_hash": "760c8a18be42735f196d1ebf41b37f49f4687a8117fdee968ef3162ad56713c9",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "760c8a18be42735f196d1ebf41b37f49f4687a8117fdee968ef3162ad56713c9"
         }
       ],
       "category": "cafe",
@@ -3041,7 +3488,13 @@
           "start": null,
           "end": null,
           "note": "ページ上は9,600円(通常)→7,900円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
+          "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円",
+          "country_input_hash": "c469ee1bf05253d733e6e3240499c96bda95f153084e4fc551736f5a7d1c3684",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "c469ee1bf05253d733e6e3240499c96bda95f153084e4fc551736f5a7d1c3684"
         }
       ],
       "category": "hotel",
@@ -3101,7 +3554,13 @@
             "start": "2026-11-01",
             "end": "2026-12-28",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "8ede181aa28d3d6512443d7d551cdfd20322018ea5505fac333f3d07283a7dd6",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8ede181aa28d3d6512443d7d551cdfd20322018ea5505fac333f3d07283a7dd6"
         }
       ],
       "category": "hotel",
@@ -3131,7 +3590,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円"
+          "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円",
+          "country_input_hash": "48b45fe41a68f460c44769e8772636699601174658a9e79bf5b9ef961fabeea2",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "48b45fe41a68f460c44769e8772636699601174658a9e79bf5b9ef961fabeea2"
         }
       ],
       "category": "hotel",
@@ -3161,7 +3626,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【アフタヌーンティーセット】 税サ込 5,800円"
+          "evidence_quote": "【アフタヌーンティーセット】 税サ込 5,800円",
+          "country_input_hash": "557b71df6015b5f37584f6f49251b85b789cf0594d41fd76dd4adc8542665af0",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "557b71df6015b5f37584f6f49251b85b789cf0594d41fd76dd4adc8542665af0"
         }
       ],
       "category": "cafe",
@@ -3193,7 +3664,13 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可） 税サ込 8,000円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "country_input_hash": "8947a6b77546d113e27cf901f7d1d202f5b029f41cd4d5e57fc6afbc2bf6f116",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "8947a6b77546d113e27cf901f7d1d202f5b029f41cd4d5e57fc6afbc2bf6f116"
         }
       ],
       "category": "hotel",
@@ -3223,7 +3700,13 @@
           "start": null,
           "end": null,
           "note": "ページ上は5,800円(通常)→5,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円"
+          "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円",
+          "country_input_hash": "dc7f3e8c4569db6b01a27dad030287607aa8979e3bbba4ef002670d81e88f4e2",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "dc7f3e8c4569db6b01a27dad030287607aa8979e3bbba4ef002670d81e88f4e2"
         }
       ],
       "category": "cafe",
@@ -3278,7 +3761,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "b9d85226d44f03e751149689782ae167b63da5ea39bea2aa1fe64f642216b757",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "b9d85226d44f03e751149689782ae167b63da5ea39bea2aa1fe64f642216b757"
         }
       ],
       "category": "cafe",
@@ -3345,7 +3834,13 @@
             "start": "2026-09-01",
             "end": "2026-12-07",
             "reason": "year_inferred_without_saved_context"
-          }
+          },
+          "country_input_hash": "c18d9935de0fdebae7f96d3d5bc94cd9617e4a5eb2e5a7cc773388fbb2f65e70",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "c18d9935de0fdebae7f96d3d5bc94cd9617e4a5eb2e5a7cc773388fbb2f65e70"
         }
       ],
       "category": "hotel",
@@ -3389,7 +3884,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "576e61a752594bb9773a0d236c1e7183dceff45ec757184d72ec70595f2f3bb4",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "576e61a752594bb9773a0d236c1e7183dceff45ec757184d72ec70595f2f3bb4"
         }
       ],
       "category": "cafe",
@@ -3430,7 +3931,13 @@
           },
           "sweets": [
             "wa"
-          ]
+          ],
+          "country_input_hash": "23e812b1b6875c384e592adbd2243c233aff0812913e8f5be2957a4c5f501af1",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "23e812b1b6875c384e592adbd2243c233aff0812913e8f5be2957a4c5f501af1"
         }
       ],
       "category": "cafe",
@@ -3460,7 +3967,13 @@
           "start": null,
           "end": null,
           "note": "提供期間の日付はページに記載なし＝期間未確認",
-          "evidence_quote": "Afternoon tea Set … ¥6,800 Svc & tax incl."
+          "evidence_quote": "Afternoon tea Set … ¥6,800 Svc & tax incl.",
+          "country_input_hash": "2a0531db176bf767d1075fe6d2bfcaa3a0019cd2e2020d872eb663f4dfe2e07e",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "2a0531db176bf767d1075fe6d2bfcaa3a0019cd2e2020d872eb663f4dfe2e07e"
         }
       ],
       "category": "hotel",
@@ -3501,7 +4014,13 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "country_input_hash": "b1ce06cc2fdb3c938c75da5b6ef83467228a998ed854d632b6c70deca78051a3",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
+          "country_decision_hash": "b1ce06cc2fdb3c938c75da5b6ef83467228a998ed854d632b6c70deca78051a3"
         }
       ],
       "category": "hotel",

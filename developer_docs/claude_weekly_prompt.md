@@ -30,9 +30,31 @@
 
 search_failuresにはname, area, checked_at, sources（実際に参照したURL）, status, reason, retryを記録します。statusはconfirmed / information_insufficient / access_denied / site_restriction / no_results / excluded / unresearchedです。未確認をAT提供なしと扱いません。excludedは対象外の明確な根拠がある場合のみです。全14エリアについてscope:areaまたはstationの記録を残し、検索語・入口URL・探索範囲・新規候補と確認結果・未調査範囲をreason等に記録します。未実施はunresearchedとします。既存の店舗台帳は参考として保持できますが、134件の完全性を調査・公開の条件にしません。
 
+## テーマ国（追加検索をしない）
+
+東京14エリアの通常調査を最優先にします。国旗のための追加検索・HTTP・画像生成は禁止です。取得済みのプラン名・menu・description・themeと店舗conceptを読み、各プランの国・地域を判断します。ブランドの原産国、単一のマカロン・スコーン・食材・飲料だけで国を決めず、ATだから英国とも判断しません。複数国にまたがり一国を選べない場合はunknownにします。
+
+調査JSONを書き換える前に、前週データを `mkdir -p .staging && cp site/research.json .staging/previous-research.json` で保存します。通常調査のメニュー・説明はmenu/descriptionへ保存してください。JSON更新後に次を実行します。
+
+```sh
+python3 -m afternoon_tea.country_themes prepare --previous .staging/previous-research.json
+```
+
+表示されるpending_plans（新規・内容変更分）だけを判断します。国別の固定ルール・許可国リストはありません。Claudeの通常の文章理解で世界各国に対応します。ハッシュが同じ前週の判定はunknownも含め根拠ごと自動再利用されるので再判定しません。ハッシュはプラン名・メニュー・説明・テーマ・店舗conceptが対象で、価格・提供期間・確認日時・URLの変更では再判定しません。
+
+各対象プランにcountry、cc（ISO 3166-1 alpha-2）、country_source_type、country_basisを記録します。プラン名や公式説明に国名・その国のスタイルが明記される場合はexplicit、メニュー全体・伝統菓子の組み合わせ・文化的テーマ・店舗conceptから強い関連がある場合はinferredです。推測の具体的根拠をcountry_basisへ書き、出典が確認できない一般知識だけでメニューを捏造しません。判断不能はcountry:null、cc:null、country_source_type:"unknown"とし、country_basisに不足理由を短く記録します。既存note・証拠・確認日時・価格・期間・曜日・AT確認状況は国判定を理由に変更しません。
+
+国名とccは同梱の `data/country_registry.json`（ISO/IANAコードとCLDR国名の全体）で検証します。国の手動事前登録は不要です。日本語標準名または登録済み英語標準名を使用し、コードの不一致・未割当コードを推測で通しません。国・地域には香港等のISO割当も含みます。
+
+```sh
+python3 -m afternoon_tea.country_themes finalize
+```
+
+このコマンドが名前・コードを検証し、判定内容のハッシュを保存します。inferredの店舗名・プラン名・国・判断根拠は各プランのnotes.statusにも自動記録します（既存notes.statusは保持）。unknownも確定保存し、次週は変更がなければ再利用します。国旗表示は保存済みコードからPythonがUnicode絵文字を作り、explicitは「国旗 国名」、inferredは「国旗 国名風」、unknownは何も表示しません。国判定根拠・notes.status・出典・確認日時はカードへ表示しません。
+
 ## 生成・公開
 
-JSON保存後、次を順に実行します。
+国判定のprepare・判断・finalize後、従来どおり次を順に実行します。
 
 ```sh
 python3 -m afternoon_tea.routine_enrichment
@@ -43,6 +65,6 @@ python3 -m afternoon_tea.routine_site validate
 
 期間外プラン・不正日付はJSONを修正します。期間未確認は推測して埋めません。固定デザインを維持し、HTML/CSS/JavaScript・Python・ワークフロー・保護ファイルを編集しません。店舗数や調査完了率にかかわらず正常なHTMLを生成します。JSON破損・HTML生成失敗等の技術障害では公開せずエラーを報告します。調査の時間内に保存・生成・検証・PR作成まで完了できる時間を確保します。
 
-差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は識別子追加可）にpush、mainへ非ドラフトPRを作成します。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、技術検証結果を簡潔に記録します。未完了でも公開を続けます。
+差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は識別子追加可）にpush、mainへ非ドラフトPRを作成します。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、テーマ国の国別件数・explicit/inferred/unknown件数、技術検証結果を簡潔に記録します。未完了でも公開を続けます。
 
 GitHub Actionsが同一リポジトリ・許可作成者・ブランチ名・タイトル・3ファイル限定・技術CI成功を検証し、自動マージ後deploy.ymlを明示起動します。Pagesが正常に公開されたかActions結果を確認してPR・実行URLを報告します。失敗を成功扱いせず、週次実行の変更範囲外の問題はログと理由を報告してください。
