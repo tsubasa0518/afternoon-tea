@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "note": "手動で店舗・施設・ラウンジ名称を照合した調査キュー用の別名対応。現在のAT提供・カテゴリ・URLの検証根拠ではない。ホテル名だけでは統合しない。",
+  "matches": [
+    {
+      "master_id": "master-001",
+      "master_name": "cafe VAVA（日本橋髙島屋S.C. 新館3F）",
+      "priority_id": "priority-001",
+      "priority_name": "cafe VAVA",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-002",
+      "master_name": "ROSSINI TERRACE（東京會舘）",
+      "priority_id": "priority-002",
+      "priority_name": "ROSSINI TERRACE（東京會舘）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-004",
+      "master_name": "丸ノ内ホテル 8F（ポム・ダダン）",
+      "priority_id": "priority-007",
+      "priority_name": "丸ノ内ホテル / ポム・ダダン（8F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-005",
+      "master_name": "フォーシーズンズホテル東京大手町（THE LOUNGE）",
+      "priority_id": "priority-012",
+      "priority_name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-006",
+      "master_name": "東京ステーションホテル（ロビーラウンジ）",
+      "priority_id": "priority-013",
+      "priority_name": "東京ステーションホテル / ロビーラウンジ",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-007",
+      "master_name": "東京ステーションホテル 2F（カメリア）",
+      "priority_id": "priority-014",
+      "priority_name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-008",
+      "master_name": "マンダリン オリエンタル 東京（オリエンタルラウンジ）",
+      "priority_id": "priority-016",
+      "priority_name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-009",
+      "master_name": "シャングリ・ラ 東京（ザ・ロビーラウンジ）",
+      "priority_id": "priority-017",
+      "priority_name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-010",
+      "master_name": "パレスホテル東京 1F（ザ パレス ラウンジ）",
+      "priority_id": "priority-018",
+      "priority_name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-011",
+      "master_name": "アマン東京 33F（ザ・ラウンジ by アマン）",
+      "priority_id": "priority-019",
+      "priority_name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-012",
+      "master_name": "パレスホテル東京 6F（ラウンジバー プリヴェ）",
+      "priority_id": "priority-020",
+      "priority_name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+      "area": "丸の内・日本橋"
+    },
+    {
+      "master_id": "master-014",
+      "master_name": "GINZA TENSHODO CAFE（天賞堂カフェ）",
+      "priority_id": "priority-022",
+      "priority_name": "GINZA TENSHODO CAFE（天賞堂カフェ）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-015",
+      "master_name": "REIKASAI GINZA（ポーラ銀座ビル 9F）",
+      "priority_id": "priority-023",
+      "priority_name": "REIKASAI GINZA（ポーラ銀座ビル 9F）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-016",
+      "master_name": "ボン ボヌール（銀座三越 4F）",
+      "priority_id": "priority-024",
+      "priority_name": "ボン ボヌール（銀座三越 4F）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-017",
+      "master_name": "ザ・グラン ラウンジ（GINZA SIX 13F）",
+      "priority_id": "priority-025",
+      "priority_name": "ザ・グラン ラウンジ（GINZA SIX 13F）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-018",
+      "master_name": "HIGASHIYA GINZA（ポーラ銀座ビル 2F）",
+      "priority_id": "priority-026",
+      "priority_name": "HIGASHIYA GINZA（ポーラ銀座ビル 2F）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-020",
+      "master_name": "LOUANGE TOKYO Le Musée",
+      "priority_id": "priority-027",
+      "priority_name": "LOUANGE TOKYO Le Musée",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-022",
+      "master_name": "ハイアット セントリック 銀座 東京 3F（NAMIKI667）",
+      "priority_id": "priority-038",
+      "priority_name": "ハイアット セントリック 銀座 東京 / NAMIKI667（3F）",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-024",
+      "master_name": "ザ・ペニンシュラ東京（ザ・ロビー）",
+      "priority_id": "priority-042",
+      "priority_name": "ザ・ペニンシュラ東京 / ザ・ロビー",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-025",
+      "master_name": "帝国ホテル 東京（インペリアルラウンジ アクア）",
+      "priority_id": "priority-043",
+      "priority_name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+      "area": "銀座・有楽町・日比谷"
+    },
+    {
+      "master_id": "master-026",
+      "master_name": "ザ ロイヤルパーク キャンバス 銀座8 14F（Opuses）",
+      "priority_id": "priority-044",
+      "priority_name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+      "area": "新橋・汐留・浜松町"
+    },
+    {
+      "master_id": "master-027",
+      "master_name": "ザ・プリンス パークタワー東京（ロビーラウンジ）",
+      "priority_id": "priority-045",
+      "priority_name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+      "area": "新橋・汐留・浜松町"
+    },
+    {
+      "master_id": "master-028",
+      "master_name": "ホテル インターコンチネンタル 東京ベイ（ニューヨーク ラウンジ）",
+      "priority_id": "priority-047",
+      "priority_name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+      "area": "新橋・汐留・浜松町"
+    },
+    {
+      "master_id": "master-029",
+      "master_name": "コンラッド東京（トゥエンティエイト）",
+      "priority_id": "priority-049",
+      "priority_name": "コンラッド東京 / トゥエンティエイト（28F）",
+      "area": "新橋・汐留・浜松町"
+    },
+    {
+      "master_id": "master-030",
+      "master_name": "フェアモント東京（Vue Mer）",
+      "priority_id": "priority-050",
+      "priority_name": "フェアモント東京 / Vue Mer（ビュメール）",
+      "area": "新橋・汐留・浜松町"
+    },
+    {
+      "master_id": "master-031",
+      "master_name": "ザ・プリンスギャラリー 東京紀尾井町（レヴィータ）",
+      "priority_id": "priority-060",
+      "priority_name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+      "area": "赤坂・永田町・虎ノ門"
+    },
+    {
+      "master_id": "master-032",
+      "master_name": "アンダーズ 東京（ザ タヴァン グリル＆ラウンジ）",
+      "priority_id": "priority-063",
+      "priority_name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
+      "area": "赤坂・永田町・虎ノ門"
+    },
+    {
+      "master_id": "master-034",
+      "master_name": "ジャヌ東京（ジャヌ ラウンジ＆ガーデンテラス）",
+      "priority_id": "priority-073",
+      "priority_name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+      "area": "六本木・麻布・広尾"
+    },
+    {
+      "master_id": "master-035",
+      "master_name": "ザ・リッツ・カールトン東京 45F（ザ・ロビーラウンジ）",
+      "priority_id": "priority-074",
+      "priority_name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+      "area": "六本木・麻布・広尾"
+    },
+    {
+      "master_id": "master-036",
+      "master_name": "小田急ホテルセンチュリーサザンタワー（ラウンジ サウスコート）",
+      "priority_id": "priority-077",
+      "priority_name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+      "area": "新宿・代々木"
+    },
+    {
+      "master_id": "master-038",
+      "master_name": "パーク ハイアット 東京（ピーク ラウンジ）",
+      "priority_id": "priority-085",
+      "priority_name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+      "area": "新宿・代々木"
+    },
+    {
+      "master_id": "master-040",
+      "master_name": "ザ・レギャン・トーキョー（cocotiビル 12F）",
+      "priority_id": "priority-086",
+      "priority_name": "ザ・レギャン・トーキョー",
+      "area": "渋谷・代々木公園"
+    },
+    {
+      "master_id": "master-041",
+      "master_name": "セルリアンタワー東急ホテル（ガーデンラウンジ 坐忘）",
+      "priority_id": "priority-089",
+      "priority_name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+      "area": "渋谷・代々木公園"
+    },
+    {
+      "master_id": "master-042",
+      "master_name": "セルリアンタワー東急ホテル 40F（タワーズバー ベロビスト）",
+      "priority_id": "priority-090",
+      "priority_name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+      "area": "渋谷・代々木公園"
+    },
+    {
+      "master_id": "master-043",
+      "master_name": "渋谷エクセルホテル東急 5F（エスタシオン カフェ）",
+      "priority_id": "priority-091",
+      "priority_name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+      "area": "渋谷・代々木公園"
+    },
+    {
+      "master_id": "master-044",
+      "master_name": "サロン ド テ ジャンナッツ",
+      "priority_id": "priority-093",
+      "priority_name": "サロン ド テ ジャンナッツ",
+      "area": "青山・表参道・原宿"
+    },
+    {
+      "master_id": "master-048",
+      "master_name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+      "priority_id": "priority-094",
+      "priority_name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+      "area": "青山・表参道・原宿"
+    },
+    {
+      "master_id": "master-049",
+      "master_name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+      "priority_id": "priority-095",
+      "priority_name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+      "area": "青山・表参道・原宿"
+    },
+    {
+      "master_id": "master-050",
+      "master_name": "HAUTE COUTURE CAFE OMOTESANDO",
+      "priority_id": "priority-096",
+      "priority_name": "HAUTE COUTURE CAFE OMOTESANDO",
+      "area": "青山・表参道・原宿"
+    },
+    {
+      "master_id": "master-051",
+      "master_name": "THE AOYAMA GRAND HOTEL（TOKYO AFTERNOON TEA）",
+      "priority_id": "priority-104",
+      "priority_name": "THE AOYAMA GRAND HOTEL / TOKYO AFTERNOON TEA",
+      "area": "青山・表参道・原宿"
+    },
+    {
+      "master_id": "master-052",
+      "master_name": "PAYSAGE 代官山本店",
+      "priority_id": "priority-105",
+      "priority_name": "PAYSAGE 代官山本店",
+      "area": "恵比寿・代官山・中目黒"
+    },
+    {
+      "master_id": "master-054",
+      "master_name": "ROTISSERIE★BLUE（恵比寿ガーデンプレイスタワー 39F）",
+      "priority_id": "priority-106",
+      "priority_name": "ROTISSERIE★BLUE",
+      "area": "恵比寿・代官山・中目黒"
+    },
+    {
+      "master_id": "master-058",
+      "master_name": "グランドプリンスホテル新高輪（Lounge Momiji）",
+      "priority_id": "priority-107",
+      "priority_name": "グランドプリンスホテル新高輪 / Lounge Momiji",
+      "area": "品川・田町・五反田"
+    },
+    {
+      "master_id": "master-059",
+      "master_name": "東京マリオットホテル（Lounge & Dining G）",
+      "priority_id": "priority-108",
+      "priority_name": "東京マリオットホテル / Lounge & Dining G",
+      "area": "品川・田町・五反田"
+    },
+    {
+      "master_id": "master-060",
+      "master_name": "シェラトン都ホテル東京（バンブー）",
+      "priority_id": "priority-109",
+      "priority_name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+      "area": "品川・田町・五反田"
+    },
+    {
+      "master_id": "master-063",
+      "master_name": "ラ・ラナリータ 吾妻橋店（アサヒビル 22F）",
+      "priority_id": "priority-112",
+      "priority_name": "ラ・ラナリータ 吾妻橋店",
+      "area": "上野・浅草・押上"
+    },
+    {
+      "master_id": "master-064",
+      "master_name": "浅草ビューホテル 28F（THE TOP BAR Hanabi）",
+      "priority_id": "priority-113",
+      "priority_name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+      "area": "上野・浅草・押上"
+    },
+    {
+      "master_id": "master-065",
+      "master_name": "東京ドームホテル 43F（アーティスト カフェ）",
+      "priority_id": "priority-117",
+      "priority_name": "東京ドームホテル / アーティスト カフェ",
+      "area": "水道橋・御茶ノ水・神田"
+    },
+    {
+      "master_id": "master-067",
+      "master_name": "ホテルメトロポリタン エドモント（ベルテンポ）",
+      "priority_id": "priority-119",
+      "priority_name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+      "area": "飯田橋・神楽坂・四ツ谷"
+    },
+    {
+      "master_id": "master-070",
+      "master_name": "ホテル椿山荘東京（ロビーラウンジ ル・ジャルダン）",
+      "priority_id": "priority-120",
+      "priority_name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+      "area": "池袋・目白"
+    },
+    {
+      "master_id": "master-candidate-03",
+      "master_name": "ラ ココリコ 上野本店",
+      "priority_id": "priority-candidate-09",
+      "priority_name": "ラ ココリコ 上野本店",
+      "area": "上野・浅草・押上"
+    },
+    {
+      "master_id": "master-candidate-04",
+      "master_name": "ZATTA（ヒルトン東京）",
+      "priority_id": "priority-078",
+      "priority_name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+      "area": "新宿・代々木"
+    },
+    {
+      "master_id": "master-candidate-05",
+      "master_name": "District（キンプトン新宿東京）",
+      "priority_id": "priority-079",
+      "priority_name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+      "area": "新宿・代々木"
+    }
+  ]
+}
