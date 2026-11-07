@@ -77,7 +77,8 @@ def plan_html(plan,shop,index,total,generated):
     wd=condition(plan,shop,('weekday_available','weekday','wd'))
     we=condition(plan,shop,('weekend_available','weekend','we'))
     sw=plan_tags(plan)
-    attrs=f'data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-pk="{int(price is not None)}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
+    specified=int(any(k in plan for k in ('sweets','sw','season')))
+    attrs=f'data-tags-specified="{specified}" data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-pk="{int(price is not None)}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
     out=[f'<div class="plan" {attrs}><div class="plan-hd"><span class="pno">プラン{index+1}／{total}</span><p class="pper{ " na" if not first and not last else ""}">{esc(dates)}</p>{badge}</div>',
          f'<p class="theme">{SVG_TEA}<span>{esc(plan.get("plan_name",plan.get("theme")))}</span></p>']
     if sw:out.append('<p class="swt" aria-label="スイーツ・季節">'+''.join('<span>'+esc(LABELS[k])+'</span>' for k in sw)+'</p>')
@@ -100,11 +101,12 @@ def plan_html(plan,shop,index,total,generated):
 
 def card(shop,plans,generated):
     cat=category(shop);label,cls=CLASSES[cat]
-    sw=sorted(set(tags(shop.get('sweets'))+tags(shop.get('season'))+[t for p in plans for t in plan_tags(p)]))
+    shop_sw=tags(shop.get('sweets'))+tags(shop.get('season'))
+    sw=sorted(set(shop_sw+[t for p in plans for t in plan_tags(p)]))
     wd=any(condition(p,shop,('weekday_available','weekday','wd'))=='on' for p in plans)
     we=any(condition(p,shop,('weekend_available','weekend','we'))=='on' for p in plans)
     pk=any(amount(p) is not None for p in plans)
-    out=[f'<article class="card {cls}" data-cat="{cat}" data-sw="{esc(" ".join(sw))}" data-wd="{int(wd)}" data-we="{int(we)}" data-pk="{int(pk)}">',
+    out=[f'<article class="card {cls}" data-cat="{cat}" data-shop-sw="{esc(" ".join(shop_sw))}" data-sw="{esc(" ".join(sw))}" data-wd="{int(wd)}" data-we="{int(we)}" data-pk="{int(pk)}">',
          f'<div class="top"><header><h4>{esc(shop.get("name"))}</h4>']
     if shop.get('hotel_name'):out.append('<p class="shop">'+esc(shop['hotel_name'])+'</p>')
     out.append('</header></div>')

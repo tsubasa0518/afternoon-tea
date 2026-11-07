@@ -118,8 +118,8 @@ class RoutineRendererTests(unittest.TestCase):
 const vm=require('vm'),fs=require('fs'),code=JSON.parse(fs.readFileSync(0,'utf8'));
 function node(dataset={}){const n={dataset,hidden:false,value:'',textContent:'',attrs:{},events:{},classes:new Set(),getAttribute(k){return this.attrs[k]},setAttribute(k,v){this.attrs[k]=v},addEventListener(k,f){this.events[k]=f}};n.classList={toggle(k,v){v?n.classes.add(k):n.classes.delete(k)},add(k){n.classes.add(k)}};return n}
 function plan(name,price,wd='0',we='0'){const p=node({price,pk:price===''?'0':'1',wd,we});p.querySelector=()=>({textContent:name});return p}
-function card(cat,name,sw,plans){const c=node({cat,sw,wd:'1',we:'1',pk:'1'});c.plans=plans;c.querySelector=()=>({textContent:name});c.querySelectorAll=()=>plans;return c}
-const a=card('hotel','Hotel A','scone xmas',[plan('冬', '7000','1'),plan('夏','11000','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','0','1')]);const cards=[a,b];
+function card(cat,name,sw,plans){const c=node({cat,sw,shopSw:sw,wd:'1',we:'1',pk:'1'});c.plans=plans;c.querySelector=()=>({textContent:name});c.querySelectorAll=()=>plans;return c}
+const a=card('hotel','Hotel A','scone xmas',[plan('冬', '7000','1'),plan('夏','11000','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','0','1')]);const cards=[a,b];a.plans[0].dataset.tagsSpecified='1';a.plans[0].dataset.sw='scone xmas';a.plans[1].dataset.tagsSpecified='1';a.plans[1].dataset.sw='choco';
 const buttons=[];for(const cat of ['hotel','cafe','lux']){const x=node({cat});x.attrs['aria-pressed']='true';buttons.push(x)}for(const x of ['wd','we','pk']){const n=node({x});n.attrs['aria-pressed']='false';buttons.push(n)}for(const sw of ['scone','xmas']){const n=node({sw});n.attrs['aria-pressed']='false';buttons.push(n)}
 const groups=['hotel','cafe','lux'].map(cat=>{const g=node({cat});g.querySelectorAll=()=>cards.filter(c=>c.dataset.cat===cat&&!c.classes.has('hide'));g.querySelector=()=>({textContent:''});return g});
 const area=node();area.querySelector=()=>({textContent:''});area.querySelectorAll=()=>cards.filter(c=>!c.classes.has('hide'));
@@ -133,6 +133,7 @@ input('theme-search','冬');input('price-filter','high','change');assert(a.class
 ids['reset-filters'].events.click();buttons.find(b=>b.dataset.x==='wd').events.click();assert(b.classes.has('hide')&&!a.classes.has('hide'),'weekday');
 ids['reset-filters'].events.click();input('price-filter','unknown','change');assert(a.classes.has('hide')&&!b.classes.has('hide'),'unknown price');
 ids['reset-filters'].events.click();buttons.find(b=>b.dataset.sw==='scone').events.click();buttons.find(b=>b.dataset.sw==='xmas').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet and event');
+input('price-filter','high','change');assert(a.classes.has('hide')&&!ids['no-results'].hidden,'sweets/event and price must match same plan');input('price-filter','all','change');
 buttons.find(b=>b.dataset.cat==='hotel').events.click();assert(a.classes.has('hide')&&!ids['no-results'].hidden,'category/no results');
 ids['reset-filters'].events.click();assert(!a.classes.has('hide')&&!b.classes.has('hide'),'reset');
 '''
