@@ -1,6 +1,17 @@
 name: Weekly read-only research and quality report
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run without committing research state
+        required: true
+        default: true
+        type: boolean
+      persist_state:
+        description: Allow research_data commit (requires dry_run=false)
+        required: true
+        default: false
+        type: boolean
   schedule:
     - cron: '17 22 * * 0'
 concurrency:
@@ -41,11 +52,12 @@ jobs:
             research_data/state.json
             research_data/runs/**
             research_data/evidence/**
+          include-hidden-files: true
           retention-days: 30
           if-no-files-found: warn
   persist:
     needs: research
-    if: always() && needs.research.result == 'success' && (github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'))
+    if: always() && needs.research.result == 'success' && ((github.event_name == 'workflow_dispatch' && inputs.dry_run == false && inputs.persist_state == true) || (github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
