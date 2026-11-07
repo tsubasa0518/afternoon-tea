@@ -231,8 +231,8 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-007",
@@ -260,8 +260,8 @@
           "evidence_quote": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー 税サ込 8,500円"
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-008",
@@ -316,8 +316,8 @@
           }
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-009",
@@ -390,8 +390,8 @@
           "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-011",
@@ -857,8 +857,8 @@
           ]
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-028",
@@ -886,8 +886,8 @@
           "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-029",
@@ -936,8 +936,8 @@
           }
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-030",
@@ -1389,8 +1389,8 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "priority-059",
@@ -1826,8 +1826,8 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "master-035",
@@ -1871,8 +1871,8 @@
           }
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "priority-072",
@@ -2900,8 +2900,8 @@
           "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "lux",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     },
     {
       "id": "priority-110",
@@ -3336,8 +3336,8 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
     }
   ],
   "out_of_period_removed": [

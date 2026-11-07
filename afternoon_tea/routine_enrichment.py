@@ -137,6 +137,12 @@ def enrich(research, master, reference=None):
                 prices=[p['price_yen'] for p in shop['plans'] if type(p.get('price_yen')) in (int,float)]
                 shop['category']='cafe' if base=='cafe' else 'lux' if prices and min(prices)>=9000 else 'hotel'
                 shop['category_source']='afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price'
+        if shop.get('category') in ('hotel','lux') and shop.get('category_source'):
+            prices=[p['price_yen'] for p in shop['plans'] if type(p.get('price_yen')) in (int,float)]
+            tier='lux' if prices and min(prices)>=9000 else 'hotel'
+            if tier!=shop['category']:
+                shop['category']=tier
+                shop['category_source']+='; tier recalculated from saved regular price (unknown => hotel)'
     return result
 
 
