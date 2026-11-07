@@ -51,6 +51,9 @@ class RoutineSiteTests(unittest.TestCase):
     def test_credentials_and_personal_contact_rejected(self):
         for value in ('ghp_'+'a'*36,'-----BEGIN PRIVATE KEY-----','person@example.test','090-1234-5678','4111 1111 1111 1111'):
             with self.assertRaises(ValueError):r.scan(value.encode())
+    def test_duplicate_resource_and_handler_attributes_rejected(self):
+        for insert in ('<script src="https://example.invalid/payload.js" src=""></script>', '<img src="https://example.invalid/a.png" src="">', '<button onclick="bad()" onclick="">x</button>', '<script src=""></script>'):
+            with self.assertRaises(ValueError):r.validate_html_bytes(HTML.replace(b'</body>',insert.encode()+b'</body>'))
     def test_missing_assets_and_external_scripts_rejected(self):
         for insert in ('<img src="missing.png">','<script src="https://evil.example/x.js"></script>','<form></form>','<button onclick="x()">x</button>','<script>fetch("https://example.org")</script>'):
             with self.assertRaises(ValueError):r.validate_html_bytes(HTML.replace(b'</body>',insert.encode()+b'</body>'))

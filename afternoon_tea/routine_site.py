@@ -49,6 +49,7 @@ def resource(url,asset=False):
 class StaticHTML(HTMLParser):
     def __init__(self):super().__init__(convert_charrefs=True);self.stack=[];self.seen=set();self.resources=[];self.body_text=[]
     def handle_starttag(self,tag,attrs):
+        require(len({k for k,v in attrs})==len(attrs),'duplicate_html_attribute')
         attrs=dict(attrs)
         if tag in ('html','head','body','title'):
             require(tag not in self.seen,'duplicate_document_element')
@@ -59,7 +60,7 @@ class StaticHTML(HTMLParser):
         self.seen.add(tag)
         require(tag not in ('form','iframe','object','embed','base'),'active_form_or_embedded_content_forbidden')
         require(not any(k.lower().startswith('on') for k in attrs),'inline_event_handler_forbidden')
-        if tag=='script':require(not attrs.get('src'),'external_script_forbidden')
+        if tag=='script':require('src' not in attrs,'external_script_forbidden')
         for key in ('href','src','poster'):
             if attrs.get(key):resource(attrs[key],asset=tag!='a');self.resources.append(attrs[key])
         require('srcset' not in attrs,'embed_images_without_srcset')
