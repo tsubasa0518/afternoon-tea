@@ -146,12 +146,33 @@ function node(dataset={}){const n={dataset,hidden:false,value:'',textContent:'',
 function plan(name,price,wd='0',we='0'){const p=node({price,pk:price===''?'0':'1',wd,we});p.querySelector=()=>({textContent:name});return p}
 function card(cat,name,sw,plans){const c=node({cat,sw,shopSw:sw,wd:'1',we:'1',pk:'1'});c.plans=plans;c.querySelector=()=>({textContent:name});c.querySelectorAll=()=>plans;return c}
 const a=card('hotel','Hotel A','scone xmas',[plan('冬', '7000','1'),plan('夏','11000','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','0','1')]);const cards=[a,b];a.plans[0].dataset.tagsSpecified='1';a.plans[0].dataset.sw='scone xmas';a.plans[1].dataset.tagsSpecified='1';a.plans[1].dataset.sw='choco';
-const buttons=[];for(const cat of ['hotel','cafe','lux']){const x=node({cat});x.attrs['aria-pressed']='true';buttons.push(x)}for(const x of ['wd','we','pk']){const n=node({x});n.attrs['aria-pressed']='false';buttons.push(n)}for(const sw of ['ichigo','scone','xmas']){const n=node({sw});n.attrs['aria-pressed']='false';buttons.push(n)}
+const buttons=[];for(const cat of ['hotel','cafe','lux','unknown']){const x=node({cat});x.attrs['aria-pressed']='true';buttons.push(x)}for(const x of ['wd','we','pk']){const n=node({x});n.attrs['aria-pressed']='false';buttons.push(n)}for(const sw of ['ichigo','scone','xmas']){const n=node({sw});n.attrs['aria-pressed']='false';buttons.push(n)}
 const groups=['hotel','cafe','lux'].map(cat=>{const g=node({cat});g.querySelectorAll=()=>cards.filter(c=>c.dataset.cat===cat&&!c.classes.has('hide'));g.querySelector=()=>({textContent:''});return g});
 const area=node();area.querySelector=()=>({textContent:''});area.querySelectorAll=()=>cards.filter(c=>!c.classes.has('hide'));
 const ids={};for(const id of ['shop-search','theme-search','price-filter','filter-status','no-results','reset-filters'])ids[id]=node();ids['price-filter'].value='all';
 const document={getElementById(id){return ids[id]||null},querySelector(){return null},querySelectorAll(q){return q==='.card'?cards:q==='.cat'?groups:q==='.fb'?buttons:q==='section.area'?[area]:[]}};
-vm.runInNewContext(code,{document,window:{}});
+const pageEvents={},pending=[];
+const window={addEventListener(name,fn){pageEvents[name]=fn}};
+// Simulate browser-restored form values and pressed buttons before script execution.
+ids['shop-search'].value='restored name';ids['theme-search'].value='restored theme';ids['price-filter'].value='high';
+buttons.forEach(b=>b.attrs['aria-pressed']=b.dataset.cat?'false':'true');
+vm.runInNewContext(code,{document,window,setTimeout(fn){pending.push(fn)}});
+function flush(){while(pending.length)pending.shift()()}
+function assertReset(label){
+ if(ids['shop-search'].value!==''||ids['theme-search'].value!==''||ids['price-filter'].value!=='all')throw Error(label+' fields');
+ if(buttons.some(b=>b.attrs['aria-pressed']!==(b.dataset.cat?'true':'false')))throw Error(label+' buttons');
+ if(cards.some(c=>c.classes.has('hide')||c.plans.some(p=>p.hidden)))throw Error(label+' visibility');
+ if(ids['filter-status'].textContent!=='表示 2店舗・3プラン')throw Error(label+' counts');
+}
+assertReset('first load / reload');
+if(process.env.TEST_EARLY_CHOICE){
+ input('shop-search','Hotel');pageEvents.pageshow({persisted:false});flush();
+ assert(ids['shop-search'].value==='Hotel'&&b.classes.has('hide'),'choice during slow initial load is kept');
+ ids['reset-filters'].events.click();
+}else{
+ pageEvents.pageshow({persisted:false});
+ ids['shop-search'].value='late initial restoration';flush();assertReset('initial pageshow restores all');
+}
 function assert(v,m){if(!v)throw Error(m)}function input(id,value,event='input'){ids[id].value=value;ids[id].events[event]()}
 assert(ids['filter-status'].textContent==='表示 2店舗・3プラン','initial');
 input('shop-search','ＨＯＴＥＬ Ａ');assert(b.classes.has('hide')&&!a.classes.has('hide'),'name');
@@ -165,8 +186,30 @@ ids['reset-filters'].events.click();assert(!a.classes.has('hide')&&!b.classes.ha
 buttons.find(b=>b.dataset.sw==='ichigo').events.click();assert(a.classes.has('hide')&&b.classes.has('hide')&&!ids['no-results'].hidden,'zero option');
 buttons.find(b=>b.dataset.sw==='scone').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet OR including zero option');
 buttons.find(b=>b.dataset.sw==='xmas').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet OR and event AND');
-ids['reset-filters'].events.click();cards.length=0;buttons.find(b=>b.dataset.sw==='ichigo').events.click();assert(!ids['no-results'].hidden,'zero-store selected option');
+ids['reset-filters'].events.click();assertReset('manual reset');
+function chooseFilters(){
+ input('shop-search','Hotel');input('theme-search','冬');input('price-filter','high','change');
+ buttons.find(b=>b.dataset.cat==='cafe').events.click();
+ buttons.find(b=>b.dataset.x==='we').events.click();
+ buttons.find(b=>b.dataset.sw==='scone').events.click();
+}
+for(const persisted of [true]){
+ chooseFilters();pageEvents.pageshow({persisted});assertReset('pageshow '+persisted);
+ // Browser history's persisted user-state restoration can happen after pageshow.
+ ids['shop-search'].value='restored after pageshow';ids['price-filter'].value='high';
+ flush();assertReset('late history restore '+persisted);
+}
+pageEvents.pageshow({persisted:true});input('shop-search','Hotel');flush();
+assert(ids['shop-search'].value==='Hotel'&&b.classes.has('hide'),'new user choice survives queued restore');
+input('theme-search','冬');assert(!a.classes.has('hide')&&a.plans[1].hidden,'ongoing choices remain active');
+ids['reset-filters'].events.click();assertReset('manual reset after history');
+const unknown=card('unknown','Unknown facility','',[plan('不明','')]);cards.push(unknown);
+buttons.find(b=>b.dataset.cat==='unknown').events.click();assert(unknown.classes.has('hide'),'unknown category can filter');
+ids['reset-filters'].events.click();assert(!unknown.classes.has('hide')&&!unknown.plans[0].hidden,'reset includes unknown category');
+cards.pop();ids['reset-filters'].events.click();assertReset('all categories restored');
+cards.length=0;buttons.find(b=>b.dataset.sw==='ichigo').events.click();assert(!ids['no-results'].hidden,'zero-store selected option');
 ids['reset-filters'].events.click();assert(ids['no-results'].hidden,'zero-store reset');
 '''
-        proc=subprocess.run(['node','-e',harness],input=json.dumps(js),text=True,capture_output=True)
-        self.assertEqual(proc.returncode,0,proc.stderr)
+        for early in ('','1'):
+            proc=subprocess.run(['node','-e',harness],input=json.dumps(js),text=True,capture_output=True,env={**os.environ,'TEST_EARLY_CHOICE':early})
+            self.assertEqual(proc.returncode,0,proc.stderr)

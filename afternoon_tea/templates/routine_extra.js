@@ -10,7 +10,9 @@ function priceMatches(plan){
  const price=Number(raw);if(!Number.isFinite(price))return key==='unknown';
  return key==='low'?price<=6000:key==='mid'?price>6000&&price<10000:key==='high'?price>=10000:false;
 }
+let filterRevision=0;
 apply=function(){
+ filterRevision++;
  let shops=0,plans=0;
  const q=normalizeText(shopSearch.value),theme=normalizeText(themeSearch.value);
  const selected=Array.from(st.sw),sweets=selected.filter(k=>!sweetEvents.has(k)),events=selected.filter(k=>sweetEvents.has(k));
@@ -37,9 +39,19 @@ apply=function(){
  document.getElementById('no-results').hidden=shops>0||(document.querySelectorAll('.card').length===0&&!active);
 };
 shopSearch.addEventListener('input',apply);themeSearch.addEventListener('input',apply);priceFilter.addEventListener('change',apply);
-document.getElementById('reset-filters').addEventListener('click',()=>{
+function resetFilters(){
  document.querySelectorAll('.fb').forEach(button=>button.setAttribute('aria-pressed',button.dataset.cat?'true':'false'));
  Object.keys(st.cat).forEach(key=>st.cat[key]=true);Object.keys(st.x).forEach(key=>st.x[key]=false);st.sw.clear();
  shopSearch.value='';themeSearch.value='';priceFilter.value='all';apply();
+}
+document.getElementById('reset-filters').addEventListener('click',resetFilters);
+resetFilters();
+const initialRevision=filterRevision;
+window.addEventListener('pageshow',event=>{
+ // A slow initial load must not clear choices already made on this visit.
+ if(!event.persisted&&filterRevision!==initialRevision)return;
+ resetFilters();
+ // History may restore form values after pageshow. Do not overwrite a new user choice.
+ const revision=filterRevision;
+ setTimeout(()=>{if(filterRevision===revision)resetFilters()},0);
 });
-apply();
