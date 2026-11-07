@@ -33,29 +33,36 @@ def listing_links(raw,url):
 def _run(directory=None,max_pages=28,seconds=240,browser=None):
     directory=directory or ROOT/'research_data';master=load_master();state=load_state(directory,master,str(dt.datetime.now(JST).date()))
     browser=browser or Browser(delay=1,timeout=8,max_requests=max_pages*2+4)
-    frontier=[(1,AREA_LIST)];seen=set();visited_areas={a['no'] for a in state['areas'] if a['discovery_status']=='incomplete'};records=[];began=time.monotonic();added=0
-    prior_urls={r['url'] for r in state.get('discovery_runs',[]) if r['checked_at'].startswith(state['day'])}
+    frontier=[tuple(x) for x in state.get('discovery_frontier',[(1,AREA_LIST)])];seen=set();visited_areas={a['no'] for a in state['areas'] if a['discovery_status']=='incomplete'};records=[];began=time.monotonic();added=0
+    prior={r['url']:r for r in state.get('discovery_runs',[]) if r['checked_at'].startswith(state['day'])}
+    def enqueue(lists):
+        for target,label in lists:
+            hits=[a['no'] for a in master['areas'] if any(token in label for token in a['name'].split('・'))]
+            pair=(0,target) if urlsplit(target).path=='/s-tokyo/' else (hits[0],target) if len(hits)==1 else None
+            if pair and pair not in frontier and target not in seen:frontier.append(pair)
+        frontier.sort(key=lambda pair:pair[0] in visited_areas)
     while frontier and len(records)<max_pages and time.monotonic()-began<seconds:
         area,url=frontier.pop(0)
-        if url in seen or (url in prior_urls and url!=AREA_LIST):continue
+        if url in seen:continue
         seen.add(url);visited_areas.add(area)
+        cached=prior.get(url)
+        if cached and 'listing_links' in cached:
+            enqueue(cached['listing_links']);continue
+        # Older checkpoints lack outgoing links; re-read that public document once.
         row={'area':area,'url':url,'checked_at':dt.datetime.now(JST).isoformat()}
         try:
             raw=browser.fetch(url);stores,lists=listing_links(raw,url)
-            row.update(fetch='success',store_urls=len(stores))
+            row.update(fetch='success',store_urls=len(stores),listing_links=lists)
             for target,label in stores:
                 added+=add_discovery(state,target,label,area,url,row['checked_at'])
-            for target,label in lists:
-                # Only explicit area-name labels route further searches. No generated URLs.
-                hits=[a['no'] for a in master['areas'] if any(token in label for token in a['name'].split('・'))]
-                if urlsplit(target).path=='/s-tokyo/':frontier.append((0,target))
-                elif len(hits)==1:frontier.append((hits[0],target))
-            frontier.sort(key=lambda pair:pair[0] in visited_areas)
+            enqueue(lists)
         except ForbiddenOperation as e:
             row.update(fetch='blocked',reason=str(e));records.append(row);state.setdefault('discovery_runs',[]).append(row);break
         except Exception as e:row.update(fetch='failed',reason=str(e))
         records.append(row)
+        state['discovery_frontier']=frontier
         state['discovery_runs']=state.get('discovery_runs',[])+[row];save_state(directory,state,master)
+    state['discovery_frontier']=frontier
     reconcile_areas(state)
     summary={'checked_at':dt.datetime.now(JST).isoformat(),'pages':records,'new_candidate_urls':added,'requests':browser.count,'complete_coverage':False}
     state['last_discovery']=summary;save_state(directory,state,master);return summary

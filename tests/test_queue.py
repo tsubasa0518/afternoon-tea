@@ -173,3 +173,36 @@ class QueueTests(unittest.TestCase):
    self.assertEqual(sum(shop['research']['status']=='confirmed' for a in today['data']['areas'] for g in a['cats'].values() for shop in g['shops']),0)
    self.assertIn({'id':'master-070','change':'no_current_confirmation'},differences(today))
    self.assertEqual((Path(tmp)/'runs/2026-11-06/snapshot.json').read_bytes(),old)
+
+ def test_discovery_frontier_resumes_beyond_cached_intermediaries(self):
+  from afternoon_tea.discovery import run,AREA_LIST
+  city='https://restaurant.ikyu.com/s-tokyo/'
+  area='https://restaurant.ikyu.com/area/tokyo/ginza/'
+  pages={AREA_LIST:'<a href="/s-tokyo/">東京</a>',city:'<a href="/area/tokyo/ginza/">銀座</a>',area:'<h1>TEST_ONLY アフタヌーンティー</h1><a href="/999991/">TEST_ONLY cafe</a>'}
+  calls=[]
+  b=Mock();b.count=0
+  def fetch(url):
+   calls.append(url);b.count+=1;return pages[url]
+  b.fetch.side_effect=fetch
+  with tempfile.TemporaryDirectory() as tmp:
+   first_run=run(tmp,max_pages=2,browser=b)
+   self.assertEqual(len(first_run['pages']),2)
+   saved=json.loads((Path(tmp)/'state.json').read_text())
+   self.assertEqual(saved['discovery_frontier'],[[2,area]])
+   resumed=run(tmp,max_pages=10,browser=b)
+   self.assertEqual(resumed['new_candidate_urls'],1)
+   self.assertEqual(calls,[AREA_LIST,city,area])
+   self.assertEqual(run(tmp,max_pages=10,browser=b)['pages'],[])
+ def test_legacy_discovery_checkpoint_recovers_missing_outgoing_links(self):
+  from afternoon_tea.discovery import run,AREA_LIST
+  city='https://restaurant.ikyu.com/s-tokyo/'
+  area='https://restaurant.ikyu.com/area/tokyo/ginza/'
+  m=load_master();s=new_state(m,'2026-11-07')
+  s['discovery_runs']=[{'url':u,'area':1,'fetch':'success','checked_at':'2026-11-07T00:00:00+09:00'} for u in (AREA_LIST,city)]
+  pages={AREA_LIST:'<a href="/s-tokyo/">東京</a>',city:'<a href="/area/tokyo/ginza/">銀座</a>',area:'<h1>TEST_ONLY アフタヌーンティー</h1><a href="/999992/">TEST_ONLY cafe</a>'}
+  b=Mock();b.count=3;b.fetch.side_effect=lambda u:pages[u]
+  with tempfile.TemporaryDirectory() as tmp:
+   save_state(tmp,s,m)
+   result=run(tmp,max_pages=10,browser=b)
+   self.assertEqual(result['new_candidate_urls'],1)
+   self.assertEqual(b.fetch.call_count,3)
