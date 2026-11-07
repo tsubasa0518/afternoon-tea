@@ -76,3 +76,18 @@ class InferredYearTests(unittest.TestCase):
         p={'plan_name':'AT 11/1～11/30','start':'2026-11-01','end':'2026-11-30','note':'提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）'}
         out=enrich_plan(p,{});self.assertIsNone(out['start']);self.assertIsNone(out['end']);self.assertIn('unverified_period_history',out)
         p['evidence_quote']='2026年11月1日～11月30日提供';self.assertEqual(enrich_plan(p,{})['start'],'2026-11-01')
+
+class PlanResumeTests(unittest.TestCase):
+    def test_resume_fetches_only_unfinished_detail(self):
+        import tempfile
+        from afternoon_tea import routine_collection as c
+        from tests.test_post26 import FakeBrowser,queue
+        q=queue();q['areas']=q['areas'][:1];q['areas'][0]['tasks']=q['areas'][0]['tasks'][:1]
+        url=q['areas'][0]['tasks'][0]['historical_url']
+        html='<div>ティー アフタヌーンティー <a href="/123456/plan111111">詳細</a></div><div>ランチ アフタヌーンティー <a href="/123456/plan222222">詳細</a></div>'
+        with tempfile.TemporaryDirectory() as tmp:
+            first=c.run(q,tmp,FakeBrowser({url:html},max_requests=3),clock=lambda:0)
+            self.assertTrue(first['remaining_queue_ids']);self.assertTrue(first['documents'][0]['plans_incomplete'])
+            browser=FakeBrowser();second=c.run(q,tmp,browser,clock=lambda:0)
+            self.assertEqual(browser.urls,['https://restaurant.ikyu.com/123456/plan222222'])
+            self.assertFalse(second['remaining_queue_ids']);self.assertFalse(second['documents'][0]['plans_incomplete'])
