@@ -25,10 +25,15 @@ def run():
    report=out/'quality_report.json'
    proc=subprocess.run([sys.executable,'-m','afternoon_tea.publication_quality','--data',str(data),'--audit',str(audit),'--html',str(html),'--report',str(report)],capture_output=True,text=True)
    if proc.returncode not in (0,2):errors.append('quality_cli:'+proc.stderr)
+   elif not report.is_file():errors.append('quality_report_missing')
+   else:
+    quality=json.loads(report.read_text())
+    if any(quality.get('checks',{}).get(k,{}).get('status')!='pass' for k in ('json_14_areas','html_structure')):errors.append('structural_validation_failed')
+  else:errors.append('html_missing')
  else:errors.append('data_missing')
  unknown=[{'id':x.get('id'),'name':x.get('name'),'status':x.get('status'),'reason':x.get('reason')} for x in state.get('items',[]) if x.get('status') in ('unresolved','failed','unresearched')]
  atomic_json(out/'unresolved.json',unknown)
- summary={'day':day,'period_end':(started.date()+dt.timedelta(days=40)).isoformat(),'discovery':discovery,'queue':state.get('last_run',{}),'counts':{k:sum(x.get('status')==k for x in state.get('items',[])) for k in ('confirmed','excluded','unresolved','failed','unresearched')},'errors':errors,'reservation_operations':0,'published':False}
+ summary={'day':day,'period_end':(started.date()+dt.timedelta(days=40)).isoformat(),'discovery':discovery,'queue':state.get('last_run',{}),'counts':{k:sum(x.get('status')==k for x in state.get('items',[])) for k in ('confirmed','excluded','unresolved','failed','unresearched')},'errors':errors,'reservation_operations':None,'reservation_audit_status':'not_measured','published':False}
  atomic_json(out/'summary.json',summary);return out,summary,2 if errors else 0
 if __name__=='__main__':
  out,summary,code=run();print(dumps({'output':str(out),'summary':summary}));raise SystemExit(code)

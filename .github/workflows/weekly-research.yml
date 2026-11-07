@@ -52,6 +52,7 @@ jobs:
             research_data/state.json
             research_data/runs/**
             research_data/evidence/**
+          include-hidden-files: true
           retention-days: 30
           if-no-files-found: warn
   persist:
