@@ -11,16 +11,8 @@ from pathlib import Path
 from .master import ROOT
 from .research_store import atomic_json
 
-SWEETS = {
-    'ichigo': r'いちご|イチゴ|苺|strawberr', 'melon': r'メロン|melon',
-    'peach': r'桃|ピーチ|peach', 'mango': r'マンゴー|mango',
-    'grape': r'ぶどう|ブドウ|葡萄|マスカット|grape|muscat',
-    'kuri': r'栗|マロン|モンブラン|chestnut', 'imo': r'さつまいも|紫芋|かぼちゃ|南瓜|sweet potato|pumpkin',
-    'kaki': r'柿|洋梨|いちじく|無花果|persimmon|fig\b|pear\b',
-    'citrus': r'柑橘|レモン|オレンジ|ゆず|柚子|citrus|lemon|orange',
-    'choco': r'チョコ|ショコラ|chocolat', 'wa': r'抹茶|ほうじ茶|和菓子|matcha',
-    'macaron': r'マカロン|macaron', 'parfait': r'パフェ|parfait', 'scone': r'スコーン|scone',
-}
+from .sweet_tags import extract as extract_sweets
+
 SEASONS = {'xmas': r'クリスマス|Xmas|Christmas', 'valentine': r'バレンタイン|Valentine',
            'whiteday': r'ホワイトデー|White Day', 'halloween': r'ハロウィン|Halloween',
            'collab': r'コラボ|collaboration', 'season': r'季節限定|季節の味覚|秋の味覚|旬の味覚|秋・Automne|Autumn Harvest'}
@@ -34,6 +26,7 @@ def text_sources(plan):
 
 def enrich_plan(plan, shop):
     result = copy.deepcopy(plan)
+    result.setdefault('menu', None)
     evidence = result.get('structured_evidence')
     if not isinstance(evidence, dict):
         evidence = {}
@@ -49,8 +42,15 @@ def enrich_plan(plan, shop):
         result['start']=result['end']=None
         result['note']=re.sub(r'提供期間:.*?（タイトル/期間表記より。年は調査年と推定）','提供期間未確認（原文の年を確定できないため、推定年を取り消しました）',str(plan.get('note','')))
 
+    hits = extract_sweets(plan)
+    result['sweets'] = sorted(hits)
+    if hits:
+        save('sweets', sorted(hits), '\n'.join(dict.fromkeys(v[1] for v in hits.values())),
+             ','.join(sorted({v[0] for v in hits.values()})))
+    else:
+        evidence.pop('sweets', None)
     # Only explicit plan/menu words, with the matched original line retained.
-    for key, patterns in (('sweets', SWEETS), ('season', SEASONS)):
+    for key, patterns in (('season', SEASONS),):
         hits = {}
         for origin, text in sources:
             for line in text.splitlines():
