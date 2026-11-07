@@ -148,6 +148,6 @@ class RoutineSiteTests(unittest.TestCase):
         auto=(r.ROOT/'.github/workflows/auto-merge-weekly.yml').read_text();pub=(r.ROOT/'.github/workflows/deploy.yml').read_text()
         self.assertIn('pull_request_target:',auto);self.assertIn('ref: ${{ github.sha }}',auto);self.assertNotIn('pull_request.head.sha',auto)
         self.assertIn('actions: write',auto);self.assertNotIn('pages: write',auto)
-        self.assertIn('group: github-pages',pub);self.assertIn('cancel-in-progress: false',pub);self.assertNotIn('publication_quality',pub)
+        self.assertIn("if: github.ref == 'refs/heads/main'",pub);self.assertIn('group: github-pages',pub);self.assertIn('cancel-in-progress: false',pub);self.assertNotIn('publication_quality',pub)
         self.assertFalse((r.ROOT/'.github/workflows/publish-site.yml').exists());self.assertFalse((r.ROOT/'.github/workflows/auto-publish-weekly.yml').exists());self.assertIn("paths: ['site/**']",pub)
         self.assertIn("head.ref, 'claude/weekly-afternoon-tea-'",auto);self.assertNotIn('rollback',pub)

@@ -59,7 +59,7 @@ GitHubの権限は、取り込みジョブにcontents: write・pull-requests: wr
 
 取り込みは直列実行し、merge APIにhead SHAを指定します。公開も`github-pages`グループで直列実行し、最新mainを公開するため、同週の二重実行で古いソースを押し戻しません。research_dataだけのpushは公開対象外です。旧Python週次調査は補助機能として残り、公開しません。Claude運用ではWEEKLY_RESEARCH_ENABLEDを有効にする必要はありません。
 
-HTML生成・技術検証失敗ならデプロイ前に停止し、前回サイトが残ります。公開や公開URL確認に失敗した場合はActionsを失敗として記録し、同じmainから再実行できます。店舗数・調査範囲・旧品質判定を理由とする自動ロールバックはありません。生成HTMLは公開成功後の最新バージョンとして扱います。技術障害時の手動復旧は前回成功コミットのsite/index.htmlを復元してmainへ反映し、Publish siteを実行します。元120店舗版を必要とするときだけdocs/index.htmlをsite/index.htmlへコピーします。旧ワークフローは再有効化しません。
+HTML生成ができない場合は、Claudeに公開用PRを作らず実行エラーを報告させます。HTMLの欠落・破損や技術検証失敗はデプロイ前に停止し、前回サイトが残ります。公開や公開URL確認に失敗した場合はActionsを失敗として記録し、同じmainから再実行できます。店舗数・調査範囲・旧品質判定を理由とする自動ロールバックはありません。生成HTMLは公開成功後の最新バージョンとして扱います。技術障害時の手動復旧は前回成功コミットのsite/index.htmlを復元してmainへ反映し、Publish siteを実行します。元120店舗版を必要とするときだけdocs/index.htmlをsite/index.htmlへコピーします。旧ワークフローは再有効化しません。
 
 ## 手動実行・停止
 
