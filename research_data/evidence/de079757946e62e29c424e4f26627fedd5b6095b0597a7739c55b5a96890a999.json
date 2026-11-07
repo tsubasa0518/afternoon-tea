@@ -1,0 +1,25 @@
+{
+  "url": "https://restaurant.ikyu.com/112520/",
+  "checked_at": "2026-11-07T10:53:27.721145+09:00",
+  "item_id": "master-001",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/112520/",
+    "checked_on": "2026-11-07",
+    "sha256": "620fc03f4198406b3958a041b85a1b19482d5adf25503fa26eea6539f5d49b18",
+    "identity": {
+      "店名": "cafe VAVA",
+      "住所": "東京都 中央区日本橋2-5-1 日本橋高島屋S.C. 3F",
+      "交通手段": "都営地下鉄浅草 線 日本橋 駅 徒歩1分 東京メトロ銀座線・東西 線 日本橋 駅 徒歩1分 東京メトロ銀座線・半蔵門 線 三越前 駅 徒歩5分 東京メトロ東西線・日比谷 線 茅場町 駅 徒歩6分",
+      "ジャンル原文": "カフェ",
+      "ジャンル": "カフェ",
+      "分類根拠": "カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

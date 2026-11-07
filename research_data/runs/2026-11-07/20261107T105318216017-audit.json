@@ -1,0 +1,2281 @@
+{
+  "historical": true,
+  "day": "2026-11-07",
+  "run": {
+    "processed": 0,
+    "requests": 0,
+    "finished_at": "2026-11-07T10:53:18.549271+09:00",
+    "complete_coverage": false,
+    "reservation_operations": 0,
+    "html_validated": true,
+    "cards": 2
+  },
+  "items": [
+    {
+      "id": "master-001",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/112520/",
+              "fetch": "success",
+              "evidence": "evidence/31ba9a37a376ccbd067722c6bcb8599defb732928a3ed68ab4512b9623e37e14.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-002",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/110781/",
+              "fetch": "success",
+              "evidence": "evidence/1e274da7bfc64ad95629f5b0627c236170b8a49c1eed40a54c3c7511c14150f6.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-003",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-004",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/100179/",
+              "fetch": "success",
+              "evidence": "evidence/f04799222da133cba5f5525ad733ab3318372b431fd01647b6bd1eae9e1df987.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-005",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/115189/",
+              "fetch": "success",
+              "evidence": "evidence/36c45396a26079ac0825dd35fd156146f647c460b7f81d3075acfdb5262ad5c5.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-006",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/102900/",
+              "fetch": "success",
+              "evidence": "evidence/8242a3d8642eafd0a1c7a81b02f9272f986f98497ebafee6c4b225efdd847b01.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-007",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-008",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/101099/",
+              "fetch": "success",
+              "evidence": "evidence/5ce91d1899c7f072e382e4f99e91f4231e9f7fb8cbbfb502e920ac8623a8cd4f.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-009",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/100707/",
+              "fetch": "success",
+              "evidence": "evidence/608f4e62b79654fa8ad3138e6b965cb22a1c33d7a911970973532380f36e4f21.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-010",
+      "status": "confirmed",
+      "reason": "Public identity/menu/booking evidence verified",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "confirmed",
+          "pages": [
+            {
+              "url": "https://www.tablecheck.com/ja/shops/palacehoteltokyo-the-palace-lounge/reserve",
+              "fetch": "success",
+              "evidence": "evidence/f979bad1dbcfa4282943c92fd9a7c50fb1f262ac6d2817237a547f6ddd9db381.json",
+              "result": "confirmed",
+              "reasons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-011",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/105756/",
+              "fetch": "success",
+              "evidence": "evidence/8bf940106f05ccf29ed6b06cd43c55574086e3a189c8665506c5a2415173e8dd.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-012",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/106795/",
+              "fetch": "success",
+              "evidence": "evidence/d70664857bebea726249181f82f8ce294e2268bd9ae6e7cf8e9b7c293bd77cea.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-013",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-014",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/155237/",
+              "fetch": "success",
+              "evidence": "evidence/27b7f4949105ef82960d45f4a72f9e88a0856a87e208f6089d6971da1d7f3306.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-015",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/107848/",
+              "fetch": "success",
+              "evidence": "evidence/cea257d25e36e70f5e6083a0181359b20fb4780e264b66646be04b344e283ace.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-016",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/112712/",
+              "fetch": "success",
+              "evidence": "evidence/495db8c5cfbd63b1532b5d75de1b6c49ce14ace945b8055dbc8fc6d175a432d1.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-017",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/107408/",
+              "fetch": "success",
+              "evidence": "evidence/ee0cd6864de57eb1890191c0853b6b5bc77eb934db65556f4a8c8cccf7ea10d7.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-018",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/102169/",
+              "fetch": "success",
+              "evidence": "evidence/8537fc8bd96be320e60a01cc72a096276c129fa9a87679acc5015102158ee748.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-019",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-020",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/120986/",
+              "fetch": "success",
+              "evidence": "evidence/8500afe70b8c0be2c3284714eaeb7dd7e44095609c6a0d3f36b3882b95e04498.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-021",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-022",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/109114/",
+              "fetch": "success",
+              "evidence": "evidence/9c203a8c2727f0149e8af8669c8172098c1865cec3808914bc4c2ab2ca2cd58c.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-023",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-024",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/100543/",
+              "fetch": "success",
+              "evidence": "evidence/b3dbbf26ca0407c897d0b73de691e3b3b0feb940551ecd4b1a54727359966668.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-025",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/101456/",
+              "fetch": "success",
+              "evidence": "evidence/eddd90a6d11b7849dec3b1895f7c183fd078d5729534eb483c6634da2becd6d8.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-026",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+              "fetch": "success",
+              "evidence": "evidence/8e963df69a1af466a09dbb6b347fda44814e12ae125eca57309cd16c670fa213.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            },
+            {
+              "url": "https://www.tablecheck.com/en/shops/canvas-ginza8-restaurant/reserve",
+              "fetch": "success",
+              "evidence": "evidence/f95c0a17e03d7103e8a836dcce7ee8d2f7dc8798effeb23fa5ba44419ecfa338.json",
+              "result": "unresolved",
+              "reasons": [
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-027",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/103334/",
+              "fetch": "success",
+              "evidence": "evidence/f70437e87276ae5a8c153b4174c668c3f446f507c36a5967957d424effe98ce6.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-028",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/102281/",
+              "fetch": "success",
+              "evidence": "evidence/382a38534019df9c41cf424b38be8c55b51ce4254185685fa1ef0dd0b564b041.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-029",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/100854/",
+              "fetch": "success",
+              "evidence": "evidence/acd696de8c17370b29d13ec6704e4a72ddb4da642db8fbb6efba9376fba9d2ff.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-030",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-031",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/106682/",
+              "fetch": "success",
+              "evidence": "evidence/ca9a2d55d762195d2b2d067ac08e452f7e27f427ef59f1b9848045d6ae20b576.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-032",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/103485/",
+              "fetch": "success",
+              "evidence": "evidence/1dabe8203272cbd6d64d623da0d5b91db7c4f8ccf07a09e07798a3e568b7d49a.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-033",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-034",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/125030/",
+              "fetch": "success",
+              "evidence": "evidence/4a6511d2ec8b53eb5cd3421c6b7c168e4e109e6c93bb7dfa768c976e9a03a7c8.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-035",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-036",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/103306/",
+              "fetch": "success",
+              "evidence": "evidence/b9dce6dcaedf4d6ca605aebbdbb4d85abc39a4dc44f710588c50b30d7a404839.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-037",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-038",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-039",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-040",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/100272/",
+              "fetch": "success",
+              "evidence": "evidence/ab9221e9c0698d66d85f4e4ccc8b307520f9aa6ff04d52a7602563dc9cafb6ff.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-041",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/107718/",
+              "fetch": "success",
+              "evidence": "evidence/2dc641c9ae7f446cab39b04a2bcf1a1bd8e8f0698e6daeefead6fa1c9ea133da.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-042",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-043",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-044",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+              "fetch": "success",
+              "evidence": "evidence/9e28becb5ef32e523fcab71bb27e02332085cacb8961cc82780d170e24cf495a.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-045",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-046",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-047",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-048",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/110765/",
+              "fetch": "success",
+              "evidence": "evidence/e8c69667e03c1b84c6eb40f93426009ada71dad425a2ce8f94325860344e725f.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-049",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/117546/",
+              "fetch": "success",
+              "evidence": "evidence/51e176feedbe3e3a1424e8c1d18cd970c8f3e0ab6ced0987883244d8bca4b21d.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-050",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+              "fetch": "success",
+              "evidence": "evidence/43a82dc41ea35112431e81dc09533ba57882b2c211da246bd0275b7d50e14d5c.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-051",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/115154/",
+              "fetch": "success",
+              "evidence": "evidence/8358a95f4c88db86a11c8959771d835e8a151cbdfc048e7afd707108ac687416.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-052",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/122745/",
+              "fetch": "success",
+              "evidence": "evidence/6b8719cd3742044cc925e27af1d0588ca13e4a36fc1f1b0b299d792db9b60ed2.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-053",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-054",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/108615/",
+              "fetch": "success",
+              "evidence": "evidence/e2aff1ab9e80e68566a6d0e94185facb68e32feb08381ff574f810e37213609c.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-055",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-056",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-057",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-058",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/106767/",
+              "fetch": "success",
+              "evidence": "evidence/a0df9ed5eb9604a7a8f8404574550e519b360b621c20f1a12ff6d7d134602638.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-059",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/103135/",
+              "fetch": "success",
+              "evidence": "evidence/7a4ff956a2ee9a619733cc67db723c4dba73145c6e339f09c278b8149b947e11.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-060",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/106908/",
+              "fetch": "success",
+              "evidence": "evidence/8f0e4301a6eeccdd21bfb03ed6846ac8948bc1799cb8c724ffb4dcb3489415c6.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-061",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-062",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-063",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/108054/",
+              "fetch": "success",
+              "evidence": "evidence/3c8093fc59165397437e5b9419e6a8c591e942e571a87a556c74c5b45f7feac2.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-064",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-065",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/101056/",
+              "fetch": "success",
+              "evidence": "evidence/a42d7bc41d05c417fb831858da1ee944116b19c4444711f8200b41d027989e8c.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-066",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-067",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://www.tablecheck.com/ja/hotel-edmont-beltempo",
+              "fetch": "success",
+              "evidence": "evidence/0b3a82a4f13e3d24dc15862e72ba122d8b128b001561f9fa52ec0140007ccb69.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found",
+                "expected_master_identity_not_verified"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "master-068",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-069",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "master-070",
+      "status": "confirmed",
+      "reason": "Public identity/menu/booking evidence verified",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "confirmed",
+          "pages": [
+            {
+              "url": "https://www.tablecheck.com/ja/shops/hotel-chinzanso-tokyo-jardin/reserve",
+              "fetch": "success",
+              "evidence": "evidence/11effdc6abb1585a6334654ec8cf62935635d7aa187db746a88e352db6be5244.json",
+              "result": "confirmed",
+              "reasons": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "candidate-001",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "candidate-002",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "candidate-003",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "candidate-004",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "candidate-005",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "discovered-311f382164be7509",
+      "status": "excluded",
+      "reason": "Observed excluded genre: フレンチ",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "excluded",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/117086/",
+              "fetch": "success",
+              "evidence": "evidence/fb2d21baebd4d7286f09e3d6220aefd58311ea87d2cc659f79868422b4e4d731.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "discovered-e6e942d70e66f643",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/154158/",
+              "fetch": "success",
+              "evidence": "evidence/6e0ef0167123339cd0c5b9e94cc58221c301f410a81997341d3d7c0d54eb4eb0.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "discovered-616ff47461178ccb",
+      "status": "excluded",
+      "reason": "Observed excluded genre: イタリアン",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "excluded",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/101719/",
+              "fetch": "success",
+              "evidence": "evidence/53381b98682a29777df85f9080d320e25dbf04d07c5493fd5657e809d8cdf45d.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "discovered-24ccfcabba43c742",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/156075/",
+              "fetch": "success",
+              "evidence": "evidence/ef517777acffca37532119ce22bdf00c80bade0d2f8bb34d4bc49d73fcf60623.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    },
+    {
+      "id": "discovered-82e164bb44eae534",
+      "status": "unresolved",
+      "reason": "No eligible current plan verified; source discovery/identity/menu incomplete",
+      "attempts": [
+        {
+          "site": "ik",
+          "status": "unresolved",
+          "pages": [
+            {
+              "url": "https://restaurant.ikyu.com/154925/",
+              "fetch": "success",
+              "evidence": "evidence/9ef567d1dc2606c71b1898fe1f72c3bd8bfe126c0f2638fdc952832a1a340aeb.json",
+              "result": "unresolved",
+              "reasons": [
+                "supported_plan_structure_not_found"
+              ]
+            }
+          ]
+        },
+        {
+          "site": "tb",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        },
+        {
+          "site": "tc",
+          "status": "unresolved",
+          "reason": "No verified discovery route/URL available; not evidence of absence"
+        }
+      ]
+    }
+  ]
+}

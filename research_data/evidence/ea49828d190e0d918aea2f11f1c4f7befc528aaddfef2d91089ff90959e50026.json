@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/107848/",
+  "checked_at": "2026-11-07T10:53:47.614464+09:00",
+  "item_id": "master-015",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/107848/",
+    "checked_on": "2026-11-07",
+    "sha256": "e344dc36339b0b3fd3fe3fe48ed93c0dda800fe41969b51150316eb8c92c96d1",
+    "identity": {
+      "店名": "REIKASAI GINZA",
+      "ジャンル原文": "清朝宮廷料理",
+      "ジャンル": "清朝宮廷料理",
+      "分類根拠": "清朝宮廷料理"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

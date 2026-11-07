@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/100179/",
+  "checked_at": "2026-11-07T10:53:30.488021+09:00",
+  "item_id": "master-004",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/100179/",
+    "checked_on": "2026-11-07",
+    "sha256": "f441e7ed5c4c2b7a09493274ef88405d2d74864e21c87a1d0513dcb27e7ae21b",
+    "identity": {
+      "店名": "pomme d’Adam／丸ノ内ホテル",
+      "ジャンル原文": "フレンチレストラン",
+      "ジャンル": "フレンチレストラン",
+      "分類根拠": "フレンチレストラン"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

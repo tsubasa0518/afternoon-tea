@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/110765/",
+  "checked_at": "2026-11-07T10:54:13.212943+09:00",
+  "item_id": "master-048",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/110765/",
+    "checked_on": "2026-11-07",
+    "sha256": "20fca4ab5d20d9a3a5de0f959d0165006db46be3106a6529b43925d0fc7aaf1f",
+    "identity": {
+      "店名": "ヨックモック青山本店 ブルー・ブリック・ラウンジ",
+      "ジャンル原文": "洋食・カフェ・スイーツ",
+      "ジャンル": "洋食・カフェ・スイーツ",
+      "分類根拠": "洋食・カフェ・スイーツ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

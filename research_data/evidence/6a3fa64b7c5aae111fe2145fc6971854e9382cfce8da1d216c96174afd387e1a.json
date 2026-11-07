@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/102900/",
+  "checked_at": "2026-11-07T10:53:34.040611+09:00",
+  "item_id": "master-006",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/102900/",
+    "checked_on": "2026-11-07",
+    "sha256": "ef976562a533a357c042d3ea8ba298c9be597d52b31c4dcd3cf9ee01005baf3a",
+    "identity": {
+      "店名": "The Lobby Lounge／東京ステーションホテル",
+      "ジャンル原文": "ラウンジ",
+      "ジャンル": "ラウンジ",
+      "分類根拠": "ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

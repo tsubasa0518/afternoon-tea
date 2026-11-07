@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/106908/",
+  "checked_at": "2026-11-07T10:54:28.087006+09:00",
+  "item_id": "master-060",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/106908/",
+    "checked_on": "2026-11-07",
+    "sha256": "d747b754357947402c1fc4e515094c46d47a00bdde03843cc0b0d5d837abd2a5",
+    "identity": {
+      "店名": "ロビーラウンジ バンブー／シェラトン都ホテル東京",
+      "ジャンル原文": "ロビーラウンジ",
+      "ジャンル": "ロビーラウンジ",
+      "分類根拠": "ロビーラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

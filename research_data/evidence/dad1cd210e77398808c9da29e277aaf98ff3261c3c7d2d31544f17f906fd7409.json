@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/103334/",
+  "checked_at": "2026-11-07T10:54:00.996879+09:00",
+  "item_id": "master-027",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/103334/",
+    "checked_on": "2026-11-07",
+    "sha256": "50eb96593bb8bab5b1a68b37d11a4a8edb3fcbb1bdb47d682375b7808628a152",
+    "identity": {
+      "店名": "ロビーラウンジ／ザ・プリンス パークタワー東京",
+      "ジャンル原文": "ティーラウンジ",
+      "ジャンル": "ラウンジ",
+      "分類根拠": "ティーラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}
