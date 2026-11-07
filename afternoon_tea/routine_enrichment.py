@@ -34,7 +34,10 @@ def text_sources(plan):
 
 def enrich_plan(plan, shop):
     result = copy.deepcopy(plan)
-    evidence = result.setdefault('structured_evidence', {})
+    evidence = result.get('structured_evidence')
+    if not isinstance(evidence, dict):
+        evidence = {}
+    result['structured_evidence'] = evidence
     def save(key, value, quote, origin):
         result[key] = value
         evidence[key] = {'url': shop.get('source_url'), 'checked_at': shop.get('checked_at'),
@@ -52,7 +55,8 @@ def enrich_plan(plan, shop):
                         hits.setdefault(tag, (origin, line))
         if hits:
             existing = plan.get(key, [])
-            existing = [existing] if isinstance(existing, str) else existing
+            existing = [existing] if isinstance(existing, str) else existing if isinstance(existing, list) else []
+            existing = [value for value in existing if isinstance(value, str)]
             save(key, sorted(set(existing) | set(hits)),
                  '\n'.join(dict.fromkeys(v[1] for v in hits.values())), ','.join(sorted({v[0] for v in hits.values()})))
     joined = '\n'.join(line for _, text in sources for line in text.splitlines()

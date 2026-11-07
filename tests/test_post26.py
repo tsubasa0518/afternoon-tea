@@ -145,6 +145,15 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual(result['season'],['xmas'])
         self.assertEqual(result['sweets'],['ichigo','imo','kuri','macaron','scone'])
         self.assertEqual(result['menu'],p['menu']);self.assertEqual(result['structured_evidence']['sweets']['url'],URL)
+    def test_null_and_mixed_optional_tags_never_stop_html_generation(self):
+        for existing in (None, [], [None, 1, 'scone'], 'scone'):
+            plan={'plan_name':'TEST ONLY クリスマスAT（平日）','menu':'マカロン',
+                  'sweets':existing,'season':None,'structured_evidence':None}
+            result=e.enrich_plan(plan,self.shop())
+            self.assertIn('macaron',result['sweets']);self.assertEqual(result['season'],['xmas'])
+            self.assertTrue(result['weekday_available'])
+            d=fixture();d['shops'][0]['plans']=[result]
+            self.assertIn('マカロン',renderer.render(d,FAILURES))
     def test_unknown_and_negated_text_do_not_invent_availability_or_tags(self):
         for p in ({'plan_name':'TEST ONLY AT'},{'plan_name':'平日限定ではありません'},{'menu':'マカロンは含まれません'}):
             result=e.enrich_plan(p,self.shop())
