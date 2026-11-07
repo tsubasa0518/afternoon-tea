@@ -9,3 +9,7 @@
 .filter-status{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:var(--sub);font-size:13px}
 #no-results{margin-top:16px}.rnote{overflow-wrap:anywhere}.plan .dtxt{overflow-wrap:anywhere}
 @media(max-width:600px){.search-fields{grid-template-columns:1fr}.fb,.area-btn{min-height:44px}}
+
+/* Keep zero counts visible and readable in both reference color schemes. */
+.fb .bc.zero{color:var(--sub)}
+ .fb[data-sw]{white-space:normal;word-break:keep-all}

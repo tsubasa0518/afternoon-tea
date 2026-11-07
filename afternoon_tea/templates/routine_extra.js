@@ -33,7 +33,8 @@ apply=function(){
  });
  document.querySelectorAll('section.area').forEach(area=>{const label=area.querySelector('.acnt');if(label)label.textContent=area.querySelectorAll('.card:not(.hide)').length+'件'});
  document.getElementById('filter-status').textContent='表示 '+shops+'店舗・'+plans+'プラン';
- document.getElementById('no-results').hidden=shops>0||document.querySelectorAll('.card').length===0;
+ const active=q||theme||priceFilter.value!=='all'||selected.length||Object.values(st.x).some(Boolean)||Object.values(st.cat).some(on=>!on);
+ document.getElementById('no-results').hidden=shops>0||(document.querySelectorAll('.card').length===0&&!active);
 };
 shopSearch.addEventListener('input',apply);themeSearch.addEventListener('input',apply);priceFilter.addEventListener('change',apply);
 document.getElementById('reset-filters').addEventListener('click',()=>{
