@@ -73,10 +73,15 @@
           "plan_name": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー",
           "price_yen": 6325,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-09-16",
-          "end": "2026-11-30",
-          "note": "提供期間: 2026-09-16〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-          "evidence_quote": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー 税サ込 6,325円"
+          "start": null,
+          "end": null,
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
+          "evidence_quote": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー 税サ込 6,325円",
+          "unverified_period_history": {
+            "start": "2026-09-16",
+            "end": "2026-11-30",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "cafe",
@@ -144,9 +149,9 @@
           "plan_name": "フェスティブアフタヌーンティー （11/16～）（平日限定）",
           "price_yen": 9800,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-11-16",
+          "start": null,
           "end": null,
-          "note": "提供期間: 2026-11-16〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "フェスティブアフタヌーンティー （11/16～）（平日限定） 税サ込 9,800円",
           "weekday_available": true,
           "weekend_available": false,
@@ -163,6 +168,11 @@
               "quote": "フェスティブアフタヌーンティー (11/16~)(平日限定)\nフェスティブアフタヌーンティー (11/16~)(平日限定) 税サ込 9,800円",
               "origin": "plan_name/evidence_quote/menu"
             }
+          },
+          "unverified_period_history": {
+            "start": "2026-11-16",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
           }
         }
       ],
@@ -273,9 +283,9 @@
           "plan_name": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17）",
           "price_yen": null,
           "price_note": "通常価格 未確認。税サ込(1人あたり)・通常価格",
-          "start": "2026-11-16",
-          "end": "2026-12-17",
-          "note": "ページ上は11,385円(通常)→9,108円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-16〜2026-12-17（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "ページ上は11,385円(通常)→9,108円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17） 11,385円 税サ込 9,108円",
           "weekday_available": true,
           "weekend_available": false,
@@ -298,6 +308,11 @@
               "quote": "【平日限定】フェスティブアフタヌーンティー(早割|20%OFF|11/16~12/17) 11,385円 税サ込 9,108円",
               "origin": "evidence_quote:regular_price_unknown"
             }
+          },
+          "unverified_period_history": {
+            "start": "2026-11-16",
+            "end": "2026-12-17",
+            "reason": "year_inferred_without_saved_context"
           }
         }
       ],
@@ -324,9 +339,9 @@
           "plan_name": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30）",
           "price_yen": 9867,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-11-01",
-          "end": "2026-11-30",
-          "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30） 税サ込 9,867円",
           "structured_evidence": {
             "season": {
@@ -338,7 +353,12 @@
           },
           "season": [
             "season"
-          ]
+          ],
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": "2026-11-30",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "lux",
@@ -591,9 +611,9 @@
           "plan_name": "【11/1～平日限定】抹茶 アフタヌーンティー",
           "price_yen": 7900,
           "price_note": "税サ込（1人あたり）・通常価格",
-          "start": "2026-11-01",
+          "start": null,
           "end": null,
-          "note": "ページ上は7,900円(通常)→7,110円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "note": "ページ上は7,900円(通常)→7,110円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【11/1～平日限定】抹茶 アフタヌーンティー 7,900円 税サ込 7,110円",
           "weekday_available": true,
           "weekend_available": false,
@@ -619,7 +639,12 @@
           },
           "sweets": [
             "wa"
-          ]
+          ],
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -695,12 +720,17 @@
           "plan_name": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制）",
           "price_yen": 8500,
           "price_note": "税サ込（1人あたり）・通常価格",
-          "start": "2026-11-01",
-          "end": "2026-11-30",
-          "note": "ページ上は8,500円(通常)→6,300円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "ページ上は8,500円(通常)→6,300円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制） 8,500円 税サ込 6,300円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": "2026-11-30",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -879,9 +909,9 @@
           "plan_name": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日）",
           "price_yen": 8500,
           "price_note": "税サ込（1人あたり）・通常価格",
-          "start": "2026-10-01",
+          "start": null,
           "end": null,
-          "note": "ページ上は8,500円(通常)→6,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-10-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "note": "ページ上は8,500円(通常)→6,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日） 8,500円 税サ込 6,800円",
           "weekday_available": true,
           "weekend_available": false,
@@ -898,6 +928,11 @@
               "quote": "<10/1~>アート・オブ・オータム・アフタヌーンティー(平日)\n<10/1~>アート・オブ・オータム・アフタヌーンティー(平日) 8,500円 税サ込 6,800円",
               "origin": "plan_name/evidence_quote/menu"
             }
+          },
+          "unverified_period_history": {
+            "start": "2026-10-01",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
           }
         }
       ],
@@ -1209,12 +1244,17 @@
           "plan_name": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー",
           "price_yen": 3850,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-09-15",
-          "end": "2026-12-14",
-          "note": "提供期間: 2026-09-15〜2026-12-14（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー 税サ込 3,850円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "unverified_period_history": {
+            "start": "2026-09-15",
+            "end": "2026-12-14",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -1961,10 +2001,15 @@
           "plan_name": "オータム アフタヌーンティー（3時間制 ／9月28日～）",
           "price_yen": 11385,
           "price_note": "税サ込（1人あたり）・通常価格",
-          "start": "2026-09-28",
+          "start": null,
           "end": null,
-          "note": "ページ上は11,385円(通常)→9,867円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-28〜未確認（タイトル/期間表記より。年は調査年と推定）",
-          "evidence_quote": "オータム アフタヌーンティー（3時間制 ／9月28日～） 11,385円 税サ込 9,867円"
+          "note": "ページ上は11,385円(通常)→9,867円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
+          "evidence_quote": "オータム アフタヌーンティー（3時間制 ／9月28日～） 11,385円 税サ込 9,867円",
+          "unverified_period_history": {
+            "start": "2026-09-28",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "lux",
@@ -2171,12 +2216,17 @@
           "plan_name": "【9/5～ 土日祝日限定】オータムアフターヌーンティー",
           "price_yen": 8200,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-09-05",
+          "start": null,
           "end": null,
-          "note": "提供期間: 2026-09-05〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【9/5～ 土日祝日限定】オータムアフターヌーンティー 税サ込 8,200円",
           "weekday_available": false,
-          "weekend_available": true
+          "weekend_available": true,
+          "unverified_period_history": {
+            "start": "2026-09-05",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -2482,9 +2532,9 @@
           "plan_name": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制）",
           "price_yen": 6000,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-11-01",
+          "start": null,
           "end": null,
-          "note": "提供期間: 2026-11-01〜未確認（タイトル/期間表記より。年は調査年と推定）",
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制） 税サ込 6,000円",
           "weekday_available": true,
           "weekend_available": false,
@@ -2498,7 +2548,12 @@
           },
           "sweets": [
             "choco"
-          ]
+          ],
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": null,
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -2522,10 +2577,15 @@
           "plan_name": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30）",
           "price_yen": 5500,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-11-01",
-          "end": "2026-11-30",
-          "note": "提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）",
-          "evidence_quote": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30） 税サ込 5,500円"
+          "start": null,
+          "end": null,
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
+          "evidence_quote": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30） 税サ込 5,500円",
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": "2026-11-30",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "cafe",
@@ -2650,12 +2710,17 @@
           "plan_name": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店）",
           "price_yen": 6900,
           "price_note": "税サ込（1人あたり）",
-          "start": "2026-09-25",
-          "end": "2026-11-17",
-          "note": "提供期間: 2026-09-25〜2026-11-17（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店） 税サ込 6,900円",
           "weekday_available": true,
-          "weekend_available": false
+          "weekend_available": false,
+          "unverified_period_history": {
+            "start": "2026-09-25",
+            "end": "2026-11-17",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "cafe",
@@ -2858,9 +2923,9 @@
           "plan_name": "クリスマス アフタヌーンティー（11/1～12/28）（平日）",
           "price_yen": 8096,
           "price_note": "税サ込（1人あたり）・通常価格",
-          "start": "2026-11-01",
-          "end": "2026-12-28",
-          "note": "ページ上は8,096円(通常)→6,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-11-01〜2026-12-28（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "ページ上は8,096円(通常)→6,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "クリスマス アフタヌーンティー（11/1～12/28）（平日） 8,096円 税サ込 6,500円",
           "weekday_available": true,
           "weekend_available": false,
@@ -2886,7 +2951,12 @@
           },
           "season": [
             "xmas"
-          ]
+          ],
+          "unverified_period_history": {
+            "start": "2026-11-01",
+            "end": "2026-12-28",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ]
     },
@@ -3076,9 +3146,9 @@
           "plan_name": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定）",
           "price_yen": null,
           "price_note": "通常価格 未確認。税サ込(1人あたり)・通常価格",
-          "start": "2026-09-01",
-          "end": "2026-12-07",
-          "note": "ページ上は6,300円(通常)→5,700円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間: 2026-09-01〜2026-12-07（タイトル/期間表記より。年は調査年と推定）",
+          "start": null,
+          "end": null,
+          "note": "ページ上は6,300円(通常)→5,700円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間未確認（原文の年を確定できないため、推定年を取り消しました）",
           "evidence_quote": "【早期割引】シャインマスカット＆メロンアフタヌーンティー＋カフェフリー（9/1～12/7・平日限定） 6,300円 税サ込 5,700円",
           "weekday_available": true,
           "weekend_available": false,
@@ -3111,7 +3181,12 @@
           "sweets": [
             "grape",
             "melon"
-          ]
+          ],
+          "unverified_period_history": {
+            "start": "2026-09-01",
+            "end": "2026-12-07",
+            "reason": "year_inferred_without_saved_context"
+          }
         }
       ],
       "category": "hotel",

@@ -69,3 +69,10 @@ class CollectionDetailsTests(unittest.TestCase):
         master={'areas':[]}
         out=enrich(d,master,reference);self.assertEqual(out['shops'][0]['category'],'cafe');self.assertEqual(out['shops'][0]['plans'],[])
         d['shops'][0]['name']='Other cafe';self.assertNotIn('category',enrich(d,master,reference)['shops'][0])
+
+class InferredYearTests(unittest.TestCase):
+    def test_inferred_year_is_not_confirmed_period(self):
+        from afternoon_tea.routine_enrichment import enrich_plan
+        p={'plan_name':'AT 11/1～11/30','start':'2026-11-01','end':'2026-11-30','note':'提供期間: 2026-11-01〜2026-11-30（タイトル/期間表記より。年は調査年と推定）'}
+        out=enrich_plan(p,{});self.assertIsNone(out['start']);self.assertIsNone(out['end']);self.assertIn('unverified_period_history',out)
+        p['evidence_quote']='2026年11月1日～11月30日提供';self.assertEqual(enrich_plan(p,{})['start'],'2026-11-01')

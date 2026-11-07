@@ -43,6 +43,12 @@ def enrich_plan(plan, shop):
         evidence[key] = {'url': shop.get('source_url'), 'checked_at': shop.get('checked_at'),
                          'quote': quote, 'origin': origin}
     sources = text_sources(plan)
+    # Explicitly recorded inferred years are not evidence of service dates.
+    if '年は調査年と推定' in str(plan.get('note','')) and not any(re.search(r'20[0-9]{2}',t) for _,t in sources):
+        result['unverified_period_history']={'start':plan.get('start'),'end':plan.get('end'),'reason':'year_inferred_without_saved_context'}
+        result['start']=result['end']=None
+        result['note']=re.sub(r'提供期間:.*?（タイトル/期間表記より。年は調査年と推定）','提供期間未確認（原文の年を確定できないため、推定年を取り消しました）',str(plan.get('note','')))
+
     # Only explicit plan/menu words, with the matched original line retained.
     for key, patterns in (('sweets', SWEETS), ('season', SEASONS)):
         hits = {}
