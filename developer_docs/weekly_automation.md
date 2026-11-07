@@ -1,10 +1,10 @@
 # 毎週の自動更新
 
-Claude Codeが調査とHTML作成、GitHubが検証・取り込み・公開を担当します。Codexの定期実行やOpenAI APIは使用しません。
+Claude Codeが調査とJSON更新・固定生成器の実行、GitHubが検証・取り込み・公開を担当します。Codexの定期実行やOpenAI APIは使用しません。
 
 ```mermaid
 flowchart TD
-  A[月曜07:17 JST Claudeのクラウドタスク] --> B[調査と3ファイル生成]
+  A[月曜07:17 JST Claudeのクラウドタスク] --> B[調査とJSON更新・固定HTML生成]
   B --> C[claude/weekly-afternoon-tea-で始まるブランチからweekly-site PR]
   C --> D[main側コードで技術検証]
   D -->|合格| E[自動マージ]
@@ -79,3 +79,80 @@ python3 -m unittest discover -s tests -v
 ```
 
 公開正常系はローカルのモックHTMLで検査します。GitHubのE2Eでは旧HTMLのバイトを維持したメタデータ変更PRを使い、架空店舗のページは本番に公開しません。Claude本人のアカウント接続と実際のRoutine実行は、GitHub上の模擬PR試験とは別の確認です。
+
+## 調査範囲・期間・検索操作の改善
+
+毎週の調査は「14エリアの公開一覧 → 70マスターと5候補の情報源 → 前週未調査を優先したエリア巡回 → 予約プラン詳細 → 余裕があれば新規店舗」の順に進めます。最後の完成時間を確保し、確認しやすい2店舗だけで時間を使い切らない指示へ更新しました。実際に探索できたエリア・駅・URLと未調査範囲を既存のsearch_failuresへ記録します。全件完了を公開条件にはしません。
+
+日付は既存Pythonの日付処理を再利用します。
+
+```sh
+python3 -m afternoon_tea.weekly_review --period
+python3 -m afternoon_tea.routine_site validate
+python3 -m afternoon_tea.weekly_review
+```
+
+`--period`はJST実行日と40日後を出力します。日付確認は両端を含み、終了日の後に開始するプラン、開始日の前に終了するプランを報告します。両方または片方がnullの場合も推測して補完しません。既知の端点だけで期間外と確定できる場合を除き、期間未確認として保持します。事前確認は読み取り専用で、問題があると終了コード1、問題なしなら0です。確認済み店舗数や調査完了率は判定しません。このCLIを自動マージ・公開の必須処理には追加していません。
+
+今回の修正では、PR #20にあった12月19日〜25日のプランを11月7日〜12月17日の掲載対象から除き、JSON・HTML・件数を9から8プランへ揃えました。店舗数は2のまま、確認日時・価格・出典は変更していません。別のプランの未知の日付を推測したり、新たなWeb調査を行った扱いにはしていません。
+
+HTMLには店舗・ホテル名検索、季節/テーマ（プラン名）検索、料金帯、解除、表示件数、該当なし表示を追加しました。組合せは同じプランで判定し、価格不明を0円扱いしません。既存の色・カードを保ち、スマートフォンでは入力欄を縦に並べ、操作領域を44px以上にしています。エリアを切り替えても調査範囲の説明は隠しません。
+
+### PRとActionsで確認する項目
+
+ClaudeのPR本文に実行日・対象期間・掲載店舗/プラン数・未調査店舗数・取得状況・14エリア別探索を記載します。ActionsのSummaryにも同じデータの集計とPR/実行URLを表示します。取り込みの「自動マージ成功・公開開始要求」と、公開側の「Pages公開確認成功」を分けて表示します。失敗はエラーとして残し、成功表示に置き換えません。HTML、集計レポート、HTTP確認結果は既存Artifactに保存されます。
+
+件数は店舗とレコードを区別します。PR #20のsearch_failuresは76レコードですが、内訳は未調査店舗73、全エリアの新規探索未実施1、確認済み記録2です。「未確認店舗76」とは数えません。拒否・規制・情報不足などもstatus別に集計します。これらは運用情報であり、公開の停止条件にはしません。
+
+### 登録済みRoutineで一度だけ更新する指示
+
+GitHubのファイルを編集しても、Claudeに登録した指示文が自動更新されるとは限りません。**既存Routineを編集し、スケジュール・GitHub接続をそのままにして、指示文を次の起動文へ置き換えてください。新しいRoutineを重複作成する必要はありません。**
+
+```text
+tsubasa0518/afternoon-teaの最新mainを取得してください。
+毎回、AGENTS.mdとdeveloper_docs/claude_weekly_prompt.mdを全文読み、
+その最新版に従って東京14エリアの週次調査、JSON・HTML生成、検証、PR作成まで完了してください。
+前週未調査を優先して14エリアに調査機会を配り、JST日付から40日後までと重なるプランだけを掲載してください。
+日付未確認は推測せず保持し、0店舗・調査未完了でも説明付きHTMLを完成してください。
+変更はsite/index.html、site/research.json、site/search_failures.jsonだけに限定します。
+予約・仮予約・フォーム操作・ログイン・決済・アクセス制限の回避は一切禁止です。
+PR本文に実行日・期間・店舗/プラン数・未調査/取得状況と14エリアの探索範囲を記載してください。
+```
+
+毎週月曜日07:17 JSTの既存スケジュールやGitHubの自動マージ・公開設定を変更する必要はありません。
+
+
+## 元HTMLの固定デザインを使う
+
+デザインの正本は`afternoon_tea_tokyo_2026-11-06.html`です。添付のHomepage:example.htmlと内容が同一であることも確認しました。過去の120店舗情報は移植していません。
+
+```sh
+python3 -m afternoon_tea.weekly_review
+python3 -m afternoon_tea.routine_renderer generate
+python3 -m afternoon_tea.routine_site validate
+```
+
+生成器はネットワーク接続せず、site内のJSONを読み、検証後にindex.htmlだけを一時ファイルから安全に置き換えます。生成に失敗した場合は既存HTMLを維持します。build_html.pyと保護済みの元HTMLは変更していません。
+
+`afternoon_tea/templates/routine.css`と`routine.js`は元HTMLからそのまま分離したCSS・基本JSです。routine.htmlが全体構造、routine_extra.css/jsが未確認値・検索・表示件数等の補助です。色、hero、3カテゴリの集計、14エリア、カテゴリ別見出し、card/plan/when/price/links、季節/スイーツ/曜日/価格確認フィルター、エリアジャンプ、ダークモード、上部へ戻る構造を再利用しています。
+
+JSONの任意項目は後方互換です。categoryはcafe/hotel/luxで、欠落した場合は分類未確認として表示します。現在の2店舗のcategoryは既存store_masterの分類を出典付きで明示しました。価格からカテゴリを推定していません。スイーツ・季節はJSONで指定された分類だけを使います。駅出口・曜日・時間等が不明なら未確認と表示します。店舗共通の時間補足は個別プランの確定時間に流用しません。
+
+今回の掲載は2店舗・8プランです。既知の対象期間外1プランを除いた修正を維持しています。元120店舗の料金・期間・駅出口は流用していません。0店舗でも14エリアと未確認表示が崩れず、店舗数の少なさを公開停止条件にしません。
+
+### Routineに登録する指示の更新
+
+既存RoutineのスケジュールとGitHub接続を維持し、指示文を以下へ置き換えてください。GitHubのドキュメント更新だけで登録済み指示文も変わったとは判断しないでください。
+
+```text
+毎回tsubasa0518/afternoon-teaの最新mainを取得し、AGENTS.mdと
+ developer_docs/claude_weekly_prompt.mdを全文読み、最新版に従って週次調査を行ってください。
+変更はsite/research.json、site/search_failures.json、site/index.htmlだけです。
+HTMLのデザインは変更せず、JSON更新後に必ず
+python3 -m afternoon_tea.routine_renderer generate
+を実行してsite/index.htmlを生成してください。HTML/CSS/JavaScriptを手書きしないでください。
+日付確認・技術検証後に指定のclaude/weekly-afternoon-tea-ブランチと
+[weekly-site]タイトルでPRを作成してください。予約操作やアクセス制限の回避は禁止です。
+```
+
+毎週の作業は「調査→JSON更新→固定生成器→技術検証→PR」です。デザイン変更が必要なときだけ、別の開発PRでテンプレートを修正します。GitHub側の自動マージ・Pages公開ワークフローは従来のままです。

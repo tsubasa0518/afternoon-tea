@@ -1,6 +1,7 @@
 """Minimal static-site intake. No research quality gates and no reservation traffic."""
 import argparse
 import base64
+from collections import Counter
 import datetime as dt
 import hashlib
 from html.parser import HTMLParser
@@ -112,8 +113,41 @@ def validate_site(files):
     report=validate_html_bytes(files['site/index.html'])
     research=validate_json(files['site/research.json'])
     failures=validate_json(files['site/search_failures.json'],True)
-    # No counts, coverage, price completeness or old publication scores gate delivery.
-    return {**report,'shops':len(research['shops']),'search_failures':len(failures['failures'])}
+    # Metrics are informational; never compare them with publication thresholds.
+    counts=dict(Counter(f['status'] for f in failures['failures']))
+    plans=sum(len(s.get('plans',[])) for s in research['shops']
+              if isinstance(s,dict) and isinstance(s.get('plans',[]),list))
+    unresearched_shops=sum(f['status']=='unresearched' and f.get('scope','shop')=='shop'
+                          for f in failures['failures'])
+    return {**report,'generated_at':research.get('generated_at'),'shops':len(research['shops']),
+            'plans':plans,'search_failures':len(failures['failures']),
+            'unresearched_shops':unresearched_shops,'search_statuses':counts}
+
+
+def write_summary(stage,report):
+    """Use existing Actions step summaries; do not add monitoring or merge conditions."""
+    target=os.environ.get('GITHUB_STEP_SUMMARY')
+    if not target:return
+    rows=[('処理結果',stage)]
+    if report:
+        rows += [('調査データ生成日時',report.get('generated_at') or '未記録'),
+                 ('掲載店舗数',report.get('shops',0)),('登録プラン数',report.get('plans',0)),
+                 ('未調査店舗数',report.get('unresearched_shops',0))]
+        labels={'unresearched':'未調査','information_insufficient':'情報不足',
+                'access_denied':'アクセス拒否','site_restriction':'サイト側制限',
+                'no_results':'検索結果なし','confirmed':'確認記録'}
+        rows += [(label+'（レコード）',report.get('search_statuses',{}).get(key,0))
+                 for key,label in labels.items()]
+    def cell(value):return str(value).replace('|','\\|').replace('\n',' ').replace('\r',' ')
+    lines=['\n### 週次サイト更新','','| 項目 | 結果 |','| --- | --- |']
+    lines += ['| '+cell(k)+' | '+cell(v)+' |' for k,v in rows]
+    lines.append('')
+    if report.get('pr'):lines.append('PR: https://github.com/'+REPO+'/pull/'+str(int(report['pr'])))
+    run=os.environ.get('GITHUB_RUN_ID')
+    if run and run.isdigit():lines.append('実行: https://github.com/'+REPO+'/actions/runs/'+run)
+    lines.append('公開URL: '+SITE)
+    with open(target,'a',encoding='utf-8') as f:f.write('\n'.join(lines)+'\n')
+
 
 class API:
     def call(self,method,path,body=None):
@@ -194,14 +228,23 @@ def verify_public(expected,attempts=6,opener=None,sleep=time.sleep):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','intake','prepare','verify'));a=p.parse_args()
-    if a.command=='validate':print(validate_site({p:(ROOT/p).read_bytes() for p in ALLOWED}))
-    elif a.command=='intake':
-        event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text());print(intake(API(),event['number'],os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0]))
-    elif a.command=='prepare':print(prepare())
-    else:
-        base=ROOT/'.staging/routine-delivery';report=json.loads((base/'report.json').read_text())
-        path=base/'site/index.html';expected=report['sha256']
-        require(sha(path.read_bytes())==expected,'delivery_bytes_changed')
-        observations=verify_public(expected)
-        (base/'public-verification.json').write_bytes(json_bytes(observations))
+    try:
+        if a.command=='validate':print(validate_site({p:(ROOT/p).read_bytes() for p in ALLOWED}))
+        elif a.command=='intake':
+            event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+            report=intake(API(),event['number'],os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0])
+            print(report);write_summary('自動マージ成功・公開開始要求済み（公開結果はdeploy.ymlを確認）',report)
+        elif a.command=='prepare':
+            report=prepare();print(report);write_summary('HTML公開準備成功（デプロイ前）',report)
+        else:
+            base=ROOT/'.staging/routine-delivery';report=json.loads((base/'report.json').read_text())
+            path=base/'site/index.html';expected=report['sha256']
+            require(sha(path.read_bytes())==expected,'delivery_bytes_changed')
+            observations=verify_public(expected)
+            (base/'public-verification.json').write_bytes(json_bytes(observations))
+            print({'public_verification':'passed','http':observations})
+            write_summary('Pages公開確認成功（HTTP 200・HTML SHA-256一致）',report)
+    except Exception:
+        write_summary(a.command+'失敗。実行ログのエラーを確認してください。',{})
+        raise
 if __name__=='__main__':main()
