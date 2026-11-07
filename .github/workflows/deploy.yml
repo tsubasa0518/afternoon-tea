@@ -8,3 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Legacy deployment is retired. Run publish-site.yml instead.'
+# Integration check only: this change must be rejected by the routine allowlist.
