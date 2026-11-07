@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/107718/",
+  "checked_at": "2026-11-07T10:54:09.977344+09:00",
+  "item_id": "master-041",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/107718/",
+    "checked_on": "2026-11-07",
+    "sha256": "087fda499e34a9296e7685626c9104f5117f1dd45a9afc860e3007131c804879",
+    "identity": {
+      "店名": "ガーデンラウンジ「坐忘」／セルリアンタワー東急ホテル",
+      "ジャンル原文": "ホテルラウンジ",
+      "ジャンル": "ホテルラウンジ",
+      "分類根拠": "ホテルラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

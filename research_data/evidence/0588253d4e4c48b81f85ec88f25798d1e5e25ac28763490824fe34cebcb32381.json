@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/101056/",
+  "checked_at": "2026-11-07T10:54:32.183849+09:00",
+  "item_id": "master-065",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/101056/",
+    "checked_on": "2026-11-07",
+    "sha256": "97d9e052023acb18bd5ceb4040b4e52841a106cafb527eebefd2122027f26b0b",
+    "identity": {
+      "店名": "スカイラウンジ＆ダイニング アーティスト カフェ／東京ドームホテル",
+      "ジャンル原文": "イタリア料理",
+      "ジャンル": "イタリアン",
+      "分類根拠": "イタリア料理"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

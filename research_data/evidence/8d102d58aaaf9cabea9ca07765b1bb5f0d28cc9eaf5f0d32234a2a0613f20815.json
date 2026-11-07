@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/120986/",
+  "checked_at": "2026-11-07T10:53:54.224032+09:00",
+  "item_id": "master-020",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/120986/",
+    "checked_on": "2026-11-07",
+    "sha256": "820c4fa3548abf966cb4f02b47285c748e99e5001f7fffe2d6d67486b5c15b38",
+    "identity": {
+      "店名": "LOUANGE TOKYO Le Musee",
+      "ジャンル原文": "カフェ・パティスリー",
+      "ジャンル": "カフェ・パティスリー",
+      "分類根拠": "カフェ・パティスリー"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

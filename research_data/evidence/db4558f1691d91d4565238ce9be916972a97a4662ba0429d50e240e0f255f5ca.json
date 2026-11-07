@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/100854/",
+  "checked_at": "2026-11-07T10:54:02.887792+09:00",
+  "item_id": "master-029",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/100854/",
+    "checked_on": "2026-11-07",
+    "sha256": "f5d6458164a17e23a320bfac6416aed6d7af65cf32cc6cc5ba0a858e347762c5",
+    "identity": {
+      "店名": "トゥエンティエイト／コンラッド東京",
+      "ジャンル原文": "バー＆ラウンジ",
+      "ジャンル": "バー＆ラウンジ",
+      "分類根拠": "バー＆ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

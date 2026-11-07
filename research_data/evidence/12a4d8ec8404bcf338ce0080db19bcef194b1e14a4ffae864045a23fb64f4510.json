@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/100707/",
+  "checked_at": "2026-11-07T10:53:39.343502+09:00",
+  "item_id": "master-009",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/100707/",
+    "checked_on": "2026-11-07",
+    "sha256": "75ad704187e0218eef76cb36b2556e355df6283f6acf9854ec27a51d62bad69d",
+    "identity": {
+      "店名": "ザ・ロビーラウンジ／シャングリ・ラ 東京",
+      "ジャンル原文": "ロビーラウンジ",
+      "ジャンル": "ロビーラウンジ",
+      "分類根拠": "ロビーラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

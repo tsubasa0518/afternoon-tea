@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/103306/",
+  "checked_at": "2026-11-07T10:54:07.325486+09:00",
+  "item_id": "master-036",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/103306/",
+    "checked_on": "2026-11-07",
+    "sha256": "4b54b0a992764dc627ae16970dc11ecb3f5e5d0f0c1ab6411d46d513014f110a",
+    "identity": {
+      "店名": "ラウンジ サウスコート／小田急ホテルセンチュリーサザンタワー",
+      "ジャンル原文": "ラウンジ",
+      "ジャンル": "ラウンジ",
+      "分類根拠": "ラウンジ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

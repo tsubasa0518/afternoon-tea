@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/106795/",
+  "checked_at": "2026-11-07T10:53:44.760403+09:00",
+  "item_id": "master-012",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/106795/",
+    "checked_on": "2026-11-07",
+    "sha256": "ce669297b33659d9f568c4b5be70c6228d95b5d3200c628fd8664302efac92d2",
+    "identity": {
+      "店名": "ラウンジバー プリヴェ／パレスホテル東京",
+      "ジャンル原文": "ラウンジバー",
+      "ジャンル": "ラウンジバー",
+      "分類根拠": "ラウンジバー"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}

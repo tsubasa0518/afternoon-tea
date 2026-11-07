@@ -1,0 +1,23 @@
+{
+  "url": "https://restaurant.ikyu.com/155237/",
+  "checked_at": "2026-11-07T10:53:45.936542+09:00",
+  "item_id": "master-014",
+  "extraction": {
+    "site": "ik",
+    "url": "https://restaurant.ikyu.com/155237/",
+    "checked_on": "2026-11-07",
+    "sha256": "82911b5eddb256fbe7f06b57d5c74b9742bfa84e53d5917f69b1529dbd649aa4",
+    "identity": {
+      "店名": "TENSHODO CAFE",
+      "ジャンル原文": "カフェ",
+      "ジャンル": "カフェ",
+      "分類根拠": "カフェ"
+    },
+    "plans": [],
+    "status": "unresolved",
+    "reasons": [
+      "supported_plan_structure_not_found",
+      "expected_master_identity_not_verified"
+    ]
+  }
+}
