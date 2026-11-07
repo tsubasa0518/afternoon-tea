@@ -96,6 +96,10 @@ def validate_json(value, failures=False):
     require(isinstance(data.get(key),list),'json_records_required')
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None,'timestamp_timezone_required')
+    if not failures:
+        from .country_themes import validate_country
+        for shop in data['shops']:
+            for plan in shop.get('plans', []):validate_country(plan)
     if failures:
         statuses={'information_insufficient','access_denied','site_restriction','no_results','unresearched','confirmed','excluded'}
         for f in data['failures']:

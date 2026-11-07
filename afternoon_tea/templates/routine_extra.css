@@ -13,3 +13,5 @@
 /* Keep zero counts visible and readable in both reference color schemes. */
 .fb .bc.zero{color:var(--sub)}
  .fb[data-sw]{white-space:normal;word-break:keep-all}
+
+.country-theme{margin:0;font-size:12.5px;color:var(--sub);line-height:1.6}
