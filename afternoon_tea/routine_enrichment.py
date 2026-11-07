@@ -102,47 +102,15 @@ def enrich_plan(plan, shop):
     return result
 
 
-def enrich(research, master, reference=None):
+def enrich(research, master=None, reference=None):
+    """Legacy reference arguments are accepted for callers, never used for category."""
     result = copy.deepcopy(research)
-    known = {s['id']: (cat, s) for a in master['areas'] for cat, g in a['cats'].items() for s in g['shops']}
-    historical = {}
-    if reference:
-        from .extraction import Document
-        for card in Document(reference).root.find('article'):
-            names=card.find('h4')
-            if len(names)==1:
-                historical.setdefault(names[0].text,[]).append(card)
+    from .price_category import classify, eligible_plans
     for shop in result['shops']:
         shop['plans'] = [enrich_plan(p, shop) for p in shop.get('plans', [])]
-        match = known.get(shop.get('id'))
-        # Exact known identity only; do not infer hotel/cafe from a suggestive name.
-        if not shop.get('category_source') and match and shop['name'] == match[1]['name']:
-            if match[0] == 'cafe':
-                category = 'cafe'
-            else:
-                prices = [p['price_yen'] for p in shop['plans'] if type(p.get('price_yen')) in (int, float)]
-                category = 'lux' if prices and min(prices) >= 9000 else 'hotel'
-            shop.update(category=category, category_source=f'data/store_master.json#{shop["id"]} (as_of {master["as_of"]}; hotel tier uses current regular price, unknown => hotel)')
-        if not shop.get('category_source'):
-            # Exact name AND same public venue URL: no fuzzy hotel/lobby merging.
-            cards=historical.get(shop.get('name'),[])
-            from urllib.parse import urlsplit
-            def venue(url):
-                u=urlsplit(url or '')
-                parts=u.path.strip('/').split('/')
-                return (u.hostname,parts[0]) if u.hostname=='restaurant.ikyu.com' else (u.hostname,u.path.rstrip('/'))
-            cards=[c for c in cards if any(venue(a.attrs.get('href'))==venue(shop.get('source_url')) for a in c.find('a'))]
-            if len(cards)==1 and cards[0].attrs.get('data-cat') in ('cafe','hotel','lux'):
-                base=cards[0].attrs['data-cat']
-                prices=[p['price_yen'] for p in shop['plans'] if type(p.get('price_yen')) in (int,float)]
-                shop['category']='cafe' if base=='cafe' else 'lux' if prices and min(prices)>=9000 else 'hotel'
-                shop['category_source']='afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price'
-        if shop.get('category') in ('hotel','lux') and shop.get('category_source'):
-            prices=[p['price_yen'] for p in shop['plans'] if type(p.get('price_yen')) in (int,float)]
-            tier='lux' if prices and min(prices)>=9000 else 'hotel'
-            if tier!=shop['category']:
-                shop['category']=tier
-                shop['category_source']+='; tier recalculated from saved regular price (unknown => hotel)'
+        category, minimum = classify(eligible_plans(shop['plans'], result['period']))
+        shop.update(category=category, category_price_yen=minimum,
+                    category_source='saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification')
     return result
 
 
@@ -157,7 +125,7 @@ def main():
     if args.data.is_symlink():
         parser.error('symlink data is forbidden')
     data = json.loads(path.read_text())
-    atomic_json(path, enrich(data, json.loads((ROOT/'data/store_master.json').read_text()), (ROOT/'afternoon_tea_tokyo_2026-11-06.html').read_text()))
+    atomic_json(path, enrich(data))
     print(json.dumps({'shops': len(data['shops']), 'confirmation_dates_changed': False}))
 
 

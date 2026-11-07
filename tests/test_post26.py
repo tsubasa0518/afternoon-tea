@@ -172,16 +172,17 @@ class EnrichmentTests(unittest.TestCase):
         result=e.enrich_plan(p,self.shop())
         self.assertIsNone(result['price_yen']);self.assertNotIn('discount_price_yen',result)
         self.assertEqual(e.enrich_plan(result,self.shop()),result)
-    def test_master_category_requires_exact_id_and_name(self):
+    def test_master_category_cannot_classify_unknown_price(self):
         master=read(ROOT/'data/store_master.json');source=master['areas'][0]['cats']['cafe']['shops'][0]
-        d={'shops':[{'id':source['id'],'name':source['name'],'plans':[]}, {'id':source['id'],'name':'OTHER LOUNGE','plans':[]}]}
+        d={'period':{'start':'2026-11-07','end':'2026-12-17'},'shops':[{'id':source['id'],'name':source['name'],'plans':[]}, {'id':source['id'],'name':'OTHER LOUNGE','plans':[]}]}
         result=e.enrich(d,master)
-        self.assertEqual(result['shops'][0]['category'],'cafe');self.assertIn(source['id'],result['shops'][0]['category_source'])
-        self.assertNotIn('category',result['shops'][1])
+        self.assertEqual(result['shops'][0]['category'],'unknown')
+        self.assertEqual(result['shops'][1]['category'],'unknown')
     def test_current_six_records_and_rendered_filters_are_fixed_without_new_confirmation(self):
         d=read(ROOT/'tests/fixtures/post26_six.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
-        self.assertEqual(result,d)
-        self.assertEqual(Counter(s['category'] for s in d['shops']),{'cafe':2,'hotel':3,'lux':1})
+        self.assertEqual(e.enrich(result,master),result)
+        self.assertEqual([s['checked_at'] for s in result['shops']],[s['checked_at'] for s in d['shops']])
+        self.assertEqual(Counter(s['category'] for s in result['shops']),{'cafe':1,'hotel':5})
         self.assertTrue(all(s['checked_at']==STAMP for s in d['shops']))
         html=renderer.render(d,read(ROOT/'site/search_failures.json'))
         self.assertIn('data-sw="xmas" aria-pressed="false">クリスマス<span class="bc">3</span>',html)

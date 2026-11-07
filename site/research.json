@@ -51,7 +51,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4950
     },
     {
       "id": "master-002",
@@ -84,8 +85,9 @@
           }
         }
       ],
-      "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6325
     },
     {
       "id": "master-004",
@@ -126,8 +128,9 @@
           ]
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "cafe",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6000
     },
     {
       "id": "master-005",
@@ -176,8 +179,9 @@
           }
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9800
     },
     {
       "id": "master-006",
@@ -232,7 +236,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 7900
     },
     {
       "id": "master-007",
@@ -261,7 +266,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8500
     },
     {
       "id": "master-008",
@@ -316,8 +322,9 @@
           }
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category": "unknown",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": null
     },
     {
       "id": "master-009",
@@ -361,8 +368,9 @@
           }
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9867
     },
     {
       "id": "master-010",
@@ -390,8 +398,9 @@
           "evidence_quote": "提供期間: 2026年9月1日(火)～11月30日(月)"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category": "unknown",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": null
     },
     {
       "id": "master-011",
@@ -431,7 +440,8 @@
         }
       ],
       "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 13000
     },
     {
       "id": "master-012",
@@ -460,7 +470,8 @@
         }
       ],
       "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 10350
     },
     {
       "id": "priority-003",
@@ -489,7 +500,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4600
     },
     {
       "id": "priority-004",
@@ -530,8 +542,9 @@
           ]
         }
       ],
-      "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6800
     },
     {
       "id": "priority-005",
@@ -560,7 +573,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4000
     },
     {
       "id": "priority-006",
@@ -589,7 +603,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 2400
     },
     {
       "id": "priority-008",
@@ -646,7 +661,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7900,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-009",
@@ -698,7 +716,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 9300,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-010",
@@ -732,7 +753,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-011",
@@ -761,7 +785,10 @@
           "weekday_available": false,
           "weekend_available": true
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 5500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-015",
@@ -788,7 +815,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー 税サ込 11,000円"
         }
-      ]
+      ],
+      "category": "lux",
+      "category_price_yen": 11000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-026",
@@ -817,8 +847,9 @@
           "evidence_quote": "【TEA】アフターヌーンティーセット … 時間：15:00-17:00(16:30L.O.) /15:30-17:30(17:00L.O.) ¥ 4,620 (税サ込)"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "cafe",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4620
     },
     {
       "id": "master-027",
@@ -857,8 +888,9 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9200
     },
     {
       "id": "master-028",
@@ -886,8 +918,9 @@
           "evidence_quote": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒 税サ込 9,487円"
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9487
     },
     {
       "id": "master-029",
@@ -937,7 +970,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8500
     },
     {
       "id": "master-030",
@@ -990,8 +1024,9 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9700
     },
     {
       "id": "priority-046",
@@ -1020,7 +1055,10 @@
           "weekday_available": true,
           "weekend_available": false
         }
-      ]
+      ],
+      "category": "lux",
+      "category_price_yen": 12650,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-048",
@@ -1047,7 +1085,10 @@
           "note": "ページ上は10,183円(通常)→7,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒 10,183円 税サ込 7,000円"
         }
-      ]
+      ],
+      "category": "lux",
+      "category_price_yen": 10183,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-051",
@@ -1087,7 +1128,10 @@
             "ichigo"
           ]
         }
-      ]
+      ],
+      "category": "lux",
+      "category_price_yen": 12700,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-053",
@@ -1125,7 +1169,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-054",
@@ -1152,7 +1199,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー 税サ込 6,325円"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 6325,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-055",
@@ -1179,7 +1229,10 @@
           "note": "ページ上は7,000円(通常)→6,000円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約） 7,000円 税サ込 6,000円"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-056",
@@ -1222,7 +1275,10 @@
             }
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-057",
@@ -1256,7 +1312,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 3850,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-058",
@@ -1295,7 +1354,10 @@
             "ichigo"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7684,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-031",
@@ -1334,8 +1396,9 @@
           ]
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9200
     },
     {
       "id": "master-032",
@@ -1390,7 +1453,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8970
     },
     {
       "id": "priority-059",
@@ -1444,7 +1508,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4800
     },
     {
       "id": "priority-061",
@@ -1471,7 +1536,10 @@
           "note": "ページ上は9,200円(通常)→7,800円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【和の心を愉しむ】蒼天のジャパニーズスタイルアフタヌーンティー ＋ロンネフェルトセレクション 9,200円 税サ込 7,800円"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 9200,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-062",
@@ -1509,7 +1577,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 9200,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-064",
@@ -1536,7 +1607,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格） 税サ込 3,850円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 3850,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-065",
@@ -1574,7 +1648,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 9000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-066",
@@ -1612,7 +1689,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-067",
@@ -1655,7 +1735,10 @@
             }
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-068",
@@ -1708,7 +1791,10 @@
             "kuri"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-069",
@@ -1735,7 +1821,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00入店・2.5時間制） ¥9,867 税サ込"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 9867,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-070",
@@ -1773,7 +1862,10 @@
             "grape"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8800,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-034",
@@ -1827,7 +1919,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8800
     },
     {
       "id": "master-035",
@@ -1872,7 +1965,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8000
     },
     {
       "id": "priority-072",
@@ -1925,7 +2019,10 @@
             "kuri"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 4800,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-036",
@@ -1978,8 +2075,9 @@
           ]
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "cafe",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6000
     },
     {
       "id": "master-038",
@@ -2013,7 +2111,8 @@
         }
       ],
       "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 11385
     },
     {
       "id": "master-candidate-04",
@@ -2042,7 +2141,10 @@
           "weekday_available": true,
           "weekend_available": false
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 5900,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-candidate-05",
@@ -2080,7 +2182,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8050,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-076",
@@ -2120,7 +2225,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 3300
     },
     {
       "id": "priority-080",
@@ -2167,7 +2273,10 @@
             "season"
           ]
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-081",
@@ -2194,7 +2303,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日） 税サ込 3,800円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 3800,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-082",
@@ -2228,7 +2340,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8200,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-083",
@@ -2255,7 +2370,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー 税サ込 7,500円"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-084",
@@ -2284,7 +2402,10 @@
           "weekday_available": true,
           "weekend_available": false
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 7800,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-040",
@@ -2326,7 +2447,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4800
     },
     {
       "id": "master-041",
@@ -2354,8 +2476,9 @@
           "evidence_quote": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30） 税サ込 6,000円"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "cafe",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6000
     },
     {
       "id": "master-042",
@@ -2400,7 +2523,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8000
     },
     {
       "id": "master-043",
@@ -2428,8 +2552,9 @@
           "evidence_quote": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店） 税サ込 5,000円"
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "cafe",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5000
     },
     {
       "id": "priority-087",
@@ -2470,7 +2595,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5500
     },
     {
       "id": "priority-088",
@@ -2510,7 +2636,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 2980
     },
     {
       "id": "priority-092",
@@ -2555,7 +2682,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 6000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-048",
@@ -2589,7 +2719,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5500
     },
     {
       "id": "master-049",
@@ -2642,8 +2773,9 @@
           ]
         }
       ],
-      "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6800
     },
     {
       "id": "priority-097",
@@ -2688,7 +2820,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5900
     },
     {
       "id": "priority-098",
@@ -2723,8 +2856,9 @@
           }
         }
       ],
-      "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6900
     },
     {
       "id": "priority-099",
@@ -2753,7 +2887,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5500
     },
     {
       "id": "priority-100",
@@ -2793,7 +2928,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 3400
     },
     {
       "id": "priority-101",
@@ -2842,8 +2978,9 @@
           ]
         }
       ],
-      "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8500
     },
     {
       "id": "priority-102",
@@ -2872,7 +3009,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6000
     },
     {
       "id": "master-060",
@@ -2900,8 +3038,9 @@
           "evidence_quote": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー 9,600円 税サ込 7,900円"
         }
       ],
-      "category": "lux",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category": "hotel",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 9600
     },
     {
       "id": "priority-110",
@@ -2958,7 +3097,10 @@
             "reason": "year_inferred_without_saved_context"
           }
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8096,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-111",
@@ -2985,7 +3127,10 @@
           "note": "提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き 税サ込 8,500円"
         }
-      ]
+      ],
+      "category": "hotel",
+      "category_price_yen": 8500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-063",
@@ -3014,7 +3159,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 5800
     },
     {
       "id": "master-064",
@@ -3045,7 +3191,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 8000
     },
     {
       "id": "priority-114",
@@ -3072,7 +3219,10 @@
           "note": "ページ上は5,800円(通常)→5,500円に割引表示（割引/タイムセールは期間・率が変わる場合あり）。提供期間の日付はページに記載なし＝期間未確認",
           "evidence_quote": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定） 5,800円 税サ込 5,500円"
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 5800,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "priority-115",
@@ -3124,7 +3274,10 @@
             "xmas"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 6000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-065",
@@ -3189,8 +3342,9 @@
           }
         }
       ],
-      "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category": "unknown",
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": null
     },
     {
       "id": "priority-116",
@@ -3230,7 +3384,8 @@
         }
       ],
       "category": "cafe",
-      "category_source": "afternoon_tea_tokyo_2026-11-06.html: exact name + venue URL; historical venue type only, not a fresh AT check; tier uses saved current regular price"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 4950
     },
     {
       "id": "priority-118",
@@ -3268,7 +3423,10 @@
             "wa"
           ]
         }
-      ]
+      ],
+      "category": "cafe",
+      "category_price_yen": 4300,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
       "id": "master-067",
@@ -3297,7 +3455,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 6800
     },
     {
       "id": "master-070",
@@ -3337,7 +3496,8 @@
         }
       ],
       "category": "hotel",
-      "category_source": "data/store_master.json（保存済みマスター分類。今回再確認ではない）; tier recalculated from saved regular price (unknown => hotel)"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "category_price_yen": 7800
     }
   ],
   "out_of_period_removed": [

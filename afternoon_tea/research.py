@@ -89,7 +89,7 @@ def site_url(url, site):
 
 
 class Browser:
-    def __init__(self, delay=2.0, timeout=15.0, max_requests=400, audit=None):
+    def __init__(self, delay=2.0, timeout=15.0, max_requests=400, audit=None, public_hosts=()):
         self.delay = delay
         self.timeout = timeout
         self.max_requests = max_requests
@@ -97,7 +97,7 @@ class Browser:
         self.last_request = {}
         self.robots = {}
         self.errors = []
-        self.transport = ReadOnlyTransport(audit)
+        self.transport = ReadOnlyTransport(audit, public_hosts=public_hosts)
         self.communication_audit = self.transport.communication_audit
         self.blocked_hosts = set()
 
@@ -145,7 +145,7 @@ class Browser:
     def _fetch(self, url):
         try:
             from .read_only import check_url
-            check_url(url)
+            check_url(url, public_hosts=self.transport.public_hosts)
         except ForbiddenOperation as error:
             from .communication_audit import identity
             self.errors.append({"resource": identity(url), "error": str(error).split(":",1)[0], "status": "blocked"})
@@ -201,7 +201,7 @@ class Browser:
             candidate = site_url(html.unescape(item), domain)
             if candidate and candidate not in found:
                 found.append(candidate)
-        return found[:5], search_url
+        return found, search_url
 
 
 def inspect_page(html_source, url, checked):
