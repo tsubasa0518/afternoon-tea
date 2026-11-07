@@ -1,0 +1,1202 @@
+{
+  "schema_version": 1,
+  "title": "東京アフタヌーンティー 予約先 優先調査リスト",
+  "source_filename": "東京アフタヌーンティー予約先一覧.html",
+  "source_sha256": "fbba5888d01b6f5dcffaeb21a115cd21d564f12590cc3ab6d2df661a6251f011",
+  "historical_reference_period": "2026-11-06〜2026-12-16",
+  "provenance": "ユーザー提供HTMLからの抽出。URL・店舗・旧判定は過去の参考情報であり現時点の提供・予約・ページ存在を保証しない。",
+  "scope": "全120店と未検証候補14件は優先して毎週調査を試みる。これ以外の新規店舗の探索も行う。",
+  "counts": {
+    "areas": 14,
+    "historical_listed_shops": 120,
+    "historical_candidates": 14
+  },
+  "areas": [
+    {
+      "area": "丸の内・日本橋",
+      "shops": [
+        {
+          "source_row": 1,
+          "name": "cafe VAVA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/112520/plan12815171",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 2,
+          "name": "ROSSINI TERRACE（東京會舘）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110781/plan12803085",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 3,
+          "name": "真不同 HONG KONG TEA ROOM 1946",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/122278/plan12649319",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 4,
+          "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/112311/plan12739895",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 5,
+          "name": "文明堂カフェ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/154158/plan12866695",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 6,
+          "name": "アルポルトカフェ 日本橋高島屋店",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101719/plan12384641",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 7,
+          "name": "丸ノ内ホテル / ポム・ダダン（8F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100179/plan12815376",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 8,
+          "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/117086/plan12872041",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 9,
+          "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115187/plan12845039",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 10,
+          "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102990/plan12850481",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 11,
+          "name": "HAMACHO HOTEL / SESSiON（1F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/112036/plan12822858",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 12,
+          "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115189/plan12835763",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 13,
+          "name": "東京ステーションホテル / ロビーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102900/plan12787122",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 14,
+          "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102901/plan12854246",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 15,
+          "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102902/plan12857218",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 16,
+          "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101099/plan12875698",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 17,
+          "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100707/plan12791492",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 18,
+          "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+          "reservation_site": "TableCheck",
+          "historical_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 19,
+          "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/105756/plan12854308",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 20,
+          "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106795/plan12250640",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 21,
+          "name": "ブルガリ ホテル 東京 / ブルガリ ラウンジ（40F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/145203/plan12877502",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "銀座・有楽町・日比谷",
+      "shops": [
+        {
+          "source_row": 22,
+          "name": "GINZA TENSHODO CAFE（天賞堂カフェ）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/155237",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 23,
+          "name": "REIKASAI GINZA（ポーラ銀座ビル 9F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/107848",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 24,
+          "name": "ボン ボヌール（銀座三越 4F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/112712",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 25,
+          "name": "ザ・グラン ラウンジ（GINZA SIX 13F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/107408",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 26,
+          "name": "HIGASHIYA GINZA（ポーラ銀座ビル 2F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102169",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 27,
+          "name": "LOUANGE TOKYO Le Musée",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/120986",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 28,
+          "name": "ル サロン ド ニナス 日比谷",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/121277",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 29,
+          "name": "dunhill BAR",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110448",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 30,
+          "name": "BVLGARI GINZA CAFE（ブルガリ ギンザ カフェ）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/146478",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 31,
+          "name": "Tea Bloomy 銀座",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/147847",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 32,
+          "name": "NOTES BY YAMAHA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/155386",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 33,
+          "name": "GINZA CAFE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/120875",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 34,
+          "name": "CAFe&BAR STROPSe",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/148825",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 35,
+          "name": "DRAWING HOUSE OF HIBIYA（東京ミッドタウン日比谷 6F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/109953",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 36,
+          "name": "tcc GINZA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106638",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 37,
+          "name": "Brasserie ニーケ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/151317",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 38,
+          "name": "ハイアット セントリック 銀座 東京 / NAMIKI667（3F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/109114",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 39,
+          "name": "東京エディション銀座 / Sophie at EDITION",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/123411",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 40,
+          "name": "コートヤード・マリオット銀座東武ホテル / RISTASIX",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/122628",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 41,
+          "name": "帝国ホテル 東京 / ランデブーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/117183",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 42,
+          "name": "ザ・ペニンシュラ東京 / ザ・ロビー",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100543",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 43,
+          "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101456",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "新橋・汐留・浜松町",
+      "shops": [
+        {
+          "source_row": 44,
+          "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+          "reservation_site": "TableCheck",
+          "historical_url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 45,
+          "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103334/plan12844256",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 46,
+          "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101762/plan12844646",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 47,
+          "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102281/plan12794313",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 48,
+          "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/114993/plan12793685",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 49,
+          "name": "コンラッド東京 / トゥエンティエイト（28F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100854/plan12805497",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 50,
+          "name": "フェアモント東京 / Vue Mer（ビュメール）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/146488/plan12856413",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 51,
+          "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100352/plan12878493",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 52,
+          "name": "ホテル ザ セレスティン 東京芝 / Cafe&Bar Lounge Celecroix（1F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/108677/plan12879632",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 53,
+          "name": "第一ホテル東京 / ロビーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/116751/plan12845493",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 54,
+          "name": "芝パークホテル / ザ ダイニング",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/116186/plan11960212",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 55,
+          "name": "パークホテル東京 / アートカラーズダイニング",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101111/plan12808461",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 56,
+          "name": "メズム東京、オートグラフ コレクション / ウィスク",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/119094/plan12819792",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 57,
+          "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/151824/plan12826471",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 58,
+          "name": "東京プリンスホテル / ティーサロン ピカケ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/109387/plan12893769",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "赤坂・永田町・虎ノ門",
+      "shops": [
+        {
+          "source_row": 59,
+          "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/151564/plan12874283",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 60,
+          "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106682/plan12867585",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 61,
+          "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106680/plan11947457",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 62,
+          "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106681/plan12867603",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 63,
+          "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103485/plan12829832",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 64,
+          "name": "アンダーズ 東京 / ペストリーショップ（1F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/123366/plan12533202",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 65,
+          "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/105131/plan12861297",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 66,
+          "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/122872/plan12874649",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 67,
+          "name": "オークラ東京 / バーラウンジ スターライト",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/113419/plan12865828",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 68,
+          "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/152275/plan12805394",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 69,
+          "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
+          "reservation_site": "TableCheck",
+          "historical_url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 70,
+          "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115758/plan12817748",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "六本木・麻布・広尾",
+      "shops": [
+        {
+          "source_row": 71,
+          "name": "グランド ハイアット 東京 / フィオレンティーナ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100433/plan12807839",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 72,
+          "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102168/plan12861883",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 73,
+          "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/125030/plan12830252",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 74,
+          "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100485/plan12809200",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "新宿・代々木",
+      "shops": [
+        {
+          "source_row": 75,
+          "name": "OPERA（東京オペラシティ54F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/139315/plan12805547",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 76,
+          "name": "ル サロン ド ニナス 小田急百貨店新宿",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/109753/plan12750169",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 77,
+          "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103306/plan12792401",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 78,
+          "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103985/plan12797665",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 79,
+          "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115611/plan12880133",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 80,
+          "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103085/plan12829652",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 81,
+          "name": "京王プラザホテル / オールデイダイニング 樹林",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101733/plan12813470",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 82,
+          "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/121396/plan12791558",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 83,
+          "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/147317/plan12827569",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 84,
+          "name": "ヒルトン東京 / メトロポリタングリル",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103989/plan12800314",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 85,
+          "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/147880/plan12810808",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "渋谷・代々木公園",
+      "shops": [
+        {
+          "source_row": 86,
+          "name": "ザ・レギャン・トーキョー",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/100272/plan12814237",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 87,
+          "name": "BLACK TERRACE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110056/plan12824068",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 88,
+          "name": "LA COCORICO 渋谷",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106388/plan12793689",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 89,
+          "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/107718/plan12255764",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 90,
+          "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101738/plan12685902",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 91,
+          "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115887/plan12652208",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 92,
+          "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110458/plan12861712",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "青山・表参道・原宿",
+      "shops": [
+        {
+          "source_row": 93,
+          "name": "サロン ド テ ジャンナッツ",
+          "reservation_site": "食べログ",
+          "historical_url": "https://tabelog.com/tokyo/A1306/A130602/13141883/",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 94,
+          "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110765/plan12817990",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 95,
+          "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/117546/plan12844393",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 96,
+          "name": "HAUTE COUTURE CAFE OMOTESANDO",
+          "reservation_site": "食べログ",
+          "historical_url": "https://tabelog.com/tokyo/A1306/A130602/13285588/",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 97,
+          "name": "St.GRACE Lounge & Dining",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/105173/plan12868701",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 98,
+          "name": "アニヴェルセルカフェ 表参道",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/121853/plan12839132",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 99,
+          "name": "茶洒 金田中",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/102572/plan12631502",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 100,
+          "name": "BRASSERIE CAFE LE CONTE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/113312/plan11876844",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 101,
+          "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/153938/plan12888059",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 102,
+          "name": "ARMANI / CAFFE 表参道",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/125128/plan12302624",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 103,
+          "name": "The Burn",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/111035/plan12820092",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 104,
+          "name": "THE AOYAMA GRAND HOTEL / TOKYO AFTERNOON TEA",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/115154/plan11363502/",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "恵比寿・代官山・中目黒",
+      "shops": [
+        {
+          "source_row": 105,
+          "name": "PAYSAGE 代官山本店",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/122745/plan12804614",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 106,
+          "name": "ROTISSERIE★BLUE",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/108615/plan12771604",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "品川・田町・五反田",
+      "shops": [
+        {
+          "source_row": 107,
+          "name": "グランドプリンスホテル新高輪 / Lounge Momiji",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106767/plan12803588",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 108,
+          "name": "東京マリオットホテル / Lounge & Dining G",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/103135/plan12786141",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 109,
+          "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/106908/plan12847292",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 110,
+          "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/113851/plan12847981",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 111,
+          "name": "JWマリオット・ホテル東京 / JWラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/149035/plan12825529",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "上野・浅草・押上",
+      "shops": [
+        {
+          "source_row": 112,
+          "name": "ラ・ラナリータ 吾妻橋店",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/108054/plan12187749",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 113,
+          "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/151232/plan12798243",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 114,
+          "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/110552/plan12838920",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 115,
+          "name": "ホテルイースト21東京 / ロビーラウンジ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/117061/plan12855775",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "水道橋・御茶ノ水・神田",
+      "shops": [
+        {
+          "source_row": 116,
+          "name": "VMG CAFE 九段会館テラス",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/120847/plan12815369",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 117,
+          "name": "東京ドームホテル / アーティスト カフェ",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/101056/plan12789046",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        },
+        {
+          "source_row": 118,
+          "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
+          "reservation_site": "一休.com",
+          "historical_url": "https://restaurant.ikyu.com/105246/plan12798669",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "飯田橋・神楽坂・四ツ谷",
+      "shops": [
+        {
+          "source_row": 119,
+          "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+          "reservation_site": "TableCheck",
+          "historical_url": "https://www.tablecheck.com/en/hotel-edmont-beltempo",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    },
+    {
+      "area": "池袋・目白",
+      "shops": [
+        {
+          "source_row": 120,
+          "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+          "reservation_site": "TableCheck",
+          "historical_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve",
+          "verification_status": "not_checked_in_this_run",
+          "must_research": true
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "area": "赤坂・永田町・虎ノ門",
+      "name": "RITUEL 虎ノ門（RITUEL Brasserie & Cafe 虎ノ門）",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/123927",
+      "historical_genre": "ブラッスリー／レストラン",
+      "historical_page_note": "見出しに「焼き菓子が主役のアフタヌーンティー」。プラン名・料金・期間の記載なし",
+      "historical_assessment": "未確定 期間内のATプランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "新宿・代々木",
+      "name": "アプローズスクエア東京迎賓館",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/105535",
+      "historical_genre": "宴会場／期間限定レストラン",
+      "historical_page_note": "アフタヌーンティーの記載なし（スイーツの紹介文のみ）",
+      "historical_assessment": "外す候補 ATの予約ページと確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "六本木・麻布・広尾",
+      "name": "Orby Restaurant",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/145150",
+      "historical_genre": "モダンフレンチ",
+      "historical_page_note": "アフタヌーンティーの記載なし",
+      "historical_assessment": "外す候補 対象外ジャンル（フレンチ）、ATも確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "青山・表参道・原宿",
+      "name": "資生堂パーラー ザ・ハラジュク",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/116898",
+      "historical_genre": "フレンチ／西洋料理",
+      "historical_page_note": "「アフタヌーン」を含むプランの記載なし",
+      "historical_assessment": "外す候補 対象外ジャンル（フレンチ）、ATも確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "青山・表参道・原宿",
+      "name": "コロンバン 原宿サロン",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1303/A130301/13297982/",
+      "historical_genre": "カフェ",
+      "historical_page_note": "「予約不可」「席の予約は不可」。ATはキーワード欄のみで、プラン・料金・期間の記載なし",
+      "historical_assessment": "外す候補 予約ページがない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "青山・表参道・原宿",
+      "name": "L2126",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/155628",
+      "historical_genre": "フレンチ・アフタヌーンティ",
+      "historical_page_note": "店名の直上のジャンル表示に「アフタヌーンティ」あり。コース欄は空で、プラン・料金・期間なし",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "青山・表参道・原宿",
+      "name": "CAFE THE KNOT（カフェ ザ ノット）",
+      "reservation_site": "食べログ",
+      "historical_url": "https://ssl.tabelog.com/en/tokyo/A1303/A130301/13278866/dtlrvwlst/",
+      "historical_genre": "カフェ、スイーツ",
+      "historical_page_note": "アフタヌーンティーのプランの記載なし（電話での予約案内のみ）",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "品川・田町・五反田",
+      "name": "グランドプリンスホテル高輪 ラウンジ 光明",
+      "reservation_site": "一休.com",
+      "historical_url": "https://restaurant.ikyu.com/107385/plan12420483",
+      "historical_genre": "ラウンジ、バー",
+      "historical_page_note": "【彩雅～Saika～】和洋スイーツセット＋カフェ1杯 5,085円（税・サ込）。区分は「ランチ」。プティフールとセイボリーあり。秋メニューは9/17〜11/25の記載",
+      "historical_assessment": "判断待ち 名称に「アフタヌーンティー」がない。ATとして載せてよいか要判断",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "上野・浅草・押上",
+      "name": "ラ ココリコ 上野本店",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1311/A131101/13123339/",
+      "historical_genre": "ビストロ、イタリアン、カフェ",
+      "historical_page_note": "「アフターヌーンセット」の写真説明とキーワードのみ。プラン・料金・期間なし",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "上野・浅草・押上",
+      "name": "望水楼",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1311/A131101/13298837/",
+      "historical_genre": "中華料理、居酒屋、飲茶・点心",
+      "historical_page_note": "アフタヌーンティーは口コミの題にあるのみ",
+      "historical_assessment": "外す候補 対象外ジャンル（中華・居酒屋・飲茶）",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "上野・浅草・押上",
+      "name": "上野 アクアリウムレストラン Nautilus",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1311/A131101/13267852/",
+      "historical_genre": "ダイニングバー、イタリアン、フレンチ",
+      "historical_page_note": "プリンセスアフタヌーンティー 5,000円（12:00〜18:30、11/1〜、終了日の記載なし）／ミニアフタヌーンティーセット 4,200円（平日限定）ほか。予約可",
+      "historical_assessment": "判断待ち ATの予約プランはあるが、表示ジャンルが対象外（イタリアン・フレンチ）",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "上野・浅草・押上",
+      "name": "くくりひめ珈琲",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1311/A131102/13257967/",
+      "historical_genre": "カフェ、洋菓子、喫茶店",
+      "historical_page_note": "予約可。アフタヌーンティーの記載なし",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "上野・浅草・押上",
+      "name": "THE LOUNGE（旧店名 ラウンジミモザ／浅草ビューホテル）",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1311/A131102/13127202/",
+      "historical_genre": "カフェ、スイーツ",
+      "historical_page_note": "予約可。ATはキーワード欄のみ。TableCheckにも店ページあり（https://www.tablecheck.com/viewhotels-asakusa-lounge）だがATの記載なし",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    },
+    {
+      "area": "池袋・目白",
+      "name": "RACINES Boulangerie & Bistro（ラシーヌ）",
+      "reservation_site": "食べログ",
+      "historical_url": "https://tabelog.com/tokyo/A1305/A130501/13100821/",
+      "historical_genre": "ビストロ、カフェ、パン",
+      "historical_page_note": "予約可。紹介文に「ランチやアフタヌーンティーも大好評」とあるが、プラン・料金・期間なし",
+      "historical_assessment": "未確定 ATの予約プランを確認できない",
+      "verification_status": "not_checked_in_this_run",
+      "must_research": true
+    }
+  ]
+}

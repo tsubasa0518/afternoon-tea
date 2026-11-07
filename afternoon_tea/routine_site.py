@@ -97,7 +97,7 @@ def validate_json(value, failures=False):
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None,'timestamp_timezone_required')
     if failures:
-        statuses={'information_insufficient','access_denied','site_restriction','no_results','unresearched','confirmed'}
+        statuses={'information_insufficient','access_denied','site_restriction','no_results','unresearched','confirmed','excluded'}
         for f in data['failures']:
             require(isinstance(f,dict) and {'name','area','checked_at','sources','reason','retry','status'}<=set(f),'failure_fields_missing')
             require(all(isinstance(f[k],str) and f[k].strip() for k in ('name','area','checked_at','reason')) and len(f['reason'])<=2000 and type(f['retry']) is bool,'invalid_failure_record')
@@ -135,7 +135,7 @@ def write_summary(stage,report):
                  ('未調査店舗数',report.get('unresearched_shops',0))]
         labels={'unresearched':'未調査','information_insufficient':'情報不足',
                 'access_denied':'アクセス拒否','site_restriction':'サイト側制限',
-                'no_results':'検索結果なし','confirmed':'確認記録'}
+                'no_results':'検索結果なし','confirmed':'確認記録','excluded':'現在の根拠で対象外'}
         rows += [(label+'（レコード）',report.get('search_statuses',{}).get(key,0))
                  for key,label in labels.items()]
     def cell(value):return str(value).replace('|','\\|').replace('\n',' ').replace('\r',' ')
