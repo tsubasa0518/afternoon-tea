@@ -33,7 +33,10 @@ def enrich_plan(plan, shop):
     result['structured_evidence'] = evidence
     def save(key, value, quote, origin):
         result[key] = value
-        evidence[key] = {'url': shop.get('source_url'), 'checked_at': shop.get('checked_at'),
+        # A new plan may come from a different source than the venue's
+        # historical listing. Never attribute its menu to that older page.
+        source = plan if plan.get('source_url') else shop
+        evidence[key] = {'url': source.get('source_url'), 'checked_at': plan.get('checked_at', source.get('checked_at')),
                          'quote': quote, 'origin': origin}
     sources = text_sources(plan)
     # Explicitly recorded inferred years are not evidence of service dates.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T12:30:00+09:00",
+  "generated_at": "2026-11-08T11:45:42+09:00",
   "status": "partial_research",
   "period": {
     "start": "2026-11-08",
@@ -171,20 +171,20 @@
           "country_input_hash": "37795153ea28dfc3786c3e0a5b4f82be7b832bdef112bee5f789d329075b10a2",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/100179/plan12815376",
-              "checked_at": "2026-11-07T18:26:10+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+              "checked_at": "2026-11-08T11:37:57+09:00",
               "quote": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ\nスコーン(クロテッドクリーム",
               "origin": "menu"
             },
             "weekday_available": {
-              "url": "https://restaurant.ikyu.com/100179/plan12815376",
-              "checked_at": "2026-11-07T18:26:10+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+              "checked_at": "2026-11-08T11:37:57+09:00",
               "quote": "ポム・ダダン アフタヌーンティー“Noël Rouge”(平日)\n期間 2026年12月1日~12月26日 料金 平日6,500円/土・日・祝日7,000円\nスイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
               "origin": "plan_name/evidence_quote/menu"
             },
             "weekend_available": {
-              "url": "https://restaurant.ikyu.com/100179/plan12815376",
-              "checked_at": "2026-11-07T18:26:10+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+              "checked_at": "2026-11-08T11:37:57+09:00",
               "quote": "ポム・ダダン アフタヌーンティー“Noël Rouge”(平日)\n期間 2026年12月1日~12月26日 料金 平日6,500円/土・日・祝日7,000円\nスイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
               "origin": "plan_name/evidence_quote/menu"
             }
@@ -220,8 +220,8 @@
           "country_input_hash": "47ce9a86494250f7369301cbf7f2af8e93d1a45e3bb00b39a07cb80bf2f9424a",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/100179/plan12815376",
-              "checked_at": "2026-11-07T18:26:10+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+              "checked_at": "2026-11-08T11:37:57+09:00",
               "quote": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ\nスコーン(クロテッドクリーム",
               "origin": "menu"
             }
@@ -1372,20 +1372,20 @@
           "country_input_hash": "7f3ec5d7ee8377d6aa56b41a906bd328ece177e8f4478e2c1e284dd6b178a2d1",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/101762/plan12844646",
-              "checked_at": "2026-11-07T18:27:48+09:00",
+              "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+              "checked_at": "2026-11-08T11:31:37+09:00",
               "quote": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)",
               "origin": "menu"
             },
             "weekday_available": {
-              "url": "https://restaurant.ikyu.com/101762/plan12844646",
-              "checked_at": "2026-11-07T18:27:48+09:00",
+              "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+              "checked_at": "2026-11-08T11:31:37+09:00",
               "quote": "【東京タワービュー確約】天空のアフタヌーンティー~Stellar Luxury~(平日)\n■平 日 ¥11,000/¥10,500[Seibu Prince Global Rewards会員]\nスイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
               "origin": "plan_name/evidence_quote/menu"
             },
             "weekend_available": {
-              "url": "https://restaurant.ikyu.com/101762/plan12844646",
-              "checked_at": "2026-11-07T18:27:48+09:00",
+              "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+              "checked_at": "2026-11-08T11:31:37+09:00",
               "quote": "【東京タワービュー確約】天空のアフタヌーンティー~Stellar Luxury~(平日)\n■平 日 ¥11,000/¥10,500[Seibu Prince Global Rewards会員]\nスイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
               "origin": "plan_name/evidence_quote/menu"
             }
@@ -1418,8 +1418,8 @@
           "country_input_hash": "eb21d52eea32e9ead04071d9ef122284de0c993ef2237820955717f4b3a6a5d0",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/101762/plan12844646",
-              "checked_at": "2026-11-07T18:27:48+09:00",
+              "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+              "checked_at": "2026-11-08T11:31:37+09:00",
               "quote": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)",
               "origin": "menu"
             }
@@ -2613,26 +2613,26 @@
           "country_source_type": "unknown",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント\nセイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ",
               "origin": "menu,plan_name"
             },
             "season": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)",
               "origin": "plan_name"
             },
             "weekday_available": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
               "origin": "plan_name/evidence_quote/menu"
             },
             "weekend_available": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
               "origin": "plan_name/evidence_quote/menu"
             }
@@ -2670,26 +2670,26 @@
           "country_source_type": "unknown",
           "structured_evidence": {
             "sweets": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント\nセイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ",
               "origin": "menu,plan_name"
             },
             "season": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)",
               "origin": "plan_name"
             },
             "weekday_available": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
               "origin": "plan_name/evidence_quote/menu"
             },
             "weekend_available": {
-              "url": "https://restaurant.ikyu.com/102168/plan12861883",
-              "checked_at": "2026-11-07T18:29:09+09:00",
+              "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+              "checked_at": "2026-11-08T11:31:59+09:00",
               "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
               "origin": "plan_name/evidence_quote/menu"
             }
@@ -5317,5 +5317,76 @@
       "end": "2026-12-25",
       "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
     }
-  ]
+  ],
+  "collection_summary": {
+    "run": "2026-11-08-official",
+    "comparison_base": "29aaa223d042f65a813eb907816390e1fa374e11",
+    "note": "Offline aggregation of plans actually adopted from Claude cloud public-document research. Menus count plan records, including weekday/weekend variants. HTTP diagnostics are in search_failures.json. Existing unreviewed plans retain their original check dates.",
+    "confirmed_shops": 13,
+    "new_shops": 10,
+    "added_plans": 23,
+    "menu_plans": 14,
+    "by_source": [
+      {
+        "host": "prtimes.jp",
+        "confirmed_shops": 2,
+        "new_shops": 0,
+        "confirmed_plans": 4,
+        "menu_plans": 4,
+        "sources": [
+          "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "https://prtimes.jp/main/html/rd/p/000001450.000039557.html"
+        ],
+        "latest_checked_at": "2026-11-08T11:37:57+09:00"
+      },
+      {
+        "host": "www.princehotels.co.jp",
+        "confirmed_shops": 5,
+        "new_shops": 4,
+        "confirmed_plans": 10,
+        "menu_plans": 3,
+        "sources": [
+          "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+          "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
+        ],
+        "latest_checked_at": "2026-11-08T11:36:56+09:00"
+      },
+      {
+        "host": "www.imperialhotel.co.jp",
+        "confirmed_shops": 2,
+        "new_shops": 2,
+        "confirmed_plans": 3,
+        "menu_plans": 3,
+        "sources": [
+          "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous"
+        ],
+        "latest_checked_at": "2026-11-08T11:27:12+09:00"
+      },
+      {
+        "host": "www.newotani.co.jp",
+        "confirmed_shops": 3,
+        "new_shops": 3,
+        "confirmed_plans": 3,
+        "menu_plans": 1,
+        "sources": [
+          "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/"
+        ],
+        "latest_checked_at": "2026-11-08T11:32:02+09:00"
+      },
+      {
+        "host": "www.tokyo.grand.hyatt.co.jp",
+        "confirmed_shops": 1,
+        "new_shops": 1,
+        "confirmed_plans": 3,
+        "menu_plans": 3,
+        "sources": [
+          "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
+        ],
+        "latest_checked_at": "2026-11-08T11:31:55+09:00"
+      }
+    ]
+  }
 }
