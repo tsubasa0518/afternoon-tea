@@ -7,6 +7,7 @@ from unittest.mock import Mock
 from urllib.error import HTTPError
 from afternoon_tea.official_research import links, collect
 from afternoon_tea.research import Browser
+from afternoon_tea.read_only import ForbiddenOperation
 from tests.test_current_run import Response
 
 HOST = 'official.example.com'
@@ -66,6 +67,28 @@ class OfficialResearchTests(unittest.TestCase):
         self.assertEqual(urls,[BASE+'/robots.txt',BASE+'/',BASE+'/tea'])
         self.assertEqual(r['network_events'][-1]['http_status'],403)
         self.assertEqual(len(r['external_candidates']),1)
+
+    def test_forbidden_redirect_stops_all_collection_and_persists_audit(self):
+        b=self.browser({BASE+'/':"<a href='/tea'>afternoon tea</a><a href='/news'>news</a>",
+                        BASE+'/tea':ForbiddenOperation('redirect_blocked_before_follow')})
+        r=self.run_collection(b)
+        self.assertEqual(r['stop_reason'],'forbidden_operation')
+        self.assertEqual([c.args[0].full_url for c in b.transport.opener.open.call_args_list],
+                         [BASE+'/robots.txt',BASE+'/',BASE+'/tea'])
+        self.assertTrue(r['communication_audit']['complete'])
+        self.assertTrue(r['communication_audit']['violations'])
+        self.assertEqual(r['attempts'][-1]['status'],'forbidden')
+        self.assertIn(BASE+'/news', r['sources'][0]['pending_urls'])
+
+    def test_robots_crawl_delay_not_overridden_by_default(self):
+        from urllib.robotparser import RobotFileParser
+        from unittest.mock import patch
+        b=self.browser({})
+        robots=RobotFileParser();robots.parse(['User-agent: *','Crawl-delay: 10','Allow: /'])
+        b.robots[HOST]=robots;b.last_request[HOST]=100
+        with patch('afternoon_tea.research.time.monotonic', return_value=103), patch('afternoon_tea.research.time.sleep') as sleep:
+            b._rate_limit(HOST)
+        sleep.assert_called_once_with(7)
 
     def test_robots_404_is_unknown_not_permission(self):
         b=self.browser({})
