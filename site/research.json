@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T18:39:46+09:00",
+  "generated_at": "2026-11-08T09:00:00+09:00",
   "status": "partial_research",
   "period": {
-    "start": "2026-11-07",
-    "end": "2026-12-17"
+    "start": "2026-11-08",
+    "end": "2026-12-18"
   },
   "note": "今回の実行で指定134件の各historical_urlを匿名GETで確認した結果のみ掲載（一休.com・TableCheck）。食べログは403のため未確認、新規店舗探索は未実施。前週の掲載店舗は引き継いでいない。未調査・情報不足・アクセス拒否はsearch_failures.jsonに記録。",
   "shops": [
