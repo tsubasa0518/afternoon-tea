@@ -34,9 +34,9 @@ reportのattempts・network_events・browser_errorsを使い、情報源ごと�
 
 変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。 generated_atは実際の生成時刻にし、将来時刻を決め打ちしません。`collection_summary` に今回実際に本文から採用した店舗数・新規店舗数・追加/更新プラン数・メニュー本文を保存できたプラン数を、情報源ホストごとに集計して保存します。HTTP成功・候補数・以前からの掲載件数とは分け、毎回のrunを明記してください。平日/土日等に分けたメニュー件数はプラン件数であることも明記します。新プランのsource_url/checked_atを記録し、店舗の古い予約サイトの証拠へ付け替えません。
 
-各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address/access、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、曜日・時間、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
+各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address/access、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
 
-`price_yen` は1人あたり通常価格です。割引価格はdiscount_price_yenに分離し、通常価格が分からなければprice_yen:nullとします。割引率から逆算しません。通常価格が複数ある場合はプランを分け、最安通常価格が分かるようにします。
+`price_yen` は1人あたり通常価格です。明記された必須サービス料の率が確認できれば、税込表示額＋必須サービス料の総額を比較用price_yenにし、元の表示額・率をlisted_price_yen/mandatory_service_charge_percentとprice_noteに残します。未知の税率・サービス料率・端数処理を推定しません。説明文で確認した時間・平日/土日祝情報はdescriptionだけに置かず、time_noteと対応する曜日フィールドにも保存します。調査状況・取得日時の技術的な補足は表示用noteではなくnotes.status等の内部記録に保存します。割引価格はdiscount_price_yenに分離し、通常価格が分からなければprice_yen:nullとします。割引率から逆算しません。通常価格が複数ある場合はプランを分け、最安通常価格が分かるようにします。
 
 通常価格が確認できる場合は、施設の業態に関係なく価格で分類します。対象期間内の確認済みプランの最安通常価格を基準に cafe（6,000円以下）/ hotel（6,001〜9,999円）/ lux（10,000円以上）です。通常価格不明の場合のみ、確認できた施設情報でホテル内のラウンジ・カフェ・レストランはhotel、ホテル以外はcafeとします。施設情報も不明ならunknownです。公式サイト、hotel_name、施設情報、既存マスターを確認し、facility_type（hotel / non_hotel）とfacility_source（出典URLまたは保存済みマスターの参照）を記録してください。施設名の文字列だけから推測しません。`routine_enrichment` がJSONを再分類し、生成器も掲載対象プランから自動計算します。価格判明時は施設による分類を上書きします。価格不明時もprice_yenはnullのまま、料金未確認表示と料金未確認フィルターを維持し、推定・補完しません。
 
