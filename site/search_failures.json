@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T12:30:00+09:00",
+  "generated_at": "2026-11-09T07:19:58+09:00",
   "failures": [
     {
       "queue_id": "priority-002",
@@ -5829,6 +5829,22 @@
         "new_plans_total": 23,
         "menus_in_new_shops": 8
       }
+    },
+    {
+      "name": "2026-11-09 公式情報源の週次再確認(Claude本文読解)",
+      "area": "全14エリア",
+      "scope": "run_summary",
+      "checked_at": "2026-11-09T07:19:58+09:00",
+      "status": "information_insufficient",
+      "sources": [
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+        "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+        "https://www.newotani.co.jp/tokyo/afternoontea/",
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
+      ],
+      "retry": true,
+      "reason": "official_research: 53リクエスト/33ページ取得。ForbiddenOperation(redirect_blocked_before_follow, パークタワー系 onlyformembers_2025)で中断(終了コード2・監査保存済、再試行せず)。取得不能: パレスホテル・陳山荘(access_challenge_stop_host)、東急/ストリングス/ウェスティン/東京マリオット/ビューホテル/東京ドームホテル/エドモント/ホテル協会(robots不明または拒否・502/403/接続断)。取得済みページを読み、帝国ホテル(アクア9,400/9,800円・ランデブー6,900円)、パークタワー(ステラガーデン11,000/11,500円+サービス料15%)、ニューオータニ、グランドハイアットのプラン内容が前回掲載から変更ないことを確認。新規店舗の発見は0件。14エリアの区別ごとの個別探索(駅別)は未実施で、エリアの探索済みとは扱わない。"
     }
   ]
 }
