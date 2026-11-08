@@ -100,6 +100,7 @@ class Browser:
         self.transport = ReadOnlyTransport(audit, public_hosts=public_hosts)
         self.communication_audit = self.transport.communication_audit
         self.blocked_hosts = set()
+        self.network_events = []
 
     def _rate_limit(self, host):
         elapsed = time.monotonic() - self.last_request.get(host, 0)
@@ -118,6 +119,7 @@ class Browser:
             final_url = response.geturl()
             if urlsplit(final_url).hostname != host:
                 raise RuntimeError("cross_host_redirect")
+            self.network_events.append({"url": url, "stage": "document", "http_status": response.status, "result": "received"})
             content_type = response.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type:
                 raise RuntimeError("not_html")
@@ -128,6 +130,8 @@ class Browser:
             text = raw.decode(charset, errors="replace")
             if any(marker in text.lower() for marker in ("captcha", "verify you are human", "access denied", "アクセスが制限")):
                 self.blocked_hosts.add(host)
+                self.network_events.append({"url": url, "stage": "document", "result": "access_challenge_stop_host",
+                                            "matched_markers": [m for m in ("captcha", "verify you are human", "access denied", "アクセスが制限") if m in text.lower()]})
                 raise RuntimeError("access_challenge_stop_host")
             return text
 
@@ -165,6 +169,7 @@ class Browser:
                 self.count += 1
                 req = Request(robots_url, headers={"User-Agent": USER_AGENT})
                 with self.transport.open(robots_url, timeout=self.timeout, headers=dict(req.header_items())) as response:
+                    self.network_events.append({"url": robots_url, "stage": "robots", "http_status": response.status, "result": "received"})
                     if response.geturl() != robots_url:
                         raise RuntimeError("robots_redirect")
                     body = response.read(200_001)
@@ -173,17 +178,24 @@ class Browser:
                 robots = RobotFileParser()
                 robots.parse(body.decode("utf-8", errors="replace").splitlines())
                 self.robots[host] = robots
-            except ForbiddenOperation:
+            except ForbiddenOperation as error:
+                self.robots[host] = None
+                self.network_events.append({"url": robots_url, "stage": "robots", "result": "failed", "error": str(error)})
                 raise
             except (HTTPError, URLError, OSError, RuntimeError) as error:
                 self.robots[host] = None
+                self.network_events.append({"url": robots_url, "stage": "robots", "result": "failed",
+                                            "http_status": getattr(error, "code", None), "error": str(error)})
                 self.errors.append({"url": robots_url, "error": type(error).__name__ + ": " + str(error)})
         robots = self.robots[host]
         if robots is None or not robots.can_fetch(USER_AGENT, url):
+            self.network_events.append({"url": url, "stage": "robots_decision",
+                                        "result": "unknown" if robots is None else "disallowed"})
             raise RuntimeError("robots_unknown_or_disallowed")
         try:
             return self._open(url)
         except HTTPError as error:
+            self.network_events.append({"url": url, "stage": "document", "http_status": error.code, "result": "failed"})
             # Do not circumvent blocks, CAPTCHA or 429. Record instead.
             if error.code in (403, 429):
                 self.blocked_hosts.add(host)
