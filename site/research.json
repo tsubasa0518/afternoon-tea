@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T09:00:00+09:00",
+  "generated_at": "2026-11-08T12:30:00+09:00",
   "status": "partial_research",
   "period": {
     "start": "2026-11-08",
     "end": "2026-12-18"
   },
-  "note": "今回の実行で指定134件の各historical_urlを匿名GETで確認した結果のみ掲載（一休.com・TableCheck）。食べログは403のため未確認、新規店舗探索は未実施。前週の掲載店舗は引き継いでいない。未調査・情報不足・アクセス拒否はsearch_failures.jsonに記録。",
+  "note": "2026-11-08更新: 前週(2026-11-07)の一休.com・TableCheck確認分(86店舗)は更新日時を保持したまま掲載。今週は公式サイト(帝国ホテル・ホテルニューオータニ・グランド ハイアット 東京・ザ・プリンス パークタワー東京・品川プリンスホテル)とPR TIMESの公開本文から、13施設相当のプランを追加・補完。Bing・一休・食べログは制限のため再試行せず、新規探索は一部エリア・情報源のみ。未調査範囲はsearch_failures.jsonを参照。",
   "shops": [
     {
       "id": "master-001",
@@ -149,6 +149,92 @@
           "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
           "country_decision_hash": "af202a0b332318c5b6cbe64a17055e7850e061ac2d75e8e583f5bcd19a7aa2fe",
           "menu": null
+        },
+        {
+          "plan_name": "ポム・ダダン アフタヌーンティー“Noël Rouge”（平日）",
+          "price_yen": 6500,
+          "price_note": "税・サービス料込。ミニデザートは追加1,000円",
+          "start": "2026-12-01",
+          "end": "2026-12-26",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "期間 2026年12月1日～12月26日 料金 平日6,500円／土・日・祝日7,000円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
+          "description": "赤い果実をテーマにしたクリスマスアフタヌーンティー。14:00～17:30（L.O.15:30）。8Fフレンチレストラン。出典は三菱地所ホテルズ＆リゾーツの2026-10-29付プレスリリース。",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+          "booking_url_info_only": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+          "checked_at": "2026-11-08T11:37:57+09:00",
+          "country": "フランス",
+          "cc": "fr",
+          "country_source_type": "inferred",
+          "country_input_hash": "37795153ea28dfc3786c3e0a5b4f82be7b832bdef112bee5f789d329075b10a2",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/100179/plan12815376",
+              "checked_at": "2026-11-07T18:26:10+09:00",
+              "quote": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ\nスコーン(クロテッドクリーム",
+              "origin": "menu"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/100179/plan12815376",
+              "checked_at": "2026-11-07T18:26:10+09:00",
+              "quote": "ポム・ダダン アフタヌーンティー“Noël Rouge”(平日)\n期間 2026年12月1日~12月26日 料金 平日6,500円/土・日・祝日7,000円\nスイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/100179/plan12815376",
+              "checked_at": "2026-11-07T18:26:10+09:00",
+              "quote": "ポム・ダダン アフタヌーンティー“Noël Rouge”(平日)\n期間 2026年12月1日~12月26日 料金 平日6,500円/土・日・祝日7,000円\nスイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "ichigo",
+            "scone"
+          ],
+          "country_basis": "フレンチレストランのアフタヌーンティーで、ウフ・アン・ムーレット等フランス料理・菓子を提供",
+          "country_decision_hash": "37795153ea28dfc3786c3e0a5b4f82be7b832bdef112bee5f789d329075b10a2",
+          "notes": {
+            "status": "テーマ国推測：店舗=丸ノ内ホテル / ポム・ダダン（8F） ／ プラン=ポム・ダダン アフタヌーンティー“Noël Rouge”（平日） ／ 国=フランス (fr) ／ 根拠=フレンチレストランのアフタヌーンティーで、ウフ・アン・ムーレット等フランス料理・菓子を提供"
+          }
+        },
+        {
+          "plan_name": "ポム・ダダン アフタヌーンティー“Noël Rouge”（土・日・祝日）",
+          "price_yen": 7000,
+          "price_note": "税・サービス料込。ミニデザートは追加1,000円",
+          "start": "2026-12-01",
+          "end": "2026-12-26",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "期間 2026年12月1日～12月26日 料金 平日6,500円／土・日・祝日7,000円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ。セイボリー:オニオンキッシュ 生ハム添え/キャロットスープ/パプリカコンフィのアニス風味 スモークサーモントラウト添え/合鴨のスモーク ビーツのヴィネグレット/ウフ・アン・ムーレット。スコーン(クロテッドクリーム、ブルーベリージャム)。カフェフリー120分制",
+          "description": "赤い果実をテーマにしたクリスマスアフタヌーンティー。14:00～17:30（L.O.15:30）。8Fフレンチレストラン。出典は三菱地所ホテルズ＆リゾーツの2026-10-29付プレスリリース。",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+          "booking_url_info_only": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+          "checked_at": "2026-11-08T11:37:57+09:00",
+          "country": "フランス",
+          "cc": "fr",
+          "country_source_type": "inferred",
+          "country_input_hash": "47ce9a86494250f7369301cbf7f2af8e93d1a45e3bb00b39a07cb80bf2f9424a",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/100179/plan12815376",
+              "checked_at": "2026-11-07T18:26:10+09:00",
+              "quote": "スイーツ:ストロベリータルト/フリュイルージュのムース/赤い果実のゼリー/ビーツのパウンドケーキ/カシスルージュ/パート・ド・フリュイ フランボワーズ\nスコーン(クロテッドクリーム",
+              "origin": "menu"
+            }
+          },
+          "sweets": [
+            "ichigo",
+            "scone"
+          ],
+          "country_basis": "フレンチレストランのアフタヌーンティーで、ウフ・アン・ムーレット等フランス料理・菓子を提供",
+          "country_decision_hash": "47ce9a86494250f7369301cbf7f2af8e93d1a45e3bb00b39a07cb80bf2f9424a",
+          "notes": {
+            "status": "テーマ国推測：店舗=丸ノ内ホテル / ポム・ダダン（8F） ／ プラン=ポム・ダダン アフタヌーンティー“Noël Rouge”（土・日・祝日） ／ 国=フランス (fr) ／ 根拠=フレンチレストランのアフタヌーンティーで、ウフ・アン・ムーレット等フランス料理・菓子を提供"
+          }
         }
       ],
       "category": "cafe",
@@ -1264,10 +1350,90 @@
           "country_decision_hash": "6294a7084865c8ec913ac73810338aa45f78c4248c3997643fe30e2473298b42",
           "sweets": [],
           "menu": null
+        },
+        {
+          "plan_name": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～（平日）",
+          "price_yen": 11000,
+          "price_note": "税込・別途サービス料15％（会員優待料金は別）",
+          "start": "2026-11-01",
+          "end": "2026-12-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "■平 日 ￥11,000／￥10,500［Seibu Prince Global Rewards会員］",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+          "description": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～。ベルギーのクリスマスマーケットをイメージ。12:00～16:30（最終入店13:30）、3時間制。",
+          "source_url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "checked_at": "2026-11-08T11:31:37+09:00",
+          "country": "ベルギー",
+          "cc": "be",
+          "country_source_type": "explicit",
+          "country_input_hash": "7f3ec5d7ee8377d6aa56b41a906bd328ece177e8f4478e2c1e284dd6b178a2d1",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/101762/plan12844646",
+              "checked_at": "2026-11-07T18:27:48+09:00",
+              "quote": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)",
+              "origin": "menu"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/101762/plan12844646",
+              "checked_at": "2026-11-07T18:27:48+09:00",
+              "quote": "【東京タワービュー確約】天空のアフタヌーンティー~Stellar Luxury~(平日)\n■平 日 ¥11,000/¥10,500[Seibu Prince Global Rewards会員]\nスイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/101762/plan12844646",
+              "checked_at": "2026-11-07T18:27:48+09:00",
+              "quote": "【東京タワービュー確約】天空のアフタヌーンティー~Stellar Luxury~(平日)\n■平 日 ¥11,000/¥10,500[Seibu Prince Global Rewards会員]\nスイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "scone"
+          ],
+          "country_basis": "公式説明にベルギー王室御用達ピエール マルコリーニとベルギーのクリスマスマーケットがテーマと明記",
+          "country_decision_hash": "7f3ec5d7ee8377d6aa56b41a906bd328ece177e8f4478e2c1e284dd6b178a2d1"
+        },
+        {
+          "plan_name": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～（土休日）",
+          "price_yen": 11500,
+          "price_note": "税込・別途サービス料15％（会員優待料金は別）",
+          "start": "2026-11-01",
+          "end": "2026-12-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "■土休日 ￥11,500／￥11,000［Seibu Prince Global Rewards会員］",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+          "description": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～。ベルギーのクリスマスマーケットをイメージ。12:00～16:30（最終入店13:30）、3時間制。",
+          "source_url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "checked_at": "2026-11-08T11:31:37+09:00",
+          "country": "ベルギー",
+          "cc": "be",
+          "country_source_type": "explicit",
+          "country_input_hash": "eb21d52eea32e9ead04071d9ef122284de0c993ef2237820955717f4b3a6a5d0",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/101762/plan12844646",
+              "checked_at": "2026-11-07T18:27:48+09:00",
+              "quote": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)",
+              "origin": "menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "scone"
+          ],
+          "country_basis": "公式説明にベルギー王室御用達ピエール マルコリーニとベルギーのクリスマスマーケットがテーマと明記",
+          "country_decision_hash": "eb21d52eea32e9ead04071d9ef122284de0c993ef2237820955717f4b3a6a5d0"
         }
       ],
       "category": "lux",
-      "category_price_yen": 12650,
+      "category_price_yen": 11000,
       "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     },
     {
@@ -2425,11 +2591,127 @@
           "country_basis": "保存済みのプラン名・説明だけでは特定の国の文化を主題とする根拠が不足。単一の食材・菓子・飲料ブランド・店舗名だけからは判定しない。",
           "country_decision_hash": "44c6017a74bc46bb684ffc1f9ea5dbcd10016e6fb454c78853cd3fdcc2b4cc7d",
           "menu": null
+        },
+        {
+          "plan_name": "ショコラとマロンが飾るクリスマスアフタヌーンティー（平日）",
+          "price_yen": 5000,
+          "price_note": "税・サービス料込（プレスリリース記載）",
+          "start": "2026-12-01",
+          "end": "2026-12-31",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "【平日】5,000円 【土日祝日】6,500円（税・サービス料込）",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ～チャイモカ仕立て～/クリスマスパピヨット～マロンバタースカッチ～/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+          "description": "ショコラとマロンが飾るクリスマスアフタヌーンティー。提供時間 13:00/15:00（2部制）。カフェフリー2時間制。ホテル＆レジデンス六本木のBar & Restaurant COCONOMA（港区西麻布）。出典はシマダグループの2026-11-06付プレスリリース。",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "booking_url_info_only": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "checked_at": "2026-11-08T11:31:59+09:00",
+          "country_input_hash": "4cf88ae24bf14006bef16275a7fd687a7e835c35acdd1a7134166b14beb71be1",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント\nセイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ",
+              "origin": "menu,plan_name"
+            },
+            "season": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(平日)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "4cf88ae24bf14006bef16275a7fd687a7e835c35acdd1a7134166b14beb71be1"
+        },
+        {
+          "plan_name": "ショコラとマロンが飾るクリスマスアフタヌーンティー（土日祝）",
+          "price_yen": 6500,
+          "price_note": "税・サービス料込（プレスリリース記載）",
+          "start": "2026-12-01",
+          "end": "2026-12-31",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "【平日】5,000円 【土日祝日】6,500円（税・サービス料込）",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ～チャイモカ仕立て～/クリスマスパピヨット～マロンバタースカッチ～/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+          "description": "ショコラとマロンが飾るクリスマスアフタヌーンティー。提供時間 12:00/14:30（2部制）。カフェフリー2時間制。ホテル＆レジデンス六本木のBar & Restaurant COCONOMA（港区西麻布）。出典はシマダグループの2026-11-06付プレスリリース。",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "booking_url_info_only": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "checked_at": "2026-11-08T11:31:59+09:00",
+          "country_input_hash": "e77be9d47c528232bd371938fe1594469505d4e7ff798453fe278bcbe6981585",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント\nセイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ",
+              "origin": "menu,plan_name"
+            },
+            "season": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)",
+              "origin": "plan_name"
+            },
+            "weekday_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://restaurant.ikyu.com/102168/plan12861883",
+              "checked_at": "2026-11-07T18:29:09+09:00",
+              "quote": "ショコラとマロンが飾るクリスマスアフタヌーンティー(土日祝)\n【平日】5,000円 【土日祝日】6,500円(税・サービス料込)\nスイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ~チャイモカ仕立て~/クリスマスパピヨット~マロンバタースカッチ~/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "e77be9d47c528232bd371938fe1594469505d4e7ff798453fe278bcbe6981585"
         }
       ],
       "category": "cafe",
       "category_price_yen": 4800,
-      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
+      "facility_type": "hotel",
+      "facility_source": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html"
     },
     {
       "id": "master-036",
@@ -4197,6 +4479,833 @@
       "category": "hotel",
       "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
       "category_price_yen": 7800
+    },
+    {
+      "id": "official-001",
+      "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+      "area_no": 2,
+      "area": "銀座・有楽町・日比谷",
+      "station": "日比谷・内幸町エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "帝国ホテル公式サイト",
+      "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+      "checked_at": "2026-11-08T11:27:12+09:00",
+      "booking_url_info_only": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "Holiday Afternoon Tea “JOIE”（平日）",
+          "price_yen": 9400,
+          "price_note": "料金は平日。税・サービス料条件は本文で未確認",
+          "start": "2026-11-01",
+          "end": "2027-01-15",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "平日 9,400円、土・日・祝日 9,800円",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+          "description": "Holiday Afternoon Tea “JOIE”。11:30～18:00(L.O.)。12/21～12/25は土・日・祝日料金。",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "booking_url_info_only": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "checked_at": "2026-11-08T11:27:12+09:00",
+          "country_input_hash": "a083c91d60111a229be1b11485611264d0f03c85c28d59011903f135649e90ea",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+              "checked_at": "2026-11-08T11:27:12+09:00",
+              "quote": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン",
+              "origin": "menu"
+            },
+            "weekday_available": {
+              "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+              "checked_at": "2026-11-08T11:27:12+09:00",
+              "quote": "Holiday Afternoon Tea “JOIE”(平日)\n平日 9,400円、土・日・祝日 9,800円\nスイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+              "checked_at": "2026-11-08T11:27:12+09:00",
+              "quote": "Holiday Afternoon Tea “JOIE”(平日)\n平日 9,400円、土・日・祝日 9,800円\nスイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "ichigo",
+            "kaki",
+            "scone"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "a083c91d60111a229be1b11485611264d0f03c85c28d59011903f135649e90ea"
+        },
+        {
+          "plan_name": "Holiday Afternoon Tea “JOIE”（土・日・祝日）",
+          "price_yen": 9800,
+          "price_note": "料金は土・日・祝日(12/21～12/25含む)。税・サービス料条件は本文で未確認",
+          "start": "2026-11-01",
+          "end": "2027-01-15",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "平日 9,400円、土・日・祝日 9,800円",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+          "description": "Holiday Afternoon Tea “JOIE”。11:30～18:00(L.O.)。12/21～12/25は土・日・祝日料金。",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "booking_url_info_only": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "checked_at": "2026-11-08T11:27:12+09:00",
+          "country_input_hash": "18ed7b0f2e03c699dce6d3c72c2e6d3f347da3a49ccba5269bef9502f7bae637",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+              "checked_at": "2026-11-08T11:27:12+09:00",
+              "quote": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン",
+              "origin": "menu"
+            }
+          },
+          "sweets": [
+            "choco",
+            "ichigo",
+            "kaki",
+            "scone"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "18ed7b0f2e03c699dce6d3c72c2e6d3f347da3a49ccba5269bef9502f7bae637"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+      "category": "hotel",
+      "category_price_yen": 9400,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-002",
+      "name": "帝国ホテル 東京 / ランデブーラウンジ（本館1階）",
+      "area_no": 2,
+      "area": "銀座・有楽町・日比谷",
+      "station": "日比谷・内幸町エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "帝国ホテル公式サイト",
+      "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+      "checked_at": "2026-11-08T11:26:48+09:00",
+      "booking_url_info_only": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー“ザ・ランデブー”",
+          "price_yen": 6900,
+          "price_note": "税・サービス料条件は本文で未確認",
+          "start": null,
+          "end": null,
+          "note": "提供期間の記載なし＝期間未確認",
+          "evidence_quote": "11:30～17:00（ラストオーダー） 6,900円",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": "デザート:カマンベールチーズケーキ/苺のショートケーキ/モンブラン/プリン。スコーン:プレーンスコーン。セイボリー:ランデブーサンドイッチ/季節のセイボリー。紅茶またはコーヒー(飲みかえ自由)",
+          "description": "11:30～17:00(L.O.)。提供期間は本文に記載なし(期間未確認)。",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+          "booking_url_info_only": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+          "checked_at": "2026-11-08T11:26:48+09:00",
+          "country_input_hash": "2d5a25b5e71889522dce2a5010ad0b859c9422bf45a219fbd2e60ed59ab04e46",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+              "checked_at": "2026-11-08T11:26:48+09:00",
+              "quote": "デザート:カマンベールチーズケーキ/苺のショートケーキ/モンブラン/プリン\nスコーン:プレーンスコーン",
+              "origin": "menu"
+            }
+          },
+          "sweets": [
+            "ichigo",
+            "kuri",
+            "scone"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "2d5a25b5e71889522dce2a5010ad0b859c9422bf45a219fbd2e60ed59ab04e46"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-003",
+      "name": "ホテルニューオータニ（東京） / ガーデンラウンジ",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅・永田町駅エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": "東京都千代田区紀尾井町4-1",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "checked_at": "2026-11-08T11:31:54+09:00",
+      "booking_url_info_only": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "新アフタヌーンティーセット～栗とぶどう～",
+          "price_yen": 8200,
+          "price_note": "税込表記は本文で未確認／サービス料別の記載はSKYのみ確認",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "新アフタヌーンティーセット～栗とぶどう～ 期間 2026年9月1日（火）～11月30日（月） 料金 ¥8,200",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "15:15／15:45／16:15の入店、2時間制。栗とぶどうがテーマ。メニュー詳細は今回未取得。",
+          "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "booking_url_info_only": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "checked_at": "2026-11-08T11:31:54+09:00",
+          "country_input_hash": "4ce34859230431dde80569344f51b41e35f36b410d3bef92a9def616be20feda",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+              "checked_at": "2026-11-08T11:31:54+09:00",
+              "quote": "新アフタヌーンティーセット~栗とぶどう~",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "grape",
+            "kuri"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "4ce34859230431dde80569344f51b41e35f36b410d3bef92a9def616be20feda"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "category": "hotel",
+      "category_price_yen": 8200,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-004",
+      "name": "ホテルニューオータニ（東京） / VIEW & DINING THE SKY",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅・永田町駅エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": "東京都千代田区紀尾井町4-1",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "source_url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+      "checked_at": "2026-11-08T11:32:02+09:00",
+      "booking_url_info_only": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "【平日限定】スーパーアフタヌーンティー～マロン～",
+          "price_yen": 11000,
+          "price_note": "税金共・サービス料別",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "スーパーアフタヌーンティー～マロン～ ¥11,000 税金共・サービス料別",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "上段:スーパーモンブラン/新モンブラン/モンブラン アンフィニマン ヴァニーユ。中段:サラ/イスパハン/スーパーメロンショートケーキ/ナポレオンパイ。下段:ターキーパストラミと豆乳クリームのオープンサンド/オシェトラ キャビアと蟹セロリーラブのレムラード/ホタテのポアレ。サイド:マロンスコーン、紅茶(ダージリン・アッサム・ニルギリ・アールグレイ・ハーブティー等)",
+          "description": "平日限定。14:00／14:30の入店、2時間制。ピエール・エルメ・パリとパティスリーSATSUKIのスイーツ。ウェブサイトより3日前の完全予約制。",
+          "source_url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+          "booking_url_info_only": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+          "checked_at": "2026-11-08T11:32:02+09:00",
+          "country_input_hash": "455e577c2becbe5c58f668e671d8827de5030ef9ff73167f10116b0dcaf37d0b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+              "checked_at": "2026-11-08T11:32:02+09:00",
+              "quote": "【平日限定】スーパーアフタヌーンティー~マロン~\n中段:サラ/イスパハン/スーパーメロンショートケーキ/ナポレオンパイ\nサイド:マロンスコーン",
+              "origin": "menu,plan_name"
+            },
+            "weekday_available": {
+              "url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+              "checked_at": "2026-11-08T11:32:02+09:00",
+              "quote": "【平日限定】スーパーアフタヌーンティー~マロン~\nスーパーアフタヌーンティー~マロン~ ¥11,000 税金共・サービス料別\n上段:スーパーモンブラン/新モンブラン/モンブラン アンフィニマン ヴァニーユ。中段:サラ/イスパハン/スーパーメロンショートケーキ/ナポレオンパイ。下段:ターキーパストラミと豆乳クリームのオープンサンド/オシェトラ キャビアと蟹セロリーラブのレムラード/ホタテのポアレ。サイド:マロンスコーン、紅茶(ダージリン・アッサム・ニルギリ・アールグレイ・ハーブティー等)",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+              "checked_at": "2026-11-08T11:32:02+09:00",
+              "quote": "【平日限定】スーパーアフタヌーンティー~マロン~\nスーパーアフタヌーンティー~マロン~ ¥11,000 税金共・サービス料別\n上段:スーパーモンブラン/新モンブラン/モンブラン アンフィニマン ヴァニーユ。中段:サラ/イスパハン/スーパーメロンショートケーキ/ナポレオンパイ。下段:ターキーパストラミと豆乳クリームのオープンサンド/オシェトラ キャビアと蟹セロリーラブのレムラード/ホタテのポアレ。サイド:マロンスコーン、紅茶(ダージリン・アッサム・ニルギリ・アールグレイ・ハーブティー等)",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "kuri",
+            "melon",
+            "scone"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "455e577c2becbe5c58f668e671d8827de5030ef9ff73167f10116b0dcaf37d0b"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+      "category": "lux",
+      "category_price_yen": 11000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-005",
+      "name": "ホテルニューオータニ（東京） / 大観苑",
+      "area_no": 4,
+      "area": "赤坂・永田町・虎ノ門",
+      "station": "赤坂見附駅・永田町駅エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": "東京都千代田区紀尾井町4-1",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "checked_at": "2026-11-08T11:31:54+09:00",
+      "booking_url_info_only": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "大観苑 アフタヌーンティーセット（土・日・祝日限定）",
+          "price_yen": 7700,
+          "price_note": "税込表記は本文で未確認／サービス料別の記載はSKYのみ確認",
+          "start": null,
+          "end": "2026-11-29",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "大観苑 アフタヌーンティーセット【土・日・祝日限定】 期間 2026年11月29日（日）まで 1名さま ¥7,700",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": null,
+          "description": "点心師がつくる点心の数々と王道メニューを中国茶とともに。14:00／14:30／15:00の入店、2時間制。",
+          "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "booking_url_info_only": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "checked_at": "2026-11-08T11:31:54+09:00",
+          "country": "中国",
+          "cc": "cn",
+          "country_source_type": "explicit",
+          "country_input_hash": "ad0ba9b9aec024847847308b7630870dfff8facb80b312c19e5c2a8a1ce6737a",
+          "sweets": [],
+          "country_basis": "公式説明に点心師がつくる点心と中国茶を楽しむ中国料理店のアフタヌーンティーと明記",
+          "country_decision_hash": "ad0ba9b9aec024847847308b7630870dfff8facb80b312c19e5c2a8a1ce6737a"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "category": "hotel",
+      "category_price_yen": 7700,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-006",
+      "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
+      "area_no": 5,
+      "area": "六本木・麻布・広尾",
+      "station": "六本木エリア（六本木ヒルズ内。駅は本文から未確認）",
+      "exit": null,
+      "address": "東京都港区六本木6-10-3",
+      "source_site": "グランド ハイアット 東京公式サイト",
+      "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+      "checked_at": "2026-11-08T11:31:55+09:00",
+      "booking_url_info_only": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "オータム アフタヌーンティー（平日）",
+          "price_yen": 5280,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは平日7,260円",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "オータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+          "description": "15:00～17:00（最終入店15:30）2時間制。スコーンの代わりにパンドーロ。",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "booking_url_info_only": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "country": "イタリア",
+          "cc": "it",
+          "country_source_type": "explicit",
+          "country_input_hash": "fe90ee42ad0734fd8b3694ab05c6f919e46bd4caca152c13bdf5c81b909f7feb",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ\nセイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ\nスコーンの",
+              "origin": "description,menu"
+            },
+            "weekday_available": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "オータム アフタヌーンティー(平日)\nオータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600\nスイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "オータム アフタヌーンティー(平日)\nオータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600\nスイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "grape",
+            "imo",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "country_basis": "公式説明にイタリアのスイーツ・セイボリー・パンドーロと明記",
+          "country_decision_hash": "fe90ee42ad0734fd8b3694ab05c6f919e46bd4caca152c13bdf5c81b909f7feb"
+        },
+        {
+          "plan_name": "オータム アフタヌーンティー（土日祝）",
+          "price_yen": 6600,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは土日祝8,580円",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "オータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+          "description": "15:00～17:00（最終入店15:30）2時間制。スコーンの代わりにパンドーロ。",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "booking_url_info_only": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "country": "イタリア",
+          "cc": "it",
+          "country_source_type": "explicit",
+          "country_input_hash": "d92825d63df36144cff53975cab9c04e147e4e6ff7be2efa29340e1ac6f6310e",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ\nセイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ\nスコーンの",
+              "origin": "description,menu"
+            },
+            "weekday_available": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "オータム アフタヌーンティー(土日祝)\nオータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600\nスイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+              "origin": "plan_name/evidence_quote/menu"
+            },
+            "weekend_available": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "オータム アフタヌーンティー(土日祝)\nオータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600\nスイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+              "origin": "plan_name/evidence_quote/menu"
+            }
+          },
+          "sweets": [
+            "grape",
+            "imo",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "country_basis": "公式説明にイタリアのスイーツ・セイボリー・パンドーロと明記",
+          "country_decision_hash": "d92825d63df36144cff53975cab9c04e147e4e6ff7be2efa29340e1ac6f6310e"
+        },
+        {
+          "plan_name": "クリスマス アフタヌーンティー",
+          "price_yen": 6600,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは8,580円",
+          "start": "2026-12-01",
+          "end": "2026-12-23",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "クリスマス アフタヌーンティー ¥6,600 スパークリングワイン付き ¥8,580",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": "スイーツ:ストロベリー パンナコッタ/モンテビアンコ ジャポネーゼ/チョコレートロールケーキ ラズベリージュレ/ストロベリー パネトーネ/ティラミス。セイボリー:自家製サルシッチャとトマトのパニーニ/牛ホホ肉の煮込みとマッシュポテトのタルトレット/ホウレンソウ パンチェッタ リコッタチーズのフリッタータ/ブランダードコロッケ/リンゴとクルミ、ゴルゴンゾーラのブルスケッタ。パンドーロ(ドライフルーツ・プレーン)。コーヒー・紅茶・カフェラテ等",
+          "description": "15:00～17:00（最終入店15:30）2時間制。曜日別の料金差の記載なし。",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "booking_url_info_only": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "country": "イタリア",
+          "cc": "it",
+          "country_source_type": "explicit",
+          "country_input_hash": "66b97e159a2327f2d5402d316f0dd26cf77d8eced9366b5b95b873361ab06404",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "スイーツ:ストロベリー パンナコッタ/モンテビアンコ ジャポネーゼ/チョコレートロールケーキ ラズベリージュレ/ストロベリー パネトーネ/ティラミス",
+              "origin": "menu"
+            },
+            "season": {
+              "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+              "checked_at": "2026-11-08T11:31:55+09:00",
+              "quote": "クリスマス アフタヌーンティー",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "choco",
+            "ichigo"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "country_basis": "公式説明にイタリアのクリスマス菓子パネトーネ・パンドーロ・ティラミス等と明記",
+          "country_decision_hash": "66b97e159a2327f2d5402d316f0dd26cf77d8eced9366b5b95b873361ab06404"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+      "category": "cafe",
+      "category_price_yen": 5280,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-007",
+      "name": "ザ・プリンス パークタワー東京 / 中国料理 陽明殿",
+      "area_no": 3,
+      "area": "新橋・汐留・浜松町",
+      "station": "芝公園エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "ザ・プリンス パークタワー東京公式サイト",
+      "source_url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+      "checked_at": "2026-11-08T11:31:45+09:00",
+      "booking_url_info_only": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "チャイニーズアフタヌーンティー（北海道の旬の味覚）",
+          "price_yen": 7500,
+          "price_note": "税込・別途サービス料15％。会員優待料金は7,000円",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "期間 2026年09月01日～2026年11月30日 1名さま ￥7,500／￥7,000［会員］",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": "前菜:トウモロコシのスープ/サーモンのタルタル/くらげとイクラの和え物。セイボリー:蝦夷鹿バーガー/帆立貝のマリネ/甘海老の生春巻き/海の幸焼売/十勝和牛のきのこ醤炒め ほか。スイーツ:リンゴとチーズの春巻き/杏仁豆腐 ハスカップソース/桂花陳酒ゼリー/白あんとココナッツのマカロン/ブラックタピオカのココナッツミルク。麺類1種選択(麻辣湯ほか)。中国茶12種",
+          "description": "11:30～15:00（最終入店13:00）、2時間制。中国料理ならではのチャイニーズアフタヌーンティー。",
+          "source_url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+          "checked_at": "2026-11-08T11:31:45+09:00",
+          "country": "中国",
+          "cc": "cn",
+          "country_source_type": "explicit",
+          "country_input_hash": "3d230fd29a271aaafec0942a588a6f2bd3def7560d8bb3222430bd031e3477c3",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+              "checked_at": "2026-11-08T11:31:45+09:00",
+              "quote": "スイーツ:リンゴとチーズの春巻き/杏仁豆腐 ハスカップソース/桂花陳酒ゼリー/白あんとココナッツのマカロン/ブラックタピオカのココナッツミルク",
+              "origin": "menu"
+            },
+            "season": {
+              "url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+              "checked_at": "2026-11-08T11:31:45+09:00",
+              "quote": "チャイニーズアフタヌーンティー(北海道の旬の味覚)",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "macaron"
+          ],
+          "season": [
+            "season"
+          ],
+          "country_basis": "公式説明にチャイニーズアフタヌーンティーと中国茶12種と明記",
+          "country_decision_hash": "3d230fd29a271aaafec0942a588a6f2bd3def7560d8bb3222430bd031e3477c3"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+      "category": "hotel",
+      "category_price_yen": 7500,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-008",
+      "name": "品川プリンスホテル / DINING & BAR TABLE 9 TOKYO（メインタワー39F）",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "品川エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "品川プリンスホテル公式サイト",
+      "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "「和」×「洋」を愉しむ 天空の栗拾い モンブランセレクションアフタヌーンティー グランデセール シグネチャー",
+          "price_yen": 7200,
+          "price_note": "税込・別途サービス料13％",
+          "start": "2026-09-16",
+          "end": "2026-11-15",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "グランデセール シグネチャー 1名さま ￥7,200 期間 2026年9月16日～11月15日",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "秋の果実と栗、モンブランの食べ比べ。12:30～17:00（Food L.O.15:00）。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country_input_hash": "bec69eaaafd0b8991bace073b4eb89e5f409cd212c299af24257d80df64c188f",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+              "checked_at": "2026-11-08T11:36:56+09:00",
+              "quote": "「和」×「洋」を愉しむ 天空の栗拾い モンブランセレクションアフタヌーンティー グランデセール シグネチャー",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kuri"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "bec69eaaafd0b8991bace073b4eb89e5f409cd212c299af24257d80df64c188f"
+        },
+        {
+          "plan_name": "「和」×「洋」を愉しむ 天空の栗拾い モンブランセレクションアフタヌーンティー グランデセール ラグジュアリー",
+          "price_yen": 8700,
+          "price_note": "税込・別途サービス料13％",
+          "start": "2026-09-16",
+          "end": "2026-11-15",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "グランデセール ラグジュアリー 1名さま ￥8,700 期間 2026年9月16日～11月15日",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "秋の果実と栗、モンブランの食べ比べ。12:30～17:00（Food L.O.15:00）。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country_input_hash": "4d5204c276bfa971b9d66240a6067f2892115e3b8a6cf82a7786483612217a7b",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+              "checked_at": "2026-11-08T11:36:56+09:00",
+              "quote": "「和」×「洋」を愉しむ 天空の栗拾い モンブランセレクションアフタヌーンティー グランデセール ラグジュアリー",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kuri"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "4d5204c276bfa971b9d66240a6067f2892115e3b8a6cf82a7786483612217a7b"
+        },
+        {
+          "plan_name": "洋梨と綿雪のアフタヌーンティー ～ふわり舞う、冬の世界～ グランデセール シグネチャー",
+          "price_yen": 7200,
+          "price_note": "税込・別途サービス料13％",
+          "start": "2026-11-16",
+          "end": "2027-01-14",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "グランデセール シグネチャー 1名さま ￥7,200 期間 2026年11月16日～2027年1月14日",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "洋梨や綿飴を使う純白テーマ。12:30～17:00（Food L.O.15:00）。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country_input_hash": "6e180612bf858551fe5c2df3d234c06fad2bcb9f329b1f2ba8890fefd6f8a17e",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+              "checked_at": "2026-11-08T11:36:56+09:00",
+              "quote": "洋梨と綿雪のアフタヌーンティー ~ふわり舞う",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kaki"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "6e180612bf858551fe5c2df3d234c06fad2bcb9f329b1f2ba8890fefd6f8a17e"
+        },
+        {
+          "plan_name": "洋梨と綿雪のアフタヌーンティー ～ふわり舞う、冬の世界～ グランデセール ラグジュアリー",
+          "price_yen": 8700,
+          "price_note": "税込・別途サービス料13％",
+          "start": "2026-11-16",
+          "end": "2027-01-14",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "グランデセール ラグジュアリー 1名さま ￥8,700 期間 2026年11月16日～2027年1月14日",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "洋梨や綿飴を使う純白テーマ。12:30～17:00（Food L.O.15:00）。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country_input_hash": "73dc3d227531820283b09e51ca5ab31253298a2f6b8ab24b3f10664256082d58",
+          "country": null,
+          "cc": null,
+          "country_source_type": "unknown",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+              "checked_at": "2026-11-08T11:36:56+09:00",
+              "quote": "洋梨と綿雪のアフタヌーンティー ~ふわり舞う",
+              "origin": "plan_name"
+            }
+          },
+          "sweets": [
+            "kaki"
+          ],
+          "country_basis": "プラン名・メニュー・説明から単一の国を判断できる記載なし",
+          "country_decision_hash": "73dc3d227531820283b09e51ca5ab31253298a2f6b8ab24b3f10664256082d58"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "category": "hotel",
+      "category_price_yen": 7200,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-009",
+      "name": "品川プリンスホテル / 味街道 五十三次（メインタワー38F）",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "品川エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "品川プリンスホテル公式サイト",
+      "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "和のアフタヌーンティー「おこたであったか“餡めぐり”」",
+          "price_yen": 7000,
+          "price_note": "税込・別途サービス料13％。会員6,500円、アップグレード8,500円（会員8,000円）",
+          "start": "2026-11-01",
+          "end": "2027-01-10",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "1名さま：￥7,000／アップグレード ￥8,500 期間 2026年11月1日～2027年1月10日",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "日本あんこ協会監修の和のアフタヌーンティー。除外日12/19～1/5。平日11:30～15:00、土休日11:30～17:00。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country": "日本",
+          "cc": "jp",
+          "country_source_type": "explicit",
+          "country_input_hash": "606037d37198f73c0537ce7806e40f716c1d9fa6102e97e34c6f3b4b8c453690",
+          "structured_evidence": {
+            "sweets": {
+              "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+              "checked_at": "2026-11-08T11:36:56+09:00",
+              "quote": "日本あんこ協会監修の和のアフタヌーンティー",
+              "origin": "description"
+            }
+          },
+          "sweets": [
+            "wa"
+          ],
+          "country_basis": "公式説明に和のアフタヌーンティー・日本あんこ協会監修と明記",
+          "country_decision_hash": "606037d37198f73c0537ce7806e40f716c1d9fa6102e97e34c6f3b4b8c453690"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "category": "hotel",
+      "category_price_yen": 7000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
+    },
+    {
+      "id": "official-010",
+      "name": "品川プリンスホテル / 中国料理 品川大飯店（メインタワー4F）",
+      "area_no": 10,
+      "area": "品川・田町・五反田",
+      "station": "品川エリア（駅は本文から未確認）",
+      "exit": null,
+      "address": null,
+      "source_site": "品川プリンスホテル公式サイト",
+      "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "priority_ids": [],
+      "plans": [
+        {
+          "plan_name": "ちびまる子ちゃん飯店 アフタヌーンティー（ドリンクなし）",
+          "price_yen": 6000,
+          "price_note": "税込・別途サービス料13％。会員料金あり",
+          "start": "2026-10-01",
+          "end": "2026-11-23",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "【ドリンクなし】1名さま ￥6,000／会員さま ￥5,500",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "『ちびまる子ちゃん』原作40周年コラボ第一弾。11:30～16:30、120分制、数量限定。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country": "中国",
+          "cc": "cn",
+          "country_source_type": "explicit",
+          "country_input_hash": "aa69ce968757fb57afc7605b84ba0d402e8bdc602c91b2cb0b2bb5c27554eeca",
+          "sweets": [],
+          "country_basis": "公式説明に中国料理店のチャイニーズ アフタヌーンティーセット・シノワズリと明記",
+          "country_decision_hash": "aa69ce968757fb57afc7605b84ba0d402e8bdc602c91b2cb0b2bb5c27554eeca"
+        },
+        {
+          "plan_name": "ちびまる子ちゃん飯店 アフタヌーンティー（ドリンクあり）",
+          "price_yen": 7000,
+          "price_note": "税込・別途サービス料13％。会員料金あり",
+          "start": "2026-10-01",
+          "end": "2026-11-23",
+          "note": "今回の公式/プレス本文で確認（2026-11-08取得）",
+          "evidence_quote": "【ドリンクあり】1名さま ￥7,000／会員さま ￥6,000",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "description": "『ちびまる子ちゃん』原作40周年コラボ第一弾。11:30～16:30、120分制、数量限定。メニュー詳細は今回未取得。",
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "booking_url_info_only": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "country": "中国",
+          "cc": "cn",
+          "country_source_type": "explicit",
+          "country_input_hash": "7ccbb7c37f77b3457c0a4a911daf380b0da8ad66595de02c7aff6714b460421e",
+          "sweets": [],
+          "country_basis": "公式説明に中国料理店のチャイニーズ アフタヌーンティーセット・シノワズリと明記",
+          "country_decision_hash": "7ccbb7c37f77b3457c0a4a911daf380b0da8ad66595de02c7aff6714b460421e"
+        }
+      ],
+      "facility_type": "hotel",
+      "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "category": "cafe",
+      "category_price_yen": 6000,
+      "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification"
     }
   ],
   "out_of_period_removed": [
