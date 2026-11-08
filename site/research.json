@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T11:45:42+09:00",
+  "generated_at": "2026-11-09T07:19:58+09:00",
   "status": "partial_research",
   "period": {
-    "start": "2026-11-08",
-    "end": "2026-12-18"
+    "start": "2026-11-09",
+    "end": "2026-12-19"
   },
   "note": "2026-11-08更新: 前週(2026-11-07)の一休.com・TableCheck確認分(86店舗)は更新日時を保持したまま掲載。今週は公式サイト(帝国ホテル・ホテルニューオータニ・グランド ハイアット 東京・ザ・プリンス パークタワー東京・品川プリンスホテル)とPR TIMESの公開本文から、13施設相当のプランを追加・補完。Bing・一休・食べログは制限のため再試行せず、新規探索は一部エリア・情報源のみ。未調査範囲はsearch_failures.jsonを参照。",
   "shops": [
@@ -5412,9 +5412,9 @@
     }
   ],
   "collection_summary": {
-    "run": "2026-11-08-official",
+    "run": "2026-11-09-official",
     "comparison_base": "29aaa223d042f65a813eb907816390e1fa374e11",
-    "note": "Offline aggregation of plans actually adopted from Claude cloud public-document research. Menus count plan records, including weekday/weekend variants. HTTP diagnostics are in search_failures.json. Existing unreviewed plans retain their original check dates.",
+    "note": "Offline aggregation of plans actually adopted from Claude cloud public-document research. Menus count plan records, including weekday/weekend variants. HTTP diagnostics are in search_failures.json. Existing unreviewed plans retain their original check dates. 2026-11-09実行: 公式情報源の再取得でプランURLの掲載内容(帝国ホテル2店・パークタワー・ニューオータニ・グランドハイアット等)に価格・期間の変更なしを確認。新規採用なし(confirmed_shops等は前回run集計を継続)。",
     "confirmed_shops": 13,
     "new_shops": 10,
     "added_plans": 23,
