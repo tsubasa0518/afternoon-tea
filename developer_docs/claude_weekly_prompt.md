@@ -32,7 +32,7 @@ reportのattempts・network_events・browser_errorsを使い、情報源ごと�
 
 ## JSON
 
-変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。
+変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。 generated_atは実際の生成時刻にし、将来時刻を決め打ちしません。`collection_summary` に今回実際に本文から採用した店舗数・新規店舗数・追加/更新プラン数・メニュー本文を保存できたプラン数を、情報源ホストごとに集計して保存します。HTTP成功・候補数・以前からの掲載件数とは分け、毎回のrunを明記してください。平日/土日等に分けたメニュー件数はプラン件数であることも明記します。新プランのsource_url/checked_atを記録し、店舗の古い予約サイトの証拠へ付け替えません。
 
 各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address/access、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、曜日・時間、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
 
