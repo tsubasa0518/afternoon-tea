@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-08T09:00:00+09:00",
+  "generated_at": "2026-11-08T12:30:00+09:00",
   "failures": [
     {
       "queue_id": "priority-002",
@@ -3622,186 +3622,2213 @@
     {
       "name": "丸の内・日本橋（エリア探索）",
       "area": "丸の内・日本橋",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [
         "https://restaurant.ikyu.com/s-tokyo/"
       ],
       "status": "unresearched",
       "station": "東京、大手町、二重橋前、日本橋、三越前、京橋",
-      "reason": "対象駅: 東京、大手町、二重橋前、日本橋、三越前、京橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 試した入口: https://restaurant.ikyu.com/s-tokyo/ はランキングページ(200)でエリア別AT一覧が得られず探索に不使用。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 東京、大手町、二重橋前、日本橋、三越前、京橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 試した入口: https://restaurant.ikyu.com/s-tokyo/ はランキングページ(200)でエリア別AT一覧が得られず探索に不使用。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: 丸の内ホテル ポム・ダダンのプレス本文(PR TIMES 2026-10-29付)を読みNoël Rouge 12/1-12/26の2プランを既存店へ追加。パレスホテル東京は本文中の制限文言検知で停止。エリア固有の新規店舗発見は0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "丸の内ホテル ポム・ダダンのプレス本文(PR TIMES 2026-10-29付)を読みNoël Rouge 12/1-12/26の2プランを既存店へ追加。パレスホテル東京は本文中の制限文言検知で停止。エリア固有の新規店舗発見は0。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "銀座・有楽町・日比谷（エリア探索）",
       "area": "銀座・有楽町・日比谷",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "銀座、銀座一丁目、有楽町、日比谷、東銀座",
-      "reason": "対象駅: 銀座、銀座一丁目、有楽町、日比谷、東銀座。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 銀座、銀座一丁目、有楽町、日比谷、東銀座。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: 帝国ホテル公式本文11ページ取得、アクア/ランデブーラウンジの2店3プランを新規追加。他の銀座・日比谷の新規探索は未実施。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 2,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "帝国ホテル公式本文11ページ取得、アクア/ランデブーラウンジの2店3プランを新規追加。他の銀座・日比谷の新規探索は未実施。",
+          "new_shops_found": 2
+        }
+      ]
     },
     {
       "name": "新橋・汐留・浜松町（エリア探索）",
       "area": "新橋・汐留・浜松町",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "新橋、汐留、浜松町、大門、御成門、竹芝、芝公園",
-      "reason": "対象駅: 新橋、汐留、浜松町、大門、御成門、竹芝、芝公園。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 新橋、汐留、浜松町、大門、御成門、竹芝、芝公園。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: パークタワー公式からStellar Gardenの2プラン(既存店)と中国料理 陽明殿(新規1店1プラン)を追加。東京プリンス等は未読。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 1,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "パークタワー公式からStellar Gardenの2プラン(既存店)と中国料理 陽明殿(新規1店1プラン)を追加。東京プリンス等は未読。",
+          "new_shops_found": 1
+        }
+      ]
     },
     {
       "name": "赤坂・永田町・虎ノ門（エリア探索）",
       "area": "赤坂・永田町・虎ノ門",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "赤坂、赤坂見附、永田町、虎ノ門、虎ノ門ヒルズ、溜池山王、国会議事堂前",
-      "reason": "対象駅: 赤坂、赤坂見附、永田町、虎ノ門、虎ノ門ヒルズ、溜池山王、国会議事堂前。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 赤坂、赤坂見附、永田町、虎ノ門、虎ノ門ヒルズ、溜池山王、国会議事堂前。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: ホテルニューオータニ公式本文12ページ取得、ガーデンラウンジ/THE SKY/大観苑の3店3プランを新規追加。キャピトル東急等は未読。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 3,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "ホテルニューオータニ公式本文12ページ取得、ガーデンラウンジ/THE SKY/大観苑の3店3プランを新規追加。キャピトル東急等は未読。",
+          "new_shops_found": 3
+        }
+      ]
     },
     {
       "name": "六本木・麻布・広尾（エリア探索）",
       "area": "六本木・麻布・広尾",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "六本木、六本木一丁目、神谷町、麻布十番、広尾",
-      "reason": "対象駅: 六本木、六本木一丁目、神谷町、麻布十番、広尾。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 六本木、六本木一丁目、神谷町、麻布十番、広尾。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: グランド ハイアット東京フィオレンティーナ(新規1店3プラン)とホテル&レジデンス六本木COCONOMAのプレス本文(既存店へ2プラン)を採用。他は未探索。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 1,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "グランド ハイアット東京フィオレンティーナ(新規1店3プラン)とホテル&レジデンス六本木COCONOMAのプレス本文(既存店へ2プラン)を採用。他は未探索。",
+          "new_shops_found": 1
+        }
+      ]
     },
     {
       "name": "新宿・代々木（エリア探索）",
       "area": "新宿・代々木",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "新宿、新宿三丁目、西新宿、都庁前、南新宿、代々木、西武新宿",
-      "reason": "対象駅: 新宿、新宿三丁目、西新宿、都庁前、南新宿、代々木、西武新宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 新宿、新宿三丁目、西新宿、都庁前、南新宿、代々木、西武新宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: 京王プラザ公式10ページ取得もAT詳細本文は未確認。キンプトン新宿東京の秋ATは提供期間が2026-10-31で対象期間外のため不採用。新規0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "京王プラザ公式10ページ取得もAT詳細本文は未確認。キンプトン新宿東京の秋ATは提供期間が2026-10-31で対象期間外のため不採用。新規0。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "渋谷・代々木公園（エリア探索）",
       "area": "渋谷・代々木公園",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "渋谷、神泉、代々木公園、代々木八幡",
-      "reason": "対象駅: 渋谷、神泉、代々木公園、代々木八幡。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 渋谷、神泉、代々木公園、代々木八幡。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『渋谷アフタヌーンティー』一覧(10ページ)を読んだが、渋谷固有の対象期間内ホテル/カフェ公式案内は未確認。セルリアンタワー東急はrobots 404で停止。新規0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『渋谷アフタヌーンティー』一覧(10ページ)を読んだが、渋谷固有の対象期間内ホテル/カフェ公式案内は未確認。セルリアンタワー東急はrobots 404で停止。新規0。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "青山・表参道・原宿（エリア探索）",
       "area": "青山・表参道・原宿",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "表参道、外苑前、青山一丁目、明治神宮前、原宿",
-      "reason": "対象駅: 表参道、外苑前、青山一丁目、明治神宮前、原宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 表参道、外苑前、青山一丁目、明治神宮前、原宿。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『表参道アフタヌーンティー』一覧を読んだが表参道・原宿の対象期間内の店舗本文なし(多くは京都等の他地域、2022年の過去発表)。ストリングス表参道はrobots取得失敗(プロキシ502)。新規0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『表参道アフタヌーンティー』一覧を読んだが表参道・原宿の対象期間内の店舗本文なし(多くは京都等の他地域、2022年の過去発表)。ストリングス表参道はrobots取得失敗(プロキシ502)。新規0。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "恵比寿・代官山・中目黒（エリア探索）",
       "area": "恵比寿・代官山・中目黒",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "恵比寿、代官山、中目黒",
-      "reason": "対象駅: 恵比寿、代官山、中目黒。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 恵比寿、代官山、中目黒。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『恵比寿』『中目黒』のキーワード一覧がHTTP 404。エリア固有の情報源は未取得。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『恵比寿』『中目黒』のキーワード一覧がHTTP 404。エリア固有の情報源は未取得。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "品川・田町・五反田（エリア探索）",
       "area": "品川・田町・五反田",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "品川、高輪ゲートウェイ、田町、三田、五反田、大崎、白金台",
-      "reason": "対象駅: 品川、高輪ゲートウェイ、田町、三田、五反田、大崎、白金台。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 品川、高輪ゲートウェイ、田町、三田、五反田、大崎、白金台。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: 品川プリンスホテル公式のAT特集(2026-11-08取得)から3店7プランを新規追加。ザ・プリンス さくらタワー東京は6ページ取得もAT本文なし。コンラッド東京はコンラッド大阪発のリリースで東京側の料金・場所を確認できず不採用。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 3,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "品川プリンスホテル公式のAT特集(2026-11-08取得)から3店7プランを新規追加。ザ・プリンス さくらタワー東京は6ページ取得もAT本文なし。コンラッド東京はコンラッド大阪発のリリースで東京側の料金・場所を確認できず不採用。",
+          "new_shops_found": 3
+        }
+      ]
     },
     {
       "name": "上野・浅草・押上（エリア探索）",
       "area": "上野・浅草・押上",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "上野、御徒町、浅草、田原町、押上、とうきょうスカイツリー",
-      "reason": "対象駅: 上野、御徒町、浅草、田原町、押上、とうきょうスカイツリー。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 上野、御徒町、浅草、田原町、押上、とうきょうスカイツリー。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『浅草』一覧と浅草ビューホテル過去発表(2022-2023年)のみ。今年のプランではないため不採用。『上野』一覧はHTTP 404。新規0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『浅草』一覧と浅草ビューホテル過去発表(2022-2023年)のみ。今年のプランではないため不採用。『上野』一覧はHTTP 404。新規0。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "水道橋・御茶ノ水・神田（エリア探索）",
       "area": "水道橋・御茶ノ水・神田",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "水道橋、後楽園、御茶ノ水、神田、淡路町",
-      "reason": "対象駅: 水道橋、後楽園、御茶ノ水、神田、淡路町。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 水道橋、後楽園、御茶ノ水、神田、淡路町。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『御茶ノ水』『神田』キーワード一覧がHTTP 404。未取得。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『御茶ノ水』『神田』キーワード一覧がHTTP 404。未取得。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "飯田橋・神楽坂・四ツ谷（エリア探索）",
       "area": "飯田橋・神楽坂・四ツ谷",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "飯田橋、神楽坂、牛込神楽坂、四ツ谷、市ケ谷、早稲田",
-      "reason": "対象駅: 飯田橋、神楽坂、牛込神楽坂、四ツ谷、市ケ谷、早稲田。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 飯田橋、神楽坂、牛込神楽坂、四ツ谷、市ケ谷、早稲田。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『神楽坂』『飯田橋』一覧がHTTP 404。ホテルメトロポリタン エドモントはrobots 404で停止。未取得。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『神楽坂』『飯田橋』一覧がHTTP 404。ホテルメトロポリタン エドモントはrobots 404で停止。未取得。",
+          "new_shops_found": 0
+        }
+      ]
     },
     {
       "name": "池袋・目白（エリア探索）",
       "area": "池袋・目白",
-      "checked_at": "2026-11-08T09:00:00+09:00",
+      "checked_at": "2026-11-08T12:30:00+09:00",
       "scope": "area",
       "sources": [],
       "status": "unresearched",
       "station": "池袋、目白、東池袋、江戸川橋",
-      "reason": "対象駅: 池袋、目白、東池袋、江戸川橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。",
+      "reason": "対象駅: 池袋、目白、東池袋、江戸川橋。今回は指定リストの各店舗historical_urlを起点に既存店舗の確認を優先。新規店舗探索（予約サイトのエリア一覧・公式ホテル案内・ニュース等）は未実施。 2026-11-08実行: Bing検索はrobots.txt制限、一休.com(restaurant.ikyu.com)・食べログは403/robots制限のため取得不可(回避せず)。公式サイトはパレスホテル東京・帝国ホテルのトップのみ取得可だがAT案内リンクを特定できず。新規店舗探索は未実施で、前週確認済みデータを保持。\n【2026-11-08 最終更新】前回の『今回はトップのみ・新規探索未実施』は過去の実行時点の記録。今週の実績: PR TIMES『池袋』一覧を読んだが、ホテルメトロポリタンの発表は2020-2023年の過去分で不採用。椿山荘は本文中の制限文言検知で停止。新規0。 共通一覧(PR TIMES・ホテル協会等)へのアクセス成功のみではエリア探索完了としない。",
       "retry": true,
       "attempts": [],
-      "new_found": 0
+      "new_found": 0,
+      "history": [
+        {
+          "checked_at": "2026-11-08T12:30:00+09:00",
+          "summary": "PR TIMES『池袋』一覧を読んだが、ホテルメトロポリタンの発表は2020-2023年の過去分で不採用。椿山荘は本文中の制限文言検知で停止。新規0。",
+          "new_shops_found": 0
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] palace",
+      "area": "1",
+      "checked_at": "2026-11-08T02:30:51.282431+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.palacehoteltokyo.com/"
+      ],
+      "status": "access_denied",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 1,
+        "null": 1
+      },
+      "reason": "robots/文書とも取得後、本文中の制限文言検知で当該ホスト停止（HTTP 403ではない）。取得0ページ・試行1件・失敗内訳{'access_challenge_stop_host': 1}。AT本文を含むページ0。",
+      "http_requests": 2,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.palacehoteltokyo.com/",
+          "result": "failed",
+          "error": "access_challenge_stop_host",
+          "checked_at": "2026-11-08T02:30:51.282431+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] imperial",
+      "area": "2",
+      "checked_at": "2026-11-08T02:30:54.436748+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/scene/afternoon-tea",
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous",
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+        "https://www.imperialhotel.co.jp/tokyo/faq/restaurant",
+        "https://www.imperialhotel.co.jp/tokyo/restaurant"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 11
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得11ページ・試行12件・失敗内訳{'redirect_blocked_before_follow': 1}。AT本文を含むページ11。",
+      "http_requests": 13,
+      "pages_fetched": 11,
+      "at_text_pages": 11,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/scene/afternoon-tea",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:30:54.436748+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:36.889130+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:45.075131+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:53.397831+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/faq/restaurant",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:01.613797+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:08.761386+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:16.614419+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/breakfast",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:23.860175+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:31.108964+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/parkside-diner",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:38.071685+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/plan",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:45.965170+00:00"
+        },
+        {
+          "url": "https://www.imperialhotel.co.jp/tokyo/restaurant/private-rooms",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:52.590385+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] parktower",
+      "area": "3",
+      "checked_at": "2026-11-08T02:30:57.255765+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.princehotels.co.jp/parktower/",
+        "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+        "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+        "https://www.princehotels.co.jp/parktower/facility/contents/premium-club-lounge/",
+        "https://www.princehotels.co.jp/parktower/plan/onlyformembers_2025",
+        "https://www.princehotels.co.jp/parktower/plan/withloungeaccess"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 5
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得5ページ・試行12件・失敗内訳{'redirect_blocked_before_follow': 7}。AT本文を含むページ4。",
+      "http_requests": 13,
+      "pages_fetched": 5,
+      "at_text_pages": 4,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.princehotels.co.jp/parktower/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:30:57.255765+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:37.571382+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:45.490044+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/facility/contents/premium-club-lounge/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:54.335869+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/onlyformembers_2025",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:02.361923+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/withloungeaccess",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:09.438931+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/restaurant/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:17.335868+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/lobbylounge/afternoontea_2026.11-12",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:24.747658+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/lobbylounge/lateafternoontea_2026",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:31.564353+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:38.690245+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/aft_202612",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:46.844329+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:53.295898+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] newotani",
+      "area": "4",
+      "checked_at": "2026-11-08T02:30:59.654153+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.newotani.co.jp/tokyo/",
+        "https://www.newotani.co.jp/tokyo/press-release/",
+        "https://www.newotani.co.jp/tokyo/restaurant/",
+        "https://www.newotani.co.jp/tokyo/afternoontea/",
+        "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+        "https://www.newotani.co.jp/tokyo/stay/exe/offers/zen-pierreherme-afternoontea/"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 12
+      },
+      "reason": "robots許可・本文取得。取得12ページ・試行12件・失敗内訳{}。AT本文を含むページ4。",
+      "http_requests": 13,
+      "pages_fetched": 12,
+      "at_text_pages": 4,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.newotani.co.jp/tokyo/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:30:59.654153+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/press-release/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:38.439967+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:46.153601+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:54.814363+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:02.932469+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/stay/exe/offers/zen-pierreherme-afternoontea/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:10.417128+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/auxbacc/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:17.727931+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/bellavista/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:25.187382+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/capri/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:32.021697+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/fumizen/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:39.311334+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/garden-momiji/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:47.196362+00:00"
+        },
+        {
+          "url": "https://www.newotani.co.jp/tokyo/restaurant/garden-seisen/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:53.722829+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] grandhyatt",
+      "area": "5",
+      "checked_at": "2026-11-08T02:31:02.648467+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.tokyo.grand.hyatt.co.jp/",
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/",
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/christmas/",
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+        "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/recommended/fiorentina/afternoon-tea",
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/csr/"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 11
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得11ページ・試行12件・失敗内訳{'redirect_blocked_before_follow': 1}。AT本文を含むページ8。",
+      "http_requests": 13,
+      "pages_fetched": 11,
+      "at_text_pages": 8,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:02.648467+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:39.480563+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/christmas/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:47.586269+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:55.905148+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/recommended/fiorentina/afternoon-tea",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:04.152503+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/csr/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:11.256588+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/sdgs/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:18.714086+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:26.148952+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/csr",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:32.988298+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/en/restaurants/recommended/sdgs",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:40.735240+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:47.977899+00:00"
+        },
+        {
+          "url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/chinaroom-restaurant",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:54.772311+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] keioplaza",
+      "area": "6",
+      "checked_at": "2026-11-08T02:31:05.566530+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.keioplaza.co.jp/",
+        "https://www.keioplaza.co.jp/corporate/news/",
+        "https://www.keioplaza.co.jp/corporate/press/",
+        "https://www.keioplaza.co.jp/corporate/press/awards/",
+        "https://www.keioplaza.co.jp/event/meilleur/",
+        "https://www.keioplaza.co.jp/faq/member/"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 10
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得10ページ・試行11件・失敗内訳{'redirect_blocked_before_follow': 1}。AT本文を含むページ1。",
+      "http_requests": 12,
+      "pages_fetched": 10,
+      "at_text_pages": 1,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.keioplaza.co.jp/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:05.566530+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/corporate/news/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:40.768307+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/corporate/press/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:48.957021+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/corporate/press/awards/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:57.249346+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/event/meilleur/",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:05.374875+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/faq/member/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:12.467199+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/faq/restaurant/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:19.899623+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/member/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:27.408005+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/member/tc/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:34.316742+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/news/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:41.982780+00:00"
+        },
+        {
+          "url": "https://www.keioplaza.co.jp/news/44954/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:48.711963+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] cerulean",
+      "area": "7",
+      "checked_at": "2026-11-08T02:31:09.431998+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.tokyuhotels.co.jp/cerulean-h/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": 404,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP 404）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.tokyuhotels.co.jp/cerulean-h/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:09.431998+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] strings",
+      "area": "8",
+      "checked_at": "2026-11-08T02:31:10.505948+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.strings-hotel.jp/omotesando/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": null,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP None）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.strings-hotel.jp/omotesando/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:10.505948+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] westin",
+      "area": "9",
+      "checked_at": "2026-11-08T02:31:10.791989+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.marriott.com/ja/hotels/tyowi-the-westin-tokyo/overview/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": 403,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP 403）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.marriott.com/ja/hotels/tyowi-the-westin-tokyo/overview/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:10.791989+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] marriott",
+      "area": "10",
+      "checked_at": "2026-11-08T02:31:11.146047+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.tokyo-marriott.com/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": null,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP None）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.tokyo-marriott.com/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:11.146047+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] asakusa",
+      "area": "11",
+      "checked_at": "2026-11-08T02:31:21.661561+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.viewhotels.co.jp/asakusa/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": 404,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP 404）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.viewhotels.co.jp/asakusa/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:21.661561+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] tokyodome",
+      "area": "12",
+      "checked_at": "2026-11-08T02:31:22.985529+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.tokyodome-hotels.co.jp/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": 404,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP 404）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.tokyodome-hotels.co.jp/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:22.985529+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] edmont",
+      "area": "13",
+      "checked_at": "2026-11-08T02:31:24.353777+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://edmont.metropolitan.jp/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": 404,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP 404）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://edmont.metropolitan.jp/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:24.353777+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] chinzanso",
+      "area": "14",
+      "checked_at": "2026-11-08T02:31:25.506763+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://hotel-chinzanso-tokyo.jp/"
+      ],
+      "status": "access_denied",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 1,
+        "null": 1
+      },
+      "reason": "robots/文書とも取得後、本文中の制限文言検知で当該ホスト停止（HTTP 403ではない）。取得0ページ・試行1件・失敗内訳{'access_challenge_stop_host': 1}。AT本文を含むページ0。",
+      "http_requests": 2,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://hotel-chinzanso-tokyo.jp/",
+          "result": "failed",
+          "error": "access_challenge_stop_host",
+          "checked_at": "2026-11-08T02:31:25.506763+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] hotel-association",
+      "area": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+      "checked_at": "2026-11-08T02:31:29.616295+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.tokyohotel.or.jp/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": null,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP None）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.tokyohotel.or.jp/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:29.616295+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] tokyo-tourism",
+      "area": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+      "checked_at": "2026-11-08T02:31:29.728807+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://www.gotokyo.org/jp/"
+      ],
+      "status": "site_restriction",
+      "robots_http_status": null,
+      "document_http_statuses": {},
+      "reason": "robots.txt取得失敗/不明のため保守的に取得せず（robots HTTP None）。取得0ページ・試行1件・失敗内訳{'robots_unknown_or_disallowed': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://www.gotokyo.org/jp/",
+          "result": "failed",
+          "error": "robots_unknown_or_disallowed",
+          "checked_at": "2026-11-08T02:31:29.728807+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] press-releases",
+      "area": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+      "checked_at": "2026-11-08T02:31:32.320512+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://prtimes.jp/",
+        "https://prtimes.jp/main/html/rd/p/000000235.000016218.html",
+        "https://prtimes.jp/main/html/rd/p/000000262.000035671.html",
+        "https://prtimes.jp/main/registcorp/form",
+        "https://prtimes.jp/pressrelease-evangelist/",
+        "https://prtimes.jp/service"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 20
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得9ページ・試行11件・失敗内訳{'redirect_blocked_before_follow': 2}。AT本文を含むページ0。",
+      "http_requests": 12,
+      "pages_fetched": 9,
+      "at_text_pages": 0,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:32.320512+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000235.000016218.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:42.344169+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000262.000035671.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:50.837680+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/registcorp/form",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:59.087438+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/pressrelease-evangelist/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:06.218861+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/service",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:14.072554+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/user_info",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:21.423633+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/index/pagenum/1",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:32:28.675929+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001132.000000112.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:35.557918+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001229.000000112.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:43.418521+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001316.000000112.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:50.057549+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[official-validation] press-afternoon-tea",
+      "area": "1,2,3,4,5,6,7,8,9,10,11,12,13,14",
+      "checked_at": "2026-11-08T02:31:34.968472+00:00",
+      "scope": "source",
+      "run_id": "official-validation",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000051.000117222.html",
+        "https://prtimes.jp/main/html/rd/p/000000102.000112370.html",
+        "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+        "https://prtimes.jp/main/html/rd/p/000000551.000024670.html",
+        "https://prtimes.jp/main/html/rd/p/000002513.000033064.html"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 20
+      },
+      "reason": "robots許可・本文取得。取得11ページ・試行11件・失敗内訳{}。AT本文を含むページ11。",
+      "http_requests": 11,
+      "pages_fetched": 11,
+      "at_text_pages": 11,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:34.968472+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000051.000117222.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:42.718073+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000102.000112370.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:51.247294+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:31:59.890090+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000551.000024670.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:06.637091+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000002513.000033064.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:14.403345+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000002527.000016682.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:21.784514+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000004129.000024668.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:29.028529+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000004130.000024668.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:36.434205+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:43.929715+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E5%A4%A7%E9%98%AA%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:32:50.554654+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-渋谷",
+      "area": "7",
+      "checked_at": "2026-11-08T02:36:16.379169+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E6%B8%8B%E8%B0%B7%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000001884.000011498.html",
+        "https://prtimes.jp/topics/keywords/%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/topics/keywords/%E7%A7%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000051.000117222.html",
+        "https://prtimes.jp/main/html/rd/p/000000102.000112370.html"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "robots許可・本文取得。取得10ページ・試行10件・失敗内訳{}。AT本文を含むページ10。",
+      "http_requests": 11,
+      "pages_fetched": 10,
+      "at_text_pages": 10,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E6%B8%8B%E8%B0%B7%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:16.379169+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001884.000011498.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:47.322139+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:01.307477+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E7%A7%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:08.336715+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000051.000117222.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:17.557429+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000102.000112370.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:26.566626+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000152.000071974.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:37.491646+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:48.493949+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000551.000024670.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:57.544934+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001202.000004975.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:08.879841+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-表参道",
+      "area": "8",
+      "checked_at": "2026-11-08T02:36:18.897259+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E8%A1%A8%E5%8F%82%E9%81%93%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000416.000053012.html",
+        "https://prtimes.jp/topics/keywords/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000088.000070995.html",
+        "https://prtimes.jp/main/html/rd/p/000000088.000087710.html",
+        "https://prtimes.jp/main/html/rd/p/000000134.000120366.html"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "robots許可・本文取得。取得9ページ・試行9件・失敗内訳{}。AT本文を含むページ9。",
+      "http_requests": 9,
+      "pages_fetched": 9,
+      "at_text_pages": 9,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E8%A1%A8%E5%8F%82%E9%81%93%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:18.897259+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000416.000053012.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:47.833328+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:08.999661+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000088.000070995.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:17.841813+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000088.000087710.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:26.821124+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000134.000120366.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:38.035218+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000208.000077419.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:49.538821+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001450.000039557.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:57.917028+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000001907.000006521.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:09.383347+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-原宿",
+      "area": "8",
+      "checked_at": "2026-11-08T02:36:20.912658+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E5%8E%9F%E5%AE%BF%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E5%8E%9F%E5%AE%BF%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:20.912658+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-恵比寿",
+      "area": "9",
+      "checked_at": "2026-11-08T02:36:22.856769+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E6%81%B5%E6%AF%94%E5%AF%BF%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E6%81%B5%E6%AF%94%E5%AF%BF%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:22.856769+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-中目黒",
+      "area": "9",
+      "checked_at": "2026-11-08T02:36:24.822116+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E4%B8%AD%E7%9B%AE%E9%BB%92%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E4%B8%AD%E7%9B%AE%E9%BB%92%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:24.822116+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-品川",
+      "area": "10",
+      "checked_at": "2026-11-08T02:36:26.847809+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E5%93%81%E5%B7%9D%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000297.000014957.html",
+        "https://prtimes.jp/topics/keywords/%E3%83%95%E3%82%A7%E3%82%B9%E3%83%86%E3%82%A3%E3%83%96%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/topics/keywords/%E5%86%AC%E9%99%90%E5%AE%9A%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000070.000070995.html",
+        "https://prtimes.jp/main/html/rd/p/000000212.000024123.html"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "robots許可・本文取得。取得7ページ・試行7件・失敗内訳{}。AT本文を含むページ7。",
+      "http_requests": 7,
+      "pages_fetched": 7,
+      "at_text_pages": 7,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E5%93%81%E5%B7%9D%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:26.847809+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000297.000014957.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:49.831801+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%83%95%E3%82%A7%E3%82%B9%E3%83%86%E3%82%A3%E3%83%96%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:20.084775+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E5%86%AC%E9%99%90%E5%AE%9A%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:29.046779+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000070.000070995.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:40.035808+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000212.000024123.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:51.018262+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000003997.000024668.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:00.017061+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-上野",
+      "area": "11",
+      "checked_at": "2026-11-08T02:36:29.008196+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E4%B8%8A%E9%87%8E%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:29.008196+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-浅草",
+      "area": "11",
+      "checked_at": "2026-11-08T02:36:30.837685+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E6%B5%85%E8%8D%89%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000111.000013939.html",
+        "https://prtimes.jp/main/html/rd/p/000000116.000013939.html",
+        "https://prtimes.jp/main/html/rd/p/000000121.000013939.html",
+        "https://prtimes.jp/main/html/rd/p/000000139.000013939.html",
+        "https://prtimes.jp/topics/keywords/%E3%81%8A%E6%AD%A3%E6%9C%88%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "robots許可・本文取得。取得8ページ・試行8件・失敗内訳{}。AT本文を含むページ8。",
+      "http_requests": 8,
+      "pages_fetched": 8,
+      "at_text_pages": 8,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E6%B5%85%E8%8D%89%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:30.837685+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000111.000013939.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:52.182125+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000116.000013939.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:01.784787+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000121.000013939.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:10.870596+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000139.000013939.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:22.067631+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%81%8A%E6%AD%A3%E6%9C%88%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:31.248756+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%81%94%E8%A4%92%E7%BE%8E%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:41.999729+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E3%83%8F%E3%83%AD%E3%82%A6%E3%82%A3%E3%83%B3%20%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:02.013527+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-御茶ノ水",
+      "area": "12",
+      "checked_at": "2026-11-08T02:36:32.868718+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E5%BE%A1%E8%8C%B6%E3%83%8E%E6%B0%B4%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E5%BE%A1%E8%8C%B6%E3%83%8E%E6%B0%B4%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:32.868718+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-神田",
+      "area": "12",
+      "checked_at": "2026-11-08T02:36:34.832115+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E7%A5%9E%E7%94%B0%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E7%A5%9E%E7%94%B0%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:34.832115+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-神楽坂",
+      "area": "13",
+      "checked_at": "2026-11-08T02:36:36.802255+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E7%A5%9E%E6%A5%BD%E5%9D%82%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E7%A5%9E%E6%A5%BD%E5%9D%82%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:36.802255+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-飯田橋",
+      "area": "13",
+      "checked_at": "2026-11-08T02:36:38.808836+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E9%A3%AF%E7%94%B0%E6%A9%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC"
+      ],
+      "status": "no_results",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "キーワード一覧ページがHTTP 404。取得0ページ・試行1件・失敗内訳{'HTTP_404': 1}。AT本文を含むページ0。",
+      "http_requests": 1,
+      "pages_fetched": 0,
+      "at_text_pages": 0,
+      "retry": true,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E9%A3%AF%E7%94%B0%E6%A9%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "failed",
+          "error": "HTTP_404",
+          "checked_at": "2026-11-08T02:36:38.808836+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] pr-池袋",
+      "area": "14",
+      "checked_at": "2026-11-08T02:36:40.844186+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://prtimes.jp/topics/keywords/%E6%B1%A0%E8%A2%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+        "https://prtimes.jp/main/html/rd/p/000000258.000030117.html",
+        "https://prtimes.jp/main/html/rd/p/000000386.000030117.html",
+        "https://prtimes.jp/main/html/rd/p/000000903.000030117.html",
+        "https://prtimes.jp/",
+        "https://prtimes.jp/main/html/searchrlp/company_id/30117"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 42,
+        "404": 8
+      },
+      "reason": "robots許可・本文取得。取得8ページ・試行8件・失敗内訳{}。AT本文を含むページ4。",
+      "http_requests": 8,
+      "pages_fetched": 8,
+      "at_text_pages": 4,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://prtimes.jp/topics/keywords/%E6%B1%A0%E8%A2%8B%E3%82%A2%E3%83%95%E3%82%BF%E3%83%8C%E3%83%BC%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BC",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:40.844186+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000258.000030117.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:53.830367+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000386.000030117.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:03.818060+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/rd/p/000000903.000030117.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:12.814631+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:33.046646+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/html/searchrlp/company_id/30117",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:44.177746+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/main/registcorp/form",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:52.999095+00:00"
+        },
+        {
+          "url": "https://prtimes.jp/user_info",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:04.046824+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] sakuratower",
+      "area": "10",
+      "checked_at": "2026-11-08T02:36:42.889897+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://www.princehotels.co.jp/sakuratower/",
+        "https://www.princehotels.co.jp/sakuratower/informations/notice-service-charge-rate",
+        "https://www.princehotels.co.jp/sakuratower/plan/hotelcredit2023_6000",
+        "https://www.princehotels.co.jp/sakuratower/plan/hotelcredit2024_10000",
+        "https://www.princehotels.co.jp/sakuratower/restaurant/",
+        "https://www.princehotels.co.jp/sakuratower/restaurant/room_service/"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 10
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得6ページ・試行9件・失敗内訳{'redirect_blocked_before_follow': 3}。AT本文を含むページ0。",
+      "http_requests": 10,
+      "pages_fetched": 6,
+      "at_text_pages": 0,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:42.889897+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/informations/notice-service-charge-rate",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:36:55.890865+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/plan/hotelcredit2023_6000",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:05.812140+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/plan/hotelcredit2024_10000",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:14.841204+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/restaurant/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:24.233291+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/restaurant/room_service/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:35.182187+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/room/lounge.html",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:45.923904+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/plan/Campaign/exclusive-menu-for-hotel-residents/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:54.897927+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/sakuratower/plan/room_service/Christmas-2026-dinner/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:05.776852+00:00"
+        }
+      ]
+    },
+    {
+      "name": "[additional-research] shinagawaprince",
+      "area": "10",
+      "checked_at": "2026-11-08T02:36:45.331689+00:00",
+      "scope": "source",
+      "run_id": "additional-research",
+      "sources": [
+        "https://www.princehotels.co.jp/shinagawa/",
+        "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+        "https://www.princehotels.co.jp/shinagawa/plan/53/afternoontea_2026_anmeguri",
+        "https://www.princehotels.co.jp/shinagawa/experience/",
+        "https://www.princehotels.co.jp/shinagawa/informations/20230324",
+        "https://www.princehotels.co.jp/shinagawa/informations/20230619"
+      ],
+      "status": "confirmed",
+      "robots_http_status": 200,
+      "document_http_statuses": {
+        "200": 10
+      },
+      "reason": "一部ページ取得。一部はredirect_blocked_before_follow等で停止（リダイレクト先は未取得）。取得4ページ・試行9件・失敗内訳{'redirect_blocked_before_follow': 5}。AT本文を含むページ4。",
+      "http_requests": 9,
+      "pages_fetched": 4,
+      "at_text_pages": 4,
+      "retry": false,
+      "attempts": [
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:45.331689+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:36:56.210677+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/plan/53/afternoontea_2026_anmeguri",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:06.598325+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/experience/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:37:15.361127+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/informations/20230324",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:24.707375+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/informations/20230619",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:35.453331+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/informations/info20231217",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:46.252033+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/plan/east_hapuna",
+          "result": "failed",
+          "error": "redirect_blocked_before_follow",
+          "checked_at": "2026-11-08T02:37:55.197858+00:00"
+        },
+        {
+          "url": "https://www.princehotels.co.jp/shinagawa/plan/special/chibimarukochan2026/",
+          "result": "fetched",
+          "error": null,
+          "checked_at": "2026-11-08T02:38:08.285791+00:00"
+        }
+      ]
+    },
+    {
+      "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+      "area": "銀座・有楽町・日比谷",
+      "checked_at": "2026-11-08T11:27:12+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+      "verified_at": "2026-11-08T11:27:12+09:00",
+      "evidence_quote": "平日 9,400円、土・日・祝日 9,800円"
+    },
+    {
+      "name": "帝国ホテル 東京 / ランデブーラウンジ（本館1階）",
+      "area": "銀座・有楽町・日比谷",
+      "checked_at": "2026-11-08T11:26:48+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+      "verified_at": "2026-11-08T11:26:48+09:00",
+      "evidence_quote": "11:30～17:00（ラストオーダー） 6,900円"
+    },
+    {
+      "name": "ホテルニューオータニ（東京） / ガーデンラウンジ",
+      "area": "赤坂・永田町・虎ノ門",
+      "checked_at": "2026-11-08T11:31:54+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.newotani.co.jp/tokyo/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "verified_at": "2026-11-08T11:31:54+09:00",
+      "evidence_quote": "新アフタヌーンティーセット～栗とぶどう～ 期間 2026年9月1日（火）～11月30日（月） 料金 ¥8,200"
+    },
+    {
+      "name": "ホテルニューオータニ（東京） / VIEW & DINING THE SKY",
+      "area": "赤坂・永田町・虎ノ門",
+      "checked_at": "2026-11-08T11:32:02+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+      "verified_at": "2026-11-08T11:32:02+09:00",
+      "evidence_quote": "スーパーアフタヌーンティー～マロン～ ¥11,000 税金共・サービス料別"
+    },
+    {
+      "name": "ホテルニューオータニ（東京） / 大観苑",
+      "area": "赤坂・永田町・虎ノ門",
+      "checked_at": "2026-11-08T11:31:54+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.newotani.co.jp/tokyo/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+      "verified_at": "2026-11-08T11:31:54+09:00",
+      "evidence_quote": "大観苑 アフタヌーンティーセット【土・日・祝日限定】 期間 2026年11月29日（日）まで 1名さま ¥7,700"
+    },
+    {
+      "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
+      "area": "六本木・麻布・広尾",
+      "checked_at": "2026-11-08T11:31:55+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+      "verified_at": "2026-11-08T11:31:55+09:00",
+      "evidence_quote": "オータム アフタヌーンティー 平日 ¥5,280 / 土日祝 ¥6,600"
+    },
+    {
+      "name": "ザ・プリンス パークタワー東京 / 中国料理 陽明殿",
+      "area": "新橋・汐留・浜松町",
+      "checked_at": "2026-11-08T11:31:45+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+      "verified_at": "2026-11-08T11:31:45+09:00",
+      "evidence_quote": "期間 2026年09月01日～2026年11月30日 1名さま ￥7,500／￥7,000［会員］"
+    },
+    {
+      "name": "品川プリンスホテル / DINING & BAR TABLE 9 TOKYO（メインタワー39F）",
+      "area": "品川・田町・五反田",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "verified_at": "2026-11-08T11:36:56+09:00",
+      "evidence_quote": "グランデセール シグネチャー 1名さま ￥7,200 期間 2026年9月16日～11月15日"
+    },
+    {
+      "name": "品川プリンスホテル / 味街道 五十三次（メインタワー38F）",
+      "area": "品川・田町・五反田",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "verified_at": "2026-11-08T11:36:56+09:00",
+      "evidence_quote": "1名さま：￥7,000／アップグレード ￥8,500 期間 2026年11月1日～2027年1月10日"
+    },
+    {
+      "name": "品川プリンスホテル / 中国料理 品川大飯店（メインタワー4F）",
+      "area": "品川・田町・五反田",
+      "checked_at": "2026-11-08T11:36:56+09:00",
+      "scope": "shop",
+      "status": "confirmed",
+      "sources": [
+        "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
+      ],
+      "reason": "2026-11-08の公式サイト本文を読み、プラン名・料金・期間・メニューを採用。新規掲載（既存86店との名称照合で重複なし）。",
+      "retry": false,
+      "new_found": 1,
+      "evidence_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+      "verified_at": "2026-11-08T11:36:56+09:00",
+      "evidence_quote": "【ドリンクなし】1名さま ￥6,000／会員さま ￥5,500"
+    },
+    {
+      "name": "2026-11-08 公式情報源の採用実績集計(Claude本文読解)",
+      "area": "全14エリア",
+      "scope": "run_summary",
+      "checked_at": "2026-11-08T12:30:00+09:00",
+      "status": "confirmed",
+      "sources": [],
+      "retry": false,
+      "reason": "CLI report.jsonのverified_*は自動認定しない設計で0。Claudeが本文を読んで採用: 本文を読んだ施設13（新規掲載10＋既存3へ補完）、追加プラン23、うち新規掲載10店は17プラン。メニュー本文ありの新規プランは8件。元86店との名称照合で純増10店(重複0)。公式本文取得: validation 100リクエスト/69ページ(7情報源)、追加調査 70リクエスト/52ページ(5情報源)。リダイレクト先は未取得(redirect_blocked_before_follow)で、安全修正PR #41前の実行分。Bing・一休・食べログは再試行せず。",
+      "adopted": {
+        "venues_read": 13,
+        "new_shops": 10,
+        "new_plans_total": 23,
+        "menus_in_new_shops": 8
+      }
     }
   ]
 }
