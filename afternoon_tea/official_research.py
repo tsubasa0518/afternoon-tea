@@ -108,11 +108,12 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
     # Round robin: every area/source gets a chance before one large site can
     # consume the budget. Within each source AT anchors outrank navigation.
     queues, seen = [], set()
+    forbidden_stop = False
     for source in sources:
         check_url(source['url'], public_hosts=browser.transport.public_hosts)
         report['sources'].append(dict(source, fetched_pages=0, at_text_pages=0))
         queues.append([(0, source['url'], 0, None)])
-    while any(queues) and clock() < deadline and browser.count < browser.max_requests:
+    while not forbidden_stop and any(queues) and clock() < deadline and browser.count < browser.max_requests:
         for i, queue in enumerate(queues):
             if not queue or clock() >= deadline or browser.count >= browser.max_requests:
                 continue
@@ -146,10 +147,15 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
                 else:
                     source.setdefault('unvisited_links', []).extend(u for r, u, label in found if u not in seen)
                 attempt['status'] = 'fetched'
+            except ForbiddenOperation as error:
+                attempt.update(status="forbidden", error=str(error))
+                forbidden_stop = True
             except (RuntimeError, ValueError, OSError) as error:
                 attempt.update(status='failed', error=str(error))
             attempt['http_requests'] = browser.count - before
             report['attempts'].append(attempt)
+            if forbidden_stop:
+                break
             host = urlsplit(url).hostname
             if host in browser.blocked_hosts or (host in browser.robots and browser.robots[host] is None):
                 queue.clear()
@@ -166,7 +172,8 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
             'remaining': 'Read area/station-specific evidence; source access alone is not completed area exploration.'})
     report.update(finished_at=dt.datetime.now(dt.timezone.utc).isoformat(), http_requests=browser.count,
                   browser_errors=browser.errors, network_events=getattr(browser, 'network_events', []),
-                  stop_reason='budget_or_deadline' if any(queues) else 'queue_finished')
+                  communication_audit=browser.communication_audit.snapshot(),
+                  stop_reason='forbidden_operation' if forbidden_stop else 'budget_or_deadline' if any(queues) else 'queue_finished')
     (directory / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return report
 
@@ -181,11 +188,16 @@ def main():
     sources = json.loads(args.sources.read_text(encoding='utf-8'))['sources']
     areas = json.loads((ROOT / 'data/store_master.json').read_text(encoding='utf-8'))['areas']
     hosts = {urlsplit(s['url']).hostname for s in sources}
+    from .communication_audit import CommunicationAudit
+    import uuid
+    audit = CommunicationAudit(uuid.uuid4().hex, args.output / ('audit-' + uuid.uuid4().hex + '.jsonl'))
     report = collect(sources, areas, args.output,
-                     Browser(public_hosts=hosts, max_requests=args.max_requests), args.seconds)
+                     Browser(public_hosts=hosts, max_requests=args.max_requests, audit=audit), args.seconds)
     print(json.dumps({'report': str(args.output / 'report.json'), 'pages': len(report['pages']),
                       'requests': report['http_requests'], 'verified_plans': 0,
                       'stop_reason': report['stop_reason']}, ensure_ascii=False))
+    if report['stop_reason'] == 'forbidden_operation':
+        raise SystemExit(2)
 
 
 if __name__ == '__main__':

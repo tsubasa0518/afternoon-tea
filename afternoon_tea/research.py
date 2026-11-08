@@ -104,8 +104,10 @@ class Browser:
 
     def _rate_limit(self, host):
         elapsed = time.monotonic() - self.last_request.get(host, 0)
-        if elapsed < self.delay:
-            time.sleep(self.delay - elapsed)
+        robots = self.robots.get(host)
+        delay = max(self.delay, (robots.crawl_delay(USER_AGENT) or robots.crawl_delay("*") or 0) if robots else 0)
+        if elapsed < delay:
+            time.sleep(delay - elapsed)
         self.last_request[host] = time.monotonic()
 
     def _open(self, url):
