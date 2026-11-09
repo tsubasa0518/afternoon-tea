@@ -34,7 +34,7 @@ reportのattempts・network_events・browser_errorsを使い、情報源ごと�
 
 変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。 generated_atは実際の生成時刻にし、将来時刻を決め打ちしません。`collection_summary` に今回実際に本文から採用した店舗数・新規店舗数・追加/更新プラン数・メニュー本文を保存できたプラン数を、情報源ホストごとに集計して保存します。HTTP成功・候補数・以前からの掲載件数とは分け、毎回のrunを明記してください。平日/土日等に分けたメニュー件数はプラン件数であることも明記します。新プランのsource_url/checked_atを記録し、店舗の古い予約サイトの証拠へ付け替えません。
 
-各店舗にid、name、hotel_name（該当時）、area_no（1〜15。15は所在地確認済みで既存14エリアに該当しない店舗。所在地不明とは区別）、area、station、address、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
+各店舗にid、name、hotel_name（該当時）、area_no（調査対象は既存1〜14。15番は調査対象外。所在地不明は範囲外と判定しない）、area、station、address、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
 
 `price_yen` は1人あたり通常価格です。明記された必須サービス料の率が確認できれば、税込表示額＋必須サービス料の総額を比較用price_yenにし、元の表示額・率をlisted_price_yen/mandatory_service_charge_percentとprice_noteに残します。未知の税率・サービス料率・端数処理を推定しません。説明文で確認した時間・平日/土日祝情報はdescriptionだけに置かず、time_noteと対応する曜日フィールドにも保存します。調査状況・取得日時の技術的な補足は表示用noteではなくnotes.status等の内部記録に保存します。割引価格はdiscount_price_yenに分離し、通常価格が分からなければprice_yen:nullとします。割引率から逆算しません。通常価格が複数ある場合はプランを分け、最安通常価格が分かるようにします。
 
@@ -107,8 +107,8 @@ python3 -m afternoon_tea.list_research を実行する。取得ページはClaud
 
 毎回.staging/list-research/checkpoint.jsonをsite/search_failures.jsonのresearch_campaignへ取り込み、同じdraft PRに保存する。取得したHTML自体はコミットしない。v2のdocumentsへ検査済みの本文テキスト・取得時刻・ハッシュ・通信監査を保存し、短いreviewed_sourcesを紐付ける。公開資料の転載条件を尊重し、本文を保存できなければ確認済みにしない。週次変更は従来の3ファイルのみ。
 
-所在地を確認したリスト内の立川・自由が丘等は15「その他のエリア」へ分類する。都外や所在地不明まで自動で15へ入れない。既存14エリアの探索範囲は維持し、第15エリアでは今回の候補地域を基点に探索して範囲を記録する。
+2026-11-10のユーザー変更により調査対象は既存14エリアのみ。15「その他のエリア」は優先リストのプラン調査・リスト外探索から外す。原本385行は保持し、取得済みの店舗所在地の根拠から14エリア外と確認できた候補は理由・短い根拠付きexcludedとする。リスト記載の駅名だけで除外せず、所在地不明は未確認として残す。範囲外店舗のプラン追加調査はしない。既存HTMLの表示枠・デザインや過去の掲載情報をこの変更だけで削除しない。
 
-開始日以降かつ直近14日以内の、取得本文・監査に紐付く根拠付きreviewed/excludedが全385行に揃い、既存14エリアの全対象駅と15番の探索根拠が揃ったときだけphase:complete、publication_ready:trueにできる。制限・中断・情報不足を記録しただけでは公開不可。Pythonのcampaign_gateがintakeとprepareの双方で検証する。料金・期間などの個別項目のnullや新規発見0件だけでは失敗にしない。
+開始日以降かつ直近14日以内の、取得本文・監査に紐付く根拠付きreviewed/excludedが全385行に揃い、既存14エリアの全対象駅の探索根拠が揃ったときだけphase:complete、publication_ready:trueにできる。制限・中断・情報不足を記録しただけでは公開不可。Pythonのcampaign_gateがintakeとprepareの双方で検証する。料金・期間などの個別項目のnullや新規発見0件だけでは失敗にしない。
 
 複数日・複数週のv2 campaign、entities、documents、未取得queue、audit_segments、駅別station_evidence、公開プランのresearch_entity_id/research_evidenceの形式はlist_first_research.mdを参照する。旧v1の確認済みをv2へ無検証で昇格しない。未完了campaignは週をまたいで継続する。
