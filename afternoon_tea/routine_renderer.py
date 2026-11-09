@@ -5,6 +5,7 @@ import datetime as dt
 import html
 import json
 import os
+import re
 from pathlib import Path
 from string import Template
 import tempfile
@@ -116,6 +117,19 @@ def plan_html(plan,shop,index,total,generated):
     return ''.join(out)
 
 
+def nearest_stations(shop):
+    """Extract explicit station names from saved shop-specific access text."""
+    names=[]
+    for value in (shop.get('station'), shop.get('exit'), shop.get('access')):
+        if not isinstance(value, str):
+            continue
+        for match in re.finditer(r'[一-龥々ぁ-んァ-ヶーA-Za-z0-9]+駅', value):
+            name=match.group()
+            if name not in names:
+                names.append(name)
+    return '／'.join(names) if names else None
+
+
 def card(shop,plans,generated):
     cat=category(shop);label,cls=CLASSES[cat]
     shop_sw=[t for t in tags(shop.get('sweets'))+tags(shop.get('season')) if t in EVENTS]
@@ -127,9 +141,8 @@ def card(shop,plans,generated):
     if shop.get('hotel_name'):out.append('<p class="shop">'+esc(shop['hotel_name'])+'</p>')
     out.append('</header></div>')
     out.append(f'<p class="rnote">{esc(label)}</p>')
-    out.append(f'<p class="loc">{SVG_LOC}{esc(shop.get("station"))}</p>')
     if shop.get('address'):out.append('<p class="rnote">'+esc(shop['address'])+'</p>')
-    out.append('<div class="meet"><p><span class="mk">駅の出口・徒歩</span>'+esc(shop.get('exit',shop.get('access')))+'</p></div>')
+    out.append('<div class="meet"><p><span class="mk">最寄駅</span>'+esc(nearest_stations(shop))+'</p></div>')
     url=shop.get('booking_url_info_only') or shop.get('source_url')
     if url:
         out.append('<div class="links" aria-label="予約・情報サイト">'+info_link(url)+'</div>')
