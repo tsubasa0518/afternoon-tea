@@ -260,3 +260,31 @@ class CampaignTests(unittest.TestCase):
             self.assertNotIn('person@example.test',(Path(a)/'checkpoint.json').read_text())
             next_browser=FakeBrowser();run(saved,b,next_browser,limit=1)
             self.assertFalse(next_browser.visited)
+
+    def test_transient_connection_failure_does_not_disable_campaign(self):
+        state=initialize({});first=state['rows'][0]['original']['予約ページURL']
+        class TransientBrowser(FakeBrowser):
+            def fetch(self,url):
+                if url==first:
+                    self.count+=1;self.visited.append(url)
+                    request=self.communication_audit.begin(url,'GET')
+                    self.communication_audit.finish(request,'http_failed',reason='URLError')
+                    raise OSError('temporary connection failure')
+                return super().fetch(url)
+        with tempfile.TemporaryDirectory() as a,tempfile.TemporaryDirectory() as b:
+            browser=TransientBrowser();run(state,a,browser,limit=2)
+            self.assertEqual(state['rows'][0]['status'],'needs_collection')
+            self.assertEqual(state['rows'][1]['status'],'awaiting_review')
+            self.assertNotEqual(state.get('stop_reason'),'evidence_or_storage_error')
+            restored=json.loads((Path(a)/'checkpoint.json').read_text())
+            retry=FakeBrowser();run(restored,b,retry,limit=1)
+            self.assertEqual(retry.visited,[first]);self.assertEqual(restored['rows'][0]['status'],'awaiting_review')
+    def test_linking_reviewed_entities_keeps_their_original_evidence_valid(self):
+        state=completed_campaign();a=state['rows'][0]['entity_id'];b=state['rows'][1]['entity_id']
+        journal=CommunicationAudit('reviewed-identity')
+        proofs=[acquired(state,journal,subject,'https://example.org/reviewed-identity/'+str(i),'TEST SAME LOUNGE 東京1-2-3') for i,subject in enumerate([a,b])]
+        for proof in proofs:proof.update(verified_name='TEST SAME LOUNGE',verified_address='東京1-2-3')
+        old_proof=copy.deepcopy(state['rows'][1]['reviewed_sources'])
+        link_identity(state,1,2,proofs)
+        self.assertEqual(state['rows'][1]['reviewed_sources'],old_proof)
+        publication_gate({'period':{'start':'2026-11-09'}},{'research_campaign':state})

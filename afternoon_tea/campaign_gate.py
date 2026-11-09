@@ -29,12 +29,14 @@ def publication_gate(research,failures):
         if snapshot.get('run_id')!=key:raise ValueError('research_audit_id_mismatch')
         audited.update(validate_audit(snapshot))
     if 'communication_audit' in campaign:validate_audit(campaign['communication_audit'])
-    def proofs(record,subject):
+    def proofs(record,subject,aliases=()):
         sources=record.get('reviewed_sources')
         if not isinstance(sources,list) or not sources:raise ValueError('evidence_source_missing')
         texts=[]
         for source in sources:
-            text=source_document(campaign,source,subject,audited)
+            actual=campaign.get('documents',{}).get(source.get('document_id'),{}).get('subject_id')
+            if actual not in (subject,*aliases):raise ValueError('evidence_subject_or_url_mismatch')
+            text=source_document(campaign,source,actual,audited)
             stamp=dt.datetime.fromisoformat(source['checked_at'])
             if stamp.tzinfo is None:raise ValueError('evidence_timezone_missing')
             day=stamp.astimezone(JST).date()
@@ -63,14 +65,16 @@ def publication_gate(research,failures):
             raise ValueError('identity_link_unsupported')
         if owner.get('collection_alias'):raise ValueError('identity_alias_chain_forbidden')
         return target
+    resolved={entity:canonical(entity) for entity in entities}
+    def aliases_for(subject):return tuple(entity for entity,owner in resolved.items() if owner==subject)
     for record,original in zip(records,rows):
         if record.get('original')!=original:raise ValueError('campaign_original_changed')
         if record.get('status') not in {'reviewed','excluded'}:raise ValueError('campaign_list_research_incomplete')
         stable=venue_key(original['予約ページURL']) or 'url:'+hashlib.sha256(original['予約ページURL'].encode()).hexdigest()
         if record.get('entity_id')!=stable:raise ValueError('campaign_row_identity_mismatch')
-        subject=canonical(record['entity_id'])
+        subject=resolved[record['entity_id']]
         if entities[subject]['queue']:raise ValueError('campaign_documents_pending')
-        proofs(record,subject)
+        proofs(record,subject,aliases_for(subject))
     coverage=campaign.get('discovery',[])
     expected={a['no']:set(a['stations']) for a in load_master()['areas']};expected[15]=set()
     if len(coverage)!=15 or {a.get('area_no') for a in coverage}!=set(expected):raise ValueError('campaign_discovery_incomplete')
@@ -100,7 +104,7 @@ def publication_gate(research,failures):
         subject=canonical(shop['research_entity_id'])
         for plan in shop.get('plans',[]):
             sources=plan.get('research_evidence',[])
-            source_texts=proofs({'reviewed_sources':sources},subject)
+            source_texts=proofs({'reviewed_sources':sources},subject,aliases_for(subject))
             if not any(s['url']==plan.get('source_url') and s['checked_at']==plan.get('checked_at') for s in sources):raise ValueError('plan_provenance_mismatch')
             for field in ('plan_name','price_yen','start','end','menu'):
                 if plan.get(field) is not None and not any(field in s.get('verified_fields',{}) and s['verified_fields'][field]==plan[field] and fact_supported(field,plan[field],s['basis']) for s,text in zip(sources,source_texts)):

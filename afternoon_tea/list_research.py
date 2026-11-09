@@ -187,7 +187,17 @@ def run(campaign,directory,browser=None,limit=385,seconds=600,clock=time.monoton
             if url in entity['seen']:entity['queue'].pop(0);continue
             try:
                 check_url(url,public_hosts=browser.transport.public_hosts)
-                raw=browser.fetch(url)
+                try:
+                    raw=browser.fetch(url)
+                except OSError as error:
+                    if browser.communication_audit.failed:raise
+                    # Leave this URL pending for the next run; continue other venues.
+                    for member in members:
+                        member.update(status='needs_collection',reason='transient_transport_error')
+                        member['attempts'].append({'url':url,'reason':type(error).__name__,
+                                                   'checked_at':dt.datetime.now(dt.timezone.utc).isoformat()})
+                    save()
+                    break
                 page,found,_,_=links(raw,url,browser.transport.public_hosts,task['prefix'])
                 text='\n'.join(page.parts)
                 key=archive_acquired_text(campaign,browser.communication_audit,subject,url,text,
