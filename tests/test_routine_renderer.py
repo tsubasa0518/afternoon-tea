@@ -172,6 +172,9 @@ class RoutineRendererTests(unittest.TestCase):
                             'data-x="pk"','料金確認済','値段確認済','イベント・季節で絞り込み']:
                 self.assertNotIn(removed,result)
             self.assertIn('日程条件',result)
+            self.assertIn('data-x="wd" aria-pressed="false">平日</button>',result)
+            self.assertIn('data-x="we" aria-pressed="false">土日祝</button>',result)
+            self.assertNotIn('平日に行ける',result);self.assertNotIn('土日祝に行ける',result)
             self.assertIn('aria-expanded="false" aria-controls="area-links">詳細</button>',result)
             links=re.search(r'<div class="btns" id="area-links" hidden>(.*?)</div>',result,re.S).group(1)
             self.assertEqual(len(re.findall(r'href="#a\d+"',links)),14)
@@ -186,7 +189,7 @@ class RoutineRendererTests(unittest.TestCase):
         result=r.render(fixture(),FAILURES);js=re.search(r'<script>(.*?)</script>',result,re.S).group(1)
         harness=r'''
 const vm=require('vm'),fs=require('fs'),code=JSON.parse(fs.readFileSync(0,'utf8'));
-function node(dataset={}){const n={dataset,hidden:false,value:'',textContent:'',attrs:{},events:{},classes:new Set(),getAttribute(k){return this.attrs[k]},setAttribute(k,v){this.attrs[k]=v},addEventListener(k,f){this.events[k]=f}};n.classList={toggle(k,v){v?n.classes.add(k):n.classes.delete(k)},add(k){n.classes.add(k)}};return n}
+function node(dataset={}){const n={dataset,hidden:false,value:'',textContent:'',attrs:{},events:{},classes:new Set(),getAttribute(k){return this.attrs[k]},setAttribute(k,v){this.attrs[k]=String(v)},addEventListener(k,f){this.events[k]=f}};n.classList={toggle(k,v){v?n.classes.add(k):n.classes.delete(k)},add(k){n.classes.add(k)}};return n}
 function plan(name,price,sw,wd='0',we='0'){return node({price,sw,wd,we})}
 function card(cat,name,sw,plans){const c=node({cat,sw});c.plans=plans;c.querySelectorAll=()=>plans;return c}
 const a=card('hotel','Hotel A','scone',[plan('冬','7000','scone ichigo','1'),plan('夏','11000','choco','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','parfait','0','1')]);const cards=[a,b];
@@ -228,6 +231,20 @@ input('price-filter','high');assert(visible()===1&&!a.plans[1].hidden,'price AND
 click('x','wd');assert(visible()===0&&!ids['no-results'].hidden,'weekday AND price');
 ids['reset-filters'].events.click();assertReset('manual reset');
 click('x','we');assert(visible()===2&&a.plans[0].hidden,'weekend');
+click('x','wd');assert(visible()===3,'weekday OR weekend includes either day');
+click('sw','scone');assert(visible()===1&&!a.plans[0].hidden,'day OR AND sweets');
+click('sw','choco');assert(visible()===2,'both OR groups combine');
+input('price-filter','high');assert(visible()===1&&!a.plans[1].hidden,'day OR AND price');
+ids['reset-filters'].events.click();
+const dayUnknown=plan('日程未確認','7000','scone'),bothDays=plan('毎日','7000','scone','1','1');
+a.plans.push(dayUnknown,bothDays);ids['reset-filters'].events.click();
+assert(visible()===5,'no day selection includes unconfirmed');
+click('x','wd');assert(visible()===2&&!bothDays.hidden&&dayUnknown.hidden,'weekday and daily plans');
+click('x','we');assert(visible()===4&&!bothDays.hidden&&dayUnknown.hidden,'OR overlap counted once and unknown excluded');
+click('x','wd');assert(visible()===3&&a.plans[0].hidden,'turning weekday off leaves weekend');
+click('x','we');assert(visible()===5&&!dayUnknown.hidden,'turning both off restores all');
+a.plans.splice(-2);ids['reset-filters'].events.click();
+
 ids['reset-filters'].events.click();input('price-filter','unknown');assert(visible()===1&&!b.plans[0].hidden,'unknown price retained');
 ids['reset-filters'].events.click();click('cat','hotel');assert(a.classes.has('hide')&&visible()===1,'category');
 ids['reset-filters'].events.click();click('sw','melon');assert(visible()===0,'zero sweet');click('sw','scone');assert(visible()===1,'OR zero sweet');
