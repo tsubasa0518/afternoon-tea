@@ -1,4 +1,4 @@
-"""Resume eligible PR intake after technical CI; never execute PR code."""
+"""Resume existing PR after technical CI; intake also enforces current-run completion."""
 import json, os
 from pathlib import Path
 from .routine_site import API, REPO, BRANCH_PREFIX, intake, write_summary

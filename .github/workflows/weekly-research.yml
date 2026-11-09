@@ -1,27 +1,13 @@
-name: Weekly read-only research and quality report
+name: Manual read-only legacy diagnostic
 on:
   workflow_dispatch:
-    inputs:
-      dry_run:
-        description: Run without committing research state
-        required: true
-        default: true
-        type: boolean
-      persist_state:
-        description: Allow research_data commit (requires dry_run=false)
-        required: true
-        default: false
-        type: boolean
-  schedule:
-    - cron: '17 22 * * 0'
-concurrency:
-  group: weekly-research
-  cancel-in-progress: false
 permissions:
   contents: read
+concurrency:
+  group: legacy-manual-diagnostic
+  cancel-in-progress: false
 jobs:
-  research:
-    if: github.event_name == 'workflow_dispatch' || vars.WEEKLY_RESEARCH_ENABLED == 'true'
+  diagnostic:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -35,61 +21,16 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -v
           python3 -c 'from afternoon_tea.pipeline import protected_files; protected_files()'
-        continue-on-error: false
-      - name: Run bounded anonymous research
-        run: python3 -m afternoon_tea.weekly
+      - name: Run dry diagnostic in isolated staging state
+        run: python3 -m afternoon_tea.weekly --state-dir .staging/legacy-diagnostic-state
         env:
           PYTHONUNBUFFERED: '1'
-      - name: Save research artifacts
+      - name: Save diagnostic artifacts only
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: research-${{ github.run_id }}
-          path: |
-            .staging/weekly-*/
-            .staging/queue-*/
-            .staging/validated-*/
-            research_data/state.json
-            research_data/runs/**
-            research_data/evidence/**
+          name: legacy-diagnostic-${{ github.run_id }}
+          path: .staging/
           include-hidden-files: true
           retention-days: 30
           if-no-files-found: warn
-  persist:
-    needs: research
-    if: always() && needs.research.result == 'success' && ((github.event_name == 'workflow_dispatch' && inputs.dry_run == false && inputs.persist_state == true) || (github.event_name == 'schedule' && vars.WEEKLY_RESEARCH_ENABLED == 'true'))
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: true
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-      - uses: actions/download-artifact@v7
-        with:
-          name: research-${{ github.run_id }}
-          path: .weekly-artifact
-      - name: Restore only allowed research data
-        run: |
-          if [ -d .weekly-artifact/research_data ]; then cp -R .weekly-artifact/research_data/. research_data/; fi
-      - name: Allowlist and inspect research data
-        run: |
-          git status --short
-          git add research_data/state.json research_data/runs research_data/evidence
-          if git diff --cached --name-only | grep -Ev '^research_data/(state\.json|runs/|evidence/)' ; then exit 1; fi
-          if git diff --cached --quiet; then echo 'changed=false' >> "$GITHUB_OUTPUT"; else echo 'changed=true' >> "$GITHUB_OUTPUT"; fi
-        id: changes
-      - name: Reject secret-like material
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          if git diff --cached -- . | grep -Ei '(cookie|authorization:|gh[pousr]_[A-Za-z0-9_]{20,}|BEGIN (RSA |EC )?PRIVATE KEY|password=)' ; then exit 1; fi
-      - name: Commit research state only
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git commit -m "Update weekly research state [skip ci]"
-          git push origin HEAD:main

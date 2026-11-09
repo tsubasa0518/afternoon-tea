@@ -15,10 +15,26 @@ def files(n=0, failures=0):
 
 class FakeAPI:
     def __init__(self):
-        self.pr={'state':'open','draft':False,'title':'[weekly-site] mock','changed_files':1,'user':{'login':'tsubasa0518'},'base':{'ref':'main','repo':{'full_name':r.REPO}},'head':{'repo':{'full_name':r.REPO},'ref':'claude/weekly-afternoon-tea-20261107','sha':'a'*40},'merged':False}
+        self.pr={'state':'open','draft':False,'title':'[weekly-site] mock','changed_files':1,'user':{'login':'tsubasa0518'},'number':1,'node_id':'TEST_PR_NODE','base':{'sha':'b'*40,'ref':'main','repo':{'full_name':r.REPO}},'head':{'repo':{'full_name':r.REPO},'ref':'claude/weekly-afternoon-tea-20261109','sha':'a'*40},'merged':False}
         self.changed=[{'filename':'site/index.html','status':'modified'}]
-        self.content=files(2,76);self.calls=[];self.denied=False;self.comments=[];self.runs=[]
+        from tests.weekly_completion_fixture import fixture,files as completed_files
+        self.data,self.failures,self.master,self.baseline=fixture()
+        self.content=completed_files(self.data,self.failures);self.calls=[];self.denied=False;self.comments=[];self.runs=[]
+    def read(self,commit,path):
+        if path=='data/store_master.json':return r.json_bytes(self.master)
+        if commit=='a'*40:return self.content[path]
+        if path=='site/research.json':return r.json_bytes(self.baseline)
+        return r.json_bytes({'schema_version':1,'failures':[]})
     def get(self,path):
+        if path.startswith('/git/ref/heads/routine-lock/'):
+            return {'object':{'sha':'c'*40}}
+        if path=='/git/commits/'+'c'*40:
+            return {'message':json.dumps({'week_key':'2026-11-09','run_id':'test_run_20261109','state':'submitted',
+                     'base_commit':'b'*40,'branch':'claude/weekly-afternoon-tea-20261109','pr':self.pr['number'],
+                     'head_sha':'a'*40,'files_sha256':{p:r.sha(v) for p,v in self.content.items()}})}
+        if path.startswith('/git/commits/'):
+            return {'parents':[{'sha':'b'*40}],'tree':{'sha':'d'*40}}
+        if path.startswith('/pulls?state=all'):return [copy.deepcopy(self.pr)]
         if '/comments?' in path:return copy.deepcopy(self.comments)
         if '/test-data.yml/runs?' in path:return {'workflow_runs':[{'id':1,'head_sha':self.pr['head']['sha'],'event':'pull_request','status':'completed','conclusion':'success'}]}
         if '/runs?' in path:return {'workflow_runs':copy.deepcopy(self.runs)}
@@ -35,11 +51,11 @@ class FakeAPI:
         return None
 
 class RoutineSiteTests(unittest.TestCase):
-    def test_two_shops_and_76_unresolved_are_publishable(self):
+    def test_technical_structure_is_separate_from_completion(self):
         result=r.validate_site(files(2,76));self.assertEqual(result['shops'],2);self.assertEqual(result['search_failures'],76)
     def test_zero_shops_normal_explanation_is_valid(self):
         f=files();f['site/index.html']=HTML.replace(b'Information unavailable','今週確認できた情報はありません'.encode());r.validate_site(f)
-    def test_unknown_prices_and_incomplete_coverage_do_not_block(self):r.validate_site(files(2))
+    def test_unknown_prices_do_not_break_technical_validation(self):r.validate_site(files(2))
     def test_empty_or_broken_html_rejected(self):
         for html in (b'',b'<html><body>oops',b'<html><head><title>x</title></head><body></div></html>', b'<html><head><title>x</title></head><body></body></html>', b'<html></html><head><title>x</title></head><body>x</body>'):
             with self.assertRaises(ValueError):r.validate_html_bytes(html)
@@ -92,7 +108,7 @@ class RoutineSiteTests(unittest.TestCase):
         api=FakeAPI();original=api.get;counter=[]
         def get(path):
             p=original(path)
-            if '/files?' not in path:
+            if path=='/pulls/1':
                 counter.append(1)
                 if len(counter)>1:p['head']['sha']='b'*40
             return p
@@ -111,7 +127,7 @@ class RoutineSiteTests(unittest.TestCase):
             root=Path(tmp)
             for path,value in files(2).items():
                 (root/path).parent.mkdir(exist_ok=True);(root/path).write_bytes(value)
-            with patch.object(r,'ROOT',root),patch.object(r.urllib.request,'build_opener') as network:report=r.prepare()
+            with patch.object(r,'ROOT',root),patch.dict('os.environ',{'SOURCE_COMMIT':'a'*40}),patch.object(r,'publication_gate',return_value={'research_completion':'passed'}),patch.object(r.urllib.request,'build_opener') as network:report=r.prepare()
             network.assert_not_called()
             self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),HTML)
             self.assertEqual(report['sha256'],r.sha(HTML));self.assertFalse((root/'docs').exists())
@@ -124,7 +140,7 @@ class RoutineSiteTests(unittest.TestCase):
                 content['site/index.html']=HTML.replace(b'<p>Information unavailable</p>',body.encode())
                 for path,value in content.items():
                     (root/path).parent.mkdir(exist_ok=True);(root/path).write_bytes(value)
-                with patch.object(r,'ROOT',root):report=r.prepare()
+                with patch.object(r,'ROOT',root),patch.dict('os.environ',{'SOURCE_COMMIT':'a'*40}),patch.object(r,'publication_gate',return_value={'research_completion':'passed'}):report=r.prepare()
                 self.assertEqual(report['shops'],count);self.assertEqual(report['search_failures'],76)
                 self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),content['site/index.html'])
             self.assertIn('今週確認できた情報はありません',(root/'.staging/routine-delivery/site/index.html').read_text())
@@ -132,9 +148,10 @@ class RoutineSiteTests(unittest.TestCase):
         api=FakeAPI();api.pr['head']['ref']='claude/other-task'
         with self.assertRaisesRegex(ValueError,'pr_not_a_trusted_routine'):r.intake(api,1,'tsubasa0518')
         self.assertFalse(api.calls)
-    def test_weekly_retry_branch_is_valid(self):
-        api=FakeAPI();api.pr['head']['ref']='claude/weekly-afternoon-tea-20261107-retry'
-        r.intake(api,1,'tsubasa0518');self.assertEqual(len(api.calls),3)
+    def test_suffix_cannot_bypass_coordinator(self):
+        api=FakeAPI();api.pr['head']['ref']='claude/weekly-afternoon-tea-20261109-r2'
+        with self.assertRaisesRegex(ValueError,'coordinator_pr_mismatch'):r.intake(api,1,'tsubasa0518')
+        self.assertFalse(api.calls)
     def test_escaped_json_credentials_rejected(self):
         value=b'{"schema_version":1,"shops":[],"note":"gh\\u0070_'+b'a'*36+b'"}'
         with self.assertRaises(ValueError):r.validate_json(value)

@@ -199,20 +199,20 @@ class EnrichmentTests(unittest.TestCase):
 
 class DispatchIdempotenceTests(unittest.TestCase):
     def test_open_then_edited_same_head_dispatches_exactly_once(self):
-        api=FakeAPI();intake(api,26,'tsubasa0518');result=intake(api,26,'tsubasa0518')
+        api=FakeAPI();api.pr["number"]=26;intake(api,26,'tsubasa0518');result=intake(api,26,'tsubasa0518')
         self.assertEqual(result['dispatch'],'already_requested')
         self.assertEqual(sum('/dispatches' in p for _,p,_ in api.calls),1)
         self.assertEqual(sum(m=='PUT' for m,_,_ in api.calls),1)
     def test_untrusted_comment_cannot_spoof_a_bot_receipt(self):
-        api=FakeAPI();api.comments=[{'user':{'login':'intruder'},'body':'<!-- weekly-site-dispatch:'+'a'*40+' -->\nfake'}]
+        api=FakeAPI();api.pr["number"]=26;api.comments=[{'user':{'login':'intruder'},'body':'<!-- weekly-site-dispatch:'+'a'*40+' -->\nfake'}]
         self.assertEqual(intake(api,26,'tsubasa0518')['dispatch'],'requested')
     def test_existing_workflow_run_recovers_after_receipt_save_failure(self):
-        api=FakeAPI();api.pr.update(merged=True,state='closed',merge_commit_sha='c'*40)
+        api=FakeAPI();api.pr["number"]=26;api.pr.update(merged=True,state='closed',merge_commit_sha='c'*40)
         api.runs=[{'head_sha':'c'*40,'event':'workflow_dispatch'}]
         self.assertEqual(intake(api,26,'tsubasa0518')['dispatch'],'already_requested')
         self.assertFalse(api.calls)
     def test_failed_dispatch_does_not_create_success_receipt_and_is_retryable(self):
-        api=FakeAPI();original=api.call
+        api=FakeAPI();api.pr["number"]=26;original=api.call
         def fail(method,path,body):
             if path.endswith('/dispatches'):raise HTTPError('https://api.github.com',503,'TEST ONLY',{},None)
             return original(method,path,body)

@@ -1,4 +1,4 @@
-"""Offline, pre-PR date review for Claude. Not an automatic publication gate."""
+"""Offline, pre-PR date review for Claude. Technical dates remain separate from the run-scoped research completion gate."""
 import argparse
 import datetime as dt
 import json

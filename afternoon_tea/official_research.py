@@ -137,6 +137,7 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
                 source['at_text_pages'] += bool(AT.search(text))
                 report['pages'].append({'url': url, 'source_id': source['id'], 'checked_at': attempt['checked_at'],
                                         'title': ' '.join(page.title), 'text_file': filename, 'sha256': digest,
+                                        'document_event_sha256': getattr(browser,'last_document',{}).get('sha256'),
                                         'has_at_text': bool(AT.search(text)),
                                         'warning': 'AT text can be navigation, not plan confirmation.'})
                 report['external_candidates'].extend(dict(c, found_on=url, source_id=source['id']) for c in candidates)
@@ -180,6 +181,7 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--run-state', type=Path, help='Weekly owner checkpoint; required by the Routine')
     parser.add_argument('--sources', type=Path, default=ROOT / 'data/official_sources.json')
     parser.add_argument('--output', type=Path, default=ROOT / '.staging/official-research')
     parser.add_argument('--seconds', type=float, default=1200)
@@ -190,7 +192,13 @@ def main():
     hosts = {urlsplit(s['url']).hostname for s in sources}
     from .communication_audit import CommunicationAudit
     import uuid
-    audit = CommunicationAudit(uuid.uuid4().hex, args.output / ('audit-' + uuid.uuid4().hex + '.jsonl'))
+    run_id=uuid.uuid4().hex
+    if args.run_state:
+        from .weekly_run import owned
+        from .routine_site import API
+        state=json.loads(args.run_state.read_text())
+        owned(API(),state);run_id=state['run_id']
+    audit = CommunicationAudit(run_id, args.output / ('audit-' + uuid.uuid4().hex + '.jsonl'))
     report = collect(sources, areas, args.output,
                      Browser(public_hosts=hosts, max_requests=args.max_requests, audit=audit), args.seconds)
     print(json.dumps({'report': str(args.output / 'report.json'), 'pages': len(report['pages']),

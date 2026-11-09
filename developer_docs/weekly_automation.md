@@ -1,49 +1,88 @@
-# 毎週の自動更新
+# 唯一の週次起動と公開条件（2026-11-09改訂）
 
-毎週月曜日07:17 JSTに、既存のClaude Code Routineがクラウド環境 `afternoon-tea-weekly` で `tsubasa0518/afternoon-tea` の最新mainを取得します。起動指示は毎回 `AGENTS.md` と `developer_docs/claude_weekly_prompt.md` の最新版を読みます。既存Routineを使い、Codexの定期実行や追加のAPIキーは作りません。
+定期の調査・JSON更新・固定HTML生成・週次PR作成は、既存Claude Routine
+`trig_01GKrMV2hRzd756Pu3sPnjVf`（東京アフタヌーンティー毎週更新）だけです。
+環境は`afternoon-tea-weekly`、repoは`tsubasa0518/afternoon-tea`、
+毎週月曜日07:17 Asia/Tokyo。登録指示は最新mainのAGENTS.md、CLAUDE.md、
+週次指示書を読むよう更新済みです。保守PRがmain未反映なら起動を中断します。
+Codexは依頼された保守を担当します。新しい定期タスクは作成しません。
 
-2026-11-07にRoutine画面で、有効・対象リポジトリ・実行環境・毎週月曜日07:17 JST・次回11月9日07:17・最新版指示書優先を確認しました。既存の登録指示やスケジュールの変更は不要でした。
+## 起動経路の監査
 
-## 毎週の流れ
+PR #45の署名だけで実行元を判断していません。2026-11-09にRoutine画面と
+セッション履歴を照合し、上記Routine IDの11月9日07:17「予定済み」実行が
+`session_01C7FU3d6mig3GSxABe3yJnn`を起動し、PR #45を作ったことを確認しました。
+PR作成は2026-11-09 07:20:17 JST、マージは07:21:09 JSTです。
+従って「PR #45を作成したCodex側の週次処理」という呼称が指すこの実行はClaudeです。
+独立したCodex定期タスクが存在しないことまでは証明していません。
 
-1. 14エリア・対象駅を読み、JST実行日から40日後までを対象に公開情報を調査します。既存リストは参考で、店舗数の上限はありません。既存店の確認と新店舗の探索を行い、同一店舗の複数プランを保存します。
-2. `site/research.json` に店舗・各プランの情報、通常価格、出典、確認日時、短い根拠抜粋を保存します。未知はnullです。AT提供を確認できれば期間未確認でも掲載できます。
-3. `site/search_failures.json` に未確認・制限・未調査と、全14エリアの実際の探索範囲を保存します。取得失敗をAT提供なしと扱いません。
-4. 次を順に実行します。
+Codexの設定確認用`/Users/tsubasa/.codex/automations`は存在せず、Codexアプリ画面の
+操作は利用制限により拒否されました。独立したCodex設定のID・名前・実行履歴は未確認、
+停止実績もありません。利用者がCodexのAutomations/定期実行一覧で対象repoまたは
+Claude Routineを起動する設定を探し、該当設定をPauseし、ID・指示・時刻・履歴を記録する
+必要があります。確認できたIDはautomation_updateでPAUSEDへ変更できます。
+未確認を「存在しない」「停止済み」と報告しません。
 
-```sh
-python3 -m afternoon_tea.routine_enrichment
-python3 -m afternoon_tea.weekly_review
-python3 -m afternoon_tea.routine_renderer generate
-python3 -m afternoon_tea.routine_site validate
-```
+旧Actionsのweekly-research.ymlにはscheduleを置きません。手動診断しか持たず、
+書き込み権限・状態commit・PR・公開はありません。WEEKLY_RESEARCH_ENABLEDを
+変更しても復活しません。11月9日の旧schedule run 42547140145はskippedでした。
 
-5. `site/` 内の上記JSON2ファイルと `index.html` だけを `claude/weekly-afternoon-tea-YYYYMMDD` へコミット・pushし、mainへ `[weekly-site] YYYY-MM-DD 自動更新` の非ドラフトPRを作成します。
-6. GitHub Actionsが技術CI成功後に自動マージし、既存の `deploy.yml` を明示起動します。
-7. Pages公開後、HTTP 200とHTMLのSHA-256一致を検証します。公開記録はActionsのSummaryとArtifactに残ります。
+## 同じ週の一つの実行・一つのPR
 
-## 分類とデザイン
+`python3 -m afternoon_tea.weekly_run start`を調査前に実行します。
+week_keyはJSTの月曜日YYYY-MM-DD。新規branchは
+`claude/weekly-afternoon-tea-YYYYMMDD`（月曜日の日付）です。
+全状態の同週PR・既存branch・稼働lease・旧診断稼働を照合します。
+旧-r2 PRも実データのperiodから対象週を照合し、同名問題で追加PRを作りません。
 
-通常価格が確認できる場合は施設の種類に関係なく価格で分類します。対象期間内の確認済みプランの最安通常価格で、cafe（6,000円以下）/ hotel（6,001〜9,999円）/ lux（10,000円以上）、通常価格不明の場合のみ、確認済み施設情報からホテル内はhotel、それ以外はcafeとし、施設情報も不明ならunknownです。料金は未確認のまま保持します。割引価格は別フィールドにし、割引率から通常価格を逆算しません。
+GitHubの`routine-lock/<week_key>`制御refが外部Routine間の排他とcheckpointです。
+最初のref作成は原子的、更新は現在lock commitを親にしたfast-forwardのみです。
+並行ownerの兄弟commitは失敗します。leaseは2時間、owner/run_id/開始時刻/branch/
+PR/head/3ファイルSHA/状態をcommit messageに記録します。秘密情報は保存しません。
+Actions concurrencyだけに依存せず、更新直前にownerとleaseを再確認します。
+失敗・競合時はforce pushせず停止します。
 
-JSON補完とHTML生成で同じ価格分類処理を使います。生成器は対象期間外のプランを除き、残ったプランから分類を計算するため、古いcategoryが残っても画面へ流用しません。価格不明を0円と扱いません。確認日時は補完・再分類では更新しません。
+pauseや期限切れは`start --week YYYY-MM-DD --resume`で同じrunのdraftを復元します。
+作業は2時間以内にcheckpoint保存し、長い調査はpauseして同じ週で再開します。
+submitは既存PRを更新、未完了はdraft、完成時もdraft作成→checkpoint保存→readyの順です。
+同head/baseのPRに対するGitHubの一意性と422後の既存PR再確認も利用します。
+公開済みは変更なしで終了。マージ済みで公開失敗なら既存PR・コミットに対して
+recover-publicationを使います。公開後の追加訂正は明示依頼の保守PRです。
+GitHubへの変更は既存GH_TOKENか認証済みghを使用し、利用不能なら停止します。
+この認証の次回Claude実環境での利用可能性は本保守のオフライン検証では未確認です。
 
-固定テンプレートを使い、毎週デザインを書き直しません。14エリア、3価格分類と分類未確認、スイーツ15項目・イベント季節5項目、曜日、店舗名・テーマ・料金の検索、複数プラン、出典と確認日時、スマートフォン対応を維持します。プランごとに情報URLを保存すれば、個別リンクも出力します。公式サイトを含むHTTPS公開情報URLに対応します。
+## 技術検証と調査完了
 
-## 公開条件と権限
+JSON/HTMLの構造・個人情報・予約禁止・保護対象・固定デザインの技術検証を維持します。
+別のresearch_completion検証は、信頼するmainのマスターと前週掲載店から作業を展開します。
+14エリアの各対象駅にexistingとdiscovery、前週掲載店ごとのexistingが必要です。
+今回runと週に属するURL・取得日時・文書SHA・実抜粋・対象駅/店舗との対応・確認結果を
+要求し、共通一覧や前週実績、complete=trueだけでは通りません。
 
-`auto-merge-weekly.yml` は、同一リポジトリ・許可作成者・ブランチ接頭辞・タイトル接頭辞・3ファイル限定を検証します。PRをcheckoutせず、信頼するmainのプログラムでデータを読みます。技術CIの成功を確認し、検証したhead SHAを指定してsquash mergeします。GITHUB_TOKENによるマージ後も公開が起動するよう、workflow_dispatchを明示的に呼びます。
+必須未着手・安全に確認不能・中断・禁止操作の記録があれば公開不可です。
+一つの情報源の403を別の独立した許可情報源で補えた場合は、失敗記録を残したうえで
+必要範囲の読取証拠を紐付けます。禁止操作による即時停止を解除して続行しません。
+新規発見0や、調査した結果の料金/期間nullは許可します。
+今週の実績はverified_plans参照から再計算し、前週総掲載数と分けます。
 
-許可作成者はRepository variable `CLAUDE_ROUTINE_AUTHOR`、未設定なら `tsubasa0518` です。取り込みジョブだけがcontents/pull-requests/actionsの書き込み権限、公開ジョブだけがPages公開権限を持ちます。週次実行でワークフロー・認証・Python・保護ファイルを変更しません。
+routine_site intakeはPR codeをcheckoutせず、main側コードでPRの3ファイルと
+GitHub checkpointを検証します。同一repo・許可作成者・branch/title・draft除外・
+最新headの技術CI・head再確認・期待SHA指定mergeを維持し、完了条件を追加します。
+merged後の明示dispatchと既存要求の重複防止も維持します。
 
-店舗数・未調査数・調査完了率は公開停止条件にしません。0店舗でも説明付きの正常HTMLを公開します。JSON破損・不正HTML・秘密情報・想定外ファイル変更は停止し、前回サイトを維持します。生成器は検証後にHTMLを一時ファイルから置き換え、失敗時には既存HTMLを維持します。
+## 公開と保守
 
-匿名の安全な公開GETのみを利用します。予約・仮予約・日時人数選択・フォーム送信・問い合わせ・ログイン・決済・アクセス制限の回避は禁止です。Pythonの既存HTTP層はrobots・要求間隔・サイズ上限・認証禁止・リダイレクト禁止を適用します。公式の公開情報源は `Browser(public_hosts=["正確なホスト名"])` で実行ごとに明示できます。既知サービスのURL規則は緩和せず、拒否されたサイトの別名を使いません。
+deployはpush/dispatch/再実行とも実際のgithub.shaをcheckoutし、公開前に同じgateを
+適用します。JSON/HTML/checkpointのSHAと固定生成器の出力が一致しなければartifactを
+アップロードしません。失敗時は現在の公開サイトを維持し、過去へ巻き戻しません。
+保守でHTMLを再生成する場合は、必須調査完了と公開成功の両方が確認できるmain祖先とJSON2ファイルが
+完全一致する場合のみ過去の検証済み掲載を再利用できます。調査JSONを書き換える
+保守は新しい完了証拠が必要です。completeフラグや手動dispatchによる迂回はありません。PR #45以前の未完了公開は再公開の例外許可にしません。
 
-## 最初の設定と復旧
+Pages権限は公開jobのみ。HTTP200とHTML SHA一致、Summary/Artifactの公開記録を維持。
+週次変更先はsite/index.html、site/research.json、site/search_failures.jsonだけです。
+制御refのメッセージ以外に認証・workflow・Python・保護対象を週次から変更しません。
+公開失敗の復旧は既存記録を参照し、取得失敗を公開成功として報告しません。
 
-既存設定が維持されていれば毎週の追加操作は不要です。接続が失効した場合だけClaudeのGitHub接続・ブランチpush・PR作成権限を確認します。GitHub PagesのSourceはGitHub Actions、公開Environmentに必須の手動承認がない構成を使用します。権限不足や必須レビューで停止したら、Actionsの具体的エラーに基づいて確認し、保護を自動解除しません。
-
-公開だけ再実行する場合はGitHub Actionsの「Publish site to GitHub Pages」からmainを指定します。自動取り込みのdispatch失敗時は同じ取り込みジョブを再実行できます。Routineを停止する場合はClaude側で一時停止します。旧Python週次調査は補助であり、`WEEKLY_RESEARCH_ENABLED` の有効化は不要です。
-
-元HTML・build_html.py・research_spec.mdと既存の公開ワークフローは保護したままです。今回の86店舗の再分類は保存済み根拠の処理で、最新の再調査ではありません。新規探索やプラン追加の実施結果は、次のRoutineのJSON・PR・Actionsから確認します。
+この保守PRはレビュー用でマージ・公開していません。ローカルモック、GitHub CI、
+実際の次回Routine、Pages公開は別々に報告します。次回予定は11月16日07:17 JSTです。

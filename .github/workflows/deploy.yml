@@ -24,17 +24,19 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: main
+          ref: ${{ github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Verify immutable legacy backup and research sources
         run: python3 -c 'from afternoon_tea.pipeline import protected_files; protected_files()'
-      - name: Validate latest main and prepare HTML
+      - name: Validate exact commit research completion and prepare HTML
         run: |
           export SOURCE_COMMIT="$(git rev-parse HEAD)"
           python3 -m afternoon_tea.routine_site prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

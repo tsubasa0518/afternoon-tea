@@ -25,10 +25,10 @@
 
 ### 「確認済み」と「未調査」の考え方
 
-- 今回の調査で、公開ページからプラン名・料金などの根拠を確認できた店舗だけがサイトのカードになります。
+- 公開ページの根拠がある店舗を掲載し、過去から引き継ぐ情報は実際のchecked_atを保持します。今週確認した件数と過去の掲載件数を分けます。
 - 取得できなかった・アクセスを拒否された・情報が足りなかった店舗は、`site/search_failures.json` に理由つきで記録されます（`confirmed` / `information_insufficient` / `site_restriction` / `access_denied` / `no_results` / `excluded` / `unresearched`）。
 - 「見つからなかった」ことは「ATがない」証拠ではありません。前週の掲載を今週の確認済みとしてコピーすることもしません。
-- 店舗数が少なくても、調査が途中でも、説明つきの正常なHTMLを公開します（情報は捏造しません）。
+- 新規発見0件や、調べても料金・期間が不明なことだけでは停止しません。必須の駅別・店舗別調査が未完了なら、同じ週のdraftへ保存し、マージ・公開せず現在のサイトを維持します。
 
 ---
 
@@ -73,12 +73,12 @@
 flowchart TD
   S1["① 月曜 07:17 JST<br/>Claude Routines が起動"]
   S2["② 最新mainと指示書を読む<br/>AGENTS.md / developer_docs/claude_weekly_prompt.md"]
-  S3["③ 調査キューを準備<br/>priority_research prepare（156タスク）"]
-  S4["④ 公開ページを読み取り調査<br/>routine_collection・A→B→C・14エリア巡回"]
+  S3["③ weekly_run start<br/>JST対象週・排他・既存PRを照合"]
+  S4["④ 公開ページを読み取り調査<br/>公式情報源・14エリア各対象駅と既存店"]
   S5["⑤ 調査結果をJSONに保存<br/>site/research.json・search_failures.json"]
   S6["⑥ 補完・日付確認・HTML生成・検証<br/>enrichment → weekly_review → routine_renderer → routine_site validate"]
-  S7["⑦ ブランチ作成＆PR作成<br/>claude/weekly-afternoon-tea-… → main<br/>タイトル [weekly-site]"]
-  S8["⑧ GitHub Actions：テスト＆技術検証<br/>test-data.yml / auto-merge-weekly.yml"]
+  S7["⑦ weekly_run submit<br/>同じ週のPRへcheckpoint<br/>未完了はdraft、完了時のみready"]
+  S8["⑧ GitHub Actions：技術検証＋今回の調査完了<br/>test-data.yml / auto-merge-weekly.yml"]
   S9["⑨ 自動マージ（squash）"]
   S10["⑩ Pages公開 deploy.yml<br/>HTTP 200とHTML一致を確認"]
   S11["⑪ 公開サイトが更新される<br/>tsubasa0518.github.io/afternoon-tea"]
@@ -99,18 +99,18 @@ flowchart TD
 | ④ | Claude | 14エリアで既存店・新店舗・複数プランを調べ、公開ページを匿名GETで取得。仕上げ時間を確保します。 | `afternoon_tea.research.Browser`（既存収集CLIも任意利用可） |
 | ⑤ | Claude | 根拠を確認できた店舗だけを `site/research.json` に、全タスクの状態を `site/search_failures.json` に保存します。 | `site/research.json`, `site/search_failures.json` |
 | ⑥ | Claude | 根拠のあるカテゴリ・スイーツ・季節・曜日・通常価格を補完 → 日付確認 → 固定テンプレートでHTML生成 → 技術検証。 | `routine_enrichment` → `weekly_review` → `routine_renderer generate` → `routine_site validate` |
-| ⑦ | Claude | `claude/weekly-afternoon-tea-YYYYMMDD` ブランチへpushし、`[weekly-site] YYYY-MM-DD 自動更新` というタイトルの通常PR（Draftではない）を `main` 宛てに作成します。本文に調査件数・14エリアの探索状況を書きます。 | GitHub PR |
-| ⑧ | GitHub Actions | PRを受けて2つのワークフローが動きます。<br>・`test-data.yml`: オフラインのテスト一式<br>・`auto-merge-weekly.yml`: 同一リポジトリ・許可された作成者・ブランチ名・タイトル・**変更が上記3ファイルのみ**であることを確認し、JSON／HTMLを検証します。PRのコードは実行せず、`main` 側の信頼できるコードがファイルをデータとして読みます。 | `.github/workflows/test-data.yml`, `.github/workflows/auto-merge-weekly.yml` |
+| ⑦ | Claude | `claude/weekly-afternoon-tea-YYYYMMDD` ブランチへpushし、`[weekly-site] YYYY-MM-DD 自動更新` という同じ週のPRをコーディネータで管理します。未完了はdraft、証拠付きの必須調査完了時だけreadyにします。再実行で追加PRを作りません。 | GitHub PR |
+| ⑧ | GitHub Actions | PRを受けて2つのワークフローが動きます。<br>・`test-data.yml`: オフラインのテスト一式<br>・`auto-merge-weekly.yml`: 同一リポジトリ・許可された作成者・ブランチ名・タイトル・**変更が上記3ファイルのみ**であることを確認し、JSON／HTMLと今回runの駅別・店舗別必須調査完了を検証します。PRのコードは実行せず、`main` 側の信頼できるコードがファイルをデータとして読みます。 | `.github/workflows/test-data.yml`, `.github/workflows/auto-merge-weekly.yml` |
 | ⑨ | GitHub Actions | 検証に合格したら、検証したコミットを指定してsquashマージします。ブランチ保護は解除しません。 | `auto-merge-weekly.yml` |
-| ⑩ | GitHub Actions | マージ後に `deploy.yml` を明示的に起動します。最新mainの3ファイルを再検証し、`site/index.html` だけをGitHub Pagesへ公開。公開後にHTTP 200と内容の一致を確認し、公開記録を30日間保存します。 | `.github/workflows/deploy.yml` |
+| ⑩ | GitHub Actions | マージ後に `deploy.yml` を明示的に起動します。実際の公開コミットの3ファイルと調査完了を再検証し、`site/index.html` だけをGitHub Pagesへ公開。公開後にHTTP 200と内容の一致を確認し、公開記録を30日間保存します。 | `.github/workflows/deploy.yml` |
 | ⑪ | GitHub Pages | 公開URLのサイトが新しい内容に更新されます。 | https://tsubasa0518.github.io/afternoon-tea/ |
 
 ### うまくいかないとき
 
 - **検証が不合格**（JSON破損、HTMLの欠落、想定外のファイル変更、秘密情報らしい値など）: マージ・公開されず、前回のサイトが残ります。理由はActionsのログに残ります。
-- **店舗数が少ない／未調査が多い**: 停止条件ではありません。説明つきのHTMLがそのまま公開されます。
+- **新規発見0件／不明項目あり**: 調査を完了した根拠があれば許可します。**必須調査が未完了・中断**なら公開せず、同じ週のdraftで再開します。
 - **HTMLを生成できない**: 壊れたファイルのPRは作らず、Claudeがエラーを報告して終了します。
-- **公開だけやり直したい**: GitHub → Actions → *Publish site to GitHub Pages* → Run workflow（mainを選択）。
+- **公開だけやり直したい**: GitHub → Actions → *Publish site to GitHub Pages* → Run workflow（mainを選択）。公開前の完了検証は省略されません。既存のPR・コミットを使い調査PRを追加しません。
 - **毎週の調査を止めたい**: Claudeのタスクを一時停止します。自動マージは *Auto-merge weekly site*、公開は *Publish site to GitHub Pages* を無効化します。
 
 詳しい設定・運用・復旧は [developer_docs/weekly_automation.md](developer_docs/weekly_automation.md)、Claudeが毎週読む手順書は [developer_docs/claude_weekly_prompt.md](developer_docs/claude_weekly_prompt.md) を見てください。
@@ -125,7 +125,7 @@ flowchart TD
 | `afternoon_tea/` | 調査・検証・HTML生成のPythonコード（標準ライブラリのみ） |
 | `afternoon_tea/templates/` | HTMLの固定テンプレート（元のデザインのCSS・JavaScriptを再利用） |
 | `data/` | 店舗マスター（70店舗＋5候補）、指定134件のリスト、照合表 |
-| `.github/workflows/` | `auto-merge-weekly.yml`（検証・自動マージ）、`deploy.yml`（Pages公開）、`test-data.yml`（テスト）、`weekly-research.yml`（旧Python週次調査。`WEEKLY_RESEARCH_ENABLED` が `true` のときだけ定期実行され、通常は無効の補助機能） |
+| `.github/workflows/` | `auto-merge-weekly.yml`（検証・自動マージ）、`deploy.yml`（Pages公開）、`test-data.yml`（テスト）、`weekly-research.yml`（手動・隔離stagingの旧経路診断のみ。schedule・状態commit・週次PR・公開なし） |
 | `developer_docs/` | 運用手順書・仕様メモ |
 | `docs/index.html`, `afternoon_tea_tokyo_2026-11-06.html` | 元の120店舗版HTML（デザインの正本・保管用。自動では公開されません） |
 | `AGENTS.md`, `CLAUDE.md` | Claudeが必ず守る安全規則と変更範囲 |

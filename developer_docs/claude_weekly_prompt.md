@@ -2,6 +2,18 @@
 
 毎週月曜日07:17 JST、既存Routine・クラウド環境 `afternoon-tea-weekly` で実行します。毎回 `tsubasa0518/afternoon-tea` の最新mainを取得し、AGENTS.md、CLAUDE.md、この指示書を読み直して最新版に従ってください。登録済みRoutineの最新版を読む起動設定とスケジュールは維持します。
 
+## 起動・同じ週の再開（調査より先）
+
+唯一の定期起動は既存Claude Routineです。毎週月曜日07:17 Asia/Tokyoを維持し、CodexやActionsから独立した週次調査を起動しません。`python3 -m afternoon_tea.weekly_run start` を実行し、`.staging/weekly-run.json` のactionを読みます。コーディネータがmainにない、GitHub認証が利用不能、同じ週の重複が既に存在する場合は調査を始めず報告します。既存のGH_TOKENまたは認証済みghを使用し、トークンの取得・記録・出力はしません。
+
+week_keyはJSTの対象週の月曜日の日付で、起動日やブランチに勝手な日付を入れません。コーディネータは同週の全状態PR・既存ブランチ・GitHub上の実行leaseを調べ、同一週は一つのPRだけを使います。別のownerが実行中なら終了します。already_publishedなら変更なしで終了。recover_publicationなら既存PR・コミット・公開要求を再利用し `weekly_run recover-publication`、調査PRは作り直しません。未完了・期限切れを再開する場合は `weekly_run start --week YYYY-MM-DD --resume` とし、既存draftの3ファイルと同じrun_id/開始時刻を復元します。新規の-r2/-r3 PRは禁止です。
+
+startが作るresearch.weekly_runとsearch_failures.research_executionに必須作業が入っています。対象14エリアの各対象駅でexisting（既存店確認）とdiscovery（新規店探索）を別作業にし、前週掲載店ごとの既存確認も行います。共通一覧・前週の探索記録・HTTP成功だけでは完了にしません。各taskのrun_id/week_key、実際に読んだread_ids、確認結果・conclusionを保存します。discoveryにはmethod（public_directory/public_release/official_opening/area_listing）、対象駅とATを含むsearched_terms、candidates（発見0なら空配列）も記録し、既存店メニューの再読だけを新規探索としません。readには今回のrun/週、URL、実取得checked_at、http_status:200、result:read、元文書SHA-256、report.pagesのdocument_event_sha256、対象駅/店名が実際に含まれる短いexcerpt、area_no/station/purposeまたはshop_idを保存します。各収集reportのcommunication_audit全体をresearch_execution.communication_auditsへ保存します。run-state指定により監査run_idも今回runと一致し、検証器がハッシュ鎖・GET/200の要求と応答・URL/本文SHA・documentイベントを照合します。文書を読まずにexcerptやSHAを捏造しません。
+
+状態はnot_started/running/completed/access_restricted/failed/information_insufficient/interruptedを区別します。必要範囲を独立した安全な情報源で確認できた場合だけcompletedにできます。完成した確認結果はconfirmed/no_discovery/fields_unknown/not_offeredのいずれかを根拠付きで記録します。アクセス失敗をnot_offeredへ変えません。価格・期間が不明でも、必要な調査自体を実施した根拠があればfields_unknownにできます。必須未実施・途中停止・禁止操作検知はstop_reasons/safety_violationsにも残し、技術成功でも公開不可です。
+
+今回実際に確認したプランだけverified_plansにshop_id/plan_name/read_idを記録し、metricsのconfirmed_shops/confirmed_plans/new_shopsはこの参照から数えます。過去掲載総数・前週collection_summaryと混ぜません。前週データはstartが固定したbase_commitと対応し、確認していないchecked_atは変えません。
+
 ## 調査
 
 対象期間はJST実行日から40日後までです。`python3 -m afternoon_tea.weekly_review --period` で確認します。`data/store_master.json` の14エリア・対象駅の全体を探索してください。120店舗・指定134件・既存マスター・前週データは検索の参考であり、対象店舗の限定や件数目標ではありません。店舗数に上限はありません。
@@ -11,12 +23,12 @@ Bing・一休・食べログの成功を前提にしません。まず以下の�
 ```sh
 mkdir -p .staging
 cp site/research.json .staging/previous-research.json
-python3 -m afternoon_tea.official_research
+python3 -m afternoon_tea.official_research --run-state .staging/weekly-run.json
 ```
 
 `data/official_sources.json` は14エリアの公式入口と、東京の公開ホテル一覧・観光情報・プレスリリースを巡る出発点です。AT提供を確認済みの一覧でも全店舗リストでもありません。収集器は各情報源を順番に処理し、同じホストの観測済みリンクを、AT案内→メニュー・飲食・ニュースの順で辿ります。トップだけで終了せず、取得済み本文から対象のプラン詳細リンクを確認してください。共通ナビのAT文字列だけで確認済みにしません。PDFや動的表示のみ・大容量・robots不明・リダイレクトは未取得として残します。
 
-各エリア・対象駅について、既存店の再確認と新規探索を別々に進めます。公開一覧・公式の新メニュー・開業案内から、既存マスターにないホテル・カフェ・ティーサロン・レストランも探してください。403・robots拒否等で一つの大手サイトが取得不能でも他の独立した公式情報源を調べます。ForbiddenOperation（リダイレクト禁止等）検知時はCLI全体が即中断して監査ログを保存し、終了コード2になります。監査を確認し、禁止先を再試行せず、取得済み本文と未調査範囲を記録します。安全層を変更して処理を続けません。外部リンク候補は未確認であり、自動ではアクセス許可しません。公式性・立地・規約を照合できた独立情報源だけ、`.staging/sources.json` に同じ形式のsourcesを追記して `--sources .staging/sources.json --output .staging/additional-research` で取得できます。拒否済みサービスの別名は禁止です。エリア固有の情報を読めていない場合、共有一覧にアクセスしただけで「そのエリアを探索済み」としません。
+各エリア・対象駅について、既存店の再確認と新規探索を別々に進めます。公開一覧・公式の新メニュー・開業案内から、既存マスターにないホテル・カフェ・ティーサロン・レストランも探してください。403・robots拒否等で一つの大手サイトが取得不能でも他の独立した公式情報源を調べます。ForbiddenOperation（リダイレクト禁止等）検知時はCLI全体が即中断して監査ログを保存し、終了コード2になります。監査を確認し、禁止先を再試行せず、取得済み本文と未調査範囲を記録します。安全層を変更して処理を続けません。外部リンク候補は未確認であり、自動ではアクセス許可しません。公式性・立地・規約を照合できた独立情報源だけ、`.staging/sources.json` に同じ形式のsourcesを追記して `--run-state .staging/weekly-run.json --sources .staging/sources.json --output .staging/additional-research` で取得できます。拒否済みサービスの別名は禁止です。エリア固有の情報を読めていない場合、共有一覧にアクセスしただけで「そのエリアを探索済み」としません。
 
 前週のJSONに保存された公式source_urlも再確認の入口に使い、公式性を確認できた新しい情報源を実行内のsourcesへ反映します。固定入口の店だけに調査対象を限定しません。
 
@@ -87,8 +99,8 @@ python3 -m afternoon_tea.routine_renderer generate
 python3 -m afternoon_tea.routine_site validate
 ```
 
-期間外プラン・不正日付はJSONを修正します。期間未確認は推測して埋めません。固定デザインを維持し、HTML/CSS/JavaScript・Python・ワークフロー・保護ファイルを編集しません。店舗数や調査完了率にかかわらず正常なHTMLを生成します。JSON破損・HTML生成失敗等の技術障害では公開せずエラーを報告します。調査の時間内に保存・生成・検証・PR作成まで完了できる時間を確保します。
+期間外プラン・不正日付はJSONを修正します。期間未確認は推測して埋めません。固定デザインを維持し、HTML/CSS/JavaScript・Python・ワークフロー・保護ファイルを編集しません。途中結果の正常なHTMLを生成すること自体は可能ですが、公開許可とは別です。JSON破損・HTML生成失敗等の技術障害では公開せずエラーを報告します。途中でも保存・生成・技術検証・同一PRへのdraft保存まで行う時間を確保します。
 
-差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は識別子追加可）にpush、mainへ非ドラフトPRを作成します。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には情報源別の成功/失敗・取得店舗数/プラン数/メニュー件数・未調査範囲（reportの候補数を実績にしない）、期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、テーマ国の国別件数・explicit/inferred/unknown件数、技術検証結果を簡潔に記録します。未完了でも公開を続けます。
+差分が3ファイルだけであることを確認し、`python3 -m afternoon_tea.weekly_run submit` を使います。手動の別ブランチpush・PR追加・非ドラフト化はしません。コーディネータが今回runのpayload/executionハッシュを固定し、全必須作業と証拠を検証します。未完了なら同じ週のdraftへ保存し、理由・完了範囲・未完了範囲・再開方法を報告して終了します。完了時だけ同じPRをreadyにし、最新headの技術CIを待ちます。新規発見0件だけで不合格にはしません。PRには今回確認の店舗/プラン/新規件数と、過去から引き継いだ掲載数を区別して記載してください。
 
-GitHub Actionsが同一リポジトリ・許可作成者・ブランチ名・タイトル・3ファイル限定・技術CI成功を検証し、自動マージ後deploy.ymlを明示起動します。Pagesが正常に公開されたかActions結果を確認してPR・実行URLを報告します。失敗を成功扱いせず、週次実行の変更範囲外の問題はログと理由を報告してください。
+GitHub Actionsは信頼するmainのコードで同一repo・許可作成者・ブランチ/タイトル・3ファイル・draft除外・今回runの証拠/完了・最新headの技術CIを検証し、期待head SHAを指定してマージします。GITHUB_TOKENマージ後のdeploy明示起動と重複防止を維持し、公開前にも実際のコミットと3ファイルを再検証します。未完了はpush/dispatch/再実行でも公開不可、現行サイトを維持します。Pagesの実ジョブ・HTTP200・HTML SHA一致を確認できるまで公開成功と報告しません。

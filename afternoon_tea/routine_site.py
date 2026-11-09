@@ -1,4 +1,4 @@
-"""Minimal static-site intake. No research quality gates and no reservation traffic."""
+"""Static-site technical validation, run completion intake, and exact-byte delivery."""
 import argparse
 import base64
 from collections import Counter
@@ -32,7 +32,9 @@ def scan(value):
     patterns=(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',r'\b(?:gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-(?:ant-|proj-)[A-Za-z0-9_-]{12,}|AKIA[A-Z0-9]{16})',r'(?i)authorization\s*[:=]\s*[\"\x27]?bearer\s+\S+',r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b',r'\b0[5789]0[- ]\d{4}[- ]\d{4}\b')
     require(not any(re.search(p,text) for p in patterns),'secret_or_personal_contact_detected')
     # Card-like values are checked without printing matched sensitive text.
-    for raw in re.findall(r'(?<!\d)(?:\d[ -]?){13,19}(?!\d)',text):
+    # Full hex digests are required evidence, not embedded card numbers.
+    card_text=re.sub(r'(?<![0-9a-f])(?:[0-9a-f]{64}|[0-9a-f]{40})(?![0-9a-f])','[HASH]',text)
+    for raw in re.findall(r'(?<!\d)(?:\d[ -]?){13,19}(?!\d)',card_text):
         digits=re.sub(r'\D','',raw)
         if len(digits)<13:continue
         nums=[int(c) for c in digits[::-1]];total=sum((n*2-9 if n*2>9 else n*2) if i%2 else n for i,n in enumerate(nums))
@@ -155,15 +157,38 @@ def write_summary(stage,report):
 
 class API:
     def call(self,method,path,body=None):
-        require(method in ('GET','POST','PUT') and path.startswith('/') and '..' not in path,'invalid_github_api_request')
+        require(method in ('GET','POST','PUT','PATCH') and path.startswith('/') and '..' not in path,'invalid_github_api_request')
         headers={'Accept':'application/vnd.github+json','User-Agent':'RoutineSiteDelivery'}
         token=os.environ.get('GH_TOKEN')
+        if not token:
+            import shutil,subprocess
+            if shutil.which('gh'):
+                args=['gh','api','--hostname','github.com','--method',method,'repos/'+REPO+path]
+                if body is not None:args+=['--input','-']
+                result=subprocess.run(args,input=json_bytes(body) if body is not None else None,capture_output=True)
+                if result.returncode:
+                    code=re.search(rb'HTTP (\d{3})',result.stderr)
+                    if code:raise HTTPError('https://api.github.com',int(code[1]),'GitHub API failed',{},None)
+                    raise ValueError('github_auth_or_api_unavailable')
+                return json.loads(result.stdout) if result.stdout.strip() else None
         if token:headers['Authorization']='Bearer '+token
         payload=json_bytes(body) if body is not None else None
         if payload:headers['Content-Type']='application/json'
         req=urllib.request.Request('https://api.github.com/repos/'+REPO+path,data=payload,headers=headers,method=method)
         with urllib.request.build_opener(NoRedirect()).open(req,timeout=30) as r:
             raw=r.read();return json.loads(raw) if raw else None
+    def graphql(self,query,variables):
+        # GitHub metadata only. Never used by the public research transport.
+        token=os.environ.get('GH_TOKEN')
+        if not token:
+            import subprocess
+            result=subprocess.run(['gh','api','--hostname','github.com','graphql','--input','-'],input=json_bytes({'query':query,'variables':variables}),capture_output=True)
+            require(result.returncode==0,'github_auth_or_graphql_unavailable')
+            result=json.loads(result.stdout);require(not result.get('errors'),'github_graphql_failed');return result['data']
+        request=urllib.request.Request('https://api.github.com/graphql',data=json_bytes({'query':query,'variables':variables}),
+            headers={'Authorization':'Bearer '+token,'Content-Type':'application/json','User-Agent':'RoutineSiteDelivery'},method='POST')
+        with urllib.request.build_opener(NoRedirect()).open(request,timeout=30) as response:result=json.load(response)
+        require(not result.get('errors'),'github_graphql_failed');return result['data']
     def get(self,path):return self.call('GET',path)
     def blob(self,blob_sha):
         require(bool(re.fullmatch('[0-9a-f]{40}',blob_sha)),'invalid_blob_sha')
@@ -208,6 +233,11 @@ def technical_ci(api, head):
     return 'success' if latest.get('conclusion')=='success' else 'failed'
 
 
+def publication_gate(api,commit,files,base_commit=None):
+    from .publication_completion import gate
+    return gate(api,commit,files,base_commit)
+
+
 def intake(api,number,author,sleep=time.sleep):
     number=str(int(number));pr=api.get('/pulls/'+number)
     require(not pr['draft'] and pr['base']['ref']=='main' and pr['base']['repo']['full_name']==REPO and pr['head']['repo'] and pr['head']['repo']['full_name']==REPO and pr['head']['ref'].startswith(BRANCH_PREFIX) and pr['user']['login']==author and pr['title'].startswith('[weekly-site]'),'pr_not_a_trusted_routine')
@@ -221,10 +251,19 @@ def intake(api,number,author,sleep=time.sleep):
         require(entry.get('mode')=='100644' and entry.get('type')=='blob','unsafe_pr_file')
         files[path]=api.blob(entry['sha'])
     report=validate_site(files)
+    report.update(publication_gate(api,pr['head']['sha'],files,pr['base']['sha']))
+    require(report['coordinator_branch']==pr['head']['ref'] and str(report['coordinator_pr'])==number,'coordinator_pr_mismatch')
+    data=json.loads(files['site/research.json']);week=data['weekly_run']['week_key']
+    from .weekly_run import same_week_prs
+    siblings=same_week_prs(api,week)
+    require(len(siblings)==1 and str(siblings[0]['number'])==number,'duplicate_weekly_pr')
     # The API checks the expected head atomically; never bypass branch protection.
     for attempt in range(10):
         latest=api.get('/pulls/'+number)
         require(latest['head']['sha']==pr['head']['sha'],'pr_head_changed')
+        require(not latest['draft'] and latest['base']['sha']==pr['base']['sha'] and
+                latest['title'].startswith('[weekly-site]') and latest['user']['login']==author and
+                latest['head']['ref']==pr['head']['ref'],'pr_state_or_base_changed')
         if latest.get('merged') is True:
             merge_sha=latest.get('merge_commit_sha');break
         require(latest['state']=='open','pr_no_longer_open')
@@ -243,12 +282,15 @@ def intake(api,number,author,sleep=time.sleep):
     return {**report,'pr':number,'dispatch':dispatch}
 
 
-def prepare():
+def prepare(api=None):
     base=ROOT/'.staging/routine-delivery';base.mkdir(parents=True,exist_ok=True)
     require(not base.is_symlink() and base.resolve().is_relative_to(ROOT.resolve()/'.staging'),'unsafe_delivery_directory')
     files={p:(ROOT/p).read_bytes() for p in ALLOWED}
     require(all(not (ROOT/p).is_symlink() for p in ALLOWED),'site_symlink_forbidden')
     report=validate_site(files)
+    commit=os.environ.get('SOURCE_COMMIT')
+    require(bool(commit),'publication_source_commit_required')
+    report.update(publication_gate(api or API(),commit,files))
     (base/'site').mkdir(exist_ok=True)
     require(not (base/'site').is_symlink(),'unsafe_delivery_directory')
     (base/'site/index.html').write_bytes(files['site/index.html'])
@@ -269,9 +311,13 @@ def verify_public(expected,attempts=6,opener=None,sleep=time.sleep):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','intake','prepare','verify'));a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','completion','intake','prepare','verify'));a=p.parse_args()
     try:
         if a.command=='validate':print(validate_site({p:(ROOT/p).read_bytes() for p in ALLOWED}))
+        elif a.command=='completion':
+            import subprocess
+            commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+            print(publication_gate(API(),commit,{p:(ROOT/p).read_bytes() for p in ALLOWED}))
         elif a.command=='intake':
             event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
             report=intake(API(),event['number'],os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0])
