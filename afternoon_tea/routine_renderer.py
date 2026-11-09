@@ -163,6 +163,7 @@ def render(research,failures):
     stamp=research.get('generated_at')
     generated=dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
     master=json.loads((ROOT/'data/store_master.json').read_text())
+    master['areas'].append({'no':15,'name':'その他のエリア','stations':[]})
     groups={a['no']:[] for a in master['areas']};unassigned=[];tot=Counter();swc=Counter()
     area_names={a['name']:a['no'] for a in master['areas']}
     for si,shop in enumerate(research['shops']):

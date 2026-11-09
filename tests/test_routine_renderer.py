@@ -177,7 +177,7 @@ class RoutineRendererTests(unittest.TestCase):
             self.assertNotIn('平日に行ける',result);self.assertNotIn('土日祝に行ける',result)
             self.assertIn('aria-expanded="false" aria-controls="area-links">詳細</button>',result)
             links=re.search(r'<div class="btns" id="area-links" hidden>(.*?)</div>',result,re.S).group(1)
-            self.assertEqual(len(re.findall(r'href="#a\d+"',links)),14)
+            self.assertEqual(len(re.findall(r'href="#a\d+"',links)),15)
             self.assertEqual(len(re.findall(r'<button[^>]+data-sw=',result)),15)
             for key in ['xmas','valentine','whiteday','collab','season']:
                 self.assertNotIn('data-sw="'+key+'" aria-pressed=',result)
@@ -262,3 +262,13 @@ ids['reset-filters'].events.click();assert(ids['no-results'].hidden,'zero-store 
         for early in ('','1'):
             proc=subprocess.run(['node','-e',harness],input=json.dumps(js),text=True,capture_output=True,env={**os.environ,'TEST_EARLY_CHOICE':early})
             self.assertEqual(proc.returncode,0,proc.stderr)
+
+class OtherAreaTests(unittest.TestCase):
+    def test_verified_other_area_does_not_absorb_unknown_location(self):
+        source=fixture(); source['shops'][0]['area_no']=15
+        result=r.render(source,FAILURES)
+        self.assertIn('href="#a15"',result)
+        self.assertIn('その他のエリア',result)
+        self.assertIn('TEST ONLY lounge',result.split('id="a15"')[1])
+        source['shops'][0]['area_no']=None
+        self.assertIn('id="a0"',r.render(source,FAILURES))
