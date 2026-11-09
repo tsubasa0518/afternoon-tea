@@ -34,7 +34,7 @@ reportのattempts・network_events・browser_errorsを使い、情報源ごと�
 
 変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。 generated_atは実際の生成時刻にし、将来時刻を決め打ちしません。`collection_summary` に今回実際に本文から採用した店舗数・新規店舗数・追加/更新プラン数・メニュー本文を保存できたプラン数を、情報源ホストごとに集計して保存します。HTTP成功・候補数・以前からの掲載件数とは分け、毎回のrunを明記してください。平日/土日等に分けたメニュー件数はプラン件数であることも明記します。新プランのsource_url/checked_atを記録し、店舗の古い予約サイトの証拠へ付け替えません。
 
-各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address/access、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
+各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
 
 `price_yen` は1人あたり通常価格です。明記された必須サービス料の率が確認できれば、税込表示額＋必須サービス料の総額を比較用price_yenにし、元の表示額・率をlisted_price_yen/mandatory_service_charge_percentとprice_noteに残します。未知の税率・サービス料率・端数処理を推定しません。説明文で確認した時間・平日/土日祝情報はdescriptionだけに置かず、time_noteと対応する曜日フィールドにも保存します。調査状況・取得日時の技術的な補足は表示用noteではなくnotes.status等の内部記録に保存します。割引価格はdiscount_price_yenに分離し、通常価格が分からなければprice_yen:nullとします。割引率から逆算しません。通常価格が複数ある場合はプランを分け、最安通常価格が分かるようにします。
 
@@ -92,3 +92,7 @@ python3 -m afternoon_tea.routine_site validate
 差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は識別子追加可）にpush、mainへ非ドラフトPRを作成します。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には情報源別の成功/失敗・取得店舗数/プラン数/メニュー件数・未調査範囲（reportの候補数を実績にしない）、期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、テーマ国の国別件数・explicit/inferred/unknown件数、技術検証結果を簡潔に記録します。未完了でも公開を続けます。
 
 GitHub Actionsが同一リポジトリ・許可作成者・ブランチ名・タイトル・3ファイル限定・技術CI成功を検証し、自動マージ後deploy.ymlを明示起動します。Pagesが正常に公開されたかActions結果を確認してPR・実行URLを報告します。失敗を成功扱いせず、週次実行の変更範囲外の問題はログと理由を報告してください。
+
+## 店舗の最寄駅
+
+店舗ごとに公式店舗紹介・アクセス案内などの公開情報で確認できた最寄駅名のみをstationに保存します。複数駅は「／」で区切り、重複を除きます。不明ならnullとし、エリア対象駅を店舗の最寄駅に流用しません。出口・改札・徒歩分数・直結・道順の追加調査や専用項目への抽出・補完は行いません。既存の出典・根拠抜粋・確認日時は整形だけで変更しません。14エリアと対象駅の探索範囲は維持します。
