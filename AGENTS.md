@@ -20,4 +20,4 @@
 - 承認済みの最終構成: claude/weekly-afternoon-tea-で始まるブランチ・[weekly-site]タイトル・許可作成者・同一リポジトリ・上記3ファイル限定のPRをmain側のコードで検証し、自動マージ後にdeploy.ymlを明示的に起動する。公開ジョブだけがPages公開権限を持つ。0店舗でも調査完了の根拠と正常なHTMLが必要。
 - 予約禁止の全規則は新しいCloud Scheduled Tasksでも適用する。旧Python週次調査を新方式の公開条件に使用しない。
 
-- ユーザー指定385行の原本はdata/references/user_candidates_385.csv。優先調査を一巡後にリスト外探索。15番はその他のエリア。再開台帳はsite/search_failures.jsonのresearch_campaignに保持し、同じ週のdraft PRから復元する。禁止操作による中断を自動で再試行しない。
+- ユーザー指定385行の原本はdata/references/user_candidates_385.csv。優先調査を一巡後にリスト外探索。調査対象は保護マスターの既存14エリアのみ。15番「その他のエリア」は調査・リスト外探索の対象外。所在地を取得済み根拠で確認した範囲外候補は理由付きexcludedとし、元の行は削除しない。所在地不明は除外しない。再開台帳はsite/search_failures.jsonのresearch_campaignに保持し、同じ週のdraft PRから復元する。禁止操作による中断を自動で再試行しない。

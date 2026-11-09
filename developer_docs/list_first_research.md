@@ -8,17 +8,17 @@
 2. python3 -m afternoon_tea.list_research --limit 385 を実行する。既存Python HTTP層と匿名GET・robots・リダイレクト禁止を使う。禁止検知で全体停止。interruptedがある台帳は自動再実行しない。
 3. .staging/list-research/以下のreportと本文を実読する。取得だけはawaiting_review。プラン名・価格・期間・メニューとの対応を確認してreviewed_sourcesへ短い根拠を記録する。ナビや別店舗を混ぜない。情報不足・制限は提供なしとしない。
 4. checkpoint.jsonをsite/search_failures.jsonのresearch_campaignに保存し、同じdraft PRを更新する。根拠と実行中断のネットワーク記録を残す。生HTMLや連絡先はコミットしない。v2では検査済みの本文テキストを復元用に保持する。次のクラウド実行はそのdraftブランチから復元する。
-5. 一巡（全行reviewed/excluded/information_insufficient/access_restricted）の後、14エリアと所在地確認済みのその他地域でリスト外探索。awaiting_review/unresearched/interruptedは一巡としない。制限を無限再試行しない。
+5. 一巡（全行reviewed/excluded/information_insufficient/access_restricted）の後、既存14エリアのみでリスト外探索。awaiting_review/unresearched/interruptedは一巡としない。制限を無限再試行しない。
 
 公式の独立情報源は既存のofficial_researchで調査できるが、今回の全体禁止停止を自動解除して使わない。安全な再開方針を検討し、既に拒否されたURLやサービス別名は使わない。添付にURLがあるだけでは許可にならない。
 
 ## 15番「その他のエリア」
 
-固定レンダラーの既存14エリアに15番の見出し・リンクを追加する。店舗住所等で東京内かつ14エリア外と確認できた店舗だけarea_no:15とする。所在地不明は従来のエリア未確認。元の保護マスターと対象駅は維持する。価格分類、フィルター、デザインは維持する。
+2026-11-10のユーザー変更により、第15エリアは調査・リスト外探索の対象外。原本385行は残し、取得済み本文の店舗所在地で既存14エリア外と確認できた行は理由と根拠付きexcludedとする。候補CSVの駅名だけで推測除外せず、所在地不明は未確認のままにする。範囲外のプラン追加調査は不要。14エリアの対象駅・価格分類・フィルター・既存デザインは維持する。既存のHTMLの15番表示枠や過去の掲載情報の削除はこの対象変更に含めない。
 
 ## 公開と制限
 
-campaign_gateはPR取り込み・公開準備の両方で、原本と全行ID、各行の状態・今回の日付の根拠、15エリアと対象駅の探索記録を確認する。publication_ready:trueだけでは通らない。個別項目のnullや新規0件は一律拒否しない。新しい調査結果の公開には完了台帳が必要。2026-11-09にユーザーが今回の表示変更のマージ・公開を依頼したため、prepareに限り公開済みresearch.jsonとsearch_failures.jsonの固定SHA-256に完全一致する既存スナップショットを維持した表示更新を許可する。週次PRのintakeには例外を適用しない。1バイトでも変わったデータ、途中台帳、次回の調査更新は完了検証を必須とする。確認日時は変えない。
+campaign_gateはPR取り込み・公開準備の両方で、原本と全行ID、各行の状態・今回の日付の根拠、既存14エリアと対象駅の探索記録を確認する。publication_ready:trueだけでは通らない。個別項目のnullや新規0件は一律拒否しない。新しい調査結果の公開には完了台帳が必要。2026-11-09にユーザーが今回の表示変更のマージ・公開を依頼したため、prepareに限り公開済みresearch.jsonとsearch_failures.jsonの固定SHA-256に完全一致する既存スナップショットを維持した表示更新を許可する。週次PRのintakeには例外を適用しない。1バイトでも変わったデータ、途中台帳、次回の調査更新は完了検証を必須とする。確認日時は変えない。
 
 同じ週の複数PRを防ぐ事前確認はRoutine指示で行い、並行起動はしない。ローカルcheckpointに対する複数同時実行は保証しない。リポジトリ横断の排他や汎用weekly_runコーディネータ実装済みとは扱わない。
 
@@ -44,10 +44,14 @@ v2は取得したHTMLから抽出したテキストを、ハッシュ・圧縮�
 
 第2段階でofficial_research等が取得した本文も、同じ通信監査を保持してarchive_acquired_text(campaign, journal, subject_id, url, text, page_sha256, hosts)で台帳へ取り込む。別runの最終ページ情報や新しい取得時刻を付け直さない。既存の監査eventsに対象URLと本文ハッシュのdocumentイベントがない場合は拒否する。
 
-探索のsubject_idはarea:<番号>とarea:<番号>:station:<駅名>を区別し、discoveryのstation_evidenceに各対象駅のreviewed_sourcesを保存する。15番はplacesに実際に探索した地域を列挙し、それぞれの根拠をstation_evidenceへ保存する。駅・地域名が本文にない共通一覧だけでは完了にできない。
+探索のsubject_idはarea:<番号>とarea:<番号>:station:<駅名>を区別し、discoveryのstation_evidenceに各対象駅のreviewed_sourcesを保存する。15番の新規探索記録は要求しない。既存14エリア全対象駅の根拠は引き続き必須。駅・地域名が本文にない共通一覧だけでは完了にできない。
 
 公開するshopにはresearch_entity_id、各planにはresearch_evidenceを保存する。各proofは上記の出典情報にverified_fieldsを加え、確認したplan_name/price_yen/start/end/menuと対応させる。値と取得本文の一致を確認できないもの、期限切れの根拠、未取得の詳細ページ、失敗・欠落・不正な通信監査は公開不可。料金の計算・メニューの要約で原文と一致しない値も自動で通さず、対応根拠の再確認が必要。
 
 収集開始前と各本文の保存後にcheckpointを保存し、コマンドはstore_lockで同じ作業フォルダーの二重起動を拒否する。--seconds（全体、既定600秒）、--limit（店舗単位）とHTTP要求数を守る。実通信のタイムアウトによる終了時刻の超過はあり得る。
 
 DNS障害・接続断・タイムアウトなど取得時の一時的OSErrorはneeds_collectionとしてURLをqueueに残し、その回は別店舗へ進む。次の実行で再開できる。監査書き込み失敗・証拠保存失敗・秘密情報検知とは区別し、後者は自動再試行しない。同一店舗の統合では、検証済みidentity_linksの範囲に限り元のsubject_idの証拠を維持して公開判定できる。
+
+## No.1の旧ディレクトリ移動停止の明示的な再開
+
+保守作業者は、ユーザーの安全な再開依頼に基づきscoped_resume.resume_legacy_directory_stopを明示的に呼べる。週次実行からは自動呼び出ししない。対象は旧v1のNo.1から共通エリア一覧への移動によるredirect_blocked_before_followだけ。旧監査のハッシュ鎖・要求応答・禁止対象を検証し、別の違反・未完了監査・改ざんは拒否する。現在の店舗配下リンク抽出をローカルモックで検証してから、店舗URLと配下だけのqueueへ切り替える。旧監査・旧観測・中断行はそのまま履歴に保持し、解決理由・実際の時刻・旧監査のハッシュ・禁止URLハッシュ・再開先・モック結果をresume_resolutionsへ保存する。旧証拠をv2の証拠へ昇格しない。blocked_url_sha256にあるURLは通信前に拒否し、新たな禁止検知は従来どおり全体停止する。安全層、失敗監査の公開拒否、公開スナップショットの例外は変更しない。

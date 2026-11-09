@@ -47,15 +47,15 @@ def _completed():
         group['queue']=[]
         proofs[entity]=acquired(state,journal,entity,'https://example.org/venue/'+str(i),('TEST ONLY plan 8,500円' if i==0 else 'TEST ONLY venue '+str(i)))
     for row in state['rows']:row.update(status='reviewed',reviewed_sources=[proofs[row['entity_id']]])
-    for area in [*load_master()['areas'],{'no':15,'stations':[]}]:
+    for area in load_master()['areas']:
         no=area['no'];subject='area:'+str(no)
         proof=acquired(state,journal,subject,'https://example.org/area/'+str(no),'TEST ONLY area '+str(no))
-        stations=area['stations'] if no!=15 else ['立川']
+        stations=area['stations']
         station_records={}
         for i,station in enumerate(stations):
             source=acquired(state,journal,subject+':station:'+station,'https://example.org/area/'+str(no)+'/station/'+str(i),'TEST ONLY '+station)
             station_records[station]={'reviewed_sources':[source]}
-        state['discovery'].append({'area_no':no,'stations':area['stations'],'places':stations if no==15 else [],
+        state['discovery'].append({'area_no':no,'stations':area['stations'],'places':[],
                                    'status':'reviewed','reviewed_sources':[proof],'station_evidence':station_records})
     state.update(phase='complete',publication_ready=True)
     return state
@@ -83,6 +83,27 @@ class FakeBrowser(Browser):
 class CampaignTests(unittest.TestCase):
     def setUp(self):
         p=patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,9));p.start();self.addCleanup(p.stop)
+    def test_research_scope_requires_exactly_original_fourteen_areas(self):
+        state=completed_campaign()
+        research={'period':{'start':'2026-11-09'},'shops':[]}
+        publication_gate(research,{'research_campaign':state})
+        with self.assertRaisesRegex(ValueError,'outside_research_scope'):
+            publication_gate({**research,'shops':[{'area_no':15,'plans':[{}]}]}, {'research_campaign':state})
+        state['discovery'].append({'area_no':15,'status':'reviewed'})
+        with self.assertRaisesRegex(ValueError,'campaign_discovery_incomplete'):
+            publication_gate(research,{'research_campaign':state})
+        state['discovery'].pop();state['discovery'][0]['station_evidence'].pop('東京')
+        with self.assertRaisesRegex(ValueError,'station_evidence_missing'):
+            publication_gate(research,{'research_campaign':state})
+
+    def test_previously_blocked_url_is_not_requested(self):
+        state=initialize({});url=state['entities'][state['rows'][0]['entity_id']]['queue'][0]['url']
+        state['blocked_url_sha256']=[hashlib.sha256(url.encode()).hexdigest()]
+        with tempfile.TemporaryDirectory() as tmp:
+            browser=FakeBrowser();run(state,tmp,browser,limit=1)
+            self.assertFalse(browser.visited)
+            self.assertEqual(state['rows'][0]['status'],'interrupted')
+
     def test_original_and_resume_identity(self):
         rows,_=reference();state=initialize({},day=dt.date(2026,11,9))
         self.assertEqual(len(rows),385);self.assertEqual(state['rows'][0]['original'],rows[0])

@@ -76,16 +76,14 @@ def publication_gate(research,failures):
         if entities[subject]['queue']:raise ValueError('campaign_documents_pending')
         proofs(record,subject,aliases_for(subject))
     coverage=campaign.get('discovery',[])
-    expected={a['no']:set(a['stations']) for a in load_master()['areas']};expected[15]=set()
-    if len(coverage)!=15 or {a.get('area_no') for a in coverage}!=set(expected):raise ValueError('campaign_discovery_incomplete')
+    expected={a['no']:set(a['stations']) for a in load_master()['areas']}
+    if len(coverage)!=len(expected) or {a.get('area_no') for a in coverage}!=set(expected):raise ValueError('campaign_discovery_incomplete')
     for area in coverage:
         no=area['area_no']
         if area.get('status')!='reviewed' or set(area.get('stations',[]))!=expected[no]:raise ValueError('campaign_discovery_incomplete')
         proofs(area,'area:'+str(no))
         station_records=area.get('station_evidence',{})
-        if no==15:
-            if not area.get('places') or set(station_records)!=set(area['places']):raise ValueError('other_area_places_missing')
-        elif set(station_records)!=expected[no]:raise ValueError('station_evidence_missing')
+        if set(station_records)!=expected[no]:raise ValueError('station_evidence_missing')
         for station,record in station_records.items():
             text='\n'.join(proofs(record,'area:'+str(no)+':station:'+station))
             if station not in text:raise ValueError('station_not_in_evidence')
@@ -101,6 +99,7 @@ def publication_gate(research,failures):
     # Every published plan must refer to reviewed acquisition and matching facts.
     for shop in research.get('shops',[]):
         if not shop.get('plans'):continue
+        if shop.get('area_no')==15:raise ValueError('outside_research_scope')
         subject=canonical(shop['research_entity_id'])
         for plan in shop.get('plans',[]):
             sources=plan.get('research_evidence',[])

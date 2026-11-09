@@ -70,7 +70,9 @@ def initialize(research,checkpoint=None,day=None):
             'campaign_id':checkpoint.get('campaign_id'),'week_key':checkpoint.get('week_key'),
             'rows':[{'no':r['no'],'status':r['status'],'reviewed_sources':r.get('reviewed_sources',[])} for r in checkpoint['rows']]}]
         for new,old in zip(fresh['rows'],checkpoint['rows']):
-            if old['status']=='interrupted':new.update(copy.deepcopy(old))
+            if old['status']=='interrupted':
+                # Legacy observations remain historical, never become v2 proofs.
+                new.update(status='interrupted',reason=old.get('reason'),legacy_record=copy.deepcopy(old))
         fresh['legacy_checkpoint']={k:copy.deepcopy(checkpoint[k]) for k in ('stop_reason','communication_audit','network_events') if k in checkpoint} if checkpoint.get('version')!=2 else None
         return fresh
     index={}
@@ -186,6 +188,8 @@ def run(campaign,directory,browser=None,limit=385,seconds=600,clock=time.monoton
             task=entity['queue'][0];url=task['url']
             if url in entity['seen']:entity['queue'].pop(0);continue
             try:
+                if hashlib.sha256(url.encode()).hexdigest() in campaign.get('blocked_url_sha256',[]):
+                    raise ForbiddenOperation('previously_blocked_URL')
                 check_url(url,public_hosts=browser.transport.public_hosts)
                 try:
                     raw=browser.fetch(url)
@@ -212,6 +216,9 @@ def run(campaign,directory,browser=None,limit=385,seconds=600,clock=time.monoton
                         if child not in queued and child not in entity['seen']:
                             entity['queue'].append({'url':child,'depth':task['depth']+1,'prefix':task['prefix']});queued.add(child)
             except ForbiddenOperation as error:
+                blocked=campaign.setdefault('blocked_url_sha256',[])
+                value=hashlib.sha256(url.encode()).hexdigest()
+                if value not in blocked:blocked.append(value)
                 browser.communication_audit.decision(url,str(error),violation=True)
                 for member in members:member.update(status='interrupted',reason=str(error))
                 campaign['stop_reason']='forbidden_operation';save();return campaign
