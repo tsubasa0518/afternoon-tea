@@ -32,7 +32,13 @@ def scan(value):
     patterns=(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',r'\b(?:gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-(?:ant-|proj-)[A-Za-z0-9_-]{12,}|AKIA[A-Z0-9]{16})',r'(?i)authorization\s*[:=]\s*[\"\x27]?bearer\s+\S+',r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b',r'\b0[5789]0[- ]\d{4}[- ]\d{4}\b')
     require(not any(re.search(p,text) for p in patterns),'secret_or_personal_contact_detected')
     # Card-like values are checked without printing matched sensitive text.
-    for raw in re.findall(r'(?<!\d)(?:\d[ -]?){13,19}(?!\d)',text):
+    # Complete digest/UUID tokens are identifiers, not embedded card numbers.
+    digest_fields='sha256|text_sha256|page_sha256|previous|chain_sha256|reference_sha256|document_id|audit_id|url_sha256'
+    card_text=re.sub(r'"(?:'+digest_fields+r')"\s*:\s*"[a-f0-9]{64}"','"digest":"[digest]"',text)
+    # Document IDs also occur as complete JSON string values in reference arrays.
+    card_text=re.sub(r'"(?:url:)?[a-f0-9]{64}"','"[document digest]"',card_text)
+    card_text=re.sub(r'"(?:campaign_id|run_id)"\s*:\s*"[a-f0-9]{32}"','"run":"[id]"',card_text)
+    for raw in re.findall(r'(?<!\d)(?:\d[ -]?){13,19}(?!\d)',card_text):
         digits=re.sub(r'\D','',raw)
         if len(digits)<13:continue
         nums=[int(c) for c in digits[::-1]];total=sum((n*2-9 if n*2>9 else n*2) if i%2 else n for i,n in enumerate(nums))
@@ -221,6 +227,8 @@ def intake(api,number,author,sleep=time.sleep):
         require(entry.get('mode')=='100644' and entry.get('type')=='blob','unsafe_pr_file')
         files[path]=api.blob(entry['sha'])
     report=validate_site(files)
+    from .campaign_gate import publication_gate
+    publication_gate(json.loads(files['site/research.json']),json.loads(files['site/search_failures.json']))
     # The API checks the expected head atomically; never bypass branch protection.
     for attempt in range(10):
         latest=api.get('/pulls/'+number)
@@ -249,6 +257,12 @@ def prepare():
     files={p:(ROOT/p).read_bytes() for p in ALLOWED}
     require(all(not (ROOT/p).is_symlink() for p in ALLOWED),'site_symlink_forbidden')
     report=validate_site(files)
+    from .campaign_gate import publication_gate, retained_snapshot
+    if retained_snapshot(files['site/research.json'],files['site/search_failures.json']):
+        report['publication_basis']='retained_published_snapshot_2026-11-09'
+    else:
+        publication_gate(json.loads(files['site/research.json']),json.loads(files['site/search_failures.json']))
+        report['publication_basis']='completed_research_campaign'
     (base/'site').mkdir(exist_ok=True)
     require(not (base/'site').is_symlink(),'unsafe_delivery_directory')
     (base/'site/index.html').write_bytes(files['site/index.html'])

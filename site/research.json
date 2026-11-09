@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T07:19:58+09:00",
+  "generated_at": "2026-11-10T08:04:20.669778+09:00",
   "status": "partial_research",
   "period": {
-    "start": "2026-11-09",
-    "end": "2026-12-19"
+    "start": "2026-11-10",
+    "end": "2026-12-20"
   },
   "note": "2026-11-08更新: 前週(2026-11-07)の一休.com・TableCheck確認分(86店舗)は更新日時を保持したまま掲載。今週は公式サイト(帝国ホテル・ホテルニューオータニ・グランド ハイアット 東京・ザ・プリンス パークタワー東京・品川プリンスホテル)とPR TIMESの公開本文から、13施設相当のプランを追加・補完。Bing・一休・食べログは制限のため再試行せず、新規探索は一部エリア・情報源のみ。未調査範囲はsearch_failures.jsonを参照。",
   "shops": [
@@ -2796,9 +2796,9 @@
       "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
       "area_no": 6,
       "area": "新宿・代々木",
-      "station": "西新宿駅",
+      "station": "都庁前駅／初台駅／新宿駅",
       "exit": "都庁前駅（徒歩約7分）",
-      "address": null,
+      "address": "東京都新宿区西新宿3-7-1 パークハイアット東京 41F",
       "source_site": "一休.com",
       "source_url": "https://restaurant.ikyu.com/147880/plan12810808",
       "checked_at": "2026-11-07T18:29:48+09:00",
@@ -2832,7 +2832,19 @@
       ],
       "category": "lux",
       "category_source": "saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification",
-      "category_price_yen": 11385
+      "category_price_yen": 11385,
+      "access_evidence": {
+        "document_id": "ef363202138714250ebd794f2d330f054e5262057477b2d67783cd24eba06189",
+        "url": "https://restaurant.ikyu.com/147880/",
+        "checked_at": "2026-11-10T00:42:19.891165+09:00",
+        "basis": "ピーク ラウンジ＆バー／パーク ハイアット 東京\n…\n特別感あふれるコース仕立てのアフタヌーンティー\n…\n新宿区西新宿3-7-1 パークハイアット東京　41F\n…\n都庁前\n駅\n…\n初台\n駅\n…\n新宿\n駅",
+        "subject_id": "restaurant.ikyu.com:147880",
+        "verified_fields": {
+          "station": "都庁前駅／初台駅／新宿駅",
+          "address": "東京都新宿区西新宿3-7-1 パークハイアット東京 41F"
+        },
+        "note": "店舗所在地・アクセスだけを再確認。既存プラン・通常価格・期間の再確認ではない。"
+      }
     },
     {
       "id": "master-candidate-04",
@@ -5411,75 +5423,96 @@
       "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
     }
   ],
+  "collection_history": [
+    {
+      "run": "2026-11-09-official",
+      "comparison_base": "29aaa223d042f65a813eb907816390e1fa374e11",
+      "note": "Offline aggregation of plans actually adopted from Claude cloud public-document research. Menus count plan records, including weekday/weekend variants. HTTP diagnostics are in search_failures.json. Existing unreviewed plans retain their original check dates. 2026-11-09実行: 公式情報源の再取得でプランURLの掲載内容(帝国ホテル2店・パークタワー・ニューオータニ・グランドハイアット等)に価格・期間の変更なしを確認。新規採用なし(confirmed_shops等は前回run集計を継続)。",
+      "confirmed_shops": 13,
+      "new_shops": 10,
+      "added_plans": 23,
+      "menu_plans": 14,
+      "by_source": [
+        {
+          "host": "prtimes.jp",
+          "confirmed_shops": 2,
+          "new_shops": 0,
+          "confirmed_plans": 4,
+          "menu_plans": 4,
+          "sources": [
+            "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+            "https://prtimes.jp/main/html/rd/p/000001450.000039557.html"
+          ],
+          "latest_checked_at": "2026-11-08T11:37:57+09:00"
+        },
+        {
+          "host": "www.princehotels.co.jp",
+          "confirmed_shops": 5,
+          "new_shops": 4,
+          "confirmed_plans": 10,
+          "menu_plans": 3,
+          "sources": [
+            "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+            "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
+            "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
+          ],
+          "latest_checked_at": "2026-11-08T11:36:56+09:00"
+        },
+        {
+          "host": "www.imperialhotel.co.jp",
+          "confirmed_shops": 2,
+          "new_shops": 2,
+          "confirmed_plans": 3,
+          "menu_plans": 3,
+          "sources": [
+            "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+            "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous"
+          ],
+          "latest_checked_at": "2026-11-08T11:27:12+09:00"
+        },
+        {
+          "host": "www.newotani.co.jp",
+          "confirmed_shops": 3,
+          "new_shops": 3,
+          "confirmed_plans": 3,
+          "menu_plans": 1,
+          "sources": [
+            "https://www.newotani.co.jp/tokyo/afternoontea/",
+            "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/"
+          ],
+          "latest_checked_at": "2026-11-08T11:32:02+09:00"
+        },
+        {
+          "host": "www.tokyo.grand.hyatt.co.jp",
+          "confirmed_shops": 1,
+          "new_shops": 1,
+          "confirmed_plans": 3,
+          "menu_plans": 3,
+          "sources": [
+            "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
+          ],
+          "latest_checked_at": "2026-11-08T11:31:55+09:00"
+        }
+      ]
+    }
+  ],
   "collection_summary": {
-    "run": "2026-11-09-official",
-    "comparison_base": "29aaa223d042f65a813eb907816390e1fa374e11",
-    "note": "Offline aggregation of plans actually adopted from Claude cloud public-document research. Menus count plan records, including weekday/weekend variants. HTTP diagnostics are in search_failures.json. Existing unreviewed plans retain their original check dates. 2026-11-09実行: 公式情報源の再取得でプランURLの掲載内容(帝国ホテル2店・パークタワー・ニューオータニ・グランドハイアット等)に価格・期間の変更なしを確認。新規採用なし(confirmed_shops等は前回run集計を継続)。",
-    "confirmed_shops": 13,
-    "new_shops": 10,
-    "added_plans": 23,
-    "menu_plans": 14,
+    "run": "2026-11-10-list-research-local",
+    "confirmed_shops": 0,
+    "new_shops": 0,
+    "added_plans": 0,
+    "updated_plans": 0,
+    "menu_plans": 0,
+    "access_updated_shops": 1,
+    "general_at_description_shops": 2,
     "by_source": [
       {
-        "host": "prtimes.jp",
-        "confirmed_shops": 2,
-        "new_shops": 0,
-        "confirmed_plans": 4,
-        "menu_plans": 4,
-        "sources": [
-          "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
-          "https://prtimes.jp/main/html/rd/p/000001450.000039557.html"
-        ],
-        "latest_checked_at": "2026-11-08T11:37:57+09:00"
-      },
-      {
-        "host": "www.princehotels.co.jp",
-        "confirmed_shops": 5,
-        "new_shops": 4,
-        "confirmed_plans": 10,
-        "menu_plans": 3,
-        "sources": [
-          "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
-          "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
-          "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/"
-        ],
-        "latest_checked_at": "2026-11-08T11:36:56+09:00"
-      },
-      {
-        "host": "www.imperialhotel.co.jp",
-        "confirmed_shops": 2,
-        "new_shops": 2,
-        "confirmed_plans": 3,
-        "menu_plans": 3,
-        "sources": [
-          "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
-          "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous"
-        ],
-        "latest_checked_at": "2026-11-08T11:27:12+09:00"
-      },
-      {
-        "host": "www.newotani.co.jp",
-        "confirmed_shops": 3,
-        "new_shops": 3,
-        "confirmed_plans": 3,
-        "menu_plans": 1,
-        "sources": [
-          "https://www.newotani.co.jp/tokyo/afternoontea/",
-          "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/"
-        ],
-        "latest_checked_at": "2026-11-08T11:32:02+09:00"
-      },
-      {
-        "host": "www.tokyo.grand.hyatt.co.jp",
-        "confirmed_shops": 1,
-        "new_shops": 1,
-        "confirmed_plans": 3,
-        "menu_plans": 3,
-        "sources": [
-          "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
-        ],
-        "latest_checked_at": "2026-11-08T11:31:55+09:00"
+        "host": "restaurant.ikyu.com",
+        "general_at_description_shops": 2,
+        "access_updated_shops": 1,
+        "confirmed_plans": 0
       }
-    ]
+    ],
+    "note": "Local anonymous Python collection. No.1/2 general AT descriptions read; no concrete plan confirmed. Only Peak Lounge address/stations updated; all historical plan prices/dates/check dates retained. No.3 evidence scan blocked storage and the campaign stopped. Scope: original 14 areas; area15 excluded from research."
   }
 }

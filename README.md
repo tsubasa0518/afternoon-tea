@@ -34,7 +34,7 @@
 
 ## 2. 調査の対象と方法（14エリア・店舗数の上限なし）
 
-対象は `data/store_master.json` が定義する東京14エリア全体です。120店舗・指定134件・既存マスターは検索を効率化する参考リストで、調査対象の限定や件数目標ではありません。
+指定385行を優先調査し、一巡後にリスト外を探索します。調査対象は既存14エリアのみです。15番「その他のエリア」は対象外とし、原本の385行は保持して所在地の根拠付きで範囲外を区別します。385行は確認済み店舗数ではありません。
 
 毎回、エリア名・対象駅とアフタヌーンティー、ホテル、カフェ、ティーサロン、レストラン、季節等を組み合わせて公開情報を探索します。一休.com、食べログ、TableCheck、公式の新メニュー・開業案内等から既存店と新店舗を確認します。順番や検索方法はClaudeが判断し、既存リストの巡回だけで終了しません。探索済み・未探索範囲は14エリアごとに記録します。
 
@@ -42,7 +42,7 @@
 
 通常価格が確認できる場合の分類は施設の種類ではなく、対象期間内の確認済みプランの最安通常価格です。カフェは6,000円以下、ホテルは6,001〜9,999円、ホテル（高級）は10,000円以上。通常価格不明の場合のみ、確認済み施設情報からホテル内はホテル、それ以外はカフェとし、施設情報も不明なら分類未確認です。料金は未確認のまま保持します。割引価格は分離し、JSON補完時とHTML生成時に毎回再計算します。
 
-最新の運用手順は [claude_weekly_prompt.md](developer_docs/claude_weekly_prompt.md) です。旧調査キュー・収集CLI・指定リストの完全性監査は任意の補助で、公開条件にはしません。
+最新の運用手順は [claude_weekly_prompt.md](developer_docs/claude_weekly_prompt.md) です。再開・証拠・公開条件の詳細は [list_first_research.md](developer_docs/list_first_research.md) を参照してください。未完了campaignは週をまたいで再開し、本文・監査に紐付く直近14日以内の証拠を検証します。
 
 ### プランのテーマ国・国旗
 
@@ -99,7 +99,7 @@ flowchart TD
 | ④ | Claude | 14エリアで既存店・新店舗・複数プランを調べ、公開ページを匿名GETで取得。仕上げ時間を確保します。 | `afternoon_tea.research.Browser`（既存収集CLIも任意利用可） |
 | ⑤ | Claude | 根拠を確認できた店舗だけを `site/research.json` に、全タスクの状態を `site/search_failures.json` に保存します。 | `site/research.json`, `site/search_failures.json` |
 | ⑥ | Claude | 根拠のあるカテゴリ・スイーツ・季節・曜日・通常価格を補完 → 日付確認 → 固定テンプレートでHTML生成 → 技術検証。 | `routine_enrichment` → `weekly_review` → `routine_renderer generate` → `routine_site validate` |
-| ⑦ | Claude | `claude/weekly-afternoon-tea-YYYYMMDD` ブランチへpushし、`[weekly-site] YYYY-MM-DD 自動更新` というタイトルの通常PR（Draftではない）を `main` 宛てに作成します。本文に調査件数・14エリアの探索状況を書きます。 | GitHub PR |
+| ⑦ | Claude | `claude/weekly-afternoon-tea-YYYYMMDD` ブランチへpushし、`[weekly-site] YYYY-MM-DD 自動更新` というタイトルのdraft PRを `main` 宛てに作成します。本文に調査件数・14エリアの探索状況を書きます。 | GitHub PR |
 | ⑧ | GitHub Actions | PRを受けて2つのワークフローが動きます。<br>・`test-data.yml`: オフラインのテスト一式<br>・`auto-merge-weekly.yml`: 同一リポジトリ・許可された作成者・ブランチ名・タイトル・**変更が上記3ファイルのみ**であることを確認し、JSON／HTMLを検証します。PRのコードは実行せず、`main` 側の信頼できるコードがファイルをデータとして読みます。 | `.github/workflows/test-data.yml`, `.github/workflows/auto-merge-weekly.yml` |
 | ⑨ | GitHub Actions | 検証に合格したら、検証したコミットを指定してsquashマージします。ブランチ保護は解除しません。 | `auto-merge-weekly.yml` |
 | ⑩ | GitHub Actions | マージ後に `deploy.yml` を明示的に起動します。最新mainの3ファイルを再検証し、`site/index.html` だけをGitHub Pagesへ公開。公開後にHTTP 200と内容の一致を確認し、公開記録を30日間保存します。 | `.github/workflows/deploy.yml` |

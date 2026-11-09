@@ -6,7 +6,7 @@
 
 対象期間はJST実行日から40日後までです。`python3 -m afternoon_tea.weekly_review --period` で確認します。`data/store_master.json` の14エリア・対象駅の全体を探索してください。120店舗・指定134件・既存マスター・前週データは検索の参考であり、対象店舗の限定や件数目標ではありません。店舗数に上限はありません。
 
-Bing・一休・食べログの成功を前提にしません。まず以下の公式情報収集を実行し、`.staging/official-research/report.json` と本文ファイルを読みます。HTML生成やPR作成の時間を残し、必要なら時間・要求予算を調整してください。これは店舗数の上限ではありません。
+Bing・一休・食べログの成功を前提にしません。第1段階は下記のリスト調査を実行します。第1段階の一巡後に限り以下の公式情報収集を実行し、`.staging/official-research/report.json` と本文ファイルを読みます。HTML生成やPR作成の時間を残し、必要なら時間・要求予算を調整してください。これは店舗数の上限ではありません。
 
 ```sh
 mkdir -p .staging
@@ -34,7 +34,7 @@ reportのattempts・network_events・browser_errorsを使い、情報源ごと�
 
 変更・コミットは `site/research.json`、`site/search_failures.json`、`site/index.html` の3ファイルのみです。schema_versionは1です。researchにはタイムゾーン付きgenerated_at、period:{start,end}、shops配列を保存します。 generated_atは実際の生成時刻にし、将来時刻を決め打ちしません。`collection_summary` に今回実際に本文から採用した店舗数・新規店舗数・追加/更新プラン数・メニュー本文を保存できたプラン数を、情報源ホストごとに集計して保存します。HTTP成功・候補数・以前からの掲載件数とは分け、毎回のrunを明記してください。平日/土日等に分けたメニュー件数はプラン件数であることも明記します。新プランのsource_url/checked_atを記録し、店舗の古い予約サイトの証拠へ付け替えません。
 
-各店舗にid、name、hotel_name（該当時）、area_no（1〜14）、area、station、address、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
+各店舗にid、name、hotel_name（該当時）、area_no（調査対象は既存1〜14。15番は調査対象外。所在地不明は範囲外と判定しない）、area、station、address、source_url、checked_at、plansを記録します。各プランにはplan_name、price_yen、price_note（税・サービス料条件）、start/end、weekday_available/weekend_available、time_note（確認した提供時間・利用時間）、menu、sweets/season、source_url、booking_url_info_only（安全な公開情報ページ）、checked_at、evidence_quoteを保存します。店舗共通情報を個別プランの確定条件に流用しません。未知はnullとし、HTMLでは未確認になります。原文を長く転載せず、項目の根拠となる短い抜粋を保存します。
 
 `price_yen` は1人あたり通常価格です。明記された必須サービス料の率が確認できれば、税込表示額＋必須サービス料の総額を比較用price_yenにし、元の表示額・率をlisted_price_yen/mandatory_service_charge_percentとprice_noteに残します。未知の税率・サービス料率・端数処理を推定しません。説明文で確認した時間・平日/土日祝情報はdescriptionだけに置かず、time_noteと対応する曜日フィールドにも保存します。調査状況・取得日時の技術的な補足は表示用noteではなくnotes.status等の内部記録に保存します。割引価格はdiscount_price_yenに分離し、通常価格が分からなければprice_yen:nullとします。割引率から逆算しません。通常価格が複数ある場合はプランを分け、最安通常価格が分かるようにします。
 
@@ -87,12 +87,28 @@ python3 -m afternoon_tea.routine_renderer generate
 python3 -m afternoon_tea.routine_site validate
 ```
 
-期間外プラン・不正日付はJSONを修正します。期間未確認は推測して埋めません。固定デザインを維持し、HTML/CSS/JavaScript・Python・ワークフロー・保護ファイルを編集しません。店舗数や調査完了率にかかわらず正常なHTMLを生成します。JSON破損・HTML生成失敗等の技術障害では公開せずエラーを報告します。調査の時間内に保存・生成・検証・PR作成まで完了できる時間を確保します。
+期間外プラン・不正日付はJSONを修正します。期間未確認は推測して埋めません。固定デザインを維持し、HTML/CSS/JavaScript・Python・ワークフロー・保護ファイルを編集しません。未完了でも途中保存用の正常HTMLを生成できますが、公開は禁止です。JSON破損・HTML生成失敗等の技術障害では公開せずエラーを報告します。調査の時間内に保存・生成・検証・PR作成まで完了できる時間を確保します。
 
-差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は識別子追加可）にpush、mainへ非ドラフトPRを作成します。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には情報源別の成功/失敗・取得店舗数/プラン数/メニュー件数・未調査範囲（reportの候補数を実績にしない）、期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、テーマ国の国別件数・explicit/inferred/unknown件数、技術検証結果を簡潔に記録します。未完了でも公開を続けます。
+差分が3ファイルだけであることを確認し、`claude/weekly-afternoon-tea-YYYYMMDD`（再実行は同じ週の既存ブランチ・PRを更新）にpush、mainへdraft PRを作成し、調査完了と技術検証成功時だけreadyにします。タイトルは `[weekly-site] YYYY-MM-DD 自動更新`。本文には情報源別の成功/失敗・取得店舗数/プラン数/メニュー件数・未調査範囲（reportの候補数を実績にしない）、期間、店舗数・プラン数・価格分類、14エリアの探索状況、新規発見と確認件数、未調査・制限・情報不足、テーマ国の国別件数・explicit/inferred/unknown件数、技術検証結果を簡潔に記録します。未完了は公開せず同じdraft PRへ保存します。
 
 GitHub Actionsが同一リポジトリ・許可作成者・ブランチ名・タイトル・3ファイル限定・技術CI成功を検証し、自動マージ後deploy.ymlを明示起動します。Pagesが正常に公開されたかActions結果を確認してPR・実行URLを報告します。失敗を成功扱いせず、週次実行の変更範囲外の問題はログと理由を報告してください。
 
 ## 店舗の最寄駅
 
 店舗ごとに公式店舗紹介・アクセス案内などの公開情報で確認できた最寄駅名のみをstationに保存します。複数駅は「／」で区切り、重複を除きます。不明ならnullとし、エリア対象駅を店舗の最寄駅に流用しません。出口・改札・徒歩分数・直結・道順の追加調査や専用項目への抽出・補完は行いません。既存の出典・根拠抜粋・確認日時は整形だけで変更しません。14エリアと対象駅の探索範囲は維持します。
+
+## 385行の優先調査と永続化（2026-11-09改訂）
+
+最初にdeveloper_docs/list_first_research.mdを読む。原本はdata/references/user_candidates_385.csv。今回の添付が過去の134件より優先する。各行の照合・調査結果を保存して一巡後にリスト外探索へ進む。通常の取得不能は記録して進めるがForbiddenOperationは全体停止。リスト一巡と公開可能は別。
+
+起動前にAsia/Tokyoの月曜を対象週キーとして、open/draft/merged PRと公開記録を確認する。未完了campaignのdraftがあれば週をまたいでもそのブランチからsite/search_failures.jsonのresearch_campaignを復元して作業し、別PRを増やさない。mainに途中結果がない場合は既存draft PRが復元元。未完了campaignがない公開済み週は通常再実行を終了し、公開失敗は既存コミットから復旧する。複数の独立起動を行わない。
+
+python3 -m afternoon_tea.list_research を実行する。取得ページはClaudeが実読して店舗・プラン対応を確認する。アクセス成功は確認済みではなくawaiting_review。禁止停止はinterruptedで保持し、同じURLを再試行しない。調査理由・安全な再開方針を人が検討するまで再開しない。
+
+毎回.staging/list-research/checkpoint.jsonをsite/search_failures.jsonのresearch_campaignへ取り込み、同じdraft PRに保存する。取得したHTML自体はコミットしない。v2のdocumentsへ検査済みの本文テキスト・取得時刻・ハッシュ・通信監査を保存し、短いreviewed_sourcesを紐付ける。公開資料の転載条件を尊重し、本文を保存できなければ確認済みにしない。週次変更は従来の3ファイルのみ。
+
+2026-11-10のユーザー変更により調査対象は既存14エリアのみ。15「その他のエリア」は優先リストのプラン調査・リスト外探索から外す。原本385行は保持し、取得済みの店舗所在地の根拠から14エリア外と確認できた候補は理由・短い根拠付きexcludedとする。リスト記載の駅名だけで除外せず、所在地不明は未確認として残す。範囲外店舗のプラン追加調査はしない。既存HTMLの表示枠・デザインや過去の掲載情報をこの変更だけで削除しない。
+
+開始日以降かつ直近14日以内の、取得本文・監査に紐付く根拠付きreviewed/excludedが全385行に揃い、既存14エリアの全対象駅の探索根拠が揃ったときだけphase:complete、publication_ready:trueにできる。制限・中断・情報不足を記録しただけでは公開不可。Pythonのcampaign_gateがintakeとprepareの双方で検証する。料金・期間などの個別項目のnullや新規発見0件だけでは失敗にしない。
+
+複数日・複数週のv2 campaign、entities、documents、未取得queue、audit_segments、駅別station_evidence、公開プランのresearch_entity_id/research_evidenceの形式はlist_first_research.mdを参照する。旧v1の確認済みをv2へ無検証で昇格しない。未完了campaignは週をまたいで継続する。
