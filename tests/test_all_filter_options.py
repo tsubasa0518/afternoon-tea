@@ -22,12 +22,12 @@ class Buttons(HTMLParser):
             self.buttons.append(self.current);self.current=None
 
 class AllFilterOptionsTests(unittest.TestCase):
-    def test_all_twenty_options_in_reference_order_for_two_and_zero_stores(self):
+    def test_all_fifteen_sweet_options_in_reference_order_for_two_and_zero_stores(self):
         for count in (2,0):
             data=fixture();data['shops']=[{**data['shops'][0],'name':'TEST '+str(i)} for i in range(count)]
             buttons=Buttons(r.render(data,FAILURES)).buttons
-            self.assertEqual(len(buttons),20)
-            self.assertEqual([re.sub(r'\d+$','',b['text']) for b in buttons],SWEETS+EVENTS)
+            self.assertEqual(len(buttons),15)
+            self.assertEqual([re.sub(r'\d+$','',b['text']) for b in buttons],SWEETS)
             self.assertTrue(all(b['text'].endswith('0') for b in buttons))
             self.assertTrue(all('disabled' not in b['attrs'] for b in buttons))
             self.assertNotIn('halloween',[b['key'] for b in buttons])
@@ -36,7 +36,7 @@ class AllFilterOptionsTests(unittest.TestCase):
         data['shops']=[{**a,'sweets':['ichigo','xmas'],'plans':[{'menu':'scone scone'},{'menu':'chocolate scone'}]},
                        {**a,'sweets':['ichigo'],'plans':[{'menu':'parfait','season':['xmas']}]}]
         buttons={b['key']:b['text'] for b in Buttons(r.render(data,FAILURES)).buttons}
-        for key,count in {'scone':2,'xmas':2,'choco':1,'parfait':1,'ichigo':0,'melon':0,'macaron':0}.items():
+        for key,count in {'scone':2,'choco':1,'parfait':1,'ichigo':0,'melon':0,'macaron':0}.items():
             self.assertTrue(buttons[key].endswith(str(count)),(key,buttons[key]))
     def test_zero_badge_is_styled_without_hiding_the_button(self):
         result=r.render(fixture(),FAILURES)
