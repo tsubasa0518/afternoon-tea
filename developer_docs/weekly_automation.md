@@ -18,7 +18,7 @@ python3 -m afternoon_tea.routine_renderer generate
 python3 -m afternoon_tea.routine_site validate
 ```
 
-5. `site/` 内の上記JSON2ファイルと `index.html` だけを `claude/weekly-afternoon-tea-YYYYMMDD` へコミット・pushし、mainへ `[weekly-site] YYYY-MM-DD 自動更新` の非ドラフトPRを作成します。
+5. `site/` 内の上記JSON2ファイルと `index.html` だけを `claude/weekly-afternoon-tea-YYYYMMDD` へコミット・pushし、mainへ `[weekly-site] YYYY-MM-DD 自動更新` のdraft PRを作成し、調査完了と技術検証の成功後だけreadyにします。
 6. GitHub Actionsが技術CI成功後に自動マージし、既存の `deploy.yml` を明示起動します。
 7. Pages公開後、HTTP 200とHTMLのSHA-256一致を検証します。公開記録はActionsのSummaryとArtifactに残ります。
 
@@ -36,7 +36,7 @@ JSON補完とHTML生成で同じ価格分類処理を使います。生成器は
 
 許可作成者はRepository variable `CLAUDE_ROUTINE_AUTHOR`、未設定なら `tsubasa0518` です。取り込みジョブだけがcontents/pull-requests/actionsの書き込み権限、公開ジョブだけがPages公開権限を持ちます。週次実行でワークフロー・認証・Python・保護ファイルを変更しません。
 
-店舗数・未調査数・調査完了率は公開停止条件にしません。0店舗でも説明付きの正常HTMLを公開します。JSON破損・不正HTML・秘密情報・想定外ファイル変更は停止し、前回サイトを維持します。生成器は検証後にHTMLを一時ファイルから置き換え、失敗時には既存HTMLを維持します。
+店舗数だけで公開可否を判定しません。385行の優先調査と対象エリア探索の完了をcampaign_gateで検証し、未完了・制限・中断が残る場合は公開しません。JSON破損・不正HTML・秘密情報・想定外ファイル変更は停止し、前回サイトを維持します。生成器は検証後にHTMLを一時ファイルから置き換え、失敗時には既存HTMLを維持します。
 
 匿名の安全な公開GETのみを利用します。予約・仮予約・日時人数選択・フォーム送信・問い合わせ・ログイン・決済・アクセス制限の回避は禁止です。Pythonの既存HTTP層はrobots・要求間隔・サイズ上限・認証禁止・リダイレクト禁止を適用します。公式の公開情報源は `Browser(public_hosts=["正確なホスト名"])` で実行ごとに明示できます。既知サービスのURL規則は緩和せず、拒否されたサイトの別名を使いません。
 
@@ -51,3 +51,7 @@ JSON補完とHTML生成で同じ価格分類処理を使います。生成器は
 ## 店舗の最寄駅
 
 店舗カードには公開情報で確認した最寄駅名のみを表示します。複数駅は「／」で区切り、不明は未確認とします。出口・改札・徒歩分数・直結・道順は追加調査や専用項目への抽出をしません。エリアの対象駅を店舗の最寄駅に流用せず、14エリア・対象駅の探索範囲を維持します。既存の出典・根拠・確認日時は整形だけでは変更しません。
+
+## 優先リスト改訂
+
+385行の新リスト優先→一巡後のリスト外探索。15番「その他のエリア」を追加。永続化・再開・公開条件はdeveloper_docs/list_first_research.mdとclaude_weekly_prompt.mdを参照。旧14エリアの保護マスターは変更せず表示側で15番を追加する。

@@ -14,8 +14,10 @@
 - ブラウザー自動操作は現時点では禁止。Pythonの読み取り専用HTTP層のみ使用する。
 - docs/index.html、build_html.py、research_spec.md、original_prompt.txt、旧HTMLバックアップを変更しない。
 - 今回のユーザーによるPR #26監査後の実装依頼では、research_spec.mdの一休対象へ、AT名・具体的メニュー・公開ネット予約導線を確認できる「ティー」を追加する改訂と、対応する保護ハッシュ・マスター出典SHA・履歴整合の変更が明示的に承認されている。この例外は当該実装PRに限る。毎週のClaudeタスクによる仕様変更、他の保護対象や予約禁止・匿名GET・アクセス制限尊重の規則変更は引き続き禁止する。
-- ユーザー承認済みの公開方式: Claude Code Cloud Scheduled Tasksが調査とHTML生成を担当する。自動公開の必須条件は技術検証のみとし、店舗数・未解決件数・調査完了率・旧品質スコアを公開停止条件にしない。
+- ユーザー承認済みの公開方式: Claude Code Cloud Scheduled Tasksが調査とHTML生成を担当する。自動公開には技術検証とcampaign_gateによる今回のリスト調査・探索の完了検証を必須とする。未完了はdraftへ保存し公開しない。店舗数だけでは判定しない。
 - 定期タスクの変更先はsite/index.html、site/research.json、site/search_failures.jsonの3ファイルに限定する。ワークフロー、認証・権限設定、AGENTS.md、Pythonコード、保護ハッシュは定期タスクから変更しない。
 - deploy.yml等の公開保護変更は人間が依頼した実装PRだけで行い、固定ハッシュを対応する承認済み新値へ更新する。定期タスクPRによる変更は自動取り込みを拒否する。
-- 承認済みの最終構成: claude/weekly-afternoon-tea-で始まるブランチ・[weekly-site]タイトル・許可作成者・同一リポジトリ・上記3ファイル限定のPRをmain側のコードで検証し、自動マージ後にdeploy.ymlを明示的に起動する。公開ジョブだけがPages公開権限を持つ。0店舗でも説明を含む正常なHTMLを公開できる。
+- 承認済みの最終構成: claude/weekly-afternoon-tea-で始まるブランチ・[weekly-site]タイトル・許可作成者・同一リポジトリ・上記3ファイル限定のPRをmain側のコードで検証し、自動マージ後にdeploy.ymlを明示的に起動する。公開ジョブだけがPages公開権限を持つ。0店舗でも調査完了の根拠と正常なHTMLが必要。
 - 予約禁止の全規則は新しいCloud Scheduled Tasksでも適用する。旧Python週次調査を新方式の公開条件に使用しない。
+
+- ユーザー指定385行の原本はdata/references/user_candidates_385.csv。優先調査を一巡後にリスト外探索。15番はその他のエリア。再開台帳はsite/search_failures.jsonのresearch_campaignに保持し、同じ週のdraft PRから復元する。禁止操作による中断を自動で再試行しない。

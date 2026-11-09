@@ -7,11 +7,12 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 from afternoon_tea import routine_site as r
+from test_list_research import completed_campaign
 
 HTML=b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
 def files(n=0, failures=0):
     failure={'name':'Test only','area':'Test area','checked_at':'2026-11-07T07:17:00+09:00','sources':[],'reason':'Not retrieved','retry':True,'status':'unresearched'}
-    return {'site/index.html':HTML,'site/research.json':r.json_bytes({'schema_version':1,'generated_at':None,'shops':[{'name':'Test only','price':None}]*n}), 'site/search_failures.json':r.json_bytes({'schema_version':1,'generated_at':None,'failures':[failure]*failures})}
+    return {'site/index.html':HTML,'site/research.json':r.json_bytes({'schema_version':1,'generated_at':None,'period':{'start':'2026-11-09','end':'2026-12-19'},'shops':[{'name':'Test only','price':None}]*n}), 'site/search_failures.json':r.json_bytes({'schema_version':1,'generated_at':None,'research_campaign':completed_campaign(),'failures':[failure]*failures})}
 
 class FakeAPI:
     def __init__(self):
