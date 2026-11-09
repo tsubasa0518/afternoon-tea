@@ -18,7 +18,8 @@ function apply(){
   card.querySelectorAll('.plan').forEach(plan=>{
    const tags=(plan.dataset.sw||'').split(' ');
    const tagsMatch=!sweets.length||sweets.some(key=>tags.includes(key));
-   const ok=storeMatches&&tagsMatch&&priceMatches(plan)&&(!st.x.wd||plan.dataset.wd==='1')&&(!st.x.we||plan.dataset.we==='1');
+   const daysMatch=(!st.x.wd&&!st.x.we)||(st.x.wd&&plan.dataset.wd==='1')||(st.x.we&&plan.dataset.we==='1');
+   const ok=storeMatches&&tagsMatch&&priceMatches(plan)&&daysMatch;
    plan.hidden=!ok;if(ok)count++;
   });
   card.classList.toggle('hide',count===0);if(count){shops++;plans+=count}
