@@ -57,3 +57,55 @@ class CompletionTests(unittest.TestCase):
         d=json.loads((ROOT/'site/research.json').read_text());f=json.loads((ROOT/'site/search_failures.json').read_text())
         m=json.loads((ROOT/'data/store_master.json').read_text())
         with self.assertRaises(ValueError):validate(d,f,m,d)
+
+class ReviewRegressionTests(unittest.TestCase):
+    def existing(self):
+        baseline={'schema_version':1,'generated_at':'2026-11-09T07:17:00+09:00',
+                  'period':{'start':WEEK,'end':'2026-12-19'},
+                  'shops':[{'id':'prior','name':'TEST ONLY shop','source_url':'https://official.example.com/tea',
+                            'checked_at':'2026-11-08T10:00:00+09:00','plans':[
+                                {'plan_name':'TEST ONLY afternoon tea','price_yen':6000,'menu':'TEST sweets',
+                                 'checked_at':'2026-11-08T10:00:00+09:00'}]}]}
+        return fixture(baseline=baseline)
+    def test_unchanged_carried_plan_is_allowed(self):
+        d,f,m,b=self.existing();self.assertEqual(validate(d,f,m,b)['confirmed_plans'],0)
+    def test_existing_plan_source_facts_cannot_change_with_old_checked_at(self):
+        for key,value in [('price_yen',5000),('menu','new unsupported menu'),('start','2026-11-10'),('description','new description')]:
+            d,f,m,b=self.existing();d['shops'][0]['plans'][0][key]=value;seal(d,f)
+            with self.assertRaisesRegex(ValueError,'unreceipted_plan_change'):validate(d,f,m,b)
+    def test_new_plan_at_existing_shop_needs_receipt(self):
+        d,f,m,b=self.existing();d['shops'][0]['plans'].append({'plan_name':'TEST new unverified plan','price_yen':5000})
+        seal(d,f)
+        with self.assertRaisesRegex(ValueError,'unreceipted_plan_change'):validate(d,f,m,b)
+    def test_tuesday_resume_keeps_monday_week_and_real_generation_date(self):
+        import datetime as dt
+        d,f,m,b=fixture();d['generated_at']='2026-11-10T08:00:00+09:00'
+        d['period']={'start':'2026-11-10','end':'2026-12-20'}
+        d['weekly_run']['finished_at']='2026-11-10T08:00:00+09:00';seal(d,f)
+        result=validate(d,f,m,b,now=dt.datetime.fromisoformat('2026-11-10T09:00:00+09:00'))
+        self.assertEqual(result['week_key'],WEEK)
+    def test_substantive_change_rejected_at_intake_and_deployment(self):
+        from tests.test_routine_site import FakeAPI
+        from tests.weekly_completion_fixture import files,BASE,HEAD
+        from afternoon_tea.publication_completion import gate
+        api=FakeAPI();d,f,m,b=self.existing();d['shops'][0]['plans'][0]['price_yen']=5000;seal(d,f)
+        api.data,api.failures,api.master,api.baseline=d,f,m,b;api.content=files(d,f)
+        for base in (BASE,None):
+            with self.assertRaisesRegex(ValueError,'unreceipted_plan_change'):gate(api,HEAD,api.content,base)
+    def test_new_plan_with_current_receipt_and_unknown_fields_is_allowed(self):
+        d,f,m,b=self.existing();ex=f['research_execution']
+        read=next(r for r in ex['reads'] if r.get('shop_id')=='prior')
+        plan={'plan_name':'TEST ONLY shop アフタヌーンティー','price_yen':None,'menu':None,'start':None,'end':None,
+              'checked_at':read['checked_at'],'source_url':read['url'],'evidence_quote':read['excerpt']}
+        d['shops'][0]['plans'].append(plan)
+        ex['verified_plans']=[{'shop_id':'prior','plan_name':plan['plan_name'],'read_id':read['id']}]
+        ex['metrics']={'confirmed_shops':1,'confirmed_plans':1,'new_shops':0};seal(d,f)
+        self.assertEqual(validate(d,f,m,b)['confirmed_plans'],1)
+    def test_unrelated_receipt_cannot_authorize_a_new_plan(self):
+        d,f,m,b=self.existing();ex=f['research_execution'];read=ex['reads'][0]
+        plan={'plan_name':'UNRELATED invented plan','price_yen':None,'checked_at':read['checked_at'],
+              'source_url':read['url'],'evidence_quote':read['excerpt']}
+        d['shops'][0]['plans'].append(plan)
+        ex['verified_plans']=[{'shop_id':'prior','plan_name':plan['plan_name'],'read_id':read['id']}]
+        ex['metrics']={'confirmed_shops':1,'confirmed_plans':1,'new_shops':0};seal(d,f)
+        with self.assertRaisesRegex(ValueError,'plan_title'):validate(d,f,m,b)

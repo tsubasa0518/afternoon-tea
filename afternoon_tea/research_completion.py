@@ -88,7 +88,7 @@ def validate(research, failures, master, baseline, *, expected_week=None, now=No
         need(last-first<=dt.timedelta(days=7),'run_too_long')
         from .weekly_review import review
         need(not review(research)['errors'],'invalid_period')
-        need(first.astimezone(JST).date().isoformat()==research['period']['start'],'period_run_mismatch')
+        need(first.astimezone(JST).date()<=dt.date.fromisoformat(research['period']['start'])<=last.astimezone(JST).date(),'period_run_mismatch')
         need(execution.get('run_id')==run_id and execution.get('week_key')==week,'execution_mismatch')
         need(run.get('baseline_sha256')==digest(baseline),'baseline_mismatch')
         need(run.get('payload_sha256')==payload_hash(research) and run.get('execution_sha256')==digest(execution),'payload_changed')
@@ -164,6 +164,14 @@ def validate(research, failures, master, baseline, *, expected_week=None, now=No
         verified=set(); new=set(); plan_refs=set()
         old_ids={s['id'] for s in baseline['shops']}
         shops={s['id']:s for s in research['shops']}
+        need(len(shops)==len(research['shops']),'duplicate_shop_id')
+        for shop in shops.values():
+            plans=shop.get('plans',[])
+            need(isinstance(plans,list) and len({p['plan_name'] for p in plans})==len(plans),'duplicate_plan_name')
+            for plan in plans:
+                need(isinstance(plan['plan_name'],str) and bool(plan['plan_name'].strip()),'invalid_plan_name')
+                need(plan.get('price_yen') is None or type(plan['price_yen']) in (int,float),'invalid_price_type')
+                need(all(plan.get(k) is None or type(plan[k]) is bool for k in ('weekday_available','weekend_available')),'invalid_availability_type')
         results=execution['verified_plans'];need(isinstance(results,list),'invalid_verified_plans')
         for item in results:
             sid,pn=item['shop_id'],item['plan_name'];ref=(sid,pn)
@@ -176,6 +184,9 @@ def validate(research, failures, master, baseline, *, expected_week=None, now=No
             quote=p.get('evidence_quote')
             need(isinstance(quote,str) and len(quote.strip())>=5 and
                  re.sub(r'\s+','',quote) in re.sub(r'\s+','',read['excerpt']),'plan_quote_not_in_current_read')
+            title=re.split(r'[（(]',pn)[0]
+            normalize=lambda text:re.sub(r'[\W_]+','',text).casefold()
+            need(bool(normalize(title)) and normalize(title) in normalize(read['excerpt']),'plan_title_not_in_current_read')
             plan_refs.add(ref);verified.add(sid)
             if sid not in old_ids:new.add(sid)
         actual={'confirmed_shops':len(verified),'confirmed_plans':len(plan_refs),'new_shops':len(new)}
@@ -193,8 +204,17 @@ def validate(research, failures, master, baseline, *, expected_week=None, now=No
             if prior:
                 for p in shop.get('plans',[]):
                     previous=next((q for q in prior.get('plans',[]) if q['plan_name']==p['plan_name']),None)
-                    if previous and p.get('checked_at')!=previous.get('checked_at'):
-                        need((sid,p['plan_name']) in plan_refs,'unreceipted_check_date')
+                    from .routine_enrichment import enrich_plan
+                    # Only trusted, deterministic offline enrichment and theme
+                    # annotations may change without another public read. New
+                    # plans and substantive source facts need current receipts
+                    # even if someone leaves checked_at unchanged.
+                    offline={'sweets','season','structured_evidence','country','cc','country_source_type',
+                             'country_basis','country_input_hash','country_decision_hash','notes'}
+                    normalized=enrich_plan(previous,prior) if previous is not None else {}
+                    factual_keys=(set(p)|set(previous or {})|set(normalized))-offline
+                    changed=previous is None or any(p.get(k) not in (previous.get(k),normalized.get(k)) for k in factual_keys)
+                    if changed:need((sid,p['plan_name']) in plan_refs,'unreceipted_plan_change')
         return {'research_completion':'passed','week_key':week,'run_id':run_id,'required_tasks':len(required),**actual}
     except (KeyError,TypeError,AttributeError,ValueError) as error:
         if isinstance(error,ValueError) and str(error).startswith('research_incomplete:'):raise
