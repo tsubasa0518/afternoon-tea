@@ -1,3 +1,4 @@
+import datetime as dt
 import copy
 import io
 import json
@@ -36,6 +37,10 @@ class FakeAPI:
         return None
 
 class RoutineSiteTests(unittest.TestCase):
+    def setUp(self):
+        patcher=patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,9))
+        patcher.start();self.addCleanup(patcher.stop)
+
     def test_two_shops_and_76_unresolved_are_publishable(self):
         result=r.validate_site(files(2,76));self.assertEqual(result['shops'],2);self.assertEqual(result['search_failures'],76)
     def test_zero_shops_normal_explanation_is_valid(self):

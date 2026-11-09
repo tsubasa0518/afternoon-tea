@@ -1,5 +1,6 @@
 """List-first collection with durable checkpoints; fetched text is never a verified plan."""
 import argparse
+import copy
 import csv
 import datetime as dt
 import hashlib
@@ -16,6 +17,11 @@ from .research_store import atomic_json
 
 REFERENCE = ROOT / 'data/references/user_candidates_385.csv'
 HEADERS = ['No','店名','最寄り駅','ジャンル','予約サイト','予約ページURL','備考']
+def current_day():
+    from .data import JST
+    return dt.datetime.now(JST).date()
+
+
 TERMINAL = {'reviewed','excluded','information_insufficient','access_restricted'}
 
 
@@ -31,13 +37,35 @@ def reference(path=REFERENCE):
     return rows,hashlib.sha256(raw).hexdigest()
 
 
-def initialize(research, checkpoint=None):
+def initialize(research, checkpoint=None, day=None):
     rows,digest=reference()
+    day=day or current_day()
+    week=(day-dt.timedelta(days=day.weekday())).isoformat()
     if checkpoint:
         if checkpoint.get('reference_sha256')!=digest: raise ValueError('reference_changed')
         if [r['no'] for r in checkpoint['rows']] != list(range(1,386)):
             raise ValueError('checkpoint_rows_missing')
-        return checkpoint
+        if any(r.get('original')!=original for r,original in zip(checkpoint['rows'],rows)):
+            raise ValueError('checkpoint_original_changed')
+        old_week=checkpoint.get('week_key')
+        if old_week is None:
+            # Upgrade legacy interrupted draft without treating it as fresh evidence.
+            stamps=[a['checked_at'] for r in checkpoint['rows'] for a in r.get('attempts',[]) if a.get('checked_at')]
+            old_day=dt.datetime.fromisoformat(min(stamps)).date() if stamps else dt.date.fromisoformat(research.get('period',{}).get('start',day.isoformat()))
+            old_week=(old_day-dt.timedelta(days=old_day.weekday())).isoformat()
+        if old_week>week: raise ValueError('future_campaign_checkpoint')
+        if old_week==week:
+            checkpoint['week_key']=week
+            return checkpoint
+        fresh=initialize(research,day=day)
+        for new,old in zip(fresh['rows'],checkpoint['rows']):
+            if old['status']=='interrupted':
+                new.update(copy.deepcopy(old))
+            else:
+                new['history']=copy.deepcopy(old.get('history',[]))+[{
+                    'week_key':old_week,'status':old['status'],
+                    'reviewed_sources':copy.deepcopy(old.get('reviewed_sources',[]))}]
+        return fresh
     shops=research.get('shops',[])
     records=[]
     for row in rows:
@@ -52,7 +80,7 @@ def initialize(research, checkpoint=None):
         records.append({'no':int(row['No']),'original':row,'matched_shop_id':hits[0].get('id') if len(hits)==1 else None,
                         'identity_status':'exact_match' if len(hits)==1 else 'needs_identity_review',
                         'status':'unresearched','attempts':[],'reviewed_sources':[]})
-    return {'version':1,'reference_sha256':digest,'phase':'list','rows':records,'discovery':[],
+    return {'version':1,'week_key':week,'reference_sha256':digest,'phase':'list','rows':records,'discovery':[],
             'publication_ready':False,'note':'Candidate rows, fetched pages and reviewed AT facts are distinct.'}
 
 
@@ -92,6 +120,9 @@ def run(campaign, directory, browser=None, limit=385):
             row['status']='awaiting_review' if report['pages'] else 'access_restricted'
             row['reason']='Read fetched documents and verify plan identity; no automatic confirmation.' if report['pages'] else 'No document retrieved. Check independent official sources before final disposition.'
         except ForbiddenOperation as error:
+            browser.communication_audit.decision(url,str(error),violation=True)
+            campaign['communication_audit']=browser.communication_audit.snapshot()
+            campaign['network_events']=browser.network_events
             row['status']='interrupted';row['reason']=str(error)
             campaign['stop_reason']='forbidden_operation'
             atomic_json(directory/'checkpoint.json',campaign)

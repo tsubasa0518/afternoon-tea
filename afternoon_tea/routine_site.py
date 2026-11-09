@@ -251,8 +251,12 @@ def prepare():
     files={p:(ROOT/p).read_bytes() for p in ALLOWED}
     require(all(not (ROOT/p).is_symlink() for p in ALLOWED),'site_symlink_forbidden')
     report=validate_site(files)
-    from .campaign_gate import publication_gate
-    publication_gate(json.loads(files['site/research.json']),json.loads(files['site/search_failures.json']))
+    from .campaign_gate import publication_gate, retained_snapshot
+    if retained_snapshot(files['site/research.json'],files['site/search_failures.json']):
+        report['publication_basis']='retained_published_snapshot_2026-11-09'
+    else:
+        publication_gate(json.loads(files['site/research.json']),json.loads(files['site/search_failures.json']))
+        report['publication_basis']='completed_research_campaign'
     (base/'site').mkdir(exist_ok=True)
     require(not (base/'site').is_symlink(),'unsafe_delivery_directory')
     (base/'site/index.html').write_bytes(files['site/index.html'])
