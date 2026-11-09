@@ -91,7 +91,7 @@ def plan_html(plan,shop,index,total,generated):
     we=condition(plan,shop,('weekend_available','weekend','we'))
     sw=plan_tags(plan,shop)
     specified=1
-    attrs=f'data-tags-specified="{specified}" data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-pk="{int(price is not None)}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
+    attrs=f'data-tags-specified="{specified}" data-wd="{int(wd=="on")}" data-we="{int(we=="on")}" data-sw="{esc(" ".join(sw))}" data-price="{price if price is not None else ""}"'
     out=[f'<div class="plan" {attrs}><div class="plan-hd"><span class="pno">プラン{index+1}／{total}</span><p class="pper{ " na" if not first and not last else ""}">{esc(dates)}</p>{badge}</div>',
          f'<p class="theme">{SVG_TEA}<span>{esc(plan.get("plan_name",plan.get("theme")))}</span></p>']
     country = country_display(plan, shop)
@@ -122,8 +122,7 @@ def card(shop,plans,generated):
     sw=sorted(set(shop_sw+[t for p in plans for t in plan_tags(p,shop)]))
     wd=any(condition(p,shop,('weekday_available','weekday','wd'))=='on' for p in plans)
     we=any(condition(p,shop,('weekend_available','weekend','we'))=='on' for p in plans)
-    pk=any(amount(p) is not None for p in plans)
-    out=[f'<article class="card {cls}" data-cat="{cat}" data-shop-sw="{esc(" ".join(shop_sw))}" data-sw="{esc(" ".join(sw))}" data-wd="{int(wd)}" data-we="{int(we)}" data-pk="{int(pk)}">',
+    out=[f'<article class="card {cls}" data-cat="{cat}" data-shop-sw="{esc(" ".join(shop_sw))}" data-sw="{esc(" ".join(sw))}" data-wd="{int(wd)}" data-we="{int(we)}">',
          f'<div class="top"><header><h4>{esc(shop.get("name"))}</h4>']
     if shop.get('hotel_name'):out.append('<p class="shop">'+esc(shop['hotel_name'])+'</p>')
     out.append('</header></div>')
@@ -162,7 +161,6 @@ def render(research,failures):
         if type(no) is not int:no=area_names.get(shop.get('area'))
         target=groups[no] if no in groups else unassigned
         target.append((category(shop),markup));tot[category(shop)]+=1
-        swc.update(t for t in sw if t in EVENTS)
         for plan in plans:swc.update(t for t in plan_tags(plan,shop) if t not in EVENTS)
     per=research['period'];start,end=day(per['start']),day(per['end'])
     stats=''.join(f'<div class="stat s-{cat}"><b>{tot[cat]}</b><span>{label}</span></div>' for cat,label,cls in CATS)
@@ -173,8 +171,9 @@ def render(research,failures):
     if tot['unknown']:cats+='<button class="fb f-x" data-cat="unknown" aria-pressed="true">分類未確認</button>'
     nav=''.join(f'<a class="area-btn" href="#a{a["no"]}">{esc(a["name"]).replace("・","・<wbr>")}</a>' for a in master['areas'])
     row=lambda label,body,aria:f'<div class="frow" role="group" aria-label="{aria}"><span class="lb">{label}</span><div class="btns">{body}</div></div>'
-    filters='<div class="fpanel" id="top"><div class="fpanel-in">'+row('分類',cats,'分類で絞り込み')+row('条件','<button class="fb f-x" data-x="wd" aria-pressed="false">平日に行ける</button><button class="fb f-x" data-x="we" aria-pressed="false">土日祝に行ける</button><button class="fb f-x" data-x="pk" aria-pressed="false">値段確認済</button>','条件で絞り込み')+row('スイーツ',buttons(set(LABELS)-EVENTS),'スイーツで絞り込み')+row('イベント<br>季節',buttons(EVENTS-{'halloween'}),'イベント・季節で絞り込み')+f'<nav class="frow" aria-label="エリア"><span class="lb">場所</span><div class="btns">{nav}</div></nav>'
-    filters+='''<div class="search-fields"><label for="shop-search">店舗・ホテル名<input id="shop-search" type="search" autocomplete="off"></label><label for="theme-search">プラン名・テーマ<input id="theme-search" type="search" autocomplete="off"></label><label for="price-filter">料金帯<select id="price-filter"><option value="all">すべて</option><option value="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option value="high">10,000円以上</option><option value="unknown">料金未確認</option></select></label></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
+    filters='<div class="fpanel" id="top"><div class="fpanel-in">'+row('分類',cats,'分類で絞り込み')+row('日程条件','<button class="fb f-x" data-x="wd" aria-pressed="false">平日に行ける</button><button class="fb f-x" data-x="we" aria-pressed="false">土日祝に行ける</button>','日程条件で絞り込み')+row('スイーツ',buttons(set(LABELS)-EVENTS),'スイーツで絞り込み')
+    filters+=f'''<nav class="frow area-nav" aria-label="エリア"><span class="lb">場所</span><div class="area-disclosure"><button class="lk area-toggle" id="area-toggle" type="button" aria-expanded="false" aria-controls="area-links">詳細</button><div class="btns" id="area-links" hidden>{nav}</div></div></nav>'''
+    filters+='''<div class="price-filter-field"><label class="lb" for="price-filter">料金帯</label><select id="price-filter"><option value="all">すべて</option><option value="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option value="high">10,000円以上</option><option value="unknown">料金未確認</option></select></div><div class="filter-status"><span id="filter-status" role="status" aria-live="polite"></span><button class="lk" id="reset-filters" type="button">絞り込みを解除</button></div></div></div>'''
     count=sum(tot.values())
     empty='<p class="none" id="no-results" hidden>条件に合う掲載情報はありません。絞り込みを変更してください。</p>'
     if not count:empty+='<p class="none">今週は確認できた情報がありません</p>'

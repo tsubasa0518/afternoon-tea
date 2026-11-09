@@ -23,9 +23,9 @@ FAILURES={'schema_version':1,'generated_at':None,'failures':[]}
 
 
 class RoutineRendererTests(unittest.TestCase):
-    def test_reference_css_and_base_js_are_preserved_exactly(self):
+    def test_reference_css_is_preserved_exactly(self):
         ref=(r.ROOT/'afternoon_tea_tokyo_2026-11-06.html').read_text()
-        for name,pattern in [('routine.css',r'<style>(.*?)</style>'),('routine.js',r'<script>(.*?)</script>')]:
+        for name,pattern in [('routine.css',r'<style>(.*?)</style>')]:
             self.assertEqual((r.TEMPLATES/name).read_text(),re.search(pattern,ref,re.S).group(1))
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research=json.loads((r.ROOT/'site/research.json').read_text());failures=json.loads((r.ROOT/'site/search_failures.json').read_text())
@@ -58,7 +58,7 @@ class RoutineRendererTests(unittest.TestCase):
         result=r.render(source,FAILURES)
         self.assertIn('プラン1／2',result);self.assertIn('プラン2／2',result)
         self.assertIn('data-sw="scone" aria-pressed="false">スコーン<span class="bc">1</span>',result)
-        self.assertIn('data-sw="xmas" aria-pressed="false">クリスマス<span class="bc">1</span>',result)
+        self.assertNotIn('data-sw="xmas" aria-pressed=',result)
     def test_outside_plan_is_omitted_without_mutating_evidence(self):
         source=fixture();source['shops'][0]['plans'] += [{'plan_name':'OUTSIDE ONLY','start':'2026-12-19','end':'2026-12-25'}]
         before=copy.deepcopy(source);result=r.render(source,FAILURES)
@@ -164,73 +164,78 @@ class RoutineRendererTests(unittest.TestCase):
         result=r.render(fixture(),FAILURES)
         for value in ['prefers-color-scheme:dark','max-width:820px','max-width:420px','grid-template-columns:1fr','minmax(330px,1fr)','IntersectionObserver']:
             self.assertIn(value,result)
+    def test_simplified_filter_markup_survives_regeneration(self):
+        source=fixture();before=copy.deepcopy(source)
+        for _ in range(2):
+            result=r.render(source,FAILURES)
+            for removed in ['id="shop-search"','id="theme-search"','店舗・ホテル名','プラン名・テーマ',
+                            'data-x="pk"','料金確認済','値段確認済','イベント・季節で絞り込み']:
+                self.assertNotIn(removed,result)
+            self.assertIn('日程条件',result)
+            self.assertIn('aria-expanded="false" aria-controls="area-links">詳細</button>',result)
+            links=re.search(r'<div class="btns" id="area-links" hidden>(.*?)</div>',result,re.S).group(1)
+            self.assertEqual(len(re.findall(r'href="#a\d+"',links)),14)
+            self.assertEqual(len(re.findall(r'<button[^>]+data-sw=',result)),15)
+            for key in ['xmas','valentine','whiteday','collab','season']:
+                self.assertNotIn('data-sw="'+key+'" aria-pressed=',result)
+            self.assertIn('TEST ONLY lounge',result);self.assertIn('TEST winter AT',result)
+            self.assertEqual(source,before)
+
     def test_filter_javascript_runs_locally(self):
         if not shutil.which('node'):self.skipTest('Node is needed for local filter execution')
         result=r.render(fixture(),FAILURES);js=re.search(r'<script>(.*?)</script>',result,re.S).group(1)
         harness=r'''
 const vm=require('vm'),fs=require('fs'),code=JSON.parse(fs.readFileSync(0,'utf8'));
 function node(dataset={}){const n={dataset,hidden:false,value:'',textContent:'',attrs:{},events:{},classes:new Set(),getAttribute(k){return this.attrs[k]},setAttribute(k,v){this.attrs[k]=v},addEventListener(k,f){this.events[k]=f}};n.classList={toggle(k,v){v?n.classes.add(k):n.classes.delete(k)},add(k){n.classes.add(k)}};return n}
-function plan(name,price,wd='0',we='0'){const p=node({price,pk:price===''?'0':'1',wd,we});p.querySelector=()=>({textContent:name});return p}
-function card(cat,name,sw,plans){const c=node({cat,sw,shopSw:sw,wd:'1',we:'1',pk:'1'});c.plans=plans;c.querySelector=()=>({textContent:name});c.querySelectorAll=()=>plans;return c}
-const a=card('hotel','Hotel A','scone xmas',[plan('冬', '7000','1'),plan('夏','11000','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','0','1')]);const cards=[a,b];a.plans[0].dataset.tagsSpecified='1';a.plans[0].dataset.sw='scone xmas';a.plans[1].dataset.tagsSpecified='1';a.plans[1].dataset.sw='choco';
-const buttons=[];for(const cat of ['hotel','cafe','lux','unknown']){const x=node({cat});x.attrs['aria-pressed']='true';buttons.push(x)}for(const x of ['wd','we','pk']){const n=node({x});n.attrs['aria-pressed']='false';buttons.push(n)}for(const sw of ['ichigo','scone','xmas']){const n=node({sw});n.attrs['aria-pressed']='false';buttons.push(n)}
+function plan(name,price,sw,wd='0',we='0'){return node({price,sw,wd,we})}
+function card(cat,name,sw,plans){const c=node({cat,sw});c.plans=plans;c.querySelectorAll=()=>plans;return c}
+const a=card('hotel','Hotel A','scone',[plan('冬','7000','scone ichigo','1'),plan('夏','11000','choco','0','1')]),b=card('cafe','Cafe B','parfait',[plan('unknown','','parfait','0','1')]);const cards=[a,b];
+const buttons=[];for(const cat of ['hotel','cafe','lux','unknown']){const n=node({cat});buttons.push(n)}for(const x of ['wd','we'])buttons.push(node({x}));for(const sw of ['ichigo','scone','choco','parfait','melon'])buttons.push(node({sw}));
 const groups=['hotel','cafe','lux'].map(cat=>{const g=node({cat});g.querySelectorAll=()=>cards.filter(c=>c.dataset.cat===cat&&!c.classes.has('hide'));g.querySelector=()=>({textContent:''});return g});
 const area=node();area.querySelector=()=>({textContent:''});area.querySelectorAll=()=>cards.filter(c=>!c.classes.has('hide'));
-const ids={};for(const id of ['shop-search','theme-search','price-filter','filter-status','no-results','reset-filters'])ids[id]=node();ids['price-filter'].value='all';
-const document={getElementById(id){return ids[id]||null},querySelector(){return null},querySelectorAll(q){return q==='.card'?cards:q==='.cat'?groups:q==='.fb'?buttons:q==='section.area'?[area]:[]}};
+const ids={};for(const id of ['price-filter','filter-status','no-results','reset-filters','area-toggle','area-links'])ids[id]=node();ids['price-filter'].value='all';
+const document={getElementById(id){if(['shop-search','theme-search'].includes(id))throw Error('removed input reference');return ids[id]||null},querySelector(){return null},querySelectorAll(q){return q==='.card'?cards:q==='.cat'?groups:q==='.fb'?buttons:q==='section.area'?[area]:[]}};
 const pageEvents={},pending=[];
 const window={addEventListener(name,fn){pageEvents[name]=fn}};
 // Simulate browser-restored form values and pressed buttons before script execution.
-ids['shop-search'].value='restored name';ids['theme-search'].value='restored theme';ids['price-filter'].value='high';
+ids['price-filter'].value='high';
 buttons.forEach(b=>b.attrs['aria-pressed']=b.dataset.cat?'false':'true');
 vm.runInNewContext(code,{document,window,setTimeout(fn){pending.push(fn)}});
 function flush(){while(pending.length)pending.shift()()}
 function assertReset(label){
- if(ids['shop-search'].value!==''||ids['theme-search'].value!==''||ids['price-filter'].value!=='all')throw Error(label+' fields');
+ if(ids['price-filter'].value!=='all')throw Error(label+' fields');
  if(buttons.some(b=>b.attrs['aria-pressed']!==(b.dataset.cat?'true':'false')))throw Error(label+' buttons');
  if(cards.some(c=>c.classes.has('hide')||c.plans.some(p=>p.hidden)))throw Error(label+' visibility');
  if(ids['filter-status'].textContent!=='表示 2店舗・3プラン')throw Error(label+' counts');
 }
 assertReset('first load / reload');
+function assert(v,m){if(!v)throw Error(m)}
+function input(id,value,event='change'){ids[id].value=value;ids[id].events[event]()}
+function click(key,value){buttons.find(b=>b.dataset[key]===value).events.click()}
+function visible(){return cards.flatMap(c=>c.plans).filter(p=>!p.hidden).length}
+assert(ids['area-links'].hidden&&ids['area-toggle'].attrs['aria-expanded']==='false','area initially closed');
 if(process.env.TEST_EARLY_CHOICE){
- input('shop-search','Hotel');pageEvents.pageshow({persisted:false});flush();
- assert(ids['shop-search'].value==='Hotel'&&b.classes.has('hide'),'choice during slow initial load is kept');
- ids['reset-filters'].events.click();
-}else{
- pageEvents.pageshow({persisted:false});
- ids['shop-search'].value='late initial restoration';flush();assertReset('initial pageshow restores all');
-}
-function assert(v,m){if(!v)throw Error(m)}function input(id,value,event='input'){ids[id].value=value;ids[id].events[event]()}
-assert(ids['filter-status'].textContent==='表示 2店舗・3プラン','initial');
-input('shop-search','ＨＯＴＥＬ Ａ');assert(b.classes.has('hide')&&!a.classes.has('hide'),'name');
-input('theme-search','冬');input('price-filter','high','change');assert(a.classes.has('hide'),'same plan AND');
-ids['reset-filters'].events.click();buttons.find(b=>b.dataset.x==='wd').events.click();assert(b.classes.has('hide')&&!a.classes.has('hide'),'weekday');
-ids['reset-filters'].events.click();input('price-filter','unknown','change');assert(a.classes.has('hide')&&!b.classes.has('hide'),'unknown price');
-ids['reset-filters'].events.click();buttons.find(b=>b.dataset.sw==='scone').events.click();buttons.find(b=>b.dataset.sw==='xmas').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet and event');
-input('price-filter','high','change');assert(a.classes.has('hide')&&!ids['no-results'].hidden,'sweets/event and price must match same plan');input('price-filter','all','change');
-buttons.find(b=>b.dataset.cat==='hotel').events.click();assert(a.classes.has('hide')&&!ids['no-results'].hidden,'category/no results');
-ids['reset-filters'].events.click();assert(!a.classes.has('hide')&&!b.classes.has('hide'),'reset');
-buttons.find(b=>b.dataset.sw==='ichigo').events.click();assert(a.classes.has('hide')&&b.classes.has('hide')&&!ids['no-results'].hidden,'zero option');
-buttons.find(b=>b.dataset.sw==='scone').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet OR including zero option');
-buttons.find(b=>b.dataset.sw==='xmas').events.click();assert(!a.classes.has('hide')&&b.classes.has('hide'),'sweet OR and event AND');
+ click('sw','scone');pageEvents.pageshow({persisted:false});flush();assert(visible()===1,'early choice preserved');ids['reset-filters'].events.click();
+}else{pageEvents.pageshow({persisted:false});ids['price-filter'].value='high';flush();assertReset('late initial restoration')}
+click('sw','scone');assert(visible()===1&&!a.plans[0].hidden&&a.plans[1].hidden,'single sweet count');
+const status=ids['filter-status'].textContent;
+ids['area-toggle'].events.click();assert(!ids['area-links'].hidden&&ids['area-toggle'].attrs['aria-expanded']==='true'&&ids['area-toggle'].textContent==='閉じる','expand areas');
+assert(visible()===1&&ids['filter-status'].textContent===status,'disclosure leaves filters unchanged');
+ids['area-toggle'].events.click();assert(ids['area-links'].hidden&&ids['area-toggle'].textContent==='詳細','collapse areas');
+click('sw','ichigo');assert(visible()===1,'OR overlap counted once');
+click('sw','choco');assert(visible()===2&&!a.classes.has('hide')&&b.classes.has('hide'),'OR different plans');
+input('price-filter','high');assert(visible()===1&&!a.plans[1].hidden,'price AND sweets on same plan');
+click('x','wd');assert(visible()===0&&!ids['no-results'].hidden,'weekday AND price');
 ids['reset-filters'].events.click();assertReset('manual reset');
-function chooseFilters(){
- input('shop-search','Hotel');input('theme-search','冬');input('price-filter','high','change');
- buttons.find(b=>b.dataset.cat==='cafe').events.click();
- buttons.find(b=>b.dataset.x==='we').events.click();
- buttons.find(b=>b.dataset.sw==='scone').events.click();
-}
-for(const persisted of [true]){
- chooseFilters();pageEvents.pageshow({persisted});assertReset('pageshow '+persisted);
- // Browser history's persisted user-state restoration can happen after pageshow.
- ids['shop-search'].value='restored after pageshow';ids['price-filter'].value='high';
- flush();assertReset('late history restore '+persisted);
-}
-pageEvents.pageshow({persisted:true});input('shop-search','Hotel');flush();
-assert(ids['shop-search'].value==='Hotel'&&b.classes.has('hide'),'new user choice survives queued restore');
-input('theme-search','冬');assert(!a.classes.has('hide')&&a.plans[1].hidden,'ongoing choices remain active');
-ids['reset-filters'].events.click();assertReset('manual reset after history');
-const unknown=card('unknown','Unknown facility','',[plan('不明','')]);cards.push(unknown);
+click('x','we');assert(visible()===2&&a.plans[0].hidden,'weekend');
+ids['reset-filters'].events.click();input('price-filter','unknown');assert(visible()===1&&!b.plans[0].hidden,'unknown price retained');
+ids['reset-filters'].events.click();click('cat','hotel');assert(a.classes.has('hide')&&visible()===1,'category');
+ids['reset-filters'].events.click();click('sw','melon');assert(visible()===0,'zero sweet');click('sw','scone');assert(visible()===1,'OR zero sweet');
+pageEvents.pageshow({persisted:true});assertReset('history return');
+ids['price-filter'].value='high';flush();assertReset('late history restoration');
+pageEvents.pageshow({persisted:true});click('sw','choco');flush();assert(visible()===1&&!a.plans[1].hidden,'new choice survives queued reset');
+ids['reset-filters'].events.click();assertReset('manual after history');
+const unknown=card('unknown','Unknown facility','',[plan('不明','','')]);cards.push(unknown);
 buttons.find(b=>b.dataset.cat==='unknown').events.click();assert(unknown.classes.has('hide'),'unknown category can filter');
 ids['reset-filters'].events.click();assert(!unknown.classes.has('hide')&&!unknown.plans[0].hidden,'reset includes unknown category');
 cards.pop();ids['reset-filters'].events.click();assertReset('all categories restored');

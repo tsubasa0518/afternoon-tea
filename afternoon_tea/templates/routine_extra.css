@@ -2,16 +2,33 @@
 [hidden]{display:none!important}
 .c-unknown .tag{background:var(--bg);color:var(--sub)}.card.c-unknown::before{background:var(--sub)}
 .card.c-unknown .plan{--pc:var(--sub);--pt:var(--bg)}
-.search-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.search-fields label{min-width:0;font-size:12.5px;color:var(--sub)}
-.search-fields input,.search-fields select{width:100%;min-height:44px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:16px}
-.search-fields input:focus-visible,.search-fields select:focus-visible{outline:2px solid var(--hotel);outline-offset:2px}
+.price-filter-field{display:grid;grid-template-columns:5.5em minmax(0,340px);gap:8px 10px;align-items:center}
+.price-filter-field .lb{font-size:12.5px;color:var(--sub)}
+.price-filter-field select{width:100%;min-width:0;min-height:44px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:16px}
+.price-filter-field select:focus-visible{outline:2px solid var(--hotel);outline-offset:2px}
+.area-disclosure{min-width:0}.area-toggle{font:inherit;cursor:pointer;min-height:44px;padding:8px 16px}
+.area-disclosure .btns{margin-top:10px}
 .filter-status{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:var(--sub);font-size:13px}
 #no-results{margin-top:16px}.rnote{overflow-wrap:anywhere}.plan .dtxt{overflow-wrap:anywhere}
-@media(max-width:600px){.search-fields{grid-template-columns:1fr}.fb,.area-btn{min-height:44px}}
+
 
 /* Keep zero counts visible and readable in both reference color schemes. */
 .fb .bc.zero{color:var(--sub)}
  .fb[data-sw]{white-space:normal;word-break:keep-all}
 
 .country-theme{margin:0;font-size:12.5px;color:var(--sub);line-height:1.6}
+
+/* Keep the established palette and desktop cards; allow narrow layouts to shrink. */
+.hero-in>*,.fpanel-in>*,.frow>*,.stat,.card,.plan{min-width:0}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr))}
+h1,h4,.stat span,.theme span,.time span,.loc,.meet p,.pdet,.dtxt,.country-theme{overflow-wrap:anywhere}
+h1{word-break:normal}.theme span,.time span{min-width:0}
+.chips{flex-wrap:wrap}.lk{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:600px){
+ .frow,.price-filter-field{grid-template-columns:minmax(0,1fr)}
+ .frow .lb{padding-top:0}.btns{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fb,.area-btn,.lk{min-height:44px}.fb{white-space:normal;overflow-wrap:anywhere}
+ .area-btn{word-break:normal;overflow-wrap:anywhere;padding:10px 8px}
+ .stat{padding:10px}.filter-status{justify-content:space-between}
+}

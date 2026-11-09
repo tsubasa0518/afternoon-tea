@@ -110,7 +110,7 @@ class PriceCategoryTests(unittest.TestCase):
             html=render(enriched,FAILURES)
             self.assertIn('class="card c-'+expected+'"',html)
             self.assertIn('料金 未確認',html)
-            self.assertIn('data-pk="0"',html)
+            self.assertIn('data-price=""',html)
             self.assertIn('<option value="unknown">料金未確認</option>',html)
 
     def test_three_named_hotels_keep_unknown_prices_in_hotel_category(self):
