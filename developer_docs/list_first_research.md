@@ -7,7 +7,7 @@
 1. 同じ週の既存draft PRブランチを取得する。mainだけを取得して途中データを捨てない。
 2. python3 -m afternoon_tea.list_research --limit 385 を実行する。既存Python HTTP層と匿名GET・robots・リダイレクト禁止を使う。禁止検知で全体停止。interruptedがある台帳は自動再実行しない。
 3. .staging/list-research/以下のreportと本文を実読する。取得だけはawaiting_review。プラン名・価格・期間・メニューとの対応を確認してreviewed_sourcesへ短い根拠を記録する。ナビや別店舗を混ぜない。情報不足・制限は提供なしとしない。
-4. checkpoint.jsonをsite/search_failures.jsonのresearch_campaignに保存し、同じdraft PRを更新する。根拠と実行中断のネットワーク記録を残す。生本文や連絡先はコミットしない。次のクラウド実行はそのdraftブランチから復元する。
+4. checkpoint.jsonをsite/search_failures.jsonのresearch_campaignに保存し、同じdraft PRを更新する。根拠と実行中断のネットワーク記録を残す。生HTMLや連絡先はコミットしない。v2では検査済みの本文テキストを復元用に保持する。次のクラウド実行はそのdraftブランチから復元する。
 5. 一巡（全行reviewed/excluded/information_insufficient/access_restricted）の後、14エリアと所在地確認済みのその他地域でリスト外探索。awaiting_review/unresearched/interruptedは一巡としない。制限を無限再試行しない。
 
 公式の独立情報源は既存のofficial_researchで調査できるが、今回の全体禁止停止を自動解除して使わない。安全な再開方針を検討し、既に拒否されたURLやサービス別名は使わない。添付にURLがあるだけでは許可にならない。
@@ -28,4 +28,24 @@ campaign_gateはPR取り込み・公開準備の両方で、原本と全行ID、
 
 収集器が店舗から東京エリア一覧を経由しhttps://restaurant.ikyu.com/area/tokyo/t-scene2981/でredirect_blocked_before_followを検知して停止。リダイレクト先は未取得・再試行なし。共通一覧は当該店の証拠に使用しない。No.1中断、384行未着手。第2段階未開始。取得本文はローカル.staging内、追跡可能な短い根拠・URL・時刻・ハッシュを調査結果draftへ残す。次回は中断理由と安全な情報源の検討が必要。Claudeクラウド実行や定期実行の成功ではない。
 
-公開時は信頼する実行日のJST週と調査開始日・week_keyを照合する。翌週は確認状態を未調査へ戻し履歴を保持するが、禁止中断は翌週も保持して自動再試行しない。取得前のURL拒否も監査へ保存する。
+公開対象期間は信頼する実行日のJST週と照合する。未完了campaignは翌週も保持し、一巡完了後の次周期だけ再確認を開始する。禁止中断は自動再試行しない。取得前のURL拒否も監査へ保存する。
+
+## v2: 複数日・複数週の調査と根拠の復元
+
+未完了のcampaign_idとstarted_onを週次のweek_keyから分離する。一巡中は翌週も同じ台帳を再開し、完了したcampaignだけ翌週に再確認のcycleを作る。公開対象期間は現在のJST週、各証拠の確認日は開始日以降かつ直近14日以内（未来日不可）で検証する。同日である必要はない。14日より古くなった確認は履歴へ移しneeds_refreshとする。未着手店舗を先に進め、古い確認の再取得はその後に処理する。禁止中断は自動解除しない。
+
+v2は取得したHTMLから抽出したテキストを、ハッシュ・圧縮データ・店舗/地域のsubject_id・取得URL・実際の取得日時・監査イベントIDとともにdocumentsへ保持する。これは再開時に失われていた取得本文を復元するための調査用スナップショットで、サイトカードへ全文表示しない。HTML、スクリプト、HTTPヘッダー、Cookieは保存せず、圧縮前と展開後に秘密情報・個人連絡先を検査する。台帳は公開リポジトリへ保存されるので、公開資料に含まれる本文の転載可否も収集時に確認し、保存できない資料は確認済みにしない。1本文256KB、documents合計1.5MBを上限とし、上限超過や保存エラーは成功扱いにせず停止する。既存のsite JSON全体2MB制限は維持する。
+
+再開時はdocumentsを.staging/list-research/documents/<document_id>.txtへ復元する。needs_collectionは未取得URL・深さ・店舗配下の範囲を含むqueueから再開し、既取得URLは再取得しない。awaiting_reviewは取得本文の内容確認待ちで、確認済みではない。v1の完了記録は新しい証拠方式へ自動昇格させず、旧履歴として保持する。v1のinterruptedは維持する。
+
+一休は店舗ID、食べログは店舗ID、TableCheckは店舗slugでトップとプランを同定する。元の385行は残し、同じentity_idの収集はまとめる。名前だけで異サイトを自動統合しない。異サイトの統合はlink_identityに各サイトで取得した同一の店舗名・住所の根拠を渡し、確認後にだけ行う。同じホテルの別レストランを住所だけで統合しない。
+
+レビュー後に各行のreviewed_sourcesへdocument_id、url、checked_at、basis（取得本文中の短い一致抜粋）を保存する。証拠を別店舗へ流用すると公開検証で拒否する。行のstatusをreviewed/excludedにする作業はClaudeが本文を読んで行い、HTTP成功だけで変更しない。
+
+第2段階でofficial_research等が取得した本文も、同じ通信監査を保持してarchive_acquired_text(campaign, journal, subject_id, url, text, page_sha256, hosts)で台帳へ取り込む。別runの最終ページ情報や新しい取得時刻を付け直さない。既存の監査eventsに対象URLと本文ハッシュのdocumentイベントがない場合は拒否する。
+
+探索のsubject_idはarea:<番号>とarea:<番号>:station:<駅名>を区別し、discoveryのstation_evidenceに各対象駅のreviewed_sourcesを保存する。15番はplacesに実際に探索した地域を列挙し、それぞれの根拠をstation_evidenceへ保存する。駅・地域名が本文にない共通一覧だけでは完了にできない。
+
+公開するshopにはresearch_entity_id、各planにはresearch_evidenceを保存する。各proofは上記の出典情報にverified_fieldsを加え、確認したplan_name/price_yen/start/end/menuと対応させる。値と取得本文の一致を確認できないもの、期限切れの根拠、未取得の詳細ページ、失敗・欠落・不正な通信監査は公開不可。料金の計算・メニューの要約で原文と一致しない値も自動で通さず、対応根拠の再確認が必要。
+
+収集開始前と各本文の保存後にcheckpointを保存し、コマンドはstore_lockで同じ作業フォルダーの二重起動を拒否する。--seconds（全体、既定600秒）、--limit（店舗単位）とHTTP要求数を守る。実通信のタイムアウトによる終了時刻の超過はあり得る。
