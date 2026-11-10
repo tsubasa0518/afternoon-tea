@@ -1,7 +1,6 @@
-"""Offline, pre-PR date review for Claude. Not an automatic publication gate."""
+"""Plan dates against the forty-day window; the renderer omits plans outside it."""
 import datetime as dt
-import json
-from afternoon_tea.processing.dates import JST, period
+from afternoon_tea.processing.dates import JST
 
 def day(value):
     if value is None:
@@ -45,11 +44,3 @@ def review(data):
             elif first is None or last is None:
                 unknown += 1
     return {'period': window, 'shops': len(data.get('shops', [])), 'plans': total, 'errors': errors, 'outside_plans': outside, 'unknown_periods': unknown}
-
-def main(args):
-    if args.period:
-        print(json.dumps(period(), ensure_ascii=False))
-        return 0
-    result = review(json.loads(args.data.read_text(encoding='utf-8')))
-    print(json.dumps(result, ensure_ascii=False, indent=2))
-    return 1 if result['errors'] else 0

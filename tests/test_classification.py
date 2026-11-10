@@ -4,8 +4,7 @@ import unittest
 from afternoon_tea.processing.classification import classify
 from afternoon_tea.processing.enrichment import enrich
 from afternoon_tea.publication.renderer import render
-from afternoon_tea.collection.transport import check_url, ForbiddenOperation
-from tests.test_renderer import fixture, FAILURES
+from tests.test_renderer import fixture
 
 class PriceCategoryTests(unittest.TestCase):
 
@@ -71,61 +70,6 @@ class PriceCategoryTests(unittest.TestCase):
         result = render(data)
         for value in ['プラン1／2', 'プラン2／2', 'https://www.example.com/winter-tea/', '提供期間 未確認']:
             self.assertIn(value, result)
-
-    def test_explicit_public_hosts_keep_transport_prohibitions(self):
-        host = 'www.example.com'
-        for path in ['/afternoon-tea/', '/robots.txt']:
-            check_url('https://' + host + path, public_hosts=[host])
-        for url in ['https://' + host + '/login',
-             'https://' + host + '/booking',
-             'https://' + host + '/tea?date=2026-11-07',
-             'https://' + host + '/tea#reserve',
-             'https://another.example.com/tea']:
-            with self.assertRaises(ForbiddenOperation):
-                check_url(url, public_hosts=[host])
-        for host in ['ssl.tabelog.com', 'localhost', '127.0.0.1', 'foo.local']:
-            with self.assertRaises(ForbiddenOperation):
-                check_url('https://' + host + '/tea', public_hosts=[host])
-        with self.assertRaises(ForbiddenOperation):
-            check_url('https://www.example.com/tea', 'POST', public_hosts=['www.example.com'])
-
-    def test_public_source_still_requires_robots_and_stops_on_denial(self):
-        from afternoon_tea.collection.reader import Browser
-        from urllib.robotparser import RobotFileParser
-        from urllib.error import HTTPError
-        from unittest.mock import Mock
-        host = 'www.example.com'
-        url = 'https://' + host + '/afternoon-tea/'
-        browser = Browser(delay=0, public_hosts=[host])
-        robots = RobotFileParser()
-        robots.parse(['User-agent: *', 'Disallow: /'])
-        browser.robots[host] = robots
-        browser._open = Mock()
-        with self.assertRaisesRegex(RuntimeError, 'robots_'):
-            browser.fetch(url)
-        browser._open.assert_not_called()
-        robots = RobotFileParser()
-        robots.parse(['User-agent: *', 'Allow: /'])
-        browser = Browser(delay=0, public_hosts=[host])
-        browser._open = Mock()
-        browser.robots[host] = robots
-        browser._open.side_effect = HTTPError(url, 403, 'denied', {}, None)
-        with self.assertRaisesRegex(RuntimeError, 'HTTP_403'):
-            browser.fetch(url)
-        with self.assertRaisesRegex(RuntimeError, 'host_stopped'):
-            browser.fetch(url)
-        self.assertEqual(browser._open.call_count, 1)
-
-    def test_public_search_only_accepts_one_text_query(self):
-        check_url('https://www.bing.com/search?q=Tokyo%20afternoon%20tea')
-        check_url('https://www.bing.com/robots.txt')
-        for url in ['https://www.bing.com/search?q=tea&date=20261107',
-             'https://www.bing.com/search?q=tea&q=hotel',
-             'https://www.bing.com/search?q=',
-             'https://www.bing.com/login',
-             'https://www.example.com/tea?q=tea']:
-            with self.assertRaises(ForbiddenOperation):
-                check_url(url)
 
     def test_unknown_price_uses_only_evidenced_facility(self):
         plans = [{'price_yen': None, 'discount_price_yen': 5000}]

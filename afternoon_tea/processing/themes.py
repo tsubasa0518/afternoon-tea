@@ -150,7 +150,7 @@ def main(args):
         parser.error('symlink data forbidden')
     data = json.loads(path.read_text())
     if args.command == 'prepare':
-        previous = json.loads(args.previous.read_text()) if args.previous else None
+        previous = json.loads(args.previous.read_text()) if args.previous and args.previous.exists() else None
         (result, pending) = prepare(data, previous)
         atomic_json(path, result)
         print(json.dumps({'pending_plans': pending}, ensure_ascii=False, indent=2))

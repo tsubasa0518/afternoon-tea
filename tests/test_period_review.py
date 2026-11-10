@@ -75,15 +75,13 @@ class WeeklyReviewTests(unittest.TestCase):
         source['shops'] = []
         self.assertEqual(review(source)['errors'], [])
 
-    def test_review_cli_is_read_only_and_returns_nonzero_for_outside(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / 'research.json'
-            path.write_text(json.dumps(data('2026-12-19', None)))
-            before = path.read_bytes()
-            result = subprocess.run(['python3', '-m', 'afternoon_tea', 'review', '--data', str(path)], capture_output=True, text=True, cwd=site_tools.ROOT)
-            self.assertEqual(result.returncode, 1)
-            self.assertEqual(path.read_bytes(), before)
-            self.assertIn('outside_research_period', result.stdout)
+    def test_outside_period_plan_is_not_rendered(self):
+        from afternoon_tea.publication.renderer import render
+        from tests.test_renderer import fixture
+        sample = fixture()
+        sample['shops'][0]['plans'][0].update(start='2026-12-19', end=None, plan_name='OUTSIDE ONLY')
+        self.assertTrue(review(sample)['outside_plans'])
+        self.assertNotIn('OUTSIDE ONLY', render(sample))
 
     def test_date_review_is_not_a_new_automatic_publication_gate(self):
         # The pre-PR helper reports an error; the existing automation is unchanged.
