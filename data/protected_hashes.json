@@ -1,10 +1,17 @@
 {
-  "research_spec.md": "a7dba123aa6e40a39cca031776ba70b9e6a408776e21b4f5c14451f3602cc7dc",
-  "original_prompt.txt": "9e70a74cea54e336d3e79dacd2476ca472d0bc7a6f086aec67dfe01975c2f00b",
-  "build_html.py": "86d7714fa6485e2999d69cbccb56a11eb92ff10ef8b55e7fed97bb1aabfb0246",
-  "docs/index.html": "a40fa9cbc36c98b4d031b7d7723debf634bebc452a809bb8b3338b4dbae0a727",
-  ".github/workflows/deploy.yml": "c999ffcaf5865bad521af8be632156ed0ca93fdd662949451af4755afbe44f18",
-  "afternoon_tea_tokyo_2026-11-06.html": "a40fa9cbc36c98b4d031b7d7723debf634bebc452a809bb8b3338b4dbae0a727",
-  "backups/legacy-deploy.yml.txt": "23b40527050a6bc6203d20d3d05c00f0ecf4a16c8ba2dc987935546e4abb159f",
-  "data/master_history/c4c2576170c98818ba12a97f4fc553b994b0011a6b7246b31968a6201adc9612.json": "1d4c710bfd7eb8f84087a45cdfa180c5a60f753fbb523c388b6e519024ad164d"
+  ".github/workflows/deploy.yml": "92f2cf0143cb3f0c1085f7fc1aa72f233bc6356dede143bc1877f7aa29cfe1b4",
+  ".github/workflows/auto-merge-weekly.yml": "cd7778a91f80fa50200ee813714dd81c935e3ca3e978bc5fde5e8a4b5b6d4bdd",
+  ".github/workflows/test-data.yml": "36914ced24e85d8dd929b11120923f257060d5f937cb2f32a5d56764e860d6e8",
+  "data/store_master.json": "7846e0e1cc61581169700b81884c95592d81f51212a9bcafe919a52f4d7c6ffd",
+  "data/references/user_candidates_385.csv": "eb46f2dd36aae757660aa5aa646327a8a8e2e6fb6d57844f9abcf527dc39beb7",
+  "data/country_registry.json": "9ac998f35f668ca74e6a2b136919b12de3f0ec988d3bb5c049362a20ae46f83f",
+  "data/official_sources.json": "df790bee8fde355d3314d1da0302a3d45428f7ff7a359b4945c982c1466d706c",
+  "AGENTS.md": "04f3e19c60333c0b94462231687c1b0142938ee0d4d69d6a9b0aba0aefba35eb",
+  "CLAUDE.md": "75557c01a6b9d6d89670d259dc666feea8bfa8a225dc542bde7bef77b0cdbb7f",
+  "docs/weekly_procedure.md": "d7954376d7de5db37ca27e68b940678e5635b9fe02a6c6456cf09418f5517488",
+  "afternoon_tea/templates/site.css": "e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc",
+  "afternoon_tea/templates/site.html": "6da76e6a46e09b42f471d1223e3c7fd131cf7c4a92735b9ff3f1a16e8ef0c72e",
+  "afternoon_tea/templates/site.js": "0271365d1ececf2c3a9c9fffc4514d80018c0e733fdb476500913536562933d0",
+  "afternoon_tea/templates/site_extra.css": "46ff8d6848a320c0042e48f98b62bc1062059a7c4816e107855883e6e0fceb1a",
+  "afternoon_tea/templates/site_extra.js": "f3fc0cc7e8afcf6f76810e5146727761cd35e6973f6d7b0f7fc891eb850ff899"
 }

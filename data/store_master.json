@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source": "research_spec.md",
+  "source": "canonical store catalog",
   "source_sha256": "a7dba123aa6e40a39cca031776ba70b9e6a408776e21b4f5c14451f3602cc7dc",
   "as_of": "2026-10-02",
   "areas": [
