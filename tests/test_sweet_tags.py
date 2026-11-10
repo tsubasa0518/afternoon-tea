@@ -206,7 +206,7 @@ class SweetKeywordTests(unittest.TestCase):
              'start': '2026-12-18'}]
         for p in shop['plans']:
             p.update(enrich_plan(p, shop))
-        html = render(data, FAILURES)
+        html = render(data)
         counts = {b['key']: int(__import__('re').search('\\d+$', b['text']).group()) for b in Buttons(html).buttons}
         for (key, value) in {'ichigo': 2, 'melon': 2, 'peach': 1, 'kuri': 1, 'macaron': 1, 'scone': 1, 'choco': 0}.items():
             self.assertEqual(counts[key], value)
@@ -254,7 +254,7 @@ class SweetKeywordTests(unittest.TestCase):
              12000,
              False,
              ['collab'])]}]
-        html = render(data, FAILURES)
+        html = render(data)
         records = []
         for card in Document(html).root.find('article'):
             records.append({'name': card.find('h4')[0].text,

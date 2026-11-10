@@ -67,42 +67,17 @@ def check_url(url, method='GET', public_hosts=()):
         raise ForbiddenOperation('public_document_path_not_allowlisted')
 
 class ReadOnlyTransport:
-
-    def __init__(self, communication_audit=None, public_hosts=()):
+    def __init__(self, public_hosts=()):
         self.public_hosts = frozenset(public_hosts)
-        self.audit = []
-        if communication_audit is None:
-            from afternoon_tea.collection.audit import CommunicationAudit
-            import uuid
-            communication_audit = CommunicationAudit(uuid.uuid4().hex)
-        self.communication_audit = communication_audit
-        self.last_request_id = None
-        # no CookieProcessor, no credentials
+        self.blocked_requests = 0
         self.opener = build_opener(NoRedirect())
 
     def open(self, url, timeout=15, headers=None, method='GET'):
-        request_id = None
-        journal = self.communication_audit
         try:
             check_url(url, method, self.public_hosts)
-            if headers and any((k.lower() not in ('user-agent', 'accept-language', 'accept') for k in headers)):
+            if headers and any(k.lower() not in ('user-agent', 'accept-language', 'accept') for k in headers):
                 raise ForbiddenOperation('credentials_forbidden')
-            if journal:
-                request_id = journal.begin(url, method)
-                self.last_request_id = request_id
-            response = self.opener.open(Request(url, headers=headers or {}, method='GET'), timeout=timeout)
-            if journal:
-                journal.finish(request_id, 'http_success', http_status=response.status)
-            return response
-        except ForbiddenOperation as error:
-            self.audit.append({'method': method, 'status': 'blocked', 'reason': str(error).split(':', 1)[0]})
-            if journal:
-                if request_id is not None:
-                    journal.finish(request_id, 'forbidden', reason=str(error).split(':', 1)[0])
-                else:
-                    journal.decision(url, str(error).split(':', 1)[0], violation=True, method=method)
+        except (ValueError, ForbiddenOperation):
+            self.blocked_requests += 1
             raise
-        except Exception as error:
-            if journal and request_id is not None:
-                journal.finish(request_id, 'http_failed', http_status=getattr(error, 'code', None), reason=type(error).__name__)
-            raise
+        return self.opener.open(Request(url, headers=headers or {}, method='GET'), timeout=timeout)

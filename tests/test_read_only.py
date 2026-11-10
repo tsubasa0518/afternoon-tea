@@ -14,7 +14,7 @@ class SafetyTests(unittest.TestCase):
             with self.assertRaises(ForbiddenOperation):
                 self.transport.open('https://restaurant.ikyu.com/112520/', method=method)
         self.transport.opener.open.assert_not_called()
-        self.assertEqual(len(self.transport.audit), 5)
+        self.assertEqual(self.transport.blocked_requests, 5)
 
     def test_transaction_links_never_followed(self):
         for url in ('https://restaurant.ikyu.com/112520/confirm/',
@@ -51,7 +51,7 @@ class SafetyTests(unittest.TestCase):
                 check_url(u)
 
     def test_denial_stops_host_without_retry(self):
-        from afternoon_tea.collection.documents import Browser
+        from afternoon_tea.collection.reader import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         b = Browser()

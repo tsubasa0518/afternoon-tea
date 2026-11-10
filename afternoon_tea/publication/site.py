@@ -1,4 +1,4 @@
-"""Trusted-main PR intake, campaign gating and site delivery without reservation traffic."""
+"""Trusted-main PR intake, technical validation and site delivery without reservation traffic."""
 import argparse
 import base64
 from collections import Counter
@@ -18,7 +18,7 @@ from afternoon_tea.common import ROOT
 REPO = 'tsubasa0518/afternoon-tea'
 SITE = 'https://tsubasa0518.github.io/afternoon-tea/'
 BRANCH_PREFIX = 'claude/weekly-afternoon-tea-'
-ALLOWED = {'site/index.html', 'site/research.json', 'site/search_failures.json'}
+ALLOWED = {'site/index.html', 'site/research.json'}
 MAX_HTML = 5000000
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
@@ -134,54 +134,35 @@ def validate_html_bytes(value):
          'network_or_session_script_forbidden')
     return {'bytes': len(value), 'sha256': sha(value), 'resources': parser.resources, 'technical_validation': 'passed'}
 
-def validate_json(value, failures=False):
+def validate_json(value):
     require(len(value) <= 2000000, 'json_too_large')
     scan(value)
     data = json.loads(value, parse_constant=lambda x: require(False, 'non_finite_json_number'))
     scan(json_bytes(data))
     require(isinstance(data, dict) and data.get('schema_version') == 1, 'invalid_json_document')
-    key = 'failures' if failures else 'shops'
-    require(isinstance(data.get(key), list), 'json_records_required')
+    require(isinstance(data.get('shops'), list), 'json_records_required')
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None, 'timestamp_timezone_required')
-    if not failures:
-        from afternoon_tea.processing.themes import validate_country
-        for shop in data['shops']:
-            for plan in shop.get('plans', []):
-                validate_country(plan)
-    if failures:
-        statuses = {'information_insufficient', 'access_denied', 'site_restriction', 'no_results', 'unresearched', 'confirmed', 'excluded'}
-        for f in data['failures']:
-            require(isinstance(f, dict) and {'name', 'area', 'checked_at', 'sources', 'reason', 'retry', 'status'} <= set(f), 'failure_fields_missing')
-            require(all((isinstance(f[k],
-                 str) and f[k].strip() for k in ('name',
-                 'area',
-                 'checked_at',
-                 'reason'))) and len(f['reason']) <= 2000 and (type(f['retry']) is bool),
-                 'invalid_failure_record')
-            require(f['status'] in statuses, 'invalid_search_status')
-            require(dt.datetime.fromisoformat(f['checked_at']).tzinfo is not None, 'timestamp_timezone_required')
-            require(isinstance(f['sources'], list), 'failure_sources_required')
-            for u in f['sources']:
-                resource(u)
+    from afternoon_tea.processing.themes import validate_country
+    for shop in data['shops']:
+        require(isinstance(shop, dict) and isinstance(shop.get('plans', []), list), 'invalid_shop')
+        for plan in shop.get('plans', []):
+            require(isinstance(plan, dict), 'invalid_plan')
+            # Read the legacy format using its saved actual venue timestamp.
+            if 'checked_at' not in plan and shop.get('checked_at') is not None:
+                plan['checked_at'] = shop['checked_at']
+            validate_country(plan)
     return data
 
 def validate_site(files):
-    require(set(files) == ALLOWED, 'site_requires_exactly_three_files')
+    require(set(files) == ALLOWED, 'site_requires_exactly_two_files')
     report = validate_html_bytes(files['site/index.html'])
     research = validate_json(files['site/research.json'])
-    failures = validate_json(files['site/search_failures.json'], True)
-    # Metrics are informational; never compare them with publication thresholds.
-    counts = dict(Counter((f['status'] for f in failures['failures'])))
-    plans = sum((len(s.get('plans', [])) for s in research['shops'] if isinstance(s, dict) and isinstance(s.get('plans', []), list)))
-    unresearched_shops = sum((f['status'] == 'unresearched' and f.get('scope', 'shop') == 'shop' for f in failures['failures']))
-    return {**report,
-         'generated_at': research.get('generated_at'),
-         'shops': len(research['shops']),
-         'plans': plans,
-         'search_failures': len(failures['failures']),
-         'unresearched_shops': unresearched_shops,
-         'search_statuses': counts}
+    from afternoon_tea.processing.weekly import validate_freshness
+    validate_freshness(research)
+    return {**report, 'generated_at': research.get('generated_at'),
+            'shops': len(research['shops']),
+            'plans': sum(len(s.get('plans', [])) for s in research['shops'])}
 
 def write_summary(stage, report):
     """Use existing Actions step summaries; do not add monitoring or merge conditions."""
@@ -197,18 +178,8 @@ def write_summary(stage, report):
              0)),
              ('登録プラン数',
              report.get('plans',
-             0)),
-             ('未調査店舗数',
-             report.get('unresearched_shops',
              0))]
-        labels = {'unresearched': '未調査',
-             'information_insufficient': '情報不足',
-             'access_denied': 'アクセス拒否',
-             'site_restriction': 'サイト側制限',
-             'no_results': '検索結果なし',
-             'confirmed': '確認記録',
-             'excluded': '現在の根拠で対象外'}
-        rows += [(label + '（レコード）', report.get('search_statuses', {}).get(key, 0)) for (key, label) in labels.items()]
+
 
     def cell(value):
         return str(value).replace('|', '\\|').replace('\n', ' ').replace('\r', ' ')
@@ -311,7 +282,7 @@ def intake(api, number, author, sleep=time.sleep):
     ),
          'pr_not_a_trusted_routine')
     require(pr['state'] == 'open' or pr.get('merged') is True, 'pr_closed_without_merge')
-    require(1 <= pr['changed_files'] <= 3, 'routine_change_allowlist')
+    require(1 <= pr['changed_files'] <= 2, 'routine_change_allowlist')
     changed = api.get('/pulls/' + number + '/files?per_page=100')
     require(len(changed) == pr['changed_files'] and len({f['filename'] for f in changed}) == len(changed) and all((f['filename'] in ALLOWED and f['status'] in ('added',
          'modified') for f in changed)),
@@ -323,8 +294,6 @@ def intake(api, number, author, sleep=time.sleep):
         require(entry.get('mode') == '100644' and entry.get('type') == 'blob', 'unsafe_pr_file')
         files[path] = api.blob(entry['sha'])
     report = validate_site(files)
-    from afternoon_tea.publication.gate import publication_gate
-    publication_gate(json.loads(files['site/research.json']), json.loads(files['site/search_failures.json']))
     # The API checks the expected head atomically; never bypass branch protection.
     for attempt in range(10):
         latest = api.get('/pulls/' + number)
@@ -358,12 +327,6 @@ def prepare():
     files = {p: (ROOT / p).read_bytes() for p in ALLOWED}
     require(all((not (ROOT / p).is_symlink() for p in ALLOWED)), 'site_symlink_forbidden')
     report = validate_site(files)
-    from afternoon_tea.publication.gate import publication_gate, retained_snapshot
-    if retained_snapshot(files['site/research.json'], files['site/search_failures.json']):
-        report['publication_basis'] = 'retained_published_snapshot_2026-11-09'
-    else:
-        publication_gate(json.loads(files['site/research.json']), json.loads(files['site/search_failures.json']))
-        report['publication_basis'] = 'completed_research_campaign'
     (base / 'site').mkdir(exist_ok=True)
     require(not (base / 'site').is_symlink(), 'unsafe_delivery_directory')
     (base / 'site/index.html').write_bytes(files['site/index.html'])

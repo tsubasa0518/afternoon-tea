@@ -1,5 +1,5 @@
 (
-    'Offline, evidence-preserving structured fields for the fixed weekly rendere'
+    'Offline display fields for the fixed weekly rendere'
     'r.\n\nNever fetch, confirm a shop, advance its check date, or invent unknown '
     'values.\n'
 )
@@ -8,7 +8,7 @@ import json
 import re
 import unicodedata
 from afternoon_tea.collection.catalog import ROOT
-from afternoon_tea.collection.checkpoints import atomic_json
+from afternoon_tea.collection.storage import atomic_json
 from afternoon_tea.processing.sweets import extract as extract_sweets
 SEASONS = {'xmas': 'クリスマス|Xmas|Christmas',
      'valentine': 'バレンタイン|Valentine',
@@ -24,30 +24,20 @@ def text_sources(plan):
 def enrich_plan(plan, shop):
     result = copy.deepcopy(plan)
     result.setdefault('menu', None)
-    evidence = result.get('structured_evidence')
-    if not isinstance(evidence, dict):
-        evidence = {}
-    result['structured_evidence'] = evidence
+    result.pop('structured_evidence', None)
 
-    def save(key, value, quote, origin):
+    def save(key, value):
         result[key] = value
-        # A new plan may come from a different source than the venue's
-        # historical listing. Never attribute its menu to that older page.
-        source = plan if plan.get('source_url') else shop
-        evidence[key] = {'url': source.get('source_url'), 'checked_at': plan.get('checked_at', source.get('checked_at')), 'quote': quote, 'origin': origin}
     sources = text_sources(plan)
     # Explicitly recorded inferred years are not evidence of service dates.
     if '年は調査年と推定' in str(plan.get('note', '')) and (not any((re.search('20[0-9]{2}', t) for (_, t) in sources))):
-        result['unverified_period_history'] = {'start': plan.get('start'), 'end': plan.get('end'), 'reason': 'year_inferred_without_saved_context'}
         result['start'] = result['end'] = None
         result['note'] = re.sub('提供期間:.*?（タイトル/期間表記より。年は調査年と推定）', '提供期間未確認（原文の年を確定できないため、推定年を取り消しました）', str(plan.get('note', '')))
     hits = extract_sweets(plan)
     result['sweets'] = sorted(hits)
     if hits:
-        save('sweets', sorted(hits), '\n'.join(dict.fromkeys((v[1] for v in hits.values()))), ','.join(sorted({v[0] for v in hits.values()})))
-    else:
-        evidence.pop('sweets', None)
-    # Only explicit plan/menu words, with the matched original line retained.
+        save('sweets', sorted(hits))
+    # Only explicit plan/menu words, without saving acquisition metadata.
     for (key, patterns) in (('season', SEASONS),):
         hits = {}
         for (origin, text) in sources:
@@ -62,16 +52,14 @@ def enrich_plan(plan, shop):
             existing = [existing] if isinstance(existing, str) else existing if isinstance(existing, list) else []
             existing = [value for value in existing if isinstance(value, str)]
             save(key,
-                 sorted(set(existing) | set(hits)),
-                 '\n'.join(dict.fromkeys((v[1] for v in hits.values()))),
-                 ','.join(sorted({v[0] for v in hits.values()})))
+                 sorted(set(existing) | set(hits)))
     joined = '\n'.join((line for (_, text) in sources for line in text.splitlines() if not re.search('未確認|未定|ではありません|提供しません|限定なし|適用外', line)))
     weekday_only = bool(re.search('平日限定|平日のみ|[（(]平日[）)]|weekdays? only', joined, re.I))
     weekend_only = bool(re.search('土日祝限定|土日祝のみ|[（(]土日祝[）)]|weekends? (?:and holidays )?only', joined, re.I))
     both = bool(re.search('平日[・、/と]+土日祝(?:とも|も|提供|利用)|全日提供|毎日提供', joined))
     if both or weekday_only != weekend_only:
-        save('weekday_available', both or weekday_only, joined, 'plan_name/evidence_quote/menu')
-        save('weekend_available', both or weekend_only, joined, 'plan_name/evidence_quote/menu')
+        save('weekday_available', both or weekday_only)
+        save('weekend_available', both or weekend_only)
     # Never treat a sale as the regular price. Ambiguous discounts become null.
     quote = unicodedata.normalize('NFKC', str(plan.get('evidence_quote') or ''))
     note = unicodedata.normalize('NFKC', str(plan.get('price_note') or ''))
@@ -88,16 +76,14 @@ def enrich_plan(plan, shop):
         regular = int(normal.group(1).replace(',', ''))
         old = plan.get('price_yen')
         if isinstance(old, (int, float)) and (not isinstance(old, bool)) and (old != regular) and discounted:
-            save('discount_price_yen', old, quote, 'evidence_quote')
-        save('price_yen', regular, quote, 'evidence_quote')
+            save('discount_price_yen', old)
+        save('price_yen', regular)
         if discounted:
             prefix = f'通常価格 {regular:,}円。'
             result['price_note'] = note if note.startswith(prefix) else prefix + note
     elif discounted:
-        save('price_yen', None, quote, 'evidence_quote:regular_price_unknown')
+        save('price_yen', None)
         result['price_note'] = note if note.startswith('通常価格 未確認。') else '通常価格 未確認。' + note
-    if not evidence:
-        result.pop('structured_evidence', None)
     return result
 
 def enrich(research, master=None, reference=None):

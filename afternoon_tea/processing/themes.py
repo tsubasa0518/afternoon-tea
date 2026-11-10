@@ -10,7 +10,7 @@ import json
 import re
 import unicodedata
 from afternoon_tea.collection.catalog import ROOT
-from afternoon_tea.collection.checkpoints import atomic_json
+from afternoon_tea.collection.storage import atomic_json
 FIELDS = ('country', 'cc', 'country_source_type')
 TEXT_FIELDS = ('plan_name', 'theme', 'menu', 'description')
 

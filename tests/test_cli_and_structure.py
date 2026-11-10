@@ -32,8 +32,8 @@ class StructureTests(unittest.TestCase):
             self.assertIn(command, result.stdout)
 
     def test_render_does_not_change_any_site_input_and_matches_current_html(self):
-        paths = [ROOT / 'site' / name for name in ('research.json', 'search_failures.json', 'index.html')]
+        paths = [ROOT / 'site' / name for name in ('research.json', 'index.html')]
         before = [p.read_bytes() for p in paths]
-        result = render(json.loads(before[0]), json.loads(before[1])).encode()
-        self.assertEqual(result, before[2])
+        result = render(json.loads(before[0])).encode()
+        self.assertEqual(result, before[1])
         self.assertEqual([p.read_bytes() for p in paths], before)

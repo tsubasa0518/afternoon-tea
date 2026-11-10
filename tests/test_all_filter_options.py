@@ -35,7 +35,7 @@ class AllFilterOptionsTests(unittest.TestCase):
         for count in (2, 0):
             data = fixture()
             data['shops'] = [{**data['shops'][0], 'name': 'TEST ' + str(i)} for i in range(count)]
-            buttons = Buttons(r.render(data, FAILURES)).buttons
+            buttons = Buttons(r.render(data)).buttons
             self.assertEqual(len(buttons), 15)
             self.assertEqual([re.sub('\\d+$', '', b['text']) for b in buttons], SWEETS)
             self.assertTrue(all((b['text'].endswith('0') for b in buttons)))
@@ -54,12 +54,12 @@ class AllFilterOptionsTests(unittest.TestCase):
              'sweets': ['ichigo'],
              'plans': [{'menu': 'parfait',
              'season': ['xmas']}]}]
-        buttons = {b['key']: b['text'] for b in Buttons(r.render(data, FAILURES)).buttons}
+        buttons = {b['key']: b['text'] for b in Buttons(r.render(data)).buttons}
         for (key, count) in {'scone': 2, 'choco': 1, 'parfait': 1, 'ichigo': 0, 'melon': 0, 'macaron': 0}.items():
             self.assertTrue(buttons[key].endswith(str(count)), (key, buttons[key]))
 
     def test_zero_badge_is_styled_without_hiding_the_button(self):
-        result = r.render(fixture(), FAILURES)
+        result = r.render(fixture())
         self.assertIn('class="bc zero">0</span>', result)
         self.assertIn('.fb .bc.zero{color:var(--sub)}', result)
         self.assertIn('word-break:keep-all', result)

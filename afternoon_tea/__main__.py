@@ -1,84 +1,68 @@
-"""One command entry point for collection, processing and publication."""
+"""Weekly public reading, processing and publication through one entry point."""
 import argparse
 import json
 from pathlib import Path
 from .common import ROOT
 
 def parser():
-    cli = argparse.ArgumentParser(prog='python3 -m afternoon_tea', description=__doc__)
+    cli = argparse.ArgumentParser(prog='python3 -m afternoon_tea')
     commands = cli.add_subparsers(dest='operation', required=True)
-    collect = commands.add_parser('collect', help='385行の優先調査を再開する')
-    collect.add_argument('--output', type=Path, default=ROOT / '.staging/list-research')
-    collect.add_argument('--limit', type=int, default=385)
-    collect.add_argument('--seconds', type=float, default=600)
-    official = commands.add_parser('collect-official', help='承認済みの公式公開情報を収集する')
-    official.add_argument('--sources', type=Path, default=ROOT / 'data/official_sources.json')
-    official.add_argument('--output', type=Path, default=ROOT / '.staging/official-research')
-    official.add_argument('--seconds', type=float, default=1200)
-    official.add_argument('--max-requests', type=int, default=280)
-    enrich = commands.add_parser('enrich', help='保存済み根拠から分類・タグを補完する')
-    enrich.add_argument('--data', type=Path, default=ROOT / 'site/research.json')
+    commands.add_parser('begin', help='週次の調査時間・要求数だけを初期化する')
+    fetch = commands.add_parser('fetch', help='安全な公開ページ1件を読み、本文を標準出力へ返す')
+    fetch.add_argument('url')
+    enrich = commands.add_parser('enrich')
+    enrich.add_argument('--data', type=Path, default=ROOT/'site/research.json')
     enrich.set_defaults(parser=enrich)
-    review = commands.add_parser('review', help='期間・日付と未確認項目を検査する')
+    review = commands.add_parser('review')
     review.add_argument('--period', action='store_true')
-    review.add_argument('--data', type=Path, default=Path('site/research.json'))
-    prepare = commands.add_parser('themes-prepare', help='テーマ国の新規・変更分を準備する')
-    prepare.add_argument('--previous', type=Path)
-    prepare.set_defaults(command='prepare', parser=prepare)
-    finalize = commands.add_parser('themes-finalize', help='人が判断したテーマ国の根拠を確定する')
-    finalize.set_defaults(command='finalize', previous=None, parser=finalize)
-    for (name,
-         help_text) in {'render': '固定テンプレートからHTMLを生成する',
-         'validate-site': 'siteの3ファイルを技術検証する',
-         'validate-campaign': '調査完了・証拠・監査の公開条件を検証する',
-         'validate-catalog': '保護された店舗マスターを検証する',
-         'check-protected': '保護対象のハッシュを検証する',
-         'intake': '信頼するmainのコードで週次PRを審査する',
-         'resume-intake': '最新headのCI完了を受けてPR審査を再開する',
-         'publish-prepare': '公開用HTMLを検証・準備する',
-         'publish-verify': '公開URLのHTTPとHTML一致を確認する'}.items():
-        commands.add_parser(name, help=help_text)
+    review.add_argument('--data', type=Path, default=ROOT/'site/research.json')
+    prep = commands.add_parser('themes-prepare')
+    prep.add_argument('--previous', type=Path)
+    prep.set_defaults(command='prepare', parser=prep)
+    end = commands.add_parser('themes-finalize')
+    end.set_defaults(command='finalize', previous=None, parser=end)
+    refresh = commands.add_parser('refresh', help='14日以内の前回プランを確認日時のまま引き継ぐ')
+    refresh.add_argument('--previous', type=Path, required=True)
+    for name in ('render','validate-site','check-protected','intake','resume-intake','publish-prepare','publish-verify'):
+        commands.add_parser(name)
     return cli
 
 def main(argv=None):
     args = parser().parse_args(argv)
-    operation = args.operation
-    if operation == 'collect':
-        from .collection.campaign import main as collect
-        return collect(args)
-    if operation == 'collect-official':
-        from .collection.official import main as collect_official
-        return collect_official(args)
-    if operation == 'enrich':
-        from .processing.enrichment import main as enrich
-        return enrich(args)
-    if operation == 'review':
-        from .processing.period_review import main as review
-        return review(args)
-    if operation in ('themes-prepare', 'themes-finalize'):
-        from .processing.themes import main as themes
-        return themes(args)
-    if operation == 'render':
-        from .publication.renderer import main as render
-        return render()
-    if operation == 'check-protected':
+    if args.operation == 'begin':
+        from .collection.weekly import begin
+        print(json.dumps(begin())); return
+    if args.operation == 'fetch':
+        from .collection.weekly import fetch
+        print(json.dumps(fetch(args.url), ensure_ascii=False)); return
+    if args.operation == 'refresh':
+        from .processing.weekly import retain
+        from .collection.storage import atomic_json
+        target = ROOT/'site/research.json'
+        if target.is_symlink():
+            raise ValueError('symlink data forbidden')
+        atomic_json(target, retain(json.loads(target.read_text()), json.loads(args.previous.read_text())))
+        return
+    if args.operation == 'enrich':
+        from .processing.enrichment import main
+        return main(args)
+    if args.operation == 'review':
+        from .processing.period_review import main
+        return main(args)
+    if args.operation.startswith('themes-'):
+        from .processing.themes import main
+        return main(args)
+    if args.operation == 'render':
+        from .publication.renderer import main
+        return main()
+    if args.operation == 'check-protected':
         from .publication.guards import protected_files
-        protected_files()
-        print('Protected file hashes match.')
-        return 0
-    if operation == 'validate-catalog':
-        from .collection.catalog import load_master
-        print(json.dumps(load_master()['counts'], ensure_ascii=False))
-        return 0
-    if operation == 'validate-campaign':
-        from .publication.gate import publication_gate
-        publication_gate(json.loads((ROOT / 'site/research.json').read_text()), json.loads((ROOT / 'site/search_failures.json').read_text()))
-        print('Campaign publication requirements satisfied.')
-        return 0
-    if operation == 'resume-intake':
-        from .publication.ci import main as resume_intake
-        return resume_intake()
-    from .publication.site import main as publication
-    return publication({'validate-site': 'validate', 'intake': 'intake', 'publish-prepare': 'prepare', 'publish-verify': 'verify'}[operation])
+        protected_files(); print('Protected files verified.'); return
+    if args.operation == 'resume-intake':
+        from .publication.ci import main
+        return main()
+    from .publication.site import main
+    return main({'validate-site':'validate','intake':'intake','publish-prepare':'prepare','publish-verify':'verify'}[args.operation])
+
 if __name__ == '__main__':
     raise SystemExit(main())
