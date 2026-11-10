@@ -3,7 +3,7 @@ import argparse
 import datetime as dt
 import json
 from pathlib import Path
-from .data import JST, period
+from afternoon_tea.processing.dates import JST, period
 
 
 def day(value):
@@ -53,18 +53,10 @@ def review(data):
             'errors': errors, 'outside_plans': outside, 'unknown_periods': unknown}
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--period', action='store_true', help='Print today in JST and its 40-day window')
-    parser.add_argument('--data', type=Path, default=Path('site/research.json'))
-    args = parser.parse_args()
+def main(args):
     if args.period:
         print(json.dumps(period(), ensure_ascii=False))
         return 0
     result = review(json.loads(args.data.read_text(encoding='utf-8')))
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 1 if result['errors'] else 0
-
-
-if __name__ == '__main__':
-    raise SystemExit(main())

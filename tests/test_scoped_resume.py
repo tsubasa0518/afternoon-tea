@@ -1,9 +1,9 @@
 import copy
 import tempfile
 import unittest
-from afternoon_tea.communication_audit import CommunicationAudit
-from afternoon_tea.list_research import initialize, run
-from afternoon_tea.scoped_resume import BLOCKED, STORE, resume_legacy_directory_stop
+from afternoon_tea.collection.audit import CommunicationAudit
+from afternoon_tea.collection.campaign import initialize, run
+from afternoon_tea.collection.resume import BLOCKED, STORE, resume_legacy_directory_stop
 from test_list_research import FakeBrowser
 
 

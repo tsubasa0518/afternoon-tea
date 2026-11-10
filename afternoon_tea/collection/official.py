@@ -15,9 +15,9 @@ import re
 import time
 from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
 
-from .master import ROOT
-from .read_only import check_url, ForbiddenOperation
-from .browser import Browser
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.collection.transport import check_url, ForbiddenOperation
+from afternoon_tea.collection.documents import Browser
 
 AT = re.compile(r'アフタ[ー]?ヌーン[・\s]?ティー|afternoon[\s_/-]*tea', re.I)
 TOPIC = re.compile(r'メニュー|ラウンジ|レストラン|飲食|加盟|ホテル一覧|ニュース|新着|プレス|menu|lounge|restaurant|dining|news|press|member|hotel-list', re.I)
@@ -178,17 +178,11 @@ def collect(sources, areas, directory, browser, seconds=1200, max_depth=4, clock
     return report
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--sources', type=Path, default=ROOT / 'data/official_sources.json')
-    parser.add_argument('--output', type=Path, default=ROOT / '.staging/official-research')
-    parser.add_argument('--seconds', type=float, default=1200)
-    parser.add_argument('--max-requests', type=int, default=280)
-    args = parser.parse_args()
+def main(args):
     sources = json.loads(args.sources.read_text(encoding='utf-8'))['sources']
     areas = json.loads((ROOT / 'data/store_master.json').read_text(encoding='utf-8'))['areas']
     hosts = {urlsplit(s['url']).hostname for s in sources}
-    from .communication_audit import CommunicationAudit
+    from afternoon_tea.collection.audit import CommunicationAudit
     import uuid
     audit = CommunicationAudit(uuid.uuid4().hex, args.output / ('audit-' + uuid.uuid4().hex + '.jsonl'))
     report = collect(sources, areas, args.output,
@@ -198,7 +192,3 @@ def main():
                       'stop_reason': report['stop_reason']}, ensure_ascii=False))
     if report['stop_reason'] == 'forbidden_operation':
         raise SystemExit(2)
-
-
-if __name__ == '__main__':
-    main()

@@ -8,13 +8,13 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
-from afternoon_tea.communication_audit import CommunicationAudit,identity
-from afternoon_tea.browser import Browser
-from afternoon_tea.read_only import ForbiddenOperation
-from afternoon_tea.list_research import reference,initialize,run,list_traversed,venue_key,link_identity
-from afternoon_tea.research_evidence import save_document,restore_documents,text_of,validate_audit
-from afternoon_tea.campaign_gate import publication_gate
-from afternoon_tea.master import load_master
+from afternoon_tea.collection.audit import CommunicationAudit, identity
+from afternoon_tea.collection.documents import Browser
+from afternoon_tea.collection.transport import ForbiddenOperation
+from afternoon_tea.collection.campaign import reference, initialize, run, list_traversed, venue_key, link_identity
+from afternoon_tea.collection.evidence import save_document, restore_documents, text_of, validate_audit
+from afternoon_tea.publication.gate import publication_gate
+from afternoon_tea.collection.catalog import load_master
 
 class FixedDateTime(dt.datetime):
     @classmethod
@@ -29,7 +29,7 @@ def acquired(campaign,journal,subject,url,text,when='2026-11-09T07:17:00+09:00')
         def now(cls,tz=None):
             stamp=original_datetime.fromisoformat(when)
             return stamp.astimezone(tz) if tz else stamp.replace(tzinfo=None)
-    with patch('afternoon_tea.communication_audit.dt.datetime',AcquisitionTime):
+    with patch('afternoon_tea.collection.audit.dt.datetime',AcquisitionTime):
         request=journal.begin(url,'GET');journal.finish(request,'http_success',http_status=200)
         event=journal.record('evidence',status='success',request_id=request,resource=identity(url),
                              subject_id=subject,page_sha256=hashlib.sha256(text.encode()).hexdigest(),
@@ -82,7 +82,7 @@ class FakeBrowser(Browser):
 
 class CampaignTests(unittest.TestCase):
     def setUp(self):
-        p=patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,9));p.start();self.addCleanup(p.stop)
+        p=patch('afternoon_tea.publication.gate.current_day',return_value=dt.date(2026,11,9));p.start();self.addCleanup(p.stop)
     def test_research_scope_requires_exactly_original_fourteen_areas(self):
         state=completed_campaign()
         research={'period':{'start':'2026-11-09'},'shops':[]}
@@ -180,9 +180,9 @@ class CampaignTests(unittest.TestCase):
         new=acquired(state,journal,subject,'https://example.org/new-day','TEST ONLY day 10',when='2026-11-10T07:17:00+09:00')
         state['rows'][0]['reviewed_sources']=[new]
         # A mixture of day 9 and day 10 observations supports day 10 publication.
-        with patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,10)):
+        with patch('afternoon_tea.publication.gate.current_day',return_value=dt.date(2026,11,10)):
             publication_gate({'period':{'start':'2026-11-10'}},{'research_campaign':state})
-        with patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,24)):
+        with patch('afternoon_tea.publication.gate.current_day',return_value=dt.date(2026,11,24)):
             with self.assertRaisesRegex(ValueError,'evidence_stale_or_future'):
                 publication_gate({'period':{'start':'2026-11-24'}},{'research_campaign':state})
     def test_gate_rejects_wrong_subject_url_missing_text_and_failed_audit(self):
@@ -214,9 +214,9 @@ class CampaignTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'campaign_not_current_week'):
             publication_gate({'period':{'start':'2020-01-06'}},{'research_campaign':completed_campaign()})
     def test_retained_snapshot_is_exact(self):
-        from afternoon_tea.campaign_gate import retained_snapshot
+        from afternoon_tea.publication.gate import retained_snapshot
         a=b'{"shops":[]}';b=b'{"failures":[]}'
-        with patch('afternoon_tea.campaign_gate.RETAINED_SNAPSHOT',{'research.json':hashlib.sha256(a).hexdigest(),'search_failures.json':hashlib.sha256(b).hexdigest()}):
+        with patch('afternoon_tea.publication.gate.RETAINED_SNAPSHOT',{'research.json':hashlib.sha256(a).hexdigest(),'search_failures.json':hashlib.sha256(b).hexdigest()}):
             self.assertTrue(retained_snapshot(a,b));self.assertFalse(retained_snapshot(a+b' ',b))
     def test_archive_tampering_and_decompression_limit(self):
         state=completed_campaign();document=next(iter(state['documents'].values()))
@@ -224,7 +224,7 @@ class CampaignTests(unittest.TestCase):
         with self.assertRaises(ValueError):text_of(document)
 
     def test_digest_digits_are_not_mistaken_for_cards_but_real_cards_are_rejected(self):
-        from afternoon_tea.routine_site import scan
+        from afternoon_tea.publication.site import scan
         scan(json.dumps({'sha256':'a'*20+'4111111111111111'+'b'*28}).encode())
         with self.assertRaises(ValueError):scan(b'"card": "4111 1111 1111 1111"')
 
@@ -248,7 +248,7 @@ class CampaignTests(unittest.TestCase):
         with self.assertRaises(ValueError):acquired(state,journal,state['rows'][0]['entity_id'],'https://example.org/private','person@example.test')
 
     def test_collector_evidence_is_bound_to_original_download_and_audit(self):
-        from afternoon_tea.research_evidence import source_document
+        from afternoon_tea.collection.evidence import source_document
         state=initialize({})
         with tempfile.TemporaryDirectory() as tmp:
             browser=FakeBrowser();run(state,tmp,browser,limit=1)

@@ -3,9 +3,9 @@ import copy
 import json
 import unittest
 from unittest.mock import patch
-from afternoon_tea import country_themes as c
-from afternoon_tea.routine_renderer import render
-from afternoon_tea.routine_site import validate_json, json_bytes
+from afternoon_tea.processing import themes as c
+from afternoon_tea.publication.renderer import render
+from afternoon_tea.publication.site import validate_json, json_bytes
 from tests.test_routine_renderer import fixture, FAILURES
 
 

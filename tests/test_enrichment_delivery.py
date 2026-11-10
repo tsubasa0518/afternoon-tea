@@ -4,9 +4,10 @@ from collections import Counter
 from pathlib import Path
 from urllib.error import HTTPError
 from unittest.mock import patch
-from afternoon_tea import routine_enrichment as e, routine_renderer as renderer
-from afternoon_tea.master import ROOT
-from afternoon_tea.routine_site import intake,validate_site,json_bytes
+from afternoon_tea.processing import enrichment as e
+from afternoon_tea.publication import renderer as renderer
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.publication.site import intake, validate_site, json_bytes
 from tests.test_routine_site import FakeAPI
 from tests.test_routine_renderer import fixture,FAILURES
 
@@ -57,7 +58,7 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual(result['shops'][0]['category'],'cafe')
         self.assertEqual(result['shops'][1]['category'],'unknown')
     def test_current_six_records_and_rendered_filters_are_fixed_without_new_confirmation(self):
-        d=read(ROOT/'tests/fixtures/post26_six.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
+        d=read(ROOT/'tests/fixtures/enrichment_cases.json');master=read(ROOT/'data/store_master.json');result=e.enrich(d,master)
         self.assertEqual(e.enrich(result,master),result)
         self.assertEqual([s['checked_at'] for s in result['shops']],[s['checked_at'] for s in d['shops']])
         self.assertEqual(Counter(s['category'] for s in result['shops']),{'cafe':1,'hotel':5})

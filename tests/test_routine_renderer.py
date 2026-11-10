@@ -9,8 +9,8 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
-from afternoon_tea import routine_renderer as r
-from afternoon_tea.routine_site import validate_site, ALLOWED
+from afternoon_tea.publication import renderer as r
+from afternoon_tea.publication.site import validate_site, ALLOWED
 
 
 def fixture(category='hotel'):
@@ -25,7 +25,7 @@ FAILURES={'schema_version':1,'generated_at':None,'failures':[]}
 class RoutineRendererTests(unittest.TestCase):
     def test_template_css_snapshot(self):
         import hashlib
-        self.assertEqual(hashlib.sha256((r.TEMPLATES/'routine.css').read_bytes()).hexdigest(),'e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc')
+        self.assertEqual(hashlib.sha256((r.TEMPLATES/'site.css').read_bytes()).hexdigest(),'e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc')
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research=json.loads((r.ROOT/'site/research.json').read_text());failures=json.loads((r.ROOT/'site/search_failures.json').read_text())
         before=copy.deepcopy(research);result=r.render(research,failures)
@@ -81,7 +81,7 @@ class RoutineRendererTests(unittest.TestCase):
                     self.assertIn('class="card c-unknown"',result)
                     self.assertIn('料金 未確認',result)
                 self.assertEqual((source,failures),before)
-        template=(r.TEMPLATES/'routine.html').read_text()
+        template=(r.TEMPLATES/'site.html').read_text()
         self.assertNotIn('$notice',template)
         self.assertNotIn('class="aside"',template)
 

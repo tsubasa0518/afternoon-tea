@@ -6,8 +6,8 @@ none of its documents or observations are promoted to publishable v2 evidence.
 import datetime as dt
 import hashlib
 from urllib.parse import urlsplit
-from .official_research import links
-from .common import digest
+from afternoon_tea.collection.official import links
+from afternoon_tea.common import digest
 
 BLOCKED='https://restaurant.ikyu.com/area/tokyo/t-scene2981/'
 STORE='https://restaurant.ikyu.com/107408/'

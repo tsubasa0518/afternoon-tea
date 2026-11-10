@@ -30,11 +30,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify protected current configuration
-        run: python3 -c 'from afternoon_tea.guards import protected_files; protected_files()'
+        run: python3 -m afternoon_tea check-protected
       - name: Validate latest main and prepare HTML
         run: |
           export SOURCE_COMMIT="$(git rev-parse HEAD)"
-          python3 -m afternoon_tea.routine_site prepare
+          python3 -m afternoon_tea publish-prepare
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
@@ -44,7 +44,7 @@ jobs:
         uses: actions/deploy-pages@v4
       - name: Verify public URL and exact HTML bytes
         id: verify
-        run: python3 -m afternoon_tea.routine_site verify
+        run: python3 -m afternoon_tea publish-verify
       - name: Save publication record and HTML
         if: always()
         uses: actions/upload-artifact@v7

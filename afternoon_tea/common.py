@@ -1,6 +1,9 @@
 """Canonical metadata digest shared by acquisition and evidence verification."""
 import hashlib
 import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def digest(value):

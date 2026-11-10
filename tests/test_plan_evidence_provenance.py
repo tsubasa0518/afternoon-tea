@@ -1,5 +1,5 @@
 import unittest
-from afternoon_tea.routine_enrichment import enrich_plan
+from afternoon_tea.processing.enrichment import enrich_plan
 
 class PlanEvidenceTests(unittest.TestCase):
     def test_plan_source_and_actual_check_time_override_old_shop_listing(self):

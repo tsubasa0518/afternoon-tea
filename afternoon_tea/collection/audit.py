@@ -5,13 +5,13 @@ import json
 import os
 from pathlib import Path
 from urllib.parse import urlsplit
-from .data import JST
-from .common import digest
+from afternoon_tea.processing.dates import JST
+from afternoon_tea.common import digest
 
 
 def identity(url):
     # Even rejected URLs must not leak credentials, queries or path/session values.
-    from .read_only import check_url
+    from afternoon_tea.collection.transport import check_url
     try:
         check_url(url)
         p=urlsplit(url)

@@ -3,10 +3,10 @@ import datetime as dt
 import hashlib
 import re
 import unicodedata
-from .list_research import reference,current_day,FRESH_DAYS,venue_key
-from .master import load_master
-from .data import JST
-from .research_evidence import validate_audit,source_document
+from afternoon_tea.collection.campaign import reference, current_day, FRESH_DAYS, venue_key
+from afternoon_tea.collection.catalog import load_master
+from afternoon_tea.processing.dates import JST
+from afternoon_tea.collection.evidence import validate_audit, source_document
 
 
 def publication_gate(research,failures):

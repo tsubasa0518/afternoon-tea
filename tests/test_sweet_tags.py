@@ -1,9 +1,9 @@
 """Plan-level keyword extraction shared by JSON, HTML and OR filtering."""
 import copy
 import unittest
-from afternoon_tea.sweet_tags import tags
-from afternoon_tea.routine_enrichment import enrich_plan
-from afternoon_tea.routine_renderer import render
+from afternoon_tea.processing.sweets import tags
+from afternoon_tea.processing.enrichment import enrich_plan
+from afternoon_tea.publication.renderer import render
 from tests.test_routine_renderer import fixture,FAILURES
 from tests.test_all_filter_options import Buttons
 from tests.html_nodes import Document
@@ -116,7 +116,7 @@ class SweetKeywordTests(unittest.TestCase):
                                      for p in card.find('div') if p.attrs.get('class')=='plan']})
         buttons=[{'key':b['key'],'count':int(re.search(r'\d+$',b['text']).group())} for b in Buttons(html).buttons]
         payload={'js':re.search(r'<script>(.*?)</script>',html,re.S).group(1),'cards':records,'buttons':buttons,
-                 'eventKeys':list(__import__('afternoon_tea.routine_renderer',fromlist=['EVENTS']).EVENTS)}
+                 'eventKeys':list(__import__('afternoon_tea.publication.renderer',fromlist=['EVENTS']).EVENTS)}
         harness=Path(__file__).parent/'fixtures/sweet_filter_harness.js'
         proc=subprocess.run(['node',str(harness)],input=json.dumps(payload),text=True,capture_output=True)
         self.assertEqual(proc.returncode,0,proc.stderr)

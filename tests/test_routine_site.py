@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
-from afternoon_tea import routine_site as r
+from afternoon_tea.publication import site as r
 from test_list_research import completed_campaign
 
 HTML=b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
@@ -38,7 +38,7 @@ class FakeAPI:
 
 class RoutineSiteTests(unittest.TestCase):
     def setUp(self):
-        patcher=patch('afternoon_tea.campaign_gate.current_day',return_value=dt.date(2026,11,9))
+        patcher=patch('afternoon_tea.publication.gate.current_day',return_value=dt.date(2026,11,9))
         patcher.start();self.addCleanup(patcher.stop)
 
     def test_two_shops_and_76_unresolved_are_publishable(self):

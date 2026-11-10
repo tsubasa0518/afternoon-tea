@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+from afternoon_tea.common import ROOT
 CATEGORIES = {"カフェ": "cafe", "ホテル": "hotel", "ホテル（高級）": "lux"}
 
 

@@ -3,7 +3,7 @@ import os
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path
-from .master import dumps
+from afternoon_tea.collection.catalog import dumps
 
 def atomic_json(path,value):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)

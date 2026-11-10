@@ -5,7 +5,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request
 from urllib.robotparser import RobotFileParser
-from .read_only import ReadOnlyTransport, ForbiddenOperation
+from afternoon_tea.collection.transport import ReadOnlyTransport, ForbiddenOperation
 
 USER_AGENT = "TokyoAfternoonTeaResearch/0.1 (+public research; no login; contact via GitHub issue)"
 MAX_BYTES = 800_000
@@ -64,7 +64,7 @@ class Browser:
         try:
             value=self._fetch(url)
             if self.communication_audit:
-                from .communication_audit import identity
+                from afternoon_tea.collection.audit import identity
                 self.last_document=self.communication_audit.record('document',resource=identity(url),status='success',request_id=self.transport.last_request_id,page_sha256=hashlib.sha256(value.encode()).hexdigest())
             return value
         except Exception as e:
@@ -73,10 +73,10 @@ class Browser:
 
     def _fetch(self, url):
         try:
-            from .read_only import check_url
+            from afternoon_tea.collection.transport import check_url
             check_url(url, public_hosts=self.transport.public_hosts)
         except ForbiddenOperation as error:
-            from .communication_audit import identity
+            from afternoon_tea.collection.audit import identity
             self.errors.append({"resource": identity(url), "error": str(error).split(":",1)[0], "status": "blocked"})
             raise
         host = urlsplit(url).hostname

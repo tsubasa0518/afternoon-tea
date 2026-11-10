@@ -13,9 +13,9 @@ import time
 import urllib.request
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
-from .read_only import NoRedirect
+from afternoon_tea.collection.transport import NoRedirect
 
-ROOT=Path(__file__).resolve().parents[1]
+from afternoon_tea.common import ROOT
 REPO='tsubasa0518/afternoon-tea'
 SITE='https://tsubasa0518.github.io/afternoon-tea/'
 BRANCH_PREFIX='claude/weekly-afternoon-tea-'
@@ -103,7 +103,7 @@ def validate_json(value, failures=False):
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None,'timestamp_timezone_required')
     if not failures:
-        from .country_themes import validate_country
+        from afternoon_tea.processing.themes import validate_country
         for shop in data['shops']:
             for plan in shop.get('plans', []):validate_country(plan)
     if failures:
@@ -227,7 +227,7 @@ def intake(api,number,author,sleep=time.sleep):
         require(entry.get('mode')=='100644' and entry.get('type')=='blob','unsafe_pr_file')
         files[path]=api.blob(entry['sha'])
     report=validate_site(files)
-    from .campaign_gate import publication_gate
+    from afternoon_tea.publication.gate import publication_gate
     publication_gate(json.loads(files['site/research.json']),json.loads(files['site/search_failures.json']))
     # The API checks the expected head atomically; never bypass branch protection.
     for attempt in range(10):
@@ -257,7 +257,7 @@ def prepare():
     files={p:(ROOT/p).read_bytes() for p in ALLOWED}
     require(all(not (ROOT/p).is_symlink() for p in ALLOWED),'site_symlink_forbidden')
     report=validate_site(files)
-    from .campaign_gate import publication_gate, retained_snapshot
+    from afternoon_tea.publication.gate import publication_gate, retained_snapshot
     if retained_snapshot(files['site/research.json'],files['site/search_failures.json']):
         report['publication_basis']='retained_published_snapshot_2026-11-09'
     else:
@@ -282,8 +282,8 @@ def verify_public(expected,attempts=6,opener=None,sleep=time.sleep):
     raise ValueError('public_verification_failed:'+json.dumps(observations))
 
 
-def main():
-    p=argparse.ArgumentParser();p.add_argument('command',choices=('validate','intake','prepare','verify'));a=p.parse_args()
+def main(command):
+    a=argparse.Namespace(command=command)
     try:
         if a.command=='validate':print(validate_site({p:(ROOT/p).read_bytes() for p in ALLOWED}))
         elif a.command=='intake':
@@ -304,4 +304,3 @@ def main():
     except Exception:
         write_summary(a.command+'失敗。実行ログのエラーを確認してください。',{})
         raise
-if __name__=='__main__':main()

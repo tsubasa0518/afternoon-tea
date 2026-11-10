@@ -8,10 +8,10 @@ import json
 import re
 import unicodedata
 from pathlib import Path
-from .master import ROOT
-from .storage import atomic_json
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.collection.checkpoints import atomic_json
 
-from .sweet_tags import extract as extract_sweets
+from afternoon_tea.processing.sweets import extract as extract_sweets
 
 SEASONS = {'xmas': r'クリスマス|Xmas|Christmas', 'valentine': r'バレンタイン|Valentine',
            'whiteday': r'ホワイトデー|White Day', 'halloween': r'ハロウィン|Halloween',
@@ -108,7 +108,7 @@ def enrich_plan(plan, shop):
 def enrich(research, master=None, reference=None):
     """Prices take precedence; master facility facts are only an unknown-price fallback."""
     result = copy.deepcopy(research)
-    from .price_category import classify, eligible_plans, facility_basis
+    from afternoon_tea.processing.classification import classify, eligible_plans, facility_basis
     for shop in result['shops']:
         shop['plans'] = [enrich_plan(p, shop) for p in shop.get('plans', [])]
         category, minimum = classify(eligible_plans(shop['plans'], result['period']), shop, master)
@@ -117,10 +117,8 @@ def enrich(research, master=None, reference=None):
     return result
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--data', type=Path, default=ROOT/'site/research.json')
-    args = parser.parse_args()
+def main(args):
+    parser=args.parser
     allowed = ROOT.resolve()/'site/research.json'
     path = args.data.resolve()
     if path != allowed and not path.is_relative_to(ROOT.resolve()/'.staging'):
@@ -130,7 +128,3 @@ def main():
     data = json.loads(path.read_text())
     atomic_json(path, enrich(data))
     print(json.dumps({'shops': len(data['shops']), 'confirmation_dates_changed': False}))
-
-
-if __name__ == '__main__':
-    main()

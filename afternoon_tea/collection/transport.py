@@ -68,7 +68,7 @@ class ReadOnlyTransport:
         self.public_hosts = frozenset(public_hosts)
         self.audit = []
         if communication_audit is None:
-            from .communication_audit import CommunicationAudit
+            from afternoon_tea.collection.audit import CommunicationAudit
             import uuid
             communication_audit=CommunicationAudit(uuid.uuid4().hex)
         self.communication_audit = communication_audit

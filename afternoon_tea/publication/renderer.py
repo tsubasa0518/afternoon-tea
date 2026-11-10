@@ -10,14 +10,14 @@ from pathlib import Path
 from string import Template
 import tempfile
 from urllib.parse import urlsplit
-from .data import JST
-from .routine_site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
-from .weekly_review import review, day
-from .price_category import classify, regular_price
-from .country_themes import display as country_display
-from .sweet_tags import tags as sweet_tags
+from afternoon_tea.processing.dates import JST
+from afternoon_tea.publication.site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
+from afternoon_tea.processing.period_review import review, day
+from afternoon_tea.processing.classification import classify, regular_price
+from afternoon_tea.processing.themes import display as country_display
+from afternoon_tea.processing.sweets import tags as sweet_tags
 
-TEMPLATES=Path(__file__).with_name('templates')
+TEMPLATES=Path(__file__).resolve().parents[1]/'templates'
 SITES = [("ik", "一休.com"), ("tb", "食べログ"), ("tc", "TableCheck")]
 SWEETS = [("ichigo", "いちご"), ("melon", "メロン"), ("peach", "桃"), ("mango", "マンゴー"), ("grape", "ぶどう・マスカット"),
           ("kuri", "栗・マロン"), ("imo", "芋・かぼちゃ"), ("kaki", "柿・洋梨・いちじく"), ("citrus", "柑橘"), ("choco", "チョコレート"),
@@ -203,8 +203,8 @@ def render(research,failures):
         return ''.join(parts)+'</section>'
     for area in master['areas']:areas.append(area_html(area['no'],area['name'],groups[area['no']],area['stations']))
     if unassigned:areas.append(area_html(0,'エリア未確認',unassigned))
-    template=Template((TEMPLATES/'routine.html').read_text())
-    result=template.substitute(css=(TEMPLATES/'routine.css').read_text(),extra_css=(TEMPLATES/'routine_extra.css').read_text(),js=(TEMPLATES/'routine.js').read_text(),extra_js=(TEMPLATES/'routine_extra.js').read_text(),hero=hero,filters=filters,empty=empty,areas='\n'.join(areas))
+    template=Template((TEMPLATES/'site.html').read_text())
+    result=template.substitute(css=(TEMPLATES/'site.css').read_text(),extra_css=(TEMPLATES/'site_extra.css').read_text(),js=(TEMPLATES/'site.js').read_text(),extra_js=(TEMPLATES/'site_extra.js').read_text(),hero=hero,filters=filters,empty=empty,areas='\n'.join(areas))
     validate_html_bytes(result.encode())
     return result
 
@@ -224,8 +224,4 @@ def generate():
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('command',choices=['generate']);parser.parse_args()
     result=generate();print({'output':'site/index.html','sha256':result['sha256'],'bytes':result['bytes']})
-
-
-if __name__=='__main__':main()

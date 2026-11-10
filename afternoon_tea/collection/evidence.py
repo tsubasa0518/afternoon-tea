@@ -4,8 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 import zlib
-from .common import digest
-from .read_only import check_url
+from afternoon_tea.common import digest
+from afternoon_tea.collection.transport import check_url
 
 MAX_TEXT_BYTES=256_000
 MAX_BUNDLE_BYTES=1_500_000
@@ -22,7 +22,7 @@ def text_of(document):
         if hashlib.sha256(raw).hexdigest()!=document['text_sha256']:
             raise ValueError('evidence_text_hash_mismatch')
         text=raw.decode('utf-8')
-        from .routine_site import scan
+        from afternoon_tea.publication.site import scan
         scan(raw)
         return text
     except (KeyError,TypeError,zlib.error,UnicodeError) as error:

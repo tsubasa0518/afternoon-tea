@@ -1,7 +1,7 @@
 """No live requests: safety checks use a mocked opener exclusively."""
 import unittest
 from unittest.mock import Mock
-from afternoon_tea.read_only import ReadOnlyTransport, ForbiddenOperation, check_url, NoRedirect
+from afternoon_tea.collection.transport import ReadOnlyTransport, ForbiddenOperation, check_url, NoRedirect
 
 class SafetyTests(unittest.TestCase):
     def setUp(self):
@@ -33,7 +33,7 @@ class SafetyTests(unittest.TestCase):
         for u in ('http://127.0.0.1/', 'https://evil.example/', 'https://user:pass@restaurant.ikyu.com/112520/'):
             with self.assertRaises(ForbiddenOperation): check_url(u)
     def test_denial_stops_host_without_retry(self):
-        from afternoon_tea.browser import Browser
+        from afternoon_tea.collection.documents import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         b=Browser();robots=RobotFileParser();robots.parse(['User-agent: *','Allow: /'])

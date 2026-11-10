@@ -10,8 +10,8 @@ import json
 from pathlib import Path
 import re
 import unicodedata
-from .master import ROOT
-from .storage import atomic_json
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.collection.checkpoints import atomic_json
 
 FIELDS = ('country', 'cc', 'country_source_type')
 TEXT_FIELDS = ('plan_name', 'theme', 'menu', 'description')
@@ -146,11 +146,8 @@ def display(plan, shop):
     return flag(plan['cc']) + ' ' + name + ('風' if plan['country_source_type'] == 'inferred' else '')
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=('prepare', 'finalize'))
-    parser.add_argument('--previous', type=Path)
-    args = parser.parse_args()
+def main(args):
+    parser=args.parser
     path = ROOT/'site/research.json'
     if path.is_symlink():parser.error('symlink data forbidden')
     data = json.loads(path.read_text())
@@ -163,7 +160,3 @@ def main():
         result = finalize(data)
         atomic_json(path, result)
         print(json.dumps({'country_decisions_saved': sum(len(s.get('plans', [])) for s in result['shops'])}))
-
-
-if __name__ == '__main__':
-    main()

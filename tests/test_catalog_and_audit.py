@@ -7,11 +7,11 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock, patch
-from afternoon_tea import master
-from afternoon_tea.guards import protected_files
-from afternoon_tea.communication_audit import CommunicationAudit
-from afternoon_tea.read_only import ReadOnlyTransport,ForbiddenOperation,NoRedirect
-from afternoon_tea.research_evidence import validate_audit
+from afternoon_tea.collection import catalog as master
+from afternoon_tea.publication.guards import protected_files
+from afternoon_tea.collection.audit import CommunicationAudit
+from afternoon_tea.collection.transport import ReadOnlyTransport, ForbiddenOperation, NoRedirect
+from afternoon_tea.collection.evidence import validate_audit
 
 URL='https://restaurant.ikyu.com/107408/'
 
@@ -37,7 +37,7 @@ class CatalogProtectionTests(unittest.TestCase):
                 with patch.object(master,'ROOT',root),self.assertRaises(ValueError):master.load_master()
 
     def test_manifest_tamper_is_rejected(self):
-        from afternoon_tea import guards
+        from afternoon_tea.publication import guards as guards
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);(root/'data').mkdir();(root/'protected.txt').write_text('changed')
             (root/'data/protected_hashes.json').write_text(json.dumps({'protected.txt':'0'*64}))
@@ -77,7 +77,7 @@ class AuditBoundaryTests(unittest.TestCase):
         for path in root.rglob('*.py'):
             for node in ast.walk(ast.parse(path.read_text())):
                 if isinstance(node,ast.ImportFrom) and node.module=='urllib.request':
-                    allowed={'Request'} if path.name=='browser.py' else {'Request','HTTPRedirectHandler','build_opener'} if path.name=='read_only.py' else set()
+                    allowed={'Request'} if path.name=='documents.py' else {'Request','HTTPRedirectHandler','build_opener'} if path.name=='transport.py' else set()
                     self.assertTrue({n.name for n in node.names}<=allowed,path.name)
                 if isinstance(node,ast.Import):
                     self.assertFalse(any(n.name.split('.')[0] in ('requests','httpx','http','socket') for n in node.names),path.name)

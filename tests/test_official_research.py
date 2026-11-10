@@ -5,9 +5,9 @@ import tempfile
 import unittest
 from unittest.mock import Mock
 from urllib.error import HTTPError
-from afternoon_tea.official_research import links, collect
-from afternoon_tea.browser import Browser
-from afternoon_tea.read_only import ForbiddenOperation
+from afternoon_tea.collection.official import links, collect
+from afternoon_tea.collection.documents import Browser
+from afternoon_tea.collection.transport import ForbiddenOperation
 from tests.http_fixtures import Response
 
 HOST = 'official.example.com'
@@ -86,7 +86,7 @@ class OfficialResearchTests(unittest.TestCase):
         b=self.browser({})
         robots=RobotFileParser();robots.parse(['User-agent: *','Crawl-delay: 10','Allow: /'])
         b.robots[HOST]=robots;b.last_request[HOST]=100
-        with patch('afternoon_tea.browser.time.monotonic', return_value=103), patch('afternoon_tea.browser.time.sleep') as sleep:
+        with patch('afternoon_tea.collection.documents.time.monotonic', return_value=103), patch('afternoon_tea.collection.documents.time.sleep') as sleep:
             b._rate_limit(HOST)
         sleep.assert_called_once_with(7)
 
@@ -119,7 +119,7 @@ class OfficialResearchTests(unittest.TestCase):
         self.assertEqual(len(links(raw,BASE+'/tokyo/',[HOST],'/tokyo/')[1]),1)
 
     def test_catalog_all14_and_discovery_not_a_store_master(self):
-        from afternoon_tea.master import ROOT
+        from afternoon_tea.collection.catalog import ROOT
         sources=json.loads((ROOT/'data/official_sources.json').read_text())['sources']
         for purpose in ('existing','discovery'):
             self.assertEqual({a for s in sources if s['purpose']==purpose for a in s['areas']},set(range(1,15)))

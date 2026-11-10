@@ -1,10 +1,10 @@
 """Regression cases for weekly price bands and independent plan evidence."""
 import copy
 import unittest
-from afternoon_tea.price_category import classify
-from afternoon_tea.routine_enrichment import enrich
-from afternoon_tea.routine_renderer import render
-from afternoon_tea.read_only import check_url, ForbiddenOperation
+from afternoon_tea.processing.classification import classify
+from afternoon_tea.processing.enrichment import enrich
+from afternoon_tea.publication.renderer import render
+from afternoon_tea.collection.transport import check_url, ForbiddenOperation
 from tests.test_routine_renderer import fixture, FAILURES
 
 
@@ -52,7 +52,7 @@ class PriceCategoryTests(unittest.TestCase):
         with self.assertRaises(ForbiddenOperation):check_url('https://www.example.com/tea','POST',public_hosts=['www.example.com'])
 
     def test_public_source_still_requires_robots_and_stops_on_denial(self):
-        from afternoon_tea.browser import Browser
+        from afternoon_tea.collection.documents import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         from unittest.mock import Mock

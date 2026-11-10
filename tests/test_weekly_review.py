@@ -10,9 +10,9 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
-from afternoon_tea.data import period
-from afternoon_tea import routine_site
-from afternoon_tea.weekly_review import review
+from afternoon_tea.processing.dates import period
+from afternoon_tea.publication import site as routine_site
+from afternoon_tea.processing.period_review import review
 from tests.test_routine_site import files
 
 
@@ -60,7 +60,7 @@ class WeeklyReviewTests(unittest.TestCase):
     def test_review_cli_is_read_only_and_returns_nonzero_for_outside(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'research.json';path.write_text(json.dumps(data('2026-12-19',None)));before=path.read_bytes()
-            result=subprocess.run(['python3','-m','afternoon_tea.weekly_review','--data',str(path)],capture_output=True,text=True,cwd=routine_site.ROOT)
+            result=subprocess.run(['python3','-m','afternoon_tea','review','--data',str(path)],capture_output=True,text=True,cwd=routine_site.ROOT)
             self.assertEqual(result.returncode,1);self.assertEqual(path.read_bytes(),before)
             self.assertIn('outside_research_period',result.stdout)
     def test_date_review_is_not_a_new_automatic_publication_gate(self):

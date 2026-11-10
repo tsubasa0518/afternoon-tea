@@ -11,12 +11,12 @@ import re
 import time
 from urllib.parse import urlsplit
 import uuid
-from .master import ROOT
-from .official_research import links
-from .read_only import check_url, ForbiddenOperation
-from .browser import Browser
-from .storage import atomic_json, store_lock
-from .research_evidence import archive_acquired_text, restore_documents
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.collection.official import links
+from afternoon_tea.collection.transport import check_url, ForbiddenOperation
+from afternoon_tea.collection.documents import Browser
+from afternoon_tea.collection.checkpoints import atomic_json, store_lock
+from afternoon_tea.collection.evidence import archive_acquired_text, restore_documents
 
 REFERENCE=ROOT/'data/references/user_candidates_385.csv'
 HEADERS=['No','店名','最寄り駅','ジャンル','予約サイト','予約ページURL','備考']
@@ -25,7 +25,7 @@ FRESH_DAYS=14
 
 
 def current_day():
-    from .data import JST
+    from afternoon_tea.processing.dates import JST
     return dt.datetime.now(JST).date()
 
 
@@ -101,7 +101,7 @@ def initialize(research,checkpoint=None,day=None):
 
 def refresh_due(campaign,day):
     """Keep initial traversal progress; refresh only expired reviewed evidence."""
-    from .data import JST
+    from afternoon_tea.processing.dates import JST
     refreshed=set()
     for row in campaign['rows']:
         if row['status'] not in ('reviewed','excluded') or not row.get('reviewed_sources'):continue
@@ -124,7 +124,7 @@ def list_traversed(campaign):
 
 def link_identity(campaign,left,right,sources):
     """Explicit reviewed cross-site match; never merge merely similar names."""
-    from .research_evidence import validate_audit,source_document
+    from afternoon_tea.collection.evidence import validate_audit, source_document
     docs={k:v for a in campaign['audit_segments'].values() for k,v in validate_audit(a).items()}
     a=campaign['rows'][left-1];b=campaign['rows'][right-1]
     if a['no']!=left or b['no']!=right:raise ValueError('identity_row_missing')
@@ -165,7 +165,7 @@ def run(campaign,directory,browser=None,limit=385,seconds=600,clock=time.monoton
         campaign['stop_reason']='forbidden_operation';atomic_json(directory/'checkpoint.json',campaign);return campaign
     if campaign.get('version')!=2:raise ValueError('campaign_migration_required')
     if browser is None:
-        from .communication_audit import CommunicationAudit
+        from afternoon_tea.collection.audit import CommunicationAudit
         run_id=uuid.uuid4().hex
         browser=Browser(max_requests=150,audit=CommunicationAudit(run_id,directory/('audit-'+run_id+'.jsonl')))
     deadline=clock()+seconds;processed=0;stop=None
@@ -240,10 +240,7 @@ def run(campaign,directory,browser=None,limit=385,seconds=600,clock=time.monoton
     return campaign
 
 
-def main():
-    p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--output',type=Path,default=ROOT/'.staging/list-research');p.add_argument('--limit',type=int,default=385)
-    p.add_argument('--seconds',type=float,default=600);args=p.parse_args()
+def main(args):
     if args.limit<0 or args.seconds<=0:raise ValueError('invalid_collection_budget')
     with store_lock(args.output):
         research=json.loads((ROOT/'site/research.json').read_text());saved=args.output/'checkpoint.json'
@@ -253,5 +250,3 @@ def main():
         print(json.dumps({'campaign_id':state['campaign_id'],'processed':sum(r['status']!='unresearched' for r in state['rows']),
                           'phase':state['phase'],'stop_reason':state['stop_reason']},ensure_ascii=False))
     return 2 if state['stop_reason']=='forbidden_operation' else 1 if state['stop_reason']=='evidence_or_storage_error' else 0
-
-if __name__=='__main__':raise SystemExit(main())

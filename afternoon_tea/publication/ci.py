@@ -1,7 +1,7 @@
 """Resume eligible PR intake after technical CI; never execute PR code."""
 import json, os
 from pathlib import Path
-from .routine_site import API, REPO, BRANCH_PREFIX, intake, write_summary
+from afternoon_tea.publication.site import API, REPO, BRANCH_PREFIX, intake, write_summary
 
 def resume(api,event,author):
     run=event['workflow_run']
@@ -19,5 +19,5 @@ def resume(api,event,author):
             if report.get('merge')=='ci_failed':raise ValueError('latest_head_technical_ci_failed')
     return reports
 
-if __name__=='__main__':
+def main():
     print(resume(API(),json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()),os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0]))

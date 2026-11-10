@@ -1,8 +1,8 @@
 """Regular-price bands, with evidenced venue fallback only when price is unknown."""
 import math
 import json
-from pathlib import Path
-from .weekly_review import day
+from afternoon_tea.common import ROOT
+from afternoon_tea.processing.period_review import day
 
 
 def regular_price(plan):
@@ -32,7 +32,7 @@ def facility_basis(shop, master=None):
         return 'hotel', 'hotel_name: ' + hotel_name
     if shop.get('id') and shop.get('name'):
         if master is None:
-            master = json.loads((Path(__file__).resolve().parents[1] / 'data/store_master.json').read_text())
+            master = json.loads((ROOT / 'data/store_master.json').read_text())
         matches = [(cat, venue) for area in master['areas'] for cat, group in area['cats'].items()
                    for venue in group['shops'] if venue['id'] == shop['id'] and venue['name'] == shop['name']]
         if len(matches) == 1 and matches[0][0] in ('cafe', 'hotel', 'lux'):

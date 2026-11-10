@@ -1,7 +1,7 @@
 """Verify protected current configuration before processing and deployment."""
 import hashlib
-from .master import ROOT
-from .common import load_json, require
+from afternoon_tea.collection.catalog import ROOT
+from afternoon_tea.common import load_json, require
 
 
 def protected_files():
