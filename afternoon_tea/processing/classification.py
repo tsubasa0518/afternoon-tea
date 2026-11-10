@@ -1,15 +1,17 @@
-"""Venue categories: hotel or not by explicit text, then the regular price for hotels.
+"""Categories by the lowest regular price of the plans in the research period.
 
-- Not stated as a hotel: cafe (whatever the price).
-- Stated as a hotel: hotel at 6,000 yen or less, lux at 6,001 yen or more.
-- A hotel whose regular price is unknown stays unknown.
+- 5,000 yen or less: cafe
+- 5,001 to 8,000 yen: hotel
+- 8,001 yen or more: lux (ホテル（高級）)
+- No regular price: unknown (未確認)
 """
 import math
-import re
 from afternoon_tea.processing.period_review import day
 
-HOTEL_TEXT = re.compile(r'ホテル|hotel', re.I)
-HOTEL_MAX_YEN = 6000
+CAFE_MAX_YEN = 5000
+HOTEL_MAX_YEN = 8000
+
+
 def regular_price(plan):
     value = plan.get('price_yen')
     return value if type(value) in (int, float) and math.isfinite(value) and (value > 0) else None
@@ -22,27 +24,10 @@ def eligible_plans(plans, period):
             continue
         yield plan
 
-def hotel_basis(shop):
-    """Return the field that states the venue is a hotel, or None.
-
-    `hotel_name` is recorded during research only when the page says the venue
-    is a hotel; the shop name and address count when they contain the word.
-    """
-    shop = shop or {}
-    hotel_name = shop.get('hotel_name')
-    if isinstance(hotel_name, str) and hotel_name.strip() and hotel_name.strip() != '未確認':
-        return 'hotel_name'
-    for key in ('name', 'address'):
-        if isinstance(shop.get(key), str) and HOTEL_TEXT.search(shop[key]):
-            return key
-    return None
-
-
 def classify(plans, shop=None):
+    """`shop` is accepted for callers; the venue type does not affect the category."""
     prices = [price for plan in plans if (price := regular_price(plan)) is not None]
-    minimum = min(prices) if prices else None
-    if hotel_basis(shop) is None:
-        return ('cafe', minimum)
-    if minimum is None:
+    if not prices:
         return ('unknown', None)
-    return ('hotel' if minimum <= HOTEL_MAX_YEN else 'lux', minimum)
+    minimum = min(prices)
+    return ('cafe' if minimum <= CAFE_MAX_YEN else 'hotel' if minimum <= HOTEL_MAX_YEN else 'lux', minimum)

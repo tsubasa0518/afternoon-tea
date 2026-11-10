@@ -59,7 +59,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4950
     },
     {
@@ -101,8 +101,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6325
     },
     {
@@ -238,7 +238,7 @@
         }
       ],
       "category": "hotel",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6000
     },
     {
@@ -297,7 +297,7 @@
         }
       ],
       "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9800
     },
     {
@@ -359,8 +359,8 @@
           "menu": null
         }
       ],
-      "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 7900
     },
     {
@@ -398,7 +398,7 @@
         }
       ],
       "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8500
     },
     {
@@ -463,7 +463,7 @@
         }
       ],
       "category": "unknown",
-      "category_source": "hotel stated in hotel_name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "regular price unknown: unknown",
       "category_price_yen": null,
       "hotel_name": "マンダリン オリエンタル 東京",
       "facility_type": "hotel",
@@ -519,8 +519,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9867
     },
     {
@@ -558,7 +558,7 @@
         }
       ],
       "category": "unknown",
-      "category_source": "hotel stated in hotel_name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "regular price unknown: unknown",
       "category_price_yen": null,
       "hotel_name": "パレスホテル東京",
       "facility_type": "hotel",
@@ -609,8 +609,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 13000
     },
     {
@@ -648,7 +648,7 @@
         }
       ],
       "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 10350
     },
     {
@@ -686,7 +686,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4600
     },
     {
@@ -735,8 +735,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6800
     },
     {
@@ -774,7 +774,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4000
     },
     {
@@ -812,7 +812,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 2400
     },
     {
@@ -878,9 +878,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7900,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-009",
@@ -943,7 +943,7 @@
       ],
       "category": "lux",
       "category_price_yen": 9300,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-010",
@@ -988,7 +988,7 @@
       ],
       "category": "lux",
       "category_price_yen": 8500,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-011",
@@ -1028,7 +1028,7 @@
       ],
       "category": "hotel",
       "category_price_yen": 5500,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-015",
@@ -1066,7 +1066,7 @@
       ],
       "category": "lux",
       "category_price_yen": 11000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-026",
@@ -1104,7 +1104,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4620
     },
     {
@@ -1152,8 +1152,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9200
     },
     {
@@ -1191,7 +1191,7 @@
         }
       ],
       "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9487
     },
     {
@@ -1249,8 +1249,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8500
     },
     {
@@ -1312,8 +1312,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9700
     },
     {
@@ -1442,9 +1442,9 @@
           }
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 12650,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-048",
@@ -1482,7 +1482,7 @@
       ],
       "category": "lux",
       "category_price_yen": 10183,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-051",
@@ -1532,7 +1532,7 @@
       ],
       "category": "lux",
       "category_price_yen": 12700,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-053",
@@ -1579,9 +1579,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7500,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-054",
@@ -1627,9 +1627,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 6325,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-055",
@@ -1665,9 +1665,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-056",
@@ -1719,9 +1719,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "hotel",
       "category_price_yen": 7000,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-057",
@@ -1766,7 +1766,7 @@
       ],
       "category": "cafe",
       "category_price_yen": 3850,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-058",
@@ -1813,9 +1813,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7684,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-031",
@@ -1862,8 +1862,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9200
     },
     {
@@ -1925,8 +1925,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8970
     },
     {
@@ -1988,7 +1988,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4800
     },
     {
@@ -2035,9 +2035,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 9200,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-062",
@@ -2084,9 +2084,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 9200,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-064",
@@ -2124,7 +2124,7 @@
       ],
       "category": "cafe",
       "category_price_yen": 3850,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-065",
@@ -2173,7 +2173,7 @@
       ],
       "category": "lux",
       "category_price_yen": 9000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-066",
@@ -2222,7 +2222,7 @@
       ],
       "category": "lux",
       "category_price_yen": 8500,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-067",
@@ -2274,9 +2274,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 8500,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-068",
@@ -2337,9 +2337,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 6900,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-069",
@@ -2377,7 +2377,7 @@
       ],
       "category": "lux",
       "category_price_yen": 9867,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-070",
@@ -2423,9 +2423,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 8800,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-034",
@@ -2486,8 +2486,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8800
     },
     {
@@ -2540,8 +2540,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8000
     },
     {
@@ -2723,9 +2723,9 @@
           }
         }
       ],
-      "category": "hotel",
+      "category": "cafe",
       "category_price_yen": 4800,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "facility_type": "hotel",
       "facility_source": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html"
     },
@@ -2788,7 +2788,7 @@
         }
       ],
       "category": "hotel",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6000
     },
     {
@@ -2830,8 +2830,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 11385
     },
     {
@@ -2870,9 +2870,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "hotel",
       "category_price_yen": 5900,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-candidate-05",
@@ -2919,9 +2919,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 8050,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-076",
@@ -2972,7 +2972,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 3300
     },
     {
@@ -3028,9 +3028,9 @@
           "menu": null
         }
       ],
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 6900,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-081",
@@ -3066,9 +3066,9 @@
           "menu": null
         }
       ],
-      "category": "hotel",
+      "category": "cafe",
       "category_price_yen": 3800,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-082",
@@ -3113,7 +3113,7 @@
       ],
       "category": "lux",
       "category_price_yen": 8200,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-083",
@@ -3149,9 +3149,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "hotel",
       "category_price_yen": 7500,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-084",
@@ -3189,9 +3189,9 @@
           "menu": null
         }
       ],
-      "category": "cafe",
+      "category": "hotel",
       "category_price_yen": 7800,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-040",
@@ -3240,7 +3240,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4800
     },
     {
@@ -3278,7 +3278,7 @@
         }
       ],
       "category": "hotel",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6000
     },
     {
@@ -3331,8 +3331,8 @@
           "menu": null
         }
       ],
-      "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8000
     },
     {
@@ -3369,8 +3369,8 @@
           "menu": null
         }
       ],
-      "category": "hotel",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5000
     },
     {
@@ -3418,8 +3418,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5500
     },
     {
@@ -3467,7 +3467,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 2980
     },
     {
@@ -3523,7 +3523,7 @@
       ],
       "category": "hotel",
       "category_price_yen": 6000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-048",
@@ -3564,8 +3564,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5500
     },
     {
@@ -3627,8 +3627,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6800
     },
     {
@@ -3681,8 +3681,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5900
     },
     {
@@ -3726,8 +3726,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6900
     },
     {
@@ -3764,8 +3764,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5500
     },
     {
@@ -3813,7 +3813,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 3400
     },
     {
@@ -3870,8 +3870,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "lux",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8500
     },
     {
@@ -3908,8 +3908,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6000
     },
     {
@@ -3947,7 +3947,7 @@
         }
       ],
       "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 9600
     },
     {
@@ -4016,7 +4016,7 @@
       ],
       "category": "lux",
       "category_price_yen": 8096,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-111",
@@ -4054,7 +4054,7 @@
       ],
       "category": "lux",
       "category_price_yen": 8500,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-063",
@@ -4090,8 +4090,8 @@
           "menu": null
         }
       ],
-      "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 5800
     },
     {
@@ -4130,8 +4130,8 @@
           "menu": null
         }
       ],
-      "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 8000
     },
     {
@@ -4170,7 +4170,7 @@
       ],
       "category": "hotel",
       "category_price_yen": 5800,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "priority-115",
@@ -4233,7 +4233,7 @@
       ],
       "category": "hotel",
       "category_price_yen": 6000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-065",
@@ -4306,7 +4306,7 @@
         }
       ],
       "category": "unknown",
-      "category_source": "hotel stated in hotel_name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category_source": "regular price unknown: unknown",
       "category_price_yen": null,
       "hotel_name": "東京ドームホテル",
       "facility_type": "hotel",
@@ -4358,7 +4358,7 @@
         }
       ],
       "category": "cafe",
-      "category_source": "not stated as a hotel: cafe",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 4950
     },
     {
@@ -4405,9 +4405,9 @@
           "menu": null
         }
       ],
-      "category": "hotel",
+      "category": "cafe",
       "category_price_yen": 4300,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "master-067",
@@ -4443,8 +4443,8 @@
           "menu": null
         }
       ],
-      "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 6800
     },
     {
@@ -4492,8 +4492,8 @@
           "menu": null
         }
       ],
-      "category": "lux",
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown",
+      "category": "hotel",
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux",
       "category_price_yen": 7800
     },
     {
@@ -4605,7 +4605,7 @@
       "facility_source": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
       "category": "lux",
       "category_price_yen": 9400,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-002",
@@ -4660,9 +4660,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 6900,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-003",
@@ -4720,7 +4720,7 @@
       "facility_source": "https://www.newotani.co.jp/tokyo/afternoontea/",
       "category": "lux",
       "category_price_yen": 8200,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-004",
@@ -4791,7 +4791,7 @@
       "facility_source": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
       "category": "lux",
       "category_price_yen": 11000,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-005",
@@ -4836,9 +4836,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.newotani.co.jp/tokyo/afternoontea/",
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7700,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-006",
@@ -5007,9 +5007,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
-      "category": "cafe",
+      "category": "hotel",
       "category_price_yen": 5280,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-007",
@@ -5075,9 +5075,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.princehotels.co.jp/parktower/plan/youmeiden/afternoontea/",
-      "category": "cafe",
+      "category": "lux",
       "category_price_yen": 8625,
-      "category_source": "not stated as a hotel: cafe"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-008",
@@ -5250,7 +5250,7 @@
       "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
       "category": "lux",
       "category_price_yen": 8136,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-009",
@@ -5319,9 +5319,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 7910,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     },
     {
       "id": "official-010",
@@ -5396,9 +5396,9 @@
       ],
       "facility_type": "hotel",
       "facility_source": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
-      "category": "lux",
+      "category": "hotel",
       "category_price_yen": 6780,
-      "category_source": "hotel stated in name; minimum regular price of plans in period: <=6000 hotel / >=6001 lux / unknown price unknown"
+      "category_source": "minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / >=8001 lux"
     }
   ],
   "out_of_period_removed": [

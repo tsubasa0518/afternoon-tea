@@ -72,12 +72,11 @@ class RoutineRendererTests(unittest.TestCase):
         for value in ['料金 未確認', '提供期間 未確認', '平日 未確認', '土日祝 未確認', '提供時間・利用時間 未確認', 'スイーツ・季節分類 未確認']:
             self.assertIn(value, result)
 
-    def test_categories_follow_hotel_text_then_price_not_stale_categories(self):
+    def test_categories_use_regular_price_not_stale_categories_or_names(self):
         source = fixture()
         shop = source['shops'][0]
-        hotel = {**shop, 'name': 'TEST ホテル lounge', 'category': 'cafe'}
-        source['shops'] = ([{**hotel, 'plans': [{'price_yen': price}]} for price in (6000, 6001, None)]
-                           + [{**shop, 'category': 'lux', 'plans': [{'price_yen': 20000}]}])
+        source['shops'] = [{**shop, 'name': 'TEST ホテル', 'category': 'lux', 'plans': [{'price_yen': price}]}
+                           for price in (5000, 8000, 8001, None)]
         result = r.render(source)
         for cat in ['cafe', 'hotel', 'lux']:
             self.assertIn(f'class="stat s-{cat}"><b>1</b>', result)
@@ -143,8 +142,8 @@ class RoutineRendererTests(unittest.TestCase):
              'https://www.tablecheck.com/ja/shops/test-only/reserve',
              'https://tabelog.com/tokyo/A1301/A130101/12345678/',
              'https://www.example.com/afternoon-tea/']
-        for (name, price, label) in [('TEST venue', 10000, 'カフェ'), ('TEST ホテル', 6000, 'ホテル'),
-                                     ('TEST ホテル', 6001, 'ホテル（高級）')]:
+        for (name, price, label) in [('TEST venue', 5000, 'カフェ'), ('TEST venue', 8000, 'ホテル'),
+                                     ('TEST venue', 8001, 'ホテル（高級）')]:
             data = fixture()
             base = data['shops'][0]
             data['shops'] = [{**base,

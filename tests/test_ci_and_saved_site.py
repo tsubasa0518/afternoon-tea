@@ -96,11 +96,11 @@ class CollectionDetailsTests(unittest.TestCase):
         reference = '<article data-cat="cafe"><h4>TEST cafe</h4><a href="https://restaurant.ikyu.com/123456/plan222222">old</a></article>'
         master = {'areas': []}
         out = enrich(d, master, reference)
-        # Not stated as a hotel: cafe, whatever the old reference page said.
-        self.assertEqual(out['shops'][0]['category'], 'cafe')
+        # No regular price: unknown, whatever the old reference page said.
+        self.assertEqual(out['shops'][0]['category'], 'unknown')
         self.assertEqual(out['shops'][0]['plans'], [])
         reference = reference.replace('data-cat="cafe"', 'data-cat="lux"')
-        self.assertEqual(enrich(d, master, reference)['shops'][0]['category'], 'cafe')
+        self.assertEqual(enrich(d, master, reference)['shops'][0]['category'], 'unknown')
 
 class InferredYearTests(unittest.TestCase):
 

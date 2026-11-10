@@ -87,17 +87,15 @@ def enrich_plan(plan, shop):
     return result
 
 def enrich(research, master=None, reference=None):
-    """Category: hotel only when stated; hotels split at 6,000 yen by regular price."""
+    """Category from the lowest regular price: <=5000 cafe / <=8000 hotel / >=8001 lux."""
     result = copy.deepcopy(research)
-    from afternoon_tea.processing.classification import classify, eligible_plans, hotel_basis
+    from afternoon_tea.processing.classification import classify, eligible_plans
     for shop in result['shops']:
         shop['plans'] = [enrich_plan(p, shop) for p in shop.get('plans', [])]
         (category, minimum) = classify(eligible_plans(shop['plans'], result['period']), shop)
-        basis = hotel_basis(shop)
         shop.update(category=category, category_price_yen=minimum,
-                    category_source=('not stated as a hotel: cafe' if basis is None else
-                                     'hotel stated in ' + basis + '; minimum regular price of plans in period: '
-                                     '<=6000 hotel / >=6001 lux / unknown price unknown'))
+                    category_source=('minimum regular price of plans in period: <=5000 cafe / 5001-8000 hotel / '
+                                     '>=8001 lux' if minimum is not None else 'regular price unknown: unknown'))
     return result
 
 def main(args):
