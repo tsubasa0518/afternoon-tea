@@ -68,7 +68,7 @@ class CountryThemesTests(unittest.TestCase):
         for (kind, label) in [('explicit', '🇫🇷 フランス'), ('inferred', '🇫🇷 フランス風')]:
             data = judged(kind=kind)
             before = copy.deepcopy(data)
-            html = render(data, FAILURES)
+            html = render(data)
             self.assertIn(label, html)
             for private in ('TEST full menu cultural evidence', 'Keep previous status', 'TEST original evidence', 'notes.status', '出典：', '確認日時：'):
                 self.assertNotIn(private, html)
@@ -86,7 +86,7 @@ class CountryThemesTests(unittest.TestCase):
             data = fixture()
             plan = data['shops'][0]['plans'][0]
             plan.update(country=c.registry()[cc]['name'], cc=cc, country_source_type='explicit')
-            self.assertIn(c.flag(cc), render(data, FAILURES))
+            self.assertIn(c.flag(cc), render(data))
         with self.assertRaises(ValueError):
             c.validate_country({'country_decision_hash': 'not a hash'})
 
@@ -100,8 +100,8 @@ class CountryThemesTests(unittest.TestCase):
             self.assertIsNone(plan['cc'])
             plan['country_basis'] = 'Insufficient whole-plan evidence'
         done = c.finalize(prepared)
-        self.assertNotIn('aria-label="テーマの国・地域"', render(done, FAILURES))
-        self.assertNotIn('aria-label="テーマの国・地域"', render(data, FAILURES))
+        self.assertNotIn('aria-label="テーマの国・地域"', render(done))
+        self.assertNotIn('aria-label="テーマの国・地域"', render(data))
         self.assertEqual(len(c.prepare(done)[1]), 0)
 
     def test_unchanged_previous_decisions_and_reasons_are_reused(self):
@@ -128,7 +128,7 @@ class CountryThemesTests(unittest.TestCase):
             previous = judged()
             current = copy.deepcopy(previous)
             current['shops'][0]['plans'][0][key] = 'NEW themed content'
-            self.assertNotIn('aria-label="テーマの国・地域"', render(current, FAILURES))
+            self.assertNotIn('aria-label="テーマの国・地域"', render(current))
             (result, pending) = c.prepare(current, previous)
             self.assertEqual(len(pending), 1)
             self.assertIsNone(result['shops'][0]['plans'][0]['cc'])
@@ -147,7 +147,7 @@ class CountryThemesTests(unittest.TestCase):
         (result, pending) = c.prepare(data)
         self.assertEqual(pending, [])
         result = c.finalize(result)
-        html = render(result, FAILURES)
+        html = render(result)
         self.assertIn('🇫🇷 フランス', html)
         self.assertIn('🇯🇵 日本風', html)
         self.assertIn('プラン1／2', html)
@@ -160,7 +160,7 @@ class CountryThemesTests(unittest.TestCase):
             (result, pending) = c.prepare(data, data)
             self.assertEqual(pending, [])
             result = c.finalize(result)
-            self.assertEqual(render(result, FAILURES), render(data, FAILURES))
+            self.assertEqual(render(result), render(data))
 
     def test_finalization_requires_current_content_and_a_recorded_reason(self):
         (data, _) = c.prepare(fixture())

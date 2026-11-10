@@ -250,9 +250,10 @@ def card(shop, plans, generated):
     out.append('<div class="plans">' + ''.join((plan_html(p, shop, i, len(plans), generated) for (i, p) in enumerate(plans))) + '</div></article>')
     return (''.join(out), sw)
 
-def render(research, failures):
+def render(research):
+    research = {**research, 'shops': [s for s in research.get('shops', [])
+                if not isinstance(s, dict) or (type(s.get('area_no')) is int and 1 <= s['area_no'] <= 14)]}
     validate_json(json_bytes(research))
-    validate_json(json_bytes(failures), True)
     check = review(research)
     invalid = [e for e in check['errors'] if e['reason'] != 'outside_research_period']
     if invalid:
@@ -261,22 +262,18 @@ def render(research, failures):
     stamp = research.get('generated_at')
     generated = dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
     master = json.loads((ROOT / 'data/store_master.json').read_text())
-    master['areas'].append({'no': 15, 'name': 'その他のエリア', 'stations': []})
     groups = {a['no']: [] for a in master['areas']}
-    unassigned = []
     tot = Counter()
     swc = Counter()
-    area_names = {a['name']: a['no'] for a in master['areas']}
     for (si, shop) in enumerate(research['shops']):
+        if type(shop.get('area_no')) is not int or not 1 <= shop['area_no'] <= 14:
+            continue
         plans = [p for (pi, p) in enumerate(shop.get('plans', [])) if (si, pi) not in outside]
         if not plans:
             continue
         shop = {**shop, 'plans': plans}
         (markup, sw) = card(shop, plans, generated)
-        no = shop.get('area_no')
-        if type(no) is not int:
-            no = area_names.get(shop.get('area'))
-        target = groups[no] if no in groups else unassigned
+        target = groups[shop['area_no']]
         target.append((category(shop), markup))
         tot[category(shop)] += 1
         for plan in plans:
@@ -365,8 +362,6 @@ def render(research, failures):
         return ''.join(parts) + '</section>'
     for area in master['areas']:
         areas.append(area_html(area['no'], area['name'], groups[area['no']], area['stations']))
-    if unassigned:
-        areas.append(area_html(0, 'エリア未確認', unassigned))
     template = Template((TEMPLATES / 'site.html').read_text())
     result = template.substitute(css=(TEMPLATES / 'site.css').read_text(),
          extra_css=(TEMPLATES / 'site_extra.css').read_text(),
@@ -383,7 +378,7 @@ def generate():
     target = ROOT / 'site/index.html'
     if target.is_symlink() or target.parent.is_symlink() or target.parent.resolve() != ROOT.resolve() / 'site':
         raise ValueError('site/index.html must be inside the real site directory')
-    text = render(json.loads((ROOT / 'site/research.json').read_text()), json.loads((ROOT / 'site/search_failures.json').read_text()))
+    text = render(json.loads((ROOT / 'site/research.json').read_text()))
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=target.parent, delete=False) as f:

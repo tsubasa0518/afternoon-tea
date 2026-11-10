@@ -45,7 +45,7 @@ class PriceCategoryTests(unittest.TestCase):
         self.assertEqual(data, before)
         self.assertEqual(enriched['shops'][0]['category'], 'hotel')
         self.assertEqual(enriched['shops'][0]['category_price_yen'], 7000)
-        self.assertIn('class="stat s-hotel"><b>1</b>', render(data, FAILURES))
+        self.assertIn('class="stat s-hotel"><b>1</b>', render(data))
         self.assertEqual(enrich(enriched, {'areas': []}), enriched)
 
     def test_discount_does_not_lower_category(self):
@@ -68,7 +68,7 @@ class PriceCategoryTests(unittest.TestCase):
              {'plan_name': 'Second',
              'source_url': 'https://www.example.com/winter-tea/',
              'price_yen': 10000}]
-        result = render(data, FAILURES)
+        result = render(data)
         for value in ['プラン1／2', 'プラン2／2', 'https://www.example.com/winter-tea/', '提供期間 未確認']:
             self.assertIn(value, result)
 
@@ -90,7 +90,7 @@ class PriceCategoryTests(unittest.TestCase):
             check_url('https://www.example.com/tea', 'POST', public_hosts=['www.example.com'])
 
     def test_public_source_still_requires_robots_and_stops_on_denial(self):
-        from afternoon_tea.collection.documents import Browser
+        from afternoon_tea.collection.reader import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         from unittest.mock import Mock
@@ -106,6 +106,8 @@ class PriceCategoryTests(unittest.TestCase):
         browser._open.assert_not_called()
         robots = RobotFileParser()
         robots.parse(['User-agent: *', 'Allow: /'])
+        browser = Browser(delay=0, public_hosts=[host])
+        browser._open = Mock()
         browser.robots[host] = robots
         browser._open.side_effect = HTTPError(url, 403, 'denied', {}, None)
         with self.assertRaisesRegex(RuntimeError, 'HTTP_403'):
@@ -168,7 +170,7 @@ class PriceCategoryTests(unittest.TestCase):
             self.assertTrue(all((enriched['shops'][0]['plans'][0][key] == value for (key, value) in original['shops'][0]['plans'][0].items())))
             self.assertEqual(data, original)
             self.assertEqual(enrich(enriched), enriched)
-            html = render(enriched, FAILURES)
+            html = render(enriched)
             self.assertIn('class="card c-' + expected + '"', html)
             self.assertIn('料金 未確認', html)
             self.assertIn('data-price=""', html)
@@ -191,6 +193,6 @@ class PriceCategoryTests(unittest.TestCase):
             self.assertEqual(shop['category'], 'hotel')
             self.assertIsNone(shop['category_price_yen'])
             self.assertTrue(all((p['price_yen'] is None for p in shop['plans'])))
-        html = render(result, FAILURES)
+        html = render(result)
         self.assertIn('class="stat s-hotel"><b>3</b>', html)
         self.assertEqual(html.count('料金 未確認'), 3)

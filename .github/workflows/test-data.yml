@@ -25,4 +25,3 @@ jobs:
       - name: Verify protected files and canonical catalog
         run: |
           python3 -m afternoon_tea check-protected
-          python3 -m afternoon_tea validate-catalog

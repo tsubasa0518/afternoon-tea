@@ -8,28 +8,15 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 from afternoon_tea.publication import site as r
-from test_campaign import completed_campaign
 HTML = b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
 
-def files(n=0, failures=0):
-    failure = {'name': 'Test only',
-         'area': 'Test area',
-         'checked_at': '2026-11-07T07:17:00+09:00',
-         'sources': [],
-         'reason': 'Not retrieved',
-         'retry': True,
-         'status': 'unresearched'}
+def files(n=0):
+    stamp = dt.datetime.now(dt.timezone.utc).isoformat()
     return {'site/index.html': HTML,
-         'site/research.json': r.json_bytes({'schema_version': 1,
-         'generated_at': None,
-         'period': {'start': '2026-11-09',
-         'end': '2026-12-19'},
-         'shops': [{'name': 'Test only',
-         'price': None}] * n}),
-         'site/search_failures.json': r.json_bytes({'schema_version': 1,
-         'generated_at': None,
-         'research_campaign': completed_campaign(),
-         'failures': [failure] * failures})}
+            'site/research.json': r.json_bytes({'schema_version':1, 'generated_at':stamp,
+                'period':{'start':'2026-11-09','end':'2026-12-19'},
+                'shops':[{'name':'Test only '+str(i), 'area_no':1,
+                          'plans':[{'plan_name':'AT', 'checked_at':stamp, 'price_yen':None}]} for i in range(n)]})}
 
 class FakeAPI:
 
@@ -46,7 +33,7 @@ class FakeAPI:
              'sha': 'a' * 40},
              'merged': False}
         self.changed = [{'filename': 'site/index.html', 'status': 'modified'}]
-        self.content = files(2, 76)
+        self.content = files(2)
         self.calls = []
         self.denied = False
         self.comments = []
@@ -84,15 +71,9 @@ class FakeAPI:
 
 class RoutineSiteTests(unittest.TestCase):
 
-    def setUp(self):
-        patcher = patch('afternoon_tea.publication.gate.current_day', return_value=dt.date(2026, 11, 9))
-        patcher.start()
-        self.addCleanup(patcher.stop)
-
     def test_two_shops_and_76_unresolved_are_publishable(self):
-        result = r.validate_site(files(2, 76))
+        result = r.validate_site(files(2))
         self.assertEqual(result['shops'], 2)
-        self.assertEqual(result['search_failures'], 76)
 
     def test_zero_shops_normal_explanation_is_valid(self):
         f = files()
@@ -257,7 +238,7 @@ class RoutineSiteTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for count in (2, 0):
-                content = files(count, 76)
+                content = files(count)
                 body = ''.join(('<article>Test-only shop ' + str(i) + '</article>' for i in range(count))) if count else '今週確認できた情報はありません'
                 content['site/index.html'] = HTML.replace(b'<p>Information unavailable</p>', body.encode())
                 for (path, value) in content.items():
@@ -266,7 +247,6 @@ class RoutineSiteTests(unittest.TestCase):
                 with patch.object(r, 'ROOT', root):
                     report = r.prepare()
                 self.assertEqual(report['shops'], count)
-                self.assertEqual(report['search_failures'], 76)
                 self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(), content['site/index.html'])
             self.assertIn('今週確認できた情報はありません', (root / '.staging/routine-delivery/site/index.html').read_text())
 

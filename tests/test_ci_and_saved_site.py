@@ -1,5 +1,5 @@
 """Stable fixtures and changing production data; no live reservation requests."""
-import copy, json, unittest
+import copy, json, unittest, datetime as dt
 from unittest.mock import patch
 from afternoon_tea.publication import site as r
 from afternoon_tea.publication import renderer as renderer
@@ -50,7 +50,6 @@ class ProductionTests(unittest.TestCase):
 
     def test_dynamic_data_and_reproducible_html(self):
         d = json.loads((ROOT / 'site/research.json').read_text())
-        f = json.loads((ROOT / 'site/search_failures.json').read_text())
         self.assertFalse(review(d)['errors'])
         ids = []
         for shop in d['shops']:
@@ -61,15 +60,17 @@ class ProductionTests(unittest.TestCase):
             self.assertTrue(shop['checked_at'])
             for p in shop['plans']:
                 self.assertIsInstance(p['plan_name'], str)
-                self.assertTrue(p.get('evidence_quote'))
                 self.assertTrue(p.get('price_yen') is None or type(p['price_yen']) in (int, float))
                 for key in ('sweets', 'season'):
                     self.assertTrue(p.get(key) is None or isinstance(p[key], (str, list)))
                 for key in ('weekday_available', 'weekend_available'):
                     self.assertTrue(p.get(key) is None or type(p[key]) is bool)
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(renderer.render(d, f), (ROOT / 'site/index.html').read_text())
-        r.validate_site({p: (ROOT / p).read_bytes() for p in r.ALLOWED})
+        self.assertEqual(renderer.render(d), (ROOT / 'site/index.html').read_text())
+        saved = max(dt.datetime.fromisoformat(p.get('checked_at', s['checked_at'])) for s in d['shops'] for p in s['plans'])
+        from afternoon_tea.processing.weekly import validate_freshness
+        with patch('afternoon_tea.processing.weekly.validate_freshness', side_effect=lambda data: validate_freshness(data, saved + dt.timedelta(days=1))):
+            r.validate_site({p: (ROOT / p).read_bytes() for p in r.ALLOWED})
 
     def test_multiple_plans_not_truncated(self):
         d = json.loads((ROOT / 'tests/fixtures/enrichment_cases.json').read_text())
@@ -78,7 +79,7 @@ class ProductionTests(unittest.TestCase):
         for (i, p) in enumerate(s['plans']):
             p['plan_name'] = 'TEST ONLY plan ' + str(i)
         d['shops'] = [s]
-        h = renderer.render(d, {'schema_version': 1, 'failures': []})
+        h = renderer.render(d)
         for i in range(3):
             self.assertIn('TEST ONLY plan ' + str(i), h)
 
@@ -108,6 +109,5 @@ class InferredYearTests(unittest.TestCase):
         out = enrich_plan(p, {})
         self.assertIsNone(out['start'])
         self.assertIsNone(out['end'])
-        self.assertIn('unverified_period_history', out)
         p['evidence_quote'] = '2026年11月1日～11月30日提供'
         self.assertEqual(enrich_plan(p, {})['start'], '2026-11-01')

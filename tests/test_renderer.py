@@ -1,5 +1,6 @@
 """Fixed design, saved JSON and local-only filter tests."""
 import copy
+import datetime as dt
 import json
 import os
 from pathlib import Path
@@ -19,6 +20,7 @@ def fixture(category='hotel'):
          'end': '2026-12-17'},
          'shops': [{'name': 'TEST ONLY lounge',
          'area_no': 1,
+         'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(),
          'category': category,
          'station': 'TEST station',
          'source_url': 'https://www.tablecheck.com/ja/shops/test-only/reserve',
@@ -37,17 +39,16 @@ class RoutineRendererTests(unittest.TestCase):
 
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research = json.loads((r.ROOT / 'site/research.json').read_text())
-        failures = json.loads((r.ROOT / 'site/search_failures.json').read_text())
         before = copy.deepcopy(research)
-        result = r.render(research, failures)
+        result = r.render(research)
         self.assertEqual(research, before)
         self.assertEqual(result, (r.ROOT / 'site/index.html').read_text())
-        self.assertEqual(r.render(research, failures), result)
+        self.assertEqual(r.render(research), result)
 
     def test_zero_stores_and_all_14_areas(self):
         source = fixture()
         source['shops'] = []
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         self.assertIn('今週は確認できた情報がありません', result)
         for no in range(1, 15):
             self.assertIn('id="a' + str(no) + '"', result)
@@ -55,7 +56,7 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertNotIn('<article ', result)
 
     def test_reference_card_and_plan_dom_and_unknown_values(self):
-        result = r.render(fixture(), FAILURES)
+        result = r.render(fixture())
         self.assertNotIn('cafe VAVA', result)
         for value in ['class="card c-unknown"',
              'class="plan"',
@@ -74,7 +75,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         shop = source['shops'][0]
         source['shops'] = [{**shop, 'category': 'lux', 'plans': [{'price_yen': price}]} for price in (6000, 6001, 10000, None)]
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         for cat in ['cafe', 'hotel', 'lux']:
             self.assertIn(f'class="stat s-{cat}"><b>1</b>', result)
         self.assertIn('class="card c-unknown"', result)
@@ -83,7 +84,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'][0]['sweets'] = ['scone', 'xmas']
         source['shops'][0]['plans'] = [{'plan_name': 'TEST 1', 'menu': 'スコーン', 'price_yen': 1000}, {'plan_name': 'TEST 2', 'price_yen': 2000}]
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         self.assertIn('プラン1／2', result)
         self.assertIn('プラン2／2', result)
         self.assertIn('data-sw="scone" aria-pressed="false">スコーン<span class="bc">1</span>', result)
@@ -93,7 +94,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'][0]['plans'] += [{'plan_name': 'OUTSIDE ONLY', 'start': '2026-12-19', 'end': '2026-12-25'}]
         before = copy.deepcopy(source)
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         self.assertNotIn('OUTSIDE ONLY', result)
         self.assertEqual(source, before)
 
@@ -115,7 +116,7 @@ class RoutineRendererTests(unittest.TestCase):
                 source['shops'][0]['plans'].append({'plan_name': 'OUTSIDE ONLY', 'start': '2026-12-19'})
             before = copy.deepcopy((source, failures))
             for _ in range(2):
-                result = r.render(source, failures)
+                result = r.render(source)
                 for removed in ['<div class="aside">',
                      '<div class="box">',
                      source['note'],
@@ -158,7 +159,7 @@ class RoutineRendererTests(unittest.TestCase):
                  url) in enumerate(urls)]
             before = copy.deepcopy(data)
             for _ in range(2):
-                result = r.render(data, FAILURES)
+                result = r.render(data)
                 for removed in ['出典：', '確認日時：', '2026-11-06T09:00:00+09:00', '2026-11-06T10:00:00+09:00', 'TEST shop evidence', 'TEST plan evidence']:
                     self.assertNotIn(removed, result)
                 for url in urls:
@@ -173,7 +174,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'][0]['name'] = '</h4><script>alert(1)</script>'
         source['shops'][0]['plans'][0]['plan_name'] = '" onmouseover="alert(1)<img src=x>'
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         self.assertIn('&lt;script&gt;alert(1)&lt;/script&gt;', result)
         self.assertNotIn('<script>alert(1)</script>', result)
         self.assertIn('&lt;img src=x&gt;', result)
@@ -184,18 +185,18 @@ class RoutineRendererTests(unittest.TestCase):
             source = fixture()
             source['shops'][0]['source_url'] = url
             with self.assertRaises(ValueError):
-                r.render(source, FAILURES)
+                r.render(source)
 
     def test_shop_time_is_not_assigned_to_each_plan(self):
         source = fixture()
         source['shops'][0]['time_note'] = 'Store-wide note, not per-plan evidence'
-        result = r.render(source, FAILURES)
+        result = r.render(source)
         self.assertEqual(result.count('Store-wide note'), 1)
         self.assertIn('提供時間・利用時間 未確認', result)
 
     def test_no_network_calls(self):
         with patch('urllib.request.OpenerDirector.open', side_effect=AssertionError('network forbidden')):
-            self.assertIn('TEST ONLY lounge', r.render(fixture(), FAILURES))
+            self.assertIn('TEST ONLY lounge', r.render(fixture()))
 
     def test_invalid_generation_preserves_previous_html(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -206,7 +207,6 @@ class RoutineRendererTests(unittest.TestCase):
             target = root / 'site/index.html'
             target.write_text('previous page')
             (root / 'site/research.json').write_text('{broken')
-            (root / 'site/search_failures.json').write_text(json.dumps(FAILURES))
             with patch.object(r, 'ROOT', root), self.assertRaises(ValueError):
                 r.generate()
             self.assertEqual(target.read_text(), 'previous page')
@@ -218,7 +218,6 @@ class RoutineRendererTests(unittest.TestCase):
             (root / 'data').mkdir()
             shutil.copy(r.ROOT / 'data/store_master.json', root / 'data/store_master.json')
             (root / 'site/research.json').write_text(json.dumps(fixture()))
-            (root / 'site/search_failures.json').write_text(json.dumps(FAILURES))
             before = {p.name: p.read_bytes() for p in (root / 'site').iterdir()}
             with patch.object(r, 'ROOT', root):
                 r.generate()
@@ -228,7 +227,7 @@ class RoutineRendererTests(unittest.TestCase):
                 self.assertNotIn('<div class="aside">', target_text)
             for (name, raw) in before.items():
                 self.assertEqual((root / 'site' / name).read_bytes(), raw)
-            self.assertEqual(set((p.name for p in (root / 'site').iterdir())), {'index.html', 'research.json', 'search_failures.json'})
+            self.assertEqual(set((p.name for p in (root / 'site').iterdir())), {'index.html', 'research.json'})
             self.assertEqual(validate_site({'site/' + p.name: p.read_bytes() for p in (root / 'site').iterdir()})['shops'], 1)
 
     def test_symlink_output_is_rejected(self):
@@ -243,7 +242,7 @@ class RoutineRendererTests(unittest.TestCase):
             self.assertEqual(protected.read_text(), 'protected')
 
     def test_layout_has_reference_responsiveness_and_dark_mode(self):
-        result = r.render(fixture(), FAILURES)
+        result = r.render(fixture())
         for value in ['prefers-color-scheme:dark',
              'max-width:820px',
              'max-width:420px',
@@ -256,7 +255,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         before = copy.deepcopy(source)
         for _ in range(2):
-            result = r.render(source, FAILURES)
+            result = r.render(source)
             for removed in ['id="shop-search"', 'id="theme-search"', '店舗・ホテル名', 'プラン名・テーマ', 'data-x="pk"', '料金確認済', '値段確認済', 'イベント・季節で絞り込み']:
                 self.assertNotIn(removed, result)
             self.assertIn('日程条件', result)
@@ -266,7 +265,7 @@ class RoutineRendererTests(unittest.TestCase):
             self.assertNotIn('土日祝に行ける', result)
             self.assertIn('aria-expanded="false" aria-controls="area-links">詳細</button>', result)
             links = re.search('<div class="btns" id="area-links" hidden>(.*?)</div>', result, re.S).group(1)
-            self.assertEqual(len(re.findall('href="#a\\d+"', links)), 15)
+            self.assertEqual(len(re.findall('href="#a\\d+"', links)), 14)
             self.assertEqual(len(re.findall('<button[^>]+data-sw=', result)), 15)
             for key in ['xmas', 'valentine', 'whiteday', 'collab', 'season']:
                 self.assertNotIn('data-sw="' + key + '" aria-pressed=', result)
@@ -277,7 +276,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_filter_javascript_runs_locally(self):
         if not shutil.which('node'):
             self.skipTest('Node is needed for local filter execution')
-        result = r.render(fixture(), FAILURES)
+        result = r.render(fixture())
         js = re.search('<script>(.*?)</script>', result, re.S).group(1)
         harness = (
             "\nconst vm=require('vm'),fs=require('fs'),code=JSON.parse(fs.readFileSync(0,"
@@ -383,9 +382,10 @@ class OtherAreaTests(unittest.TestCase):
     def test_verified_other_area_does_not_absorb_unknown_location(self):
         source = fixture()
         source['shops'][0]['area_no'] = 15
-        result = r.render(source, FAILURES)
-        self.assertIn('href="#a15"', result)
-        self.assertIn('その他のエリア', result)
-        self.assertIn('TEST ONLY lounge', result.split('id="a15"')[1])
-        source['shops'][0]['area_no'] = None
-        self.assertIn('id="a0"', r.render(source, FAILURES))
+        result = r.render(source)
+        for area in (15, None, 0, 16, '1'):
+            source['shops'][0]['area_no'] = area
+            result = r.render(source)
+            self.assertNotIn('その他のエリア', result)
+            self.assertNotIn('TEST ONLY lounge', result)
+            self.assertNotIn('id="a0"', result)

@@ -87,28 +87,13 @@ class WeeklyReviewTests(unittest.TestCase):
 
     def test_date_review_is_not_a_new_automatic_publication_gate(self):
         # The pre-PR helper reports an error; the existing automation is unchanged.
-        content = files(0, 76)
-        content['site/research.json'] = site_tools.json_bytes({'schema_version': 1, **data('2026-12-19', None)})
+        content = files(0)
+        sample = {'schema_version': 1, **data('2026-12-19', None)}
+        sample['shops'][0].update(area_no=1)
+        sample['shops'][0]['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
+        content['site/research.json'] = site_tools.json_bytes(sample)
         self.assertTrue(review(json.loads(content['site/research.json']))['errors'])
         self.assertEqual(site_tools.validate_site(content)['shops'], 1)
-
-    def test_summary_counts_shop_and_area_records_separately(self):
-        content = files(2)
-        records = [{'name': 'Test-only',
-             'area': 'test',
-             'sources': [],
-             'checked_at': '2026-11-07T07:17:00+09:00',
-             'reason': 'test',
-             'retry': True,
-             'status': 'unresearched',
-             'scope': 'shop'}]
-        records += [{**records[0], 'scope': 'area'}, {**records[0], 'status': 'confirmed'}, {**records[0], 'status': 'access_denied'}]
-        content['site/search_failures.json'] = site_tools.json_bytes({'schema_version': 1, 'failures': records})
-        result = site_tools.validate_site(content)
-        self.assertEqual(result['unresearched_shops'], 1)
-        self.assertEqual(result['search_statuses']['unresearched'], 2)
-        self.assertEqual(result['search_statuses']['confirmed'], 1)
-        self.assertEqual(result['search_statuses']['access_denied'], 1)
 
     def test_actions_summary_is_optional_and_reports_real_stage(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -123,7 +108,6 @@ class WeeklyReviewTests(unittest.TestCase):
             text = path.read_text()
             self.assertIn('2', text)
             self.assertIn('8', text)
-            self.assertIn('73', text)
             self.assertIn('/pull/20', text)
             self.assertIn('/actions/runs/123', text)
             self.assertNotIn('Pages公開確認成功', text)

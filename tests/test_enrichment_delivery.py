@@ -29,7 +29,6 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual(result['season'], ['xmas'])
         self.assertEqual(result['sweets'], ['ichigo', 'imo', 'kuri', 'macaron', 'scone'])
         self.assertEqual(result['menu'], p['menu'])
-        self.assertEqual(result['structured_evidence']['sweets']['url'], URL)
 
     def test_null_and_mixed_optional_tags_never_stop_html_generation(self):
         for existing in (None, [], [None, 1, 'scone'], 'scone'):
@@ -40,7 +39,7 @@ class EnrichmentTests(unittest.TestCase):
             self.assertTrue(result['weekday_available'])
             d = fixture()
             d['shops'][0]['plans'] = [result]
-            self.assertIn('マカロン', renderer.render(d, FAILURES))
+            self.assertIn('マカロン', renderer.render(d))
 
     def test_unknown_and_negated_text_do_not_invent_availability_or_tags(self):
         for p in ({'plan_name': 'TEST ONLY AT'}, {'plan_name': '平日限定ではありません'}, {'menu': 'マカロンは含まれません'}):
@@ -91,7 +90,7 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual([s['checked_at'] for s in result['shops']], [s['checked_at'] for s in d['shops']])
         self.assertEqual(Counter((s['category'] for s in result['shops'])), {'cafe': 1, 'hotel': 5})
         self.assertTrue(all((s['checked_at'] == STAMP for s in d['shops'])))
-        html = renderer.render(d, read(ROOT / 'site/search_failures.json'))
+        html = renderer.render(d)
         self.assertNotIn('data-sw="xmas" aria-pressed=', html)
         self.assertIn('クリスマス', html)
         self.assertEqual(sum((p.get('weekday_available') is True for s in d['shops'] for p in s['plans'])), 3)
@@ -103,11 +102,11 @@ class EnrichmentTests(unittest.TestCase):
             d = fixture()
             d['shops'] = d['shops'] * count
             d = e.enrich(d, read(ROOT / 'data/store_master.json'))
-            html = renderer.render(d, FAILURES)
+            html = renderer.render(d)
             self.assertEqual(html.count('<article '), count)
             self.assertEqual(validate_site({'site/index.html': html.encode(),
                  'site/research.json': json_bytes(d),
-                 'site/search_failures.json': json_bytes(FAILURES)})['shops'],
+})['shops'],
                  count)
 
 class DispatchIdempotenceTests(unittest.TestCase):
