@@ -87,16 +87,17 @@ def enrich_plan(plan, shop):
     return result
 
 def enrich(research, master=None, reference=None):
-    """Prices take precedence; master facility facts are only an unknown-price fallback."""
+    """Category: hotel only when stated; hotels split at 6,000 yen by regular price."""
     result = copy.deepcopy(research)
-    from afternoon_tea.processing.classification import classify, eligible_plans, facility_basis
+    from afternoon_tea.processing.classification import classify, eligible_plans, hotel_basis
     for shop in result['shops']:
         shop['plans'] = [enrich_plan(p, shop) for p in shop.get('plans', [])]
-        (category, minimum) = classify(eligible_plans(shop['plans'], result['period']), shop, master)
-        shop.update(category=category,
-             category_price_yen=minimum,
-             category_source='unknown regular price; facility fallback: ' + facility_basis(shop,
-             master)[1] if minimum is None else 'saved regular price_yen; minimum of plans overlapping research period; <=6000 cafe / <10000 hotel / >=10000 lux; no fresh web verification')
+        (category, minimum) = classify(eligible_plans(shop['plans'], result['period']), shop)
+        basis = hotel_basis(shop)
+        shop.update(category=category, category_price_yen=minimum,
+                    category_source=('not stated as a hotel: cafe' if basis is None else
+                                     'hotel stated in ' + basis + '; minimum regular price of plans in period: '
+                                     '<=6000 hotel / >=6001 lux / unknown price unknown'))
     return result
 
 def main(args):

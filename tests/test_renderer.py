@@ -55,7 +55,9 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertNotIn('<article ', result)
 
     def test_reference_card_and_plan_dom_and_unknown_values(self):
-        result = r.render(fixture())
+        data = fixture()
+        data['shops'][0]['hotel_name'] = 'TEST ホテル'
+        result = r.render(data)
         self.assertNotIn('cafe VAVA', result)
         for value in ['class="card c-unknown"',
              'class="plan"',
@@ -70,10 +72,12 @@ class RoutineRendererTests(unittest.TestCase):
         for value in ['料金 未確認', '提供期間 未確認', '平日 未確認', '土日祝 未確認', '提供時間・利用時間 未確認', 'スイーツ・季節分類 未確認']:
             self.assertIn(value, result)
 
-    def test_categories_use_regular_price_even_with_stale_venue_categories(self):
+    def test_categories_follow_hotel_text_then_price_not_stale_categories(self):
         source = fixture()
         shop = source['shops'][0]
-        source['shops'] = [{**shop, 'category': 'lux', 'plans': [{'price_yen': price}]} for price in (6000, 6001, 10000, None)]
+        hotel = {**shop, 'name': 'TEST ホテル lounge', 'category': 'cafe'}
+        source['shops'] = ([{**hotel, 'plans': [{'price_yen': price}]} for price in (6000, 6001, None)]
+                           + [{**shop, 'category': 'lux', 'plans': [{'price_yen': 20000}]}])
         result = r.render(source)
         for cat in ['cafe', 'hotel', 'lux']:
             self.assertIn(f'class="stat s-{cat}"><b>1</b>', result)
@@ -112,6 +116,7 @@ class RoutineRendererTests(unittest.TestCase):
             source['note'] = 'TEST research note must remain in JSON only'
             source['shops'] = source['shops'][:count]
             if count:
+                source['shops'][0]['hotel_name'] = 'TEST ホテル'
                 source['shops'][0]['plans'].append({'plan_name': 'OUTSIDE ONLY', 'start': '2026-12-19'})
             before = copy.deepcopy((source, failures))
             for _ in range(2):
@@ -138,11 +143,12 @@ class RoutineRendererTests(unittest.TestCase):
              'https://www.tablecheck.com/ja/shops/test-only/reserve',
              'https://tabelog.com/tokyo/A1301/A130101/12345678/',
              'https://www.example.com/afternoon-tea/']
-        for (price, label) in [(5000, 'カフェ'), (7000, 'ホテル'), (10000, 'ホテル（高級）')]:
+        for (name, price, label) in [('TEST venue', 10000, 'カフェ'), ('TEST ホテル', 6000, 'ホテル'),
+                                     ('TEST ホテル', 6001, 'ホテル（高級）')]:
             data = fixture()
             base = data['shops'][0]
             data['shops'] = [{**base,
-                 'name': 'TEST venue ' + str(i),
+                 'name': name + ' ' + str(i),
                  'source_url': url,
                  'checked_at': '2026-11-06T09:00:00+09:00',
                  'evidence_quote': 'TEST shop evidence',

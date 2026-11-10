@@ -8,7 +8,8 @@ REMOVED = {'research_campaign', 'research_entity_id', 'research_evidence', 'stru
            'identity_links', 'station_evidence', 'documents', 'audit_segments', 'access_evidence',
            'evidence_quote',
            'unverified_period_history', 'menu_evidence', 'price_evidence', 'period_evidence',
-           'exit', 'collection_summary', 'out_of_period_removed', 'audit', 'document_ids', 'document_refs', 'campaign_id', 'entity_id'}
+           'exit', 'collection_summary', 'out_of_period_removed', 'audit', 'document_ids', 'document_refs', 'campaign_id', 'entity_id',
+           'facility_type', 'facility_source'}
 
 def timestamp(value):
     if not isinstance(value, str):
