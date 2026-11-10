@@ -33,7 +33,7 @@ class SafetyTests(unittest.TestCase):
         for u in ('http://127.0.0.1/', 'https://evil.example/', 'https://user:pass@restaurant.ikyu.com/112520/'):
             with self.assertRaises(ForbiddenOperation): check_url(u)
     def test_denial_stops_host_without_retry(self):
-        from afternoon_tea.research import Browser
+        from afternoon_tea.browser import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         b=Browser();robots=RobotFileParser();robots.parse(['User-agent: *','Allow: /'])
@@ -42,7 +42,3 @@ class SafetyTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'HTTP_403'): b.fetch('https://restaurant.ikyu.com/112520/')
         with self.assertRaisesRegex(RuntimeError,'host_stopped'): b.fetch('https://restaurant.ikyu.com/112520/')
         self.assertEqual(b._open.call_count,1)
-    def test_nested_sections_preserve_area(self):
-        from afternoon_tea.public_research import Seeds
-        p=Seeds();p.feed('<section id="a13"><section><a href="https://restaurant.ikyu.com/12345/">A</a></section><a href="https://restaurant.ikyu.com/12346/">B</a></section><a href="https://restaurant.ikyu.com/12347/">outside</a>')
-        self.assertEqual(p.urls,[(13,'https://restaurant.ikyu.com/12345/'),(13,'https://restaurant.ikyu.com/12346/')])

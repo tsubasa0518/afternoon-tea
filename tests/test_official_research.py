@@ -6,9 +6,9 @@ import unittest
 from unittest.mock import Mock
 from urllib.error import HTTPError
 from afternoon_tea.official_research import links, collect
-from afternoon_tea.research import Browser
+from afternoon_tea.browser import Browser
 from afternoon_tea.read_only import ForbiddenOperation
-from tests.test_current_run import Response
+from tests.http_fixtures import Response
 
 HOST = 'official.example.com'
 BASE = 'https://' + HOST
@@ -86,7 +86,7 @@ class OfficialResearchTests(unittest.TestCase):
         b=self.browser({})
         robots=RobotFileParser();robots.parse(['User-agent: *','Crawl-delay: 10','Allow: /'])
         b.robots[HOST]=robots;b.last_request[HOST]=100
-        with patch('afternoon_tea.research.time.monotonic', return_value=103), patch('afternoon_tea.research.time.sleep') as sleep:
+        with patch('afternoon_tea.browser.time.monotonic', return_value=103), patch('afternoon_tea.browser.time.sleep') as sleep:
             b._rate_limit(HOST)
         sleep.assert_called_once_with(7)
 

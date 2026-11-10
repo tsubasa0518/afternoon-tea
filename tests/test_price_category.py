@@ -52,7 +52,7 @@ class PriceCategoryTests(unittest.TestCase):
         with self.assertRaises(ForbiddenOperation):check_url('https://www.example.com/tea','POST',public_hosts=['www.example.com'])
 
     def test_public_source_still_requires_robots_and_stops_on_denial(self):
-        from afternoon_tea.research import Browser
+        from afternoon_tea.browser import Browser
         from urllib.robotparser import RobotFileParser
         from urllib.error import HTTPError
         from unittest.mock import Mock

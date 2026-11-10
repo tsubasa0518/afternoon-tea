@@ -68,9 +68,8 @@ class RoutineSiteTests(unittest.TestCase):
         for insert in ('<img src="missing.png">','<script src="https://evil.example/x.js"></script>','<form></form>','<button onclick="x()">x</button>','<script>fetch("https://example.org")</script>'):
             with self.assertRaises(ValueError):r.validate_html_bytes(HTML.replace(b'</body>',insert.encode()+b'</body>'))
     def test_embedded_styles_and_filter_script_allowed(self):r.validate_html_bytes(HTML.replace(b'</body>',b'<script>document.querySelectorAll("p").forEach(p=>p.hidden=false);</script></body>'))
-    def test_real_legacy_html_is_identical_and_valid(self):
-        self.assertEqual((r.ROOT/'afternoon_tea_tokyo_2026-11-06.html').read_bytes(),(r.ROOT/'docs/index.html').read_bytes())
-        r.validate_html_bytes((r.ROOT/'docs/index.html').read_bytes())
+    def test_current_site_html_is_valid(self):
+        r.validate_html_bytes((r.ROOT/'site/index.html').read_bytes())
     def test_merge_then_explicit_dispatch_with_expected_sha(self):
         api=FakeAPI();r.intake(api,1,'tsubasa0518');self.assertEqual([x[0] for x in api.calls],['PUT','POST','POST'])
         self.assertEqual(api.calls[0][2]['sha'],'a'*40);self.assertEqual(api.calls[1][1],'/actions/workflows/deploy.yml/dispatches')

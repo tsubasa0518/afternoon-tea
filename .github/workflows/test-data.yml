@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main, codex/data-html-foundation]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,6 +19,6 @@ jobs:
           persist-credentials: false
       - name: Run offline tests (standard library only)
         run: python3 -m unittest discover -s tests -v
-      - name: Verify protected files and master extraction
+      - name: Verify protected files and canonical catalog
         run: |
-          python3 -c 'from afternoon_tea.pipeline import protected_files; from afternoon_tea.master import load_master; protected_files(); print(load_master()["counts"])'
+          python3 -c 'from afternoon_tea.guards import protected_files; from afternoon_tea.master import load_master; protected_files(); print(load_master()["counts"])'

@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from afternoon_tea.communication_audit import CommunicationAudit,identity
-from afternoon_tea.research import Browser
+from afternoon_tea.browser import Browser
 from afternoon_tea.read_only import ForbiddenOperation
 from afternoon_tea.list_research import reference,initialize,run,list_traversed,venue_key,link_identity
 from afternoon_tea.research_evidence import save_document,restore_documents,text_of,validate_audit

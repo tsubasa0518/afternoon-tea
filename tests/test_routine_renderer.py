@@ -23,10 +23,9 @@ FAILURES={'schema_version':1,'generated_at':None,'failures':[]}
 
 
 class RoutineRendererTests(unittest.TestCase):
-    def test_reference_css_is_preserved_exactly(self):
-        ref=(r.ROOT/'afternoon_tea_tokyo_2026-11-06.html').read_text()
-        for name,pattern in [('routine.css',r'<style>(.*?)</style>')]:
-            self.assertEqual((r.TEMPLATES/name).read_text(),re.search(pattern,ref,re.S).group(1))
+    def test_template_css_snapshot(self):
+        import hashlib
+        self.assertEqual(hashlib.sha256((r.TEMPLATES/'routine.css').read_bytes()).hexdigest(),'e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc')
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research=json.loads((r.ROOT/'site/research.json').read_text());failures=json.loads((r.ROOT/'site/search_failures.json').read_text())
         before=copy.deepcopy(research);result=r.render(research,failures)

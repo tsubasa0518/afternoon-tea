@@ -29,8 +29,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Verify immutable legacy backup and research sources
-        run: python3 -c 'from afternoon_tea.pipeline import protected_files; protected_files()'
+      - name: Verify protected current configuration
+        run: python3 -c 'from afternoon_tea.guards import protected_files; protected_files()'
       - name: Validate latest main and prepare HTML
         run: |
           export SOURCE_COMMIT="$(git rev-parse HEAD)"

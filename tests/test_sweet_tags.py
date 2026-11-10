@@ -6,7 +6,7 @@ from afternoon_tea.routine_enrichment import enrich_plan
 from afternoon_tea.routine_renderer import render
 from tests.test_routine_renderer import fixture,FAILURES
 from tests.test_all_filter_options import Buttons
-from afternoon_tea.extraction import Document
+from tests.html_nodes import Document
 
 
 class SweetKeywordTests(unittest.TestCase):

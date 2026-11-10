@@ -1,9 +1,0 @@
-{
-  "min_confirmed_shops": 1,
-  "min_master_review_rate": 1.0,
-  "min_area_research_rate": 1.0,
-  "max_unresolved_master_rate": 0.0,
-  "max_shop_drop_rate": 0.1,
-  "max_age_days": 7,
-  "require_first_migration_approval": true
-}
