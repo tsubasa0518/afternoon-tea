@@ -11,7 +11,7 @@ from pathlib import Path
 import re
 import unicodedata
 from .master import ROOT
-from .research_store import atomic_json
+from .storage import atomic_json
 
 FIELDS = ('country', 'cc', 'country_source_type')
 TEXT_FIELDS = ('plan_name', 'theme', 'menu', 'description')

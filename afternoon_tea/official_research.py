@@ -17,7 +17,7 @@ from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
 
 from .master import ROOT
 from .read_only import check_url, ForbiddenOperation
-from .research import Browser
+from .browser import Browser
 
 AT = re.compile(r'アフタ[ー]?ヌーン[・\s]?ティー|afternoon[\s_/-]*tea', re.I)
 TOPIC = re.compile(r'メニュー|ラウンジ|レストラン|飲食|加盟|ホテル一覧|ニュース|新着|プレス|menu|lounge|restaurant|dining|news|press|member|hotel-list', re.I)

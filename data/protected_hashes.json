@@ -6,5 +6,9 @@
   ".github/workflows/deploy.yml": "c999ffcaf5865bad521af8be632156ed0ca93fdd662949451af4755afbe44f18",
   "afternoon_tea_tokyo_2026-11-06.html": "a40fa9cbc36c98b4d031b7d7723debf634bebc452a809bb8b3338b4dbae0a727",
   "backups/legacy-deploy.yml.txt": "23b40527050a6bc6203d20d3d05c00f0ecf4a16c8ba2dc987935546e4abb159f",
-  "data/master_history/c4c2576170c98818ba12a97f4fc553b994b0011a6b7246b31968a6201adc9612.json": "1d4c710bfd7eb8f84087a45cdfa180c5a60f753fbb523c388b6e519024ad164d"
+  "data/master_history/c4c2576170c98818ba12a97f4fc553b994b0011a6b7246b31968a6201adc9612.json": "1d4c710bfd7eb8f84087a45cdfa180c5a60f753fbb523c388b6e519024ad164d",
+  "data/store_master.json": "0f938ea238ccaef415f43c77524fb75951ed340c1efdcb3deb1b95e96f933061",
+  "data/references/user_candidates_385.csv": "eb46f2dd36aae757660aa5aa646327a8a8e2e6fb6d57844f9abcf527dc39beb7",
+  "data/country_registry.json": "9ac998f35f668ca74e6a2b136919b12de3f0ec988d3bb5c049362a20ae46f83f",
+  "data/official_sources.json": "df790bee8fde355d3314d1da0302a3d45428f7ff7a359b4945c982c1466d706c"
 }

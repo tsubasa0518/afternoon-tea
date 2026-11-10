@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import zlib
-from .publication_safety import digest
+from .common import digest
 from .read_only import check_url
 
 MAX_TEXT_BYTES=256_000

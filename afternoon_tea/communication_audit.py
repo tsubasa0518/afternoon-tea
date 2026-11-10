@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 from urllib.parse import urlsplit
 from .data import JST
-from .publication_safety import digest
+from .common import digest
 
 
 def identity(url):

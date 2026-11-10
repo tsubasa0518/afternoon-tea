@@ -9,7 +9,7 @@ import re
 import unicodedata
 from pathlib import Path
 from .master import ROOT
-from .research_store import atomic_json
+from .storage import atomic_json
 
 from .sweet_tags import extract as extract_sweets
 

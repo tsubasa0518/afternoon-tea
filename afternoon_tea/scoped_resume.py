@@ -7,7 +7,7 @@ import datetime as dt
 import hashlib
 from urllib.parse import urlsplit
 from .official_research import links
-from .publication_safety import digest
+from .common import digest
 
 BLOCKED='https://restaurant.ikyu.com/area/tokyo/t-scene2981/'
 STORE='https://restaurant.ikyu.com/107408/'

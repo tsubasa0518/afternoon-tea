@@ -14,8 +14,8 @@ import uuid
 from .master import ROOT
 from .official_research import links
 from .read_only import check_url, ForbiddenOperation
-from .research import Browser
-from .research_store import atomic_json, store_lock
+from .browser import Browser
+from .storage import atomic_json, store_lock
 from .research_evidence import archive_acquired_text, restore_documents
 
 REFERENCE=ROOT/'data/references/user_candidates_385.csv'
