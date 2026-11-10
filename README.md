@@ -1,28 +1,92 @@
 # 東京アフタヌーンティー
 
+**公開サイト: https://tsubasa0518.github.io/afternoon-tea/**
+
 東京14エリアのホテル・カフェのアフタヌーンティー（AT）を毎週調べ、固定HTMLで掲載します。調べるのは候補リストに載っている店舗の予約ページURLだけです。毎週No.1から順に読み、時間切れでも読めた分で公開します。確認後14日以内の前回プランは、実際の確認日時のまま引き継ぎます。0件も正常な公開です。予約操作は行いません。
 
-## 構成
+## ファイルとフォルダの構成
+
+大きく分けると、次の4つです。
+
+| 場所 | 役割 |
+| --- | --- |
+| `afternoon_tea/` | 処理のプログラム本体（調査 → 加工 → 公開） |
+| `data/` | 候補リストや14エリアなど、毎週は変えない基礎データ |
+| `site/` | 公開するデータとHTML（週次で変わるのはこの2ファイルだけ） |
+| `tests/` | 外部につながずに動作を確かめるテスト |
+
+ファイルごとの役割は次のとおりです。
 
 ```text
-.github/workflows/     CI・信頼済みmainでのPR審査・Pages公開
-afternoon_tea/
-  __main__.py         python3 -m afternoon_tea の入口
-  common.py           共通パス・JSON
-  collection/         候補リスト、匿名GET、URL検査、任意のヘッドレスブラウザ、週次の上限と報告
-  processing/         14日引継ぎ、料金区分・期間・曜日・スイーツ・テーマ国
-  publication/        固定HTML生成、技術検証、PR審査、公開前後の確認、保護確認
-  templates/          デザイン・検索・絞り込み
-data/
-  references/user_candidates.csv  候補リスト（14エリアだけ・エリア番号つき）
-  store_master.json   14エリアと対象駅
-  country_registry.json  テーマ国
-  protected_hashes.json  保護ファイルのハッシュ
-docs/weekly_procedure.md         毎回読む週次手順
-requirements-browser.txt          任意のヘッドレスブラウザ（Playwright）
-site/research.json     掲載する店舗・プラン
-site/index.html        生成した公開HTML
-tests/                外部接続なしのテスト・fixtures
+afternoon-tea/
+├── README.md                  この説明書
+├── AGENTS.md                  安全規則（予約禁止・匿名GET・ブラウザの許可と禁止など）
+├── CLAUDE.md                  Claude Routine が毎回最初に読む要点
+├── requirements-browser.txt   任意のヘッドレスブラウザ（Playwright）の版指定
+├── .gitignore                 Gitに入れないもの（作業用の .staging/ など）
+│
+├── .github/workflows/         GitHub Actions（自動処理）
+│   ├── test-data.yml          PRとmainでテストを実行する
+│   ├── auto-merge-weekly.yml  週次PRを審査し、合格なら自動マージする
+│   └── deploy.yml             mainの site/ を GitHub Pages に公開し、公開後に確認する
+│
+├── docs/
+│   └── weekly_procedure.md    毎週の作業手順書
+│
+├── afternoon_tea/             プログラム本体（python3 -m afternoon_tea で動かす）
+│   ├── __main__.py            入口。サブコマンド（begin・fetch・render など）を受け付ける
+│   ├── common.py              共通の部品（場所の指定・JSONの読み書き・検証）
+│   │
+│   ├── collection/            ① 調査：ページを安全に読む
+│   │   ├── weekly.py          候補リストの読み込み、fetch N（No.1から順に）、時間・要求数の上限、PR本文用の集計
+│   │   ├── transport.py       URL検査（許可サイト・同じ店舗・予約/決済URLの禁止）と、GETだけの通信
+│   │   ├── reader.py          robots.txt の確認、要求間隔、403・429・CAPTCHA時の停止
+│   │   ├── browser.py         任意のヘッドレスブラウザ（押してよいボタンと、止める操作・通信の判定）
+│   │   ├── catalog.py         14エリアの基礎データ（store_master.json）の読み込みと検査
+│   │   └── storage.py         ファイルの安全な書き込みと、同時実行の防止
+│   │
+│   ├── processing/            ② 加工：表示用の情報を付ける
+│   │   ├── weekly.py          14日以内の前回プランの引き継ぎと、確認日時の検査
+│   │   ├── enrichment.py      期間・曜日・季節などの表示用の項目（料金区分・スイーツもここから付ける）
+│   │   ├── classification.py  料金区分（カフェ／ホテル／ホテル（高級））
+│   │   ├── sweets.py          スイーツの種類のタグ（いちご・栗など）
+│   │   ├── themes.py          テーマ国（国旗）の判定の準備と確定
+│   │   ├── dates.py           日本時間の日付と、40日間の対象期間
+│   │   └── period_review.py   対象期間外のプランを見分ける
+│   │
+│   ├── publication/           ③ 公開：HTMLを作り、確かめる
+│   │   ├── renderer.py        site/research.json から site/index.html を作る
+│   │   ├── site.py            HTML・JSONの技術検証、週次PRの審査、公開前後の確認
+│   │   ├── ci.py              テスト完了後に週次PRの審査を再開する
+│   │   └── guards.py          保護ファイルが変えられていないかの確認
+│   │
+│   └── templates/             ページのデザイン（毎週は変えない）
+│       ├── site.html          ページの骨組み
+│       ├── site.css           見た目
+│       ├── site_extra.css     見た目の追加分（未確認の値など）
+│       ├── site.js            絞り込み（カテゴリ・曜日・スイーツ）
+│       └── site_extra.js      絞り込みの追加分（料金帯・エリアの開閉など）
+│
+├── data/                      基礎データ
+│   ├── references/
+│   │   └── user_candidates.csv  候補リスト（331行・14エリアだけ・エリア番号つき）
+│   ├── store_master.json      14エリアの名前と対象駅
+│   ├── country_registry.json  テーマ国の一覧（国コードと国名）
+│   └── protected_hashes.json  保護ファイルのハッシュ（勝手な変更の検出用）
+│
+├── site/                      公開するもの（週次で変わるのはここだけ）
+│   ├── research.json          掲載する店舗・プランのデータ
+│   └── index.html             公開サイトのHTML（research.json から生成）
+│
+└── tests/                     テスト（外部サイトにはつながない）
+    ├── test_simple_weekly.py  週次の流れ・ブラウザの安全規則・14日引継ぎ・報告
+    ├── test_read_only.py      URL検査・GETだけの通信・robots・拒否時の停止
+    ├── test_site_intake.py    週次PRの審査とHTML・JSONの技術検証
+    ├── test_renderer.py       HTML生成とデザイン
+    ├── test_*.py              そのほか（料金区分・スイーツ・テーマ国・期間・構成など）
+    ├── html_nodes.py          テスト用：生成したHTMLを調べる道具
+    ├── http_fixtures.py       テスト用：通信の代わりに返す偽の応答
+    └── fixtures/              テスト用の保存済みページの抜粋など
 ```
 
 ## 流れ
