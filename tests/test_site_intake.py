@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
 from afternoon_tea.publication import site as r
-from test_list_research import completed_campaign
+from test_campaign import completed_campaign
 HTML = b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
 
 def files(n=0, failures=0):

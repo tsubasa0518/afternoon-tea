@@ -8,8 +8,8 @@ from afternoon_tea.processing import enrichment as e
 from afternoon_tea.publication import renderer as renderer
 from afternoon_tea.collection.catalog import ROOT
 from afternoon_tea.publication.site import intake, validate_site, json_bytes
-from tests.test_routine_site import FakeAPI
-from tests.test_routine_renderer import fixture, FAILURES
+from tests.test_site_intake import FakeAPI
+from tests.test_renderer import fixture, FAILURES
 
 def read(path):
     return json.loads(Path(path).read_text())

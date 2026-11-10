@@ -5,7 +5,7 @@ from afternoon_tea.publication import site as r
 from afternoon_tea.publication import renderer as renderer
 from afternoon_tea.collection.catalog import ROOT
 from afternoon_tea.processing.period_review import review
-from tests.test_routine_site import FakeAPI
+from tests.test_site_intake import FakeAPI
 
 class TechnicalCITests(unittest.TestCase):
 

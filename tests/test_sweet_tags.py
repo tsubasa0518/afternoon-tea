@@ -4,7 +4,7 @@ import unittest
 from afternoon_tea.processing.sweets import tags
 from afternoon_tea.processing.enrichment import enrich_plan
 from afternoon_tea.publication.renderer import render
-from tests.test_routine_renderer import fixture, FAILURES
+from tests.test_renderer import fixture, FAILURES
 from tests.test_all_filter_options import Buttons
 from tests.html_nodes import Document
 

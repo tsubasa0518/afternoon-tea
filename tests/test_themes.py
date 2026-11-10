@@ -6,7 +6,7 @@ from unittest.mock import patch
 from afternoon_tea.processing import themes as c
 from afternoon_tea.publication.renderer import render
 from afternoon_tea.publication.site import validate_json, json_bytes
-from tests.test_routine_renderer import fixture, FAILURES
+from tests.test_renderer import fixture, FAILURES
 
 def judged(country='フランス', cc='fr', kind='explicit'):
     data = fixture()

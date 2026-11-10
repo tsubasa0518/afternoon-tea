@@ -4,7 +4,7 @@ import unittest
 from afternoon_tea.collection.audit import CommunicationAudit
 from afternoon_tea.collection.campaign import initialize, run
 from afternoon_tea.collection.resume import BLOCKED, STORE, resume_legacy_directory_stop
-from test_list_research import FakeBrowser
+from test_campaign import FakeBrowser
 
 def legacy_campaign():
     state = initialize({})

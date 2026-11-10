@@ -11,9 +11,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from afternoon_tea.processing.dates import period
-from afternoon_tea.publication import site as routine_site
+from afternoon_tea.publication import site as site_tools
 from afternoon_tea.processing.period_review import review
-from tests.test_routine_site import files
+from tests.test_site_intake import files
 
 def data(first=None, last=None):
     return {'generated_at': '2026-11-07T15:55:22+09:00',
@@ -80,7 +80,7 @@ class WeeklyReviewTests(unittest.TestCase):
             path = Path(tmp) / 'research.json'
             path.write_text(json.dumps(data('2026-12-19', None)))
             before = path.read_bytes()
-            result = subprocess.run(['python3', '-m', 'afternoon_tea', 'review', '--data', str(path)], capture_output=True, text=True, cwd=routine_site.ROOT)
+            result = subprocess.run(['python3', '-m', 'afternoon_tea', 'review', '--data', str(path)], capture_output=True, text=True, cwd=site_tools.ROOT)
             self.assertEqual(result.returncode, 1)
             self.assertEqual(path.read_bytes(), before)
             self.assertIn('outside_research_period', result.stdout)
@@ -88,9 +88,9 @@ class WeeklyReviewTests(unittest.TestCase):
     def test_date_review_is_not_a_new_automatic_publication_gate(self):
         # The pre-PR helper reports an error; the existing automation is unchanged.
         content = files(0, 76)
-        content['site/research.json'] = routine_site.json_bytes({'schema_version': 1, **data('2026-12-19', None)})
+        content['site/research.json'] = site_tools.json_bytes({'schema_version': 1, **data('2026-12-19', None)})
         self.assertTrue(review(json.loads(content['site/research.json']))['errors'])
-        self.assertEqual(routine_site.validate_site(content)['shops'], 1)
+        self.assertEqual(site_tools.validate_site(content)['shops'], 1)
 
     def test_summary_counts_shop_and_area_records_separately(self):
         content = files(2)
@@ -103,8 +103,8 @@ class WeeklyReviewTests(unittest.TestCase):
              'status': 'unresearched',
              'scope': 'shop'}]
         records += [{**records[0], 'scope': 'area'}, {**records[0], 'status': 'confirmed'}, {**records[0], 'status': 'access_denied'}]
-        content['site/search_failures.json'] = routine_site.json_bytes({'schema_version': 1, 'failures': records})
-        result = routine_site.validate_site(content)
+        content['site/search_failures.json'] = site_tools.json_bytes({'schema_version': 1, 'failures': records})
+        result = site_tools.validate_site(content)
         self.assertEqual(result['unresearched_shops'], 1)
         self.assertEqual(result['search_statuses']['unresearched'], 2)
         self.assertEqual(result['search_statuses']['confirmed'], 1)
@@ -114,7 +114,7 @@ class WeeklyReviewTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'summary.md'
             with patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(path), 'GITHUB_RUN_ID': '123'}):
-                routine_site.write_summary('自動マージ成功・公開開始要求済み',
+                site_tools.write_summary('自動マージ成功・公開開始要求済み',
                      {'shops': 2,
                      'plans': 8,
                      'pr': '20',

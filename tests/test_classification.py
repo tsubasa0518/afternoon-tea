@@ -5,7 +5,7 @@ from afternoon_tea.processing.classification import classify
 from afternoon_tea.processing.enrichment import enrich
 from afternoon_tea.publication.renderer import render
 from afternoon_tea.collection.transport import check_url, ForbiddenOperation
-from tests.test_routine_renderer import fixture, FAILURES
+from tests.test_renderer import fixture, FAILURES
 
 class PriceCategoryTests(unittest.TestCase):
 
