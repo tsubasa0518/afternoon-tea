@@ -1,39 +1,34 @@
-"""Offline country decisions: Claude judges saved text; Python validates and reuses.
-
-No country-specific theme heuristics, model calls or network operations live here.
-"""
-import argparse
+(
+    'Offline country decisions: Claude judges saved text; Python validates and r'
+    'euses.\n\nNo country-specific theme heuristics, model calls or network operat'
+    'ions live here.\n'
+)
 import copy
 from functools import lru_cache
 import hashlib
 import json
-from pathlib import Path
 import re
 import unicodedata
 from afternoon_tea.collection.catalog import ROOT
 from afternoon_tea.collection.checkpoints import atomic_json
-
 FIELDS = ('country', 'cc', 'country_source_type')
 TEXT_FIELDS = ('plan_name', 'theme', 'menu', 'description')
 
-
 @lru_cache(maxsize=1)
 def registry():
-    return json.loads((ROOT/'data/country_registry.json').read_text())['countries']
-
+    return json.loads((ROOT / 'data/country_registry.json').read_text())['countries']
 
 def normalize(value):
-    return re.sub(r'\s+', ' ', unicodedata.normalize('NFKC', value)).strip().casefold()
-
+    return re.sub('\\s+', ' ', unicodedata.normalize('NFKC', value)).strip().casefold()
 
 def validate_country(plan):
     """Optional schema extension, strict as soon as a decision is present."""
     hashes = [plan[key] for key in ('country_input_hash', 'country_decision_hash') if key in plan]
-    if any(not isinstance(value, str) or not re.fullmatch(r'[0-9a-f]{64}', value) for value in hashes):
+    if any((not isinstance(value, str) or not re.fullmatch('[0-9a-f]{64}', value) for value in hashes)):
         raise ValueError('invalid_country_content_hash')
-    if not any(key in plan for key in FIELDS) and not hashes:
+    if not any((key in plan for key in FIELDS)) and (not hashes):
         return
-    if not all(key in plan for key in FIELDS):
+    if not all((key in plan for key in FIELDS)):
         raise ValueError('country_fields_incomplete')
     kind = plan['country_source_type']
     if kind == 'unknown':
@@ -42,19 +37,17 @@ def validate_country(plan):
         return
     if kind not in ('explicit', 'inferred'):
         raise ValueError('invalid_country_source_type')
-    cc, name = plan['cc'], plan['country']
+    (cc, name) = (plan['cc'], plan['country'])
     if not isinstance(cc, str) or cc.lower() not in registry():
         raise ValueError('invalid_ISO_country_code')
     entry = registry()[cc.lower()]
     if not isinstance(name, str) or normalize(name) not in {normalize(n) for n in [entry['name'], *entry['aliases']]}:
         raise ValueError('country_name_code_mismatch')
 
-
 def flag(cc):
     if not isinstance(cc, str) or cc.lower() not in registry():
         raise ValueError('invalid_ISO_country_code')
-    return ''.join(chr(0x1F1E6 + ord(letter) - ord('A')) for letter in cc.upper())
-
+    return ''.join((chr(127462 + ord(letter) - ord('A')) for letter in cc.upper()))
 
 def content_hash(plan, shop):
     """Only thematic content, not prices, dates, URLs, timestamps or decisions."""
@@ -63,10 +56,8 @@ def content_hash(plan, shop):
     text = json.dumps(fields, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
     return hashlib.sha256(text.encode()).hexdigest()
 
-
 def identity(shop):
     return shop.get('id') or shop.get('name')
-
 
 def prepare(data, previous=None):
     """Restore unchanged decisions; return only new/changed plans for Claude to read."""
@@ -77,11 +68,11 @@ def prepare(data, previous=None):
             digest = content_hash(plan, shop)
             if plan.get('country_decision_hash') == digest:
                 validate_country(plan)
-                cache[(identity(shop), digest)] = plan
+                cache[identity(shop), digest] = plan
     pending = []
     decision_keys = (*FIELDS, 'country_basis', 'country_decision_hash')
-    for si, shop in enumerate(result['shops']):
-        for pi, plan in enumerate(shop.get('plans', [])):
+    for (si, shop) in enumerate(result['shops']):
+        for (pi, plan) in enumerate(shop.get('plans', [])):
             digest = content_hash(plan, shop)
             plan['country_input_hash'] = digest
             if plan.get('country_decision_hash') == digest:
@@ -90,17 +81,21 @@ def prepare(data, previous=None):
             saved = cache.get((identity(shop), digest))
             if saved:
                 for key in decision_keys:
-                    if key in saved:plan[key] = copy.deepcopy(saved[key])
+                    if key in saved:
+                        plan[key] = copy.deepcopy(saved[key])
                 # Preserve this week's other notes; recreate the reused inferred audit at finalize.
                 continue
             plan.update(country=None, cc=None, country_source_type='unknown')
             plan.pop('country_decision_hash', None)
             plan.pop('country_basis', None)
-            pending.append({'shop_index': si, 'plan_index': pi, 'shop_name': shop.get('name'),
-                            'input_hash': digest, **{key: plan.get(key) for key in TEXT_FIELDS},
-                            'evidence_quote': plan.get('evidence_quote'), 'venue_concept': shop.get('concept')})
-    return result, pending
-
+            pending.append({'shop_index': si,
+                 'plan_index': pi,
+                 'shop_name': shop.get('name'),
+                 'input_hash': digest,
+                 **{key: plan.get(key) for key in TEXT_FIELDS},
+                 'evidence_quote': plan.get('evidence_quote'),
+                 'venue_concept': shop.get('concept')})
+    return (result, pending)
 
 def finalize(data):
     """Seal Claude's decisions and keep inferred explanations in internal notes.status."""
@@ -119,20 +114,23 @@ def finalize(data):
                 plan['cc'] = plan['cc'].lower()
                 plan['country'] = registry()[plan['cc']]['name']
             if kind == 'inferred':
-                message = f'テーマ国推測：店舗={shop.get("name")} ／ プラン={plan.get("plan_name")} ／ 国={plan["country"]} ({plan["cc"]}) ／ 根拠={basis}'
+                message = f"テーマ国推測：店舗={shop.get('name')} ／ プラン={plan.get('plan_name')} ／ 国={plan['country']} ({plan['cc']}) ／ 根拠={basis}"
                 notes = plan.setdefault('notes', {})
                 if not isinstance(notes, dict):
                     notes = plan['notes'] = {'previous': notes}
                 status = notes.get('status')
-                if status is None:notes['status'] = message
+                if status is None:
+                    notes['status'] = message
                 elif isinstance(status, str):
-                    if message not in status:notes['status'] = status + '\n' + message
+                    if message not in status:
+                        notes['status'] = status + '\n' + message
                 elif isinstance(status, list):
-                    if message not in status:status.append(message)
-                else:notes['status'] = [status, message]
+                    if message not in status:
+                        status.append(message)
+                else:
+                    notes['status'] = [status, message]
             plan['country_decision_hash'] = digest
     return result
-
 
 def display(plan, shop):
     validate_country(plan)
@@ -145,18 +143,18 @@ def display(plan, shop):
     name = entry.get('short_name', entry['name'])
     return flag(plan['cc']) + ' ' + name + ('風' if plan['country_source_type'] == 'inferred' else '')
 
-
 def main(args):
-    parser=args.parser
-    path = ROOT/'site/research.json'
-    if path.is_symlink():parser.error('symlink data forbidden')
+    parser = args.parser
+    path = ROOT / 'site/research.json'
+    if path.is_symlink():
+        parser.error('symlink data forbidden')
     data = json.loads(path.read_text())
     if args.command == 'prepare':
         previous = json.loads(args.previous.read_text()) if args.previous else None
-        result, pending = prepare(data, previous)
+        (result, pending) = prepare(data, previous)
         atomic_json(path, result)
         print(json.dumps({'pending_plans': pending}, ensure_ascii=False, indent=2))
     else:
         result = finalize(data)
         atomic_json(path, result)
-        print(json.dumps({'country_decisions_saved': sum(len(s.get('plans', [])) for s in result['shops'])}))
+        print(json.dumps({'country_decisions_saved': sum((len(s.get('plans', [])) for s in result['shops']))}))
