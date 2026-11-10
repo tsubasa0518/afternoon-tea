@@ -1,4 +1,4 @@
-"""Minimal static-site intake. No research quality gates and no reservation traffic."""
+"""Trusted-main PR intake, campaign gating and site delivery without reservation traffic."""
 import argparse
 import base64
 from collections import Counter
