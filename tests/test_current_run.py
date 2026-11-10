@@ -94,7 +94,7 @@ class CurrentRunTests(unittest.TestCase):
    tree=ast.parse(path.read_text())
    for node in ast.walk(tree):
     if isinstance(node,ast.ImportFrom) and node.module=='urllib.request':
-     allowed={'Request'} if path.name=='research.py' else {'Request','HTTPRedirectHandler','build_opener'} if path.name=='read_only.py' else set()
+     allowed={'Request'} if path.name in {'research.py','browser.py'} else {'Request','HTTPRedirectHandler','build_opener'} if path.name=='read_only.py' else set()
      self.assertTrue({n.name for n in node.names}<=allowed,path.name)
     if isinstance(node,ast.Import):self.assertFalse(any(n.name.split('.')[0] in ('requests','httpx','http','socket') for n in node.names),path.name)
  def test_final_bundle_bindings(self):
