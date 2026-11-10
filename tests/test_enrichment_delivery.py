@@ -67,7 +67,7 @@ class EnrichmentTests(unittest.TestCase):
         self.assertNotIn('discount_price_yen', result)
         self.assertEqual(e.enrich_plan(result, self.shop()), result)
 
-    def test_master_facility_classifies_unknown_price_with_exact_identity(self):
+    def test_master_category_is_not_used_for_venue_type(self):
         master = read(ROOT / 'data/store_master.json')
         source = master['areas'][0]['cats']['cafe']['shops'][0]
         d = {'period': {'start': '2026-11-07',
@@ -79,8 +79,10 @@ class EnrichmentTests(unittest.TestCase):
              'name': 'OTHER LOUNGE',
              'plans': []}]}
         result = e.enrich(d, master)
-        self.assertEqual(result['shops'][0]['category'], 'cafe')
-        self.assertEqual(result['shops'][1]['category'], 'unknown')
+        self.assertEqual([s['category'] for s in result['shops']], ['cafe', 'cafe'])
+        lux = master['areas'][0]['cats']['lux']['shops'][0]
+        d['shops'] = [{'id': lux['id'], 'name': 'NO WORD LOUNGE', 'plans': [{'price_yen': 12000}]}]
+        self.assertEqual(e.enrich(d, master)['shops'][0]['category'], 'cafe')
 
     def test_current_six_records_and_rendered_filters_are_fixed_without_new_confirmation(self):
         d = read(ROOT / 'tests/fixtures/enrichment_cases.json')
@@ -88,7 +90,7 @@ class EnrichmentTests(unittest.TestCase):
         result = e.enrich(d, master)
         self.assertEqual(e.enrich(result, master), result)
         self.assertEqual([s['checked_at'] for s in result['shops']], [s['checked_at'] for s in d['shops']])
-        self.assertEqual(Counter((s['category'] for s in result['shops'])), {'cafe': 1, 'hotel': 5})
+        self.assertEqual(Counter((s['category'] for s in result['shops'])), {'cafe': 4, 'lux': 2})
         self.assertTrue(all((s['checked_at'] == STAMP for s in d['shops'])))
         html = renderer.render(d)
         self.assertNotIn('data-sw="xmas" aria-pressed=', html)

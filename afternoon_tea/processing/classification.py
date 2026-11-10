@@ -1,9 +1,15 @@
-"""Regular-price bands, with evidenced venue fallback only when price is unknown."""
+"""Venue categories: hotel or not by explicit text, then the regular price for hotels.
+
+- Not stated as a hotel: cafe (whatever the price).
+- Stated as a hotel: hotel at 6,000 yen or less, lux at 6,001 yen or more.
+- A hotel whose regular price is unknown stays unknown.
+"""
 import math
-import json
-from afternoon_tea.common import ROOT
+import re
 from afternoon_tea.processing.period_review import day
 
+HOTEL_TEXT = re.compile(r'ホテル|hotel', re.I)
+HOTEL_MAX_YEN = 6000
 def regular_price(plan):
     value = plan.get('price_yen')
     return value if type(value) in (int, float) and math.isfinite(value) and (value > 0) else None
@@ -16,30 +22,27 @@ def eligible_plans(plans, period):
             continue
         yield plan
 
-def facility_basis(shop, master=None):
-    """Use explicit facility facts, never the shop name or its old category."""
-    shop = shop or {}
-    source = shop.get('facility_source')
-    if isinstance(source, str) and source.strip():
-        kind = shop.get('facility_type')
-        if kind in ('hotel', 'non_hotel'):
-            return ('hotel' if kind == 'hotel' else 'cafe', source)
-    hotel_name = shop.get('hotel_name')
-    if isinstance(hotel_name, str) and hotel_name.strip() and (hotel_name.strip() != '未確認'):
-        return ('hotel', 'hotel_name: ' + hotel_name)
-    if shop.get('id') and shop.get('name'):
-        if master is None:
-            master = json.loads((ROOT / 'data/store_master.json').read_text())
-        matches = [(cat,
-             venue) for area in master['areas'] for (cat,
-             group) in area['cats'].items() for venue in group['shops'] if venue['id'] == shop['id'] and venue['name'] == shop['name']]
-        if len(matches) == 1 and matches[0][0] in ('cafe', 'hotel', 'lux'):
-            return ('cafe' if matches[0][0] == 'cafe' else 'hotel', 'data/store_master.json#' + shop['id'])
-    return ('unknown', 'facility information unconfirmed')
+def hotel_basis(shop):
+    """Return the field that states the venue is a hotel, or None.
 
-def classify(plans, shop=None, master=None):
+    `hotel_name` is recorded during research only when the page says the venue
+    is a hotel; the shop name and address count when they contain the word.
+    """
+    shop = shop or {}
+    hotel_name = shop.get('hotel_name')
+    if isinstance(hotel_name, str) and hotel_name.strip() and hotel_name.strip() != '未確認':
+        return 'hotel_name'
+    for key in ('name', 'address'):
+        if isinstance(shop.get(key), str) and HOTEL_TEXT.search(shop[key]):
+            return key
+    return None
+
+
+def classify(plans, shop=None):
     prices = [price for plan in plans if (price := regular_price(plan)) is not None]
-    if not prices:
-        return (facility_basis(shop, master)[0], None)
-    minimum = min(prices)
-    return ('cafe' if minimum <= 6000 else 'hotel' if minimum < 10000 else 'lux', minimum)
+    minimum = min(prices) if prices else None
+    if hotel_basis(shop) is None:
+        return ('cafe', minimum)
+    if minimum is None:
+        return ('unknown', None)
+    return ('hotel' if minimum <= HOTEL_MAX_YEN else 'lux', minimum)
