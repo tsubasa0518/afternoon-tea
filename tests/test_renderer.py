@@ -28,7 +28,6 @@ def fixture(category='hotel'):
          'start': None,
          'end': None,
          'price_yen': None}]}]}
-FAILURES = {'schema_version': 1, 'generated_at': None, 'failures': []}
 
 class RoutineRendererTests(unittest.TestCase):
 

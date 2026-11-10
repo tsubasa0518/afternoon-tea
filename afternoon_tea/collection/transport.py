@@ -1,80 +1,91 @@
-"""Anonymous GET-only public-document transport. No cookies, forms, or redirects."""
+"""Anonymous GET-only transport and the URL checks shared with the browser.
+
+Only the three reservation sites named in the candidate list are reachable.
+A shop's list URL and that same shop's plan detail pages are the only pages
+read. No cookies, forms, query strings, credentials or redirects.
+"""
 import re
-from urllib.parse import urlsplit, unquote, parse_qsl
+from urllib.parse import urlsplit, unquote
 from urllib.request import Request, HTTPRedirectHandler, build_opener
+
+HOSTS = ('restaurant.ikyu.com', 'tabelog.com', 'www.tablecheck.com')
+# Reservation, payment, cart, login and session words in a path are never sent.
+# The exact TableCheck list URL (ending in /reserve or /reserve/landing) is the
+# only exception, and only when it is the URL written in the candidate list.
+TRANSACTION = re.compile(
+    r'checkout|payment|pay/|purchase|confirm|cancel|submit|order|booking|reserv|hold|waitlist|'
+    r'login|logout|signin|signup|sign_in|sign_up|register|account|mypage|member|session|cart|'
+    r'entry|apply|inquiry|contact|auth')
+
 
 class ForbiddenOperation(RuntimeError):
     pass
+
 
 class NoRedirect(HTTPRedirectHandler):
 
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         raise ForbiddenOperation('redirect_blocked_before_follow')
 
-def check_url(url, method='GET', public_hosts=()):
+
+def check_url(url, method='GET', list_url=None):
+    """Generic safety check. `list_url` exempts only that exact candidate URL."""
     if method != 'GET':
         raise ForbiddenOperation('only_GET_allowed')
-    p = urlsplit(url)
-    if p.scheme != 'https' or p.username or p.password or (p.port not in (None, 443)) or p.fragment or any((c.isspace() for c in url)) or ('\\' in url):
+    if not isinstance(url, str):
         raise ForbiddenOperation('unsafe_URL')
-    host = p.hostname
-    path = unquote(unquote(p.path)).lower()
-    if re.search('(?:checkout|payment|purchase|confirm|cancel|submit|order|booking|hold|waitlist|login|signup|account|session)', path):
-        raise ForbiddenOperation('transaction_or_session_URL')
-    # Only the public search engine's single text query is permitted.
-    # Booking dates, party sizes and action parameters stay forbidden everywhere.
-    search = host == 'www.bing.com' and path == '/search'
-    if search:
-        params = parse_qsl(p.query, keep_blank_values=True)
-        if len(params) != 1 or params[0][0] != 'q' or (not params[0][1].strip()) or (len(params[0][1]) > 1500):
-            raise ForbiddenOperation('invalid_public_search_query')
-    if p.query and (not search):
-        raise ForbiddenOperation('query_not_allowed')
-    # Explicit per-run public source hosts only; never widen the built-in services.
-    import ipaddress
-    public = host is not None and host in public_hosts
-    if public and any((host == service or host.endswith('.' + service) for service in ('ikyu.com',
-         'tabelog.com',
-         'tablecheck.com'))) and (host not in {'restaurant.ikyu.com',
-         'tabelog.com',
-         'tablecheck.com',
-         'www.tablecheck.com'}):
-        raise ForbiddenOperation('service_alias_forbidden')
-    if public:
-        if not re.fullmatch('(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z]{2,}', host or '') or host.endswith(('.local', '.internal', '.localhost')):
-            raise ForbiddenOperation('invalid_public_source_host')
-        try:
-            ipaddress.ip_address(host)
-        except ValueError:
-            pass
-        else:
-            raise ForbiddenOperation('IP_source_forbidden')
-    if host not in {'restaurant.ikyu.com', 'tabelog.com', 'tablecheck.com', 'www.tablecheck.com', 'www.bing.com'} and (not public):
+    p = urlsplit(url)
+    if (p.scheme != 'https' or p.username or p.password or p.port not in (None, 443) or p.fragment
+            or p.query or any(c.isspace() for c in url) or '\\' in url):
+        raise ForbiddenOperation('unsafe_URL')
+    if p.hostname not in HOSTS:
         raise ForbiddenOperation('host_not_allowed')
-    if search or path == '/robots.txt' or (public and host not in {'restaurant.ikyu.com',
-         'tabelog.com',
-         'tablecheck.com',
-         'www.tablecheck.com',
-         'www.bing.com'}):
+    path = unquote(unquote(p.path)).lower()
+    if path == '/robots.txt':
         return
-    if host == 'www.bing.com':
-        raise ForbiddenOperation('public_search_path_not_allowed')
-    patterns = {'restaurant.ikyu.com': '/(?:\\d+(?:/plan\\d+)?/?|t/[^?]+|area/[^?]+|s-tokyo/)',
-         'tabelog.com': '/tokyo/(?:a\\d+/)*(?:\\d+/(?:party/(?:\\d+/)?)?|rstlst/[^?]*)',
-         'tablecheck.com': '/(?:ja|en)/(?:shops/[a-z0-9_-]+/reserve|[a-z0-9_-]+)/?',
-         'www.tablecheck.com': '/(?:ja|en)/(?:shops/[a-z0-9_-]+/reserve|[a-z0-9_-]+)/?'}
-    if not re.fullmatch(patterns[host], path):
-        raise ForbiddenOperation('public_document_path_not_allowlisted')
+    if TRANSACTION.search(path) and url != list_url:
+        raise ForbiddenOperation('transaction_or_session_URL')
+
+
+def shop_key(url):
+    """Return (host, shop id) for a list or plan detail URL, else None."""
+    p = urlsplit(url)
+    path = p.path
+    patterns = {
+        'restaurant.ikyu.com': r'/(\d+)/(?:plan\d+/?)?',
+        'tabelog.com': r'/tokyo/A\d+/A\d+/(\d+)/party/(?:\d+/)?',
+        'www.tablecheck.com': r'/ja/(?:shops/)?([a-z0-9_-]+)/reserve(?:/landing)?',
+    }
+    pattern = patterns.get(p.hostname)
+    match = pattern and re.fullmatch(pattern, path)
+    return (p.hostname, match.group(1)) if match else None
+
+
+def check_scope(url, list_url, method='GET'):
+    """The candidate's own list URL, or a plan detail page of the same shop."""
+    check_url(url, method, list_url)
+    if url == list_url:
+        return
+    key = shop_key(url)
+    if key is None or key != shop_key(list_url):
+        raise ForbiddenOperation('outside_shop_scope')
+    # TableCheck pages past the list URL are reservation steps.
+    if key[0] == 'www.tablecheck.com':
+        raise ForbiddenOperation('outside_shop_scope')
+
 
 class ReadOnlyTransport:
-    def __init__(self, public_hosts=()):
-        self.public_hosts = frozenset(public_hosts)
+
+    def __init__(self):
         self.blocked_requests = 0
         self.opener = build_opener(NoRedirect())
 
-    def open(self, url, timeout=15, headers=None, method='GET'):
+    def open(self, url, timeout=15, headers=None, method='GET', list_url=None):
         try:
-            check_url(url, method, self.public_hosts)
+            if list_url is None:
+                check_url(url, method)
+            else:
+                check_scope(url, list_url, method)
             if headers and any(k.lower() not in ('user-agent', 'accept-language', 'accept') for k in headers):
                 raise ForbiddenOperation('credentials_forbidden')
         except (ValueError, ForbiddenOperation):

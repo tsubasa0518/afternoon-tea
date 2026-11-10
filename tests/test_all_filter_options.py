@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 import re
 import unittest
 from afternoon_tea.publication import renderer as r
-from tests.test_renderer import fixture, FAILURES
+from tests.test_renderer import fixture
 SWEETS = ['いちご', 'メロン', '桃', 'マンゴー', 'ぶどう・マスカット', '栗・マロン', '芋・かぼちゃ', '柿・洋梨・いちじく', '柑橘', 'チョコレート', '抹茶・和', 'マカロン', 'パフェ', 'スコーン', 'その他']
 EVENTS = ['クリスマス', 'バレンタイン', 'ホワイトデー', 'コラボ企画', '季節の味覚']
 
