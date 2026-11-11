@@ -364,7 +364,7 @@ class ProductionTests(unittest.TestCase):
         for shop in checked['shops']:
             self.assertIsInstance(shop['name'], str)
             self.assertIn(shop.get('category'), (None, 'unknown', 'cafe', 'hotel', 'lux'))
-            
+
             if shop.get('list_url'):
                 r.resource(shop['list_url'])
             for p in shop['plans']:
