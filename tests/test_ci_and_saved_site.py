@@ -48,29 +48,49 @@ class TechnicalCITests(unittest.TestCase):
 
 class ProductionTests(unittest.TestCase):
 
-    def test_dynamic_data_and_reproducible_html(self):
-        d = json.loads((ROOT / 'site/research.json').read_text())
-        self.assertFalse(review(d)['errors'])
-        ids = []
-        for shop in d['shops']:
+    def assert_saved_site(self, data, html):
+        self.assertFalse(review(data)['errors'])
+        # Legacy saved data is readable during PR 1; modern shops need no id or timestamp.
+        checked = r.validate_json(r.json_bytes(data))
+        for shop in checked['shops']:
             self.assertIsInstance(shop['name'], str)
-            ids.append(shop['id'])
             self.assertIn(shop.get('category'), (None, 'unknown', 'cafe', 'hotel', 'lux'))
-            r.resource(shop['source_url'])
-            self.assertTrue(shop['checked_at'])
+            r.resource(shop.get('list_url') or shop.get('source_url'))
             for p in shop['plans']:
                 self.assertIsInstance(p['plan_name'], str)
                 self.assertTrue(p.get('price_yen') is None or type(p['price_yen']) in (int, float))
+                self.assertIsNotNone(dt.datetime.fromisoformat(p['checked_at']).tzinfo)
                 for key in ('sweets', 'season'):
                     self.assertTrue(p.get(key) is None or isinstance(p[key], (str, list)))
                 for key in ('weekday_available', 'weekend_available'):
                     self.assertTrue(p.get(key) is None or type(p[key]) is bool)
-        self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(renderer.render(d), (ROOT / 'site/index.html').read_text())
-        saved = max(dt.datetime.fromisoformat(p.get('checked_at', s['checked_at'])) for s in d['shops'] for p in s['plans'])
+        self.assertEqual(renderer.render(data), html)
+        stamps = [dt.datetime.fromisoformat(p['checked_at']) for s in checked['shops'] for p in s['plans']]
+        now = max(stamps) + dt.timedelta(days=1) if stamps else dt.datetime.now(dt.timezone.utc)
         from afternoon_tea.processing.weekly import validate_freshness
-        with patch('afternoon_tea.processing.weekly.validate_freshness', side_effect=lambda data: validate_freshness(data, saved + dt.timedelta(days=1))):
-            r.validate_site({p: (ROOT / p).read_bytes() for p in r.ALLOWED})
+        with patch('afternoon_tea.processing.weekly.validate_freshness', side_effect=lambda value: validate_freshness(value, now)):
+            return r.validate_site({'site/research.json': r.json_bytes(data), 'site/index.html': html.encode()})
+
+    def test_dynamic_data_and_reproducible_html(self):
+        data = json.loads((ROOT / 'site/research.json').read_text())
+        self.assert_saved_site(data, (ROOT / 'site/index.html').read_text())
+
+    def test_new_shop_needs_only_plan_timestamp_not_shop_id_or_shop_timestamp(self):
+        from tests.test_renderer import fixture
+        from afternoon_tea.collection.weekly import candidates
+        data = fixture()
+        shop = data['shops'][0]
+        shop.pop('checked_at', None)
+        shop.pop('id', None)
+        shop['list_url'] = candidates()[0]['予約ページURL']
+        shop.pop('source_url', None)
+        shop['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
+        self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 1)
+
+    def test_zero_shops_have_no_timestamp_maximum_and_are_valid(self):
+        from tests.test_renderer import fixture
+        data = fixture(); data['shops'] = []
+        self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 0)
 
     def test_multiple_plans_not_truncated(self):
         d = json.loads((ROOT / 'tests/fixtures/enrichment_cases.json').read_text())

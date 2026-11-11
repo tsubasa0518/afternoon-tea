@@ -69,7 +69,7 @@ afternoon-tea/
 │
 ├── data/                      基礎データ
 │   ├── references/
-│   │   └── user_candidates.csv  候補リスト（331行・14エリアだけ・エリア番号つき）
+│   │   └── user_candidates.csv  候補リスト（90行・14エリアだけ・エリア番号つき）
 │   ├── store_master.json      14エリアの名前と対象駅
 │   ├── country_registry.json  テーマ国の一覧（国コードと国名）
 │   └── protected_hashes.json  保護ファイルのハッシュ（勝手な変更の検出用）
@@ -95,7 +95,7 @@ afternoon-tea/
 
 1. `begin` で前回データを控え、今週の空のデータを作る
 2. リストNo.1から順に `fetch N` で予約ページURLを読み、必要なら同じ店舗のプラン詳細ページも読む。プランが読めた店舗だけ採用し、読めない店舗は諦めて次へ
-3. 時間・トークンの7割（調査420秒・150要求まで、1店舗60秒まで）で調査をやめる
+3. コードの上限（調査1,500秒・200要求まで、1店舗60秒まで）で調査をやめる
 4. `refresh` で14日以内の前回プランを引き継ぎ、`enrich`・`themes-prepare`・`themes-finalize` で補完、`render` でHTML生成、`validate-site` で検証
 5. `report` の集計を本文にしたPRを作る。Actionsが審査・テスト・自動マージ・Pages公開・公開確認を行う
 
@@ -116,7 +116,7 @@ flowchart TD
     A(["① Routine 起動<br/>月曜 07:17 JST"]) --> B["begin<br/>前回の research.json を控え<br/>今週の空のデータを作る"]
 
     subgraph S1["調査（リストのURLだけ）"]
-        C{"調査を続けられる？<br/>・時間とトークンの7割未満<br/>・420秒・150要求以内<br/>・未読の行がある"}
+        C{"調査を続けられる？<br/>・コードの上限未満<br/>・1,500秒・200要求以内<br/>・未読の行がある"}
         D["② 次の行を読む<br/>fetch N（No.1から順に）<br/>※1行の中身は図2"]
         C -- はい --> D
         D --> C
