@@ -12,9 +12,8 @@ from urllib.parse import urlsplit
 from afternoon_tea.processing.dates import JST
 from afternoon_tea.publication.site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
 from afternoon_tea.processing.period_review import review, day
-from afternoon_tea.processing.classification import classify, regular_price
+from afternoon_tea.processing.classification import regular_price
 from afternoon_tea.processing.themes import display as country_display
-from afternoon_tea.processing.sweets import tags as sweet_tags
 TEMPLATES = Path(__file__).resolve().parents[1] / 'templates'
 SITES = [('ik', '一休.com'), ('tb', '食べログ'), ('tc', 'TableCheck')]
 SWEETS = [('ichigo',
@@ -93,7 +92,8 @@ def tags(value):
     return sorted({v if v in LABELS else reverse[v] for v in values if isinstance(v, str) and (v in LABELS or v in reverse)})
 
 def category(shop):
-    return classify(shop.get('plans', []), shop)[0]
+    value = shop.get('category')
+    return value if value in CLASSES else 'unknown'
 
 def condition(plan, shop, keys):
     value = None
@@ -118,7 +118,7 @@ def plan_tags(plan, shop=None):
     if 'season' not in plan:
         events += [t for t in tags(shop.get('sweets')) if t in EVENTS]
     events += [t for t in tags(plan.get('sweets')) if t in EVENTS]
-    return sorted(set(sweet_tags(plan) + [t for t in events if t in EVENTS]))
+    return sorted(set([t for t in tags(plan.get('sweets')) if t not in EVENTS] + [t for t in events if t in EVENTS]))
 
 def info_link(url, label=None):
     resource(url)
@@ -337,8 +337,8 @@ def render(research):
     filters += (
         '<div class="price-filter-field"><label class="lb" for="price-filter">料金帯</l'
         'abel><select id="price-filter"><option value="all">すべて</option><option valu'
-        'e="low">6,000円以下</option><option value="mid">6,001〜9,999円</option><option v'
-        'alue="high">10,000円以上</option><option value="unknown">料金未確認</option></selec'
+        'e="low">5,000円以下</option><option value="mid">5,001〜8,000円</option><option v'
+        'alue="high">8,001円以上</option><option value="unknown">料金未確認</option></selec'
         't></div><div class="filter-status"><span id="filter-status" role="status" a'
         'ria-live="polite"></span><button class="lk" id="reset-filters" type="button'
         '">絞り込みを解除</button></div></div></div>'
@@ -374,11 +374,15 @@ def render(research):
     validate_html_bytes(result.encode())
     return result
 
-def generate():
+def output_path():
     target = ROOT / 'site/index.html'
     if target.is_symlink() or target.parent.is_symlink() or target.parent.resolve() != ROOT.resolve() / 'site':
         raise ValueError('site/index.html must be inside the real site directory')
-    text = render(json.loads((ROOT / 'site/research.json').read_text()))
+    return target
+
+def write_html(text):
+    target = output_path()
+    validate_html_bytes(text.encode())
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=target.parent, delete=False) as f:
@@ -392,6 +396,11 @@ def generate():
         if temporary and temporary.exists():
             temporary.unlink()
     return validate_html_bytes(text.encode())
+
+def generate():
+    output_path()
+    return write_html(render(json.loads((ROOT / 'site/research.json').read_text())))
+
 
 def main():
     result = generate()

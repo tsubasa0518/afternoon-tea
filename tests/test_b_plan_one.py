@@ -16,7 +16,7 @@ from afternoon_tea.collection.transport import ReadOnlyTransport, ForbiddenOpera
 from afternoon_tea.collection.browser import Guard
 from afternoon_tea.processing.weekly import retain
 from afternoon_tea.processing.enrichment import enrich
-from afternoon_tea.processing.themes import prepare, finalize
+from afternoon_tea.build import build
 from afternoon_tea.publication.renderer import render
 from afternoon_tea.publication.site import validate_site, json_bytes
 from tests.http_fixtures import Response
@@ -170,12 +170,7 @@ class URLRetentionTests(unittest.TestCase):
         for count in (1,0):
             data=self.data(); data['shops']=data['shops'][:count]
             if count:data['shops'][0]['plans'][0]['cc']=None
-            data=retain(data)
-            data=enrich(data)
-            data,pending=prepare(data)
-            # Until PR2 the existing theme command requires this metadata.
-            for row in pending:data['shops'][row['shop_index']]['plans'][row['plan_index']]['country_basis']='未判定'
-            data=finalize(data)
+            data=build(data)
             html=render(data)
             self.assertEqual(validate_site({'site/research.json':json_bytes(data),'site/index.html':html.encode()})['shops'],count)
             self.assertEqual(html.count('<article '),count)

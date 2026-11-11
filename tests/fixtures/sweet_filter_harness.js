@@ -14,7 +14,7 @@ assert(result().plans===8,'all plans initially');
 for(const button of payload.buttons){if(payload.eventKeys.includes(button.key))continue;reset();click(button.key);assert(result().plans===button.count,'single button count '+button.key)}
 reset();click('ichigo');click('scone');assert(result().plans===4&&result().shops===2,'OR union with overlap counted once');
 click('wd','x');assert(result().plans===2,'OR sweets AND weekday on same plan');
-reset();click('ichigo');click('scone');ids['price-filter'].value='high';ids['price-filter'].events.change();assert(result().plans===1,'OR sweets AND price');
+reset();click('ichigo');click('scone');ids['price-filter'].value='high';ids['price-filter'].events.change();assert(result().plans===2,'OR sweets AND price above 8000');
 reset();click('grape');click('choco');assert(result().plans===3,'grape OR chocolate, both counted once');
 reset();click('hotel','cat');assert(cards.filter(c=>c.dataset.cat==='hotel').every(c=>c.classes.has('hide')),'category combines with sweets');
 reset();assert(result().plans===8,'reset all');

@@ -1,10 +1,5 @@
 """Weekly list reading, processing and publication through one entry point."""
 import argparse
-import json
-from pathlib import Path
-from .common import ROOT
-
-PREVIOUS = ROOT / '.staging/weekly/previous.json'
 
 
 def parser():
@@ -16,16 +11,7 @@ def parser():
     fetch.add_argument('url', nargs='?', help='同じ店舗のプラン詳細ページ（省略時はリストのURL）')
     fetch.add_argument('--full', action='store_true', help='AT関連語の周辺だけでなく、取得した本文全体を出力する')
     fetch.add_argument('--browser', action='store_true', help='GET本文にプランが見えないときヘッドレスブラウザで読む')
-    refresh = commands.add_parser('refresh', help='14日以内の前回プランを確認日時のまま引き継ぐ')
-    refresh.add_argument('--previous', type=Path, default=PREVIOUS)
-    enrich = commands.add_parser('enrich', help='料金区分・スイーツ・期間・曜日を付ける')
-    enrich.add_argument('--data', type=Path, default=ROOT / 'site/research.json')
-    enrich.set_defaults(parser=enrich)
-    prep = commands.add_parser('themes-prepare', help='テーマ国の未判定プランを用意する')
-    prep.add_argument('--previous', type=Path, default=PREVIOUS)
-    prep.set_defaults(command='prepare', parser=prep)
-    end = commands.add_parser('themes-finalize', help='テーマ国の判定を確定する')
-    end.set_defaults(command='finalize', previous=None, parser=end)
+    commands.add_parser('build', help='引き継ぎ・表示データ作成・HTML生成・検証をまとめて行う')
     helps = {'render': '固定HTMLを生成する', 'validate-site': 'JSON・HTMLを技術検証する',
              'report': 'PR本文用の今週の集計を出力する', 'check-protected': '保護ファイルのハッシュを確認する',
              'intake': '週次PRを信頼済みmainで審査する（Actions用）', 'resume-intake': 'CI完了後に審査を再開する（Actions用）',
@@ -40,21 +26,9 @@ def main(argv=None):
     if args.operation in ('begin', 'fetch', 'report'):
         from .collection.weekly import main
         return main(args)
-    if args.operation == 'refresh':
-        from .processing.weekly import retain
-        from .collection.storage import atomic_json
-        target = ROOT / 'site/research.json'
-        if target.is_symlink():
-            raise ValueError('symlink data forbidden')
-        previous = json.loads(args.previous.read_text()) if args.previous.exists() else {'shops': []}
-        atomic_json(target, retain(json.loads(target.read_text()), previous))
-        return 0
-    if args.operation == 'enrich':
-        from .processing.enrichment import main
-        return main(args)
-    if args.operation.startswith('themes-'):
-        from .processing.themes import main
-        return main(args)
+    if args.operation == 'build':
+        from .build import main
+        return main()
     if args.operation == 'render':
         from .publication.renderer import main
         return main()

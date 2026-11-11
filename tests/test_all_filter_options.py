@@ -4,6 +4,7 @@ import re
 import unittest
 from afternoon_tea.publication import renderer as r
 from tests.test_renderer import fixture
+from afternoon_tea.processing.enrichment import enrich
 SWEETS = ['いちご', 'メロン', '桃', 'マンゴー', 'ぶどう・マスカット', '栗・マロン', '芋・かぼちゃ', '柿・洋梨・いちじく', '柑橘', 'チョコレート', '抹茶・和', 'マカロン', 'パフェ', 'スコーン', 'その他']
 EVENTS = ['クリスマス', 'バレンタイン', 'ホワイトデー', 'コラボ企画', '季節の味覚']
 
@@ -54,7 +55,7 @@ class AllFilterOptionsTests(unittest.TestCase):
              'sweets': ['ichigo'],
              'plans': [{'menu': 'parfait',
              'season': ['xmas']}]}]
-        buttons = {b['key']: b['text'] for b in Buttons(r.render(data)).buttons}
+        buttons = {b['key']: b['text'] for b in Buttons(r.render(enrich(data))).buttons}
         for (key, count) in {'scone': 2, 'choco': 1, 'parfait': 1, 'ichigo': 0, 'melon': 0, 'macaron': 0}.items():
             self.assertTrue(buttons[key].endswith(str(count)), (key, buttons[key]))
 

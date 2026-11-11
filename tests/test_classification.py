@@ -34,17 +34,18 @@ class PriceCategoryTests(unittest.TestCase):
         self.assertEqual(data, before)
         self.assertEqual(enriched['shops'][0]['category'], 'hotel')
         self.assertEqual(enriched['shops'][0]['category_price_yen'], 7000)
-        self.assertIn('class="stat s-hotel"><b>1</b>', render(data))
+        self.assertIn('class="stat s-hotel"><b>1</b>', render(enriched))
         self.assertEqual(enrich(enriched, {'areas': []}), enriched)
 
-    def test_discount_does_not_lower_category(self):
+    def test_explicit_regular_price_and_discount_are_kept_separate(self):
         data = fixture()
-        data['shops'][0]['plans'] = [{'price_yen': 5000, 'evidence_quote': '通常価格 10,000円 50%OFF 5,000円'}]
-        shop = enrich(data, {'areas': []})['shops'][0]
+        data['shops'][0]['plans'] = [{'price_yen': 10000, 'discount_price_yen': 5000,
+                                      'evidence_quote': 'different price block must not override direct input'}]
+        shop = enrich(data)['shops'][0]
         self.assertEqual(shop['category'], 'lux')
         self.assertEqual(shop['plans'][0]['discount_price_yen'], 5000)
-        data['shops'][0]['plans'][0]['evidence_quote'] = '50%OFF 5,000円'
-        self.assertEqual(enrich(data, {'areas': []})['shops'][0]['category'], 'unknown')
+        data['shops'][0]['plans'][0].update(price_yen=None, discount_price_yen=5000)
+        self.assertEqual(enrich(data)['shops'][0]['category'], 'unknown')
 
     def test_plan_information_links_and_official_site(self):
         data = fixture()

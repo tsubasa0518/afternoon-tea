@@ -54,17 +54,17 @@ class EnrichmentTests(unittest.TestCase):
             self.assertEqual(result.get('weekend_available'), we)
 
     def test_regular_and_discount_prices_are_separate_and_idempotent(self):
-        p = {'price_yen': 7200, 'price_note': '税サ込（通常9,200円）。', 'evidence_quote': '最大21%OFF 9,200円 税サ込7,200円'}
+        p = {'price_yen': 9200, 'discount_price_yen': 7200, 'price_note': '税サ込（通常9,200円）。', 'evidence_quote': '最大21%OFF 9,200円 税サ込7,200円'}
         result = e.enrich_plan(p, self.shop())
         self.assertEqual(result['price_yen'], 9200)
         self.assertEqual(result['discount_price_yen'], 7200)
         self.assertEqual(e.enrich_plan(result, self.shop()), result)
 
     def test_discount_only_does_not_reverse_calculate_regular_price(self):
-        p = {'price_yen': 6000, 'evidence_quote': '20%OFF 税サ込6,000円'}
+        p = {'price_yen': None, 'discount_price_yen': 6000, 'evidence_quote': '20%OFF 税サ込6,000円'}
         result = e.enrich_plan(p, self.shop())
         self.assertIsNone(result['price_yen'])
-        self.assertNotIn('discount_price_yen', result)
+        self.assertEqual(result['discount_price_yen'], 6000)
         self.assertEqual(e.enrich_plan(result, self.shop()), result)
 
     def test_master_category_is_not_used_for_venue_type(self):
@@ -92,7 +92,7 @@ class EnrichmentTests(unittest.TestCase):
         self.assertEqual([s['checked_at'] for s in result['shops']], [s['checked_at'] for s in d['shops']])
         self.assertEqual(Counter((s['category'] for s in result['shops'])), {'cafe': 1, 'hotel': 3, 'lux': 2})
         self.assertTrue(all((s['checked_at'] == STAMP for s in d['shops'])))
-        html = renderer.render(d)
+        html = renderer.render(result)
         self.assertNotIn('data-sw="xmas" aria-pressed=', html)
         self.assertIn('クリスマス', html)
         self.assertEqual(sum((p.get('weekday_available') is True for s in d['shops'] for p in s['plans'])), 3)

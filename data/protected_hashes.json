@@ -4,13 +4,13 @@
   ".github/workflows/test-data.yml": "7acff6332979ce8515b359955a798b0513de9b58c90c3ab77bbc751c9a4746db",
   "data/store_master.json": "7846e0e1cc61581169700b81884c95592d81f51212a9bcafe919a52f4d7c6ffd",
   "data/country_registry.json": "9ac998f35f668ca74e6a2b136919b12de3f0ec988d3bb5c049362a20ae46f83f",
-  "AGENTS.md": "53d5e14d3941d020a7adbd785ab974c7eb0c389414bae6faab87b427cfa0b0ac",
-  "CLAUDE.md": "f3518aa030c959b46abbeaba2cb9bdd8b2a85287e726abae96fa2bbf35af9a89",
-  "docs/weekly_procedure.md": "f5644d35e47ab583668ca1998f2d63611e84a930cc6c6bf680dafcae7054eb1f",
+  "AGENTS.md": "81be13c698f1d4a158fbb272804de8d1c88038058a907991a9b7f1b0050361d0",
+  "CLAUDE.md": "4e81021f89c7b2ed38f49113b80b3aef2682627428ad055ce46dec19cc4e28ef",
+  "docs/weekly_procedure.md": "4940ab1d666760bbc5c7982678f82c79a8360a85f925522d1345b0df5b809aaf",
   "afternoon_tea/templates/site.css": "e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc",
   "afternoon_tea/templates/site.html": "6da76e6a46e09b42f471d1223e3c7fd131cf7c4a92735b9ff3f1a16e8ef0c72e",
   "afternoon_tea/templates/site.js": "0271365d1ececf2c3a9c9fffc4514d80018c0e733fdb476500913536562933d0",
   "afternoon_tea/templates/site_extra.css": "46ff8d6848a320c0042e48f98b62bc1062059a7c4816e107855883e6e0fceb1a",
-  "afternoon_tea/templates/site_extra.js": "f3fc0cc7e8afcf6f76810e5146727761cd35e6973f6d7b0f7fc891eb850ff899",
+  "afternoon_tea/templates/site_extra.js": "e1c0728580ac6ea392f7388a3ab5cdd5f35609068e1c35a22ef76e24ca2ccd63",
   "data/references/user_candidates.csv": "016eb3412046048a0665e1f167ed3e1180c642e5ee59c0b9f5212ebdf8bcf0a4"
 }
