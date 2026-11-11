@@ -12,8 +12,9 @@ import unittest
 from unittest.mock import patch
 from afternoon_tea.publication import renderer as r
 from afternoon_tea.publication.site import validate_site, ALLOWED
+from afternoon_tea.processing.enrichment import enrich
 
-def fixture(category='hotel'):
+def fixture(category='unknown'):
     return {'schema_version': 1,
          'generated_at': '2026-11-07T15:55:22+09:00',
          'period': {'start': '2026-11-07',
@@ -77,7 +78,7 @@ class RoutineRendererTests(unittest.TestCase):
         shop = source['shops'][0]
         source['shops'] = [{**shop, 'name': 'TEST ホテル', 'category': 'lux', 'plans': [{'price_yen': price}]}
                            for price in (5000, 8000, 8001, None)]
-        result = r.render(source)
+        result = r.render(enrich(source))
         for cat in ['cafe', 'hotel', 'lux']:
             self.assertIn(f'class="stat s-{cat}"><b>1</b>', result)
         self.assertIn('class="card c-unknown"', result)
@@ -86,7 +87,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'][0]['sweets'] = ['scone', 'xmas']
         source['shops'][0]['plans'] = [{'plan_name': 'TEST 1', 'menu': 'スコーン', 'price_yen': 1000}, {'plan_name': 'TEST 2', 'price_yen': 2000}]
-        result = r.render(source)
+        result = r.render(enrich(source))
         self.assertIn('プラン1／2', result)
         self.assertIn('プラン2／2', result)
         self.assertIn('data-sw="scone" aria-pressed="false">スコーン<span class="bc">1</span>', result)
@@ -161,6 +162,7 @@ class RoutineRendererTests(unittest.TestCase):
                  'end': '2026-12-01',
                  'weekday_available': True}]} for (i,
                  url) in enumerate(urls)]
+            data = enrich(data)
             before = copy.deepcopy(data)
             for _ in range(2):
                 result = r.render(data)

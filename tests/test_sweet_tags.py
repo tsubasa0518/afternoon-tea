@@ -2,7 +2,7 @@
 import copy
 import unittest
 from afternoon_tea.processing.sweets import tags
-from afternoon_tea.processing.enrichment import enrich_plan
+from afternoon_tea.processing.enrichment import enrich_plan, enrich
 from afternoon_tea.publication.renderer import render
 from tests.test_renderer import fixture
 from tests.test_all_filter_options import Buttons
@@ -254,6 +254,7 @@ class SweetKeywordTests(unittest.TestCase):
              12000,
              False,
              ['collab'])]}]
+        data = enrich(data)
         html = render(data)
         records = []
         for card in Document(html).root.find('article'):

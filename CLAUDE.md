@@ -1,12 +1,4 @@
-# 東京アフタヌーンティー週次調査
+# Claude Routineへの入口
 
-毎回最新mainの `AGENTS.md` と `docs/weekly_procedure.md` を読み、それに従う。
-既存Routineは月曜07:17 Asia/Tokyo、対象リポジトリは `tsubasa0518/afternoon-tea`。新しい定期タスクや別の調査起動元は作らない。
-
-`data/references/user_candidates.csv`（14エリアだけ・エリア番号つき）を毎週No.1から順に調べる。各行の予約ページURLと、同じ店舗のプラン詳細ページだけを `python3 -m afternoon_tea fetch N [URL]` で読む。別サイトでの探し直し・検索・リスト外の探索はしない。開けない・拒否・ATなし・情報不足・禁止操作に当たった店舗は諦めて次の行へ進む。
-
-コードの時間・要求数の上限で調査をやめ、集めた結果と前回の14日以内のプランからJSON・固定HTMLを作る。調査は1,500秒・200要求（robotsを含む）まで、1店舗60秒まで。残りを補完・検証・PR・公開確認に使う。途中・0件でも技術条件が通れば公開する。
-
-エリアはリストのエリア番号列で決め、調べない。最寄駅は実際に読んだ駅名だけ。予約・アクセス制限回避は禁止。ブラウザは手順書の許可範囲だけで使い、使えなければGETだけで続ける。
-
-調査本文・諦めた店舗名・作業キューは保存せず、翌週へ調査進捗を持ち越さない。引き継ぐのは14日以内の掲載プランだけ。週次PRが変更できるのは `site/research.json` と `site/index.html` の2ファイル。
+毎回最新mainの `AGENTS.md` と `docs/weekly_procedure.md` を読み、従ってください。
+安全規則の正本は `AGENTS.md`、週次手順と数値の正本は `docs/weekly_procedure.md` です。
