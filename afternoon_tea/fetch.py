@@ -1,24 +1,276 @@
-"""Weekly list reading: candidate rows in order from No.1, list URLs only.
-
-`begin` starts the week; `fetch N [URL]` reads row N's list URL (or a plan
-detail page of that same shop). Page text is printed for Claude to read and is
-never saved. The temporary state in .staging keeps only counts, row numbers
-and times for this week's limits and report; `begin` erases it.
-"""
-import csv
+"""Candidate CSV, anonymous GET, URL safety, robots, budgets and weekly state."""
 import datetime as dt
-from html.parser import HTMLParser
 import json
-from pathlib import Path
 import re
-import shutil
 import time
+import os
+import tempfile
+import csv
+import shutil
+from pathlib import Path
+from urllib.parse import urlsplit
+from urllib.parse import unquote
+from urllib.parse import urljoin
+from urllib.request import Request
+from urllib.request import HTTPRedirectHandler
+from urllib.request import build_opener
+from urllib.error import HTTPError
 from urllib.error import URLError
-from urllib.parse import urljoin, urlsplit
-from afternoon_tea.common import ROOT
-from afternoon_tea.collection.reader import Reader, RESEARCH_SECONDS, MAX_REQUESTS, SHOP_SECONDS, INTERVAL
-from afternoon_tea.collection.transport import ForbiddenOperation, check_scope
-from afternoon_tea.processing.dates import JST, period
+from urllib.robotparser import RobotFileParser
+from contextlib import contextmanager
+from html.parser import HTMLParser
+
+ROOT = Path(__file__).resolve().parents[1]
+JST = dt.timezone(dt.timedelta(hours=9))
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+def load_json(path):
+
+    def pairs(items):
+        result = {}
+        for (key, value) in items:
+            require(key not in result, 'JSONキーの重複: ' + key)
+            result[key] = value
+        return result
+
+    def constant(value):
+        raise ValueError('JSONに非有限数: ' + value)
+    try:
+        with open(path, encoding='utf-8') as stream:
+            return json.load(stream, object_pairs_hook=pairs, parse_constant=constant)
+    except json.JSONDecodeError as exc:
+        raise ValueError('JSON構文エラー: ' + str(exc)) from exc
+
+def dumps(data):
+    return json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
+
+
+HOSTS = ('restaurant.ikyu.com', 'tabelog.com', 'www.tablecheck.com')
+# Reservation, payment, cart, login and session words in a path are never sent.
+# The exact TableCheck list URL (ending in /reserve or /reserve/landing) is the
+# only exception, and only when it is the URL written in the candidate list.
+TRANSACTION = re.compile(
+    r'checkout|payment|pay/|purchase|confirm|cancel|submit|order|booking|reserv|hold|waitlist|'
+    r'login|logout|signin|signup|sign_in|sign_up|register|account|mypage|member|session|cart|'
+    r'entry|apply|inquiry|contact|auth')
+
+
+class ForbiddenOperation(RuntimeError):
+    pass
+
+
+class NoRedirect(HTTPRedirectHandler):
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise ForbiddenOperation('redirect_blocked_before_follow')
+
+
+def check_url(url, method='GET', list_url=None):
+    """Generic safety check. `list_url` exempts only that exact candidate URL."""
+    if method != 'GET':
+        raise ForbiddenOperation('only_GET_allowed')
+    if not isinstance(url, str):
+        raise ForbiddenOperation('unsafe_URL')
+    p = urlsplit(url)
+    if (p.scheme != 'https' or p.username or p.password or p.port not in (None, 443) or p.fragment
+            or p.query or any(c.isspace() for c in url) or '\\' in url):
+        raise ForbiddenOperation('unsafe_URL')
+    if p.hostname not in HOSTS:
+        raise ForbiddenOperation('host_not_allowed')
+    path = unquote(unquote(p.path)).lower()
+    if path == '/robots.txt':
+        return
+    if TRANSACTION.search(path) and url != list_url:
+        raise ForbiddenOperation('transaction_or_session_URL')
+
+
+def shop_key(url):
+    """Return (host, shop id) for a list or plan detail URL, else None."""
+    p = urlsplit(url)
+    path = p.path
+    patterns = {
+        'restaurant.ikyu.com': r'/(\d+)/(?:plan\d+/?)?',
+        'tabelog.com': r'/tokyo/A\d+/A\d+/(\d+)/party/(?:\d+/)?',
+        'www.tablecheck.com': r'/ja/(?:shops/)?([a-z0-9_-]+)/reserve(?:/landing)?',
+    }
+    pattern = patterns.get(p.hostname)
+    match = pattern and re.fullmatch(pattern, path)
+    return (p.hostname, match.group(1)) if match else None
+
+
+def check_scope(url, list_url, method='GET'):
+    """The candidate's own list URL, or a plan detail page of the same shop."""
+    check_url(url, method, list_url)
+    if url == list_url:
+        return
+    key = shop_key(url)
+    if key is None or key != shop_key(list_url):
+        raise ForbiddenOperation('outside_shop_scope')
+    # TableCheck pages past the list URL are reservation steps.
+    if key[0] == 'www.tablecheck.com':
+        raise ForbiddenOperation('outside_shop_scope')
+
+
+class ReadOnlyTransport:
+
+    def __init__(self):
+        self.blocked_requests = 0
+        self.opener = build_opener(NoRedirect())
+
+    def open(self, url, timeout=15, headers=None, method='GET', list_url=None):
+        try:
+            if list_url is None:
+                check_url(url, method)
+            else:
+                check_scope(url, list_url, method)
+            if headers and any(k.lower() not in ('user-agent', 'accept-language', 'accept') for k in headers):
+                raise ForbiddenOperation('credentials_forbidden')
+        except (ValueError, ForbiddenOperation):
+            self.blocked_requests += 1
+            raise
+        return self.opener.open(Request(url, headers=headers or {}, method='GET'), timeout=timeout)
+
+USER_AGENT = 'TokyoAfternoonTeaResearch/0.2 (+public research; no login; contact via GitHub issue)'
+MAX_BYTES = 800000
+RESEARCH_SECONDS = 1500
+MAX_REQUESTS = 200
+SHOP_SECONDS = 60
+INTERVAL = 3.0
+CHALLENGE = ('captcha', 'verify you are human', 'access denied', 'アクセスが制限')
+
+
+class Reader:
+    """Every request waits INTERVAL seconds (or the robots crawl-delay)."""
+
+    def __init__(self, delay=INTERVAL, timeout=15.0, max_requests=MAX_REQUESTS, seconds=RESEARCH_SECONDS):
+        self.deadline = time.monotonic() + seconds
+        self.delay = delay
+        self.timeout = timeout
+        self.max_requests = max_requests
+        self.count = 0
+        self.last_request = 0.0
+        self.robots = {}
+        self.robots_cache = {}
+        self.blocked_hosts = set()
+        self.transport = ReadOnlyTransport()
+
+    def _wait(self, host):
+        robots = self.robots.get(host)
+        delay = max(self.delay, (robots.crawl_delay(USER_AGENT) or robots.crawl_delay('*') or 0) if robots else 0)
+        wait = max(0, delay - (time.monotonic() - self.last_request))
+        if self.count >= self.max_requests:
+            raise RuntimeError('request_budget_exhausted')
+        if time.monotonic() + wait >= self.deadline:
+            raise RuntimeError('research_budget_exhausted')
+        if wait:
+            time.sleep(wait)
+        self.last_request = time.monotonic()
+        self.count += 1
+
+    def _get(self, url, list_url, limit):
+        headers = {'User-Agent': USER_AGENT, 'Accept-Language': 'ja,en;q=0.8'}
+        timeout = min(self.timeout, max(0.01, self.deadline - time.monotonic()))
+        with self.transport.open(url, timeout=timeout, headers=headers, list_url=list_url) as response:
+            if response.geturl() != url:
+                raise ForbiddenOperation('redirect_blocked_before_follow')
+            raw = response.read(limit + 1)
+            if len(raw) > limit:
+                raise RuntimeError('page_too_large')
+            return response, raw
+
+    def robots_allows(self, url, list_url):
+        host = urlsplit(url).hostname
+        if host not in self.robots:
+            if host not in self.robots_cache:
+                robots_url = 'https://' + host + '/robots.txt'
+                try:
+                    self._wait(host)
+                    (_, body) = self._get(robots_url, None, 200000)
+                    # Only rules are cached, not comments, sitemaps or page bodies.
+                    directives = {'user-agent', 'allow', 'disallow', 'crawl-delay', 'request-rate'}
+                    lines = []
+                    for raw_line in body.decode('utf-8', errors='replace').splitlines():
+                        # A comment is ignored by RobotFileParser; it is not a group boundary.
+                        if raw_line.lstrip().startswith('#'):
+                            continue
+                        line = raw_line.split('#', 1)[0].strip()
+                        if not line or line.partition(':')[0].strip().lower() in directives:
+                            lines.append(line)
+                    self.robots_cache[host] = lines
+                except (HTTPError, URLError, OSError, ForbiddenOperation, RuntimeError) as error:
+                    if isinstance(error, RuntimeError) and str(error).endswith('budget_exhausted'):
+                        raise
+                    # A refusal/unknown result is cached too: no retry this week.
+                    self.robots_cache[host] = None
+                    if isinstance(error, HTTPError) and error.code in (403, 429):
+                        self.blocked_hosts.add(host)
+            lines = self.robots_cache[host]
+            parser = RobotFileParser()
+            if lines is not None:
+                parser.parse(lines)
+            self.robots[host] = parser if lines is not None else None
+        robots = self.robots[host]
+        return robots is not None and robots.can_fetch(USER_AGENT, url)
+
+    def fetch(self, url, list_url):
+        """Return decoded HTML of `url`, which must be inside `list_url`'s shop scope."""
+        check_scope(url, list_url)
+        host = urlsplit(url).hostname
+        if host in self.blocked_hosts:
+            raise RuntimeError('host_stopped_this_week')
+        if not self.robots_allows(url, list_url):
+            raise RuntimeError('robots_disallowed_or_unknown')
+        self._wait(host)
+        try:
+            (response, raw) = self._get(url, list_url, MAX_BYTES)
+        except HTTPError as error:
+            if error.code in (403, 429):
+                self.blocked_hosts.add(host)
+            raise RuntimeError('HTTP_' + str(error.code)) from error
+        if 'text/html' not in response.headers.get('Content-Type', '').lower():
+            raise RuntimeError('not_html')
+        text = raw.decode(response.headers.get_content_charset() or 'utf-8', errors='replace')
+        if any(marker in text.lower() for marker in CHALLENGE):
+            self.blocked_hosts.add(host)
+            raise RuntimeError('access_challenge')
+        from afternoon_tea.check import scan
+        scan(text.encode())
+        return text
+
+
+def atomic_json(path, value):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    (fd, tmp) = tempfile.mkstemp(prefix='.' + path.name, dir=path.parent)
+    try:
+        with os.fdopen(fd, 'w', encoding='utf-8') as f:
+            f.write(dumps(value))
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+@contextmanager
+def store_lock(directory):
+    """Prevent overlapping local writers; kernel releases the lock on process exit."""
+    import fcntl
+    directory = Path(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+    with (directory / '.lock').open('a') as lock:
+        try:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise RuntimeError('another_research_process_holds_store_lock')
+        try:
+            yield
+        finally:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+
 
 HEADERS = ['No', '店名', '最寄り駅', 'エリア番号', 'ジャンル', '予約サイト', '予約ページURL', '備考']
 STATE = ROOT / '.staging/weekly'
@@ -100,13 +352,12 @@ def _load():
 
 
 def _save(state):
-    from .storage import atomic_json
     atomic_json(STATE / 'state.json', state)
 
 
 def begin(now=None):
     """Start the week: copy the previous site data, start an empty research file."""
-    from .storage import atomic_json, store_lock
+    from afternoon_tea.build import period
     now = now or dt.datetime.now(JST)
     research = ROOT / 'site/research.json'
     if research.is_symlink():
@@ -151,7 +402,6 @@ def excerpt(text):
 
 def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None, full=False):
     """Read row `no` (in order from 1) or a plan detail page of that same shop."""
-    from .storage import store_lock
     rows = candidates()
     with store_lock(STATE):
         state = _load()
@@ -214,7 +464,7 @@ def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None,
                 'detail_links': links, 'truncated': output != text, 'text': output,
                 'text_mode': 'full' if full else 'excerpt', 'full_text_chars': len(text),
                 'shop': {'name': row['店名'], 'area_no': int(row['エリア番号']), 'source_site': row['予約サイト'],
-                         'list_url': list_url, 'source_url': target, 'station': None, 'address': None, 'plans': []}}
+                         'list_url': list_url, 'station': None, 'address': None, 'plans': []}}
 
 
 def _browse(state, entry, url, list_url, renderer):
@@ -246,7 +496,7 @@ def _browse(state, entry, url, list_url, renderer):
 def report(state=None, research=None, rows=None):
     """Counts for the weekly PR body. No shop names of abandoned rows."""
     from collections import Counter
-    from afternoon_tea.processing.themes import display
+    from afternoon_tea.build import display
     state = state or _load()
     research = research or json.loads((ROOT / 'site/research.json').read_text())
     rows = rows or candidates()
@@ -264,9 +514,9 @@ def report(state=None, research=None, rows=None):
         if not ok:
             abandoned[entry['outcome']] += 1
     areas = Counter(s['area_no'] for s in shops)
-    master = json.loads((ROOT / 'data/store_master.json').read_text())
+    master = load_json(ROOT / 'data/areas.json')
     labels = {'cafe': 'カフェ', 'hotel': 'ホテル', 'lux': 'ホテル（高級）', 'unknown': '未確認'}
-    countries = Counter(display(p, s) or '未確認' for s in shops for p in s.get('plans', []))
+    countries = Counter(display(p) or '未確認' for s in shops for p in s.get('plans', []))
     plans = [p for s in shops for p in s.get('plans', [])]
     lines = ['## 今週の調査結果', '',
              '- 対象期間: %s〜%s' % (research['period']['start'], research['period']['end']),

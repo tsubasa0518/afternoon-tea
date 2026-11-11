@@ -3,16 +3,18 @@ import copy
 import datetime as dt
 import json
 import os
-from pathlib import Path
 import re
 import shutil
 import subprocess
 import tempfile
 import unittest
+import afternoon_tea.render as r
+from pathlib import Path
 from unittest.mock import patch
-from afternoon_tea.publication import renderer as r
-from afternoon_tea.publication.site import validate_site, ALLOWED
-from afternoon_tea.processing.enrichment import enrich
+from afternoon_tea.check import validate_site
+from afternoon_tea.build import enrich
+from html.parser import HTMLParser
+
 
 def fixture(category='unknown'):
     return {'schema_version': 1,
@@ -21,11 +23,10 @@ def fixture(category='unknown'):
          'end': '2026-12-17'},
          'shops': [{'name': 'TEST ONLY lounge',
          'area_no': 1,
-         'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(),
          'category': category,
          'station': 'TEST station',
-         'source_url': 'https://www.tablecheck.com/ja/shops/test-only/reserve',
-         'plans': [{'plan_name': 'TEST winter AT',
+         'list_url': 'https://www.tablecheck.com/ja/shops/test-only/reserve',
+         'plans': [{'plan_name': 'TEST winter AT', 'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(),
          'start': None,
          'end': None,
          'price_yen': None}]}]}
@@ -35,7 +36,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_template_css_snapshot(self):
         import hashlib
         self.assertEqual(hashlib.sha256((r.TEMPLATES / 'site.css').read_bytes()).hexdigest(),
-             'e7023852a64229e9ea7131b5b54f572f037fcfa60aecc8e2b86b85ac02580dfc')
+             'a2d0725640fed7b8f7134693c8059a889bc33de029ffc24100b741938ccddd3d')
 
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research = json.loads((r.ROOT / 'site/research.json').read_text())
@@ -149,7 +150,7 @@ class RoutineRendererTests(unittest.TestCase):
             base = data['shops'][0]
             data['shops'] = [{**base,
                  'name': name + ' ' + str(i),
-                 'source_url': url,
+                 'list_url': url,
                  'checked_at': '2026-11-06T09:00:00+09:00',
                  'evidence_quote': 'TEST shop evidence',
                  'plans': [{'plan_name': 'TEST plan',
@@ -189,7 +190,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_unsafe_booking_link_is_rejected(self):
         for url in ['javascript:alert(1)', 'https://user:pass@tablecheck.com/x']:
             source = fixture()
-            source['shops'][0]['source_url'] = url
+            source['shops'][0]['list_url'] = url
             with self.assertRaises(ValueError):
                 r.render(source)
 
@@ -197,7 +198,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'][0]['time_note'] = 'Store-wide note, not per-plan evidence'
         result = r.render(source)
-        self.assertEqual(result.count('Store-wide note'), 1)
+        self.assertNotIn('Store-wide note', result)
         self.assertIn('提供時間・利用時間 未確認', result)
 
     def test_no_network_calls(self):
@@ -209,7 +210,7 @@ class RoutineRendererTests(unittest.TestCase):
             root = Path(tmp)
             (root / 'site').mkdir()
             (root / 'data').mkdir()
-            shutil.copy(r.ROOT / 'data/store_master.json', root / 'data/store_master.json')
+            shutil.copy(r.ROOT / 'data/areas.json', root / 'data/areas.json')
             target = root / 'site/index.html'
             target.write_text('previous page')
             (root / 'site/research.json').write_text('{broken')
@@ -222,7 +223,7 @@ class RoutineRendererTests(unittest.TestCase):
             root = Path(tmp)
             (root / 'site').mkdir()
             (root / 'data').mkdir()
-            shutil.copy(r.ROOT / 'data/store_master.json', root / 'data/store_master.json')
+            shutil.copy(r.ROOT / 'data/areas.json', root / 'data/areas.json')
             (root / 'site/research.json').write_text(json.dumps(fixture()))
             before = {p.name: p.read_bytes() for p in (root / 'site').iterdir()}
             with patch.object(r, 'ROOT', root):
@@ -395,3 +396,82 @@ class OtherAreaTests(unittest.TestCase):
             self.assertNotIn('その他のエリア', result)
             self.assertNotIn('TEST ONLY lounge', result)
             self.assertNotIn('id="a0"', result)
+
+SWEETS = ['いちご', 'メロン', '桃', 'マンゴー', 'ぶどう・マスカット', '栗・マロン', '芋・かぼちゃ', '柿・洋梨・いちじく', '柑橘', 'チョコレート', '抹茶・和', 'マカロン', 'パフェ', 'スコーン', 'その他']
+EVENTS = ['クリスマス', 'バレンタイン', 'ホワイトデー', 'コラボ企画', '季節の味覚']
+
+class Buttons(HTMLParser):
+
+    def __init__(self, source):
+        super().__init__()
+        self.buttons = []
+        self.current = None
+        self.feed(source)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'button' and 'data-sw' in attrs:
+            self.current = {'key': attrs['data-sw'], 'text': '', 'attrs': attrs}
+
+    def handle_data(self, text):
+        if self.current is not None:
+            self.current['text'] += text
+
+    def handle_endtag(self, tag):
+        if tag == 'button' and self.current is not None:
+            self.buttons.append(self.current)
+            self.current = None
+
+class AllFilterOptionsTests(unittest.TestCase):
+
+    def test_all_fifteen_sweet_options_in_reference_order_for_two_and_zero_stores(self):
+        for count in (2, 0):
+            data = fixture()
+            data['shops'] = [{**data['shops'][0], 'name': 'TEST ' + str(i)} for i in range(count)]
+            buttons = Buttons(r.render(data)).buttons
+            self.assertEqual(len(buttons), 15)
+            self.assertEqual([re.sub('\\d+$', '', b['text']) for b in buttons], SWEETS)
+            self.assertTrue(all((b['text'].endswith('0') for b in buttons)))
+            self.assertTrue(all(('disabled' not in b['attrs'] for b in buttons)))
+            self.assertNotIn('halloween', [b['key'] for b in buttons])
+
+    def test_sweet_counts_are_distinct_plans_and_store_sweets_are_not_inherited(self):
+        data = fixture()
+        a = data['shops'][0]
+        data['shops'] = [{**a,
+             'sweets': ['ichigo',
+             'xmas'],
+             'plans': [{'menu': 'scone scone'},
+             {'menu': 'chocolate scone'}]},
+             {**a,
+             'sweets': ['ichigo'],
+             'plans': [{'menu': 'parfait',
+             'season': ['xmas']}]}]
+        buttons = {b['key']: b['text'] for b in Buttons(r.render(enrich(data))).buttons}
+        for (key, count) in {'scone': 2, 'choco': 1, 'parfait': 1, 'ichigo': 0, 'melon': 0, 'macaron': 0}.items():
+            self.assertTrue(buttons[key].endswith(str(count)), (key, buttons[key]))
+
+    def test_zero_badge_is_styled_without_hiding_the_button(self):
+        result = r.render(fixture())
+        self.assertIn('class="bc zero">0</span>', result)
+        self.assertIn('.fb .bc.zero{color:var(--sub)}', result)
+        self.assertIn('word-break:keep-all', result)
+
+
+class CanonicalFieldTests(unittest.TestCase):
+    def test_only_canonical_station_and_plan_fields_are_displayed(self):
+        source=fixture()
+        shop=source['shops'][0]
+        shop.update(station='日本橋駅／東京駅／日本橋駅',exit='銀座駅 B4出口 徒歩5分',
+                    access='新橋駅 直結',time_note='OLD SHOP TIME')
+        plan=shop['plans'][0]
+        plan.update(price_yen=5000,price_note=None,time_note=None,plan_name=None,
+                    price_text='OLD PRICE',time_text='OLD TIME',theme='OLD TITLE',
+                    note='OLD NOTE',booking_url_info_only='https://example.com/old-plan',
+                    weekday=True,wd=True)
+        text=r.render(source)
+        self.assertIn('<span class="mk">最寄駅</span>日本橋駅／東京駅',text)
+        for old in ('銀座駅','新橋駅','B4出口','徒歩5分','直結','OLD SHOP TIME','OLD PRICE','OLD TIME','OLD TITLE','OLD NOTE','https://example.com/old-plan'):
+            self.assertNotIn(old,text)
+        self.assertIn('data-wd="0"',text)
+        self.assertIn('提供時間・利用時間 未確認',text)

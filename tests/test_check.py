@@ -2,12 +2,24 @@ import datetime as dt
 import copy
 import io
 import json
-from pathlib import Path
 import tempfile
 import unittest
+import afternoon_tea.check as r
+import afternoon_tea.render as renderer
+import ast
+import importlib
+import pkgutil
+import subprocess
+import sys
+import afternoon_tea
+from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
-from afternoon_tea.publication import site as r
+from afternoon_tea.fetch import ROOT
+from afternoon_tea.build import review
+from afternoon_tea.__main__ import parser
+from afternoon_tea.render import render
+
 HTML = b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
 
 def files(n=0):
@@ -302,3 +314,210 @@ class RoutineSiteTests(unittest.TestCase):
         self.assertIn("paths: ['site/**']", pub)
         self.assertIn("head.ref, 'claude/weekly-afternoon-tea-'", auto)
         self.assertNotIn('rollback', pub)
+
+
+class TechnicalCITests(unittest.TestCase):
+
+    def check(self, runs, expected):
+        api = FakeAPI()
+        original = api.get
+        api.get = lambda p: {'workflow_runs': runs} if '/test-data.yml/runs?' in p else original(p)
+        result = r.intake(api, 1, 'tsubasa0518', sleep=lambda _: None)
+        self.assertEqual(result.get('merge'), expected)
+        self.assertFalse(any((c[0] == 'PUT' for c in api.calls)))
+
+    def test_missing(self):
+        self.check([], 'ci_pending')
+
+    def test_running(self):
+        self.check([{'id': 1, 'head_sha': 'a' * 40, 'event': 'pull_request', 'status': 'in_progress'}], 'ci_pending')
+
+    def test_failure(self):
+        self.check([{'id': 1, 'head_sha': 'a' * 40, 'event': 'pull_request', 'status': 'completed', 'conclusion': 'failure'}], 'ci_failed')
+
+    def test_old_sha(self):
+        self.check([{'id': 1, 'head_sha': 'b' * 40, 'event': 'pull_request', 'status': 'completed', 'conclusion': 'success'}], 'ci_pending')
+
+    def test_rerun_failure_wins(self):
+        self.check([{'id': 1,
+             'run_attempt': a,
+             'head_sha': 'a' * 40,
+             'event': 'pull_request',
+             'status': 'completed',
+             'conclusion': c} for (a,
+             c) in [(1,
+             'success'),
+             (2,
+             'failure')]],
+             'ci_failed')
+
+    def test_resume_ignores_non_pr(self):
+        from afternoon_tea.check import resume
+        self.assertEqual(resume(None, {'workflow_run': {'event': 'push'}}, 'x'), [])
+
+class ProductionTests(unittest.TestCase):
+
+    def assert_saved_site(self, data, html):
+        self.assertFalse(review(data)['errors'])
+        # Legacy saved data is readable during PR 1; modern shops need no id or timestamp.
+        checked = r.validate_json(r.json_bytes(data))
+        for shop in checked['shops']:
+            self.assertIsInstance(shop['name'], str)
+            self.assertIn(shop.get('category'), (None, 'unknown', 'cafe', 'hotel', 'lux'))
+            
+            if shop.get('list_url'):
+                r.resource(shop['list_url'])
+            for p in shop['plans']:
+                self.assertIsInstance(p['plan_name'], str)
+                self.assertTrue(p.get('price_yen') is None or type(p['price_yen']) in (int, float))
+                self.assertIsNotNone(dt.datetime.fromisoformat(p['checked_at']).tzinfo)
+                for key in ('sweets', 'season'):
+                    self.assertTrue(p.get(key) is None or isinstance(p[key], (str, list)))
+                for key in ('weekday_available', 'weekend_available'):
+                    self.assertTrue(p.get(key) is None or type(p[key]) is bool)
+        self.assertEqual(renderer.render(data), html)
+        stamps = [dt.datetime.fromisoformat(p['checked_at']) for s in checked['shops'] for p in s['plans']]
+        now = max(stamps) + dt.timedelta(days=1) if stamps else dt.datetime.now(dt.timezone.utc)
+        from afternoon_tea.build import validate_freshness
+        with patch('afternoon_tea.build.validate_freshness', side_effect=lambda value: validate_freshness(value, now)):
+            return r.validate_site({'site/research.json': r.json_bytes(data), 'site/index.html': html.encode()})
+
+    def test_dynamic_data_and_reproducible_html(self):
+        data = json.loads((ROOT / 'site/research.json').read_text())
+        self.assert_saved_site(data, (ROOT / 'site/index.html').read_text())
+
+    def test_new_shop_needs_only_plan_timestamp_not_shop_id_or_shop_timestamp(self):
+        from tests.test_render import fixture
+        from afternoon_tea.fetch import candidates
+        data = fixture()
+        shop = data['shops'][0]
+        shop.pop('checked_at', None)
+        shop.pop('id', None)
+        shop['list_url'] = candidates()[0]['予約ページURL']
+        shop.pop('source_url', None)
+        shop['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
+        self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 1)
+
+    def test_zero_shops_have_no_timestamp_maximum_and_are_valid(self):
+        from tests.test_render import fixture
+        data = fixture(); data['shops'] = []
+        self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 0)
+
+    def test_multiple_plans_not_truncated(self):
+        from tests.test_render import fixture
+        d = fixture()
+        s = d['shops'][0]
+        s['plans'] = [copy.deepcopy(s['plans'][0]) for _ in range(3)]
+        for (i, p) in enumerate(s['plans']):
+            p['plan_name'] = 'TEST ONLY plan ' + str(i)
+        d['shops'] = [s]
+        h = renderer.render(d)
+        for i in range(3):
+            self.assertIn('TEST ONLY plan ' + str(i), h)
+
+URL = 'https://restaurant.ikyu.com/107408/'
+
+class CatalogProtectionTests(unittest.TestCase):
+
+
+    def test_manifest_tamper_is_rejected(self):
+        import afternoon_tea.check as guards
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / 'data').mkdir()
+            (root / 'protected.txt').write_text('changed')
+            (root / 'data/protected_hashes.json').write_text(json.dumps({'protected.txt': '0' * 64}))
+            with patch.object(guards, 'ROOT', root), self.assertRaises(ValueError):
+                guards.protected_files()
+
+
+class StructureTests(unittest.TestCase):
+
+    def test_all_modules_import_and_only_one_executable_entry(self):
+        for entry in pkgutil.walk_packages(afternoon_tea.__path__, afternoon_tea.__name__ + '.'):
+            importlib.import_module(entry.name)
+        guards = []
+        for path in (ROOT / 'afternoon_tea').rglob('*.py'):
+            for node in ast.parse(path.read_text()).body:
+                if isinstance(node, ast.If) and '__name__' in ast.unparse(node.test):
+                    guards.append(path.name)
+        self.assertEqual(guards, ['__main__.py'])
+
+    def test_every_subcommand_help_is_offline_and_successful(self):
+        choices = next((a.choices for a in parser()._actions if isinstance(a, __import__('argparse')._SubParsersAction)))
+        for command in choices:
+            result = subprocess.run([sys.executable, '-m', 'afternoon_tea', command, '--help'], cwd=ROOT, capture_output=True, text=True, timeout=10)
+            self.assertEqual(result.returncode, 0, (command, result.stderr))
+            self.assertIn(command, result.stdout)
+
+    def test_render_does_not_change_any_site_input_and_matches_current_html(self):
+        paths = [ROOT / 'site' / name for name in ('research.json', 'index.html')]
+        before = [p.read_bytes() for p in paths]
+        result = render(json.loads(before[0])).encode()
+        self.assertEqual(result, before[1])
+        self.assertEqual([p.read_bytes() for p in paths], before)
+
+    def test_workflows_parse_and_call_existing_commands_only(self):
+        import re
+        choices = next((a.choices for a in parser()._actions if isinstance(a, __import__('argparse')._SubParsersAction)))
+        called = set()
+        for path in sorted((ROOT / '.github/workflows').glob('*.yml')):
+            text = path.read_text()
+            self.assertNotIn('\t', text, path.name)
+            try:
+                import yaml
+            except ImportError:
+                # Offline CI without PyYAML: keys and lists must still be well formed.
+                for line in text.splitlines():
+                    if line.strip() and not line.lstrip().startswith('#'):
+                        self.assertEqual((len(line) - len(line.lstrip())) % 2, 0, (path.name, line))
+            else:
+                self.assertIn('jobs', yaml.safe_load(text), path.name)
+            called |= set(re.findall(r'python3 -m afternoon_tea ([a-z-]+)', text))
+        self.assertTrue(called)
+        self.assertLessEqual(called, set(choices))
+
+    def test_browser_is_optional_and_old_research_machinery_is_gone(self):
+        import sys
+        from unittest.mock import patch
+        with patch.dict(sys.modules, {'playwright': None, 'playwright.sync_api': None}):
+            importlib.reload(importlib.import_module('afternoon_tea.browser'))
+        names = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if '.git' not in p.parts}
+        for gone in ('site/search_failures.json', 'data/official_sources.json', 'data/references/user_candidates_385.csv',
+                     'afternoon_tea/collection/campaign.py', 'afternoon_tea/collection/official.py'):
+            self.assertNotIn(gone, names)
+        source = '\n'.join(p.read_text() for p in (ROOT / 'afternoon_tea').rglob('*.py'))
+        for word in ('bing.com', 'research_campaign =', 'collect-official', 'validate-campaign'):
+            self.assertNotIn(word, source)
+
+
+class BPlanStructureTests(unittest.TestCase):
+    def test_flat_package_templates_and_four_test_modules(self):
+        self.assertEqual({p.stem for p in (ROOT/'afternoon_tea').glob('*.py')},
+                         {'__init__','__main__','fetch','browser','build','render','check'})
+        self.assertEqual({p.name for p in (ROOT/'afternoon_tea/templates').iterdir()},
+                         {'site.html','site.css','site.js'})
+        self.assertEqual({p.name for p in (ROOT/'tests').glob('test_*.py')},
+                         {'test_safety.py','test_build.py','test_render.py','test_check.py'})
+        for folder in ('collection','processing','publication'):
+            self.assertFalse((ROOT/'afternoon_tea'/folder).exists())
+        self.assertFalse((ROOT/'data/store_master.json').exists())
+
+    def test_areas_contain_only_numbers_names_and_stations(self):
+        areas=json.loads((ROOT/'data/areas.json').read_text())['areas']
+        self.assertEqual([a['no'] for a in areas],list(range(1,15)))
+        for area in areas:
+            self.assertEqual(set(area),{'no','name','stations'})
+            self.assertTrue(isinstance(area['name'],str) and area['name'])
+            self.assertTrue(area['stations'])
+            self.assertTrue(all(isinstance(s,str) and s for s in area['stations']))
+        r.protected_files()
+
+    def test_validator_does_not_fill_missing_plan_date_from_shop(self):
+        data=json.loads(files(1)['site/research.json'])
+        shop=data['shops'][0]
+        shop['checked_at']=shop['plans'][0].pop('checked_at')
+        checked=r.validate_json(r.json_bytes(data))
+        self.assertNotIn('checked_at',checked['shops'][0]['plans'][0])
+        with self.assertRaisesRegex(ValueError,'missing_checked_at'):
+            r.validate_site({'site/research.json':r.json_bytes(data),'site/index.html':HTML})

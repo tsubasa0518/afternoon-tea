@@ -24,23 +24,23 @@ def parser():
 def main(argv=None):
     args = parser().parse_args(argv)
     if args.operation in ('begin', 'fetch', 'report'):
-        from .collection.weekly import main
+        from .fetch import main
         return main(args)
     if args.operation == 'build':
         from .build import main
         return main()
     if args.operation == 'render':
-        from .publication.renderer import main
+        from .render import main
         return main()
     if args.operation == 'check-protected':
-        from .publication.guards import protected_files
+        from .check import protected_files
         protected_files()
         print('Protected files verified.')
         return 0
     if args.operation == 'resume-intake':
-        from .publication.ci import main
+        from .check import resume_main as main
         return main()
-    from .publication.site import main
+    from .check import main
     return main({'validate-site': 'validate', 'intake': 'intake', 'publish-prepare': 'prepare',
                  'publish-verify': 'verify'}[args.operation])
 
