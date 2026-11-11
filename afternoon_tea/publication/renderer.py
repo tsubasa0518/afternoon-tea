@@ -236,7 +236,7 @@ def card(shop, plans, generated):
     if shop.get('address'):
         out.append('<p class="rnote">' + esc(shop['address']) + '</p>')
     out.append('<div class="meet"><p><span class="mk">最寄駅</span>' + esc(nearest_stations(shop)) + '</p></div>')
-    url = shop.get('booking_url_info_only') or shop.get('source_url')
+    url = shop.get('booking_url_info_only') or shop.get('source_url') or shop.get('list_url')
     if url:
         out.append('<div class="links" aria-label="予約・情報サイト">' + info_link(url) + '</div>')
     else:

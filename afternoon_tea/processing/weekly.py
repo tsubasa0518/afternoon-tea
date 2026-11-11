@@ -32,16 +32,22 @@ def clean(value):
         return [clean(v) for v in value]
     return value
 
-def retain(current, previous=None, now=None):
+def retain(current, previous=None, now=None, rows=None):
     """Only completed reviewed plans enter current; previous dates never advance."""
     now = now or dt.datetime.now(JST)
     result = copy.deepcopy(current)
+    from afternoon_tea.collection.weekly import candidates
+    allowed = {row['予約ページURL']: row for row in (candidates() if rows is None else rows)}
     shops = {}
     for source in (previous or {'shops': []}, current):
         for original in source.get('shops', []):
+            list_url = original.get('list_url')
+            if list_url not in allowed:
+                continue
             if type(original.get('area_no')) is not int or not 1 <= original['area_no'] <= 14:
                 continue
             shop = clean(copy.deepcopy(original))
+            shop['area_no'] = int(allowed[list_url]['エリア番号'])
             accepted = []
             for original_plan in original.get('plans', []):
                 plan = clean(copy.deepcopy(original_plan))
@@ -52,7 +58,7 @@ def retain(current, previous=None, now=None):
                     accepted.append(plan)
             if not accepted:
                 continue
-            key = shop.get('id') or (shop.get('name'), shop['area_no'])
+            key = list_url
             old = shops.get(key, {'plans': []})
             plans = {p.get('plan_name'): p for p in old['plans']}
             plans.update({p.get('plan_name'): p for p in accepted})

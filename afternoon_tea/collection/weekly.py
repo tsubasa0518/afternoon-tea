@@ -16,16 +16,14 @@ import time
 from urllib.error import URLError
 from urllib.parse import urljoin, urlsplit
 from afternoon_tea.common import ROOT
-from afternoon_tea.collection.reader import Reader
+from afternoon_tea.collection.reader import Reader, RESEARCH_SECONDS, MAX_REQUESTS, SHOP_SECONDS, INTERVAL
 from afternoon_tea.collection.transport import ForbiddenOperation, check_scope
 from afternoon_tea.processing.dates import JST, period
 
 HEADERS = ['No', '店名', '最寄り駅', 'エリア番号', 'ジャンル', '予約サイト', '予約ページURL', '備考']
 STATE = ROOT / '.staging/weekly'
-RESEARCH_SECONDS = 420
-MAX_REQUESTS = 150
-SHOP_SECONDS = 60
-MAX_TEXT = 60000
+EXCERPT_CHARS = 800
+MAX_EXCERPT = 12000
 AT_WORDS = re.compile(r'アフタヌーン\s*ティー|afternoon\s*tea|ハイティー|high\s*tea', re.I)
 # Reasons are counted for the PR body; shop names are never recorded.
 REASONS = {
@@ -118,7 +116,7 @@ def begin(now=None):
         atomic_json(research, {'schema_version': 1, 'generated_at': now.isoformat(timespec='seconds'),
                                'period': period(now=now), 'shops': []})
         _save({'started_at': time.time(), 'started_iso': now.isoformat(timespec='seconds'), 'requests': 0,
-               'last_request': 0, 'blocked_hosts': [], 'current': 0, 'rows': {},
+               'last_request': 0, 'blocked_hosts': [], 'robots': {}, 'current': 0, 'rows': {},
                'browser_runs': 0, 'browser_unavailable': None, 'blocked_operations': 0, 'blocked_resources': 0})
     return {'research_seconds': RESEARCH_SECONDS, 'max_requests': MAX_REQUESTS, 'shop_seconds': SHOP_SECONDS,
             'starts_at_no': 1, 'candidates': len(candidates()), 'period': period(now=now)}
@@ -137,7 +135,21 @@ def _links(base, hrefs, list_url):
     return found
 
 
-def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None):
+def excerpt(text):
+    """Merge context windows around AT words; use --full for the complete text."""
+    windows = []
+    for match in AT_WORDS.finditer(text):
+        start, end = max(0, match.start()-EXCERPT_CHARS), min(len(text), match.end()+EXCERPT_CHARS)
+        if windows and start <= windows[-1][1]:
+            windows[-1] = (windows[-1][0], end)
+        else:
+            windows.append((start, end))
+        if sum(end-start for start, end in windows) >= MAX_EXCERPT:
+            break
+    return '\n…\n'.join(text[start:end] for start, end in windows)[:MAX_EXCERPT]
+
+
+def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None, full=False):
     """Read row `no` (in order from 1) or a plan detail page of that same shop."""
     from .storage import store_lock
     rows = candidates()
@@ -160,6 +172,7 @@ def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None)
         reader = reader_factory(max_requests=MAX_REQUESTS - state['requests'],
                                 timeout=min(15, RESEARCH_SECONDS - elapsed), seconds=RESEARCH_SECONDS - elapsed)
         reader.blocked_hosts.update(state['blocked_hosts'])
+        reader.robots_cache = state.get('robots', {})
         reader.last_request = time.monotonic() - max(0, time.time() - state['last_request'])
         method = 'get'
         try:
@@ -191,14 +204,17 @@ def fetch(no, url=None, use_browser=False, reader_factory=Reader, renderer=None)
             raise
         finally:
             state['requests'] += reader.count
+            state['robots'] = reader.robots_cache
             state['blocked_hosts'] = sorted(reader.blocked_hosts)
             state['last_request'] = time.time() - max(0, time.monotonic() - reader.last_request)
             _save(state)
+        output = text if full else excerpt(text)
         return {'no': no, 'url': target, 'method': method,
                 'checked_at': dt.datetime.now(JST).isoformat(timespec='seconds'),
-                'detail_links': links, 'truncated': len(text) > MAX_TEXT, 'text': text[:MAX_TEXT],
+                'detail_links': links, 'truncated': output != text, 'text': output,
+                'text_mode': 'full' if full else 'excerpt', 'full_text_chars': len(text),
                 'shop': {'name': row['店名'], 'area_no': int(row['エリア番号']), 'source_site': row['予約サイト'],
-                         'source_url': target, 'station': None, 'address': None, 'plans': []}}
+                         'list_url': list_url, 'source_url': target, 'station': None, 'address': None, 'plans': []}}
 
 
 def _browse(state, entry, url, list_url, renderer):
@@ -230,7 +246,6 @@ def _browse(state, entry, url, list_url, renderer):
 def report(state=None, research=None, rows=None):
     """Counts for the weekly PR body. No shop names of abandoned rows."""
     from collections import Counter
-    from afternoon_tea.collection.transport import shop_key
     from afternoon_tea.processing.themes import display
     state = state or _load()
     research = research or json.loads((ROOT / 'site/research.json').read_text())
@@ -239,12 +254,12 @@ def report(state=None, research=None, rows=None):
     fresh = lambda plan: dt.datetime.fromisoformat(plan['checked_at']) >= start
     shops = research.get('shops', [])
     week = [s for s in shops if any(fresh(p) for p in s.get('plans', []))]
-    confirmed = {shop_key(s.get('source_url') or '') for s in week}
+    confirmed = {s['list_url'] for s in week}
     attempted = {int(n): e for (n, e) in state['rows'].items() if e['outcome'] != 'budget'}
     sites = {name: Counter() for name in ('一休.com', '食べログ', 'TableCheck')}
     abandoned = Counter()
     for (no, entry) in attempted.items():
-        ok = shop_key(rows[no - 1]['予約ページURL']) in confirmed
+        ok = rows[no - 1]['予約ページURL'] in confirmed
         sites.setdefault(entry['site'], Counter())['成功' if ok else '失敗'] += 1
         if not ok:
             abandoned[entry['outcome']] += 1
@@ -280,7 +295,7 @@ def main(args):
         if args.operation == 'report':
             print(report())
             return 0
-        result = fetch(args.no, args.url, args.browser)
+        result = fetch(args.no, args.url, args.browser, full=args.full)
     except BudgetExhausted as error:
         print(json.dumps({'no': getattr(args, 'no', None), 'stop_research': True, 'error': str(error)}))
         return 3

@@ -6,6 +6,9 @@ from urllib.robotparser import RobotFileParser
 from afternoon_tea.collection.transport import ReadOnlyTransport, ForbiddenOperation, check_scope
 USER_AGENT = 'TokyoAfternoonTeaResearch/0.2 (+public research; no login; contact via GitHub issue)'
 MAX_BYTES = 800000
+RESEARCH_SECONDS = 1500
+MAX_REQUESTS = 200
+SHOP_SECONDS = 60
 INTERVAL = 3.0
 CHALLENGE = ('captcha', 'verify you are human', 'access denied', 'アクセスが制限')
 
@@ -13,7 +16,7 @@ CHALLENGE = ('captcha', 'verify you are human', 'access denied', 'アクセス�
 class Reader:
     """Every request waits INTERVAL seconds (or the robots crawl-delay)."""
 
-    def __init__(self, delay=INTERVAL, timeout=15.0, max_requests=150, seconds=420):
+    def __init__(self, delay=INTERVAL, timeout=15.0, max_requests=MAX_REQUESTS, seconds=RESEARCH_SECONDS):
         self.deadline = time.monotonic() + seconds
         self.delay = delay
         self.timeout = timeout
@@ -21,6 +24,7 @@ class Reader:
         self.count = 0
         self.last_request = 0.0
         self.robots = {}
+        self.robots_cache = {}
         self.blocked_hosts = set()
         self.transport = ReadOnlyTransport()
 
@@ -51,18 +55,31 @@ class Reader:
     def robots_allows(self, url, list_url):
         host = urlsplit(url).hostname
         if host not in self.robots:
-            robots_url = 'https://' + host + '/robots.txt'
-            try:
-                self._wait(host)
-                (_, body) = self._get(robots_url, None, 200000)
-                parser = RobotFileParser()
-                parser.parse(body.decode('utf-8', errors='replace').splitlines())
-                self.robots[host] = parser
-            except (HTTPError, URLError, OSError, ForbiddenOperation, RuntimeError) as error:
-                if isinstance(error, RuntimeError) and str(error).endswith('budget_exhausted'):
-                    raise
-                # Unknown robots rules are treated as a refusal.
-                self.robots[host] = None
+            if host not in self.robots_cache:
+                robots_url = 'https://' + host + '/robots.txt'
+                try:
+                    self._wait(host)
+                    (_, body) = self._get(robots_url, None, 200000)
+                    # Only rules are cached, not comments, sitemaps or page bodies.
+                    directives = {'user-agent', 'allow', 'disallow', 'crawl-delay', 'request-rate'}
+                    lines = []
+                    for raw_line in body.decode('utf-8', errors='replace').splitlines():
+                        line = raw_line.split('#', 1)[0].strip()
+                        if not line or line.partition(':')[0].strip().lower() in directives:
+                            lines.append(line)
+                    self.robots_cache[host] = lines
+                except (HTTPError, URLError, OSError, ForbiddenOperation, RuntimeError) as error:
+                    if isinstance(error, RuntimeError) and str(error).endswith('budget_exhausted'):
+                        raise
+                    # A refusal/unknown result is cached too: no retry this week.
+                    self.robots_cache[host] = None
+                    if isinstance(error, HTTPError) and error.code in (403, 429):
+                        self.blocked_hosts.add(host)
+            lines = self.robots_cache[host]
+            parser = RobotFileParser()
+            if lines is not None:
+                parser.parse(lines)
+            self.robots[host] = parser if lines is not None else None
         robots = self.robots[host]
         return robots is not None and robots.can_fetch(USER_AGENT, url)
 

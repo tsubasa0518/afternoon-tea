@@ -14,6 +14,7 @@ def parser():
     fetch = commands.add_parser('fetch', help='リストNo.Nの予約ページURL（または同じ店舗のプラン詳細ページ）を読む')
     fetch.add_argument('no', type=int, help='リストのNo（1から順に）')
     fetch.add_argument('url', nargs='?', help='同じ店舗のプラン詳細ページ（省略時はリストのURL）')
+    fetch.add_argument('--full', action='store_true', help='AT関連語の周辺だけでなく、取得した本文全体を出力する')
     fetch.add_argument('--browser', action='store_true', help='GET本文にプランが見えないときヘッドレスブラウザで読む')
     refresh = commands.add_parser('refresh', help='14日以内の前回プランを確認日時のまま引き継ぐ')
     refresh.add_argument('--previous', type=Path, default=PREVIOUS)

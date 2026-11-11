@@ -22,15 +22,15 @@ from tests.test_site_intake import FakeAPI
 NOW = dt.datetime(2026, 11, 10, 12, tzinfo=dt.timezone.utc)
 AT = '<html><body><h1>アフタヌーンティー</h1><a href="plan111/">plan</a><a href="/999999/">other</a></body></html>'
 PLAIN = '<html><body><div id="app"></div></body></html>'
-# Expected area counts after the fourteen-area judgement of the 385-row list.
-AREA_COUNTS = {1: 35, 2: 54, 3: 28, 4: 20, 5: 30, 6: 32, 7: 24, 8: 35, 9: 15, 10: 20, 11: 10, 12: 9, 13: 11, 14: 8}
+# Expected area counts in the owner-provided ninety-row list.
+AREA_COUNTS = {1: 15, 2: 17, 3: 11, 4: 6, 5: 6, 6: 6, 7: 3, 8: 6, 9: 2, 10: 11, 11: 1, 12: 1, 13: 3, 14: 2}
 
 
 class FakeReader:
     pages = {}
     opened = []
 
-    def __init__(self, max_requests=150, timeout=15, seconds=420):
+    def __init__(self, max_requests=collect.MAX_REQUESTS, timeout=15, seconds=collect.RESEARCH_SECONDS):
         self.count = 0
         self.blocked_hosts = set()
         self.last_request = 0.0
@@ -148,7 +148,7 @@ class ListOnlyTests(Week):
             self.fetch(2)
         # Publish what was read: row 1 only.
         data = json.loads((self.root / 'site/research.json').read_text())
-        shop = {'name': 'ROW ONE', 'area_no': 1, 'source_url': self.url(1),
+        shop = {'name': 'ROW ONE', 'area_no': 2, 'list_url': self.url(1), 'source_url': self.url(1),
                 'plans': [{'plan_name': 'AT', 'checked_at': dt.datetime.now(dt.timezone.utc).isoformat()}]}
         data['shops'] = [shop]
         data = retain(data, json.loads((self.root / '.staging/weekly/previous.json').read_text()))
@@ -388,6 +388,7 @@ class RetentionTests(unittest.TestCase):
     def sample(self, stamp):
         d = fixture()
         d['shops'][0]['plans'][0]['checked_at'] = stamp
+        d['shops'][0]['list_url'] = collect.candidates()[0]['予約ページURL']
         return d
 
     def test_boundary_date_retention_and_no_redating(self):
@@ -469,7 +470,7 @@ class PublicationTests(unittest.TestCase):
 
     def test_candidates_are_fourteen_area_rows_in_order(self):
         rows = collect.candidates()
-        self.assertEqual(len(rows), 331)
+        self.assertEqual(len(rows), 90)
         self.assertEqual(collections.Counter(int(r['エリア番号']) for r in rows), AREA_COUNTS)
         self.assertEqual([int(r['No']) for r in rows], list(range(1, len(rows) + 1)))
 
@@ -485,13 +486,13 @@ class ReportTests(Week):
         research = json.loads((self.root / 'site/research.json').read_text())
         now = dt.datetime.now(dt.timezone.utc)
         research['shops'] = [
-            {'name': 'ROW ONE', 'area_no': 2, 'source_url': self.url(1) + 'plan1/', 'category': 'hotel',
+            {'name': 'ROW ONE', 'area_no': 2, 'list_url': self.url(1), 'source_url': self.url(1) + 'plan1/', 'category': 'hotel',
              'plans': [{'plan_name': 'A', 'checked_at': now.isoformat()}]},
-            {'name': 'CARRIED', 'area_no': 3, 'source_url': 'https://restaurant.ikyu.com/1/', 'category': 'cafe',
+            {'name': 'CARRIED', 'area_no': 3, 'list_url': self.url(4), 'source_url': self.url(4), 'category': 'cafe',
              'plans': [{'plan_name': 'B', 'checked_at': (now - dt.timedelta(days=5)).isoformat()}]}]
         with patch.object(collect, 'ROOT', ROOT):
             text = collect.report(self.state(), research, self.rows)
-        for expected in ('調べた行数: 3 / 331', '調べられなかった行数: 328', '今週確認できた店舗数・プラン数: 1店舗・1プラン',
+        for expected in ('調べた行数: 3 / 90', '調べられなかった行数: 87', '今週確認できた店舗数・プラン数: 1店舗・1プラン',
                          '引き継いだプラン数（14日以内・確認日時そのまま）: 1', '403・429・CAPTCHA・同一サイトの停止 1',
                          'ATプラン未確認・情報不足 1', '一休.com 成功1・失敗2', '銀座・有楽町・日比谷 1',
                          'ホテル 1', 'カフェ 1', 'テーマ国別（プラン数）: 未確認 2'):
