@@ -158,12 +158,9 @@ class ReaderTests(unittest.TestCase):
                 reader.fetch('https://restaurant.ikyu.com/112520/plan1/', IKYU)
             self.assertEqual(len(seen), 2)
 
-    def test_redirect_size_and_secrets_make_page_unusable(self):
+    def test_oversized_page_is_still_unusable(self):
         reader, _ = self.reader({IKYU: 'x' * 900000})
         with self.assertRaisesRegex(RuntimeError, 'page_too_large'):
-            reader.fetch(IKYU, IKYU)
-        reader, _ = self.reader({IKYU: '<p>mail someone@example.com</p>'})
-        with self.assertRaisesRegex(ValueError, 'secret_or_personal'):
             reader.fetch(IKYU, IKYU)
 
     def test_request_budget(self):
@@ -837,3 +834,29 @@ class TableCheckReportTests(Week):
         text=collect.report(state,research,self.rows)
         self.assertIn('TableCheck 成功1・失敗1',text)
         self.assertNotIn(self.rows[88]['店名'],text)
+
+
+class PublicContactPageTests(unittest.TestCase):
+    reader = ReaderTests.reader
+
+    def test_get_page_with_contact_details_is_read_without_saving_body(self):
+        raw='<h1>アフタヌーンティー</h1><p>Contact someone@example.test 090-1234-5678</p>'
+        reader, seen=self.reader({IKYU:raw})
+        self.assertEqual(reader.fetch(IKYU,IKYU),raw)
+        self.assertEqual(seen,['https://restaurant.ikyu.com/robots.txt',IKYU])
+        self.assertNotIn('someone@example.test',json.dumps(reader.robots_cache))
+        self.assertFalse(reader.blocked_hosts)
+
+    def test_browser_contact_is_read_but_captcha_still_stops(self):
+        for body,challenge in (('アフタヌーンティー info@example.test',False),
+                               ('Please complete CAPTCHA info@example.test',True)):
+            fake=FakePlaywright(IKYU,[],lambda *args:None)
+            fake.inner_text=lambda selector:body
+            if challenge:
+                with self.assertRaisesRegex(RuntimeError,'access_challenge') as caught:
+                    browser.render(IKYU,IKYU,playwright=fake)
+                self.assertIsInstance(caught.exception.guard,browser.Guard)
+            else:
+                text,links,guard=browser.render(IKYU,IKYU,playwright=fake)
+                self.assertEqual(text,body)
+                self.assertFalse(guard.blocked_operations)

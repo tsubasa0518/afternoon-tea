@@ -253,9 +253,16 @@ def retain(current, previous=None, now=None, rows=None):
     now = now or dt.datetime.now(JST)
     result = {key: copy.deepcopy(current[key]) for key in ('schema_version', 'generated_at', 'period') if key in current}
     from afternoon_tea.fetch import candidates
+    from afternoon_tea.check import scan, json_bytes, SensitiveDataError
+    excluded = copy.deepcopy(current.get('excluded_sensitive_plans', {'current': 0, 'previous': 0}))
+    if (not isinstance(excluded, dict) or set(excluded) != {'current', 'previous'}
+            or any(type(n) is not int or n < 0 for n in excluded.values())):
+        raise ValueError('invalid_excluded_sensitive_plan_count')
+    # Re-scan the prior snapshot on rebuild without counting it twice.
+    excluded['previous'] = 0
     allowed = {row['予約ページURL']: row for row in (candidates() if rows is None else rows)}
     shops = {}
-    for source in (previous or {'shops': []}, current):
+    for origin, source in (('previous', previous or {'shops': []}), ('current', current)):
         for original in source.get('shops', []):
             list_url = original.get('list_url')
             if list_url not in allowed:
@@ -267,6 +274,11 @@ def retain(current, previous=None, now=None, rows=None):
             accepted = []
             for original_plan in original.get('plans', []):
                 plan = normalize_plan(original_plan)
+                try:
+                    scan(json_bytes(plan))
+                except SensitiveDataError:
+                    excluded[origin] += 1
+                    continue
                 stamp = plan.get('checked_at')
                 if fresh(stamp, now):
                     plan['checked_at'] = stamp
@@ -279,6 +291,7 @@ def retain(current, previous=None, now=None, rows=None):
             plans.update({p.get('plan_name'): p for p in accepted})
             shops[key] = {**shop, 'plans': list(plans.values())}
     result['shops'] = list(shops.values())
+    result['excluded_sensitive_plans'] = excluded
     return result
 
 def validate_freshness(data, now=None):
@@ -380,5 +393,7 @@ def main():
     # Prepare and validate both values before either tracked file is replaced.
     write_html(html)
     atomic_json(target, data)
-    print(json.dumps({'shops': report['shops'], 'plans': report['plans'], 'confirmation_dates_changed': False}))
+    print(json.dumps({'shops': report['shops'], 'plans': report['plans'],
+                      'excluded_sensitive_plans': sum(data['excluded_sensitive_plans'].values()),
+                      'confirmation_dates_changed': False}))
     return 0

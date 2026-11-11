@@ -236,8 +236,6 @@ class Reader:
         if any(marker in text.lower() for marker in CHALLENGE):
             self.blocked_hosts.add(host)
             raise RuntimeError('access_challenge')
-        from afternoon_tea.check import scan
-        scan(text.encode())
         return text
 
 
@@ -283,7 +281,7 @@ REASONS = {
     'denied': '403・429・CAPTCHA・同一サイトの停止',
     'forbidden': '禁止URL・転送・範囲外',
     'network': '通信・HTTPエラー',
-    'unusable': 'HTML以外・サイズ超過・秘密情報',
+    'unusable': 'HTML以外・サイズ超過など',
     'shop_time_limit': '1店舗の時間上限',
     'no_plan': 'ATプラン未確認・情報不足',
 }
@@ -525,6 +523,7 @@ def report(state=None, research=None, rows=None):
              '- 今週確認できた店舗数・プラン数: %d店舗・%dプラン' % (len(week), sum(fresh(p) for p in plans)),
              '- 前回から引き継いだプラン数（14日以内・確認日時そのまま）: %d' % sum(not fresh(p) for p in plans),
              '- 掲載: %d店舗・%dプラン' % (len(shops), len(plans)),
+             '- 秘密情報・個人情報の検査で除外したプラン数: %d' % sum(research.get('excluded_sensitive_plans', {}).values()),
              '- 諦めた行数: %d（理由別: %s）' % (sum(abandoned.values()), '、'.join(
                  '%s %d' % (REASONS.get(k, k), v) for (k, v) in sorted(abandoned.items())) or 'なし'),
              '- 予約サイト別: ' + '、'.join('%s 成功%d・失敗%d' % (k, v['成功'], v['失敗']) for (k, v) in sites.items()),

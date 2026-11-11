@@ -205,16 +205,8 @@ def render(url, list_url, playwright=None, deadline=None):
                 manager.stop()
             except Exception:
                 pass
-    try:
-        if any(marker in text.lower() for marker in CHALLENGE):
-            raise RuntimeError('access_challenge')
-        from afternoon_tea.check import scan
-        scan(text.encode())
-    except ValueError as error:
-        failure = RuntimeError('unusable_page:' + str(error))
-        failure.guard = guard
-        raise failure from error
-    except RuntimeError as error:
+    if any(marker in text.lower() for marker in CHALLENGE):
+        error = RuntimeError('access_challenge')
         error.guard = guard
-        raise
+        raise error
     return text, links, guard
