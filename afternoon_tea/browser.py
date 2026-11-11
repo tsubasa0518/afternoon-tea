@@ -15,8 +15,8 @@ import os
 import re
 import time
 from urllib.parse import urlsplit
-from afternoon_tea.collection.transport import ForbiddenOperation, check_scope, TRANSACTION
-from afternoon_tea.collection.reader import USER_AGENT, CHALLENGE
+from afternoon_tea.fetch import ForbiddenOperation, check_scope, TRANSACTION
+from afternoon_tea.fetch import USER_AGENT, CHALLENGE
 
 ALLOW_LABEL = re.compile(
     r'もっと見る|もっと表示|さらに表示|さらに見る|すべて表示|すべて見る|全て表示|全て見る|続きを読む|続きを見る|'
@@ -208,7 +208,7 @@ def render(url, list_url, playwright=None, deadline=None):
     try:
         if any(marker in text.lower() for marker in CHALLENGE):
             raise RuntimeError('access_challenge')
-        from afternoon_tea.publication.site import scan
+        from afternoon_tea.check import scan
         scan(text.encode())
     except ValueError as error:
         failure = RuntimeError('unusable_page:' + str(error))

@@ -1,20 +1,23 @@
-"""Trusted-main PR intake, technical validation and site delivery without reservation traffic."""
+"""Trusted-main validation, weekly PR intake and publication checks."""
 import argparse
 import base64
-from collections import Counter
 import datetime as dt
 import hashlib
-from html.parser import HTMLParser
 import json
 import os
-from pathlib import Path
 import re
 import time
 import urllib.request
+from html.parser import HTMLParser
+from pathlib import Path
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
-from afternoon_tea.collection.transport import NoRedirect
-from afternoon_tea.common import ROOT
+from afternoon_tea.fetch import NoRedirect
+from afternoon_tea.fetch import ROOT
+from afternoon_tea.fetch import require
+from afternoon_tea.fetch import load_json
+from afternoon_tea.fetch import dumps
+
 REPO = 'tsubasa0518/afternoon-tea'
 SITE = 'https://tsubasa0518.github.io/afternoon-tea/'
 BRANCH_PREFIX = 'claude/weekly-afternoon-tea-'
@@ -22,15 +25,11 @@ ALLOWED = {'site/index.html', 'site/research.json'}
 MAX_HTML = 5000000
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
-def require(ok, reason):
-    if not ok:
-        raise ValueError(reason)
-
 def sha(value):
     return hashlib.sha256(value).hexdigest()
 
 def json_bytes(value):
-    return (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode()
+    return dumps(value).encode()
 
 def scan(value):
     text = value.decode('utf-8')
@@ -143,14 +142,11 @@ def validate_json(value):
     require(isinstance(data.get('shops'), list), 'json_records_required')
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None, 'timestamp_timezone_required')
-    from afternoon_tea.processing.themes import validate_country
+    from afternoon_tea.build import validate_country
     for shop in data['shops']:
         require(isinstance(shop, dict) and isinstance(shop.get('plans', []), list), 'invalid_shop')
         for plan in shop.get('plans', []):
             require(isinstance(plan, dict), 'invalid_plan')
-            # Read the legacy format using its saved actual venue timestamp.
-            if 'checked_at' not in plan and shop.get('checked_at') is not None:
-                plan['checked_at'] = shop['checked_at']
             validate_country(plan)
     return data
 
@@ -158,7 +154,7 @@ def validate_site(files):
     require(set(files) == ALLOWED, 'site_requires_exactly_two_files')
     report = validate_html_bytes(files['site/index.html'])
     research = validate_json(files['site/research.json'])
-    from afternoon_tea.processing.weekly import validate_freshness
+    from afternoon_tea.build import validate_freshness
     validate_freshness(research)
     return {**report, 'generated_at': research.get('generated_at'),
             'shops': len(research['shops']),
@@ -226,10 +222,6 @@ class API:
         require(not tree.get('truncated'), 'truncated_tree')
         return {x['path']: x for x in tree['tree']}
 
-    def read(self, commit, path):
-        f = self.files(commit)[path]
-        require(f['mode'] == '100644' and f['type'] == 'blob', 'non_regular_file')
-        return self.blob(f['sha'])
 
 def dispatch_publication(api, number, head_sha, merge_sha):
     (
@@ -380,3 +372,38 @@ def main(command):
     except Exception:
         write_summary(a.command + '失敗。実行ログのエラーを確認してください。', {})
         raise
+
+
+def protected_files():
+    manifest = load_json(ROOT / 'data/protected_hashes.json')
+    for (name, expected) in manifest.items():
+        require(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected, '保護対象ファイルが変更されています: ' + name)
+
+
+def resume(api, event, author):
+    run = event['workflow_run']
+    if run.get('event') != 'pull_request':
+        return []
+    # Discover open PRs via the repository API; do not trust workflow artifacts.
+    rows = api.get('/pulls?state=open&per_page=100')
+    reports = []
+    for pr in rows:
+        if (
+            pr['head']['sha'] == run['head_sha']
+            and pr['head']['repo']
+            and pr['head']['repo']['full_name'] == REPO
+            and pr['base']['ref'] == 'main'
+            and pr['head']['ref'].startswith(BRANCH_PREFIX)
+            and pr['title'].startswith('[weekly-site]')
+            and pr['user']['login'] == author
+            and not pr['draft']
+        ):
+            report = intake(api, pr['number'], author)
+            reports.append(report)
+            write_summary(report.get('merge', '自動マージ・公開要求完了'), report)
+            if report.get('merge') == 'ci_failed':
+                raise ValueError('latest_head_technical_ci_failed')
+    return reports
+
+def resume_main():
+    print(resume(API(), json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()), os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0]))

@@ -1,6 +1,6 @@
 # 週次手順と数値の正本
 
-既存Claude Routineは毎週月曜07:17 Asia/Tokyoに実行する。安全規則は `AGENTS.md`、ブラウザの判定は `afternoon_tea/collection/browser.py` に従う。毎回最新mainから本書と `CLAUDE.md` を読む。
+既存Claude Routineは毎週月曜07:17 Asia/Tokyoに実行する。安全規則は `AGENTS.md`、ブラウザの判定は `afternoon_tea/browser.py` に従う。毎回最新mainから本書と `CLAUDE.md` を読む。
 
 ## 開始
 
@@ -39,7 +39,7 @@ GETでプランが見えない場合だけ、同じURLを任意のヘッドレ�
 | 店舗ごと | 最初の取得から60秒 |
 | 要求間隔 | 3秒以上。robotsの指定が長ければ優先 |
 
-コードの定義元は現在 `collection/reader.py`。最終構成では `fetch.py` に統合する。robotsのルール・拒否・不明は週の状態に保存し、サイトごとに週一度だけ取得する。新週のbeginで切り替える。
+コードの定義元は `afternoon_tea/fetch.py`。robotsのルール・拒否・不明は週の状態に保存し、サイトごとに週一度だけ取得する。新週のbeginで切り替える。
 
 トークンが足りなくなりそうなら調査をやめ、buildへ進む。
 

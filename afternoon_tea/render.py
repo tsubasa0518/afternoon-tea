@@ -1,20 +1,26 @@
-"""Offline renderer using the protected 2026-11-06 design, never its store data."""
+"""Offline fixed-design HTML from saved display values."""
 from collections import Counter
 import datetime as dt
 import html
 import json
 import os
 import re
+import tempfile
 from pathlib import Path
 from string import Template
-import tempfile
 from urllib.parse import urlsplit
-from afternoon_tea.processing.dates import JST
-from afternoon_tea.publication.site import ROOT, json_bytes, validate_json, validate_html_bytes, resource
-from afternoon_tea.processing.period_review import review, day
-from afternoon_tea.processing.classification import regular_price
-from afternoon_tea.processing.themes import display as country_display
-TEMPLATES = Path(__file__).resolve().parents[1] / 'templates'
+from afternoon_tea.build import JST
+from afternoon_tea.build import review
+from afternoon_tea.build import day
+from afternoon_tea.build import regular_price
+from afternoon_tea.build import display as country_display
+from afternoon_tea.check import ROOT
+from afternoon_tea.check import json_bytes
+from afternoon_tea.check import validate_json
+from afternoon_tea.check import validate_html_bytes
+from afternoon_tea.check import resource
+
+TEMPLATES = Path(__file__).resolve().parent / 'templates'
 SITES = [('ik', '一休.com'), ('tb', '食べログ'), ('tc', 'TableCheck')]
 SWEETS = [('ichigo',
      'いちご'),
@@ -95,30 +101,12 @@ def category(shop):
     value = shop.get('category')
     return value if value in CLASSES else 'unknown'
 
-def condition(plan, shop, keys):
-    value = None
-    for source in (plan, shop):
-        found = next((k for k in keys if k in source), None)
-        if found is not None:
-            value = source[found]
-            break
-    if value is True or value == 'on':
-        return 'on'
-    if value is False or value == 'no':
-        return 'no'
-    return 'off'
+def condition(plan, key):
+    value = plan.get(key)
+    return 'on' if value is True else 'no' if value is False else 'off'
 
-def amount(plan):
-    return regular_price(plan)
-
-def plan_tags(plan, shop=None):
-    # Only event metadata may fall back to a shop; sweets always belong to the plan.
-    shop = shop or {}
-    events = tags(plan.get('season', shop.get('season')))
-    if 'season' not in plan:
-        events += [t for t in tags(shop.get('sweets')) if t in EVENTS]
-    events += [t for t in tags(plan.get('sweets')) if t in EVENTS]
-    return sorted(set([t for t in tags(plan.get('sweets')) if t not in EVENTS] + [t for t in events if t in EVENTS]))
+def plan_tags(plan):
+    return sorted(set(tags(plan.get('sweets')) + [t for t in tags(plan.get('season')) if t in EVENTS]))
 
 def info_link(url, label=None):
     resource(url)
@@ -126,7 +114,7 @@ def info_link(url, label=None):
     label = label or dict(SITES).get(site, '公式・情報ページ')
     return f'''<a class="lk lk-{site or 'official'}" href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(label)}{SVG_EXT}</a>'''
 
-def plan_html(plan, shop, index, total, generated):
+def plan_html(plan, index, total, generated):
     (first, last) = (day(plan.get('start')), day(plan.get('end')))
     date = lambda x: f'{x.year}/{x.month}/{x.day}' if x else '未確認'
     dates = date(first) + '〜' + date(last) if first and last else '提供期間 未確認' + ('（' + date(first) + '〜' + date(last) + '）' if first or last else '')
@@ -135,10 +123,10 @@ def plan_html(plan, shop, index, total, generated):
         badge = '<span class="pst soon">これから</span>'
     elif generated and first and last and (first <= generated <= last):
         badge = '<span class="pst now">提供期間内</span>'
-    price = amount(plan)
-    wd = condition(plan, shop, ('weekday_available', 'weekday', 'wd'))
-    we = condition(plan, shop, ('weekend_available', 'weekend', 'we'))
-    sw = plan_tags(plan, shop)
+    price = regular_price(plan)
+    wd = condition(plan, 'weekday_available')
+    we = condition(plan, 'weekend_available')
+    sw = plan_tags(plan)
     specified = 1
     attrs = (
         f'data-tags-specified="'
@@ -167,8 +155,8 @@ def plan_html(plan, shop, index, total, generated):
         f'</p>'
         f'{badge}'
         f'</div>'
-    ), f"""<p class="theme">{SVG_TEA}<span>{esc(plan.get('plan_name', plan.get('theme')))}</span></p>"""]
-    country = country_display(plan, shop)
+    ), f"""<p class="theme">{SVG_TEA}<span>{esc(plan.get('plan_name'))}</span></p>"""]
+    country = country_display(plan)
     if country:
         out.append('<p class="country-theme" aria-label="テーマの国・地域">' + esc(country) + '</p>')
     if sw:
@@ -176,20 +164,17 @@ def plan_html(plan, shop, index, total, generated):
     if price is None:
         out.append('<div class="price"><span class="pdet">料金 未確認</span></div>')
     else:
-        suffix = '〜' if 'price_min' in plan and 'price_yen' not in plan else ''
-        note = plan.get('price_note', plan.get('price_text')) or '税・サービス料条件 未確認'
-        out.append(f'<div class="price"><span class="pbig">{price:,}<small>円{suffix}</small></span><span class="pdet">{esc(note)}</span></div>')
+        note = plan.get('price_note') or '税・サービス料条件 未確認'
+        out.append(f'<div class="price"><span class="pbig">{price:,}<small>円</small></span><span class="pdet">{esc(note)}</span></div>')
     chips = []
     for (state, label) in ((wd, '平日'), (we, '土日祝')):
         text = label if state == 'on' else label + ' ✕' if state == 'no' else label + ' 未確認'
         chips.append(f'<span class="chip {state}">{text}</span>')
-    time = plan.get('time_note', plan.get('time_text')) or '提供時間・利用時間 未確認'
+    time = plan.get('time_note') or '提供時間・利用時間 未確認'
     out.append('<div class="when"><div class="chips" aria-label="提供日">' + ''.join(chips) + '</div>' + f'<p class="time">{SVG_CLK}<span>{esc(time)}</span></p></div>')
-    if plan.get('note'):
-        out.append('<p class="dtxt">' + esc(plan['note']) + '</p>')
     if plan.get('menu'):
         out.append('<p class="dtxt">メニュー：' + esc(plan['menu']) + '</p>')
-    url = plan.get('booking_url_info_only') or plan.get('source_url')
+    url = plan.get('source_url')
     if url:
         out.append('<div class="links">' + info_link(url, 'プランの予約・情報ページ') + '</div>')
     out.append('</div>')
@@ -198,7 +183,7 @@ def plan_html(plan, shop, index, total, generated):
 def nearest_stations(shop):
     """Extract explicit station names from saved shop-specific access text."""
     names = []
-    for value in (shop.get('station'), shop.get('exit'), shop.get('access')):
+    for value in (shop.get('station'),):
         if not isinstance(value, str):
             continue
         for match in re.finditer('[一-龥々ぁ-んァ-ヶーA-Za-z0-9]+駅', value):
@@ -210,17 +195,14 @@ def nearest_stations(shop):
 def card(shop, plans, generated):
     cat = category(shop)
     (label, cls) = CLASSES[cat]
-    shop_sw = [t for t in tags(shop.get('sweets')) + tags(shop.get('season')) if t in EVENTS]
-    sw = sorted(set(shop_sw + [t for p in plans for t in plan_tags(p, shop)]))
-    wd = any((condition(p, shop, ('weekday_available', 'weekday', 'wd')) == 'on' for p in plans))
-    we = any((condition(p, shop, ('weekend_available', 'weekend', 'we')) == 'on' for p in plans))
+    sw = sorted({t for p in plans for t in plan_tags(p)})
+    wd = any((condition(p, 'weekday_available') == 'on' for p in plans))
+    we = any((condition(p, 'weekend_available') == 'on' for p in plans))
     out = [(
         f'<article class="card '
         f'{cls}'
         f'" data-cat="'
         f'{cat}'
-        f'" data-shop-sw="'
-        f"{esc(' '.join(shop_sw))}"
         f'" data-sw="'
         f"{esc(' '.join(sw))}"
         f'" data-wd="'
@@ -236,7 +218,7 @@ def card(shop, plans, generated):
     if shop.get('address'):
         out.append('<p class="rnote">' + esc(shop['address']) + '</p>')
     out.append('<div class="meet"><p><span class="mk">最寄駅</span>' + esc(nearest_stations(shop)) + '</p></div>')
-    url = shop.get('booking_url_info_only') or shop.get('source_url') or shop.get('list_url')
+    url = shop.get('list_url')
     if url:
         out.append('<div class="links" aria-label="予約・情報サイト">' + info_link(url) + '</div>')
     else:
@@ -245,9 +227,7 @@ def card(shop, plans, generated):
         out.append('<p class="swt" aria-label="店舗の確認済みタグ">' + ''.join(('<span>' + esc(LABELS[k]) + '</span>' for k in sw)) + '</p>')
     else:
         out.append('<p class="rnote">スイーツ・季節分類 未確認</p>')
-    if shop.get('time_note'):
-        out.append('<p class="rnote">店舗の提供時間補足：' + esc(shop['time_note']) + '</p>')
-    out.append('<div class="plans">' + ''.join((plan_html(p, shop, i, len(plans), generated) for (i, p) in enumerate(plans))) + '</div></article>')
+    out.append('<div class="plans">' + ''.join((plan_html(p, i, len(plans), generated) for (i, p) in enumerate(plans))) + '</div></article>')
     return (''.join(out), sw)
 
 def render(research):
@@ -261,7 +241,7 @@ def render(research):
     outside = {(e['shop_index'], e['plan_index']) for e in check['outside_plans']}
     stamp = research.get('generated_at')
     generated = dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
-    master = json.loads((ROOT / 'data/store_master.json').read_text())
+    master = json.loads((ROOT / 'data/areas.json').read_text())
     groups = {a['no']: [] for a in master['areas']}
     tot = Counter()
     swc = Counter()
@@ -277,7 +257,7 @@ def render(research):
         target.append((category(shop), markup))
         tot[category(shop)] += 1
         for plan in plans:
-            swc.update((t for t in plan_tags(plan, shop) if t not in EVENTS))
+            swc.update((t for t in plan_tags(plan) if t not in EVENTS))
     per = research['period']
     (start, end) = (day(per['start']), day(per['end']))
     stats = ''.join((f'<div class="stat s-{cat}"><b>{tot[cat]}</b><span>{label}</span></div>' for (cat, label, cls) in CATS))
@@ -364,9 +344,7 @@ def render(research):
         areas.append(area_html(area['no'], area['name'], groups[area['no']], area['stations']))
     template = Template((TEMPLATES / 'site.html').read_text())
     result = template.substitute(css=(TEMPLATES / 'site.css').read_text(),
-         extra_css=(TEMPLATES / 'site_extra.css').read_text(),
          js=(TEMPLATES / 'site.js').read_text(),
-         extra_js=(TEMPLATES / 'site_extra.js').read_text(),
          hero=hero,
          filters=filters,
          empty=empty,
