@@ -64,6 +64,9 @@ class Reader:
                     directives = {'user-agent', 'allow', 'disallow', 'crawl-delay', 'request-rate'}
                     lines = []
                     for raw_line in body.decode('utf-8', errors='replace').splitlines():
+                        # A comment is ignored by RobotFileParser; it is not a group boundary.
+                        if raw_line.lstrip().startswith('#'):
+                            continue
                         line = raw_line.split('#', 1)[0].strip()
                         if not line or line.partition(':')[0].strip().lower() in directives:
                             lines.append(line)

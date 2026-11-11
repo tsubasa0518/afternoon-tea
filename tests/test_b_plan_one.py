@@ -70,6 +70,18 @@ class RobotsCacheTests(Week):
         collect.fetch(2,reader_factory=factory)
         self.assertEqual(self.opened,['https://restaurant.ikyu.com/robots.txt',self.url(2)])
 
+    def test_comment_only_lines_do_not_split_the_user_agent_group(self):
+        for comment in ('# private pages', '   # private pages', '\t# private pages'):
+            collect.begin()
+            rules = 'User-agent: *\n'+comment+'\nDisallow: '+urlsplit(self.url(1)).path+'\n'
+            factory = self.open_pages(rules)
+            with self.assertRaisesRegex(RuntimeError, 'robots'):
+                collect.fetch(1, reader_factory=factory)
+            self.assertEqual(self.opened, ['https://restaurant.ikyu.com/robots.txt'])
+            collect.fetch(2, reader_factory=factory)
+            self.assertNotIn(self.url(1), self.opened)
+            self.assertEqual(self.opened.count('https://restaurant.ikyu.com/robots.txt'), 1)
+
     def test_rule_cache_restores_crawl_delay_and_drops_comments_and_sitemaps(self):
         rules='User-agent: *\nAllow: /\nCrawl-delay: 7\n# contact: not saved\nSitemap: https://example.test/sitemap.xml\n'
         factory=self.open_pages(rules)
