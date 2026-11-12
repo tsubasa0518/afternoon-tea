@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-12T22:22:33+09:00",
+  "generated_at": "2026-11-12T22:16:23+09:00",
   "period": {
     "start": "2026-11-12",
     "end": "2026-12-22"
@@ -2656,114 +2656,6 @@
       "genre": null
     },
     {
-      "address": "東京都千代田区紀尾井町4-1",
-      "station": "赤坂見附駅／永田町駅",
-      "source_site": "ホテルニューオータニ公式サイト",
-      "plans": [
-        {
-          "plan_name": "大観苑 アフタヌーンティーセット（土・日・祝日限定）",
-          "price_yen": 7700,
-          "price_note": "税込表記は本文で未確認／サービス料別の記載はSKYのみ確認",
-          "start": null,
-          "end": "2026-11-29",
-          "weekday_available": false,
-          "weekend_available": true,
-          "menu": null,
-          "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
-          "checked_at": "2026-11-08T11:31:54+09:00",
-          "cc": "cn",
-          "sweets": [],
-          "time_note": "14:00／14:30／15:00入店、2時間制"
-        }
-      ],
-      "category": "hotel",
-      "category_price_yen": 7700,
-      "name": "ホテルニューオータニ（東京） / 大観苑",
-      "hotel_name": null,
-      "area_no": 4,
-      "id": "x-1d1030a176",
-      "candidate_no": null,
-      "origin": "explore",
-      "genre": null
-    },
-    {
-      "address": "東京都港区六本木6-10-3",
-      "station": null,
-      "source_site": "グランド ハイアット 東京公式サイト",
-      "plans": [
-        {
-          "plan_name": "オータム アフタヌーンティー（平日）",
-          "price_yen": 5280,
-          "price_note": "税込・サービス料別。スパークリングワイン付きは平日7,260円",
-          "start": "2026-11-01",
-          "end": "2026-11-30",
-          "weekday_available": true,
-          "weekend_available": false,
-          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
-          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
-          "checked_at": "2026-11-08T11:31:55+09:00",
-          "cc": "it",
-          "sweets": [
-            "grape",
-            "imo",
-            "kaki",
-            "kuri"
-          ],
-          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
-        },
-        {
-          "plan_name": "オータム アフタヌーンティー（土日祝）",
-          "price_yen": 6600,
-          "price_note": "税込・サービス料別。スパークリングワイン付きは土日祝8,580円",
-          "start": "2026-11-01",
-          "end": "2026-11-30",
-          "weekday_available": false,
-          "weekend_available": true,
-          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
-          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
-          "checked_at": "2026-11-08T11:31:55+09:00",
-          "cc": "it",
-          "sweets": [
-            "grape",
-            "imo",
-            "kaki",
-            "kuri"
-          ],
-          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
-        },
-        {
-          "plan_name": "クリスマス アフタヌーンティー",
-          "price_yen": 6600,
-          "price_note": "税込・サービス料別。スパークリングワイン付きは8,580円",
-          "start": "2026-12-01",
-          "end": "2026-12-23",
-          "weekday_available": null,
-          "weekend_available": null,
-          "menu": "スイーツ:ストロベリー パンナコッタ/モンテビアンコ ジャポネーゼ/チョコレートロールケーキ ラズベリージュレ/ストロベリー パネトーネ/ティラミス。セイボリー:自家製サルシッチャとトマトのパニーニ/牛ホホ肉の煮込みとマッシュポテトのタルトレット/ホウレンソウ パンチェッタ リコッタチーズのフリッタータ/ブランダードコロッケ/リンゴとクルミ、ゴルゴンゾーラのブルスケッタ。パンドーロ(ドライフルーツ・プレーン)。コーヒー・紅茶・カフェラテ等",
-          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
-          "checked_at": "2026-11-08T11:31:55+09:00",
-          "cc": "it",
-          "sweets": [
-            "choco",
-            "ichigo"
-          ],
-          "season": [
-            "xmas"
-          ],
-          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
-        }
-      ],
-      "category": "hotel",
-      "category_price_yen": 5280,
-      "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
-      "hotel_name": null,
-      "area_no": 5,
-      "id": "x-aab5ba08e1",
-      "candidate_no": null,
-      "origin": "explore",
-      "genre": null
-    },
-    {
       "address": null,
       "station": null,
       "source_site": "品川プリンスホテル公式サイト",
@@ -2793,10 +2685,127 @@
       "candidate_no": null,
       "origin": "explore",
       "genre": null
+    },
+    {
+      "id": "c29",
+      "candidate_no": 29,
+      "origin": "list",
+      "name": "Lounge Momiji",
+      "hotel_name": "グランドプリンスホテル新高輪",
+      "area_no": 10,
+      "genre": "ラウンジ",
+      "address": "東京都港区高輪3-13-1",
+      "station": null,
+      "source_site": "公式サイト",
+      "info_url": "https://www.princehotels.co.jp/shintakanawa/plan/momiji/autumn-afternoon-tea-2026/",
+      "plans": [
+        {
+          "plan_name": "Autumn Harvest Afternoon Tea",
+          "source_url": "https://www.princehotels.co.jp/shintakanawa/plan/momiji/autumn-afternoon-tea-2026/",
+          "checked_at": "2026-11-12T22:19:34+09:00",
+          "price_yen": 6500,
+          "discount_price_yen": null,
+          "start": "2026-09-17",
+          "end": "2026-11-25",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "消費税込・サービス料13%別",
+          "time_note": "平日12:00〜最終入店18:00（3時間制）／土休日13:00〜最終入店18:00（2時間制）",
+          "menu": "シャインマスカットとぶどうのアミューズ、シグネチャー「ラザーニア」、かぼちゃのブレットカップや栗のスコーンなど、栗やかぼちゃ、さつまいもが彩るスイーツとセイボリー",
+          "cc": null,
+          "sweets": [
+            "grape",
+            "imo",
+            "kuri",
+            "scone"
+          ],
+          "season": [
+            "season"
+          ]
+        },
+        {
+          "plan_name": "Autumn Harvest Afternoon Tea（アニバーサリープレート付きプラン）",
+          "source_url": "https://www.princehotels.co.jp/shintakanawa/plan/momiji/autumn-afternoon-tea-2026/",
+          "checked_at": "2026-11-12T22:19:34+09:00",
+          "price_yen": 7200,
+          "discount_price_yen": null,
+          "start": "2026-09-17",
+          "end": "2026-11-25",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "消費税込・サービス料13%別・各種割引対象外",
+          "time_note": "平日12:00〜最終入店18:00（3時間制）／土休日13:00〜最終入店18:00（2時間制）",
+          "menu": "メッセージを添えたデザートプレート付き",
+          "cc": null,
+          "sweets": [],
+          "season": [
+            "season"
+          ]
+        },
+        {
+          "plan_name": "Autumn Harvest Afternoon Tea（フライドポテト付きプラン）",
+          "source_url": "https://www.princehotels.co.jp/shintakanawa/plan/momiji/autumn-afternoon-tea-2026/",
+          "checked_at": "2026-11-12T22:19:34+09:00",
+          "price_yen": 7200,
+          "discount_price_yen": null,
+          "start": "2026-09-17",
+          "end": "2026-11-25",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "消費税込・サービス料13%別・各種割引対象外",
+          "time_note": "平日・土休日15:00〜最終入店18:00（平日3時間制・土休日2時間制）",
+          "menu": "フライドポテト付き（ケイジャン風味へのアレンジ可）",
+          "cc": null,
+          "sweets": [],
+          "season": [
+            "season"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6500
+    },
+    {
+      "id": "c8",
+      "candidate_no": 8,
+      "origin": "list",
+      "name": "ザ・ロビー",
+      "hotel_name": "ザ・ペニンシュラ東京",
+      "area_no": 2,
+      "genre": "コンチネンタルダイニング",
+      "address": null,
+      "station": null,
+      "source_site": "公式サイト",
+      "info_url": "https://www.peninsula.com/en/tokyo/hotel-fine-dining/the-lobby-afternoon-tea",
+      "plans": [
+        {
+          "plan_name": "Festive Afternoon Tea",
+          "source_url": "https://www.peninsula.com/en/tokyo/special-offers/festive/afternoon-tea",
+          "checked_at": "2026-11-12T22:22:02+09:00",
+          "price_yen": 10000,
+          "discount_price_yen": null,
+          "start": "2026-11-06",
+          "end": "2026-12-27",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "2026年11月6日〜30日の料金（消費税・サービス料18%込）。12月1〜4・7〜11・14〜18日は13,000円（ウェルカムドリンク付き）、12月5・6・12・13・19〜27日は15,000円（シャンパン1杯付き）",
+          "time_note": "11:30〜20:30（LO 18:30）",
+          "menu": "Abalone Confit、Kadaif-Wrapped Shrimp Mousse、Truffle and Porcini Quiche、Snowman Cheesecake、Pistachio Pound Cake、Matcha Opera Cake（柚子クリーム）、Mont Blanc Tart、Ornament cake、シュトーレン、スコーン（クロテッドクリーム・ジャム）。ペニンシュラのオリジナルオーナメント付き",
+          "cc": null,
+          "sweets": [
+            "citrus",
+            "kuri",
+            "scone",
+            "wa"
+          ]
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 10000
     }
   ],
   "progress": {
-    "updated_at": "2026-11-12T22:22:33+09:00",
+    "updated_at": "2026-11-12T22:22:19+09:00",
     "entries": {
       "c64": {
         "key": "c64",
@@ -4064,13 +4073,15 @@
         "name": "ホテルニューオータニ（東京） / 大観苑",
         "hotel_name": null,
         "area_no": 4,
-        "genre": null,
-        "status": "plan_confirmed",
-        "attempted_at": "2026-11-08T11:31:54+09:00",
+        "genre": "中国料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-12T22:20:47+09:00",
         "confirmed_at": "2026-11-08T11:31:54+09:00",
-        "reason": null,
-        "note": "Git履歴の公開データから確認日時を変えずに復旧",
-        "urls": []
+        "reason": "main_genre_chinese",
+        "note": "ホテルニューオータニ公式プレスリリースで中国料理「大観苑」と明記",
+        "urls": [
+          "https://www.newotani.co.jp/tokyo/press-release/2026/0408-01/"
+        ]
       },
       "x-aab5ba08e1": {
         "key": "x-aab5ba08e1",
@@ -4078,13 +4089,15 @@
         "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
         "hotel_name": null,
         "area_no": 5,
-        "genre": null,
-        "status": "plan_confirmed",
-        "attempted_at": "2026-11-08T11:31:55+09:00",
+        "genre": "イタリアン カフェ",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-12T22:21:07+09:00",
         "confirmed_at": "2026-11-08T11:31:55+09:00",
-        "reason": null,
-        "note": "Git履歴の公開データから確認日時を変えずに復旧",
-        "urls": []
+        "reason": "main_genre_italian",
+        "note": "グランド ハイアット 東京公式ページで「イタリアン カフェ『フィオレンティーナ』」と明記",
+        "urls": [
+          "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea"
+        ]
       },
       "x-14d179e3c8": {
         "key": "x-14d179e3c8",
@@ -4141,6 +4154,58 @@
         "reason": null,
         "note": "店名に「中国料理」と明記",
         "urls": []
+      },
+      "c29": {
+        "key": "c29",
+        "origin": "list",
+        "name": "Lounge Momiji",
+        "hotel_name": "グランドプリンスホテル新高輪",
+        "area_no": 10,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-12T22:20:05+09:00",
+        "confirmed_at": "2026-11-12T22:19:34+09:00",
+        "reason": null,
+        "note": "公式プラン詳細ページで料金・期間・入店時間を確認",
+        "urls": [
+          "https://www.princehotels.co.jp/shintakanawa/plan/momiji/autumn-afternoon-tea-2026/",
+          "https://www.princehotels.co.jp/press/260807_06/"
+        ]
+      },
+      "c1": {
+        "key": "c1",
+        "origin": "list",
+        "name": "ザ・グラン ラウンジ",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ・ラウンジ",
+        "status": "failed",
+        "attempted_at": "2026-11-12T22:20:13+09:00",
+        "confirmed_at": null,
+        "reason": "access_refused_or_booking_step",
+        "note": "OZmallはHTTP 403、ヒトサラはrobots.txtが403、TableCheckはプラン表示に予約カート初期化(POST)が必要で拒否。公式サイトは検索で未発見",
+        "urls": [
+          "https://www.ozmall.co.jp/restaurant/3288/afternoontea/",
+          "https://hitosara.com/0004030506/",
+          "https://www.tablecheck.com/the-grand-lounge/reserve/experiences"
+        ]
+      },
+      "c8": {
+        "key": "c8",
+        "origin": "list",
+        "name": "ザ・ロビー",
+        "hotel_name": "ザ・ペニンシュラ東京",
+        "area_no": 2,
+        "genre": "コンチネンタルダイニング",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-12T22:22:19+09:00",
+        "confirmed_at": "2026-11-12T22:22:02+09:00",
+        "reason": null,
+        "note": "公式サイトのプランページで期間・時間・料金を確認",
+        "urls": [
+          "https://www.peninsula.com/en/tokyo/special-offers/festive/afternoon-tea",
+          "https://www.peninsula.com/en/tokyo/hotel-fine-dining/the-lobby-afternoon-tea"
+        ]
       }
     }
   },
