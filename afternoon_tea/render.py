@@ -14,6 +14,9 @@ from afternoon_tea.build import review
 from afternoon_tea.build import day
 from afternoon_tea.build import regular_price
 from afternoon_tea.build import display as country_display
+from afternoon_tea.build import displayable
+from afternoon_tea.build import timestamp
+from afternoon_tea.config import settings
 from afternoon_tea.check import ROOT
 from afternoon_tea.check import json_bytes
 from afternoon_tea.check import validate_json
@@ -119,7 +122,11 @@ def plan_html(plan, index, total, generated):
     date = lambda x: f'{x.year}/{x.month}/{x.day}' if x else '未確認'
     dates = date(first) + '〜' + date(last) if first and last else '提供期間 未確認' + ('（' + date(first) + '〜' + date(last) + '）' if first or last else '')
     badge = ''
-    if generated and first and (first > generated):
+    checked = timestamp(plan['checked_at']).astimezone(JST).date()
+    past = generated is not None and (generated - checked).days >= settings()['stale_after_days']
+    if past:
+        badge = '<span class="pst past">過去の確認情報</span>'
+    elif generated and first and (first > generated):
         badge = '<span class="pst soon">これから</span>'
     elif generated and first and last and (first <= generated <= last):
         badge = '<span class="pst now">提供期間内</span>'
@@ -174,9 +181,11 @@ def plan_html(plan, index, total, generated):
     out.append('<div class="when"><div class="chips" aria-label="提供日">' + ''.join(chips) + '</div>' + f'<p class="time">{SVG_CLK}<span>{esc(time)}</span></p></div>')
     if plan.get('menu'):
         out.append('<p class="dtxt">メニュー：' + esc(plan['menu']) + '</p>')
+    note = f'{date(checked)}に確認' + ('した過去の情報です。現在の提供状況は未確認です。' if past else '')
+    out.append(f'<p class="checked{" past" if past else ""}">{esc(note)}</p>')
     url = plan.get('source_url')
     if url:
-        out.append('<div class="links">' + info_link(url, 'プランの予約・情報ページ') + '</div>')
+        out.append('<div class="links">' + info_link(url, 'プランの情報ページ') + '</div>')
     out.append('</div>')
     return ''.join(out)
 
@@ -218,11 +227,9 @@ def card(shop, plans, generated):
     if shop.get('address'):
         out.append('<p class="rnote">' + esc(shop['address']) + '</p>')
     out.append('<div class="meet"><p><span class="mk">最寄駅</span>' + esc(nearest_stations(shop)) + '</p></div>')
-    url = shop.get('list_url')
+    url = shop.get('info_url')
     if url:
-        out.append('<div class="links" aria-label="予約・情報サイト">' + info_link(url) + '</div>')
-    else:
-        out.append('<p class="rnote">予約情報リンク 未確認</p>')
+        out.append('<div class="links" aria-label="店舗の情報ページ">' + info_link(url) + '</div>')
     if sw:
         out.append('<p class="swt" aria-label="店舗の確認済みタグ">' + ''.join(('<span>' + esc(LABELS[k]) + '</span>' for k in sw)) + '</p>')
     else:
@@ -238,19 +245,13 @@ def render(research):
     invalid = [e for e in check['errors'] if e['reason'] != 'outside_research_period']
     if invalid:
         raise ValueError('invalid date input: ' + json.dumps(invalid))
-    outside = {(e['shop_index'], e['plan_index']) for e in check['outside_plans']}
     stamp = research.get('generated_at')
     generated = dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
     master = json.loads((ROOT / 'data/areas.json').read_text())
     groups = {a['no']: [] for a in master['areas']}
     tot = Counter()
     swc = Counter()
-    for (si, shop) in enumerate(research['shops']):
-        if type(shop.get('area_no')) is not int or not 1 <= shop['area_no'] <= 14:
-            continue
-        plans = [p for (pi, p) in enumerate(shop.get('plans', [])) if (si, pi) not in outside]
-        if not plans:
-            continue
+    for (shop, plans) in displayable(research):
         shop = {**shop, 'plans': plans}
         (markup, sw) = card(shop, plans, generated)
         target = groups[shop['area_no']]
@@ -275,7 +276,9 @@ def render(research):
         f'{end.month}'
         f'月'
         f'{end.day}'
-        f'日<small>（40日間）</small></p><p class="lead legendline"><span class="lg"><span'
+        f'日<small>（'
+        f'{(end - start).days}'
+        f'日間）</small></p><p class="lead">デートの予定づくりに使える東京のアフタヌーンティーを、公開ページで確認できた内容だけ掲載しています。各プランに確認日を記載しています。予約前に各店舗の公式ページで最新情報をご確認ください。</p><p class="lead legendline"><span class="lg"><span'
         f' class="chip on">平日</span> 提供あり</span><span class="lg"><span class="chip no'
         f'">土日祝 ✕</span> そのプランでは提供なし</span></p></div><div class="stats">'
         f'{stats}'
@@ -326,7 +329,7 @@ def render(research):
     count = sum(tot.values())
     empty = '<p class="none" id="no-results" hidden>条件に合う掲載情報はありません。絞り込みを変更してください。</p>'
     if not count:
-        empty += '<p class="none">今週は確認できた情報がありません</p>'
+        empty += '<p class="none">確認できた情報はありません</p>'
     areas = []
 
     def area_html(no, name, entries, stations=None):
@@ -337,7 +340,7 @@ def render(research):
             cards = [markup for (cat, markup) in entries if cat == key]
             if key == 'unknown' and (not cards):
                 continue
-            body = '<div class="grid">' + ''.join(cards) + '</div>' if cards else '<p class="none">今週は確認できた情報がありません</p>'
+            body = '<div class="grid">' + ''.join(cards) + '</div>' if cards else '<p class="none">確認できた情報はありません</p>'
             parts.append(f'<div class="cat {cls}" data-cat="{key}"><h3><span class="tag">{label}</span><span class="cnt">{len(cards)}件</span></h3>{body}</div>')
         return ''.join(parts) + '</section>'
     for area in master['areas']:

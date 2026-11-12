@@ -18,7 +18,7 @@ jobs:
       startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') &&
       startsWith(github.event.pull_request.title, '[weekly-site]'))
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
         with:
@@ -26,5 +26,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Run offline tests
+      - name: Install the research browser for local-page tests
+        run: pip install -r requirements-browser.txt && python3 -m playwright install --with-deps chromium
+      - name: Run tests (mock and local pages only; no external site is contacted)
         run: python3 -m unittest discover -s tests -v

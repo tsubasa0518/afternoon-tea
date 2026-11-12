@@ -1,0 +1,18 @@
+{
+  "説明": "調査の上限と間隔。実行環境に合わせて変更できます。環境変数 AFTERNOON_TEA_<キー名の大文字>（例: AFTERNOON_TEA_TOTAL_SECONDS）でも一時的に上書きできます。上限に達したら、それまでの成果と再開位置を保存して掲載処理へ進みます。",
+  "total_seconds": 10800,
+  "max_navigations": 1500,
+  "shop_seconds": 1500,
+  "min_interval_seconds": 3,
+  "page_timeout_seconds": 30,
+  "max_page_bytes": 4000000,
+  "max_redirects": 5,
+  "browser_idle_seconds": 1800,
+  "excerpt_chars": 800,
+  "max_excerpt_chars": 12000,
+  "retry_after_days": 6,
+  "recheck_after_days": 14,
+  "stale_after_days": 14,
+  "recheck_per_run": 10,
+  "period_days": 40
+}

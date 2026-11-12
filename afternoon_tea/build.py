@@ -6,7 +6,7 @@ import unicodedata
 import copy
 import json
 from afternoon_tea.fetch import JST
-from afternoon_tea.fetch import ROOT
+from afternoon_tea.config import ROOT
 from afternoon_tea.fetch import load_json
 from afternoon_tea.fetch import atomic_json
 from functools import lru_cache
@@ -19,7 +19,12 @@ def period(start=None, now=None):
         start = now.astimezone(JST).date()
     elif isinstance(start, str):
         start = dt.date.fromisoformat(start)
-    return {'start': start.isoformat(), 'end': (start + dt.timedelta(days=40)).isoformat()}
+    return {'start': start.isoformat(), 'end': (start + dt.timedelta(days=period_days())).isoformat()}
+
+
+def period_days():
+    from afternoon_tea.config import settings
+    return int(settings()['period_days'])
 
 
 def day(value):
@@ -35,8 +40,8 @@ def review(data):
     try:
         window = data['period']
         (start, end) = (day(window['start']), day(window['end']))
-        if start is None or end is None or end != start + dt.timedelta(days=40):
-            raise ValueError('period.end must be 40 days after period.start')
+        if start is None or end is None or end != start + dt.timedelta(days=period_days()):
+            raise ValueError('period.end must be period_days after period.start')
         generated = data.get('generated_at')
         if generated is not None:
             stamp = dt.datetime.fromisoformat(generated)
@@ -228,11 +233,12 @@ def display(plan):
 
 
 # Only the documented record shape and generated display values are retained.
-SHOP_FIELDS = {'name', 'area_no', 'list_url', 'source_site', 'station', 'address', 'hotel_name',
-               'plans', 'category', 'category_price_yen'}
+SHOP_FIELDS = {'id', 'candidate_no', 'origin', 'name', 'hotel_name', 'area_no', 'genre', 'address', 'station',
+               'source_site', 'info_url', 'reference_urls', 'plans', 'category', 'category_price_yen'}
 PLAN_FIELDS = {'plan_name', 'price_yen', 'discount_price_yen', 'price_note', 'start', 'end',
                'weekday_available', 'weekend_available', 'time_note', 'menu', 'source_url',
                'checked_at', 'cc', 'sweets', 'season'}
+FUTURE_SKEW = dt.timedelta(minutes=10)
 
 def timestamp(value):
     if not isinstance(value, str):
@@ -242,66 +248,93 @@ def timestamp(value):
         raise ValueError('plan_checked_at_timezone_required')
     return stamp
 
-def fresh(value, now):
+def valid_plan(plan):
+    """A real plan: a name, the page it was read from and when it was read. No placeholders."""
     try:
-        return now - dt.timedelta(days=14) <= timestamp(value) <= now
-    except (ValueError, TypeError):
+        timestamp(plan.get('checked_at'))
+    except (TypeError, ValueError):
         return False
+    name, url = plan.get('plan_name'), plan.get('source_url')
+    return (isinstance(name, str) and bool(name.strip()) and isinstance(url, str)
+            and url.startswith(('https://', 'http://')) and not re.search(r'(?i)dummy|placeholder|ダミー|サンプル', name))
 
-def retain(current, previous=None, now=None, rows=None):
-    """Only completed reviewed plans enter current; previous dates never advance."""
-    now = now or dt.datetime.now(JST)
-    result = {key: copy.deepcopy(current[key]) for key in ('schema_version', 'generated_at', 'period') if key in current}
-    from afternoon_tea.fetch import candidates
+def ended(plan, window):
+    last = day(plan.get('end'))
+    return bool(last and last < day(window['start']))
+
+def displayable(data):
+    """Shops and plans shown on the site; also the count the publication guard requires to be > 0."""
+    from afternoon_tea.config import excluded_genre
+    window = data['period']
+    end = day(window['end'])
+    for shop in data.get('shops', []):
+        if not isinstance(shop, dict) or type(shop.get('area_no')) is not int or not 1 <= shop['area_no'] <= 14:
+            continue
+        if not isinstance(shop.get('name'), str) or not shop['name'].strip() or excluded_genre(shop.get('genre')):
+            continue
+        plans = []
+        for plan in shop.get('plans', []):
+            if not isinstance(plan, dict) or not valid_plan(plan) or ended(plan, window):
+                continue
+            first = day(plan.get('start'))
+            if first and first > end:
+                continue
+            plans.append(plan)
+        if plans:
+            yield shop, plans
+
+def normalize(data, now=None):
+    """Keep confirmed plans with their own checked_at; drop only what is broken, ended or excluded."""
+    from afternoon_tea.config import excluded_genre
     from afternoon_tea.check import scan, json_bytes, SensitiveDataError
-    excluded = copy.deepcopy(current.get('excluded_sensitive_plans', {'current': 0, 'previous': 0}))
+    from afternoon_tea.research import migrate
+    now = now or dt.datetime.now(JST)
+    data = migrate(copy.deepcopy(data))
+    result = {key: data[key] for key in ('schema_version', 'generated_at', 'period') if key in data}
+    progress = copy.deepcopy(data.get('progress') or {'updated_at': None, 'entries': {}})
+    excluded = copy.deepcopy(data.get('excluded_sensitive_plans', {'current': 0, 'previous': 0}))
     if (not isinstance(excluded, dict) or set(excluded) != {'current', 'previous'}
             or any(type(n) is not int or n < 0 for n in excluded.values())):
         raise ValueError('invalid_excluded_sensitive_plan_count')
-    # Re-scan the prior snapshot on rebuild without counting it twice.
-    excluded['previous'] = 0
-    allowed = {row['予約ページURL']: row for row in (candidates() if rows is None else rows)}
-    shops = {}
-    for origin, source in (('previous', previous or {'shops': []}), ('current', current)):
-        for original in source.get('shops', []):
-            list_url = original.get('list_url')
-            if list_url not in allowed:
+    # Excluded plans are removed here, so a rebuild cannot count them twice. begin resets the counts.
+    shops, seen = [], set()
+    for original in data.get('shops', []):
+        shop = {k: copy.deepcopy(v) for k, v in original.items() if k in SHOP_FIELDS}
+        key = shop.get('id')
+        if not isinstance(key, str) or key in seen:
+            raise ValueError('shop_id_missing_or_duplicated')
+        seen.add(key)
+        entry = progress['entries'].get(key)
+        if type(shop.get('area_no')) is not int or not 1 <= shop['area_no'] <= 14:
+            continue
+        if excluded_genre(shop.get('genre')):
+            if entry:
+                entry['status'] = 'excluded_genre'
+            continue
+        kept, had = [], bool(shop.get('plans'))
+        for original_plan in shop.get('plans', []):
+            plan = normalize_plan(original_plan)
+            try:
+                scan(json_bytes(plan))
+            except SensitiveDataError:
+                excluded['current'] += 1
                 continue
-            if type(original.get('area_no')) is not int or not 1 <= original['area_no'] <= 14:
+            stamp = timestamp(plan.get('checked_at'))
+            if stamp > now + FUTURE_SKEW:
+                raise ValueError('plan_checked_at_in_the_future')
+            if ended(plan, result['period']):
                 continue
-            shop = {k: copy.deepcopy(v) for k, v in original.items() if k in SHOP_FIELDS}
-            shop['area_no'] = int(allowed[list_url]['エリア番号'])
-            accepted = []
-            for original_plan in original.get('plans', []):
-                plan = normalize_plan(original_plan)
-                try:
-                    scan(json_bytes(plan))
-                except SensitiveDataError:
-                    excluded[origin] += 1
-                    continue
-                stamp = plan.get('checked_at')
-                if fresh(stamp, now):
-                    plan['checked_at'] = stamp
-                    accepted.append(plan)
-            if not accepted:
-                continue
-            key = list_url
-            old = shops.get(key, {'plans': []})
-            plans = {p.get('plan_name'): p for p in old['plans']}
-            plans.update({p.get('plan_name'): p for p in accepted})
-            shops[key] = {**shop, 'plans': list(plans.values())}
-    result['shops'] = list(shops.values())
+            kept.append(plan)
+        if not kept:
+            if had and entry and entry.get('status') == 'plan_confirmed':
+                entry['status'] = 'plans_ended'
+            continue
+        shop['plans'] = kept
+        shops.append(shop)
+    result['shops'] = shops
+    result['progress'] = progress
     result['excluded_sensitive_plans'] = excluded
     return result
-
-def validate_freshness(data, now=None):
-    now = now or dt.datetime.now(JST)
-    for shop in data.get('shops', []):
-        if type(shop.get('area_no')) is not int or not 1 <= shop['area_no'] <= 14:
-            raise ValueError('shop_area_outside_fourteen')
-        for plan in shop.get('plans', []):
-            if not fresh(plan.get('checked_at'), now):
-                raise ValueError('plan_stale_future_or_missing_checked_at')
 
 SEASONS = {'xmas': 'クリスマス|Xmas|Christmas',
      'valentine': 'バレンタイン|Valentine',
@@ -360,40 +393,33 @@ def enrich(research):
 
 
 def build(current, previous=None, now=None, rows=None):
-    data = retain(current, previous, now=now, rows=rows)
+    data = normalize(current, now=now)
     periods = review(data)
     errors = [e for e in periods['errors'] if e['reason'] != 'outside_research_period']
     if errors:
         raise ValueError('invalid_plan_period')
-    outside = {(e['shop_index'], e['plan_index']) for e in periods['outside_plans']}
-    shops = []
-    for si, shop in enumerate(data['shops']):
-        shop['plans'] = [p for pi, p in enumerate(shop['plans']) if (si, pi) not in outside]
-        if shop['plans']:
-            shops.append(shop)
-    data['shops'] = shops
     data = enrich(data)
     from afternoon_tea.check import validate_json, json_bytes
     validate_json(json_bytes(data))
-    validate_freshness(data, now=now)
     return data
 
 
 def main():
-    from afternoon_tea.check import validate_site, json_bytes
+    from afternoon_tea.check import validate_site, json_bytes, publishable
     from afternoon_tea.render import render
     from afternoon_tea.render import write_html
     target = ROOT / 'site/research.json'
     if target.is_symlink() or target.parent.is_symlink():
         raise ValueError('symlink data forbidden')
-    previous = ROOT / '.staging/weekly/previous.json'
-    data = build(load_json(target), load_json(previous) if previous.exists() else None)
+    data = build(load_json(target))
     html = render(data)
     report = validate_site({'site/research.json': json_bytes(data), 'site/index.html': html.encode()})
     # Prepare and validate both values before either tracked file is replaced.
     write_html(html)
     atomic_json(target, data)
-    print(json.dumps({'shops': report['shops'], 'plans': report['plans'],
+    counts = publishable(data, require_nonzero=False)
+    print(json.dumps({'shops': counts['shops'], 'plans': counts['plans'],
                       'excluded_sensitive_plans': sum(data['excluded_sensitive_plans'].values()),
-                      'confirmation_dates_changed': False}))
+                      'confirmation_dates_changed': False,
+                      'publication': 'allowed' if counts['plans'] else 'refused_zero_listing'}, ensure_ascii=False))
     return 0

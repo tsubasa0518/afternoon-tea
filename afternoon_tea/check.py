@@ -11,7 +11,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from afternoon_tea.fetch import NoRedirect
-from afternoon_tea.fetch import ROOT
+from afternoon_tea.config import ROOT
 from afternoon_tea.fetch import require
 from afternoon_tea.fetch import dumps
 
@@ -130,37 +130,60 @@ def validate_html_bytes(value):
          'network_or_session_script_forbidden')
     return {'bytes': len(value), 'sha256': sha(value), 'resources': parser.resources, 'technical_validation': 'passed'}
 
+class ZeroListing(ValueError):
+    """Not an error of the program: there is nothing confirmed to show, so the live site is kept."""
+
+
 def validate_json(value):
-    require(len(value) <= 2000000, 'json_too_large')
+    require(len(value) <= 3000000, 'json_too_large')
     scan(value)
     data = json.loads(value, parse_constant=lambda x: require(False, 'non_finite_json_number'))
     scan(json_bytes(data))
-    require(isinstance(data, dict) and data.get('schema_version') == 1, 'invalid_json_document')
+    require(isinstance(data, dict) and data.get('schema_version') == 2, 'invalid_json_document')
     require(isinstance(data.get('shops'), list), 'json_records_required')
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None, 'timestamp_timezone_required')
     from afternoon_tea.build import validate_country
+    ids = set()
     for shop in data['shops']:
         require(isinstance(shop, dict) and isinstance(shop.get('plans', []), list), 'invalid_shop')
+        if 'id' in shop:
+            require(isinstance(shop['id'], str) and shop['id'] not in ids, 'shop_id_invalid_or_duplicated')
+            ids.add(shop['id'])
+        require(isinstance(shop.get('name'), str) and shop['name'].strip(), 'shop_name_required')
         require(type(shop.get('area_no')) is int and 1 <= shop['area_no'] <= 14,
                 'shop_area_outside_fourteen')
         for plan in shop.get('plans', []):
             require(isinstance(plan, dict), 'invalid_plan')
             validate_country(plan)
+    progress = data.get('progress', {'entries': {}})
+    require(isinstance(progress, dict) and isinstance(progress.get('entries', {}), dict), 'invalid_progress')
+    for entry in progress.get('entries', {}).values():
+        require(isinstance(entry, dict) and len(json_bytes(entry)) < 4000, 'invalid_progress_entry')
     return data
+
+def publishable(research, require_nonzero=True):
+    """Count what the site would show. Zero shops or zero valid plans never replace the live site."""
+    from afternoon_tea.build import displayable
+    shown = list(displayable(research))
+    counts = {'shops': len(shown), 'plans': sum(len(plans) for _, plans in shown)}
+    if require_nonzero and (counts['shops'] == 0 or counts['plans'] == 0):
+        raise ZeroListing('zero_listing_publication_refused_previous_site_kept')
+    return counts
 
 def validate_site(files):
     require(set(files) == ALLOWED, 'site_requires_exactly_two_files')
     report = validate_html_bytes(files['site/index.html'])
     research = validate_json(files['site/research.json'])
-    # Freshness belongs to build, not to a re-publication of saved content.
+    # Age is not a publication condition; format and safety are.
     from afternoon_tea.build import timestamp
     for shop in research['shops']:
         for plan in shop.get('plans', []):
             timestamp(plan.get('checked_at'))
-    return {**report, 'generated_at': research.get('generated_at'),
-            'shops': len(research['shops']),
-            'plans': sum(len(s.get('plans', [])) for s in research['shops'])}
+    return {**report, 'generated_at': research.get('generated_at'), **publishable(research, require_nonzero=False)}
+
+def card_count(html_bytes):
+    return len(re.findall(rb'<article class="card ', html_bytes))
 
 def write_summary(stage, report):
     """Use existing Actions step summaries; do not add monitoring or merge conditions."""
@@ -171,12 +194,8 @@ def write_summary(stage, report):
     if report:
         rows += [('調査データ生成日時',
              report.get('generated_at') or '未記録'),
-             ('掲載店舗数',
-             report.get('shops',
-             0)),
-             ('登録プラン数',
-             report.get('plans',
-             0))]
+             ('掲載店舗数', report.get('shops', 0)),
+             ('掲載プラン数', report.get('plans', 0))]
 
 
     def cell(value):
@@ -255,6 +274,11 @@ def intake(api, number, author, expected_head=None):
     from afternoon_tea.render import render
     research = validate_json(raw)
     report = validate_site({RESEARCH: raw, 'site/index.html': render(research).encode()})
+    try:
+        publishable(research)
+    except ZeroListing:
+        # Results stay on the PR branch for the next run; nothing is merged or published.
+        return {**report, 'pr': number, 'head_sha': head, 'merge': 'skipped_zero_listing'}
     latest = api.get('/pulls/' + number)
     require_routine(latest, author)
     require(latest['head']['sha'] == head, 'pr_head_changed')
@@ -296,13 +320,20 @@ def prepare():
     research = validate_json(raw)
     html = render(research).encode()
     report = validate_site({RESEARCH: raw, 'site/index.html': html})
+    report.update(source_commit=os.environ.get('SOURCE_COMMIT'), url=SITE)
+    try:
+        publishable(research)
+    except ZeroListing:
+        report['publication'] = 'refused_zero_listing'
+        return report
+    require(card_count(html) == report['shops'], 'rendered_cards_do_not_match_listing')
     base = delivery_directory()
     target = base / 'site'
     require(not target.is_symlink() and not (target / 'index.html').is_symlink()
             and not (base / 'report.json').is_symlink(), 'unsafe_delivery_directory')
     target.mkdir(exist_ok=True)
     (target / 'index.html').write_bytes(html)
-    report.update(source_commit=os.environ.get('SOURCE_COMMIT'), url=SITE)
+    report['publication'] = 'prepared'
     (base / 'report.json').write_bytes(json_bytes(report))
     values = {'html_sha256': report['sha256']}
     if report['source_commit'] is not None:
@@ -315,15 +346,20 @@ def verify_public(expected, attempts=6, opener=None, sleep=time.sleep):
     opener = opener or urllib.request.build_opener(NoRedirect())
     observations = []
     for i in range(attempts):
+        raw = None
         try:
             with opener.open(urllib.request.Request(SITE, headers={'Cache-Control': 'no-cache'}), timeout=15) as r:
                 raw = r.read(MAX_HTML + 1)
                 observations.append({'status': r.status, 'sha256': sha(raw)})
-                if r.status == 200 and sha(raw) == expected:
-                    validate_html_bytes(raw)
-                    return observations
+                matched = r.status == 200 and sha(raw) == expected
         except Exception as e:
             observations.append({'error': type(e).__name__})
+            matched = False
+        if matched:
+            validate_html_bytes(raw)
+            observations[-1]['cards'] = card_count(raw)
+            require(observations[-1]['cards'] > 0, 'public_site_has_zero_listings')
+            return observations
         if i + 1 < attempts:
             sleep(10)
     raise ValueError('public_verification_failed:' + json.dumps(observations))
@@ -341,11 +377,16 @@ def main(command='site', expected_sha256=None):
             if report.get('commit'):
                 outputs(commit=report['commit'])
             print(report)
-            write_summary(report['merge'], report)
+            write_summary({'merged': 'マージ成功', 'already_merged': 'マージ済み（再公開しない）',
+                           'skipped_zero_listing': '掲載対象0件のため自動マージ・公開を見送り（異常終了ではありません。前回の公開サイトを維持）'
+                           }.get(report['merge'], report['merge']), report)
         elif command == 'prepare':
             report = prepare()
             print(report)
-            write_summary('HTML公開準備成功（デプロイ前）', report)
+            if report.get('publication') == 'refused_zero_listing':
+                write_summary('掲載対象0件のため公開を見送り（異常終了ではありません。前回の公開サイトを維持）', report)
+            else:
+                write_summary('HTML公開準備成功（デプロイ前）', report)
         elif command == 'verify':
             require(isinstance(expected_sha256, str) and bool(re.fullmatch('[0-9a-f]{64}', expected_sha256)),
                     'expected_html_sha256_required')

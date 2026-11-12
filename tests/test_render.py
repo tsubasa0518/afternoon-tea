@@ -16,8 +16,14 @@ from afternoon_tea.build import enrich
 from html.parser import HTMLParser
 
 
+def plan(**values):
+    """A displayable plan: a name, the page it was read from and when it was read."""
+    return {'plan_name': 'TEST plan', 'checked_at': '2026-11-07T10:00:00+09:00',
+            'source_url': 'https://example.com/test-only/plan', **values}
+
+
 def fixture(category='unknown'):
-    return {'schema_version': 1,
+    return {'schema_version': 2,
          'generated_at': '2026-11-07T15:55:22+09:00',
          'period': {'start': '2026-11-07',
          'end': '2026-12-17'},
@@ -25,8 +31,9 @@ def fixture(category='unknown'):
          'area_no': 1,
          'category': category,
          'station': 'TEST station',
-         'list_url': 'https://www.tablecheck.com/ja/shops/test-only/reserve',
-         'plans': [{'plan_name': 'TEST winter AT', 'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(),
+         'info_url': 'https://www.tablecheck.com/ja/shops/test-only/reserve',
+         'plans': [{'plan_name': 'TEST winter AT', 'checked_at': '2026-11-07T10:00:00+09:00',
+         'source_url': 'https://example.com/test-only/plan',
          'start': None,
          'end': None,
          'price_yen': None}]}]}
@@ -45,7 +52,7 @@ class RoutineRendererTests(unittest.TestCase):
         source = fixture()
         source['shops'] = []
         result = r.render(source)
-        self.assertIn('今週は確認できた情報がありません', result)
+        self.assertIn('確認できた情報はありません', result)
         for no in range(1, 15):
             self.assertIn('id="a' + str(no) + '"', result)
             self.assertIn('href="#a' + str(no) + '"', result)
@@ -72,7 +79,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_categories_use_regular_price_not_stale_categories_or_names(self):
         source = fixture()
         shop = source['shops'][0]
-        source['shops'] = [{**shop, 'name': 'TEST ホテル', 'category': 'lux', 'plans': [{'price_yen': price}]}
+        source['shops'] = [{**shop, 'name': 'TEST ホテル', 'category': 'lux', 'plans': [plan(price_yen=price)]}
                            for price in (5000, 8000, 8001, None)]
         result = r.render(enrich(source))
         for cat in ['cafe', 'hotel', 'lux']:
@@ -82,7 +89,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_multiple_plans_and_dynamic_sweet_counts(self):
         source = fixture()
         source['shops'][0]['sweets'] = ['scone', 'xmas']
-        source['shops'][0]['plans'] = [{'plan_name': 'TEST 1', 'menu': 'スコーン', 'price_yen': 1000}, {'plan_name': 'TEST 2', 'price_yen': 2000}]
+        source['shops'][0]['plans'] = [plan(plan_name='TEST 1', menu='スコーン', price_yen=1000), plan(plan_name='TEST 2', price_yen=2000)]
         result = r.render(enrich(source))
         self.assertIn('プラン1／2', result)
         self.assertIn('プラン2／2', result)
@@ -98,7 +105,7 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertEqual(source, before)
 
     def test_research_notice_is_never_rendered_and_json_is_preserved(self):
-        failures = {'schema_version': 1,
+        failures = {'schema_version': 2,
              'generated_at': None,
              'failures': [{'name': 'TEST unresearched venue',
              'area': 'TEST area',
@@ -145,7 +152,7 @@ class RoutineRendererTests(unittest.TestCase):
             base = data['shops'][0]
             data['shops'] = [{**base,
                  'name': name + ' ' + str(i),
-                 'list_url': url,
+                 'info_url': url,
                  'checked_at': '2026-11-06T09:00:00+09:00',
                  'evidence_quote': 'TEST shop evidence',
                  'plans': [{'plan_name': 'TEST plan',
@@ -167,7 +174,7 @@ class RoutineRendererTests(unittest.TestCase):
                 for url in urls:
                     self.assertEqual(result.count('href="' + url + '"'), 2)
                 self.assertEqual(result.count('<p class="rnote">' + label + '</p>'), 4)
-                self.assertIn('プランの予約・情報ページ', result)
+                self.assertIn('プランの情報ページ', result)
                 self.assertIn('2026/11/7〜2026/12/1', result)
                 self.assertIn('data-wd="1"', result)
                 self.assertEqual(data, before)
@@ -185,7 +192,7 @@ class RoutineRendererTests(unittest.TestCase):
     def test_unsafe_booking_link_is_rejected(self):
         for url in ['javascript:alert(1)', 'https://user:pass@tablecheck.com/x']:
             source = fixture()
-            source['shops'][0]['list_url'] = url
+            source['shops'][0]['info_url'] = url
             with self.assertRaises(ValueError):
                 r.render(source)
 
@@ -436,12 +443,12 @@ class AllFilterOptionsTests(unittest.TestCase):
         data['shops'] = [{**a,
              'sweets': ['ichigo',
              'xmas'],
-             'plans': [{'menu': 'scone scone'},
-             {'menu': 'chocolate scone'}]},
+             'plans': [plan(menu='scone scone'),
+             plan(menu='chocolate scone')]},
              {**a,
              'sweets': ['ichigo'],
-             'plans': [{'menu': 'parfait',
-             'season': ['xmas']}]}]
+             'plans': [plan(menu='parfait',
+             season=['xmas'])]}]
         buttons = {b['key']: b['text'] for b in Buttons(r.render(enrich(data))).buttons}
         for (key, count) in {'scone': 2, 'choco': 1, 'parfait': 1, 'ichigo': 0, 'melon': 0, 'macaron': 0}.items():
             self.assertTrue(buttons[key].endswith(str(count)), (key, buttons[key]))
@@ -460,7 +467,7 @@ class CanonicalFieldTests(unittest.TestCase):
         shop.update(station='日本橋駅／東京駅／日本橋駅',exit='銀座駅 B4出口 徒歩5分',
                     access='新橋駅 直結',time_note='OLD SHOP TIME')
         plan=shop['plans'][0]
-        plan.update(price_yen=5000,price_note=None,time_note=None,plan_name=None,
+        plan.update(price_yen=5000,price_note=None,time_note=None,plan_name='TEST plan',
                     price_text='OLD PRICE',time_text='OLD TIME',theme='OLD TITLE',
                     note='OLD NOTE',booking_url_info_only='https://example.com/old-plan',
                     weekday=True,wd=True)
