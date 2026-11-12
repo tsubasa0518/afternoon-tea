@@ -1,13 +1,13 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-11-12T20:52:31+09:00",
-  "period": {
-    "start": "2026-11-12",
-    "end": "2026-12-22"
-  },
-  "shops": [],
-  "excluded_sensitive_plans": {
-    "current": 0,
-    "previous": 0
-  }
+    "schema_version": 1,
+    "generated_at": "2026-11-12T20:52:31+09:00",
+    "period": {
+        "start": "2026-11-12",
+        "end": "2026-12-22"
+    },
+    "shops": [],
+    "excluded_sensitive_plans": {
+        "current": 0,
+        "previous": 0
+    }
 }
