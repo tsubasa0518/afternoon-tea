@@ -278,7 +278,7 @@ def render(research):
         f'{end.day}'
         f'日<small>（'
         f'{(end - start).days}'
-        f'日間）</small></p><p class="lead">デートの予定づくりに使える東京のアフタヌーンティーを、公開ページで確認できた内容だけ掲載しています。各プランに確認日を記載しています。予約前に各店舗の公式ページで最新情報をご確認ください。</p><p class="lead legendline"><span class="lg"><span'
+        f'日間）</small></p><p class="lead legendline"><span class="lg"><span'
         f' class="chip on">平日</span> 提供あり</span><span class="lg"><span class="chip no'
         f'">土日祝 ✕</span> そのプランでは提供なし</span></p></div><div class="stats">'
         f'{stats}'
