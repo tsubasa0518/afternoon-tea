@@ -23,13 +23,14 @@ from afternoon_tea.build import review
 from afternoon_tea.build import JST
 from afternoon_tea.render import render
 from tests.test_render import fixture
+from tests.test_render import plan as valid_plan
 from tests.test_render import Buttons
 from tests.html_nodes import Document
 from unittest.mock import patch
 from pathlib import Path
 from tests.test_check import files
 from afternoon_tea.fetch import ROOT
-from afternoon_tea.fetch import candidates
+from afternoon_tea.config import candidates
 from afternoon_tea.check import validate_site
 from afternoon_tea.check import json_bytes
 
@@ -55,8 +56,8 @@ class PriceCategoryTests(unittest.TestCase):
     def test_minimum_ignores_outside_plans(self):
         data = fixture('cafe')
         shop = data['shops'][0]
-        shop['plans'] = [{'price_yen': 10000}, {'price_yen': 7000}, {'price_yen': 1000, 'end': '2026-11-06'},
-                         {'price_yen': 500, 'start': '2026-12-18'}]
+        shop['plans'] = [valid_plan(price_yen=10000), valid_plan(price_yen=7000), valid_plan(price_yen=1000, end='2026-11-06'),
+                         valid_plan(price_yen=500, start='2026-12-18')]
         before = copy.deepcopy(data)
         enriched = enrich(data)
         self.assertEqual(data, before)
@@ -85,6 +86,7 @@ class PriceCategoryTests(unittest.TestCase):
              'checked_at': '2026-11-06T10:00:00+09:00'},
              {'plan_name': 'Second',
              'source_url': 'https://www.example.com/winter-tea/',
+             'checked_at': '2026-11-06T10:00:00+09:00',
              'price_yen': 10000}]
         result = render(data)
         for value in ['プラン1／2', 'プラン2／2', 'https://www.example.com/winter-tea/', '提供期間 未確認']:
@@ -268,14 +270,10 @@ class SweetKeywordTests(unittest.TestCase):
         data = fixture()
         shop = data['shops'][0]
         shop['sweets'] = ['choco', 'scone']
-        shop['plans'] = [{'plan_name': 'A いちご',
-             'menu': 'メロン、桃、苺 苺'},
-             {'plan_name': 'B 苺',
-             'menu': 'マロン、マカロン'},
-             {'plan_name': 'C メロン',
-             'menu': 'スコーン'},
-             {'plan_name': 'outside 苺',
-             'start': '2026-12-18'}]
+        shop['plans'] = [valid_plan(plan_name='A いちご', menu='メロン、桃、苺 苺'),
+             valid_plan(plan_name='B 苺', menu='マロン、マカロン'),
+             valid_plan(plan_name='C メロン', menu='スコーン'),
+             valid_plan(plan_name='outside 苺', start='2026-12-18')]
         for p in shop['plans']:
             p.update(enrich_plan(p))
         html = render(data)
@@ -297,7 +295,7 @@ class SweetKeywordTests(unittest.TestCase):
         base = data['shops'][0]
 
         def plan(name, price, wd=False, season=None):
-            return {'plan_name': name, 'price_yen': price, 'weekday_available': wd, 'season': season or []}
+            return valid_plan(plan_name=name, price_yen=price, weekday_available=wd, season=season or [])
         data['shops'] = [{**base,
              'name': 'First',
              'sweets': ['ichigo'],
@@ -396,7 +394,7 @@ def data(first=None, last=None):
     return {'generated_at': '2026-11-07T15:55:22+09:00',
          'period': {'start': '2026-11-07',
          'end': '2026-12-17'},
-         'shops': [{'plans': [{'start': first,
+         'shops': [{'name': 'TEST ONLY', 'plans': [{'start': first,
          'end': last}]}]}
 
 class WeeklyReviewTests(unittest.TestCase):
@@ -463,12 +461,14 @@ class WeeklyReviewTests(unittest.TestCase):
     def test_date_review_is_not_a_new_automatic_publication_gate(self):
         # The pre-PR helper reports an error; the existing automation is unchanged.
         content = files(0)
-        sample = {'schema_version': 1, **data('2026-12-19', None)}
+        sample = {'schema_version': 2, **data('2026-12-19', None)}
         sample['shops'][0].update(area_no=1)
         sample['shops'][0]['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
+        sample['shops'][0]['plans'][0].update(plan_name='TEST plan', source_url='https://example.com/plan')
         content['site/research.json'] = site_tools.json_bytes(sample)
         self.assertTrue(review(json.loads(content['site/research.json']))['errors'])
-        self.assertEqual(site_tools.validate_site(content)['shops'], 1)
+        # The review error does not stop validation; a plan starting after the window is not listed.
+        self.assertEqual(site_tools.validate_site(content)['shops'], 0)
 
     def test_actions_summary_is_optional_and_reports_real_stage(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -560,10 +560,11 @@ builder=importlib.import_module('afternoon_tea.build')
 def current(prices=(5000,5001,8000,8001,None)):
     now=dt.datetime.now(JST)
     row=candidates()[0]
-    return {'schema_version':1,'generated_at':now.isoformat(),'period':period(now=now),
-            'shops':[{'name':'TEST ONLY','area_no':int(row['エリア番号']),'list_url':row['予約ページURL'],
-                      'station':'日本橋駅','address':None,'source_site':row['予約サイト'],
+    return {'schema_version': 2,'generated_at':now.isoformat(),'period':period(now=now),
+            'shops':[{'id':'c'+row['No'],'name':'TEST ONLY','area_no':int(row['エリア番号']),'genre':'ラウンジ',
+                      'station':'日本橋駅','address':None,'source_site':row['優先して調べるサイト'],
                       'plans':[{'plan_name':'PLAN '+str(i),'price_yen':price,'checked_at':now.isoformat(),
+                                'source_url':'https://example.com/plan/'+str(i),
                                 'start':None,'end':None,'menu':'スコーン','cc':'FR'} for i,price in enumerate(prices)]}]}
 
 
@@ -603,18 +604,33 @@ class BuildTests(unittest.TestCase):
             self.assertFalse(any(key.startswith('country') or key=='notes' for key in p))
             self.assertNotIn('country-theme',re.search(r'<main>(.*?)</main>',render(out),re.S).group(1))
 
-    def test_fresh_carry_is_kept_old_future_and_outside_period_are_removed(self):
+    def test_old_plans_are_kept_with_their_dates_and_only_ended_or_broken_ones_go(self):
         data=current((9000,));now=dt.datetime.now(JST)
-        previous=copy.deepcopy(data)
-        p=previous['shops'][0]['plans'][0]
-        p.update(plan_name='CARRIED',checked_at=(now-dt.timedelta(days=13)).isoformat())
-        previous['shops'][0]['plans'] += [{**p,'plan_name':'OLD','checked_at':(now-dt.timedelta(days=15)).isoformat()},
-                                         {**p,'plan_name':'FUTURE','checked_at':(now+dt.timedelta(days=1)).isoformat()},
-                                         {**p,'plan_name':'OUTSIDE','end':(dt.date.fromisoformat(data['period']['start'])-dt.timedelta(days=1)).isoformat()}]
-        out=builder.build(data,previous,now=now)
+        p=data['shops'][0]['plans'][0]
+        old=(now-dt.timedelta(days=40)).isoformat()
+        data['shops'][0]['plans'] += [{**p,'plan_name':'OLD','checked_at':old},
+                                      {**p,'plan_name':'ENDED','end':(dt.date.fromisoformat(data['period']['start'])-dt.timedelta(days=1)).isoformat()}]
+        out=builder.build(data,now=now)
         plans={p['plan_name']:p for p in out['shops'][0]['plans']}
-        self.assertEqual(set(plans),{'CARRIED','PLAN 0'})
-        self.assertEqual(plans['CARRIED']['checked_at'],p['checked_at'])
+        self.assertEqual(set(plans),{'OLD','PLAN 0'})
+        self.assertEqual(plans['OLD']['checked_at'],old)
+        html=render(out)
+        self.assertIn('過去の確認情報',html)
+        self.assertIn('現在の提供状況は未確認です',html)
+        future=current((9000,));future['shops'][0]['plans'][0]['checked_at']=(now+dt.timedelta(days=1)).isoformat()
+        with self.assertRaisesRegex(ValueError,'future'):
+            builder.build(future,now=now)
+        naive=current((9000,));naive['shops'][0]['plans'][0]['checked_at']='2026-11-01T10:00:00'
+        with self.assertRaisesRegex(ValueError,'timezone'):
+            builder.build(naive,now=now)
+
+    def test_build_and_rebuild_never_change_checked_at(self):
+        data=current((9000,5000))
+        once=builder.build(data)
+        twice=builder.build(once)
+        self.assertEqual(once,twice)
+        self.assertEqual([p['checked_at'] for p in twice['shops'][0]['plans']],
+                         [p['checked_at'] for p in data['shops'][0]['plans']])
 
     def test_renderer_does_not_recompute_saved_classification_or_sweets(self):
         data=builder.build(current((9000,)))
@@ -697,19 +713,41 @@ process.stdout.write('price boundaries passed');'''
 
 
 class DocumentationTests(unittest.TestCase):
-    def test_numbers_live_in_the_procedure_and_safety_source_only(self):
-        for name in ('README.md','CLAUDE.md'):
-            text=(ROOT/name).read_text()
-            for value in ('1500','1,500','200要求','60秒','3秒','5,000','8,000','14日','07:17'):
-                self.assertNotIn(value,text,name)
-        procedure=(ROOT/'docs/weekly_procedure.md').read_text()
-        for value in ('1,500秒','200要求','60秒','3秒','5,000円以下','5,001〜8,000円','8,001円以上','14日以内','07:17'):
-            self.assertEqual(procedure.count(value),1,value)
-        self.assertEqual((ROOT/'AGENTS.md').read_text().count('3秒'),1)
-        self.assertNotIn('python3 -m unittest',procedure)
-        self.assertIn('pip install -r requirements-browser.txt',procedure)
-        self.assertIn('失敗してもGETだけで続ける',procedure)
-        self.assertEqual(procedure.count('トークン'),1)
+    DOCS = ('AGENTS.md', 'CLAUDE.md', 'README.md', 'docs/weekly_procedure.md')
+
+    def test_one_instruction_source_with_the_seven_items(self):
+        agents = (ROOT / 'AGENTS.md').read_text()
+        for no in range(1, 8):
+            self.assertEqual(agents.count('\n## %d. ' % no), 1)
+        claude = (ROOT / 'CLAUDE.md').read_text()
+        self.assertIn('AGENTS.md', claude)
+        self.assertIn('docs/weekly_procedure.md', claude)
+
+    def test_limits_live_in_the_settings_file_not_in_instructions(self):
+        values = json.loads((ROOT / 'data/research_settings.json').read_text())
+        for key in ('total_seconds', 'max_navigations', 'shop_seconds', 'min_interval_seconds', 'recheck_after_days'):
+            self.assertIn(key, values)
+        for name in self.DOCS:
+            text = (ROOT / name).read_text()
+            for value in ('1,500秒', '1500秒', '200要求', '60秒', '3秒以上', '14日以内', '40秒', 'クリック5回'):
+                self.assertNotIn(value, text, name)
+
+    def test_retired_restrictions_are_not_reapplied_by_any_document(self):
+        retired = ('No.1から順', 'No順に読み', '探し直し', 'リスト外の探索はしない', '検索はしない', 'GETだけで続ける',
+                   'GETでプランが見えない場合だけ', 'リダイレクトを追わず', '店名を失敗記録へ残さない', 'CSVのURLそのもの',
+                   '同じ店舗のプラン詳細だけ', '96店舗', '候補CSVのURLと一致しない')
+        for name in self.DOCS:
+            text = (ROOT / name).read_text()
+            for phrase in retired:
+                self.assertNotIn(phrase, text, (name, phrase))
+
+    def test_procedure_starts_from_names_and_keeps_display_rules(self):
+        procedure = (ROOT / 'docs/weekly_procedure.md').read_text()
+        self.assertIn('pip install -r requirements-browser.txt', procedure)
+        self.assertIn('店舗名・ホテル名＋「アフタヌーンティー」', procedure)
+        for value in ('5,000円以下', '5,001〜8,000円', '8,001円以上', '07:17'):
+            self.assertEqual(procedure.count(value), 1, value)
+        self.assertNotIn('python3 -m unittest', procedure)
 
 
 class PlanPrivacyTests(unittest.TestCase):
@@ -725,7 +763,7 @@ class PlanPrivacyTests(unittest.TestCase):
                 self.assertEqual(data,before)
                 self.assertEqual([p['plan_name'] for p in out['shops'][0]['plans']],['PLAN 1'])
                 self.assertEqual(out['shops'][0]['category'],'lux')
-                self.assertEqual(out['excluded_sensitive_plans'],{'current':1,'previous':0})
+                self.assertEqual(sum(out['excluded_sensitive_plans'].values()),1)
                 self.assertNotIn(secret,json_bytes(out).decode())
                 html=render(out)
                 self.assertNotIn(secret,html)
@@ -740,20 +778,15 @@ class PlanPrivacyTests(unittest.TestCase):
         self.assertNotIn('EXCLUDED SHOP ONLY',json_bytes(out).decode())
         self.assertEqual(out['excluded_sensitive_plans']['current'],1)
         self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':render(out).encode()})['plans'],0)
+        with self.assertRaises(site_tools.ZeroListing):
+            site_tools.publishable(out)
 
-    def test_safe_carried_plan_survives_unsafe_replacement_and_rebuild_count_is_stable(self):
-        current_data=current((4000,9000))
-        previous=copy.deepcopy(current_data)
-        previous['shops'][0]['plans'][0]['price_yen']=6000
-        previous['shops'][0]['plans'][0]['checked_at']=(dt.datetime.now(JST)-dt.timedelta(days=2)).isoformat()
-        previous['shops'][0]['plans'][1]['menu']='old@example.test'
-        current_data['shops'][0]['plans'][0]['menu']='new@example.test'
-        out=builder.build(current_data,previous)
-        self.assertEqual(out['excluded_sensitive_plans'],{'current':1,'previous':1})
-        carried=out['shops'][0]['plans'][0]
-        self.assertEqual(carried['price_yen'],6000)
-        self.assertEqual(carried['checked_at'],previous['shops'][0]['plans'][0]['checked_at'])
-        self.assertEqual(builder.build(out,previous),out)
+    def test_rebuild_count_is_stable(self):
+        data=current((4000,9000))
+        data['shops'][0]['plans'][1]['menu']='old@example.test'
+        out=builder.build(data)
+        self.assertEqual(sum(out['excluded_sensitive_plans'].values()),1)
+        self.assertEqual(builder.build(out),out)
 
     def test_unrelated_validation_error_is_not_silently_dropped(self):
         data=current((4000,));data['shops'][0]['plans'][0]['start']='invalid'
@@ -763,23 +796,18 @@ class PlanPrivacyTests(unittest.TestCase):
         with self.assertRaises(site_tools.SensitiveDataError):
             builder.build(data)
 
-    def test_old_plans_are_still_removed_by_build(self):
-        data=current((4000,))
-        data['shops'][0]['plans'][0]['checked_at']=(dt.datetime.now(JST)-dt.timedelta(days=15)).isoformat()
-        self.assertEqual(builder.build(data)['shops'],[])
-
     def test_build_command_writes_only_safe_data_and_report_has_only_a_count(self):
         data=current((4000,9000));data['shops'][0]['plans'][0]['menu']='hidden@example.test'
         root=BuildCommandTests.run_in_root(self,data)
-        import afternoon_tea.fetch as collect
+        import afternoon_tea.research as collect
         with patch.object(builder,'ROOT',root),patch.object(renderer,'ROOT',root),patch('sys.stdout',new=io.StringIO()) as stdout:
             self.assertEqual(builder.main(),0)
         self.assertNotIn('hidden@example.test',stdout.getvalue())
         self.assertEqual(json.loads(stdout.getvalue())['excluded_sensitive_plans'],1)
         result=json.loads((root/'site/research.json').read_text())
-        state={'started_iso':data['generated_at'],'rows':{},'browser_runs':0,'browser_unavailable':None,
-               'blocked_operations':0,'blocked_resources':0}
-        text=collect.report(state=state,research=result)
+        state={'started_iso':data['generated_at'],'browser_pages':0,'browser_unavailable':None,
+               'blocked_operations':0,'blocked_resources':0,'navigations':0,'blocked_hosts':{}}
+        text=collect.report(state=state,data=result)
         self.assertIn('秘密情報・個人情報の検査で除外したプラン数: 1',text)
         for path in (root/'site').iterdir():
             self.assertNotIn('hidden@example.test',path.read_text())

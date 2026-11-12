@@ -80,13 +80,15 @@ jobs:
         run: |
           export SOURCE_COMMIT="$(git rev-parse HEAD)"
           python3 -m afternoon_tea check prepare
+      # Zero listings: prepare succeeds without an artifact, so nothing is deployed and the live site is kept.
       - uses: actions/upload-pages-artifact@v4
+        if: steps.prepare.outputs.html_sha256 != ''
         with:
           path: .staging/routine-delivery/site
 
   deploy:
     needs: generate
-    if: always() && needs.generate.result == 'success'
+    if: always() && needs.generate.result == 'success' && needs.generate.outputs.html_sha256 != ''
     runs-on: ubuntu-latest
     timeout-minutes: 12
     environment:

@@ -22,14 +22,16 @@ from afternoon_tea.__main__ import parser
 from afternoon_tea.render import render
 
 HTML = b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
+CARD_HTML = HTML.replace(b'<p>Information unavailable</p>', b'<article class="card c-cafe"><h4>Test</h4></article>')
 
 def files(n=0):
     stamp = dt.datetime.now(dt.timezone.utc).isoformat()
     return {'site/index.html': HTML,
-            'site/research.json': r.json_bytes({'schema_version':1, 'generated_at':stamp,
+            'site/research.json': r.json_bytes({'schema_version': 2, 'generated_at':stamp,
                 'period':__import__('afternoon_tea.build',fromlist=['period']).period(),
-                'shops':[{'name':'Test only '+str(i), 'area_no':1,
-                          'plans':[{'plan_name':'AT', 'checked_at':stamp, 'price_yen':None}]} for i in range(n)]})}
+                'shops':[{'id':'x-test'+str(i), 'name':'Test only '+str(i), 'area_no':1,
+                          'plans':[{'plan_name':'AT', 'checked_at':stamp, 'price_yen':None,
+                                    'source_url':'https://example.com/plan'+str(i)}]} for i in range(n)]})}
 
 class FakeAPI:
 
@@ -217,14 +219,20 @@ class RoutineSiteTests(unittest.TestCase):
 
         class Opener:
 
+            body = CARD_HTML
+
             def open(self, req, timeout):
                 self.url = req.full_url
-                return Response(HTML)
+                return Response(self.body)
         op = Opener()
-        r.verify_public(r.sha(HTML), 1, op)
+        r.verify_public(r.sha(CARD_HTML), 1, op)
         self.assertEqual(op.url, r.SITE)
         with self.assertRaises(ValueError):
             r.verify_public('0' * 64, 1, op)
+        # The published page itself must show at least one listing.
+        op.body = HTML
+        with self.assertRaisesRegex(ValueError, 'public_site_has_zero_listings'):
+            r.verify_public(r.sha(HTML), 1, op)
 
     def test_prepare_is_offline_and_never_writes_docs(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -249,11 +257,18 @@ class RoutineSiteTests(unittest.TestCase):
                 for (path, value) in content.items():
                     (root / path).parent.mkdir(exist_ok=True)
                     (root / path).write_bytes(value)
-                with patch.object(r, 'ROOT', root):
+                output = root / ('output%d' % count)
+                with patch.object(r, 'ROOT', root), patch.dict(os.environ, {'GITHUB_OUTPUT': str(output)}):
                     report = r.prepare()
                 self.assertEqual(report['shops'], count)
-                self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(content[r.RESEARCH])).encode())
-            self.assertIn('今週は確認できた情報がありません', (root / '.staging/routine-delivery/site/index.html').read_text())
+                if count:
+                    self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(content[r.RESEARCH])).encode())
+                    self.assertIn('html_sha256=', output.read_text())
+            # Zero listings: no artifact output, and the previously prepared page is not replaced.
+            self.assertEqual(report['publication'], 'refused_zero_listing')
+            self.assertFalse((root / 'output0').exists())
+            self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),
+                             renderer.render(json.loads(files(2)[r.RESEARCH])).encode())
 
     def test_old_claude_prefix_is_not_an_authorized_weekly_branch(self):
         api = FakeAPI()
@@ -269,14 +284,14 @@ class RoutineSiteTests(unittest.TestCase):
         self.assertEqual(len(api.calls), 1)
 
     def test_escaped_json_credentials_rejected(self):
-        value = b'{"schema_version":1,"shops":[],"note":"gh\\u0070_' + b'a' * 36 + b'"}'
+        value = b'{"schema_version":2,"shops":[],"note":"gh\\u0070_' + b'a' * 36 + b'"}'
         with self.assertRaises(ValueError):
             r.validate_json(value)
 
     def test_non_standard_json_numbers_rejected(self):
         for value in (b'NaN', b'Infinity', b'-Infinity'):
             with self.assertRaises(ValueError):
-                r.validate_json(b'{"schema_version":1,"shops":[],"value":' + value + b'}')
+                r.validate_json(b'{"schema_version":2,"shops":[],"value":' + value + b'}')
 
     def test_invalid_json_prevents_generating_an_artifact(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -319,12 +334,12 @@ class ProductionTests(unittest.TestCase):
 
     def test_new_shop_needs_only_plan_timestamp_not_shop_id_or_shop_timestamp(self):
         from tests.test_render import fixture
-        from afternoon_tea.fetch import candidates
+        from afternoon_tea.config import candidates
         data = fixture()
         shop = data['shops'][0]
         shop.pop('checked_at', None)
         shop.pop('id', None)
-        shop['list_url'] = candidates()[0]['予約ページURL']
+        shop['reference_urls'] = [candidates()[0]['参考URL']]
         shop.pop('source_url', None)
         shop['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
         self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 1)
@@ -413,11 +428,11 @@ class StructureTests(unittest.TestCase):
 class BPlanStructureTests(unittest.TestCase):
     def test_flat_package_templates_and_four_test_modules(self):
         self.assertEqual({p.stem for p in (ROOT/'afternoon_tea').glob('*.py')},
-                         {'__init__','__main__','fetch','browser','build','render','check'})
+                         {'__init__','__main__','config','fetch','browser','research','build','render','check'})
         self.assertEqual({p.name for p in (ROOT/'afternoon_tea/templates').iterdir()},
                          {'site.html','site.css','site.js'})
         self.assertEqual({p.name for p in (ROOT/'tests').glob('test_*.py')},
-                         {'test_safety.py','test_build.py','test_render.py','test_check.py'})
+                         {'test_safety.py','test_browser.py','test_build.py','test_render.py','test_check.py'})
         for folder in ('collection','processing','publication'):
             self.assertFalse((ROOT/'afternoon_tea'/folder).exists())
         self.assertFalse((ROOT/'data/store_master.json').exists())
@@ -457,7 +472,7 @@ class RepeatPublicationTests(unittest.TestCase):
                 (root/path).write_bytes(value)
             opener=Mock()
             opener.open.side_effect=lambda *args,**kwargs:Response(r.SITE,renderer.render(data))
-            with patch.object(r,'ROOT',root),patch('afternoon_tea.build.validate_freshness',side_effect=AssertionError('publication must not recheck age')), \
+            with patch.object(r,'ROOT',root),patch('afternoon_tea.build.normalize',side_effect=AssertionError('publication must not rebuild or recheck age')), \
                  patch.object(r.urllib.request,'build_opener',return_value=opener), \
                  patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(root/'summary.md')}), \
                  patch('sys.stdout',new=io.StringIO()):
@@ -467,7 +482,7 @@ class RepeatPublicationTests(unittest.TestCase):
             self.assertEqual((root/'site/research.json').read_bytes(),content['site/research.json'])
             self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(data).encode())
             checks=json.loads((root/'.staging/routine-delivery/public-verification.json').read_text())
-            self.assertEqual(checks,[{'status':200,'sha256':r.sha(renderer.render(data).encode())}])
+            self.assertEqual(checks,[{'status':200,'sha256':r.sha(renderer.render(data).encode()),'cards':1}])
             self.assertIn('Pages公開確認成功',(root/'summary.md').read_text())
 
     def test_age_exemption_does_not_accept_bad_timestamps_or_unsafe_output(self):
@@ -520,7 +535,7 @@ class PublicationFlowTests(unittest.TestCase):
         self.assertEqual([c[0] for c in api.calls],['PUT'])
 
     def test_invalid_json_or_preview_cannot_merge(self):
-        for raw in (b'{',r.json_bytes({'schema_version':1,'shops':[]})):
+        for raw in (b'{',r.json_bytes({'schema_version': 2,'shops':[]})):
             api=FakeAPI();api.content[r.RESEARCH]=raw
             with self.assertRaises(ValueError):
                 r.intake(api,1,'tsubasa0518')
@@ -552,7 +567,8 @@ class PublicationFlowTests(unittest.TestCase):
         tracked=subprocess.check_output(['git','ls-files','--','site/index.html'],cwd=ROOT,text=True)
         self.assertEqual(tracked,'')
         self.assertIn('/site/index.html',(ROOT/'.gitignore').read_text())
-        self.assertEqual(set(parser()._subparsers._group_actions[0].choices),{'begin','fetch','build','report','check'})
+        self.assertEqual(set(parser()._subparsers._group_actions[0].choices),
+                         {'begin','next','start','read','browse','record','build','report','check'})
 
     def test_main_intake_outputs_only_the_validated_merge_commit(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -639,7 +655,7 @@ class PublicationFlowTests(unittest.TestCase):
                 html=(root/'.staging/routine-delivery/site/index.html').read_bytes()
                 opener=Mock();opener.open.side_effect=lambda *a,**k:Response(r.SITE,html.decode())
                 observations=r.verify_public(prepared['sha256'],opener=opener)
-            self.assertEqual(observations,[{'status':200,'sha256':prepared['sha256']}])
+            self.assertEqual(observations,[{'status':200,'sha256':prepared['sha256'],'cards':2}])
             self.assertEqual(prepared['shops'],2)
             self.assertEqual((root/r.RESEARCH).read_bytes(),api.content[r.RESEARCH])
             self.assertFalse((root/'site/index.html').exists())
@@ -656,3 +672,68 @@ class PublicationFlowTests(unittest.TestCase):
                 with patch.object(r,'ROOT',root),self.assertRaises(ValueError):
                     r.prepare()
                 self.assertEqual(protected.read_text(),'preserve')
+
+
+class ZeroListingGuardTests(unittest.TestCase):
+    """0 shops or 0 valid plans are never merged or deployed; that is reported apart from errors."""
+
+    def test_weekly_pr_with_zero_listings_is_not_merged(self):
+        for content in (files(0), files(1)):
+            api = FakeAPI()
+            api.content = content
+            if content is not files(0) and json.loads(content[r.RESEARCH])['shops']:
+                data = json.loads(content[r.RESEARCH])
+                data['shops'][0]['plans'] = []  # an empty shop frame is not a listing
+                api.content = {**content, r.RESEARCH: r.json_bytes(data)}
+            report = r.intake(api, 1, 'tsubasa0518', expected_head='a' * 40)
+            self.assertEqual(report['merge'], 'skipped_zero_listing')
+            self.assertFalse([c for c in api.calls if c[0] == 'PUT'])
+
+    def test_placeholder_or_unsourced_plans_do_not_count(self):
+        for change in ({'plan_name': 'ダミープラン'}, {'source_url': None}, {'plan_name': ' '}, {'checked_at': None}):
+            data = json.loads(files(1)[r.RESEARCH])
+            data['shops'][0]['plans'][0].update(change)
+            with self.subTest(change=change), self.assertRaises(r.ZeroListing):
+                r.publishable(data)
+        self.assertEqual(r.publishable(json.loads(files(2)[r.RESEARCH])), {'shops': 2, 'plans': 2})
+
+    def test_intake_command_reports_the_skip_and_outputs_no_commit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); event = root / 'event.json'; output = root / 'output'; summary = root / 'summary.md'
+            event.write_text(json.dumps({'number': 1, 'pull_request': {'head': {'sha': 'a' * 40}}}))
+            api = FakeAPI(); api.content = files(0)
+            with patch.object(r, 'API', return_value=api), \
+                 patch.dict(os.environ, {'GITHUB_EVENT_PATH': str(event), 'GITHUB_OUTPUT': str(output),
+                                         'GITHUB_STEP_SUMMARY': str(summary), 'ROUTINE_AUTHOR': 'tsubasa0518'}), \
+                 patch('sys.stdout', new=io.StringIO()):
+                r.main('intake')  # returns normally: not an abnormal end
+            self.assertFalse(output.exists())
+            self.assertIn('掲載対象0件のため自動マージ・公開を見送り', summary.read_text())
+            self.assertIn('異常終了ではありません', summary.read_text())
+
+    def test_push_manual_or_rerun_publication_of_zero_listings_produces_no_artifact(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / 'site').mkdir()
+            (root / r.RESEARCH).write_bytes(files(0)[r.RESEARCH])
+            output = root / 'output'; summary = root / 'summary.md'
+            with patch.object(r, 'ROOT', root), patch.dict(os.environ, {'GITHUB_OUTPUT': str(output),
+                                                                         'GITHUB_STEP_SUMMARY': str(summary)}), \
+                 patch('sys.stdout', new=io.StringIO()):
+                r.main('prepare')
+            self.assertFalse(output.exists())
+            self.assertFalse((root / '.staging/routine-delivery/site/index.html').exists())
+            self.assertIn('掲載対象0件のため公開を見送り', summary.read_text())
+            # A broken document is an error, not a skip.
+            (root / r.RESEARCH).write_bytes(b'{')
+            with patch.object(r, 'ROOT', root), patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(summary)}), \
+                 self.assertRaises(ValueError):
+                r.main('prepare')
+            self.assertIn('prepare失敗', summary.read_text())
+
+    def test_workflow_deploys_only_when_an_artifact_was_prepared(self):
+        workflow = (ROOT / '.github/workflows/publish.yml').read_text()
+        self.assertIn("if: steps.prepare.outputs.html_sha256 != ''", workflow)
+        self.assertIn("needs.generate.outputs.html_sha256 != ''", workflow)
+        deploy = workflow[workflow.index('  deploy:'):]
+        self.assertIn('pages: write', deploy)
+        self.assertEqual(workflow.count('pages: write'), 1)

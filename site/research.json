@@ -1,13 +1,4151 @@
 {
-    "schema_version": 1,
-    "generated_at": "2026-11-12T20:52:31+09:00",
-    "period": {
-        "start": "2026-11-12",
-        "end": "2026-12-22"
+  "schema_version": 2,
+  "generated_at": "2026-11-12T22:22:33+09:00",
+  "period": {
+    "start": "2026-11-12",
+    "end": "2026-12-22"
+  },
+  "shops": [
+    {
+      "address": null,
+      "station": "日本橋駅／東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【VAVAアフタヌーンティー】全て手作りのスイーツ・セイボリーなど＋5種飲み放題（平日限定30食）",
+          "price_yen": 4950,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:50+09:00",
+          "source_url": "https://restaurant.ikyu.com/112520/plan12815171"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4950,
+      "name": "cafe VAVA",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c64",
+      "candidate_no": 64,
+      "origin": "list",
+      "genre": "カフェ／カジュアル"
     },
-    "shops": [],
-    "excluded_sensitive_plans": {
-        "current": 0,
-        "previous": 0
+    {
+      "address": null,
+      "station": "二重橋前駅／東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー",
+          "price_yen": 6325,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:25:55+09:00",
+          "source_url": "https://restaurant.ikyu.com/110781/plan12803085"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6325,
+      "name": "ROSSINI TERRACE（東京會舘）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-ffd6bf5b02",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "大手町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "フェスティブアフタヌーンティー （11/16～）（平日限定）",
+          "price_yen": 9800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:24+09:00",
+          "source_url": "https://restaurant.ikyu.com/115189/plan12835763"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9800,
+      "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c10",
+      "candidate_no": 10,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "マロン・洋梨アフタヌーンティー タイムレスエレガンス【2時間制】（月～木曜の平日限定）",
+          "price_yen": 7900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "sweets": [
+            "kaki",
+            "kuri"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:27+09:00",
+          "source_url": "https://restaurant.ikyu.com/102900/plan12787122"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7900,
+      "name": "東京ステーションホテル / ロビーラウンジ",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c39",
+      "candidate_no": 39,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "カメリアイブニングアフタヌーンティー＋乾杯ドリンク＋2時間フリー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:30+09:00",
+          "source_url": "https://restaurant.ikyu.com/102901/plan12854246"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c33",
+      "candidate_no": 33,
+      "origin": "list",
+      "genre": "バー＆カフェ"
+    },
+    {
+      "address": null,
+      "station": "三越前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【平日限定】フェスティブアフタヌーンティー（早割｜20％OFF｜11/16～12/17）",
+          "price_yen": null,
+          "price_note": "通常価格 未確認。税サ込(1人あたり)・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:36+09:00",
+          "source_url": "https://restaurant.ikyu.com/101099/plan12875698"
+        }
+      ],
+      "category": "unknown",
+      "category_price_yen": null,
+      "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+      "hotel_name": "マンダリン オリエンタル 東京",
+      "area_no": 1,
+      "id": "c5",
+      "candidate_no": 5,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【オータム アフタヌーンティー】秋の味覚を心ゆくまで堪能！（11/1～11/30）",
+          "price_yen": 9867,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "season"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:39+09:00",
+          "source_url": "https://restaurant.ikyu.com/100707/plan12791492"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9867,
+      "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c11",
+      "candidate_no": 11,
+      "origin": "list",
+      "genre": "ロビーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "大手町駅／二重橋前駅／東京駅",
+      "source_site": "TableCheck",
+      "plans": [
+        {
+          "plan_name": "Afternoon Tea \"Stones\" Autumn（秋）",
+          "price_yen": null,
+          "price_note": "料金は原文の対応が曖昧なため未確認",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:32:12+09:00",
+          "source_url": "https://www.tablecheck.com/en/shops/palacehoteltokyo-the-palace-lounge/reserve"
+        }
+      ],
+      "category": "unknown",
+      "category_price_yen": null,
+      "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+      "hotel_name": "パレスホテル東京",
+      "area_no": 1,
+      "id": "c75",
+      "candidate_no": 75,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "大手町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "クリスマス アフタヌーンティー 2026 11.16～12.18",
+          "price_yen": 13000,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-16",
+          "end": "2026-12-18",
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:42+09:00",
+          "source_url": "https://restaurant.ikyu.com/105756/plan12854308"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 13000,
+      "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c22",
+      "candidate_no": 22,
+      "origin": "list",
+      "genre": "バーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "大手町駅／二重橋前駅／東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー テール エ メール（店内席／最大150分制／14：30）",
+          "price_yen": 10350,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:45+09:00",
+          "source_url": "https://restaurant.ikyu.com/106795/plan12250640"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 10350,
+      "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c36",
+      "candidate_no": 36,
+      "origin": "list",
+      "genre": "ラウンジバー"
+    },
+    {
+      "address": null,
+      "station": "東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン）",
+          "price_yen": 4600,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": "hk",
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:25:57+09:00",
+          "source_url": "https://restaurant.ikyu.com/122278/plan12649319"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4600,
+      "name": "真不同 HONG KONG TEA ROOM 1946",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-1252d0968c",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "三越前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日）",
+          "price_yen": 6800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "sweets": [
+            "choco"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:00+09:00",
+          "source_url": "https://restaurant.ikyu.com/112311/plan12739895"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6800,
+      "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-0afc0f63c5",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "三越前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "文明堂づくしのAfternoon Tea",
+          "price_yen": 4000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:03+09:00",
+          "source_url": "https://restaurant.ikyu.com/154158/plan12866695"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4000,
+      "name": "文明堂カフェ",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-45b69b54ac",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "日本橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】優雅に午後のティータイムを！ デザート盛り合わせ＋お好きなドリンク",
+          "price_yen": 2400,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:06+09:00",
+          "source_url": "https://restaurant.ikyu.com/101719/plan12384641"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 2400,
+      "name": "アルポルトカフェ 日本橋高島屋店",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-ca3c7eabf3",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "大手町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】フェスティブアフタヌーンティー （11/16～）＋ミニピザ付（平日）",
+          "price_yen": 9300,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-16",
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:16+09:00",
+          "source_url": "https://restaurant.ikyu.com/115187/plan12845039"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9300,
+      "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-61b92a02dc",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "水天宮前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【チーズとナッツのアフタヌーンティー】11/1～11/30（平日・2時間制）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:19+09:00",
+          "source_url": "https://restaurant.ikyu.com/102990/plan12850481"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c45",
+      "candidate_no": 45,
+      "origin": "list",
+      "genre": "ロビーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "水天宮前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【土日祝/数量限定】SESSiONアフタヌーンティープラン",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:22+09:00",
+          "source_url": "https://restaurant.ikyu.com/112036/plan12822858"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5500,
+      "name": "HAMACHO HOTEL / SESSiON（1F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "x-80787d4fb0",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "東京駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "Silk ＆ Steam Afternoon Tea＋ウェルカムドリンク＋ティーフリー",
+          "price_yen": 11000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:26:33+09:00",
+          "source_url": "https://restaurant.ikyu.com/102902/plan12857218"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 11000,
+      "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
+      "hotel_name": null,
+      "area_no": 1,
+      "id": "c68",
+      "candidate_no": 68,
+      "origin": "list",
+      "genre": "ゲストラウンジ"
+    },
+    {
+      "address": null,
+      "station": "新橋駅／銀座駅",
+      "source_site": "TableCheck",
+      "plans": [
+        {
+          "plan_name": "【TEA】アフターヌーンティーセット（約16種ドリンク）",
+          "price_yen": 4620,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "time_note": "15:00-17:00 / 15:30-17:30",
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:32:18+09:00",
+          "source_url": "https://www.tablecheck.com/ja/shops/canvas-ginza8-restaurant/reserve"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4620,
+      "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "x-2c7a943379",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "大門駅／御成門駅／芝公園駅／赤羽橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【ピエールマルコリーニ オリジナルクーベルチュール使用】Christmas Afternoon Tea（3時間）",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:27:44+09:00",
+          "source_url": "https://restaurant.ikyu.com/103334/plan12844256"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9200,
+      "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c25",
+      "candidate_no": 25,
+      "origin": "list",
+      "genre": "ティーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "竹芝駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "オータムパレスアフタヌーンティーwith Bacha Coffee＋乾杯酒",
+          "price_yen": 9487,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:27:50+09:00",
+          "source_url": "https://restaurant.ikyu.com/102281/plan12794313"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9487,
+      "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c52",
+      "candidate_no": 52,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "汐留駅／新橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "＜10/1～＞アート・オブ・オータム・アフタヌーンティー（平日）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:27:57+09:00",
+          "source_url": "https://restaurant.ikyu.com/100854/plan12805497"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "コンラッド東京 / トゥエンティエイト（28F）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c7",
+      "candidate_no": 7,
+      "origin": "list",
+      "genre": "バー＆ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "竹芝駅／浜松町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas 2026】クリスマス アフタヌーンティー（平日）",
+          "price_yen": 9700,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:00+09:00",
+          "source_url": "https://restaurant.ikyu.com/146488/plan12856413"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9700,
+      "name": "フェアモント東京 / Vue Mer（ビュメール）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c23",
+      "candidate_no": 23,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "浜松町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "＜バーエリア＞天空のアフタヌーンティー～Stellar Luxury～＋東京タワービュー（3時間／平日／11～12月）",
+          "price_yen": 12650,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:27:48+09:00",
+          "source_url": "https://restaurant.ikyu.com/101762/plan12844646"
+        },
+        {
+          "plan_name": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～（平日）",
+          "price_yen": 12650,
+          "price_note": "税・サービス料込。公式表示11,000円（税込）＋必須サービス料15％から算出。元ページ表記：税込・別途サービス料15%(会員優待料金は別)",
+          "start": "2026-11-01",
+          "end": "2026-12-30",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+          "source_url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "checked_at": "2026-11-08T11:31:37+09:00",
+          "cc": "be",
+          "sweets": [
+            "choco",
+            "scone"
+          ],
+          "time_note": "12:00～16:30（最終入店13:30）、3時間制"
+        },
+        {
+          "plan_name": "【東京タワービュー確約】天空のアフタヌーンティー～Stellar Luxury～（土休日）",
+          "price_yen": 13225,
+          "price_note": "税・サービス料込。公式表示11,500円（税込）＋必須サービス料15％から算出。元ページ表記：税込・別途サービス料15%(会員優待料金は別)",
+          "start": "2026-11-01",
+          "end": "2026-12-30",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ(★ピエール マルコリーニのクーベルチュール使用):タルトショコラ ヴィオレット/バターサンドジンジャーマン/ショコラバニーユ/サバラン カカオオランジュ/ショコラフランボワーズ/スコーン(ショコラオランジュ・ショコラブラン)。セイボリー:ショコラサンドウィッチ/ビーフシチュー/フォアグラフラン ほか",
+          "source_url": "https://www.princehotels.co.jp/parktower/plan/stellargarden/afternoontea_2026.11-12/",
+          "checked_at": "2026-11-08T11:31:37+09:00",
+          "cc": "be",
+          "sweets": [
+            "choco",
+            "scone"
+          ],
+          "time_note": "12:00～16:30（最終入店13:30）、3時間制"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 12650,
+      "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c67",
+      "candidate_no": 67,
+      "origin": "list",
+      "genre": "バー・ダイニング"
+    },
+    {
+      "address": null,
+      "station": "竹芝駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "オータムパレスアフタヌーンティー with Bacha Coffee＋乾杯酒",
+          "price_yen": 10183,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:27:54+09:00",
+          "source_url": "https://restaurant.ikyu.com/114993/plan12793685"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 10183,
+      "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c34",
+      "candidate_no": 34,
+      "origin": "list",
+      "genre": "バーラウンジ・フランス料理"
+    },
+    {
+      "address": null,
+      "station": "新橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【11～12月限定】いちごのWinter Holiday Afternoon Tea＋スイスSIROCCO約12種等飲み放題（平日・BAR）",
+          "price_yen": 12700,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "sweets": [
+            "ichigo"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:04+09:00",
+          "source_url": "https://restaurant.ikyu.com/100352/plan12878493"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 12700,
+      "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c41",
+      "candidate_no": 41,
+      "origin": "list",
+      "genre": "ブッフェ・洋食・バー&ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "新橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【クリスマス アフタヌーンティー ～サンタの落とし物～】＋カフェフリー（3時間滞在可能 L.O.30分前）",
+          "price_yen": 7500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:10+09:00",
+          "source_url": "https://restaurant.ikyu.com/116751/plan12845493"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7500,
+      "name": "第一ホテル東京 / ロビーラウンジ",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c58",
+      "candidate_no": 58,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "浜松町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【和洋中のスイーツ】茶葉交換ができる本のあるアフタヌーンティー",
+          "price_yen": 6325,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [
+            "wa"
+          ],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:13+09:00",
+          "source_url": "https://restaurant.ikyu.com/116186/plan11960212"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6325,
+      "name": "芝パークホテル / ザ ダイニング",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c38",
+      "candidate_no": 38,
+      "origin": "list",
+      "genre": "オールデイダイニング"
+    },
+    {
+      "address": null,
+      "station": "汐留駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【 Afternoon Tea 】実りの秋を味わう収穫祭 アフタヌーンティー＋茶葉交換（窓側確約）",
+          "price_yen": 7000,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:16+09:00",
+          "source_url": "https://restaurant.ikyu.com/101111/plan12808461"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7000,
+      "name": "パークホテル東京 / アートカラーズダイニング",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "x-d19a2fc937",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "竹芝駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティープログラム】東博～カラフルアジア～（平日）",
+          "price_yen": 7000,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:19+09:00",
+          "source_url": "https://restaurant.ikyu.com/119094/plan12819792"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7000,
+      "name": "メズム東京、オートグラフ コレクション / ウィスク",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "c59",
+      "candidate_no": 59,
+      "origin": "list",
+      "genre": "バー＆ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "新橋駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "平日オータムアフタヌーンティー【9/15～12/14】＋ウェルカムドリンク付きカフェフリー",
+          "price_yen": 3850,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:22+09:00",
+          "source_url": "https://restaurant.ikyu.com/151824/plan12826471"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3850,
+      "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "x-3173d559a7",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "浜松町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ショコラ×いちご アフタヌーンティー（1部 11時30分～14時30分）",
+          "price_yen": 7684,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "choco",
+            "ichigo"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:25+09:00",
+          "source_url": "https://restaurant.ikyu.com/109387/plan12893769"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7684,
+      "name": "東京プリンスホテル / ティーサロン ピカケ",
+      "hotel_name": null,
+      "area_no": 3,
+      "id": "x-d45c9bc461",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "赤坂見附駅／永田町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:02+09:00",
+          "source_url": "https://restaurant.ikyu.com/106682/plan12867585"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9200,
+      "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "c6",
+      "candidate_no": 6,
+      "origin": "list",
+      "genre": "ラウンジ・バー"
+    },
+    {
+      "address": null,
+      "station": "虎ノ門ヒルズ駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "URBAN AFTERNOON TEA いちご ティーセレクション約20種飲み放題 120分 土日祝限定",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "sweets": [
+            "ichigo"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:28+09:00",
+          "source_url": "https://restaurant.ikyu.com/151564/plan12874283"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4800,
+      "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-be6f51f251",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "赤坂見附駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ラグジュアリーコレクションが贈るXmasアフタヌーンティー",
+          "price_yen": 9200,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:35+09:00",
+          "source_url": "https://restaurant.ikyu.com/106681/plan12867603"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9200,
+      "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-e3fab59785",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "虎ノ門ヒルズ駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "季節のアフタヌーンティー＋クスミティー含むフリーフロー付き（オンライン限定特別価格）",
+          "price_yen": 3850,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:41+09:00",
+          "source_url": "https://restaurant.ikyu.com/123366/plan12533202"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3850,
+      "name": "アンダーズ 東京 / ペストリーショップ（1F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-e8666e8fa1",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "溜池山王駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
+          "price_yen": 9000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:44+09:00",
+          "source_url": "https://restaurant.ikyu.com/105131/plan12861297"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9000,
+      "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-78ff7ab4c8",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "溜池山王駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:47+09:00",
+          "source_url": "https://restaurant.ikyu.com/122872/plan12874649"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-793bfc99e7",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "虎ノ門ヒルズ駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティー×平日限定】冬を彩るアフタヌーンティー",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:50+09:00",
+          "source_url": "https://restaurant.ikyu.com/113419/plan12865828"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "オークラ東京 / バーラウンジ スターライト",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "c24",
+      "candidate_no": 24,
+      "origin": "list",
+      "genre": "バー・ラウンジ・レストラン"
+    },
+    {
+      "address": null,
+      "station": "虎ノ門ヒルズ駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ル プリスティン アフタヌーンティー ～かぼちゃ＆栗～＋シグネチャーモクテル付き（平日）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "sweets": [
+            "imo",
+            "kuri"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:54+09:00",
+          "source_url": "https://restaurant.ikyu.com/152275/plan12805394"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-60065da7a2",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": null,
+      "source_site": "TableCheck",
+      "plans": [
+        {
+          "plan_name": "ザ・キャピトル アフタヌーンティー・紅茶セット（14:00/15:00入店・2.5時間制）",
+          "price_yen": 9867,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:32:24+09:00",
+          "source_url": "https://www.tablecheck.com/ja/capitolhoteltokyu-lounge"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9867,
+      "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-1a1cc7db19",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "神谷町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "シャインマスカットエディションアフタヌーンティー＋通常のテーブル席",
+          "price_yen": 8800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "grape"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:28:57+09:00",
+          "source_url": "https://restaurant.ikyu.com/115758/plan12817748"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8800,
+      "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-f4e4c354a3",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "六本木一丁目駅／神谷町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー（11/21～12/25）＋モクテル含むカフェフリー（平日）",
+          "price_yen": 8800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-21",
+          "end": "2026-12-25",
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:17+09:00",
+          "source_url": "https://restaurant.ikyu.com/125030/plan12830252"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8800,
+      "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+      "hotel_name": null,
+      "area_no": 5,
+      "id": "c3",
+      "candidate_no": 3,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "六本木駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ルネサンス アート ヘヴンリーアフタヌーンティー（平日限定）",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:12+09:00",
+          "source_url": "https://restaurant.ikyu.com/100485/plan12809200"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 8000,
+      "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+      "hotel_name": null,
+      "area_no": 5,
+      "id": "c44",
+      "candidate_no": 44,
+      "origin": "list",
+      "genre": "ロビーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "六本木駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ショコラとマロンの秋麗アフタヌーンティー＋2Hカフェフリー付き＋メッセージプレート（平日）",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "sweets": [
+            "choco",
+            "kuri"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:09+09:00",
+          "source_url": "https://restaurant.ikyu.com/102168/plan12861883"
+        },
+        {
+          "plan_name": "ショコラとマロンが飾るクリスマスアフタヌーンティー（平日）",
+          "price_yen": 5000,
+          "price_note": "税・サービス料込（プレスリリース記載）",
+          "start": "2026-12-01",
+          "end": "2026-12-31",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ～チャイモカ仕立て～/クリスマスパピヨット～マロンバタースカッチ～/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "checked_at": "2026-11-08T11:31:59+09:00",
+          "cc": null,
+          "sweets": [
+            "choco",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "time_note": "13:00／15:00（2部制）、カフェフリー2時間制"
+        },
+        {
+          "plan_name": "ショコラとマロンが飾るクリスマスアフタヌーンティー（土日祝）",
+          "price_yen": 6500,
+          "price_note": "税・サービス料込（プレスリリース記載）",
+          "start": "2026-12-01",
+          "end": "2026-12-31",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:チョコレートのスノードーム/焼きメレンゲのリース/チョコレートとピスタチオのロールケーキツリー/サンタのソリタルト/トナカイパンナコッタ～チャイモカ仕立て～/クリスマスパピヨット～マロンバタースカッチ～/洋梨とヴァンショージュレのノエル・オーナメント。セイボリー:ローストチキンのピッツァ・マルゲリータ/スコーン2種(マロンソース・クレームドゥーブル)/トリュフのフレンチフライ。ドリンク:ノエル・ルージュ、紅茶10種、コーヒー各種。土日祝は乾杯スパークリングワイン付き",
+          "source_url": "https://prtimes.jp/main/html/rd/p/000000411.000046799.html",
+          "checked_at": "2026-11-08T11:31:59+09:00",
+          "cc": null,
+          "sweets": [
+            "choco",
+            "kaki",
+            "kuri",
+            "scone"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "time_note": "12:00／14:30（2部制）、カフェフリー2時間制"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4800,
+      "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
+      "hotel_name": null,
+      "area_no": 5,
+      "id": "x-4986a300dc",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新宿駅／南新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "シャインマスカットアフタヌーンティー＋カフェフリー（土日祝）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "sweets": [
+            "grape"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:53+09:00",
+          "source_url": "https://restaurant.ikyu.com/103306/plan12792401"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6000,
+      "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-6d3b6b2b55",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "西新宿駅／都庁前駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "オータム アフタヌーンティー（3時間制 ／9月28日～）",
+          "price_yen": 11385,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:48+09:00",
+          "source_url": "https://restaurant.ikyu.com/147880/plan12810808"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 11385,
+      "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "c2",
+      "candidate_no": 2,
+      "origin": "list",
+      "genre": "カフェ"
+    },
+    {
+      "address": null,
+      "station": "西新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【平日】秋のアフタヌーンティー「魔法使いのパン工房」",
+          "price_yen": 5900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:27+09:00",
+          "source_url": "https://restaurant.ikyu.com/103985/plan12797665"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5900,
+      "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-660c6c6e91",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】ホリデーアフタヌーンティー＋メッセージプレート（早割）",
+          "price_yen": 8050,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:29+09:00",
+          "source_url": "https://restaurant.ikyu.com/115611/plan12880133"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8050,
+      "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-700cdfe93f",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティーセット",
+          "price_yen": 3300,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "collab"
+          ],
+          "cc": "fr",
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:24+09:00",
+          "source_url": "https://restaurant.ikyu.com/109753/plan12750169"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3300,
+      "name": "ル サロン ド ニナス 小田急百貨店新宿",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-7c60b13e2d",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー～マロン×秋の味覚～＋乾杯スパークリングワイン（11月限定）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "kuri"
+          ],
+          "season": [
+            "season"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:32+09:00",
+          "source_url": "https://restaurant.ikyu.com/103085/plan12829652"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "c16",
+      "candidate_no": 16,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "陽だまりアフタヌーンプレート＋カフェフリー（限定20食・10～11月・火＆水曜日）",
+          "price_yen": 3800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:36+09:00",
+          "source_url": "https://restaurant.ikyu.com/101733/plan12813470"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3800,
+      "name": "京王プラザホテル / オールデイダイニング 樹林",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-fb2146f58e",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "西武新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【9/5～ 土日祝日限定】オータムアフターヌーンティー",
+          "price_yen": 8200,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:39+09:00",
+          "source_url": "https://restaurant.ikyu.com/121396/plan12791558"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8200,
+      "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-1f3ced983a",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新宿駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ピエール・エルメ・パリ 新宿の実り アフタヌーンティー＋カフェフリー",
+          "price_yen": 7500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:42+09:00",
+          "source_url": "https://restaurant.ikyu.com/147317/plan12827569"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7500,
+      "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
+      "hotel_name": null,
+      "area_no": 6,
+      "id": "x-90e6708a98",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "渋谷駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【苺×栗・紫芋・かぼちゃ】ストロベリー＆秋の実り アフタヌーンティー＋カフェフリー",
+          "price_yen": 4800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "ichigo",
+            "imo",
+            "kuri"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:14+09:00",
+          "source_url": "https://restaurant.ikyu.com/100272/plan12814237"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4800,
+      "name": "ザ・レギャン・トーキョー",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "x-5bf6cd412b",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "渋谷駅／神泉駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【約30種のティーコレクションが楽しめる】アフタヌーンティー3段仕立て＋ゆったり過ごせる3H（～11/30）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:02+09:00",
+          "source_url": "https://restaurant.ikyu.com/107718/plan12255764"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6000,
+      "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "c12",
+      "candidate_no": 12,
+      "origin": "list",
+      "genre": "ホテルラウンジ"
+    },
+    {
+      "address": null,
+      "station": "渋谷駅／神泉駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【土日祝限定】アフタヌーンティーを地上150mからの眺望と共に！＋季節のシャンパンカクテル＋2時間30分制",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": false,
+          "weekend_available": true,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:05+09:00",
+          "source_url": "https://restaurant.ikyu.com/101738/plan12685902"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 8000,
+      "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "x-2d95d5a540",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "渋谷駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "季節のアフターヌーンティー＋ノンアルコールカクテル1杯（12：00or12：30入店）",
+          "price_yen": 5000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:08+09:00",
+          "source_url": "https://restaurant.ikyu.com/115887/plan12652208"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 5000,
+      "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "c62",
+      "candidate_no": 62,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "神泉駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【1日5組限定】栗と夏秋いちごを贅沢に使ったアフタヌーンティー＋2時間カフェフリーフロー（12時入店）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "ichigo",
+            "kuri"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:56+09:00",
+          "source_url": "https://restaurant.ikyu.com/110056/plan12824068"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5500,
+      "name": "BLACK TERRACE",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "x-86183dfe6c",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "渋谷駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【期間限定】シャインマスカットのアフタヌーンティー＋カフェフリー（11/30迄）",
+          "price_yen": 2980,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "grape"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:29:59+09:00",
+          "source_url": "https://restaurant.ikyu.com/106388/plan12793689"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 2980,
+      "name": "LA COCORICO 渋谷",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "x-b3f4f0f2ce",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "渋谷駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【チョコレートアフタヌーンティー】＋モクテル＋メッセージプレート付（平日・11/1～・2部制）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "sweets": [
+            "choco"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:11+09:00",
+          "source_url": "https://restaurant.ikyu.com/110458/plan12861712"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6000,
+      "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
+      "hotel_name": null,
+      "area_no": 7,
+      "id": "x-dee3337914",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "ブルーブリックティーセット～ 陽だまりテラスのティータイム～（11/1～30）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:17+09:00",
+          "source_url": "https://restaurant.ikyu.com/110765/plan12817990"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5500,
+      "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-fe33f5dd92",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー×TWGカフェフリー 11/18～（平日限定）",
+          "price_yen": 6800,
+          "price_note": "税サ込（1人あたり）",
+          "start": "2026-11-18",
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:20+09:00",
+          "source_url": "https://restaurant.ikyu.com/117546/plan12844393"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6800,
+      "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-71e25a0679",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "スノーホリデー×ジュリークローズアフタヌーンティー＋カフェフリー（平日）",
+          "price_yen": 5900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:24+09:00",
+          "source_url": "https://restaurant.ikyu.com/105173/plan12868701"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5900,
+      "name": "St.GRACE Lounge & Dining",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "c49",
+      "candidate_no": 49,
+      "origin": "list",
+      "genre": "レストラン・カフェ"
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "秋の実りアフタヌーンティー＋約20種フリーフロー（9/25～11/17 平日15時来店）",
+          "price_yen": 6900,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:26+09:00",
+          "source_url": "https://restaurant.ikyu.com/121853/plan12839132"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "name": "アニヴェルセルカフェ 表参道",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-eb2fd772a0",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "「夜カフェ」夕ざりのアフターヌーンセット 料理と甘味 全13品＋飲物お替り自由（2時間制・テーブル席）",
+          "price_yen": 5500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:30+09:00",
+          "source_url": "https://restaurant.ikyu.com/102572/plan12631502"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5500,
+      "name": "茶洒 金田中",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-63d80a6515",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフターヌーンティーコース】本格スコーンと自家製スイーツなど全9品 ＋カフェフリー",
+          "price_yen": 3400,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "scone"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:32+09:00",
+          "source_url": "https://restaurant.ikyu.com/113312/plan11876844"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3400,
+      "name": "BRASSERIE CAFE LE CONTE",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-fe1b5fd111",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas サロン・ド・シアター アフタヌーンティー】生絞りモンブランパフェ（2時間）",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "kuri",
+            "parfait"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:35+09:00",
+          "source_url": "https://restaurant.ikyu.com/153938/plan12888059"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "x-04f2f5a884",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "表参道駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー＋カフェフリー＋季節ウェルカムドリンク付",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:30:38+09:00",
+          "source_url": "https://restaurant.ikyu.com/125128/plan12302624"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6000,
+      "name": "ARMANI / CAFFE 表参道",
+      "hotel_name": null,
+      "area_no": 8,
+      "id": "c47",
+      "candidate_no": 47,
+      "origin": "list",
+      "genre": "カフェ/ダイニング"
+    },
+    {
+      "address": null,
+      "station": "白金台駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "秋の紅葉アフタヌーンティー【ラ・フランス食べ放題付き】＋乾杯スパークリング＋TWGカフェフリー",
+          "price_yen": 9600,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:01+09:00",
+          "source_url": "https://restaurant.ikyu.com/106908/plan12847292"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9600,
+      "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+      "hotel_name": null,
+      "area_no": 10,
+      "id": "c28",
+      "candidate_no": 28,
+      "origin": "list",
+      "genre": "ロビーラウンジ"
+    },
+    {
+      "address": null,
+      "station": "品川駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "クリスマス アフタヌーンティー（11/1～12/28）（平日）",
+          "price_yen": 8096,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:04+09:00",
+          "source_url": "https://restaurant.ikyu.com/113851/plan12847981"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8096,
+      "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
+      "hotel_name": null,
+      "area_no": 10,
+      "id": "c50",
+      "candidate_no": 50,
+      "origin": "list",
+      "genre": "カフェ＆バー"
+    },
+    {
+      "address": null,
+      "station": "高輪ゲートウェイ駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "JWオータムアフタヌーンティー＋ウェルカムモクテル付き",
+          "price_yen": 8500,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:07+09:00",
+          "source_url": "https://restaurant.ikyu.com/149035/plan12825529"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8500,
+      "name": "JWマリオット・ホテル東京 / JWラウンジ",
+      "hotel_name": null,
+      "area_no": 10,
+      "id": "c48",
+      "candidate_no": 48,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": null,
+      "station": "浅草駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【アフタヌーンティーセット】",
+          "price_yen": 5800,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:24+09:00",
+          "source_url": "https://restaurant.ikyu.com/108054/plan12187749"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5800,
+      "name": "ラ・ラナリータ 吾妻橋店",
+      "hotel_name": null,
+      "area_no": 11,
+      "id": "x-8e7b97d035",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "浅草駅／田原町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Sky View Afternoon Tea】＋モクテル8種フリー・TWGカフェフリー（平日・最大3時間利用可）",
+          "price_yen": 8000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:16+09:00",
+          "source_url": "https://restaurant.ikyu.com/151232/plan12798243"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 8000,
+      "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+      "hotel_name": null,
+      "area_no": 11,
+      "id": "x-c4bf26e34c",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "錦糸町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【10・11月限定】秋のアフタヌーンティー＋2時間カフェフリー（一休価格限定）",
+          "price_yen": 5800,
+          "price_note": "税サ込（1人あたり）・通常価格",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:18+09:00",
+          "source_url": "https://restaurant.ikyu.com/110552/plan12838920"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5800,
+      "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
+      "hotel_name": null,
+      "area_no": 11,
+      "id": "x-6e39e9da0f",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "東陽町駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティーLa Feerie de Noel Afternoon Tea クリスマス 妖精の魔法（平日限定・2.5時間制）",
+          "price_yen": 6000,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:22+09:00",
+          "source_url": "https://restaurant.ikyu.com/117061/plan12855775"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6000,
+      "name": "ホテルイースト21東京 / ロビーラウンジ",
+      "hotel_name": null,
+      "area_no": 11,
+      "id": "x-02c361161d",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "九段下駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】Afternoon Tea＋2時間カフェフリー（11～12月）",
+          "price_yen": 4950,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:27+09:00",
+          "source_url": "https://restaurant.ikyu.com/120847/plan12815369"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4950,
+      "name": "VMG CAFE 九段会館テラス",
+      "hotel_name": null,
+      "area_no": 12,
+      "id": "x-30ee194515",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "新御茶ノ水駅",
+      "source_site": "一休.com",
+      "plans": [
+        {
+          "plan_name": "【秋】ほうじ茶アフタヌーンティー（ほうじ茶スイーツなど全11品）＆ワンドリンク（9月～11月）",
+          "price_yen": 4300,
+          "price_note": "税サ込（1人あたり）",
+          "start": null,
+          "end": null,
+          "sweets": [
+            "wa"
+          ],
+          "cc": null,
+          "menu": null,
+          "checked_at": "2026-11-07T18:31:31+09:00",
+          "source_url": "https://restaurant.ikyu.com/105246/plan12798669"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4300,
+      "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
+      "hotel_name": null,
+      "area_no": 12,
+      "id": "x-ebbb2e5576",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "飯田橋駅",
+      "source_site": "TableCheck",
+      "plans": [
+        {
+          "plan_name": "Afternoon tea Set（ベルテンポ）",
+          "price_yen": 6800,
+          "price_note": "税サ込（Svc & tax incl.）",
+          "start": null,
+          "end": null,
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:32:53+09:00",
+          "source_url": "https://www.tablecheck.com/en/hotel-edmont-beltempo"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6800,
+      "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+      "hotel_name": null,
+      "area_no": 13,
+      "id": "x-d9e644d8d7",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": "江戸川橋駅／目白駅",
+      "source_site": "TableCheck",
+      "plans": [
+        {
+          "plan_name": "Christmas Afternoon Tea（アフタヌーンティー2026）",
+          "price_yen": 7800,
+          "price_note": "税込・サービス料別（Svc excl. / tax incl.）",
+          "start": "2026-11-01",
+          "end": "2027-01-07",
+          "season": [
+            "xmas"
+          ],
+          "cc": null,
+          "sweets": [],
+          "menu": null,
+          "checked_at": "2026-11-07T18:33:01+09:00",
+          "source_url": "https://www.tablecheck.com/en/shops/hotel-chinzanso-tokyo-jardin/reserve"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7800,
+      "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+      "hotel_name": null,
+      "area_no": 14,
+      "id": "c20",
+      "candidate_no": 20,
+      "origin": "list",
+      "genre": "ロビーラウンジ"
+    },
+    {
+      "address": null,
+      "station": null,
+      "source_site": "帝国ホテル公式サイト",
+      "plans": [
+        {
+          "plan_name": "Holiday Afternoon Tea “JOIE”（平日）",
+          "price_yen": 9400,
+          "price_note": "料金は平日。税・サービス料条件は本文で未確認",
+          "start": "2026-11-01",
+          "end": "2027-01-15",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "checked_at": "2026-11-08T11:27:12+09:00",
+          "cc": null,
+          "sweets": [
+            "choco",
+            "ichigo",
+            "kaki",
+            "scone"
+          ],
+          "time_note": "11:30～18:00（L.O.）"
+        },
+        {
+          "plan_name": "Holiday Afternoon Tea “JOIE”（土・日・祝日）",
+          "price_yen": 9800,
+          "price_note": "料金は土・日・祝日(12/21～12/25含む)。税・サービス料条件は本文で未確認",
+          "start": "2026-11-01",
+          "end": "2027-01-15",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:スペシャルデザート ロビーローズ(苺・フランボワーズ・ラズベリー)/ショコラルージュ(グリオットチェリー・チョコレート)/ピスタチオのエクレア/洋梨のケーク/Cadeau/プレーンスコーン。セイボリー:シーフードクリームスープのパイ包み/ポークロール サルティンボッカ風/ルージュ・グレック/小海老のシーザーサラダ/ローストチキンとターキーパストラミのサンド。ドリンク:コーヒー・紅茶・ハーブティー約20種(飲み替え自由)",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/imperial-aqua/plan/afternoon-tea",
+          "checked_at": "2026-11-08T11:27:12+09:00",
+          "cc": null,
+          "sweets": [
+            "choco",
+            "ichigo",
+            "kaki",
+            "scone"
+          ],
+          "time_note": "11:30～18:00（L.O.）"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9400,
+      "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+      "hotel_name": null,
+      "area_no": 2,
+      "id": "c4",
+      "candidate_no": 4,
+      "origin": "list",
+      "genre": "ラウンジ／スイーツ"
+    },
+    {
+      "address": null,
+      "station": null,
+      "source_site": "帝国ホテル公式サイト",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー“ザ・ランデブー”",
+          "price_yen": 6900,
+          "price_note": "税・サービス料条件は本文で未確認",
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": "デザート:カマンベールチーズケーキ/苺のショートケーキ/モンブラン/プリン。スコーン:プレーンスコーン。セイボリー:ランデブーサンドイッチ/季節のセイボリー。紅茶またはコーヒー(飲みかえ自由)",
+          "source_url": "https://www.imperialhotel.co.jp/tokyo/restaurant/rendezvous/plan/afternoontea-the-rendezvous",
+          "checked_at": "2026-11-08T11:26:48+09:00",
+          "cc": null,
+          "sweets": [
+            "ichigo",
+            "kuri",
+            "scone"
+          ],
+          "time_note": "11:30～17:00（L.O.）"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6900,
+      "name": "帝国ホテル 東京 / ランデブーラウンジ（本館1階）",
+      "hotel_name": null,
+      "area_no": 2,
+      "id": "c9",
+      "candidate_no": 9,
+      "origin": "list",
+      "genre": "ラウンジ"
+    },
+    {
+      "address": "東京都千代田区紀尾井町4-1",
+      "station": "赤坂見附駅／永田町駅",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "plans": [
+        {
+          "plan_name": "新アフタヌーンティーセット～栗とぶどう～",
+          "price_yen": 8200,
+          "price_note": "税込表記は本文で未確認／サービス料別の記載はSKYのみ確認",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": null,
+          "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "checked_at": "2026-11-08T11:31:54+09:00",
+          "cc": null,
+          "sweets": [
+            "grape",
+            "kuri"
+          ],
+          "time_note": "15:15／15:45／16:15入店、2時間制"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8200,
+      "name": "ホテルニューオータニ（東京） / ガーデンラウンジ",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-33fc1588e1",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": "東京都千代田区紀尾井町4-1",
+      "station": "赤坂見附駅／永田町駅",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "plans": [
+        {
+          "plan_name": "【平日限定】スーパーアフタヌーンティー～マロン～",
+          "price_yen": 11000,
+          "price_note": "税金共・サービス料別",
+          "start": "2026-09-01",
+          "end": "2026-11-30",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "上段:スーパーモンブラン/新モンブラン/モンブラン アンフィニマン ヴァニーユ。中段:サラ/イスパハン/スーパーメロンショートケーキ/ナポレオンパイ。下段:ターキーパストラミと豆乳クリームのオープンサンド/オシェトラ キャビアと蟹セロリーラブのレムラード/ホタテのポアレ。サイド:マロンスコーン、紅茶(ダージリン・アッサム・ニルギリ・アールグレイ・ハーブティー等)",
+          "source_url": "https://www.newotani.co.jp/tokyo/restaurant/sky/super-afternoontea/",
+          "checked_at": "2026-11-08T11:32:02+09:00",
+          "cc": null,
+          "sweets": [
+            "kuri",
+            "melon",
+            "scone"
+          ],
+          "time_note": "14:00／14:30入店、2時間制"
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 11000,
+      "name": "ホテルニューオータニ（東京） / VIEW & DINING THE SKY",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-dc8db7f4d6",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": "東京都千代田区紀尾井町4-1",
+      "station": "赤坂見附駅／永田町駅",
+      "source_site": "ホテルニューオータニ公式サイト",
+      "plans": [
+        {
+          "plan_name": "大観苑 アフタヌーンティーセット（土・日・祝日限定）",
+          "price_yen": 7700,
+          "price_note": "税込表記は本文で未確認／サービス料別の記載はSKYのみ確認",
+          "start": null,
+          "end": "2026-11-29",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": null,
+          "source_url": "https://www.newotani.co.jp/tokyo/afternoontea/",
+          "checked_at": "2026-11-08T11:31:54+09:00",
+          "cc": "cn",
+          "sweets": [],
+          "time_note": "14:00／14:30／15:00入店、2時間制"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7700,
+      "name": "ホテルニューオータニ（東京） / 大観苑",
+      "hotel_name": null,
+      "area_no": 4,
+      "id": "x-1d1030a176",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": "東京都港区六本木6-10-3",
+      "station": null,
+      "source_site": "グランド ハイアット 東京公式サイト",
+      "plans": [
+        {
+          "plan_name": "オータム アフタヌーンティー（平日）",
+          "price_yen": 5280,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは平日7,260円",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "weekday_available": true,
+          "weekend_available": false,
+          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "cc": "it",
+          "sweets": [
+            "grape",
+            "imo",
+            "kaki",
+            "kuri"
+          ],
+          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
+        },
+        {
+          "plan_name": "オータム アフタヌーンティー（土日祝）",
+          "price_yen": 6600,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは土日祝8,580円",
+          "start": "2026-11-01",
+          "end": "2026-11-30",
+          "weekday_available": false,
+          "weekend_available": true,
+          "menu": "スイーツ:パンプキンプリン/紫芋ロールケーキ/洋梨とキャラメルのムース/シャインマスカット ショートケーキ/モンテビアンコ ジャポネーゼ。セイボリー:秋ナスのカポナータ モッツァレラチーズのタルトレット/きのこのフリッタータ トリュフ添え/サーモンマリネとかぼちゃのミニクロワッサン/栗のアランチーニ/イチジク ゴルゴンゾーラ 生ハムのクロスティーニ。パンドーロ(マロン・プレーン)をマスカルポーネチーズ・洋梨ジャムと。コーヒー・紅茶・カフェラテ等",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "cc": "it",
+          "sweets": [
+            "grape",
+            "imo",
+            "kaki",
+            "kuri"
+          ],
+          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
+        },
+        {
+          "plan_name": "クリスマス アフタヌーンティー",
+          "price_yen": 6600,
+          "price_note": "税込・サービス料別。スパークリングワイン付きは8,580円",
+          "start": "2026-12-01",
+          "end": "2026-12-23",
+          "weekday_available": null,
+          "weekend_available": null,
+          "menu": "スイーツ:ストロベリー パンナコッタ/モンテビアンコ ジャポネーゼ/チョコレートロールケーキ ラズベリージュレ/ストロベリー パネトーネ/ティラミス。セイボリー:自家製サルシッチャとトマトのパニーニ/牛ホホ肉の煮込みとマッシュポテトのタルトレット/ホウレンソウ パンチェッタ リコッタチーズのフリッタータ/ブランダードコロッケ/リンゴとクルミ、ゴルゴンゾーラのブルスケッタ。パンドーロ(ドライフルーツ・プレーン)。コーヒー・紅茶・カフェラテ等",
+          "source_url": "https://www.tokyo.grand.hyatt.co.jp/restaurants/recommended/fiorentina/afternoon-tea",
+          "checked_at": "2026-11-08T11:31:55+09:00",
+          "cc": "it",
+          "sweets": [
+            "choco",
+            "ichigo"
+          ],
+          "season": [
+            "xmas"
+          ],
+          "time_note": "15:00～17:00（最終入店15:30）、2時間制"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5280,
+      "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
+      "hotel_name": null,
+      "area_no": 5,
+      "id": "x-aab5ba08e1",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
+    },
+    {
+      "address": null,
+      "station": null,
+      "source_site": "品川プリンスホテル公式サイト",
+      "plans": [
+        {
+          "plan_name": "和のアフタヌーンティー「おこたであったか“餡めぐり”」",
+          "price_yen": 7910,
+          "price_note": "税・サービス料込。公式表示7,000円（税込）＋必須サービス料13％から算出。元ページ表記：税込・別途サービス料13%。会員6,500円、アップグレード8,500円(会員8,000円)",
+          "start": "2026-11-01",
+          "end": "2027-01-10",
+          "weekday_available": true,
+          "weekend_available": true,
+          "menu": null,
+          "source_url": "https://www.princehotels.co.jp/shinagawa/plan/special/afternoontea/",
+          "checked_at": "2026-11-08T11:36:56+09:00",
+          "cc": "jp",
+          "sweets": [],
+          "time_note": "平日11:30～15:00、土休日11:30～17:00"
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7910,
+      "name": "品川プリンスホテル / 味街道 五十三次（メインタワー38F）",
+      "hotel_name": null,
+      "area_no": 10,
+      "id": "x-2eb47a4733",
+      "candidate_no": null,
+      "origin": "explore",
+      "genre": null
     }
+  ],
+  "progress": {
+    "updated_at": "2026-11-12T22:22:33+09:00",
+    "entries": {
+      "c64": {
+        "key": "c64",
+        "origin": "list",
+        "name": "cafe VAVA",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "カフェ／カジュアル",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:50+09:00",
+        "confirmed_at": "2026-11-07T18:26:50+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-ffd6bf5b02": {
+        "key": "x-ffd6bf5b02",
+        "origin": "explore",
+        "name": "ROSSINI TERRACE（東京會舘）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:25:55+09:00",
+        "confirmed_at": "2026-11-07T18:25:55+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c18": {
+        "key": "c18",
+        "origin": "list",
+        "name": "丸ノ内ホテル / ポム・ダダン（8F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "フレンチレストラン",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-08T11:37:57+09:00",
+        "confirmed_at": "2026-11-08T11:37:57+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c10": {
+        "key": "c10",
+        "origin": "list",
+        "name": "フォーシーズンズホテル東京大手町 / THE LOUNGE",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:24+09:00",
+        "confirmed_at": "2026-11-07T18:26:24+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c39": {
+        "key": "c39",
+        "origin": "list",
+        "name": "東京ステーションホテル / ロビーラウンジ",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:27+09:00",
+        "confirmed_at": "2026-11-07T18:26:27+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c33": {
+        "key": "c33",
+        "origin": "list",
+        "name": "東京ステーションホテル / バー＆カフェ カメリア（2F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "バー＆カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:30+09:00",
+        "confirmed_at": "2026-11-07T18:26:30+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c5": {
+        "key": "c5",
+        "origin": "list",
+        "name": "マンダリン オリエンタル 東京 / オリエンタルラウンジ（38F）",
+        "hotel_name": "マンダリン オリエンタル 東京",
+        "area_no": 1,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:36+09:00",
+        "confirmed_at": "2026-11-07T18:26:36+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c11": {
+        "key": "c11",
+        "origin": "list",
+        "name": "シャングリ・ラ 東京 / ザ・ロビーラウンジ",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ロビーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:39+09:00",
+        "confirmed_at": "2026-11-07T18:26:39+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c75": {
+        "key": "c75",
+        "origin": "list",
+        "name": "パレスホテル東京 / ザ パレス ラウンジ（1F）",
+        "hotel_name": "パレスホテル東京",
+        "area_no": 1,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:32:12+09:00",
+        "confirmed_at": "2026-11-07T18:32:12+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c22": {
+        "key": "c22",
+        "origin": "list",
+        "name": "アマン東京 / ザ・ラウンジ by アマン（33F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "バーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:42+09:00",
+        "confirmed_at": "2026-11-07T18:26:42+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c36": {
+        "key": "c36",
+        "origin": "list",
+        "name": "パレスホテル東京 / ラウンジバー プリヴェ（6F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ラウンジバー",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:45+09:00",
+        "confirmed_at": "2026-11-07T18:26:45+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-1252d0968c": {
+        "key": "x-1252d0968c",
+        "origin": "explore",
+        "name": "真不同 HONG KONG TEA ROOM 1946",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:25:57+09:00",
+        "confirmed_at": "2026-11-07T18:25:57+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-0afc0f63c5": {
+        "key": "x-0afc0f63c5",
+        "origin": "explore",
+        "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:00+09:00",
+        "confirmed_at": "2026-11-07T18:26:00+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-45b69b54ac": {
+        "key": "x-45b69b54ac",
+        "origin": "explore",
+        "name": "文明堂カフェ",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:03+09:00",
+        "confirmed_at": "2026-11-07T18:26:03+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-ca3c7eabf3": {
+        "key": "x-ca3c7eabf3",
+        "origin": "explore",
+        "name": "アルポルトカフェ 日本橋高島屋店",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:06+09:00",
+        "confirmed_at": "2026-11-07T18:26:06+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c26": {
+        "key": "c26",
+        "origin": "list",
+        "name": "フォーシーズンズホテル丸の内 東京 / MAISON MARUNOUCHI（7F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "フランス料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-07T18:26:13+09:00",
+        "confirmed_at": "2026-11-07T18:26:13+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-61b92a02dc": {
+        "key": "x-61b92a02dc",
+        "origin": "explore",
+        "name": "フォーシーズンズホテル東京大手町 / PIGNETO（39F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:16+09:00",
+        "confirmed_at": "2026-11-07T18:26:16+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c45": {
+        "key": "c45",
+        "origin": "list",
+        "name": "ロイヤルパークホテル（東京・日本橋） / ロビーラウンジ フォンテーヌ",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ロビーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:19+09:00",
+        "confirmed_at": "2026-11-07T18:26:19+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-80787d4fb0": {
+        "key": "x-80787d4fb0",
+        "origin": "explore",
+        "name": "HAMACHO HOTEL / SESSiON（1F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:22+09:00",
+        "confirmed_at": "2026-11-07T18:26:22+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c68": {
+        "key": "c68",
+        "origin": "list",
+        "name": "東京ステーションホテル / ゲストラウンジ アトリウム（4F）",
+        "hotel_name": null,
+        "area_no": 1,
+        "genre": "ゲストラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:26:33+09:00",
+        "confirmed_at": "2026-11-07T18:26:33+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-2c7a943379": {
+        "key": "x-2c7a943379",
+        "origin": "explore",
+        "name": "ザ ロイヤルパーク キャンバス 銀座8 / Opuses（14F）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:32:18+09:00",
+        "confirmed_at": "2026-11-07T18:32:18+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c25": {
+        "key": "c25",
+        "origin": "list",
+        "name": "ザ・プリンス パークタワー東京 / ロビーラウンジ",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "ティーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:27:44+09:00",
+        "confirmed_at": "2026-11-07T18:27:44+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c52": {
+        "key": "c52",
+        "origin": "list",
+        "name": "ホテル インターコンチネンタル 東京ベイ / ニューヨーク ラウンジ",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:27:50+09:00",
+        "confirmed_at": "2026-11-07T18:27:50+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c7": {
+        "key": "c7",
+        "origin": "list",
+        "name": "コンラッド東京 / トゥエンティエイト（28F）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "バー＆ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:27:57+09:00",
+        "confirmed_at": "2026-11-07T18:27:57+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c23": {
+        "key": "c23",
+        "origin": "list",
+        "name": "フェアモント東京 / Vue Mer（ビュメール）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:00+09:00",
+        "confirmed_at": "2026-11-07T18:28:00+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c67": {
+        "key": "c67",
+        "origin": "list",
+        "name": "ザ・プリンス パークタワー東京 / Sky Bar & Dining Stellar Garden（バーエリア）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "バー・ダイニング",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:31:37+09:00",
+        "confirmed_at": "2026-11-08T11:31:37+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c34": {
+        "key": "c34",
+        "origin": "list",
+        "name": "ホテル インターコンチネンタル 東京ベイ / HUDSON LOUNGE（1F）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "バーラウンジ・フランス料理",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:27:54+09:00",
+        "confirmed_at": "2026-11-07T18:27:54+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c41": {
+        "key": "c41",
+        "origin": "list",
+        "name": "ザ ロイヤルパークホテル アイコニック 東京汐留 / THE BAR（24F）",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "ブッフェ・洋食・バー&ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:04+09:00",
+        "confirmed_at": "2026-11-07T18:28:04+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c58": {
+        "key": "c58",
+        "origin": "list",
+        "name": "第一ホテル東京 / ロビーラウンジ",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:10+09:00",
+        "confirmed_at": "2026-11-07T18:28:10+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c38": {
+        "key": "c38",
+        "origin": "list",
+        "name": "芝パークホテル / ザ ダイニング",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "オールデイダイニング",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:13+09:00",
+        "confirmed_at": "2026-11-07T18:28:13+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-d19a2fc937": {
+        "key": "x-d19a2fc937",
+        "origin": "explore",
+        "name": "パークホテル東京 / アートカラーズダイニング",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:16+09:00",
+        "confirmed_at": "2026-11-07T18:28:16+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c59": {
+        "key": "c59",
+        "origin": "list",
+        "name": "メズム東京、オートグラフ コレクション / ウィスク",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "バー＆ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:19+09:00",
+        "confirmed_at": "2026-11-07T18:28:19+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-3173d559a7": {
+        "key": "x-3173d559a7",
+        "origin": "explore",
+        "name": "YOTEL Tokyo Ginza / KOMYUNITI YOTEL東京銀座",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:22+09:00",
+        "confirmed_at": "2026-11-07T18:28:22+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-d45c9bc461": {
+        "key": "x-d45c9bc461",
+        "origin": "explore",
+        "name": "東京プリンスホテル / ティーサロン ピカケ",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:25+09:00",
+        "confirmed_at": "2026-11-07T18:28:25+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c6": {
+        "key": "c6",
+        "origin": "list",
+        "name": "ザ・プリンスギャラリー 東京紀尾井町 / レヴィータ（35F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": "ラウンジ・バー",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:02+09:00",
+        "confirmed_at": "2026-11-07T18:29:02+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c13": {
+        "key": "c13",
+        "origin": "list",
+        "name": "アンダーズ 東京 / ザ タヴァン グリル＆ラウンジ",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": "グリル料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-07T18:28:38+09:00",
+        "confirmed_at": "2026-11-07T18:28:38+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-be6f51f251": {
+        "key": "x-be6f51f251",
+        "origin": "explore",
+        "name": "BISTRO & CAFE LOUNGE LA BOUCHERIE",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:28+09:00",
+        "confirmed_at": "2026-11-07T18:28:28+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c31": {
+        "key": "c31",
+        "origin": "list",
+        "name": "ザ・プリンスギャラリー 東京紀尾井町 / WASHOKU 蒼天 SOUTEN",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": "コンテンポラリージャパニーズ",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-07T18:28:32+09:00",
+        "confirmed_at": "2026-11-07T18:28:32+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-e3fab59785": {
+        "key": "x-e3fab59785",
+        "origin": "explore",
+        "name": "ザ・プリンスギャラリー 東京紀尾井町 / All-Day Dining OASIS GARDEN",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:35+09:00",
+        "confirmed_at": "2026-11-07T18:28:35+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-e8666e8fa1": {
+        "key": "x-e8666e8fa1",
+        "origin": "explore",
+        "name": "アンダーズ 東京 / ペストリーショップ（1F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:41+09:00",
+        "confirmed_at": "2026-11-07T18:28:41+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-78ff7ab4c8": {
+        "key": "x-78ff7ab4c8",
+        "origin": "explore",
+        "name": "ANAインターコンチネンタルホテル東京 / アトリウムラウンジ & ジュネヴァ ロビーバー（2F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:44+09:00",
+        "confirmed_at": "2026-11-07T18:28:44+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-793bfc99e7": {
+        "key": "x-793bfc99e7",
+        "origin": "explore",
+        "name": "ANAインターコンチネンタルホテル東京 / ブリュワーズ コーヒー＆バー（3F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:47+09:00",
+        "confirmed_at": "2026-11-07T18:28:47+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c24": {
+        "key": "c24",
+        "origin": "list",
+        "name": "オークラ東京 / バーラウンジ スターライト",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": "バー・ラウンジ・レストラン",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:50+09:00",
+        "confirmed_at": "2026-11-07T18:28:50+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-60065da7a2": {
+        "key": "x-60065da7a2",
+        "origin": "explore",
+        "name": "ハイアット・ホテル虎ノ門ヒルズ / ル・プリスティン東京 カフェエリア",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:54+09:00",
+        "confirmed_at": "2026-11-07T18:28:54+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-1a1cc7db19": {
+        "key": "x-1a1cc7db19",
+        "origin": "explore",
+        "name": "ザ・キャピトルホテル 東急 / ラウンジ ORIGAMI（3F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:32:24+09:00",
+        "confirmed_at": "2026-11-07T18:32:24+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-f4e4c354a3": {
+        "key": "x-f4e4c354a3",
+        "origin": "explore",
+        "name": "東京エディション虎ノ門 / Lobby Bar（31F）",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:28:57+09:00",
+        "confirmed_at": "2026-11-07T18:28:57+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c3": {
+        "key": "c3",
+        "origin": "list",
+        "name": "ジャヌ東京 / ジャヌ ラウンジ＆ガーデンテラス",
+        "hotel_name": null,
+        "area_no": 5,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:17+09:00",
+        "confirmed_at": "2026-11-07T18:29:17+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c44": {
+        "key": "c44",
+        "origin": "list",
+        "name": "ザ・リッツ・カールトン東京 / ザ・ロビーラウンジ＆バー 45F",
+        "hotel_name": null,
+        "area_no": 5,
+        "genre": "ロビーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:12+09:00",
+        "confirmed_at": "2026-11-07T18:29:12+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-4986a300dc": {
+        "key": "x-4986a300dc",
+        "origin": "explore",
+        "name": "六本木ホテルS（ホテル&レジデンス六本木） / Bar & Restaurant COCONOMA",
+        "hotel_name": null,
+        "area_no": 5,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:31:59+09:00",
+        "confirmed_at": "2026-11-08T11:31:59+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-6d3b6b2b55": {
+        "key": "x-6d3b6b2b55",
+        "origin": "explore",
+        "name": "小田急ホテルセンチュリーサザンタワー / ラウンジ サウスコート",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:53+09:00",
+        "confirmed_at": "2026-11-07T18:29:53+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c2": {
+        "key": "c2",
+        "origin": "list",
+        "name": "パーク ハイアット 東京 / ピーク ラウンジ＆バー",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": "カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:48+09:00",
+        "confirmed_at": "2026-11-07T18:29:48+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-660c6c6e91": {
+        "key": "x-660c6c6e91",
+        "origin": "explore",
+        "name": "ヒルトン東京 / バー＆ラウンジ ZATTA",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:27+09:00",
+        "confirmed_at": "2026-11-07T18:29:27+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-700cdfe93f": {
+        "key": "x-700cdfe93f",
+        "origin": "explore",
+        "name": "キンプトン新宿東京 / District - Brasserie, Bar, Lounge",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:29+09:00",
+        "confirmed_at": "2026-11-07T18:29:29+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-7c60b13e2d": {
+        "key": "x-7c60b13e2d",
+        "origin": "explore",
+        "name": "ル サロン ド ニナス 小田急百貨店新宿",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:24+09:00",
+        "confirmed_at": "2026-11-07T18:29:24+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c16": {
+        "key": "c16",
+        "origin": "list",
+        "name": "京王プラザホテル / スカイラウンジ オーロラ 45F",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:32+09:00",
+        "confirmed_at": "2026-11-07T18:29:32+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-fb2146f58e": {
+        "key": "x-fb2146f58e",
+        "origin": "explore",
+        "name": "京王プラザホテル / オールデイダイニング 樹林",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:36+09:00",
+        "confirmed_at": "2026-11-07T18:29:36+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-1f3ced983a": {
+        "key": "x-1f3ced983a",
+        "origin": "explore",
+        "name": "BELLUSTAR TOKYO, A Pan Pacific Hotel / Bar Bellustar",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:39+09:00",
+        "confirmed_at": "2026-11-07T18:29:39+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-90e6708a98": {
+        "key": "x-90e6708a98",
+        "origin": "explore",
+        "name": "ハイアット リージェンシー 東京 / Nineteen Eighty Lounge and Bar",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:42+09:00",
+        "confirmed_at": "2026-11-07T18:29:42+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-c8d1153009": {
+        "key": "x-c8d1153009",
+        "origin": "explore",
+        "name": "ヒルトン東京 / メトロポリタングリル",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": "グリル",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-07T18:29:45+09:00",
+        "confirmed_at": "2026-11-07T18:29:45+09:00",
+        "reason": null,
+        "note": "店名に「グリル」と明記",
+        "urls": []
+      },
+      "x-5bf6cd412b": {
+        "key": "x-5bf6cd412b",
+        "origin": "explore",
+        "name": "ザ・レギャン・トーキョー",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:14+09:00",
+        "confirmed_at": "2026-11-07T18:30:14+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c12": {
+        "key": "c12",
+        "origin": "list",
+        "name": "セルリアンタワー東急ホテル / ガーデンラウンジ 坐忘",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": "ホテルラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:02+09:00",
+        "confirmed_at": "2026-11-07T18:30:02+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-2d95d5a540": {
+        "key": "x-2d95d5a540",
+        "origin": "explore",
+        "name": "セルリアンタワー東急ホテル / 40階 タワーズバー ベロビスト",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:05+09:00",
+        "confirmed_at": "2026-11-07T18:30:05+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c62": {
+        "key": "c62",
+        "origin": "list",
+        "name": "渋谷エクセルホテル東急 / 5F エスタシオン カフェ",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:08+09:00",
+        "confirmed_at": "2026-11-07T18:30:08+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-86183dfe6c": {
+        "key": "x-86183dfe6c",
+        "origin": "explore",
+        "name": "BLACK TERRACE",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:56+09:00",
+        "confirmed_at": "2026-11-07T18:29:56+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-b3f4f0f2ce": {
+        "key": "x-b3f4f0f2ce",
+        "origin": "explore",
+        "name": "LA COCORICO 渋谷",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:29:59+09:00",
+        "confirmed_at": "2026-11-07T18:29:59+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-dee3337914": {
+        "key": "x-dee3337914",
+        "origin": "explore",
+        "name": "SHIBUYA STREAM HOTEL / Bar & Dining TORRENT",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:11+09:00",
+        "confirmed_at": "2026-11-07T18:30:11+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-fe33f5dd92": {
+        "key": "x-fe33f5dd92",
+        "origin": "explore",
+        "name": "ブルー・ブリック・ラウンジ（ヨックモック青山本店）",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:17+09:00",
+        "confirmed_at": "2026-11-07T18:30:17+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-71e25a0679": {
+        "key": "x-71e25a0679",
+        "origin": "explore",
+        "name": "TAVERN by the green（ザ ストリングス 表参道 2F）",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:20+09:00",
+        "confirmed_at": "2026-11-07T18:30:20+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c49": {
+        "key": "c49",
+        "origin": "list",
+        "name": "St.GRACE Lounge & Dining",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": "レストラン・カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:24+09:00",
+        "confirmed_at": "2026-11-07T18:30:24+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-eb2fd772a0": {
+        "key": "x-eb2fd772a0",
+        "origin": "explore",
+        "name": "アニヴェルセルカフェ 表参道",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:26+09:00",
+        "confirmed_at": "2026-11-07T18:30:26+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-63d80a6515": {
+        "key": "x-63d80a6515",
+        "origin": "explore",
+        "name": "茶洒 金田中",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:30+09:00",
+        "confirmed_at": "2026-11-07T18:30:30+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-fe1b5fd111": {
+        "key": "x-fe1b5fd111",
+        "origin": "explore",
+        "name": "BRASSERIE CAFE LE CONTE",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:32+09:00",
+        "confirmed_at": "2026-11-07T18:30:32+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-04f2f5a884": {
+        "key": "x-04f2f5a884",
+        "origin": "explore",
+        "name": "TIME NEST BAR LOUNGE（ザ ストリングス表参道 B1F）",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:35+09:00",
+        "confirmed_at": "2026-11-07T18:30:35+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c47": {
+        "key": "c47",
+        "origin": "list",
+        "name": "ARMANI / CAFFE 表参道",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": "カフェ/ダイニング",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:30:38+09:00",
+        "confirmed_at": "2026-11-07T18:30:38+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c28": {
+        "key": "c28",
+        "origin": "list",
+        "name": "シェラトン都ホテル東京 / ロビーラウンジ バンブー",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "ロビーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:01+09:00",
+        "confirmed_at": "2026-11-07T18:31:01+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c50": {
+        "key": "c50",
+        "origin": "list",
+        "name": "ストリングスホテル東京インターコンチネンタル / リュトモス",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "カフェ＆バー",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:04+09:00",
+        "confirmed_at": "2026-11-07T18:31:04+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c48": {
+        "key": "c48",
+        "origin": "list",
+        "name": "JWマリオット・ホテル東京 / JWラウンジ",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:07+09:00",
+        "confirmed_at": "2026-11-07T18:31:07+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-8e7b97d035": {
+        "key": "x-8e7b97d035",
+        "origin": "explore",
+        "name": "ラ・ラナリータ 吾妻橋店",
+        "hotel_name": null,
+        "area_no": 11,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:24+09:00",
+        "confirmed_at": "2026-11-07T18:31:24+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-c4bf26e34c": {
+        "key": "x-c4bf26e34c",
+        "origin": "explore",
+        "name": "浅草ビューホテル / THE TOP BAR Hanabi-華美-",
+        "hotel_name": null,
+        "area_no": 11,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:16+09:00",
+        "confirmed_at": "2026-11-07T18:31:16+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-6e39e9da0f": {
+        "key": "x-6e39e9da0f",
+        "origin": "explore",
+        "name": "東武ホテルレバント東京 / ロビーラウンジ クリスタルムーブメント",
+        "hotel_name": null,
+        "area_no": 11,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:18+09:00",
+        "confirmed_at": "2026-11-07T18:31:18+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-02c361161d": {
+        "key": "x-02c361161d",
+        "origin": "explore",
+        "name": "ホテルイースト21東京 / ロビーラウンジ",
+        "hotel_name": null,
+        "area_no": 11,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:22+09:00",
+        "confirmed_at": "2026-11-07T18:31:22+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c40": {
+        "key": "c40",
+        "origin": "list",
+        "name": "東京ドームホテル / アーティスト カフェ",
+        "hotel_name": "東京ドームホテル",
+        "area_no": 12,
+        "genre": "イタリア料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-07T18:31:33+09:00",
+        "confirmed_at": "2026-11-07T18:31:33+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-30ee194515": {
+        "key": "x-30ee194515",
+        "origin": "explore",
+        "name": "VMG CAFE 九段会館テラス",
+        "hotel_name": null,
+        "area_no": 12,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:27+09:00",
+        "confirmed_at": "2026-11-07T18:31:27+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-ebbb2e5576": {
+        "key": "x-ebbb2e5576",
+        "origin": "explore",
+        "name": "ホテル龍名館お茶の水本店 / RESTAURANT 1899 OCHANOMIZU",
+        "hotel_name": null,
+        "area_no": 12,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:31:31+09:00",
+        "confirmed_at": "2026-11-07T18:31:31+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-d9e644d8d7": {
+        "key": "x-d9e644d8d7",
+        "origin": "explore",
+        "name": "ホテルメトロポリタン エドモント / ダイニング・カフェ「ベルテンポ」",
+        "hotel_name": null,
+        "area_no": 13,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:32:53+09:00",
+        "confirmed_at": "2026-11-07T18:32:53+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c20": {
+        "key": "c20",
+        "origin": "list",
+        "name": "ホテル椿山荘東京 / ル・ジャルダン（ロビーラウンジ）",
+        "hotel_name": null,
+        "area_no": 14,
+        "genre": "ロビーラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-07T18:33:01+09:00",
+        "confirmed_at": "2026-11-07T18:33:01+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c4": {
+        "key": "c4",
+        "origin": "list",
+        "name": "帝国ホテル 東京 / インペリアルラウンジ アクア",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "ラウンジ／スイーツ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:27:12+09:00",
+        "confirmed_at": "2026-11-08T11:27:12+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "c9": {
+        "key": "c9",
+        "origin": "list",
+        "name": "帝国ホテル 東京 / ランデブーラウンジ（本館1階）",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:26:48+09:00",
+        "confirmed_at": "2026-11-08T11:26:48+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-33fc1588e1": {
+        "key": "x-33fc1588e1",
+        "origin": "explore",
+        "name": "ホテルニューオータニ（東京） / ガーデンラウンジ",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:31:54+09:00",
+        "confirmed_at": "2026-11-08T11:31:54+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-dc8db7f4d6": {
+        "key": "x-dc8db7f4d6",
+        "origin": "explore",
+        "name": "ホテルニューオータニ（東京） / VIEW & DINING THE SKY",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:32:02+09:00",
+        "confirmed_at": "2026-11-08T11:32:02+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-1d1030a176": {
+        "key": "x-1d1030a176",
+        "origin": "explore",
+        "name": "ホテルニューオータニ（東京） / 大観苑",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:31:54+09:00",
+        "confirmed_at": "2026-11-08T11:31:54+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-aab5ba08e1": {
+        "key": "x-aab5ba08e1",
+        "origin": "explore",
+        "name": "グランド ハイアット 東京 / フィオレンティーナ（1F）",
+        "hotel_name": null,
+        "area_no": 5,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:31:55+09:00",
+        "confirmed_at": "2026-11-08T11:31:55+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-14d179e3c8": {
+        "key": "x-14d179e3c8",
+        "origin": "explore",
+        "name": "ザ・プリンス パークタワー東京 / 中国料理 陽明殿",
+        "hotel_name": null,
+        "area_no": 3,
+        "genre": "中国料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-08T11:31:45+09:00",
+        "confirmed_at": "2026-11-08T11:31:45+09:00",
+        "reason": null,
+        "note": "店名に「中国料理」と明記",
+        "urls": []
+      },
+      "c27": {
+        "key": "c27",
+        "origin": "list",
+        "name": "品川プリンスホテル / DINING & BAR TABLE 9 TOKYO（メインタワー39F）",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "グリル・ステーキ・ダイニング",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-08T11:36:56+09:00",
+        "confirmed_at": "2026-11-08T11:36:56+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-2eb47a4733": {
+        "key": "x-2eb47a4733",
+        "origin": "explore",
+        "name": "品川プリンスホテル / 味街道 五十三次（メインタワー38F）",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": null,
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-08T11:36:56+09:00",
+        "confirmed_at": "2026-11-08T11:36:56+09:00",
+        "reason": null,
+        "note": "Git履歴の公開データから確認日時を変えずに復旧",
+        "urls": []
+      },
+      "x-8311f29c6a": {
+        "key": "x-8311f29c6a",
+        "origin": "explore",
+        "name": "品川プリンスホテル / 中国料理 品川大飯店（メインタワー4F）",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "中国料理",
+        "status": "excluded_genre",
+        "attempted_at": "2026-11-08T11:36:56+09:00",
+        "confirmed_at": "2026-11-08T11:36:56+09:00",
+        "reason": null,
+        "note": "店名に「中国料理」と明記",
+        "urls": []
+      }
+    }
+  },
+  "excluded_sensitive_plans": {
+    "current": 0,
+    "previous": 0
+  }
 }
