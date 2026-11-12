@@ -1,5 +1,4 @@
 """Trusted-main validation, weekly PR intake and publication checks."""
-import argparse
 import base64
 import datetime as dt
 import hashlib
@@ -10,18 +9,17 @@ import time
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.error import HTTPError
 from urllib.parse import urlsplit
 from afternoon_tea.fetch import NoRedirect
 from afternoon_tea.fetch import ROOT
 from afternoon_tea.fetch import require
-from afternoon_tea.fetch import load_json
 from afternoon_tea.fetch import dumps
 
 REPO = 'tsubasa0518/afternoon-tea'
 SITE = 'https://tsubasa0518.github.io/afternoon-tea/'
 BRANCH_PREFIX = 'claude/weekly-afternoon-tea-'
-ALLOWED = {'site/index.html', 'site/research.json'}
+RESEARCH = 'site/research.json'
+ALLOWED = {RESEARCH, 'site/index.html'}
 MAX_HTML = 5000000
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
@@ -198,7 +196,7 @@ def write_summary(stage, report):
 class API:
 
     def call(self, method, path, body=None):
-        require(method in ('GET', 'POST', 'PUT') and path.startswith('/') and ('..' not in path), 'invalid_github_api_request')
+        require(method in ('GET', 'PUT') and path.startswith('/') and ('..' not in path), 'invalid_github_api_request')
         headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'RoutineSiteDelivery'}
         token = os.environ.get('GH_TOKEN')
         if token:
@@ -227,108 +225,91 @@ class API:
         return {x['path']: x for x in tree['tree']}
 
 
-def dispatch_publication(api, number, head_sha, merge_sha):
-    (
-        'Serialized intake jobs deduplicate by a durable bot receipt and run SHA.\n\n '
-        '   A failed dispatch leaves no success receipt and can be retried. If dispa'
-        'tch\n    succeeded but saving its receipt failed, the Actions run is the rec'
-        'overy proof.\n    '
-    )
-    marker = '<!-- weekly-site-dispatch:' + head_sha + ' -->'
-    for page in range(1, 11):
-        comments = api.get('/issues/' + number + '/comments?per_page=100&page=' + str(page))
-        require(isinstance(comments, list), 'invalid_dispatch_receipts')
-        if any((c.get('user', {}).get('login') == 'github-actions[bot]' and c.get('body', '').startswith(marker + '\n') for c in comments)):
-            return 'already_requested'
-        if len(comments) < 100:
-            break
-    else:
-        raise ValueError('dispatch_receipt_pagination_limit')
-    if merge_sha:
-        runs = api.get('/actions/workflows/deploy.yml/runs?head_sha=' + merge_sha + '&event=workflow_dispatch&per_page=100')
-        require(isinstance(runs, dict) and isinstance(runs.get('workflow_runs'), list), 'invalid_publication_history')
-        if any((r.get('head_sha') == merge_sha and r.get('event') == 'workflow_dispatch' for r in runs['workflow_runs'])):
-            return 'already_requested'
-    api.call('POST', '/actions/workflows/deploy.yml/dispatches', {'ref': 'main'})
-    api.call('POST', '/issues/' + number + '/comments', {'body': marker + '\n検証済みheadのPages公開を要求しました。head: ' + head_sha + ' / merge: ' + str(merge_sha)})
-    return 'requested'
+def require_routine(pr, author):
+    require((not pr['draft'] and pr['base']['ref'] == 'main'
+             and pr['base']['repo']['full_name'] == REPO
+             and pr['head']['repo'] and pr['head']['repo']['full_name'] == REPO
+             and pr['head']['ref'].startswith(BRANCH_PREFIX)
+             and pr['user']['login'] == author and pr['title'].startswith('[weekly-site]')),
+            'pr_not_a_trusted_routine')
 
-def technical_ci(api, head):
-    runs = api.get('/actions/workflows/test-data.yml/runs?event=pull_request&head_sha=' + head + '&per_page=100')['workflow_runs']
-    runs = [r for r in runs if r.get('head_sha') == head and r.get('event') == 'pull_request']
-    if not runs:
-        return 'pending'
-    latest = max(runs, key=lambda r: (r['id'], r.get('run_attempt', 1)))
-    if latest.get('status') != 'completed':
-        return 'pending'
-    return 'success' if latest.get('conclusion') == 'success' else 'failed'
 
-def intake(api, number, author, sleep=time.sleep):
+def intake(api, number, author, expected_head=None):
+    """Read only the PR's JSON; validate with trusted main, then merge that head."""
     number = str(int(number))
     pr = api.get('/pulls/' + number)
-    require((
-        not pr['draft']
-        and pr['base']['ref'] == 'main'
-        and pr['base']['repo']['full_name'] == REPO
-        and pr['head']['repo']
-        and pr['head']['repo']['full_name'] == REPO
-        and pr['head']['ref'].startswith(BRANCH_PREFIX)
-        and pr['user']['login'] == author
-        and pr['title'].startswith('[weekly-site]')
-    ),
-         'pr_not_a_trusted_routine')
-    require(pr['state'] == 'open' or pr.get('merged') is True, 'pr_closed_without_merge')
-    require(1 <= pr['changed_files'] <= 2, 'routine_change_allowlist')
+    require_routine(pr, author)
+    head = pr['head']['sha']
+    require(bool(re.fullmatch('[0-9a-f]{40}', head)), 'invalid_pr_head')
+    require(expected_head is None or head == expected_head, 'pr_head_changed')
+    if pr.get('merged') is True:
+        return {'pr': number, 'head_sha': head, 'merge': 'already_merged'}
+    require(pr['state'] == 'open', 'pr_closed_without_merge')
+    require(pr['changed_files'] == 1, 'routine_change_allowlist')
     changed = api.get('/pulls/' + number + '/files?per_page=100')
-    require(len(changed) == pr['changed_files'] and len({f['filename'] for f in changed}) == len(changed) and all((f['filename'] in ALLOWED and f['status'] in ('added',
-         'modified') for f in changed)),
-         'routine_change_allowlist')
-    tree = api.files(pr['head']['sha'])
-    files = {}
-    for path in ALLOWED:
-        entry = tree.get(path, {})
-        require(entry.get('mode') == '100644' and entry.get('type') == 'blob', 'unsafe_pr_file')
-        files[path] = api.blob(entry['sha'])
-    report = validate_site(files)
-    # The API checks the expected head atomically; never bypass branch protection.
-    for attempt in range(10):
-        latest = api.get('/pulls/' + number)
-        require(latest['head']['sha'] == pr['head']['sha'], 'pr_head_changed')
-        if latest.get('merged') is True:
-            merge_sha = latest.get('merge_commit_sha')
-            break
-        require(latest['state'] == 'open', 'pr_no_longer_open')
-        ci = technical_ci(api, pr['head']['sha'])
-        if ci != 'success':
-            return {**report, 'pr': number, 'merge': 'ci_' + ci, 'head_sha': pr['head']['sha']}
-        require(latest.get('mergeable') is not False, 'pr_merge_conflict')
-        try:
-            merged = api.call('PUT', '/pulls/' + number + '/merge', {'sha': pr['head']['sha'], 'merge_method': 'squash'})
-            require(merged.get('merged') is True, 'merge_not_completed')
-            merge_sha = merged.get('sha')
-            break
-        except HTTPError as e:
-            if e.code != 405 or attempt == 9:
-                raise
-            # GitHub merge readiness/protection; CI was independently checked.
-            sleep(15)
-    # Explicit dispatch is supported even when GITHUB_TOKEN performed the merge.
-    dispatch = dispatch_publication(api, number, pr['head']['sha'], merge_sha)
-    return {**report, 'pr': number, 'dispatch': dispatch}
+    require(len(changed) == 1 and changed[0]['filename'] == RESEARCH
+            and changed[0]['status'] in ('added', 'modified'), 'routine_change_allowlist')
+    entry = api.files(head).get(RESEARCH, {})
+    require(entry.get('mode') == '100644' and entry.get('type') == 'blob', 'unsafe_pr_file')
+    raw = api.blob(entry['sha'])
+    from afternoon_tea.render import render
+    research = validate_json(raw)
+    report = validate_site({RESEARCH: raw, 'site/index.html': render(research).encode()})
+    latest = api.get('/pulls/' + number)
+    require_routine(latest, author)
+    require(latest['head']['sha'] == head, 'pr_head_changed')
+    require(latest['state'] == 'open' and not latest['draft'], 'pr_no_longer_open')
+    require(latest.get('mergeable') is not False, 'pr_merge_conflict')
+    # GitHub enforces branch protection and the expected head atomically.
+    merged = api.call('PUT', '/pulls/' + number + '/merge', {'sha': head, 'merge_method': 'merge'})
+    require(merged.get('merged') is True, 'merge_not_completed')
+    require(bool(re.fullmatch('[0-9a-f]{40}', merged.get('sha', ''))), 'invalid_merge_commit')
+    return {**report, 'pr': number, 'head_sha': head, 'commit': merged['sha'], 'merge': 'merged'}
+
+
+def delivery_directory():
+    staging = ROOT / '.staging'
+    base = staging / 'routine-delivery'
+    require(not staging.is_symlink() and not base.is_symlink(), 'unsafe_delivery_directory')
+    require(base.resolve().is_relative_to(ROOT.resolve() / '.staging'), 'unsafe_delivery_directory')
+    base.mkdir(parents=True, exist_ok=True)
+    return base
+
+
+def outputs(**values):
+    """Only validated hashes become job outputs, never PR text or shell code."""
+    for value in values.values():
+        require(isinstance(value, str) and bool(re.fullmatch('[0-9a-f]{40}|[0-9a-f]{64}', value)),
+                'invalid_workflow_output')
+    target = os.environ.get('GITHUB_OUTPUT')
+    if target:
+        with open(target, 'a', encoding='utf-8') as stream:
+            for key, value in values.items():
+                stream.write(key + '=' + value + '\n')
+
 
 def prepare():
-    base = ROOT / '.staging/routine-delivery'
-    base.mkdir(parents=True, exist_ok=True)
-    require(not base.is_symlink() and base.resolve().is_relative_to(ROOT.resolve() / '.staging'), 'unsafe_delivery_directory')
-    files = {p: (ROOT / p).read_bytes() for p in ALLOWED}
-    require(all((not (ROOT / p).is_symlink() for p in ALLOWED)), 'site_symlink_forbidden')
-    report = validate_site(files)
-    (base / 'site').mkdir(exist_ok=True)
-    require(not (base / 'site').is_symlink(), 'unsafe_delivery_directory')
-    (base / 'site/index.html').write_bytes(files['site/index.html'])
-    report.update(source_commit=os.environ.get('SOURCE_COMMIT'), workflow_run_id=os.environ.get('GITHUB_RUN_ID'), url=SITE)
+    from afternoon_tea.render import render
+    path = ROOT / RESEARCH
+    require(not path.is_symlink() and not path.parent.is_symlink(), 'site_symlink_forbidden')
+    raw = path.read_bytes()
+    research = validate_json(raw)
+    html = render(research).encode()
+    report = validate_site({RESEARCH: raw, 'site/index.html': html})
+    base = delivery_directory()
+    target = base / 'site'
+    require(not target.is_symlink() and not (target / 'index.html').is_symlink()
+            and not (base / 'report.json').is_symlink(), 'unsafe_delivery_directory')
+    target.mkdir(exist_ok=True)
+    (target / 'index.html').write_bytes(html)
+    report.update(source_commit=os.environ.get('SOURCE_COMMIT'), url=SITE)
     (base / 'report.json').write_bytes(json_bytes(report))
+    values = {'html_sha256': report['sha256']}
+    if report['source_commit'] is not None:
+        values['source_commit'] = report['source_commit']
+    outputs(**values)
     return report
+
 
 def verify_public(expected, attempts=6, opener=None, sleep=time.sleep):
     opener = opener or urllib.request.build_opener(NoRedirect())
@@ -347,67 +328,35 @@ def verify_public(expected, attempts=6, opener=None, sleep=time.sleep):
             sleep(10)
     raise ValueError('public_verification_failed:' + json.dumps(observations))
 
-def main(command):
-    a = argparse.Namespace(command=command)
+def main(command='site', expected_sha256=None):
     try:
-        if a.command == 'validate':
-            print(validate_site({p: (ROOT / p).read_bytes() for p in ALLOWED}))
-        elif a.command == 'intake':
+        if command == 'site':
+            from afternoon_tea.render import render
+            raw = (ROOT / RESEARCH).read_bytes()
+            print(validate_site({RESEARCH: raw, 'site/index.html': render(validate_json(raw)).encode()}))
+        elif command == 'intake':
             event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
-            report = intake(API(), event['number'], os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0])
+            report = intake(API(), event['number'], os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0],
+                            expected_head=event['pull_request']['head']['sha'])
+            if report.get('commit'):
+                outputs(commit=report['commit'])
             print(report)
-            write_summary(report.get('merge', '自動マージ成功・公開開始要求済み（公開結果はdeploy.ymlを確認）'), report)
-            if report.get('merge') == 'ci_failed':
-                raise ValueError('latest_head_technical_ci_failed')
-        elif a.command == 'prepare':
+            write_summary(report['merge'], report)
+        elif command == 'prepare':
             report = prepare()
             print(report)
             write_summary('HTML公開準備成功（デプロイ前）', report)
-        else:
-            base = ROOT / '.staging/routine-delivery'
-            report = json.loads((base / 'report.json').read_text())
-            path = base / 'site/index.html'
-            expected = report['sha256']
-            require(sha(path.read_bytes()) == expected, 'delivery_bytes_changed')
-            observations = verify_public(expected)
-            (base / 'public-verification.json').write_bytes(json_bytes(observations))
+        elif command == 'verify':
+            require(isinstance(expected_sha256, str) and bool(re.fullmatch('[0-9a-f]{64}', expected_sha256)),
+                    'expected_html_sha256_required')
+            observations = verify_public(expected_sha256)
+            target = delivery_directory() / 'public-verification.json'
+            require(not target.is_symlink(), 'unsafe_delivery_directory')
+            target.write_bytes(json_bytes(observations))
             print({'public_verification': 'passed', 'http': observations})
-            write_summary('Pages公開確認成功（HTTP 200・HTML SHA-256一致）', report)
+            write_summary('Pages公開確認成功（HTTP 200・HTML SHA-256一致）', {})
+        else:
+            raise ValueError('unknown_check_command')
     except Exception:
-        write_summary(a.command + '失敗。実行ログのエラーを確認してください。', {})
+        write_summary(command + '失敗。実行ログのエラーを確認してください。', {})
         raise
-
-
-def protected_files():
-    manifest = load_json(ROOT / 'data/protected_hashes.json')
-    for (name, expected) in manifest.items():
-        require(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected, '保護対象ファイルが変更されています: ' + name)
-
-
-def resume(api, event, author):
-    run = event['workflow_run']
-    if run.get('event') != 'pull_request':
-        return []
-    # Discover open PRs via the repository API; do not trust workflow artifacts.
-    rows = api.get('/pulls?state=open&per_page=100')
-    reports = []
-    for pr in rows:
-        if (
-            pr['head']['sha'] == run['head_sha']
-            and pr['head']['repo']
-            and pr['head']['repo']['full_name'] == REPO
-            and pr['base']['ref'] == 'main'
-            and pr['head']['ref'].startswith(BRANCH_PREFIX)
-            and pr['title'].startswith('[weekly-site]')
-            and pr['user']['login'] == author
-            and not pr['draft']
-        ):
-            report = intake(api, pr['number'], author)
-            reports.append(report)
-            write_summary(report.get('merge', '自動マージ・公開要求完了'), report)
-            if report.get('merge') == 'ci_failed':
-                raise ValueError('latest_head_technical_ci_failed')
-    return reports
-
-def resume_main():
-    print(resume(API(), json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text()), os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0]))

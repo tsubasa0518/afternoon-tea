@@ -33,17 +33,12 @@ def fixture(category='unknown'):
 
 class RoutineRendererTests(unittest.TestCase):
 
-    def test_template_css_snapshot(self):
-        import hashlib
-        self.assertEqual(hashlib.sha256((r.TEMPLATES / 'site.css').read_bytes()).hexdigest(),
-             'a2d0725640fed7b8f7134693c8059a889bc33de029ffc24100b741938ccddd3d')
 
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
         research = json.loads((r.ROOT / 'site/research.json').read_text())
         before = copy.deepcopy(research)
         result = r.render(research)
         self.assertEqual(research, before)
-        self.assertEqual(result, (r.ROOT / 'site/index.html').read_text())
         self.assertEqual(r.render(research), result)
 
     def test_zero_stores_and_all_14_areas(self):

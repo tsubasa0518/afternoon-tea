@@ -1,0 +1,30 @@
+name: Test offline data and HTML pipeline
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    if: >-
+      github.event_name != 'pull_request' || !(
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner) &&
+      startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') &&
+      startsWith(github.event.pull_request.title, '[weekly-site]'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Run offline tests
+        run: python3 -m unittest discover -s tests -v
