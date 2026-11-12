@@ -1,23 +1,21 @@
-"""Weekly list reading, processing and publication through one entry point."""
+"""One entry for weekly research, build and trusted publication checks."""
 import argparse
 
 
 def parser():
     cli = argparse.ArgumentParser(prog='python3 -m afternoon_tea')
     commands = cli.add_subparsers(dest='operation', required=True)
-    commands.add_parser('begin', help='週の開始: 前回データを控え、空の調査ファイルと時間・要求数を初期化する')
-    fetch = commands.add_parser('fetch', help='リストNo.Nの予約ページURL（または同じ店舗のプラン詳細ページ）を読む')
-    fetch.add_argument('no', type=int, help='リストのNo（1から順に）')
-    fetch.add_argument('url', nargs='?', help='同じ店舗のプラン詳細ページ（省略時はリストのURL）')
-    fetch.add_argument('--full', action='store_true', help='AT関連語の周辺だけでなく、取得した本文全体を出力する')
-    fetch.add_argument('--browser', action='store_true', help='GET本文にプランが見えないときヘッドレスブラウザで読む')
-    commands.add_parser('build', help='引き継ぎ・表示データ作成・HTML生成・検証をまとめて行う')
-    helps = {'render': '固定HTMLを生成する', 'validate-site': 'JSON・HTMLを技術検証する',
-             'report': 'PR本文用の今週の集計を出力する', 'check-protected': '保護ファイルのハッシュを確認する',
-             'intake': '週次PRを信頼済みmainで審査する（Actions用）', 'resume-intake': 'CI完了後に審査を再開する（Actions用）',
-             'publish-prepare': '公開前検証（Actions用）', 'publish-verify': '公開後のHTTP 200・HTML一致確認（Actions用）'}
-    for (name, text) in helps.items():
-        commands.add_parser(name, help=text)
+    commands.add_parser('begin', help='前回を控え、今週の空データと上限を初期化する')
+    fetch = commands.add_parser('fetch', help='候補のNo順に店舗ページを読む')
+    fetch.add_argument('no', type=int)
+    fetch.add_argument('url', nargs='?', help='同じ店舗のプラン詳細URL')
+    fetch.add_argument('--full', action='store_true', help='取得本文全体を出力する')
+    fetch.add_argument('--browser', action='store_true', help='同じ公開ページを任意のブラウザで読む')
+    commands.add_parser('build', help='引き継ぎ・分類・ローカルHTML生成・検証を行う')
+    commands.add_parser('report', help='週次PR本文用の集計を出力する')
+    check = commands.add_parser('check', help='JSON・HTMLと週次PRを信頼済みコードで検査する')
+    check.add_argument('action', nargs='?', default='site', choices=('site', 'intake', 'prepare', 'verify'))
+    check.add_argument('--expected-sha256', help='公開したHTMLの期待SHA-256（verify用）')
     return cli
 
 
@@ -29,20 +27,8 @@ def main(argv=None):
     if args.operation == 'build':
         from .build import main
         return main()
-    if args.operation == 'render':
-        from .render import main
-        return main()
-    if args.operation == 'check-protected':
-        from .check import protected_files
-        protected_files()
-        print('Protected files verified.')
-        return 0
-    if args.operation == 'resume-intake':
-        from .check import resume_main as main
-        return main()
     from .check import main
-    return main({'validate-site': 'validate', 'intake': 'intake', 'publish-prepare': 'prepare',
-                 'publish-verify': 'verify'}[args.operation])
+    return main(args.action, args.expected_sha256)
 
 
 if __name__ == '__main__':

@@ -27,7 +27,7 @@ def files(n=0):
     stamp = dt.datetime.now(dt.timezone.utc).isoformat()
     return {'site/index.html': HTML,
             'site/research.json': r.json_bytes({'schema_version':1, 'generated_at':stamp,
-                'period':{'start':'2026-11-09','end':'2026-12-19'},
+                'period':__import__('afternoon_tea.build',fromlist=['period']).period(),
                 'shops':[{'name':'Test only '+str(i), 'area_no':1,
                           'plans':[{'plan_name':'AT', 'checked_at':stamp, 'price_yen':None}]} for i in range(n)]})}
 
@@ -45,23 +45,17 @@ class FakeAPI:
              'ref': 'claude/weekly-afternoon-tea-20261107',
              'sha': 'a' * 40},
              'merged': False}
-        self.changed = [{'filename': 'site/index.html', 'status': 'modified'}]
+        self.changed = [{'filename': r.RESEARCH, 'status': 'modified'}]
         self.content = files(2)
         self.calls = []
         self.denied = False
-        self.comments = []
-        self.runs = []
 
     def get(self, path):
-        if '/comments?' in path:
-            return copy.deepcopy(self.comments)
-        if '/test-data.yml/runs?' in path:
-            return {'workflow_runs': [{'id': 1, 'head_sha': self.pr['head']['sha'], 'event': 'pull_request', 'status': 'completed', 'conclusion': 'success'}]}
-        if '/runs?' in path:
-            return {'workflow_runs': copy.deepcopy(self.runs)}
         if '/files?' in path:
             return self.changed
-        return copy.deepcopy(self.pr)
+        if path.startswith('/pulls/'):
+            return copy.deepcopy(self.pr)
+        raise AssertionError('unexpected API read: '+path)
 
     def files(self, commit):
         return {p: {'mode': '100644', 'type': 'blob', 'sha': p} for p in self.content}
@@ -78,8 +72,6 @@ class FakeAPI:
             self.pr['state'] = 'closed'
             self.pr['merge_commit_sha'] = 'c' * 40
             return {'merged': True, 'sha': 'c' * 40}
-        if path.endswith('/comments'):
-            self.comments.append({'user': {'login': 'github-actions[bot]'}, 'body': body['body']})
         return None
 
 class RoutineSiteTests(unittest.TestCase):
@@ -148,22 +140,22 @@ class RoutineSiteTests(unittest.TestCase):
         r.validate_html_bytes(HTML.replace(b'</body>', b'<script>document.querySelectorAll("p").forEach(p=>p.hidden=false);</script></body>'))
 
     def test_current_site_html_is_valid(self):
-        r.validate_html_bytes((r.ROOT / 'site/index.html').read_bytes())
+        r.validate_html_bytes(renderer.render(json.loads((r.ROOT / r.RESEARCH).read_text())).encode())
 
-    def test_merge_then_explicit_dispatch_with_expected_sha(self):
+    def test_merge_only_with_expected_sha_and_no_dispatch(self):
         api = FakeAPI()
         r.intake(api, 1, 'tsubasa0518')
-        self.assertEqual([x[0] for x in api.calls], ['PUT', 'POST', 'POST'])
+        self.assertEqual([x[0] for x in api.calls], ['PUT'])
         self.assertEqual(api.calls[0][2]['sha'], 'a' * 40)
-        self.assertEqual(api.calls[1][1], '/actions/workflows/deploy.yml/dispatches')
-        self.assertEqual(api.calls[1][2], {'ref': 'main'})
+        self.assertEqual(api.calls[0][2]['merge_method'],'merge')
 
-    def test_already_merged_retry_dispatches_only_if_not_previously_requested(self):
+    def test_already_merged_event_skips_without_writing_or_republishing(self):
         api = FakeAPI()
         api.pr.update(merged=True, state='closed')
-        r.intake(api, 1, 'tsubasa0518')
-        self.assertEqual(len(api.calls), 2)
-        self.assertTrue(all((c[0] == 'POST' for c in api.calls)))
+        report=r.intake(api, 1, 'tsubasa0518')
+        self.assertEqual(report['merge'],'already_merged')
+        self.assertNotIn('commit',report)
+        self.assertFalse(api.calls)
 
     def test_untrusted_author_fork_branch_title_and_base_rejected(self):
         for mutate in (lambda p: p['user'].update(login='intruder'),
@@ -188,7 +180,7 @@ class RoutineSiteTests(unittest.TestCase):
     def test_symlink_pr_file_rejected(self):
         api = FakeAPI()
         tree = api.files('a')
-        tree['site/index.html']['mode'] = '120000'
+        tree[r.RESEARCH]['mode'] = '120000'
         api.files = lambda c: tree
         with self.assertRaises(ValueError):
             r.intake(api, 1, 'tsubasa0518')
@@ -197,8 +189,8 @@ class RoutineSiteTests(unittest.TestCase):
         api = FakeAPI()
         api.denied = True
         with self.assertRaises(HTTPError):
-            r.intake(api, 1, 'tsubasa0518', sleep=lambda s: None)
-        self.assertEqual(len(api.calls), 10)
+            r.intake(api, 1, 'tsubasa0518')
+        self.assertEqual(len(api.calls), 1)
         self.assertTrue(all((x[0] == 'PUT' for x in api.calls)))
 
     def test_changed_head_never_merges(self):
@@ -243,8 +235,8 @@ class RoutineSiteTests(unittest.TestCase):
             with patch.object(r, 'ROOT', root), patch.object(r.urllib.request, 'build_opener') as network:
                 report = r.prepare()
             network.assert_not_called()
-            self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(), HTML)
-            self.assertEqual(report['sha256'], r.sha(HTML))
+            self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(files(2)[r.RESEARCH])).encode())
+            self.assertEqual(report['sha256'],r.sha((root/'.staging/routine-delivery/site/index.html').read_bytes()))
             self.assertFalse((root / 'docs').exists())
 
     def test_weekly_two_then_zero_shops_replace_same_staging_html(self):
@@ -260,8 +252,8 @@ class RoutineSiteTests(unittest.TestCase):
                 with patch.object(r, 'ROOT', root):
                     report = r.prepare()
                 self.assertEqual(report['shops'], count)
-                self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(), content['site/index.html'])
-            self.assertIn('今週確認できた情報はありません', (root / '.staging/routine-delivery/site/index.html').read_text())
+                self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(content[r.RESEARCH])).encode())
+            self.assertIn('今週は確認できた情報がありません', (root / '.staging/routine-delivery/site/index.html').read_text())
 
     def test_old_claude_prefix_is_not_an_authorized_weekly_branch(self):
         api = FakeAPI()
@@ -274,7 +266,7 @@ class RoutineSiteTests(unittest.TestCase):
         api = FakeAPI()
         api.pr['head']['ref'] = 'claude/weekly-afternoon-tea-20261107-retry'
         r.intake(api, 1, 'tsubasa0518')
-        self.assertEqual(len(api.calls), 3)
+        self.assertEqual(len(api.calls), 1)
 
     def test_escaped_json_credentials_rejected(self):
         value = b'{"schema_version":1,"shops":[],"note":"gh\\u0070_' + b'a' * 36 + b'"}'
@@ -286,11 +278,11 @@ class RoutineSiteTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 r.validate_json(b'{"schema_version":1,"shops":[],"value":' + value + b'}')
 
-    def test_invalid_html_prevents_preparing_an_artifact(self):
+    def test_invalid_json_prevents_generating_an_artifact(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             content = files()
-            content['site/index.html'] = b''
+            content[r.RESEARCH] = b'{'
             for (path, value) in content.items():
                 (root / path).parent.mkdir(exist_ok=True)
                 (root / path).write_bytes(value)
@@ -298,69 +290,11 @@ class RoutineSiteTests(unittest.TestCase):
                 r.prepare()
             self.assertFalse((root / '.staging/routine-delivery/site/index.html').exists())
 
-    def test_workflow_is_trusted_and_single_publication_route(self):
-        auto = (r.ROOT / '.github/workflows/auto-merge-weekly.yml').read_text()
-        pub = (r.ROOT / '.github/workflows/deploy.yml').read_text()
-        self.assertIn('pull_request_target:', auto)
-        self.assertIn('ref: ${{ github.sha }}', auto)
-        self.assertNotIn('pull_request.head.sha', auto)
-        self.assertIn('actions: write', auto)
-        self.assertNotIn('pages: write', auto)
-        self.assertIn("if: github.ref == 'refs/heads/main'", pub)
-        self.assertIn('group: github-pages', pub)
-        self.assertIn('cancel-in-progress: false', pub)
-        self.assertNotIn('publication_quality', pub)
-        self.assertFalse((r.ROOT / '.github/workflows/publish-site.yml').exists())
-        self.assertFalse((r.ROOT / '.github/workflows/auto-publish-weekly.yml').exists())
-        self.assertIn("paths: ['site/**']", pub)
-        self.assertIn("head.ref, 'claude/weekly-afternoon-tea-'", auto)
-        self.assertNotIn('rollback', pub)
-
-
-class TechnicalCITests(unittest.TestCase):
-
-    def check(self, runs, expected):
-        api = FakeAPI()
-        original = api.get
-        api.get = lambda p: {'workflow_runs': runs} if '/test-data.yml/runs?' in p else original(p)
-        result = r.intake(api, 1, 'tsubasa0518', sleep=lambda _: None)
-        self.assertEqual(result.get('merge'), expected)
-        self.assertFalse(any((c[0] == 'PUT' for c in api.calls)))
-
-    def test_missing(self):
-        self.check([], 'ci_pending')
-
-    def test_running(self):
-        self.check([{'id': 1, 'head_sha': 'a' * 40, 'event': 'pull_request', 'status': 'in_progress'}], 'ci_pending')
-
-    def test_failure(self):
-        self.check([{'id': 1, 'head_sha': 'a' * 40, 'event': 'pull_request', 'status': 'completed', 'conclusion': 'failure'}], 'ci_failed')
-
-    def test_old_sha(self):
-        self.check([{'id': 1, 'head_sha': 'b' * 40, 'event': 'pull_request', 'status': 'completed', 'conclusion': 'success'}], 'ci_pending')
-
-    def test_rerun_failure_wins(self):
-        self.check([{'id': 1,
-             'run_attempt': a,
-             'head_sha': 'a' * 40,
-             'event': 'pull_request',
-             'status': 'completed',
-             'conclusion': c} for (a,
-             c) in [(1,
-             'success'),
-             (2,
-             'failure')]],
-             'ci_failed')
-
-    def test_resume_ignores_non_pr(self):
-        from afternoon_tea.check import resume
-        self.assertEqual(resume(None, {'workflow_run': {'event': 'push'}}, 'x'), [])
 
 class ProductionTests(unittest.TestCase):
 
     def assert_saved_site(self, data, html):
         self.assertFalse(review(data)['errors'])
-        # Legacy saved data is readable during PR 1; modern shops need no id or timestamp.
         checked = r.validate_json(r.json_bytes(data))
         for shop in checked['shops']:
             self.assertIsInstance(shop['name'], str)
@@ -377,15 +311,11 @@ class ProductionTests(unittest.TestCase):
                 for key in ('weekday_available', 'weekend_available'):
                     self.assertTrue(p.get(key) is None or type(p[key]) is bool)
         self.assertEqual(renderer.render(data), html)
-        stamps = [dt.datetime.fromisoformat(p['checked_at']) for s in checked['shops'] for p in s['plans']]
-        now = max(stamps) + dt.timedelta(days=1) if stamps else dt.datetime.now(dt.timezone.utc)
-        from afternoon_tea.build import validate_freshness
-        with patch('afternoon_tea.build.validate_freshness', side_effect=lambda value: validate_freshness(value, now)):
-            return r.validate_site({'site/research.json': r.json_bytes(data), 'site/index.html': html.encode()})
+        return r.validate_site({'site/research.json':r.json_bytes(data),'site/index.html':html.encode()})
 
     def test_dynamic_data_and_reproducible_html(self):
         data = json.loads((ROOT / 'site/research.json').read_text())
-        self.assert_saved_site(data, (ROOT / 'site/index.html').read_text())
+        self.assert_saved_site(data, renderer.render(data))
 
     def test_new_shop_needs_only_plan_timestamp_not_shop_id_or_shop_timestamp(self):
         from tests.test_render import fixture
@@ -418,18 +348,6 @@ class ProductionTests(unittest.TestCase):
 
 URL = 'https://restaurant.ikyu.com/107408/'
 
-class CatalogProtectionTests(unittest.TestCase):
-
-
-    def test_manifest_tamper_is_rejected(self):
-        import afternoon_tea.check as guards
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            (root / 'data').mkdir()
-            (root / 'protected.txt').write_text('changed')
-            (root / 'data/protected_hashes.json').write_text(json.dumps({'protected.txt': '0' * 64}))
-            with patch.object(guards, 'ROOT', root), self.assertRaises(ValueError):
-                guards.protected_files()
 
 
 class StructureTests(unittest.TestCase):
@@ -451,12 +369,12 @@ class StructureTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, (command, result.stderr))
             self.assertIn(command, result.stdout)
 
-    def test_render_does_not_change_any_site_input_and_matches_current_html(self):
-        paths = [ROOT / 'site' / name for name in ('research.json', 'index.html')]
-        before = [p.read_bytes() for p in paths]
-        result = render(json.loads(before[0])).encode()
-        self.assertEqual(result, before[1])
-        self.assertEqual([p.read_bytes() for p in paths], before)
+    def test_render_does_not_change_saved_json_and_is_reproducible(self):
+        path=ROOT/r.RESEARCH
+        before=path.read_bytes()
+        data=json.loads(before)
+        self.assertEqual(render(data),render(copy.deepcopy(data)))
+        self.assertEqual(path.read_bytes(),before)
 
     def test_workflows_parse_and_call_existing_commands_only(self):
         import re
@@ -512,7 +430,6 @@ class BPlanStructureTests(unittest.TestCase):
             self.assertTrue(isinstance(area['name'],str) and area['name'])
             self.assertTrue(area['stations'])
             self.assertTrue(all(isinstance(s,str) and s for s in area['stations']))
-        r.protected_files()
 
     def test_validator_does_not_fill_missing_plan_date_from_shop(self):
         data=json.loads(files(1)['site/research.json'])
@@ -539,18 +456,18 @@ class RepeatPublicationTests(unittest.TestCase):
                 (root/path).parent.mkdir(parents=True,exist_ok=True)
                 (root/path).write_bytes(value)
             opener=Mock()
-            opener.open.side_effect=lambda *args,**kwargs:Response(r.SITE,HTML.decode())
+            opener.open.side_effect=lambda *args,**kwargs:Response(r.SITE,renderer.render(data))
             with patch.object(r,'ROOT',root),patch('afternoon_tea.build.validate_freshness',side_effect=AssertionError('publication must not recheck age')), \
                  patch.object(r.urllib.request,'build_opener',return_value=opener), \
                  patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(root/'summary.md')}), \
                  patch('sys.stdout',new=io.StringIO()):
                 r.main('prepare')
-                r.main('verify')
+                r.main('verify',r.sha(renderer.render(data).encode()))
             self.assertEqual(opener.open.call_count,1)
             self.assertEqual((root/'site/research.json').read_bytes(),content['site/research.json'])
-            self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),HTML)
+            self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(data).encode())
             checks=json.loads((root/'.staging/routine-delivery/public-verification.json').read_text())
-            self.assertEqual(checks,[{'status':200,'sha256':r.sha(HTML)}])
+            self.assertEqual(checks,[{'status':200,'sha256':r.sha(renderer.render(data).encode())}])
             self.assertIn('Pages公開確認成功',(root/'summary.md').read_text())
 
     def test_age_exemption_does_not_accept_bad_timestamps_or_unsafe_output(self):
@@ -581,3 +498,161 @@ class RepeatPublicationTests(unittest.TestCase):
         content['site/research.json']=r.json_bytes(data)
         with self.assertRaises(r.SensitiveDataError):
             r.validate_site(content)
+
+
+class PublicationFlowTests(unittest.TestCase):
+    def test_only_research_json_can_change_and_pr_code_is_never_read(self):
+        for path in ('site/index.html','afternoon_tea/check.py','.github/workflows/publish.yml','data/areas.json'):
+            api=FakeAPI();api.changed=[{'filename':path,'status':'modified'}]
+            with self.assertRaisesRegex(ValueError,'routine_change_allowlist'):
+                r.intake(api,1,'tsubasa0518')
+            self.assertFalse(api.calls)
+        api=FakeAPI();reads=[]
+        api.content['afternoon_tea/check.py']=b'raise AssertionError("PR code must not run")'
+        original=api.blob
+        def blob(key):
+            reads.append(key)
+            return original(key)
+        api.blob=blob
+        report=r.intake(api,1,'tsubasa0518',expected_head='a'*40)
+        self.assertEqual(reads,[r.RESEARCH])
+        self.assertEqual(report['commit'],'c'*40)
+        self.assertEqual([c[0] for c in api.calls],['PUT'])
+
+    def test_invalid_json_or_preview_cannot_merge(self):
+        for raw in (b'{',r.json_bytes({'schema_version':1,'shops':[]})):
+            api=FakeAPI();api.content[r.RESEARCH]=raw
+            with self.assertRaises(ValueError):
+                r.intake(api,1,'tsubasa0518')
+            self.assertFalse(api.calls)
+
+    def test_event_head_and_final_metadata_must_still_match(self):
+        api=FakeAPI()
+        with self.assertRaisesRegex(ValueError,'pr_head_changed'):
+            r.intake(api,1,'tsubasa0518',expected_head='b'*40)
+        self.assertFalse(api.calls)
+        for mutate in (lambda p:p.update(title='other'),lambda p:p['base'].update(ref='develop'),
+                       lambda p:p['head'].update(ref='other'),lambda p:p.update(draft=True)):
+            api=FakeAPI();original=api.get;calls=[]
+            def get(path):
+                value=original(path)
+                if '/files?' not in path:
+                    calls.append(path)
+                    if len(calls)==2:mutate(value)
+                return value
+            api.get=get
+            with self.assertRaises(ValueError):
+                r.intake(api,1,'tsubasa0518')
+            self.assertFalse(api.calls)
+
+    def test_ci_receipts_hash_manifest_and_html_tracking_are_gone(self):
+        self.assertFalse((ROOT/'data/protected_hashes.json').exists())
+        for gone in ('technical_ci','resume','protected_files','dispatch_publication'):
+            self.assertFalse(hasattr(r,gone),gone)
+        tracked=subprocess.check_output(['git','ls-files','--','site/index.html'],cwd=ROOT,text=True)
+        self.assertEqual(tracked,'')
+        self.assertIn('/site/index.html',(ROOT/'.gitignore').read_text())
+        self.assertEqual(set(parser()._subparsers._group_actions[0].choices),{'begin','fetch','build','report','check'})
+
+    def test_main_intake_outputs_only_the_validated_merge_commit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);event=root/'event.json';output=root/'output'
+            event.write_text(json.dumps({'number':1,'pull_request':{'head':{'sha':'a'*40}}}))
+            with patch.object(r,'API',return_value=FakeAPI()), \
+                 patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event),'GITHUB_OUTPUT':str(output),'ROUTINE_AUTHOR':'tsubasa0518'}), \
+                 patch('sys.stdout',new=io.StringIO()):
+                r.main('intake')
+            self.assertEqual(output.read_text(),'commit='+'c'*40+'\n')
+            with patch.dict(os.environ,{'GITHUB_OUTPUT':str(output)}),self.assertRaises(ValueError):
+                r.outputs(commit='a'*40+'\nmalicious=true')
+            self.assertEqual(output.read_text(),'commit='+'c'*40+'\n')
+
+    def test_generation_uses_json_even_if_untracked_html_is_unsafe(self):
+        content=files(1)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'site').mkdir()
+            (root/r.RESEARCH).write_bytes(content[r.RESEARCH])
+            (root/'site/index.html').write_text('<form>UNTRUSTED</form>')
+            output=root/'outputs'
+            with patch.object(r,'ROOT',root),patch.dict(os.environ,{'SOURCE_COMMIT':'d'*40,'GITHUB_OUTPUT':str(output)}):
+                report=r.prepare()
+            generated=(root/'.staging/routine-delivery/site/index.html').read_bytes()
+            self.assertNotIn(b'UNTRUSTED',generated)
+            self.assertEqual(generated,renderer.render(json.loads(content[r.RESEARCH])).encode())
+            self.assertIn('source_commit='+'d'*40,output.read_text())
+            self.assertIn('html_sha256='+report['sha256'],output.read_text())
+            self.assertEqual((root/'site/index.html').read_text(),'<form>UNTRUSTED</form>')
+
+    def test_workflow_trust_and_permission_boundaries(self):
+        paths=ROOT/'.github/workflows'
+        self.assertEqual({p.name for p in paths.iterdir()},{'test.yml','publish.yml'})
+        text=(paths/'publish.yml').read_text()
+        review=text.split('  review:\n',1)[1].split('\n  generate:',1)[0]
+        generate=text.split('  generate:\n',1)[1].split('\n  deploy:',1)[0]
+        deploy=text.split('  deploy:\n',1)[1]
+        self.assertIn('ref: ${{ github.sha }}',review)
+        self.assertIn('ref: main',generate)
+        self.assertIn('ref: ${{ needs.generate.outputs.source_commit }}',deploy)
+        for block in (review,generate,deploy):
+            self.assertNotIn('pull_request.head.sha',block)
+            self.assertNotIn('refs/pull/',block)
+            self.assertNotIn('actions: write',block)
+            self.assertNotIn('download-artifact',block)
+        self.assertIn('contents: write',review)
+        self.assertNotIn('pages: write',review+generate)
+        self.assertNotIn('id-token: write',review+generate)
+        self.assertIn('pages: write',deploy)
+        self.assertIn('id-token: write',deploy)
+        self.assertNotIn('GH_TOKEN:',generate+deploy)
+        self.assertIn('needs: review',generate)
+        self.assertIn("needs.review.outputs.commit != ''",generate)
+        self.assertIn("github.ref == 'refs/heads/main'",generate)
+        self.assertIn('needs: generate',deploy)
+        self.assertIn("if: always() && needs.generate.result == 'success'",deploy)
+        self.assertIn('workflow_dispatch:',text)
+        self.assertNotIn('workflow_run:',text)
+        self.assertNotIn('schedule:',text)
+        self.assertIn("|| 'github-pages'",text)
+        self.assertIn("format('weekly-rejected-{0}'",text)
+        test=(paths/'test.yml').read_text()
+        self.assertNotIn('contents: write',test)
+        self.assertNotIn('GH_TOKEN:',test)
+        self.assertIn("github.event_name != 'pull_request'",test)
+
+    def test_json_only_review_generate_and_public_verification_flow(self):
+        from unittest.mock import Mock
+        from tests.http_fixtures import Response
+        api=FakeAPI()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'site').mkdir()
+            original=api.call
+            def merge(method,path,body):
+                result=original(method,path,body)
+                (root/r.RESEARCH).write_bytes(api.content[r.RESEARCH])
+                return result
+            api.call=merge
+            review=r.intake(api,1,'tsubasa0518',expected_head='a'*40)
+            self.assertEqual(review['commit'],'c'*40)
+            self.assertFalse((root/'site/index.html').exists())
+            with patch.object(r,'ROOT',root),patch.dict(os.environ,{'SOURCE_COMMIT':review['commit']}):
+                prepared=r.prepare()
+                html=(root/'.staging/routine-delivery/site/index.html').read_bytes()
+                opener=Mock();opener.open.side_effect=lambda *a,**k:Response(r.SITE,html.decode())
+                observations=r.verify_public(prepared['sha256'],opener=opener)
+            self.assertEqual(observations,[{'status':200,'sha256':prepared['sha256']}])
+            self.assertEqual(prepared['shops'],2)
+            self.assertEqual((root/r.RESEARCH).read_bytes(),api.content[r.RESEARCH])
+            self.assertFalse((root/'site/index.html').exists())
+            self.assertEqual([c[0] for c in api.calls],['PUT'])
+
+    def test_prepare_does_not_write_through_staging_symlinks(self):
+        for relative in ('site/index.html','report.json'):
+            with tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);(root/'site').mkdir()
+                (root/r.RESEARCH).write_bytes(files(1)[r.RESEARCH])
+                base=root/'.staging/routine-delivery';(base/'site').mkdir(parents=True)
+                protected=root/'protected.txt';protected.write_text('preserve')
+                (base/relative).symlink_to(protected)
+                with patch.object(r,'ROOT',root),self.assertRaises(ValueError):
+                    r.prepare()
+                self.assertEqual(protected.read_text(),'preserve')

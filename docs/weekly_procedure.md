@@ -82,10 +82,12 @@ buildで料金区分・スイーツ・季節・曜日を作り、保存する。
 
 ## PRと公開
 
-週次が変更できる追跡ファイルは `site/research.json` と `site/index.html`。`claude/weekly-afternoon-tea-YYYYMMDD` ブランチ、`[weekly-site]` タイトル、main宛てでPRを作成・更新し、非draftにする。PR本文にはreport出力を使い、調査途中を完了と書かない。
+週次が変更できる追跡ファイルは `site/research.json` だけ。`site/index.html` は追跡せず、buildでローカル確認用に生成する。公開用HTMLはpublish.ymlが最新mainのJSONから生成する。`claude/weekly-afternoon-tea-YYYYMMDD` ブランチ、`[weekly-site]` タイトル、main宛てでPRを作成・更新し、非draftにする。PR本文にはreport出力を使い、調査途中を完了と書かない。
 
-Actionsは信頼済みmainのコードで審査し、現段階では最新headのCI成功を確認して自動マージ・Pages公開を行う。公開後はdeploy.ymlのHTTP 200・HTML一致を確認する。Routineの実行と本番公開の成否を区別して日本語で報告する。
+publish.ymlは信頼済みmainのコードでJSONだけを審査し、期待headを指定してマージした後、最新mainからHTMLを生成してPagesへ公開する。週次PRはCI完了を待たない。作成者・同一リポジトリ・main宛て・指定ブランチ・タイトル・変更ファイル・JSONと生成HTMLの安全性を検査し、ブランチ保護・必須レビューを回避しない。公開後はHTTP 200・HTML一致を確認する。通常PRとmainへのpushはtest.ymlでオフラインテストする。Routineの実行と本番公開の成否を区別して日本語で報告する。
 
 公開時には保存データの経過日数で再判定せず、JSON・確認日時の形式、HTMLの安全性、秘密情報、PRの条件を技術検証する。古い掲載内容の再公開だけを理由に確認日時を更新しない。
 
 JSON破損、HTML生成・安全検査の失敗、除外後に残る秘密情報、PR審査不合格時は公開せず前回のサイトを残す。原因を直してbuildから再確認する。調査上限・情報不足・取得失敗だけで公開を止めない。
+
+公開だけを再実行する場合は、mainを対象にpublish.ymlのworkflow_dispatchを使う。Routineや調査を起動せず、保存JSONと確認日時を変えない。既にマージされた週次PRの重複イベントは公開を再起動しない。公開失敗時も同じ手動公開経路で再試行できる。

@@ -1,0 +1,113 @@
+name: Validate and publish weekly site
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+    paths: ['site/research.json']
+  push:
+    branches: [main]
+    paths: ['site/research.json']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Unrelated PR events must not replace a queued weekly publication.
+  group: >-
+    ${{ github.event_name == 'pull_request_target' && !(
+    github.event.pull_request.head.repo.full_name == github.repository &&
+    github.event.pull_request.user.login == (vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner) &&
+    startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') &&
+    startsWith(github.event.pull_request.title, '[weekly-site]')) &&
+    format('weekly-rejected-{0}', github.event.number) || 'github-pages' }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    if: >-
+      github.event_name == 'pull_request_target' && (
+      startsWith(github.event.pull_request.head.ref, 'claude/weekly-afternoon-tea-') ||
+      startsWith(github.event.pull_request.title, '[weekly-site]'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      commit: ${{ steps.review.outputs.commit }}
+    steps:
+      # The default-branch commit is trusted. Never check out the PR or its artifacts.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Validate JSON and merge the expected head
+        id: review
+        run: python3 -m afternoon_tea check intake
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROUTINE_AUTHOR: ${{ vars.CLAUDE_ROUTINE_AUTHOR || github.repository_owner }}
+
+  generate:
+    needs: review
+    if: >-
+      always() && (
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (needs.review.result == 'success' && needs.review.outputs.commit != ''))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    outputs:
+      source_commit: ${{ steps.prepare.outputs.source_commit }}
+      html_sha256: ${{ steps.prepare.outputs.html_sha256 }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Generate and validate HTML from latest main
+        id: prepare
+        run: |
+          export SOURCE_COMMIT="$(git rev-parse HEAD)"
+          python3 -m afternoon_tea check prepare
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .staging/routine-delivery/site
+
+  deploy:
+    needs: generate
+    if: always() && needs.generate.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.generate.outputs.source_commit }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Deploy validated HTML
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify HTTP 200 and exact HTML bytes
+        run: python3 -m afternoon_tea check verify --expected-sha256 "$EXPECTED_HTML_SHA256"
+        env:
+          EXPECTED_HTML_SHA256: ${{ needs.generate.outputs.html_sha256 }}
