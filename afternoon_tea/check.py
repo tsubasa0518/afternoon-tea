@@ -31,6 +31,9 @@ def sha(value):
 def json_bytes(value):
     return dumps(value).encode()
 
+class SensitiveDataError(ValueError):
+    """A safe reason only: never include the matched value in logs."""
+
 def scan(value):
     text = value.decode('utf-8')
     patterns = ('-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
@@ -38,21 +41,17 @@ def scan(value):
          '(?i)authorization\\s*[:=]\\s*[\\"\\x27]?bearer\\s+\\S+',
          '\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b',
          '\\b0[5789]0[- ]\\d{4}[- ]\\d{4}\\b')
-    require(not any((re.search(p, text) for p in patterns)), 'secret_or_personal_contact_detected')
+    if any(re.search(p, text) for p in patterns):
+        raise SensitiveDataError('secret_or_personal_contact_detected')
     # Card-like values are checked without printing matched sensitive text.
-    # Complete digest/UUID tokens are identifiers, not embedded card numbers.
-    digest_fields = 'sha256|text_sha256|page_sha256|previous|chain_sha256|reference_sha256|document_id|audit_id|url_sha256'
-    card_text = re.sub('"(?:' + digest_fields + ')"\\s*:\\s*"[a-f0-9]{64}"', '"digest":"[digest]"', text)
-    # Document IDs also occur as complete JSON string values in reference arrays.
-    card_text = re.sub('"(?:url:)?[a-f0-9]{64}"', '"[document digest]"', card_text)
-    card_text = re.sub('"(?:campaign_id|run_id)"\\s*:\\s*"[a-f0-9]{32}"', '"run":"[id]"', card_text)
-    for raw in re.findall('(?<!\\d)(?:\\d[ -]?){13,19}(?!\\d)', card_text):
+    for raw in re.findall('(?<!\\d)(?:\\d[ -]?){13,19}(?!\\d)', text):
         digits = re.sub('\\D', '', raw)
         if len(digits) < 13:
             continue
         nums = [int(c) for c in digits[::-1]]
         total = sum(((n * 2 - 9 if n * 2 > 9 else n * 2) if i % 2 else n for (i, n) in enumerate(nums)))
-        require(total % 10 != 0, 'possible_payment_card_detected')
+        if total % 10 == 0:
+            raise SensitiveDataError('possible_payment_card_detected')
     return text
 
 def resource(url, asset=False):
@@ -145,6 +144,8 @@ def validate_json(value):
     from afternoon_tea.build import validate_country
     for shop in data['shops']:
         require(isinstance(shop, dict) and isinstance(shop.get('plans', []), list), 'invalid_shop')
+        require(type(shop.get('area_no')) is int and 1 <= shop['area_no'] <= 14,
+                'shop_area_outside_fourteen')
         for plan in shop.get('plans', []):
             require(isinstance(plan, dict), 'invalid_plan')
             validate_country(plan)
@@ -154,8 +155,11 @@ def validate_site(files):
     require(set(files) == ALLOWED, 'site_requires_exactly_two_files')
     report = validate_html_bytes(files['site/index.html'])
     research = validate_json(files['site/research.json'])
-    from afternoon_tea.build import validate_freshness
-    validate_freshness(research)
+    # Freshness belongs to build, not to a re-publication of saved content.
+    from afternoon_tea.build import timestamp
+    for shop in research['shops']:
+        for plan in shop.get('plans', []):
+            timestamp(plan.get('checked_at'))
     return {**report, 'generated_at': research.get('generated_at'),
             'shops': len(research['shops']),
             'plans': sum(len(s.get('plans', [])) for s in research['shops'])}

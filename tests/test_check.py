@@ -1,3 +1,4 @@
+import os
 import datetime as dt
 import copy
 import io
@@ -519,5 +520,64 @@ class BPlanStructureTests(unittest.TestCase):
         shop['checked_at']=shop['plans'][0].pop('checked_at')
         checked=r.validate_json(r.json_bytes(data))
         self.assertNotIn('checked_at',checked['shops'][0]['plans'][0])
-        with self.assertRaisesRegex(ValueError,'missing_checked_at'):
+        with self.assertRaisesRegex(ValueError,'plan_checked_at_required'):
             r.validate_site({'site/research.json':r.json_bytes(data),'site/index.html':HTML})
+
+
+class RepeatPublicationTests(unittest.TestCase):
+    def test_old_data_prepare_and_verify_commands_succeed_without_refresh_or_network(self):
+        from tests.http_fixtures import Response
+        from unittest.mock import Mock
+        content=files(1)
+        data=json.loads(content['site/research.json'])
+        data.update(generated_at='2020-01-01T00:00:00+09:00',period={'start':'2020-01-01','end':'2020-02-10'})
+        data['shops'][0]['plans'][0]['checked_at']='2019-12-31T12:00:00+09:00'
+        content['site/research.json']=r.json_bytes(data)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            for path,value in content.items():
+                (root/path).parent.mkdir(parents=True,exist_ok=True)
+                (root/path).write_bytes(value)
+            opener=Mock()
+            opener.open.side_effect=lambda *args,**kwargs:Response(r.SITE,HTML.decode())
+            with patch.object(r,'ROOT',root),patch('afternoon_tea.build.validate_freshness',side_effect=AssertionError('publication must not recheck age')), \
+                 patch.object(r.urllib.request,'build_opener',return_value=opener), \
+                 patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(root/'summary.md')}), \
+                 patch('sys.stdout',new=io.StringIO()):
+                r.main('prepare')
+                r.main('verify')
+            self.assertEqual(opener.open.call_count,1)
+            self.assertEqual((root/'site/research.json').read_bytes(),content['site/research.json'])
+            self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),HTML)
+            checks=json.loads((root/'.staging/routine-delivery/public-verification.json').read_text())
+            self.assertEqual(checks,[{'status':200,'sha256':r.sha(HTML)}])
+            self.assertIn('Pages公開確認成功',(root/'summary.md').read_text())
+
+    def test_age_exemption_does_not_accept_bad_timestamps_or_unsafe_output(self):
+        for stamp in (None,'invalid','2020-01-01T00:00:00'):
+            content=files(1)
+            data=json.loads(content['site/research.json'])
+            data['shops'][0]['plans'][0]['checked_at']=stamp
+            content['site/research.json']=r.json_bytes(data)
+            with self.assertRaises(ValueError):
+                r.validate_site(content)
+        for area in (15, 0, True, '1', None):
+            content=files(1)
+            data=json.loads(content['site/research.json'])
+            data['shops'][0]['area_no']=area
+            content['site/research.json']=r.json_bytes(data)
+            with self.assertRaisesRegex(ValueError,'shop_area_outside_fourteen'):
+                r.validate_site(content)
+        for key,value in (('site/research.json',b'{'),
+                          ('site/index.html',HTML.replace(b'</body>',b'<form></form></body>'))):
+            content=files(1);content[key]=value
+            with self.assertRaises(ValueError):
+                r.validate_site(content)
+
+    def test_unsanitized_secrets_still_rejected_at_publication_boundary(self):
+        content=files(1)
+        data=json.loads(content['site/research.json'])
+        data['shops'][0]['plans'][0]['menu']='private@example.test'
+        content['site/research.json']=r.json_bytes(data)
+        with self.assertRaises(r.SensitiveDataError):
+            r.validate_site(content)

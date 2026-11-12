@@ -749,3 +749,86 @@ class DocumentationTests(unittest.TestCase):
         self.assertIn('pip install -r requirements-browser.txt',procedure)
         self.assertIn('失敗してもGETだけで続ける',procedure)
         self.assertEqual(procedure.count('トークン'),1)
+
+
+class PlanPrivacyTests(unittest.TestCase):
+    def test_only_sensitive_plans_are_removed_and_no_values_are_logged(self):
+        examples=('ghp_'+'x'*36,'-----BEGIN PRIVATE KEY-----','name@example.test',
+                  '090-1234-5678','4111 1111 1111 1111')
+        for secret in examples:
+            with self.subTest(kind=examples.index(secret)):
+                data=current((4000,9000))
+                data['shops'][0]['plans'][0]['menu']=secret
+                before=copy.deepcopy(data)
+                out=builder.build(data)
+                self.assertEqual(data,before)
+                self.assertEqual([p['plan_name'] for p in out['shops'][0]['plans']],['PLAN 1'])
+                self.assertEqual(out['shops'][0]['category'],'lux')
+                self.assertEqual(out['excluded_sensitive_plans'],{'current':1,'previous':0})
+                self.assertNotIn(secret,json_bytes(out).decode())
+                html=render(out)
+                self.assertNotIn(secret,html)
+                self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':html.encode()})['plans'],1)
+
+    def test_sensitive_only_shop_is_omitted_and_zero_is_publishable(self):
+        data=current((5000,))
+        data['shops'][0].update(name='EXCLUDED SHOP ONLY')
+        data['shops'][0]['plans'][0]['menu']='name@example.test'
+        out=builder.build(data)
+        self.assertEqual(out['shops'],[])
+        self.assertNotIn('EXCLUDED SHOP ONLY',json_bytes(out).decode())
+        self.assertEqual(out['excluded_sensitive_plans']['current'],1)
+        self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':render(out).encode()})['plans'],0)
+
+    def test_safe_carried_plan_survives_unsafe_replacement_and_rebuild_count_is_stable(self):
+        current_data=current((4000,9000))
+        previous=copy.deepcopy(current_data)
+        previous['shops'][0]['plans'][0]['price_yen']=6000
+        previous['shops'][0]['plans'][0]['checked_at']=(dt.datetime.now(JST)-dt.timedelta(days=2)).isoformat()
+        previous['shops'][0]['plans'][1]['menu']='old@example.test'
+        current_data['shops'][0]['plans'][0]['menu']='new@example.test'
+        out=builder.build(current_data,previous)
+        self.assertEqual(out['excluded_sensitive_plans'],{'current':1,'previous':1})
+        carried=out['shops'][0]['plans'][0]
+        self.assertEqual(carried['price_yen'],6000)
+        self.assertEqual(carried['checked_at'],previous['shops'][0]['plans'][0]['checked_at'])
+        self.assertEqual(builder.build(out,previous),out)
+
+    def test_unrelated_validation_error_is_not_silently_dropped(self):
+        data=current((4000,));data['shops'][0]['plans'][0]['start']='invalid'
+        with self.assertRaisesRegex(ValueError,'invalid_plan_period'):
+            builder.build(data)
+        data=current((4000,));data['shops'][0]['address']='person@example.test'
+        with self.assertRaises(site_tools.SensitiveDataError):
+            builder.build(data)
+
+    def test_old_plans_are_still_removed_by_build(self):
+        data=current((4000,))
+        data['shops'][0]['plans'][0]['checked_at']=(dt.datetime.now(JST)-dt.timedelta(days=15)).isoformat()
+        self.assertEqual(builder.build(data)['shops'],[])
+
+    def test_build_command_writes_only_safe_data_and_report_has_only_a_count(self):
+        data=current((4000,9000));data['shops'][0]['plans'][0]['menu']='hidden@example.test'
+        root=BuildCommandTests.run_in_root(self,data)
+        import afternoon_tea.fetch as collect
+        with patch.object(builder,'ROOT',root),patch.object(renderer,'ROOT',root),patch('sys.stdout',new=io.StringIO()) as stdout:
+            self.assertEqual(builder.main(),0)
+        self.assertNotIn('hidden@example.test',stdout.getvalue())
+        self.assertEqual(json.loads(stdout.getvalue())['excluded_sensitive_plans'],1)
+        result=json.loads((root/'site/research.json').read_text())
+        state={'started_iso':data['generated_at'],'rows':{},'browser_runs':0,'browser_unavailable':None,
+               'blocked_operations':0,'blocked_resources':0}
+        text=collect.report(state=state,research=result)
+        self.assertIn('秘密情報・個人情報の検査で除外したプラン数: 1',text)
+        for path in (root/'site').iterdir():
+            self.assertNotIn('hidden@example.test',path.read_text())
+        self.assertNotIn('hidden@example.test',text)
+
+    def test_retired_digest_shapes_do_not_hide_card_numbers(self):
+        disguised='a'*24+'4111111111111111'+'a'*24
+        for menu in (disguised,{'document_id':disguised},[disguised]):
+            data=current((4000,9000));data['shops'][0]['plans'][0]['menu']=menu
+            out=builder.build(data)
+            self.assertEqual(out['excluded_sensitive_plans']['current'],1)
+            self.assertEqual([p['plan_name'] for p in out['shops'][0]['plans']],['PLAN 1'])
+            self.assertNotIn('4111111111111111',json_bytes(out).decode())
