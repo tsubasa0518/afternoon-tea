@@ -789,14 +789,16 @@ class URLRetentionTests(unittest.TestCase):
         current['shops'][0]['list_url']=current['shops'][0]['list_url'].rstrip('/')
         self.assertEqual(retain(current)['shops'],[])
 
-    def test_current_96_shops_are_not_in_the_list_and_are_excluded_even_when_fresh(self):
-        from afternoon_tea.fetch import ROOT
-        saved=json.loads((ROOT/'site/research.json').read_text())
-        self.assertEqual(len(saved['shops']),96)
-        stamps=[dt.datetime.fromisoformat(p['checked_at']) for s in saved['shops'] for p in s['plans']]
-        out=retain(saved,now=max(stamps)+dt.timedelta(days=1))
-        self.assertEqual(out['shops'],[])
-        self.assertNotIn('<article ',render(out))
+    def test_unlisted_shops_are_excluded_even_when_fresh(self):
+        for url in (None, 'https://www.example.com/legacy-tea/'):
+            saved=self.data()
+            saved['shops'][0]['list_url']=url
+            before=copy.deepcopy(saved)
+            stamp=dt.datetime.fromisoformat(saved['shops'][0]['plans'][0]['checked_at'])
+            out=retain(saved,now=stamp+dt.timedelta(days=1))
+            self.assertEqual(out['shops'],[])
+            self.assertNotIn('<article ',render(out))
+            self.assertEqual(saved,before)
 
     def test_new_format_one_shop_and_zero_shops_complete_current_pipeline(self):
         for count in (1,0):
