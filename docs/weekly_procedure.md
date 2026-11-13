@@ -52,6 +52,7 @@ python3 -m afternoon_tea record result.json
 
 - `status`：`plan_confirmed`（具体的なプランを読んだ）、`general_only`（紹介だけ）、`no_at_found`（読めたページに記載なし。提供なしではない）、`failed`（取得不能。`reason` に `HTTP_403` などを書く）、`excluded_genre`、`out_of_area`。
 - `source_url`・`info_url` は今回の実行で実際に開いたページだけ。`checked_at` は書かない（読んだ時刻が自動で入る）。不明な値は `null`。料金は読んだ通常料金を整数で、割引は `discount_price_yen` に。年を含む日付だけを `YYYY-MM-DD` で。駅名は「○○駅」だけ。
+- スイーツの種類の分類・タグ付け用項目は作らない。プラン名・メニュー本文にある食品名はそのまま記録する。
 - リスト外の店舗は `key` を省き、`shop` に `name`・`hotel_name`・`area_no`（1〜14）・`genre`（会場の主ジャンル）を書く。名称が候補リストと一致すれば、その行として保存される。
 - 終了コード：1＝その取得先は使えない（理由を見て別の公開情報源へ）、3＝上限到達（調査をやめて3へ）、4＝ブラウザ利用不可（`read` で続ける）。
 

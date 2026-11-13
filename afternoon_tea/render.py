@@ -25,48 +25,8 @@ from afternoon_tea.check import resource
 
 TEMPLATES = Path(__file__).resolve().parent / 'templates'
 SITES = [('ik', '一休.com'), ('tb', '食べログ'), ('tc', 'TableCheck')]
-SWEETS = [('ichigo',
-     'いちご'),
-     ('melon',
-     'メロン'),
-     ('peach',
-     '桃'),
-     ('mango',
-     'マンゴー'),
-     ('grape',
-     'ぶどう・マスカット'),
-     ('kuri',
-     '栗・マロン'),
-     ('imo',
-     '芋・かぼちゃ'),
-     ('kaki',
-     '柿・洋梨・いちじく'),
-     ('citrus',
-     '柑橘'),
-     ('choco',
-     'チョコレート'),
-     ('wa',
-     '抹茶・和'),
-     ('macaron',
-     'マカロン'),
-     ('parfait',
-     'パフェ'),
-     ('scone',
-     'スコーン'),
-     ('halloween',
-     'ハロウィン'),
-     ('xmas',
-     'クリスマス'),
-     ('valentine',
-     'バレンタイン'),
-     ('whiteday',
-     'ホワイトデー'),
-     ('collab',
-     'コラボ企画'),
-     ('season',
-     '季節の味覚'),
-     ('other',
-     'その他')]
+SEASON_LABELS = {'halloween': 'ハロウィン', 'xmas': 'クリスマス', 'valentine': 'バレンタイン',
+                 'whiteday': 'ホワイトデー', 'collab': 'コラボ企画', 'season': '季節の味覚'}
 CATS = [('cafe', 'カフェ', 'c-cafe'), ('hotel', 'ホテル', 'c-hotel'), ('lux', 'ホテル（高級）', 'c-lux')]
 SVG_TEA = (
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v4a6 6 0 0 1-6 '
@@ -86,8 +46,6 @@ SVG_CLK = (
     '1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="r'
     'ound"/></svg>'
 )
-EVENTS = {'halloween', 'xmas', 'valentine', 'whiteday', 'collab', 'season'}
-LABELS = dict(SWEETS)
 CLASSES = {k: (label, cls) for (k, label, cls) in CATS}
 CLASSES['unknown'] = ('分類未確認', 'c-unknown')
 HOSTS = {'restaurant.ikyu.com': 'ik', 'tabelog.com': 'tb', 'www.tabelog.com': 'tb', 'tablecheck.com': 'tc', 'www.tablecheck.com': 'tc'}
@@ -95,10 +53,10 @@ HOSTS = {'restaurant.ikyu.com': 'ik', 'tabelog.com': 'tb', 'www.tabelog.com': 't
 def esc(value):
     return html.escape(str(value), quote=True) if value is not None else '未確認'
 
-def tags(value):
+def season_tags(value):
     values = value if isinstance(value, list) else [value] if isinstance(value, str) else []
-    reverse = {v: k for (k, v) in SWEETS}
-    return sorted({v if v in LABELS else reverse[v] for v in values if isinstance(v, str) and (v in LABELS or v in reverse)})
+    reverse = {v: k for k, v in SEASON_LABELS.items()}
+    return sorted({v if v in SEASON_LABELS else reverse[v] for v in values if isinstance(v, str) and (v in SEASON_LABELS or v in reverse)})
 
 def category(shop):
     value = shop.get('category')
@@ -107,9 +65,6 @@ def category(shop):
 def condition(plan, key):
     value = plan.get(key)
     return 'on' if value is True else 'no' if value is False else 'off'
-
-def plan_tags(plan):
-    return sorted(set(tags(plan.get('sweets')) + [t for t in tags(plan.get('season')) if t in EVENTS]))
 
 def info_link(url, label=None):
     resource(url)
@@ -133,17 +88,12 @@ def plan_html(plan, index, total, generated):
     price = regular_price(plan)
     wd = condition(plan, 'weekday_available')
     we = condition(plan, 'weekend_available')
-    sw = plan_tags(plan)
-    specified = 1
+    seasons = season_tags(plan.get('season'))
     attrs = (
-        f'data-tags-specified="'
-        f'{specified}'
-        f'" data-wd="'
+        f'data-wd="'
         f"{int(wd == 'on')}"
         f'" data-we="'
         f"{int(we == 'on')}"
-        f'" data-sw="'
-        f"{esc(' '.join(sw))}"
         f'" data-price="'
         f"{(price if price is not None else '')}"
         f'"'
@@ -166,8 +116,8 @@ def plan_html(plan, index, total, generated):
     country = country_display(plan)
     if country:
         out.append('<p class="country-theme" aria-label="テーマの国・地域">' + esc(country) + '</p>')
-    if sw:
-        out.append('<p class="swt" aria-label="スイーツ・季節">' + ''.join(('<span>' + esc(LABELS[k]) + '</span>' for k in sw)) + '</p>')
+    if seasons:
+        out.append('<p class="season-tags" aria-label="季節・イベント">' + ''.join(('<span>' + esc(SEASON_LABELS[k]) + '</span>' for k in seasons)) + '</p>')
     if price is None:
         out.append('<div class="price"><span class="pdet">料金 未確認</span></div>')
     else:
@@ -204,7 +154,7 @@ def nearest_stations(shop):
 def card(shop, plans, generated):
     cat = category(shop)
     (label, cls) = CLASSES[cat]
-    sw = sorted({t for p in plans for t in plan_tags(p)})
+    seasons = sorted({t for p in plans for t in season_tags(p.get('season'))})
     wd = any((condition(p, 'weekday_available') == 'on' for p in plans))
     we = any((condition(p, 'weekend_available') == 'on' for p in plans))
     out = [(
@@ -212,8 +162,6 @@ def card(shop, plans, generated):
         f'{cls}'
         f'" data-cat="'
         f'{cat}'
-        f'" data-sw="'
-        f"{esc(' '.join(sw))}"
         f'" data-wd="'
         f'{int(wd)}'
         f'" data-we="'
@@ -230,12 +178,10 @@ def card(shop, plans, generated):
     url = shop.get('info_url')
     if url:
         out.append('<div class="links" aria-label="店舗の情報ページ">' + info_link(url) + '</div>')
-    if sw:
-        out.append('<p class="swt" aria-label="店舗の確認済みタグ">' + ''.join(('<span>' + esc(LABELS[k]) + '</span>' for k in sw)) + '</p>')
-    else:
-        out.append('<p class="rnote">スイーツ・季節分類 未確認</p>')
+    if seasons:
+        out.append('<p class="season-tags" aria-label="店舗の季節・イベント">' + ''.join(('<span>' + esc(SEASON_LABELS[k]) + '</span>' for k in seasons)) + '</p>')
     out.append('<div class="plans">' + ''.join((plan_html(p, i, len(plans), generated) for (i, p) in enumerate(plans))) + '</div></article>')
-    return (''.join(out), sw)
+    return ''.join(out)
 
 def render(research):
     research = {**research, 'shops': [s for s in research.get('shops', [])
@@ -250,15 +196,12 @@ def render(research):
     master = json.loads((ROOT / 'data/areas.json').read_text())
     groups = {a['no']: [] for a in master['areas']}
     tot = Counter()
-    swc = Counter()
     for (shop, plans) in displayable(research):
         shop = {**shop, 'plans': plans}
-        (markup, sw) = card(shop, plans, generated)
+        markup = card(shop, plans, generated)
         target = groups[shop['area_no']]
         target.append((category(shop), markup))
         tot[category(shop)] += 1
-        for plan in plans:
-            swc.update((t for t in plan_tags(plan) if t not in EVENTS))
     per = research['period']
     (start, end) = (day(per['start']), day(per['end']))
     stats = ''.join((f'<div class="stat s-{cat}"><b>{tot[cat]}</b><span>{label}</span></div>' for (cat, label, cls) in CATS))
@@ -285,18 +228,6 @@ def render(research):
         f'</div></div></div>'
     )
 
-    def buttons(keys):
-        return ''.join(((
-            f'<button class="fb f-x" data-sw="'
-            f'{k}'
-            f'" aria-pressed="false">'
-            f"{label.replace('・', '・<wbr>')}"
-            f'<span class="bc'
-            f"{(' zero' if swc[k] == 0 else '')}"
-            f'">'
-            f'{swc[k]}'
-            f'</span></button>'
-        ) for (k, label) in SWEETS if k in keys))
     cats = ''.join((f'<button class="fb f-{cat}" data-cat="{cat}" aria-pressed="true">{label}</button>' for (cat, label, cls) in CATS))
     if tot['unknown']:
         cats += '<button class="fb f-x" data-cat="unknown" aria-pressed="true">分類未確認</button>'
@@ -306,9 +237,7 @@ def render(research):
          cats,
          '分類で絞り込み') + row('日程条件',
          '<button class="fb f-x" data-x="wd" aria-pressed="false">平日</button><button class="fb f-x" data-x="we" aria-pressed="false">土日祝</button>',
-         '日程条件で絞り込み') + row('スイーツ',
-         buttons(set(LABELS) - EVENTS),
-         'スイーツで絞り込み')
+         '日程条件で絞り込み')
     filters += (
         f'<nav class="frow area-nav" aria-label="エリア"><span class="lb">場所</span><div '
         f'class="area-disclosure"><button class="lk area-toggle" id="area-toggle" typ'

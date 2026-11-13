@@ -1,8 +1,7 @@
-const st={cat:{hotel:true,lux:true,cafe:true,unknown:true},x:{wd:false,we:false},sw:new Set()};
+const st={cat:{hotel:true,lux:true,cafe:true,unknown:true},x:{wd:false,we:false}};
 document.querySelectorAll('.fb').forEach(button=>button.addEventListener('click',()=>{
  const on=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',on);
  if(button.dataset.cat)st.cat[button.dataset.cat]=on;
- else if(button.dataset.sw){on?st.sw.add(button.dataset.sw):st.sw.delete(button.dataset.sw)}
  else if(button.dataset.x)st.x[button.dataset.x]=on;
  apply();
 }));
@@ -22,15 +21,12 @@ let filterRevision=0,areaRevision=0;
 function apply(){
  filterRevision++;
  let shops=0,plans=0;
- const sweets=Array.from(st.sw);
  document.querySelectorAll('.card').forEach(card=>{
   const storeMatches=!!st.cat[card.dataset.cat];
   let count=0;
   card.querySelectorAll('.plan').forEach(plan=>{
-   const tags=(plan.dataset.sw||'').split(' ');
-   const tagsMatch=!sweets.length||sweets.some(key=>tags.includes(key));
    const daysMatch=(!st.x.wd&&!st.x.we)||(st.x.wd&&plan.dataset.wd==='1')||(st.x.we&&plan.dataset.we==='1');
-   const ok=storeMatches&&tagsMatch&&priceMatches(plan)&&daysMatch;
+   const ok=storeMatches&&priceMatches(plan)&&daysMatch;
    plan.hidden=!ok;if(ok)count++;
   });
   card.classList.toggle('hide',count===0);if(count){shops++;plans+=count}
@@ -41,7 +37,7 @@ function apply(){
  });
  document.querySelectorAll('section.area').forEach(area=>{const label=area.querySelector('.acnt');if(label)label.textContent=area.querySelectorAll('.card:not(.hide)').length+'件'});
  document.getElementById('filter-status').textContent='表示 '+shops+'店舗・'+plans+'プラン';
- const active=priceFilter.value!=='all'||sweets.length||Object.values(st.x).some(Boolean)||Object.values(st.cat).some(on=>!on);
+ const active=priceFilter.value!=='all'||Object.values(st.x).some(Boolean)||Object.values(st.cat).some(on=>!on);
  document.getElementById('no-results').hidden=shops>0||(document.querySelectorAll('.card').length===0&&!active);
 }
 function setAreaExpanded(expanded){
@@ -52,7 +48,7 @@ areaToggle.addEventListener('click',()=>{areaRevision++;setAreaExpanded(areaLink
 priceFilter.addEventListener('change',apply);
 function resetFilters(){
  document.querySelectorAll('.fb').forEach(button=>button.setAttribute('aria-pressed',button.dataset.cat?'true':'false'));
- Object.keys(st.cat).forEach(key=>st.cat[key]=true);Object.keys(st.x).forEach(key=>st.x[key]=false);st.sw.clear();
+ Object.keys(st.cat).forEach(key=>st.cat[key]=true);Object.keys(st.x).forEach(key=>st.x[key]=false);
  priceFilter.value='all';apply();
 }
 document.getElementById('reset-filters').addEventListener('click',resetFilters);
