@@ -1,0 +1,10 @@
+/* Click sparkles: decoration only. generate_html.py inserts this file only when settings.json has "enabled": true. */
+.click-sparkles-layer{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden;pointer-events:none;z-index:9999;contain:strict;-webkit-user-select:none;user-select:none}
+.click-sparkles-layer,.click-sparkles-layer *{pointer-events:none}
+.click-sparkle{position:absolute;pointer-events:none;font-size:16px;animation:click-sparkles-float 1.5s ease-out forwards;will-change:transform,opacity}
+@keyframes click-sparkles-float{
+ 0%{transform:translate(0,0) rotate(0deg) scale(1);opacity:1}
+ 100%{transform:translate(var(--tx,30px),var(--ty,-80px)) rotate(360deg) scale(0);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){.click-sparkles-layer{display:none}}
+@media print{.click-sparkles-layer{display:none}}

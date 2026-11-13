@@ -24,6 +24,9 @@ from afternoon_tea.publication_checks import validate_html_bytes
 from afternoon_tea.publication_checks import resource
 
 TEMPLATES = Path(__file__).resolve().parent / 'page_templates'
+# Optional click decoration. Its own folder holds the code, the styles and the on/off file.
+CLICK_SPARKLES = TEMPLATES / 'effects' / 'click_sparkles'
+CLICK_SPARKLES_TOKEN = '__CLICK_SPARKLES_SETTINGS__'
 SITES = [('ik', '一休.com'), ('tb', '食べログ'), ('tc', 'TableCheck')]
 SEASON_LABELS = {'halloween': 'ハロウィン', 'xmas': 'クリスマス', 'valentine': 'バレンタイン',
                  'whiteday': 'ホワイトデー', 'collab': 'コラボ企画', 'season': '季節の味覚'}
@@ -183,6 +186,27 @@ def card(shop, plans, generated):
     out.append('<div class="plans">' + ''.join((plan_html(p, i, len(plans), generated) for (i, p) in enumerate(plans))) + '</div></article>')
     return ''.join(out)
 
+def click_sparkles(folder=None):
+    """Return the effect's (style, script) blocks, or empty strings when settings.json disables it."""
+    folder = folder or CLICK_SPARKLES
+    values = json.loads((folder / 'settings.json').read_text(encoding='utf-8'))
+    if not isinstance(values, dict) or set(values) != {'enabled', 'duration_ms', 'particle_count'}:
+        raise ValueError('click_sparkles_settings_need_enabled_duration_ms_particle_count')
+    if type(values['enabled']) is not bool:
+        raise ValueError('click_sparkles_enabled_must_be_true_or_false')
+    if type(values['duration_ms']) is not int or not 100 <= values['duration_ms'] <= 10000:
+        raise ValueError('click_sparkles_duration_ms_invalid')
+    if type(values['particle_count']) is not int or not 1 <= values['particle_count'] <= 24:
+        raise ValueError('click_sparkles_particle_count_invalid')
+    if not values['enabled']:
+        return '', ''
+    css = (folder / 'effect.css').read_text(encoding='utf-8')
+    js = (folder / 'effect.js').read_text(encoding='utf-8')
+    if js.count(CLICK_SPARKLES_TOKEN) != 1 or any(re.search('</(?:script|style)', t, re.I) for t in (css, js)):
+        raise ValueError('click_sparkles_files_invalid')
+    js = js.replace(CLICK_SPARKLES_TOKEN, json.dumps({'duration_ms': values['duration_ms'], 'particle_count': values['particle_count']}))
+    return '<style>' + css + '</style>', '<script>' + js + '</script>'
+
 def render(research):
     research = {**research, 'shops': [s for s in research.get('shops', [])
                 if not isinstance(s, dict) or (type(s.get('area_no')) is int and 1 <= s['area_no'] <= 14)]}
@@ -275,8 +299,11 @@ def render(research):
     for area in master['areas']:
         areas.append(area_html(area['no'], area['name'], groups[area['no']], area['stations']))
     template = Template((TEMPLATES / 'page_template.html').read_text())
+    (effect_style, effect_script) = click_sparkles()
     result = template.substitute(css=(TEMPLATES / 'page_styles.css').read_text(),
          js=(TEMPLATES / 'page_controls.js').read_text(),
+         effect_style=effect_style,
+         effect_script=effect_script,
          hero=hero,
          filters=filters,
          empty=empty,

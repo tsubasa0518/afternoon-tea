@@ -430,7 +430,11 @@ class BPlanStructureTests(unittest.TestCase):
         self.assertEqual({p.stem for p in (ROOT/'afternoon_tea').glob('*.py')},
                          {'__init__','__main__','research_settings','read_public_pages','research_browser','manage_research','prepare_listings','generate_html','publication_checks'})
         self.assertEqual({p.name for p in (ROOT/'afternoon_tea/page_templates').iterdir()},
-                         {'page_template.html','page_styles.css','page_controls.js'})
+                         {'page_template.html','page_styles.css','page_controls.js','effects'})
+        # The click decoration lives in one folder: its code, its styles and its on/off file.
+        self.assertEqual({p.name for p in (ROOT/'afternoon_tea/page_templates/effects').iterdir()}, {'click_sparkles'})
+        self.assertEqual({p.name for p in (ROOT/'afternoon_tea/page_templates/effects/click_sparkles').iterdir()},
+                         {'effect.js','effect.css','settings.json'})
         self.assertEqual({p.name for p in (ROOT/'tests').glob('test_*.py')},
                          {'test_research_safety.py','test_research_browser.py','test_prepare_listings.py','test_generate_html.py','test_publication_checks.py'})
         for folder in ('collection','processing','publication'):
