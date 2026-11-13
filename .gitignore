@@ -2,4 +2,4 @@ __pycache__/
 *.py[cod]
 /.staging/
 
-/site/index.html
+/website/index.html

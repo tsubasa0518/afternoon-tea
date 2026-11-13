@@ -4,10 +4,10 @@ on:
   pull_request_target:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, edited]
-    paths: ['site/research.json']
+    paths: ['website/listings_and_progress.json']
   push:
     branches: [main]
-    paths: ['site/research.json']
+    paths: ['website/listings_and_progress.json']
   workflow_dispatch:
 
 permissions:
@@ -84,7 +84,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         if: steps.prepare.outputs.html_sha256 != ''
         with:
-          path: .staging/routine-delivery/site
+          path: .staging/routine-delivery/website
 
   deploy:
     needs: generate

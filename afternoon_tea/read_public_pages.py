@@ -20,7 +20,7 @@ from urllib.parse import parse_qsl, unquote, urljoin, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 from urllib.robotparser import RobotFileParser
 
-from afternoon_tea.config import ROOT, settings
+from afternoon_tea.research_settings import ROOT, settings
 
 JST = dt.timezone(dt.timedelta(hours=9))
 RUN = ROOT / '.staging/run'
@@ -214,7 +214,7 @@ def now_iso():
 
 
 class RunState:
-    """Per-run state in .staging/run (not tracked). Progress that must survive is in site/research.json."""
+    """Per-run state in .staging/run (not tracked). Progress that must survive is in website/listings_and_progress.json."""
 
     def __init__(self, directory=None):
         self.directory = Path(directory or RUN)

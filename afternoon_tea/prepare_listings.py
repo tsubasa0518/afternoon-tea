@@ -5,10 +5,10 @@ import re
 import unicodedata
 import copy
 import json
-from afternoon_tea.fetch import JST
-from afternoon_tea.config import ROOT
-from afternoon_tea.fetch import load_json
-from afternoon_tea.fetch import atomic_json
+from afternoon_tea.read_public_pages import JST
+from afternoon_tea.research_settings import ROOT
+from afternoon_tea.read_public_pages import load_json
+from afternoon_tea.read_public_pages import atomic_json
 from functools import lru_cache
 
 def period(start=None, now=None):
@@ -23,7 +23,7 @@ def period(start=None, now=None):
 
 
 def period_days():
-    from afternoon_tea.config import settings
+    from afternoon_tea.research_settings import settings
     return int(settings()['period_days'])
 
 
@@ -97,7 +97,7 @@ def classify(plans):
 
 @lru_cache(maxsize=1)
 def registry():
-    return json.loads((ROOT / 'data/country_registry.json').read_text())['countries']
+    return json.loads((ROOT / 'research_inputs/country_codes.json').read_text())['countries']
 
 def code(value):
     if isinstance(value, str) and value.isascii() and value.isalpha() and len(value) == 2 and value.lower() in registry():
@@ -159,7 +159,7 @@ def ended(plan, window):
 
 def displayable(data):
     """Shops and plans shown on the site; also the count the publication guard requires to be > 0."""
-    from afternoon_tea.config import excluded_genre
+    from afternoon_tea.research_settings import excluded_genre
     window = data['period']
     end = day(window['end'])
     for shop in data.get('shops', []):
@@ -180,9 +180,9 @@ def displayable(data):
 
 def normalize(data, now=None):
     """Keep confirmed plans with their own checked_at; drop only what is broken, ended or excluded."""
-    from afternoon_tea.config import excluded_genre
-    from afternoon_tea.check import scan, json_bytes, SensitiveDataError
-    from afternoon_tea.research import migrate
+    from afternoon_tea.research_settings import excluded_genre
+    from afternoon_tea.publication_checks import scan, json_bytes, SensitiveDataError
+    from afternoon_tea.manage_research import migrate
     now = now or dt.datetime.now(JST)
     data = migrate(copy.deepcopy(data))
     result = {key: data[key] for key in ('schema_version', 'generated_at', 'period') if key in data}
@@ -293,21 +293,21 @@ def build(current, previous=None, now=None, rows=None):
     if errors:
         raise ValueError('invalid_plan_period')
     data = enrich(data)
-    from afternoon_tea.check import validate_json, json_bytes
+    from afternoon_tea.publication_checks import validate_json, json_bytes
     validate_json(json_bytes(data))
     return data
 
 
 def main():
-    from afternoon_tea.check import validate_site, json_bytes, publishable
-    from afternoon_tea.render import render
-    from afternoon_tea.render import write_html
-    target = ROOT / 'site/research.json'
+    from afternoon_tea.publication_checks import validate_site, json_bytes, publishable
+    from afternoon_tea.generate_html import render
+    from afternoon_tea.generate_html import write_html
+    target = ROOT / 'website/listings_and_progress.json'
     if target.is_symlink() or target.parent.is_symlink():
         raise ValueError('symlink data forbidden')
     data = build(load_json(target))
     html = render(data)
-    report = validate_site({'site/research.json': json_bytes(data), 'site/index.html': html.encode()})
+    report = validate_site({'website/listings_and_progress.json': json_bytes(data), 'website/index.html': html.encode()})
     # Prepare and validate both values before either tracked file is replaced.
     write_html(html)
     atomic_json(target, data)

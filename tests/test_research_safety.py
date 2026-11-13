@@ -13,9 +13,9 @@ from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 
-import afternoon_tea.research as research
-from afternoon_tea.config import candidates, excluded_genre, main_genre, same_venue, search_queries, settings
-from afternoon_tea.fetch import (JST, AccessRefused, BudgetExhausted, ForbiddenOperation, Policy, Reader, RunState,
+import afternoon_tea.manage_research as research
+from afternoon_tea.research_settings import candidates, excluded_genre, main_genre, same_venue, search_queries, settings
+from afternoon_tea.read_public_pages import (JST, AccessRefused, BudgetExhausted, ForbiddenOperation, Policy, Reader, RunState,
                                  Unusable)
 
 
@@ -246,7 +246,7 @@ ROWS = [
 class ProgressTests(Temp):
     def setUp(self):
         super().setUp()
-        self.research = self.dir / 'research.json'
+        self.research = self.dir / 'listings_and_progress.json'
         data = research.empty()
         research.save(data, self.research)
         patches = [patch.object(research, 'RESEARCH', self.research), patch.object(research, 'RUN', self.dir / 'run'),
