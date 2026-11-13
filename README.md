@@ -18,7 +18,7 @@ afternoon-tea/
 │   ├── __init__.py                     # Pythonパッケージとして読み込むための入口
 │   ├── __main__.py                     # python3 -m afternoon_tea のコマンド受付・各処理への振り分け
 │   ├── browser.py                      # 調査用ブラウザ、検索フォーム・タブ操作と予約操作の防止
-│   ├── build.py                        # 保存データの整形、料金分類・タグ付け、掲載対象の選別
+│   ├── build.py                        # 保存データの整形、料金分類・季節表示値の作成、掲載対象の選別
 │   ├── check.py                        # JSON・HTMLの安全検査、0件公開の防止、PR審査と公開後の照合
 │   ├── config.py                       # 設定・候補リストの読込み、店舗照合、除外ジャンルと検索語の処理
 │   ├── fetch.py                        # 公開ページの読取り、URL・robots・アクセス拒否・要求間隔の判定
@@ -27,7 +27,7 @@ afternoon-tea/
 │   └── templates/
 │       ├── site.html                   # 公開ページ全体のHTMLの枠組み
 │       ├── site.css                    # 色・文字・カード・スマートフォン表示などのデザイン
-│       └── site.js                     # 分類・日程・スイーツ・料金帯の絞り込みと表示件数の更新
+│       └── site.js                     # 分類・日程・料金帯の絞り込みと表示件数の更新
 ├── data/                              # 調査・掲載に使う設定と参照データ
 │   ├── areas.json                      # 東京14エリアの番号・名称・対象駅
 │   ├── candidates.csv                  # 調べたい店舗・ホテル、エリア、ジャンル、優先サイト等の一覧
@@ -46,12 +46,12 @@ afternoon-tea/
 │   ├── http_fixtures.py                # 実際の通信の代わりに使うHTTP応答データ
 │   ├── local_site.py                   # 検索・プラン表示・予約禁止を試験するローカルの模擬サイト
 │   ├── test_browser.py                 # ブラウザの検索・移動・タブ操作と予約操作の拒否を検証
-│   ├── test_build.py                   # データ整形・料金分類・タグ・情報保持・文書の整合性を検証
+│   ├── test_build.py                   # データ整形・料金分類・季節表示・情報保持・文書の整合性を検証
 │   ├── test_check.py                   # 公開前後の検査、PR審査、権限の境界、0件公開の防止を検証
 │   ├── test_render.py                  # HTML・店舗カード・表示項目・レイアウト・絞り込みを検証
 │   ├── test_safety.py                  # 通信制限・アクセス拒否・ジャンル除外・店舗照合・調査再開を検証
 │   └── fixtures/
-│       └── sweet_filter_harness.js     # 生成ページの実際のJavaScriptで絞り込み結果を検証する補助処理
+│       └── filter_harness.js     # 生成ページの実際のJavaScriptで絞り込み結果を検証する補助処理
 ├── .gitignore                         # 生成HTML・一時作業ファイル・PythonキャッシュをGitの追跡から除外
 ├── AGENTS.md                          # 調査担当と既存Claude Routineが守る7項目の指示の正本
 ├── CLAUDE.md                          # Claudeが毎回読む指示書と操作手順への案内

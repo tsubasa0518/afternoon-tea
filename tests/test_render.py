@@ -1,6 +1,5 @@
 """Fixed design, saved JSON and local-only filter tests."""
 import copy
-import datetime as dt
 import json
 import os
 import re
@@ -13,7 +12,6 @@ from pathlib import Path
 from unittest.mock import patch
 from afternoon_tea.check import validate_site
 from afternoon_tea.build import enrich
-from html.parser import HTMLParser
 
 
 def plan(**values):
@@ -73,7 +71,7 @@ class RoutineRendererTests(unittest.TestCase):
              'class="plans"',
              'class="totop"']:
             self.assertIn(value, result)
-        for value in ['料金 未確認', '提供期間 未確認', '平日 未確認', '土日祝 未確認', '提供時間・利用時間 未確認', 'スイーツ・季節分類 未確認']:
+        for value in ['料金 未確認', '提供期間 未確認', '平日 未確認', '土日祝 未確認', '提供時間・利用時間 未確認']:
             self.assertIn(value, result)
 
     def test_categories_use_regular_price_not_stale_categories_or_names(self):
@@ -86,15 +84,17 @@ class RoutineRendererTests(unittest.TestCase):
             self.assertIn(f'class="stat s-{cat}"><b>1</b>', result)
         self.assertIn('class="card c-unknown"', result)
 
-    def test_multiple_plans_and_dynamic_sweet_counts(self):
+    def test_multiple_plans_keep_menu_and_season_display(self):
         source = fixture()
-        source['shops'][0]['sweets'] = ['scone', 'xmas']
-        source['shops'][0]['plans'] = [plan(plan_name='TEST 1', menu='スコーン', price_yen=1000), plan(plan_name='TEST 2', price_yen=2000)]
+        source['shops'][0]['plans'] = [plan(plan_name='TEST 1', menu='スコーン', season=['xmas'], price_yen=1000), plan(plan_name='TEST 2', price_yen=2000)]
         result = r.render(enrich(source))
         self.assertIn('プラン1／2', result)
         self.assertIn('プラン2／2', result)
-        self.assertIn('data-sw="scone" aria-pressed="false">スコーン<span class="bc">1</span>', result)
-        self.assertNotIn('data-sw="xmas" aria-pressed=', result)
+        self.assertIn('メニュー：スコーン', result)
+        self.assertIn('季節・イベント', result)
+        self.assertIn('クリスマス', result)
+        self.assertNotIn('data-sw=', result)
+        self.assertNotIn('スイーツ', result)
 
     def test_outside_plan_is_omitted_without_mutating_evidence(self):
         source = fixture()
@@ -275,9 +275,8 @@ class RoutineRendererTests(unittest.TestCase):
             self.assertIn('aria-expanded="false" aria-controls="area-links">詳細</button>', result)
             links = re.search('<div class="btns" id="area-links" hidden>(.*?)</div>', result, re.S).group(1)
             self.assertEqual(len(re.findall('href="#a\\d+"', links)), 14)
-            self.assertEqual(len(re.findall('<button[^>]+data-sw=', result)), 15)
-            for key in ['xmas', 'valentine', 'whiteday', 'collab', 'season']:
-                self.assertNotIn('data-sw="' + key + '" aria-pressed=', result)
+            self.assertNotIn('スイーツで絞り込み', result)
+            self.assertNotIn('data-sw=', result)
             self.assertIn('TEST ONLY lounge', result)
             self.assertIn('TEST winter AT', result)
             self.assertEqual(source, before)
@@ -287,101 +286,7 @@ class RoutineRendererTests(unittest.TestCase):
             self.skipTest('Node is needed for local filter execution')
         result = r.render(fixture())
         js = re.search('<script>(.*?)</script>', result, re.S).group(1)
-        harness = (
-            "\nconst vm=require('vm'),fs=require('fs'),code=JSON.parse(fs.readFileSync(0,"
-            "'utf8'));\nfunction node(dataset={}){const n={dataset,hidden:false,value:'',"
-            "textContent:'',attrs:{},events:{},classes:new Set(),getAttribute(k){return "
-            'this.attrs[k]},setAttribute(k,v){this.attrs[k]=String(v)},addEventListener('
-            'k,f){this.events[k]=f}};n.classList={toggle(k,v){v?n.classes.add(k):n.class'
-            'es.delete(k)},add(k){n.classes.add(k)}};return n}\nfunction plan(name,price,'
-            "sw,wd='0',we='0'){return node({price,sw,wd,we})}\nfunction card(cat,name,sw,"
-            'plans){const c=node({cat,sw});c.plans=plans;c.querySelectorAll=()=>plans;re'
-            "turn c}\nconst a=card('hotel','Hotel A','scone',[plan('冬','7000','scone ichi"
-            "go','1'),plan('夏','11000','choco','0','1')]),b=card('cafe','Cafe B','parfai"
-            "t',[plan('unknown','','parfait','0','1')]);const cards=[a,b];\nconst buttons"
-            "=[];for(const cat of ['hotel','cafe','lux','unknown']){const n=node({cat});"
-            "buttons.push(n)}for(const x of ['wd','we'])buttons.push(node({x}));for(cons"
-            "t sw of ['ichigo','scone','choco','parfait','melon'])buttons.push(node({sw}"
-            "));\nconst groups=['hotel','cafe','lux'].map(cat=>{const g=node({cat});g.que"
-            "rySelectorAll=()=>cards.filter(c=>c.dataset.cat===cat&&!c.classes.has('hide"
-            "'));g.querySelector=()=>({textContent:''});return g});\nconst area=node();ar"
-            "ea.querySelector=()=>({textContent:''});area.querySelectorAll=()=>cards.fil"
-            "ter(c=>!c.classes.has('hide'));\nconst ids={};for(const id of ['price-filter"
-            "','filter-status','no-results','reset-filters','area-toggle','area-links'])"
-            "ids[id]=node();ids['price-filter'].value='all';\nconst document={getElementB"
-            "yId(id){if(['shop-search','theme-search'].includes(id))throw Error('removed"
-            " input reference');return ids[id]||null},querySelector(){return null},query"
-            "SelectorAll(q){return q==='.card'?cards:q==='.cat'?groups:q==='.fb'?buttons"
-            ":q==='section.area'?[area]:[]}};\nconst pageEvents={},pending=[];\nconst wind"
-            'ow={addEventListener(name,fn){pageEvents[name]=fn}};\n// Simulate browser-re'
-            "stored form values and pressed buttons before script execution.\nids['price-"
-            "filter'].value='high';\nbuttons.forEach(b=>b.attrs['aria-pressed']=b.dataset"
-            ".cat?'false':'true');\nvm.runInNewContext(code,{document,window,setTimeout(f"
-            'n){pending.push(fn)}});\nfunction flush(){while(pending.length)pending.shift'
-            "()()}\nfunction assertReset(label){\n if(ids['price-filter'].value!=='all')th"
-            "row Error(label+' fields');\n if(buttons.some(b=>b.attrs['aria-pressed']!==("
-            "b.dataset.cat?'true':'false')))throw Error(label+' buttons');\n if(cards.som"
-            "e(c=>c.classes.has('hide')||c.plans.some(p=>p.hidden)))throw Error(label+' "
-            "visibility');\n if(ids['filter-status'].textContent!=='表示 2店舗・3プラン')throw Er"
-            "ror(label+' counts');\n}\nassertReset('first load / reload');\nfunction assert"
-            "(v,m){if(!v)throw Error(m)}\nfunction input(id,value,event='change'){ids[id]"
-            '.value=value;ids[id].events[event]()}\nfunction click(key,value){buttons.fin'
-            'd(b=>b.dataset[key]===value).events.click()}\nfunction visible(){return card'
-            "s.flatMap(c=>c.plans).filter(p=>!p.hidden).length}\nassert(ids['area-links']"
-            ".hidden&&ids['area-toggle'].attrs['aria-expanded']==='false','area initiall"
-            "y closed');\nif(process.env.TEST_EARLY_CHOICE){\n click('sw','scone');pageEve"
-            "nts.pageshow({persisted:false});flush();assert(visible()===1,'early choice "
-            "preserved');ids['reset-filters'].events.click();\n}else{pageEvents.pageshow("
-            "{persisted:false});ids['price-filter'].value='high';flush();assertReset('la"
-            "te initial restoration')}\nclick('sw','scone');assert(visible()===1&&!a.plan"
-            "s[0].hidden&&a.plans[1].hidden,'single sweet count');\nconst status=ids['fil"
-            "ter-status'].textContent;\nids['area-toggle'].events.click();assert(!ids['ar"
-            "ea-links'].hidden&&ids['area-toggle'].attrs['aria-expanded']==='true'&&ids["
-            "'area-toggle'].textContent==='閉じる','expand areas');\nassert(visible()===1&&i"
-            "ds['filter-status'].textContent===status,'disclosure leaves filters unchang"
-            "ed');\nids['area-toggle'].events.click();assert(ids['area-links'].hidden&&id"
-            "s['area-toggle'].textContent==='詳細','collapse areas');\nclick('sw','ichigo')"
-            ";assert(visible()===1,'OR overlap counted once');\nclick('sw','choco');asser"
-            "t(visible()===2&&!a.classes.has('hide')&&b.classes.has('hide'),'OR differen"
-            "t plans');\ninput('price-filter','high');assert(visible()===1&&!a.plans[1].h"
-            "idden,'price AND sweets on same plan');\nclick('x','wd');assert(visible()==="
-            "0&&!ids['no-results'].hidden,'weekday AND price');\nids['reset-filters'].eve"
-            "nts.click();assertReset('manual reset');\nclick('x','we');assert(visible()=="
-            "=2&&a.plans[0].hidden,'weekend');\nclick('x','wd');assert(visible()===3,'wee"
-            "kday OR weekend includes either day');\nclick('sw','scone');assert(visible()"
-            "===1&&!a.plans[0].hidden,'day OR AND sweets');\nclick('sw','choco');assert(v"
-            "isible()===2,'both OR groups combine');\ninput('price-filter','high');assert"
-            "(visible()===1&&!a.plans[1].hidden,'day OR AND price');\nids['reset-filters'"
-            "].events.click();\nconst dayUnknown=plan('日程未確認','7000','scone'),bothDays=pl"
-            "an('毎日','7000','scone','1','1');\na.plans.push(dayUnknown,bothDays);ids['res"
-            "et-filters'].events.click();\nassert(visible()===5,'no day selection include"
-            "s unconfirmed');\nclick('x','wd');assert(visible()===2&&!bothDays.hidden&&da"
-            "yUnknown.hidden,'weekday and daily plans');\nclick('x','we');assert(visible("
-            ")===4&&!bothDays.hidden&&dayUnknown.hidden,'OR overlap counted once and unk"
-            "nown excluded');\nclick('x','wd');assert(visible()===3&&a.plans[0].hidden,'t"
-            "urning weekday off leaves weekend');\nclick('x','we');assert(visible()===5&&"
-            "!dayUnknown.hidden,'turning both off restores all');\na.plans.splice(-2);ids"
-            "['reset-filters'].events.click();\n\nids['reset-filters'].events.click();inpu"
-            "t('price-filter','unknown');assert(visible()===1&&!b.plans[0].hidden,'unkno"
-            "wn price retained');\nids['reset-filters'].events.click();click('cat','hotel"
-            "');assert(a.classes.has('hide')&&visible()===1,'category');\nids['reset-filt"
-            "ers'].events.click();click('sw','melon');assert(visible()===0,'zero sweet')"
-            ";click('sw','scone');assert(visible()===1,'OR zero sweet');\npageEvents.page"
-            "show({persisted:true});assertReset('history return');\nids['price-filter'].v"
-            "alue='high';flush();assertReset('late history restoration');\npageEvents.pag"
-            "eshow({persisted:true});click('sw','choco');flush();assert(visible()===1&&!"
-            "a.plans[1].hidden,'new choice survives queued reset');\nids['reset-filters']"
-            ".events.click();assertReset('manual after history');\nconst unknown=card('un"
-            "known','Unknown facility','',[plan('不明','','')]);cards.push(unknown);\nbutto"
-            "ns.find(b=>b.dataset.cat==='unknown').events.click();assert(unknown.classes"
-            ".has('hide'),'unknown category can filter');\nids['reset-filters'].events.cl"
-            "ick();assert(!unknown.classes.has('hide')&&!unknown.plans[0].hidden,'reset "
-            "includes unknown category');\ncards.pop();ids['reset-filters'].events.click("
-            ");assertReset('all categories restored');\ncards.length=0;buttons.find(b=>b."
-            "dataset.sw==='ichigo').events.click();assert(!ids['no-results'].hidden,'zer"
-            "o-store selected option');\nids['reset-filters'].events.click();assert(ids['"
-            "no-results'].hidden,'zero-store reset');\n"
-        )
+        harness = (Path(__file__).parent / 'fixtures/filter_harness.js').read_text()
         for early in ('', '1'):
             proc = subprocess.run(['node', '-e', harness], input=json.dumps(js), text=True, capture_output=True, env={**os.environ, 'TEST_EARLY_CHOICE': early})
             self.assertEqual(proc.returncode, 0, proc.stderr)
@@ -398,67 +303,6 @@ class OtherAreaTests(unittest.TestCase):
             self.assertNotIn('その他のエリア', result)
             self.assertNotIn('TEST ONLY lounge', result)
             self.assertNotIn('id="a0"', result)
-
-SWEETS = ['いちご', 'メロン', '桃', 'マンゴー', 'ぶどう・マスカット', '栗・マロン', '芋・かぼちゃ', '柿・洋梨・いちじく', '柑橘', 'チョコレート', '抹茶・和', 'マカロン', 'パフェ', 'スコーン', 'その他']
-EVENTS = ['クリスマス', 'バレンタイン', 'ホワイトデー', 'コラボ企画', '季節の味覚']
-
-class Buttons(HTMLParser):
-
-    def __init__(self, source):
-        super().__init__()
-        self.buttons = []
-        self.current = None
-        self.feed(source)
-
-    def handle_starttag(self, tag, attrs):
-        attrs = dict(attrs)
-        if tag == 'button' and 'data-sw' in attrs:
-            self.current = {'key': attrs['data-sw'], 'text': '', 'attrs': attrs}
-
-    def handle_data(self, text):
-        if self.current is not None:
-            self.current['text'] += text
-
-    def handle_endtag(self, tag):
-        if tag == 'button' and self.current is not None:
-            self.buttons.append(self.current)
-            self.current = None
-
-class AllFilterOptionsTests(unittest.TestCase):
-
-    def test_all_fifteen_sweet_options_in_reference_order_for_two_and_zero_stores(self):
-        for count in (2, 0):
-            data = fixture()
-            data['shops'] = [{**data['shops'][0], 'name': 'TEST ' + str(i)} for i in range(count)]
-            buttons = Buttons(r.render(data)).buttons
-            self.assertEqual(len(buttons), 15)
-            self.assertEqual([re.sub('\\d+$', '', b['text']) for b in buttons], SWEETS)
-            self.assertTrue(all((b['text'].endswith('0') for b in buttons)))
-            self.assertTrue(all(('disabled' not in b['attrs'] for b in buttons)))
-            self.assertNotIn('halloween', [b['key'] for b in buttons])
-
-    def test_sweet_counts_are_distinct_plans_and_store_sweets_are_not_inherited(self):
-        data = fixture()
-        a = data['shops'][0]
-        data['shops'] = [{**a,
-             'sweets': ['ichigo',
-             'xmas'],
-             'plans': [plan(menu='scone scone'),
-             plan(menu='chocolate scone')]},
-             {**a,
-             'sweets': ['ichigo'],
-             'plans': [plan(menu='parfait',
-             season=['xmas'])]}]
-        buttons = {b['key']: b['text'] for b in Buttons(r.render(enrich(data))).buttons}
-        for (key, count) in {'scone': 2, 'choco': 1, 'parfait': 1, 'ichigo': 0, 'melon': 0, 'macaron': 0}.items():
-            self.assertTrue(buttons[key].endswith(str(count)), (key, buttons[key]))
-
-    def test_zero_badge_is_styled_without_hiding_the_button(self):
-        result = r.render(fixture())
-        self.assertIn('class="bc zero">0</span>', result)
-        self.assertIn('.fb .bc.zero{color:var(--sub)}', result)
-        self.assertIn('word-break:keep-all', result)
-
 
 class CanonicalFieldTests(unittest.TestCase):
     def test_only_canonical_station_and_plan_fields_are_displayed(self):

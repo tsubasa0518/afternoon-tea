@@ -16,7 +16,6 @@ import importlib
 import io
 from afternoon_tea.build import classify
 from afternoon_tea.build import enrich
-from afternoon_tea.build import sweet_tags as tags
 from afternoon_tea.build import enrich_plan
 from afternoon_tea.build import period
 from afternoon_tea.build import review
@@ -24,7 +23,6 @@ from afternoon_tea.build import JST
 from afternoon_tea.render import render
 from tests.test_render import fixture
 from tests.test_render import plan as valid_plan
-from tests.test_render import Buttons
 from tests.html_nodes import Document
 from unittest.mock import patch
 from pathlib import Path
@@ -101,250 +99,6 @@ class PriceCategoryTests(unittest.TestCase):
             self.assertEqual(enriched['shops'][0]['category_price_yen'], price)
             self.assertEqual(enrich(enriched), enriched)
             self.assertIn('class="card c-' + expected + '"', render(enriched))
-
-
-class SweetKeywordTests(unittest.TestCase):
-
-    def test_all_fifteen_groups_and_japanese_english_variants(self):
-        examples = {'ichigo': ['いちご',
-             '苺',
-             'ストロベリー',
-             'STRAWBERRY',
-             'strawberries'],
-             'melon': ['メロン',
-             'melon'],
-             'peach': ['桃',
-             'ピーチ',
-             'peaches'],
-             'mango': ['マンゴー',
-             'mango'],
-             'grape': ['葡萄',
-             'グレープ',
-             'シャインマスカット',
-             'grapes',
-             'muscat'],
-             'kuri': ['栗',
-             'マロン',
-             'モンブラン',
-             'marron',
-             'chestnut'],
-             'imo': ['芋',
-             'さつまいも',
-             '紫芋',
-             'かぼちゃ',
-             'パンプキン',
-             'pumpkin',
-             'sweet potato'],
-             'kaki': ['柿',
-             '洋梨',
-             '梨',
-             'ペアムース',
-             'pear',
-             'いちじく',
-             'fig'],
-             'citrus': ['柑橘',
-             'オレンジ',
-             'orange',
-             'みかん',
-             'レモン',
-             'lemon',
-             'ゆず',
-             'グレープフルーツ',
-             'grapefruit'],
-             'choco': ['チョコ',
-             'チョコレート',
-             'ショコラ',
-             'chocolate',
-             'cacao'],
-             'wa': ['抹茶',
-             'ほうじ茶',
-             '玄米茶',
-             'あずき',
-             'あんこ',
-             'きなこ',
-             '和風',
-             'matcha'],
-             'macaron': ['マカロン',
-             'macaron'],
-             'parfait': ['パフェ',
-             'parfait'],
-             'scone': ['スコーン',
-             'scone'],
-             'other': ['チーズケーキ',
-             'ティラミス',
-             'プリン',
-             'baklava']}
-        for (tag, words) in examples.items():
-            for word in words:
-                with self.subTest(word=word):
-                    self.assertEqual(tags({'menu': word}), [tag])
-        self.assertEqual(tags({'menu': 'ペアプラン appearance figures'}), [])
-        self.assertEqual(tags({'menu': 'ＳＴＲＡＷＢＥＲＲＹ'}), ['ichigo'])
-
-    def test_all_plan_fields_multiple_tags_and_repeated_words(self):
-        for field in ('plan_name', 'menu'):
-            self.assertEqual(tags({field: 'メロンとマカロン'}), ['macaron', 'melon'])
-        for field in ('theme', 'theme_name', 'description', 'explanation', 'evidence_quote', 'note'):
-            self.assertEqual(tags({field: 'メロンとマカロン'}), [])
-        self.assertEqual(tags({'menu': '苺のタルト、メロンムース、桃のジュレ 苺 苺'}), ['ichigo', 'melon', 'peach'])
-        self.assertEqual(tags({'menu': 'マロンモンブラン、マカロン、ショコラケーキ'}), ['choco', 'kuri', 'macaron'])
-        self.assertEqual(tags({'menu': 'シャインマスカットのパフェ'}), ['grape', 'parfait'])
-        self.assertEqual(tags({'menu': ['いちご', {'sweets': 'マカロン'}]}), ['ichigo', 'macaron'])
-        self.assertEqual(tags({'notes': {'status': '推測 スコーン'}}), [])
-
-    def test_local_negation_options_and_unrelated_operational_notes(self):
-        for (menu,
-             expected) in [('いちごタルト、マカロンは含まれません、メロンムース',
-             ['ichigo',
-             'melon']),
-             ('時間制限なしの苺タルト',
-             ['ichigo']),
-             ('スコーンはありません、苺タルト',
-             ['ichigo']),
-             ('マカロンは含まれていません、メロン',
-             ['melon']),
-             ('苺タルト（アルコールはありません）',
-             ['ichigo']),
-             ('スコーンは付いていません',
-             []),
-             ('マカロン（アルコールは含まれません）',
-             ['macaron']),
-             ('乳製品不使用の苺タルト',
-             ['ichigo']),
-             ('マカロンは含まれない、スコーン',
-             ['scone']),
-             ('苺タルトは追加料金なし',
-             ['ichigo']),
-             ('追加料金なしのスコーン',
-             ['scone']),
-             ('マカロンはオプションではありません',
-             ['macaron']),
-             ('苺タルト（提供期間は未確認）',
-             ['ichigo']),
-             ('スコーンなしでも苺タルト付き',
-             ['ichigo']),
-             ('苺は提供しませんがメロンムースを提供',
-             ['melon']),
-             ('マカロン不使用、追加料金の苺パフェ、チョコケーキ',
-             ['choco']),
-             ('【オプション】\n苺パフェ\n【スイーツ】\nマカロン',
-             ['macaron']),
-             ('オプション：苺パフェ、チョコケーキ',
-             []),
-             ('通常ランチのチョコケーキ。他のプランのスコーン。いちごムース',
-             ['ichigo']),
-             ('単品パフェ、別売のスコーン、without macarons',
-             []),
-             ('マカロンは含まれませんが、苺のタルト',
-             ['ichigo'])]:
-            with self.subTest(menu=menu):
-                self.assertEqual(tags({'menu': menu}), expected)
-
-    def test_unknown_menu_is_not_other_and_stale_tags_are_replaced(self):
-        for plan in ({'plan_name': 'AT',
-             'menu': None},
-             {'menu': 'メニュー未確認'},
-             {'menu': 'スイーツ数種'},
-             {'menu': None,
-             'sweets': ['ichigo'],
-             'notes': {'status': 'マカロン'}}):
-            self.assertEqual(enrich_plan(plan)['sweets'], [])
-        self.assertEqual(tags({'menu': 'ティラミスとスコーン'}), ['scone'])
-        plan = {'menu': 'マカロン', 'sweets': ['ichigo'], 'note': '既存メモ', 'evidence_quote': 'マカロン', 'checked_at': '2026-11-07T12:00:00+09:00'}
-        before = copy.deepcopy(plan)
-        out = enrich_plan(plan)
-        self.assertEqual(out['sweets'], ['macaron'])
-        self.assertEqual(plan, before)
-        for key in ('menu', 'checked_at'):
-            self.assertEqual(out[key], plan[key])
-        self.assertNotIn('note',out)
-        self.assertNotIn('evidence_quote',out)
-        self.assertEqual(enrich_plan(out), out)
-        out['menu'] = None
-        out['evidence_quote'] = 'ATの情報のみ'
-        out = enrich_plan(out)
-        self.assertEqual(out['sweets'], [])
-        self.assertNotIn('sweets', out.get('structured_evidence', {}))
-
-    def test_plan_counts_html_tags_and_json_tags_agree_and_ignore_store_tags(self):
-        data = fixture()
-        shop = data['shops'][0]
-        shop['sweets'] = ['choco', 'scone']
-        shop['plans'] = [valid_plan(plan_name='A いちご', menu='メロン、桃、苺 苺'),
-             valid_plan(plan_name='B 苺', menu='マロン、マカロン'),
-             valid_plan(plan_name='C メロン', menu='スコーン'),
-             valid_plan(plan_name='outside 苺', start='2026-12-18')]
-        for p in shop['plans']:
-            p.update(enrich_plan(p))
-        html = render(data)
-        counts = {b['key']: int(__import__('re').search('\\d+$', b['text']).group()) for b in Buttons(html).buttons}
-        for (key, value) in {'ichigo': 2, 'melon': 2, 'peach': 1, 'kuri': 1, 'macaron': 1, 'scone': 1, 'choco': 0}.items():
-            self.assertEqual(counts[key], value)
-        plans = [n for n in Document(html).root.find('div') if n.attrs.get('class') == 'plan']
-        self.assertEqual(len(plans), 3)
-        for (node, p) in zip(plans, shop['plans']):
-            self.assertEqual(set(node.attrs['data-sw'].split()), set(p['sweets']))
-        self.assertEqual(sum(('ichigo' in n.attrs['data-sw'].split() or 'scone' in n.attrs['data-sw'].split() for n in plans)), 3)
-
-    def test_real_filter_script_matches_plan_counts_and_or_unions(self):
-        import json, re, shutil, subprocess
-        from pathlib import Path
-        if not shutil.which('node'):
-            self.skipTest('Node required for filter execution')
-        data = fixture()
-        base = data['shops'][0]
-
-        def plan(name, price, wd=False, season=None):
-            return valid_plan(plan_name=name, price_yen=price, weekday_available=wd, season=season or [])
-        data['shops'] = [{**base,
-             'name': 'First',
-             'sweets': ['ichigo'],
-             'plans': [plan('A 苺',
-             7000,
-             True,
-             ['xmas']),
-             plan('B スコーン',
-             8000),
-             plan('C 苺 スコーン',
-             9000,
-             True,
-             ['xmas']),
-             plan('D メロン',
-             8000),
-             plan('E マスカット チョコ',
-             8000),
-             plan('F マスカット',
-             8000)]},
-             {**base,
-             'name': 'Second',
-             'sweets': ['scone'],
-             'plans': [plan('G チョコ',
-             11000),
-             plan('H いちご',
-             12000,
-             False,
-             ['collab'])]}]
-        data = enrich(data)
-        html = render(data)
-        records = []
-        for card in Document(html).root.find('article'):
-            records.append({'name': card.find('h4')[0].text,
-                 'dataset': {k[5:]: v for (k,
-                 v) in card.attrs.items() if k.startswith('data-')},
-                 'plans': [{'name': next((n.text for n in p.find('p') if n.attrs.get('class') == 'theme')),
-                 'dataset': {k[5:]: v for (k,
-                 v) in p.attrs.items() if k.startswith('data-')}} for p in card.find('div') if p.attrs.get('class') == 'plan']})
-        buttons = [{'key': b['key'], 'count': int(re.search('\\d+$', b['text']).group())} for b in Buttons(html).buttons]
-        payload = {'js': re.search('<script>(.*?)</script>',
-             html,
-             re.S).group(1),
-             'cards': records,
-             'buttons': buttons,
-             'eventKeys': list(__import__('afternoon_tea.render',
-             fromlist=['EVENTS']).EVENTS)}
-        harness = Path(__file__).parent / 'fixtures/sweet_filter_harness.js'
-        proc = subprocess.run(['node', str(harness)], input=json.dumps(payload), text=True, capture_output=True)
-        self.assertEqual(proc.returncode, 0, proc.stderr)
 
 
 class CountryThemesTests(unittest.TestCase):
@@ -493,20 +247,18 @@ URL = 'https://restaurant.ikyu.com/123456/plan123456'
 
 class EnrichmentTests(unittest.TestCase):
 
-    def test_weekday_christmas_and_menu_tags_preserve_original_quotes(self):
+    def test_weekday_christmas_and_menu_text_are_preserved(self):
         p = {'plan_name': 'TEST ONLY クリスマスAT（平日）', 'menu': 'スコーン・マカロン・苺・栗・かぼちゃ', 'evidence_quote': 'Christmas afternoon tea'}
         result = e.enrich_plan(p)
         self.assertTrue(result['weekday_available'])
         self.assertFalse(result['weekend_available'])
         self.assertEqual(result['season'], ['xmas'])
-        self.assertEqual(result['sweets'], ['ichigo', 'imo', 'kuri', 'macaron', 'scone'])
         self.assertEqual(result['menu'], p['menu'])
 
     def test_null_and_mixed_optional_tags_never_stop_html_generation(self):
-        for existing in (None, [], [None, 1, 'scone'], 'scone'):
-            plan = {'plan_name': 'TEST ONLY クリスマスAT（平日）', 'menu': 'マカロン', 'sweets': existing, 'season': None, 'structured_evidence': None}
+        for existing in (None, [], [None, 1, 'xmas'], 'xmas'):
+            plan = {**valid_plan(), 'plan_name': 'TEST ONLY クリスマスAT（平日）', 'menu': 'マカロン', 'season': existing, 'structured_evidence': None}
             result = e.enrich_plan(plan)
-            self.assertIn('macaron', result['sweets'])
             self.assertEqual(result['season'], ['xmas'])
             self.assertTrue(result['weekday_available'])
             d = fixture()
@@ -517,7 +269,6 @@ class EnrichmentTests(unittest.TestCase):
         for p in ({'plan_name': 'TEST ONLY AT'}, {'plan_name': '平日限定ではありません'}, {'menu': 'マカロンは含まれません'}):
             result = e.enrich_plan(p)
             self.assertNotIn('weekday_available', result)
-            self.assertEqual(result['sweets'], [])
 
     def test_weekend_and_every_day_conditions(self):
         for (title, wd, we) in [('土日祝限定', False, True), ('全日提供', True, True), ('平日限定 土日祝限定', None, None)]:
@@ -553,7 +304,6 @@ class EnrichmentTests(unittest.TestCase):
                  count)
 
 
-
 builder=importlib.import_module('afternoon_tea.build')
 
 
@@ -577,7 +327,6 @@ class BuildTests(unittest.TestCase):
         for old,plan in zip(data['shops'][0]['plans'],out['shops'][0]['plans']):
             self.assertEqual(plan['checked_at'],old['checked_at'])
             self.assertEqual(plan['price_yen'],old['price_yen'])
-            self.assertEqual(plan['sweets'],['scone'])
             self.assertEqual(plan['cc'],'fr')
         html=render(out)
         self.assertEqual(html.count('🇫🇷 フランス'),5)
@@ -632,18 +381,15 @@ class BuildTests(unittest.TestCase):
         self.assertEqual([p['checked_at'] for p in twice['shops'][0]['plans']],
                          [p['checked_at'] for p in data['shops'][0]['plans']])
 
-    def test_renderer_does_not_recompute_saved_classification_or_sweets(self):
+    def test_renderer_does_not_recompute_saved_classification(self):
         data=builder.build(current((9000,)))
         data['shops'][0]['category']='cafe'
-        data['shops'][0]['plans'][0].update(menu='チョコレート',sweets=['scone'])
+        data['shops'][0]['plans'][0].update(menu='チョコレート')
         before=copy.deepcopy(data)
         with patch('afternoon_tea.build.classify',side_effect=AssertionError('render must use saved category')), \
-             patch('afternoon_tea.build.extract_sweets',side_effect=AssertionError('render must use saved sweets')), \
              patch('afternoon_tea.build.enrich',side_effect=AssertionError('render must not build')):
             html=render(data)
         self.assertIn('class="card c-cafe"',html)
-        plans=[n for n in Document(html).root.find('div') if n.attrs.get('class')=='plan']
-        self.assertEqual(plans[0].attrs['data-sw'],'scone')
         self.assertEqual(data,before)
 
     def test_zero_is_a_valid_build_result(self):

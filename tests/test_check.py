@@ -321,7 +321,7 @@ class ProductionTests(unittest.TestCase):
                 self.assertIsInstance(p['plan_name'], str)
                 self.assertTrue(p.get('price_yen') is None or type(p['price_yen']) in (int, float))
                 self.assertIsNotNone(dt.datetime.fromisoformat(p['checked_at']).tzinfo)
-                for key in ('sweets', 'season'):
+                for key in ('season',):
                     self.assertTrue(p.get(key) is None or isinstance(p[key], (str, list)))
                 for key in ('weekday_available', 'weekend_available'):
                     self.assertTrue(p.get(key) is None or type(p[key]) is bool)

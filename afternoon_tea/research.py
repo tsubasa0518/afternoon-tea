@@ -35,7 +35,7 @@ RETRY = {'failed', 'general_only', 'no_at_found'}
 SHOP_FIELDS = ('id', 'candidate_no', 'origin', 'name', 'hotel_name', 'area_no', 'genre', 'address', 'station',
                'source_site', 'info_url', 'reference_urls', 'plans', 'category', 'category_price_yen')
 PLAN_FIELDS = ('plan_name', 'price_yen', 'discount_price_yen', 'price_note', 'start', 'end', 'weekday_available',
-               'weekend_available', 'time_note', 'menu', 'source_url', 'checked_at', 'cc', 'sweets', 'season')
+               'weekend_available', 'time_note', 'menu', 'source_url', 'checked_at', 'cc', 'season')
 ENTRY_FIELDS = ('key', 'origin', 'name', 'hotel_name', 'area_no', 'genre', 'status', 'attempted_at', 'confirmed_at',
                 'reason', 'note', 'urls')
 STATION = re.compile(r'^[^\s／/、,]{1,30}駅$')
