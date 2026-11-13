@@ -16,6 +16,11 @@ afternoon-tea/
 │       └── run_tests.yml                                         # 通常PRとmain更新時のオフライン・ローカルブラウザテスト
 ├── afternoon_tea/                                                # 調査・データ整形・ページ生成・公開検証のPythonコード
 │   ├── page_templates/                                           # 公開ページのひな型・デザイン・画面操作
+│   │   ├── effects/                                              # 公開ページの装飾（機能ごとのフォルダ）
+│   │   │   └── click_sparkles/                                   # クリック・タップ時のキラキラ演出
+│   │   │       ├── effect.css                                    # 演出専用の見た目とアニメーション
+│   │   │       ├── effect.js                                     # クリック判定、装飾の生成、後片付け
+│   │   │       └── settings.json                                 # 演出の有効・無効（"enabled"）、表示時間、個数の設定（所有者が編集する設定）
 │   │   ├── page_controls.js                                      # 分類・日程・料金帯の絞り込みと表示件数の更新
 │   │   ├── page_styles.css                                       # 色・文字・カード・スマートフォン表示などのデザイン
 │   │   └── page_template.html                                    # 公開ページ全体のHTMLの枠組み
