@@ -5,8 +5,8 @@ import io
 import json
 import tempfile
 import unittest
-import afternoon_tea.check as r
-import afternoon_tea.render as renderer
+import afternoon_tea.publication_checks as r
+import afternoon_tea.generate_html as renderer
 import ast
 import importlib
 import pkgutil
@@ -16,19 +16,19 @@ import afternoon_tea
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
-from afternoon_tea.fetch import ROOT
-from afternoon_tea.build import review
+from afternoon_tea.read_public_pages import ROOT
+from afternoon_tea.prepare_listings import review
 from afternoon_tea.__main__ import parser
-from afternoon_tea.render import render
+from afternoon_tea.generate_html import render
 
 HTML = b'<!doctype html><html><head><title>AT</title><style>body{color:black}</style></head><body><p>Information unavailable</p></body></html>'
 CARD_HTML = HTML.replace(b'<p>Information unavailable</p>', b'<article class="card c-cafe"><h4>Test</h4></article>')
 
 def files(n=0):
     stamp = dt.datetime.now(dt.timezone.utc).isoformat()
-    return {'site/index.html': HTML,
-            'site/research.json': r.json_bytes({'schema_version': 2, 'generated_at':stamp,
-                'period':__import__('afternoon_tea.build',fromlist=['period']).period(),
+    return {'website/index.html': HTML,
+            'website/listings_and_progress.json': r.json_bytes({'schema_version': 2, 'generated_at':stamp,
+                'period':__import__('afternoon_tea.prepare_listings',fromlist=['period']).period(),
                 'shops':[{'id':'x-test'+str(i), 'name':'Test only '+str(i), 'area_no':1,
                           'plans':[{'plan_name':'AT', 'checked_at':stamp, 'price_yen':None,
                                     'source_url':'https://example.com/plan'+str(i)}]} for i in range(n)]})}
@@ -84,7 +84,7 @@ class RoutineSiteTests(unittest.TestCase):
 
     def test_zero_shops_normal_explanation_is_valid(self):
         f = files()
-        f['site/index.html'] = HTML.replace(b'Information unavailable', '今週確認できた情報はありません'.encode())
+        f['website/index.html'] = HTML.replace(b'Information unavailable', '今週確認できた情報はありません'.encode())
         r.validate_site(f)
 
     def test_unknown_prices_and_incomplete_coverage_do_not_block(self):
@@ -112,7 +112,7 @@ class RoutineSiteTests(unittest.TestCase):
 
     def test_invalid_json_rejected(self):
         f = files()
-        f['site/research.json'] = b'{'
+        f['website/listings_and_progress.json'] = b'{'
         with self.assertRaises(ValueError):
             r.validate_site(f)
 
@@ -172,7 +172,7 @@ class RoutineSiteTests(unittest.TestCase):
             self.assertFalse(api.calls)
 
     def test_workflow_change_or_deleted_file_rejected(self):
-        for f in ({'filename': '.github/workflows/deploy.yml', 'status': 'modified'}, {'filename': 'site/index.html', 'status': 'removed'}):
+        for f in ({'filename': '.github/workflows/deploy.yml', 'status': 'modified'}, {'filename': 'website/index.html', 'status': 'removed'}):
             api = FakeAPI()
             api.changed = [f]
             with self.assertRaises(ValueError):
@@ -243,8 +243,8 @@ class RoutineSiteTests(unittest.TestCase):
             with patch.object(r, 'ROOT', root), patch.object(r.urllib.request, 'build_opener') as network:
                 report = r.prepare()
             network.assert_not_called()
-            self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(files(2)[r.RESEARCH])).encode())
-            self.assertEqual(report['sha256'],r.sha((root/'.staging/routine-delivery/site/index.html').read_bytes()))
+            self.assertEqual((root / '.staging/routine-delivery/website/index.html').read_bytes(),renderer.render(json.loads(files(2)[r.RESEARCH])).encode())
+            self.assertEqual(report['sha256'],r.sha((root/'.staging/routine-delivery/website/index.html').read_bytes()))
             self.assertFalse((root / 'docs').exists())
 
     def test_weekly_two_then_zero_shops_replace_same_staging_html(self):
@@ -253,7 +253,7 @@ class RoutineSiteTests(unittest.TestCase):
             for count in (2, 0):
                 content = files(count)
                 body = ''.join(('<article>Test-only shop ' + str(i) + '</article>' for i in range(count))) if count else '今週確認できた情報はありません'
-                content['site/index.html'] = HTML.replace(b'<p>Information unavailable</p>', body.encode())
+                content['website/index.html'] = HTML.replace(b'<p>Information unavailable</p>', body.encode())
                 for (path, value) in content.items():
                     (root / path).parent.mkdir(exist_ok=True)
                     (root / path).write_bytes(value)
@@ -262,12 +262,12 @@ class RoutineSiteTests(unittest.TestCase):
                     report = r.prepare()
                 self.assertEqual(report['shops'], count)
                 if count:
-                    self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(json.loads(content[r.RESEARCH])).encode())
+                    self.assertEqual((root / '.staging/routine-delivery/website/index.html').read_bytes(),renderer.render(json.loads(content[r.RESEARCH])).encode())
                     self.assertIn('html_sha256=', output.read_text())
             # Zero listings: no artifact output, and the previously prepared page is not replaced.
             self.assertEqual(report['publication'], 'refused_zero_listing')
             self.assertFalse((root / 'output0').exists())
-            self.assertEqual((root / '.staging/routine-delivery/site/index.html').read_bytes(),
+            self.assertEqual((root / '.staging/routine-delivery/website/index.html').read_bytes(),
                              renderer.render(json.loads(files(2)[r.RESEARCH])).encode())
 
     def test_old_claude_prefix_is_not_an_authorized_weekly_branch(self):
@@ -303,7 +303,7 @@ class RoutineSiteTests(unittest.TestCase):
                 (root / path).write_bytes(value)
             with patch.object(r, 'ROOT', root), self.assertRaises(ValueError):
                 r.prepare()
-            self.assertFalse((root / '.staging/routine-delivery/site/index.html').exists())
+            self.assertFalse((root / '.staging/routine-delivery/website/index.html').exists())
 
 
 class ProductionTests(unittest.TestCase):
@@ -326,15 +326,15 @@ class ProductionTests(unittest.TestCase):
                 for key in ('weekday_available', 'weekend_available'):
                     self.assertTrue(p.get(key) is None or type(p[key]) is bool)
         self.assertEqual(renderer.render(data), html)
-        return r.validate_site({'site/research.json':r.json_bytes(data),'site/index.html':html.encode()})
+        return r.validate_site({'website/listings_and_progress.json':r.json_bytes(data),'website/index.html':html.encode()})
 
     def test_dynamic_data_and_reproducible_html(self):
-        data = json.loads((ROOT / 'site/research.json').read_text())
+        data = json.loads((ROOT / 'website/listings_and_progress.json').read_text())
         self.assert_saved_site(data, renderer.render(data))
 
     def test_new_shop_needs_only_plan_timestamp_not_shop_id_or_shop_timestamp(self):
-        from tests.test_render import fixture
-        from afternoon_tea.config import candidates
+        from tests.test_generate_html import fixture
+        from afternoon_tea.research_settings import candidates
         data = fixture()
         shop = data['shops'][0]
         shop.pop('checked_at', None)
@@ -345,12 +345,12 @@ class ProductionTests(unittest.TestCase):
         self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 1)
 
     def test_zero_shops_have_no_timestamp_maximum_and_are_valid(self):
-        from tests.test_render import fixture
+        from tests.test_generate_html import fixture
         data = fixture(); data['shops'] = []
         self.assertEqual(self.assert_saved_site(data, renderer.render(data))['shops'], 0)
 
     def test_multiple_plans_not_truncated(self):
-        from tests.test_render import fixture
+        from tests.test_generate_html import fixture
         d = fixture()
         s = d['shops'][0]
         s['plans'] = [copy.deepcopy(s['plans'][0]) for _ in range(3)]
@@ -415,9 +415,9 @@ class StructureTests(unittest.TestCase):
         import sys
         from unittest.mock import patch
         with patch.dict(sys.modules, {'playwright': None, 'playwright.sync_api': None}):
-            importlib.reload(importlib.import_module('afternoon_tea.browser'))
+            importlib.reload(importlib.import_module('afternoon_tea.research_browser'))
         names = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if '.git' not in p.parts}
-        for gone in ('site/search_failures.json', 'data/official_sources.json', 'data/references/user_candidates_385.csv',
+        for gone in ('website/search_failures.json', 'research_inputs/official_sources.json', 'research_inputs/references/user_candidates_385.csv',
                      'afternoon_tea/collection/campaign.py', 'afternoon_tea/collection/official.py'):
             self.assertNotIn(gone, names)
         source = '\n'.join(p.read_text() for p in (ROOT / 'afternoon_tea').rglob('*.py'))
@@ -428,17 +428,17 @@ class StructureTests(unittest.TestCase):
 class BPlanStructureTests(unittest.TestCase):
     def test_flat_package_templates_and_four_test_modules(self):
         self.assertEqual({p.stem for p in (ROOT/'afternoon_tea').glob('*.py')},
-                         {'__init__','__main__','config','fetch','browser','research','build','render','check'})
-        self.assertEqual({p.name for p in (ROOT/'afternoon_tea/templates').iterdir()},
-                         {'site.html','site.css','site.js'})
+                         {'__init__','__main__','research_settings','read_public_pages','research_browser','manage_research','prepare_listings','generate_html','publication_checks'})
+        self.assertEqual({p.name for p in (ROOT/'afternoon_tea/page_templates').iterdir()},
+                         {'page_template.html','page_styles.css','page_controls.js'})
         self.assertEqual({p.name for p in (ROOT/'tests').glob('test_*.py')},
-                         {'test_safety.py','test_browser.py','test_build.py','test_render.py','test_check.py'})
+                         {'test_research_safety.py','test_research_browser.py','test_prepare_listings.py','test_generate_html.py','test_publication_checks.py'})
         for folder in ('collection','processing','publication'):
             self.assertFalse((ROOT/'afternoon_tea'/folder).exists())
-        self.assertFalse((ROOT/'data/store_master.json').exists())
+        self.assertFalse((ROOT/'research_inputs/store_master.json').exists())
 
     def test_areas_contain_only_numbers_names_and_stations(self):
-        areas=json.loads((ROOT/'data/areas.json').read_text())['areas']
+        areas=json.loads((ROOT/'research_inputs/tokyo_areas.json').read_text())['areas']
         self.assertEqual([a['no'] for a in areas],list(range(1,15)))
         for area in areas:
             self.assertEqual(set(area),{'no','name','stations'})
@@ -447,24 +447,24 @@ class BPlanStructureTests(unittest.TestCase):
             self.assertTrue(all(isinstance(s,str) and s for s in area['stations']))
 
     def test_validator_does_not_fill_missing_plan_date_from_shop(self):
-        data=json.loads(files(1)['site/research.json'])
+        data=json.loads(files(1)['website/listings_and_progress.json'])
         shop=data['shops'][0]
         shop['checked_at']=shop['plans'][0].pop('checked_at')
         checked=r.validate_json(r.json_bytes(data))
         self.assertNotIn('checked_at',checked['shops'][0]['plans'][0])
         with self.assertRaisesRegex(ValueError,'plan_checked_at_required'):
-            r.validate_site({'site/research.json':r.json_bytes(data),'site/index.html':HTML})
+            r.validate_site({'website/listings_and_progress.json':r.json_bytes(data),'website/index.html':HTML})
 
 
 class RepeatPublicationTests(unittest.TestCase):
     def test_old_data_prepare_and_verify_commands_succeed_without_refresh_or_network(self):
-        from tests.http_fixtures import Response
+        from tests.mock_http_responses import Response
         from unittest.mock import Mock
         content=files(1)
-        data=json.loads(content['site/research.json'])
+        data=json.loads(content['website/listings_and_progress.json'])
         data.update(generated_at='2020-01-01T00:00:00+09:00',period={'start':'2020-01-01','end':'2020-02-10'})
         data['shops'][0]['plans'][0]['checked_at']='2019-12-31T12:00:00+09:00'
-        content['site/research.json']=r.json_bytes(data)
+        content['website/listings_and_progress.json']=r.json_bytes(data)
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
             for path,value in content.items():
@@ -472,15 +472,15 @@ class RepeatPublicationTests(unittest.TestCase):
                 (root/path).write_bytes(value)
             opener=Mock()
             opener.open.side_effect=lambda *args,**kwargs:Response(r.SITE,renderer.render(data))
-            with patch.object(r,'ROOT',root),patch('afternoon_tea.build.normalize',side_effect=AssertionError('publication must not rebuild or recheck age')), \
+            with patch.object(r,'ROOT',root),patch('afternoon_tea.prepare_listings.normalize',side_effect=AssertionError('publication must not rebuild or recheck age')), \
                  patch.object(r.urllib.request,'build_opener',return_value=opener), \
                  patch.dict(os.environ,{'GITHUB_STEP_SUMMARY':str(root/'summary.md')}), \
                  patch('sys.stdout',new=io.StringIO()):
                 r.main('prepare')
                 r.main('verify',r.sha(renderer.render(data).encode()))
             self.assertEqual(opener.open.call_count,1)
-            self.assertEqual((root/'site/research.json').read_bytes(),content['site/research.json'])
-            self.assertEqual((root/'.staging/routine-delivery/site/index.html').read_bytes(),renderer.render(data).encode())
+            self.assertEqual((root/'website/listings_and_progress.json').read_bytes(),content['website/listings_and_progress.json'])
+            self.assertEqual((root/'.staging/routine-delivery/website/index.html').read_bytes(),renderer.render(data).encode())
             checks=json.loads((root/'.staging/routine-delivery/public-verification.json').read_text())
             self.assertEqual(checks,[{'status':200,'sha256':r.sha(renderer.render(data).encode()),'cards':1}])
             self.assertIn('Pages公開確認成功',(root/'summary.md').read_text())
@@ -488,42 +488,42 @@ class RepeatPublicationTests(unittest.TestCase):
     def test_age_exemption_does_not_accept_bad_timestamps_or_unsafe_output(self):
         for stamp in (None,'invalid','2020-01-01T00:00:00'):
             content=files(1)
-            data=json.loads(content['site/research.json'])
+            data=json.loads(content['website/listings_and_progress.json'])
             data['shops'][0]['plans'][0]['checked_at']=stamp
-            content['site/research.json']=r.json_bytes(data)
+            content['website/listings_and_progress.json']=r.json_bytes(data)
             with self.assertRaises(ValueError):
                 r.validate_site(content)
         for area in (15, 0, True, '1', None):
             content=files(1)
-            data=json.loads(content['site/research.json'])
+            data=json.loads(content['website/listings_and_progress.json'])
             data['shops'][0]['area_no']=area
-            content['site/research.json']=r.json_bytes(data)
+            content['website/listings_and_progress.json']=r.json_bytes(data)
             with self.assertRaisesRegex(ValueError,'shop_area_outside_fourteen'):
                 r.validate_site(content)
-        for key,value in (('site/research.json',b'{'),
-                          ('site/index.html',HTML.replace(b'</body>',b'<form></form></body>'))):
+        for key,value in (('website/listings_and_progress.json',b'{'),
+                          ('website/index.html',HTML.replace(b'</body>',b'<form></form></body>'))):
             content=files(1);content[key]=value
             with self.assertRaises(ValueError):
                 r.validate_site(content)
 
     def test_unsanitized_secrets_still_rejected_at_publication_boundary(self):
         content=files(1)
-        data=json.loads(content['site/research.json'])
+        data=json.loads(content['website/listings_and_progress.json'])
         data['shops'][0]['plans'][0]['menu']='private@example.test'
-        content['site/research.json']=r.json_bytes(data)
+        content['website/listings_and_progress.json']=r.json_bytes(data)
         with self.assertRaises(r.SensitiveDataError):
             r.validate_site(content)
 
 
 class PublicationFlowTests(unittest.TestCase):
     def test_only_research_json_can_change_and_pr_code_is_never_read(self):
-        for path in ('site/index.html','afternoon_tea/check.py','.github/workflows/publish.yml','data/areas.json'):
+        for path in ('website/index.html','afternoon_tea/publication_checks.py','.github/workflows/publish_website.yml','research_inputs/tokyo_areas.json'):
             api=FakeAPI();api.changed=[{'filename':path,'status':'modified'}]
             with self.assertRaisesRegex(ValueError,'routine_change_allowlist'):
                 r.intake(api,1,'tsubasa0518')
             self.assertFalse(api.calls)
         api=FakeAPI();reads=[]
-        api.content['afternoon_tea/check.py']=b'raise AssertionError("PR code must not run")'
+        api.content['afternoon_tea/publication_checks.py']=b'raise AssertionError("PR code must not run")'
         original=api.blob
         def blob(key):
             reads.append(key)
@@ -561,12 +561,12 @@ class PublicationFlowTests(unittest.TestCase):
             self.assertFalse(api.calls)
 
     def test_ci_receipts_hash_manifest_and_html_tracking_are_gone(self):
-        self.assertFalse((ROOT/'data/protected_hashes.json').exists())
+        self.assertFalse((ROOT/'research_inputs/protected_hashes.json').exists())
         for gone in ('technical_ci','resume','protected_files','dispatch_publication'):
             self.assertFalse(hasattr(r,gone),gone)
-        tracked=subprocess.check_output(['git','ls-files','--','site/index.html'],cwd=ROOT,text=True)
+        tracked=subprocess.check_output(['git','ls-files','--','website/index.html'],cwd=ROOT,text=True)
         self.assertEqual(tracked,'')
-        self.assertIn('/site/index.html',(ROOT/'.gitignore').read_text())
+        self.assertIn('/website/index.html',(ROOT/'.gitignore').read_text())
         self.assertEqual(set(parser()._subparsers._group_actions[0].choices),
                          {'begin','next','start','read','browse','record','build','report','check'})
 
@@ -586,23 +586,24 @@ class PublicationFlowTests(unittest.TestCase):
     def test_generation_uses_json_even_if_untracked_html_is_unsafe(self):
         content=files(1)
         with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp);(root/'site').mkdir()
+            root=Path(tmp);(root/'website').mkdir()
             (root/r.RESEARCH).write_bytes(content[r.RESEARCH])
-            (root/'site/index.html').write_text('<form>UNTRUSTED</form>')
+            (root/'website/index.html').write_text('<form>UNTRUSTED</form>')
             output=root/'outputs'
             with patch.object(r,'ROOT',root),patch.dict(os.environ,{'SOURCE_COMMIT':'d'*40,'GITHUB_OUTPUT':str(output)}):
                 report=r.prepare()
-            generated=(root/'.staging/routine-delivery/site/index.html').read_bytes()
+            generated=(root/'.staging/routine-delivery/website/index.html').read_bytes()
             self.assertNotIn(b'UNTRUSTED',generated)
             self.assertEqual(generated,renderer.render(json.loads(content[r.RESEARCH])).encode())
             self.assertIn('source_commit='+'d'*40,output.read_text())
             self.assertIn('html_sha256='+report['sha256'],output.read_text())
-            self.assertEqual((root/'site/index.html').read_text(),'<form>UNTRUSTED</form>')
+            self.assertEqual((root/'website/index.html').read_text(),'<form>UNTRUSTED</form>')
 
     def test_workflow_trust_and_permission_boundaries(self):
         paths=ROOT/'.github/workflows'
-        self.assertEqual({p.name for p in paths.iterdir()},{'test.yml','publish.yml'})
-        text=(paths/'publish.yml').read_text()
+        self.assertEqual({p.name for p in paths.iterdir()},{'run_tests.yml','publish_website.yml'})
+        text=(paths/'publish_website.yml').read_text()
+        self.assertIn('path: .staging/routine-delivery/website', text)
         review=text.split('  review:\n',1)[1].split('\n  generate:',1)[0]
         generate=text.split('  generate:\n',1)[1].split('\n  deploy:',1)[0]
         deploy=text.split('  deploy:\n',1)[1]
@@ -630,17 +631,17 @@ class PublicationFlowTests(unittest.TestCase):
         self.assertNotIn('schedule:',text)
         self.assertIn("|| 'github-pages'",text)
         self.assertIn("format('weekly-rejected-{0}'",text)
-        test=(paths/'test.yml').read_text()
+        test=(paths/'run_tests.yml').read_text()
         self.assertNotIn('contents: write',test)
         self.assertNotIn('GH_TOKEN:',test)
         self.assertIn("github.event_name != 'pull_request'",test)
 
     def test_json_only_review_generate_and_public_verification_flow(self):
         from unittest.mock import Mock
-        from tests.http_fixtures import Response
+        from tests.mock_http_responses import Response
         api=FakeAPI()
         with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp);(root/'site').mkdir()
+            root=Path(tmp);(root/'website').mkdir()
             original=api.call
             def merge(method,path,body):
                 result=original(method,path,body)
@@ -649,24 +650,24 @@ class PublicationFlowTests(unittest.TestCase):
             api.call=merge
             review=r.intake(api,1,'tsubasa0518',expected_head='a'*40)
             self.assertEqual(review['commit'],'c'*40)
-            self.assertFalse((root/'site/index.html').exists())
+            self.assertFalse((root/'website/index.html').exists())
             with patch.object(r,'ROOT',root),patch.dict(os.environ,{'SOURCE_COMMIT':review['commit']}):
                 prepared=r.prepare()
-                html=(root/'.staging/routine-delivery/site/index.html').read_bytes()
+                html=(root/'.staging/routine-delivery/website/index.html').read_bytes()
                 opener=Mock();opener.open.side_effect=lambda *a,**k:Response(r.SITE,html.decode())
                 observations=r.verify_public(prepared['sha256'],opener=opener)
             self.assertEqual(observations,[{'status':200,'sha256':prepared['sha256'],'cards':2}])
             self.assertEqual(prepared['shops'],2)
             self.assertEqual((root/r.RESEARCH).read_bytes(),api.content[r.RESEARCH])
-            self.assertFalse((root/'site/index.html').exists())
+            self.assertFalse((root/'website/index.html').exists())
             self.assertEqual([c[0] for c in api.calls],['PUT'])
 
     def test_prepare_does_not_write_through_staging_symlinks(self):
-        for relative in ('site/index.html','report.json'):
+        for relative in ('website/index.html','report.json'):
             with tempfile.TemporaryDirectory() as tmp:
-                root=Path(tmp);(root/'site').mkdir()
+                root=Path(tmp);(root/'website').mkdir()
                 (root/r.RESEARCH).write_bytes(files(1)[r.RESEARCH])
-                base=root/'.staging/routine-delivery';(base/'site').mkdir(parents=True)
+                base=root/'.staging/routine-delivery';(base/'website').mkdir(parents=True)
                 protected=root/'protected.txt';protected.write_text('preserve')
                 (base/relative).symlink_to(protected)
                 with patch.object(r,'ROOT',root),self.assertRaises(ValueError):
@@ -713,7 +714,7 @@ class ZeroListingGuardTests(unittest.TestCase):
 
     def test_push_manual_or_rerun_publication_of_zero_listings_produces_no_artifact(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp); (root / 'site').mkdir()
+            root = Path(tmp); (root / 'website').mkdir()
             (root / r.RESEARCH).write_bytes(files(0)[r.RESEARCH])
             output = root / 'output'; summary = root / 'summary.md'
             with patch.object(r, 'ROOT', root), patch.dict(os.environ, {'GITHUB_OUTPUT': str(output),
@@ -721,7 +722,7 @@ class ZeroListingGuardTests(unittest.TestCase):
                  patch('sys.stdout', new=io.StringIO()):
                 r.main('prepare')
             self.assertFalse(output.exists())
-            self.assertFalse((root / '.staging/routine-delivery/site/index.html').exists())
+            self.assertFalse((root / '.staging/routine-delivery/website/index.html').exists())
             self.assertIn('掲載対象0件のため公開を見送り', summary.read_text())
             # A broken document is an error, not a skip.
             (root / r.RESEARCH).write_bytes(b'{')
@@ -731,7 +732,7 @@ class ZeroListingGuardTests(unittest.TestCase):
             self.assertIn('prepare失敗', summary.read_text())
 
     def test_workflow_deploys_only_when_an_artifact_was_prepared(self):
-        workflow = (ROOT / '.github/workflows/publish.yml').read_text()
+        workflow = (ROOT / '.github/workflows/publish_website.yml').read_text()
         self.assertIn("if: steps.prepare.outputs.html_sha256 != ''", workflow)
         self.assertIn("needs.generate.outputs.html_sha256 != ''", workflow)
         deploy = workflow[workflow.index('  deploy:'):]

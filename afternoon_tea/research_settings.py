@@ -8,9 +8,9 @@ from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CANDIDATES = ROOT / 'data/candidates.csv'
-GENRES = ROOT / 'data/excluded_genres.json'
-SETTINGS = ROOT / 'data/research_settings.json'
+CANDIDATES = ROOT / 'research_inputs/priority_shop_list.csv'
+GENRES = ROOT / 'research_inputs/excluded_food_genres.json'
+SETTINGS = ROOT / 'research_inputs/research_limits.json'
 AREAS = range(1, 15)
 CANDIDATE_HEADERS = ['No', '店舗名', 'ホテル名', 'エリア番号', 'ジャンル', '優先して調べるサイト', '参考URL', '備考']
 NUMBER_SETTINGS = {

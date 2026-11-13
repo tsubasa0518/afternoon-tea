@@ -10,16 +10,16 @@ import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
-from afternoon_tea.fetch import NoRedirect
-from afternoon_tea.config import ROOT
-from afternoon_tea.fetch import require
-from afternoon_tea.fetch import dumps
+from afternoon_tea.read_public_pages import NoRedirect
+from afternoon_tea.research_settings import ROOT
+from afternoon_tea.read_public_pages import require
+from afternoon_tea.read_public_pages import dumps
 
 REPO = 'tsubasa0518/afternoon-tea'
 SITE = 'https://tsubasa0518.github.io/afternoon-tea/'
 BRANCH_PREFIX = 'claude/weekly-afternoon-tea-'
-RESEARCH = 'site/research.json'
-ALLOWED = {RESEARCH, 'site/index.html'}
+RESEARCH = 'website/listings_and_progress.json'
+ALLOWED = {RESEARCH, 'website/index.html'}
 MAX_HTML = 5000000
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
@@ -143,7 +143,7 @@ def validate_json(value):
     require(isinstance(data.get('shops'), list), 'json_records_required')
     if data.get('generated_at') is not None:
         require(dt.datetime.fromisoformat(data['generated_at']).tzinfo is not None, 'timestamp_timezone_required')
-    from afternoon_tea.build import validate_country
+    from afternoon_tea.prepare_listings import validate_country
     ids = set()
     for shop in data['shops']:
         require(isinstance(shop, dict) and isinstance(shop.get('plans', []), list), 'invalid_shop')
@@ -164,7 +164,7 @@ def validate_json(value):
 
 def publishable(research, require_nonzero=True):
     """Count what the site would show. Zero shops or zero valid plans never replace the live site."""
-    from afternoon_tea.build import displayable
+    from afternoon_tea.prepare_listings import displayable
     shown = list(displayable(research))
     counts = {'shops': len(shown), 'plans': sum(len(plans) for _, plans in shown)}
     if require_nonzero and (counts['shops'] == 0 or counts['plans'] == 0):
@@ -173,10 +173,10 @@ def publishable(research, require_nonzero=True):
 
 def validate_site(files):
     require(set(files) == ALLOWED, 'site_requires_exactly_two_files')
-    report = validate_html_bytes(files['site/index.html'])
-    research = validate_json(files['site/research.json'])
+    report = validate_html_bytes(files['website/index.html'])
+    research = validate_json(files['website/listings_and_progress.json'])
     # Age is not a publication condition; format and safety are.
-    from afternoon_tea.build import timestamp
+    from afternoon_tea.prepare_listings import timestamp
     for shop in research['shops']:
         for plan in shop.get('plans', []):
             timestamp(plan.get('checked_at'))
@@ -271,9 +271,9 @@ def intake(api, number, author, expected_head=None):
     entry = api.files(head).get(RESEARCH, {})
     require(entry.get('mode') == '100644' and entry.get('type') == 'blob', 'unsafe_pr_file')
     raw = api.blob(entry['sha'])
-    from afternoon_tea.render import render
+    from afternoon_tea.generate_html import render
     research = validate_json(raw)
-    report = validate_site({RESEARCH: raw, 'site/index.html': render(research).encode()})
+    report = validate_site({RESEARCH: raw, 'website/index.html': render(research).encode()})
     try:
         publishable(research)
     except ZeroListing:
@@ -313,13 +313,13 @@ def outputs(**values):
 
 
 def prepare():
-    from afternoon_tea.render import render
+    from afternoon_tea.generate_html import render
     path = ROOT / RESEARCH
     require(not path.is_symlink() and not path.parent.is_symlink(), 'site_symlink_forbidden')
     raw = path.read_bytes()
     research = validate_json(raw)
     html = render(research).encode()
-    report = validate_site({RESEARCH: raw, 'site/index.html': html})
+    report = validate_site({RESEARCH: raw, 'website/index.html': html})
     report.update(source_commit=os.environ.get('SOURCE_COMMIT'), url=SITE)
     try:
         publishable(research)
@@ -328,7 +328,7 @@ def prepare():
         return report
     require(card_count(html) == report['shops'], 'rendered_cards_do_not_match_listing')
     base = delivery_directory()
-    target = base / 'site'
+    target = base / 'website'
     require(not target.is_symlink() and not (target / 'index.html').is_symlink()
             and not (base / 'report.json').is_symlink(), 'unsafe_delivery_directory')
     target.mkdir(exist_ok=True)
@@ -367,9 +367,9 @@ def verify_public(expected, attempts=6, opener=None, sleep=time.sleep):
 def main(command='site', expected_sha256=None):
     try:
         if command == 'site':
-            from afternoon_tea.render import render
+            from afternoon_tea.generate_html import render
             raw = (ROOT / RESEARCH).read_bytes()
-            print(validate_site({RESEARCH: raw, 'site/index.html': render(validate_json(raw)).encode()}))
+            print(validate_site({RESEARCH: raw, 'website/index.html': render(validate_json(raw)).encode()}))
         elif command == 'intake':
             event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
             report = intake(API(), event['number'], os.environ.get('ROUTINE_AUTHOR') or REPO.split('/')[0],

@@ -7,11 +7,11 @@ import shutil
 import subprocess
 import tempfile
 import unittest
-import afternoon_tea.render as r
+import afternoon_tea.generate_html as r
 from pathlib import Path
 from unittest.mock import patch
-from afternoon_tea.check import validate_site
-from afternoon_tea.build import enrich
+from afternoon_tea.publication_checks import validate_site
+from afternoon_tea.prepare_listings import enrich
 
 
 def plan(**values):
@@ -40,7 +40,7 @@ class RoutineRendererTests(unittest.TestCase):
 
 
     def test_current_saved_data_renders_reproducibly_without_old_store_data(self):
-        research = json.loads((r.ROOT / 'site/research.json').read_text())
+        research = json.loads((r.ROOT / 'website/listings_and_progress.json').read_text())
         before = copy.deepcopy(research)
         result = r.render(research)
         self.assertEqual(research, before)
@@ -137,7 +137,7 @@ class RoutineRendererTests(unittest.TestCase):
                     self.assertIn('class="card c-unknown"', result)
                     self.assertIn('料金 未確認', result)
                 self.assertEqual((source, failures), before)
-        template = (r.TEMPLATES / 'site.html').read_text()
+        template = (r.TEMPLATES / 'page_template.html').read_text()
         self.assertNotIn('$notice', template)
         self.assertNotIn('class="aside"', template)
 
@@ -210,12 +210,12 @@ class RoutineRendererTests(unittest.TestCase):
     def test_invalid_generation_preserves_previous_html(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / 'site').mkdir()
-            (root / 'data').mkdir()
-            shutil.copy(r.ROOT / 'data/areas.json', root / 'data/areas.json')
-            target = root / 'site/index.html'
+            (root / 'website').mkdir()
+            (root / 'research_inputs').mkdir()
+            shutil.copy(r.ROOT / 'research_inputs/tokyo_areas.json', root / 'research_inputs/tokyo_areas.json')
+            target = root / 'website/index.html'
             target.write_text('previous page')
-            (root / 'site/research.json').write_text('{broken')
+            (root / 'website/listings_and_progress.json').write_text('{broken')
             with patch.object(r, 'ROOT', root), self.assertRaises(ValueError):
                 r.generate()
             self.assertEqual(target.read_text(), 'previous page')
@@ -223,29 +223,29 @@ class RoutineRendererTests(unittest.TestCase):
     def test_generate_only_replaces_index_with_valid_html(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / 'site').mkdir()
-            (root / 'data').mkdir()
-            shutil.copy(r.ROOT / 'data/areas.json', root / 'data/areas.json')
-            (root / 'site/research.json').write_text(json.dumps(fixture()))
-            before = {p.name: p.read_bytes() for p in (root / 'site').iterdir()}
+            (root / 'website').mkdir()
+            (root / 'research_inputs').mkdir()
+            shutil.copy(r.ROOT / 'research_inputs/tokyo_areas.json', root / 'research_inputs/tokyo_areas.json')
+            (root / 'website/listings_and_progress.json').write_text(json.dumps(fixture()))
+            before = {p.name: p.read_bytes() for p in (root / 'website').iterdir()}
             with patch.object(r, 'ROOT', root):
                 r.generate()
-                first = target_text = (root / 'site/index.html').read_text()
+                first = target_text = (root / 'website/index.html').read_text()
                 r.generate()
-                self.assertEqual((root / 'site/index.html').read_text(), first)
+                self.assertEqual((root / 'website/index.html').read_text(), first)
                 self.assertNotIn('<div class="aside">', target_text)
             for (name, raw) in before.items():
-                self.assertEqual((root / 'site' / name).read_bytes(), raw)
-            self.assertEqual(set((p.name for p in (root / 'site').iterdir())), {'index.html', 'research.json'})
-            self.assertEqual(validate_site({'site/' + p.name: p.read_bytes() for p in (root / 'site').iterdir()})['shops'], 1)
+                self.assertEqual((root / 'website' / name).read_bytes(), raw)
+            self.assertEqual(set((p.name for p in (root / 'website').iterdir())), {'index.html', 'listings_and_progress.json'})
+            self.assertEqual(validate_site({'website/' + p.name: p.read_bytes() for p in (root / 'website').iterdir()})['shops'], 1)
 
     def test_symlink_output_is_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / 'site').mkdir()
+            (root / 'website').mkdir()
             protected = root / 'protected.html'
             protected.write_text('protected')
-            (root / 'site/index.html').symlink_to(protected)
+            (root / 'website/index.html').symlink_to(protected)
             with patch.object(r, 'ROOT', root), self.assertRaises(ValueError):
                 r.generate()
             self.assertEqual(protected.read_text(), 'protected')
@@ -286,7 +286,7 @@ class RoutineRendererTests(unittest.TestCase):
             self.skipTest('Node is needed for local filter execution')
         result = r.render(fixture())
         js = re.search('<script>(.*?)</script>', result, re.S).group(1)
-        harness = (Path(__file__).parent / 'fixtures/filter_harness.js').read_text()
+        harness = (Path(__file__).parent / 'helpers/test_page_filters.js').read_text()
         for early in ('', '1'):
             proc = subprocess.run(['node', '-e', harness], input=json.dumps(js), text=True, capture_output=True, env={**os.environ, 'TEST_EARLY_CHOICE': early})
             self.assertEqual(proc.returncode, 0, proc.stderr)

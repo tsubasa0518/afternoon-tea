@@ -1,7 +1,7 @@
 """Categories by the lowest regular price: <=5000 cafe / 5001-8000 hotel / >=8001 lux."""
 import copy
 import unittest
-import afternoon_tea.build as c
+import afternoon_tea.prepare_listings as c
 import datetime as dt
 import json
 import os
@@ -9,28 +9,28 @@ import re
 import shutil
 import subprocess
 import tempfile
-import afternoon_tea.check as site_tools
-import afternoon_tea.build as e
-import afternoon_tea.render as renderer
+import afternoon_tea.publication_checks as site_tools
+import afternoon_tea.prepare_listings as e
+import afternoon_tea.generate_html as renderer
 import importlib
 import io
-from afternoon_tea.build import classify
-from afternoon_tea.build import enrich
-from afternoon_tea.build import enrich_plan
-from afternoon_tea.build import period
-from afternoon_tea.build import review
-from afternoon_tea.build import JST
-from afternoon_tea.render import render
-from tests.test_render import fixture
-from tests.test_render import plan as valid_plan
-from tests.html_nodes import Document
+from afternoon_tea.prepare_listings import classify
+from afternoon_tea.prepare_listings import enrich
+from afternoon_tea.prepare_listings import enrich_plan
+from afternoon_tea.prepare_listings import period
+from afternoon_tea.prepare_listings import review
+from afternoon_tea.prepare_listings import JST
+from afternoon_tea.generate_html import render
+from tests.test_generate_html import fixture
+from tests.test_generate_html import plan as valid_plan
+from tests.html_test_helpers import Document
 from unittest.mock import patch
 from pathlib import Path
-from tests.test_check import files
-from afternoon_tea.fetch import ROOT
-from afternoon_tea.config import candidates
-from afternoon_tea.check import validate_site
-from afternoon_tea.check import json_bytes
+from tests.test_publication_checks import files
+from afternoon_tea.read_public_pages import ROOT
+from afternoon_tea.research_settings import candidates
+from afternoon_tea.publication_checks import validate_site
+from afternoon_tea.publication_checks import json_bytes
 
 
 class PriceCategoryTests(unittest.TestCase):
@@ -205,8 +205,8 @@ class WeeklyReviewTests(unittest.TestCase):
         self.assertEqual(review(source)['errors'], [])
 
     def test_outside_period_plan_is_not_rendered(self):
-        from afternoon_tea.render import render
-        from tests.test_render import fixture
+        from afternoon_tea.generate_html import render
+        from tests.test_generate_html import fixture
         sample = fixture()
         sample['shops'][0]['plans'][0].update(start='2026-12-19', end=None, plan_name='OUTSIDE ONLY')
         self.assertTrue(review(sample)['outside_plans'])
@@ -219,8 +219,8 @@ class WeeklyReviewTests(unittest.TestCase):
         sample['shops'][0].update(area_no=1)
         sample['shops'][0]['plans'][0]['checked_at'] = dt.datetime.now(dt.timezone.utc).isoformat()
         sample['shops'][0]['plans'][0].update(plan_name='TEST plan', source_url='https://example.com/plan')
-        content['site/research.json'] = site_tools.json_bytes(sample)
-        self.assertTrue(review(json.loads(content['site/research.json']))['errors'])
+        content['website/listings_and_progress.json'] = site_tools.json_bytes(sample)
+        self.assertTrue(review(json.loads(content['website/listings_and_progress.json']))['errors'])
         # The review error does not stop validation; a plan starting after the window is not listed.
         self.assertEqual(site_tools.validate_site(content)['shops'], 0)
 
@@ -298,13 +298,13 @@ class EnrichmentTests(unittest.TestCase):
             d = e.enrich(d)
             html = renderer.render(d)
             self.assertEqual(html.count('<article '), count)
-            self.assertEqual(validate_site({'site/index.html': html.encode(),
-                 'site/research.json': json_bytes(d),
+            self.assertEqual(validate_site({'website/index.html': html.encode(),
+                 'website/listings_and_progress.json': json_bytes(d),
 })['shops'],
                  count)
 
 
-builder=importlib.import_module('afternoon_tea.build')
+builder=importlib.import_module('afternoon_tea.prepare_listings')
 
 
 def current(prices=(5000,5001,8000,8001,None)):
@@ -330,7 +330,7 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(plan['cc'],'fr')
         html=render(out)
         self.assertEqual(html.count('🇫🇷 フランス'),5)
-        validate_site({'site/research.json':json_bytes(out),'site/index.html':html.encode()})
+        validate_site({'website/listings_and_progress.json':json_bytes(out),'website/index.html':html.encode()})
 
     def test_prices_are_direct_inputs_and_discount_never_replaces_regular(self):
         plan={'plan_name':'AT','price_yen':9000,'discount_price_yen':4500,
@@ -386,8 +386,8 @@ class BuildTests(unittest.TestCase):
         data['shops'][0]['category']='cafe'
         data['shops'][0]['plans'][0].update(menu='チョコレート')
         before=copy.deepcopy(data)
-        with patch('afternoon_tea.build.classify',side_effect=AssertionError('render must use saved category')), \
-             patch('afternoon_tea.build.enrich',side_effect=AssertionError('render must not build')):
+        with patch('afternoon_tea.prepare_listings.classify',side_effect=AssertionError('render must use saved category')), \
+             patch('afternoon_tea.prepare_listings.enrich',side_effect=AssertionError('render must not build')):
             html=render(data)
         self.assertIn('class="card c-cafe"',html)
         self.assertEqual(data,before)
@@ -397,21 +397,21 @@ class BuildTests(unittest.TestCase):
         out=builder.build(data)
         html=render(out)
         self.assertNotIn('<article ',html)
-        self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':html.encode()})['plans'],0)
+        self.assertEqual(validate_site({'website/listings_and_progress.json':json_bytes(out),'website/index.html':html.encode()})['plans'],0)
 
 
 class BuildCommandTests(unittest.TestCase):
     def run_in_root(self,data,html='previous HTML'):
         tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup);root=Path(tmp.name)
-        (root/'site').mkdir();(root/'data').mkdir()
-        shutil.copyfile(ROOT/'data/areas.json',root/'data/areas.json')
-        shutil.copyfile(ROOT/'data/country_registry.json',root/'data/country_registry.json')
-        (root/'site/research.json').write_bytes(json_bytes(data))
-        (root/'site/index.html').write_text(html)
+        (root/'website').mkdir();(root/'research_inputs').mkdir()
+        shutil.copyfile(ROOT/'research_inputs/tokyo_areas.json',root/'research_inputs/tokyo_areas.json')
+        shutil.copyfile(ROOT/'research_inputs/country_codes.json',root/'research_inputs/country_codes.json')
+        (root/'website/listings_and_progress.json').write_bytes(json_bytes(data))
+        (root/'website/index.html').write_text(html)
         return root
 
     def test_build_command_writes_json_and_html_and_does_not_fetch(self):
-        renderer=importlib.import_module('afternoon_tea.render')
+        renderer=importlib.import_module('afternoon_tea.generate_html')
         for count in (1,0):
             data=current((8001,));data['shops']=data['shops'][:count]
             root=self.run_in_root(data)
@@ -419,18 +419,18 @@ class BuildCommandTests(unittest.TestCase):
                  patch('urllib.request.OpenerDirector.open',side_effect=AssertionError('offline')), \
                  patch('sys.stdout',new=io.StringIO()):
                 self.assertEqual(builder.main(),0)
-            written=json.loads((root/'site/research.json').read_text())
+            written=json.loads((root/'website/listings_and_progress.json').read_text())
             self.assertEqual(len(written['shops']),count)
-            self.assertEqual((root/'site/index.html').read_text(),render(written))
+            self.assertEqual((root/'website/index.html').read_text(),render(written))
 
     def test_validation_failure_keeps_existing_files(self):
-        renderer=importlib.import_module('afternoon_tea.render')
+        renderer=importlib.import_module('afternoon_tea.generate_html')
         data=current();data['period']['end']='invalid'
-        root=self.run_in_root(data);before=(root/'site/research.json').read_bytes()
+        root=self.run_in_root(data);before=(root/'website/listings_and_progress.json').read_bytes()
         with patch.object(builder,'ROOT',root),patch.object(renderer,'ROOT',root),self.assertRaises(ValueError):
             builder.main()
-        self.assertEqual((root/'site/research.json').read_bytes(),before)
-        self.assertEqual((root/'site/index.html').read_text(),'previous HTML')
+        self.assertEqual((root/'website/listings_and_progress.json').read_bytes(),before)
+        self.assertEqual((root/'website/index.html').read_text(),'previous HTML')
 
 
 class PriceFilterTests(unittest.TestCase):
@@ -459,7 +459,7 @@ process.stdout.write('price boundaries passed');'''
 
 
 class DocumentationTests(unittest.TestCase):
-    DOCS = ('AGENTS.md', 'CLAUDE.md', 'README.md', 'docs/weekly_procedure.md')
+    DOCS = ('AGENTS.md', 'CLAUDE.md', 'README.md', 'guides/weekly_research_guide.md')
 
     def test_one_instruction_source_with_the_seven_items(self):
         agents = (ROOT / 'AGENTS.md').read_text()
@@ -467,10 +467,10 @@ class DocumentationTests(unittest.TestCase):
             self.assertEqual(agents.count('\n## %d. ' % no), 1)
         claude = (ROOT / 'CLAUDE.md').read_text()
         self.assertIn('AGENTS.md', claude)
-        self.assertIn('docs/weekly_procedure.md', claude)
+        self.assertIn('guides/weekly_research_guide.md', claude)
 
     def test_limits_live_in_the_settings_file_not_in_instructions(self):
-        values = json.loads((ROOT / 'data/research_settings.json').read_text())
+        values = json.loads((ROOT / 'research_inputs/research_limits.json').read_text())
         for key in ('total_seconds', 'max_navigations', 'shop_seconds', 'min_interval_seconds', 'recheck_after_days'):
             self.assertIn(key, values)
         for name in self.DOCS:
@@ -488,7 +488,7 @@ class DocumentationTests(unittest.TestCase):
                 self.assertNotIn(phrase, text, (name, phrase))
 
     def test_procedure_starts_from_names_and_keeps_display_rules(self):
-        procedure = (ROOT / 'docs/weekly_procedure.md').read_text()
+        procedure = (ROOT / 'guides/weekly_research_guide.md').read_text()
         self.assertIn('pip install -r requirements-browser.txt', procedure)
         self.assertIn('店舗名・ホテル名＋「アフタヌーンティー」', procedure)
         for value in ('5,000円以下', '5,001〜8,000円', '8,001円以上', '07:17'):
@@ -513,7 +513,7 @@ class PlanPrivacyTests(unittest.TestCase):
                 self.assertNotIn(secret,json_bytes(out).decode())
                 html=render(out)
                 self.assertNotIn(secret,html)
-                self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':html.encode()})['plans'],1)
+                self.assertEqual(validate_site({'website/listings_and_progress.json':json_bytes(out),'website/index.html':html.encode()})['plans'],1)
 
     def test_sensitive_only_shop_is_omitted_and_zero_is_publishable(self):
         data=current((5000,))
@@ -523,7 +523,7 @@ class PlanPrivacyTests(unittest.TestCase):
         self.assertEqual(out['shops'],[])
         self.assertNotIn('EXCLUDED SHOP ONLY',json_bytes(out).decode())
         self.assertEqual(out['excluded_sensitive_plans']['current'],1)
-        self.assertEqual(validate_site({'site/research.json':json_bytes(out),'site/index.html':render(out).encode()})['plans'],0)
+        self.assertEqual(validate_site({'website/listings_and_progress.json':json_bytes(out),'website/index.html':render(out).encode()})['plans'],0)
         with self.assertRaises(site_tools.ZeroListing):
             site_tools.publishable(out)
 
@@ -545,17 +545,17 @@ class PlanPrivacyTests(unittest.TestCase):
     def test_build_command_writes_only_safe_data_and_report_has_only_a_count(self):
         data=current((4000,9000));data['shops'][0]['plans'][0]['menu']='hidden@example.test'
         root=BuildCommandTests.run_in_root(self,data)
-        import afternoon_tea.research as collect
+        import afternoon_tea.manage_research as collect
         with patch.object(builder,'ROOT',root),patch.object(renderer,'ROOT',root),patch('sys.stdout',new=io.StringIO()) as stdout:
             self.assertEqual(builder.main(),0)
         self.assertNotIn('hidden@example.test',stdout.getvalue())
         self.assertEqual(json.loads(stdout.getvalue())['excluded_sensitive_plans'],1)
-        result=json.loads((root/'site/research.json').read_text())
+        result=json.loads((root/'website/listings_and_progress.json').read_text())
         state={'started_iso':data['generated_at'],'browser_pages':0,'browser_unavailable':None,
                'blocked_operations':0,'blocked_resources':0,'navigations':0,'blocked_hosts':{}}
         text=collect.report(state=state,data=result)
         self.assertIn('秘密情報・個人情報の検査で除外したプラン数: 1',text)
-        for path in (root/'site').iterdir():
+        for path in (root/'website').iterdir():
             self.assertNotIn('hidden@example.test',path.read_text())
         self.assertNotIn('hidden@example.test',text)
 

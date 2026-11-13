@@ -3,10 +3,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from afternoon_tea.browser import classify, search_forms, search_url
-from afternoon_tea.config import settings
-from afternoon_tea.fetch import Policy, RunState
-from tests.local_site import LocalSite
+from afternoon_tea.research_browser import classify, search_forms, search_url
+from afternoon_tea.research_settings import settings
+from afternoon_tea.read_public_pages import Policy, RunState
+from tests.mock_restaurant_site import LocalSite
 
 try:
     import playwright.sync_api  # noqa: F401
@@ -90,7 +90,7 @@ class LocalBrowserTests(unittest.TestCase):
     """A real headless browser on local imitation pages; no external site is contacted."""
 
     def session(self, site):
-        from afternoon_tea.browser import Session
+        from afternoon_tea.research_browser import Session
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         run = RunState(Path(tmp.name))
@@ -106,7 +106,7 @@ class LocalBrowserTests(unittest.TestCase):
         return {r['label']: (r['id'], r['allowed']) for r in rows}
 
     def test_from_a_shop_name_search_to_the_plan_page_without_any_reservation_request(self):
-        from afternoon_tea.browser import execute
+        from afternoon_tea.research_browser import execute
         with LocalSite() as site:
             session, run = self.session(site)
             execute(session, 'open', {'url': site.base + '/'})
@@ -145,7 +145,7 @@ class LocalBrowserTests(unittest.TestCase):
             self.assertGreaterEqual(run.load()['blocked_operations'], 5)
 
     def test_normal_redirect_paging_robots_refusal_and_denial(self):
-        from afternoon_tea.browser import execute
+        from afternoon_tea.research_browser import execute
         with LocalSite() as site:
             session, run = self.session(site)
             moved = execute(session, 'open', {'url': site.base + '/moved'})
@@ -166,7 +166,7 @@ class LocalBrowserTests(unittest.TestCase):
             self.assertNotIn('/shop/2', paths)  # no retry on a refused host
 
     def test_access_challenge_stops_the_host(self):
-        from afternoon_tea.browser import execute
+        from afternoon_tea.research_browser import execute
         with LocalSite() as site:
             session, run = self.session(site)
             self.assertEqual(execute(session, 'open', {'url': site.base + '/captcha'})['kind'], 'access_refused')

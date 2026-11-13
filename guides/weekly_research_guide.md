@@ -1,6 +1,6 @@
 # 調査と公開の操作手順
 
-既存Claude Routineは毎週月曜07:17 Asia/Tokyoに実行する。守る内容は `AGENTS.md` の7項目だけで、本書はその操作手順を示す。上限・間隔・再試行と再確認の日数は `data/research_settings.json`（環境変数 `AFTERNOON_TEA_<キー名>` で一時変更可）が正で、本書には書かない。
+既存Claude Routineは毎週月曜07:17 Asia/Tokyoに実行する。守る内容は `AGENTS.md` の7項目だけで、本書はその操作手順を示す。上限・間隔・再試行と再確認の日数は `research_inputs/research_limits.json`（環境変数 `AFTERNOON_TEA_<キー名>` で一時変更可）が正で、本書には書かない。
 
 ## 1. 開始
 
@@ -65,7 +65,7 @@ python3 -m afternoon_tea report
 ```
 
 - `build` は確認日時を変えずに、終了日が過ぎたプラン・除外ジャンル・14エリア外・壊れたデータを掲載から外し、分類と表示値を作り、ローカル確認用HTMLを生成・検証する。古い確認情報は残し、サイトでは「過去の確認情報」と表示する。
-- `site/research.json` だけをコミットし、`[weekly-site]` タイトル・main宛ての非draft PRを作成・更新する。PR本文は `report` の出力を使い、調査途中を完了と書かない。
+- `website/listings_and_progress.json` だけをコミットし、`[weekly-site]` タイトル・main宛ての非draft PRを作成・更新する。PR本文は `report` の出力を使い、調査途中を完了と書かない。
 - `build` の `publication` が `refused_zero_listing` の回も、進捗を残すためにPRは出す。publish.ymlは0件をマージ・公開しない（前回のサイトを維持）。
 
 | 通常料金 | 店舗の分類・プランの料金帯 |
@@ -77,6 +77,6 @@ python3 -m afternoon_tea report
 
 ## 4. 公開
 
-- publish.ymlが信頼済みmainのコードでPRを審査し（作成者・同一リポジトリ・main宛て・指定ブランチとタイトル・変更ファイルが `site/research.json` だけ・期待head・JSONと生成HTMLの安全性・掲載件数が非ゼロ）、期待headを指定してマージし、最新mainからHTMLを生成してPagesへ公開し、HTTP 200・HTML一致・掲載カード数が非ゼロであることを確認する。週次PRはCI完了を待たない。通常PRとmainへのpushはtest.ymlで試験する。
+- publish.ymlが信頼済みmainのコードでPRを審査し（作成者・同一リポジトリ・main宛て・指定ブランチとタイトル・変更ファイルが `website/listings_and_progress.json` だけ・期待head・JSONと生成HTMLの安全性・掲載件数が非ゼロ）、期待headを指定してマージし、最新mainからHTMLを生成してPagesへ公開し、HTTP 200・HTML一致・掲載カード数が非ゼロであることを確認する。週次PRはCI完了を待たない。通常PRとmainへのpushはtest.ymlで試験する。
 - 公開だけを再実行する場合は、mainを対象にpublish.ymlのworkflow_dispatchを使う。保存JSONと確認日時は変えない。
 - 結果の報告では、Routineの実行、0件による公開見送り、プログラムの異常終了、本番公開の成否を区別する。

@@ -22,7 +22,7 @@ import threading
 import time
 from urllib.parse import urlencode, urlsplit, urlunsplit, parse_qsl, urljoin
 
-from afternoon_tea.fetch import (AT_WORDS, RUN, USER_AGENT, AccessRefused, BudgetExhausted, ForbiddenOperation,
+from afternoon_tea.read_public_pages import (AT_WORDS, RUN, USER_AGENT, AccessRefused, BudgetExhausted, ForbiddenOperation,
                                  Policy, Reader, RunState, SLOT_PARAMS, Unusable, challenged, excerpt, now_iso)
 
 # Clear transaction verbs: never clicked, even when the link target looks harmless.

@@ -9,21 +9,21 @@ import tempfile
 from pathlib import Path
 from string import Template
 from urllib.parse import urlsplit
-from afternoon_tea.build import JST
-from afternoon_tea.build import review
-from afternoon_tea.build import day
-from afternoon_tea.build import regular_price
-from afternoon_tea.build import display as country_display
-from afternoon_tea.build import displayable
-from afternoon_tea.build import timestamp
-from afternoon_tea.config import settings
-from afternoon_tea.check import ROOT
-from afternoon_tea.check import json_bytes
-from afternoon_tea.check import validate_json
-from afternoon_tea.check import validate_html_bytes
-from afternoon_tea.check import resource
+from afternoon_tea.prepare_listings import JST
+from afternoon_tea.prepare_listings import review
+from afternoon_tea.prepare_listings import day
+from afternoon_tea.prepare_listings import regular_price
+from afternoon_tea.prepare_listings import display as country_display
+from afternoon_tea.prepare_listings import displayable
+from afternoon_tea.prepare_listings import timestamp
+from afternoon_tea.research_settings import settings
+from afternoon_tea.publication_checks import ROOT
+from afternoon_tea.publication_checks import json_bytes
+from afternoon_tea.publication_checks import validate_json
+from afternoon_tea.publication_checks import validate_html_bytes
+from afternoon_tea.publication_checks import resource
 
-TEMPLATES = Path(__file__).resolve().parent / 'templates'
+TEMPLATES = Path(__file__).resolve().parent / 'page_templates'
 SITES = [('ik', '一休.com'), ('tb', '食べログ'), ('tc', 'TableCheck')]
 SEASON_LABELS = {'halloween': 'ハロウィン', 'xmas': 'クリスマス', 'valentine': 'バレンタイン',
                  'whiteday': 'ホワイトデー', 'collab': 'コラボ企画', 'season': '季節の味覚'}
@@ -193,7 +193,7 @@ def render(research):
         raise ValueError('invalid date input: ' + json.dumps(invalid))
     stamp = research.get('generated_at')
     generated = dt.datetime.fromisoformat(stamp).astimezone(JST).date() if stamp else None
-    master = json.loads((ROOT / 'data/areas.json').read_text())
+    master = json.loads((ROOT / 'research_inputs/tokyo_areas.json').read_text())
     groups = {a['no']: [] for a in master['areas']}
     tot = Counter()
     for (shop, plans) in displayable(research):
@@ -274,9 +274,9 @@ def render(research):
         return ''.join(parts) + '</section>'
     for area in master['areas']:
         areas.append(area_html(area['no'], area['name'], groups[area['no']], area['stations']))
-    template = Template((TEMPLATES / 'site.html').read_text())
-    result = template.substitute(css=(TEMPLATES / 'site.css').read_text(),
-         js=(TEMPLATES / 'site.js').read_text(),
+    template = Template((TEMPLATES / 'page_template.html').read_text())
+    result = template.substitute(css=(TEMPLATES / 'page_styles.css').read_text(),
+         js=(TEMPLATES / 'page_controls.js').read_text(),
          hero=hero,
          filters=filters,
          empty=empty,
@@ -285,9 +285,9 @@ def render(research):
     return result
 
 def output_path():
-    target = ROOT / 'site/index.html'
-    if target.is_symlink() or target.parent.is_symlink() or target.parent.resolve() != ROOT.resolve() / 'site':
-        raise ValueError('site/index.html must be inside the real site directory')
+    target = ROOT / 'website/index.html'
+    if target.is_symlink() or target.parent.is_symlink() or target.parent.resolve() != ROOT.resolve() / 'website':
+        raise ValueError('website/index.html must be inside the real website directory')
     return target
 
 def write_html(text):
@@ -309,9 +309,9 @@ def write_html(text):
 
 def generate():
     output_path()
-    return write_html(render(json.loads((ROOT / 'site/research.json').read_text())))
+    return write_html(render(json.loads((ROOT / 'website/listings_and_progress.json').read_text())))
 
 
 def main():
     result = generate()
-    print({'output': 'site/index.html', 'sha256': result['sha256'], 'bytes': result['bytes']})
+    print({'output': 'website/index.html', 'sha256': result['sha256'], 'bytes': result['bytes']})

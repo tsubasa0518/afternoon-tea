@@ -23,7 +23,7 @@ def parser():
                                                  'select: 番号 選択肢 / tab: 番号 / links・controls: 絞り込み語')
     browse.add_argument('--full', action='store_true')
     browse.add_argument('--new-tab', action='store_true')
-    record = commands.add_parser('record', help='1店舗の調査結果をsite/research.jsonへ保存する')
+    record = commands.add_parser('record', help='1店舗の調査結果をwebsite/listings_and_progress.jsonへ保存する')
     record.add_argument('file', help='結果のJSONファイル（- で標準入力）')
     commands.add_parser('build', help='分類・ローカルHTML生成・検証を行う（確認日時は変えない）')
     commands.add_parser('report', help='PR本文用の集計を出力する')
@@ -38,8 +38,8 @@ def emit(value):
 
 
 def research_command(args):
-    from afternoon_tea import research
-    from afternoon_tea.fetch import AccessRefused, BudgetExhausted, ForbiddenOperation, Unusable, read
+    from afternoon_tea import manage_research as research
+    from afternoon_tea.read_public_pages import AccessRefused, BudgetExhausted, ForbiddenOperation, Unusable, read
     try:
         if args.operation == 'begin':
             emit(research.begin())
@@ -68,7 +68,7 @@ def research_command(args):
 
 
 def browse_command(args):
-    from afternoon_tea import browser
+    from afternoon_tea import research_browser as browser
     value = args.value
     try:
         if args.action == 'serve':
@@ -110,9 +110,9 @@ def main(argv=None):
     if args.operation in ('begin', 'next', 'start', 'read', 'record', 'report'):
         return research_command(args)
     if args.operation == 'build':
-        from afternoon_tea.build import main
+        from afternoon_tea.prepare_listings import main
         return main()
-    from afternoon_tea.check import main
+    from afternoon_tea.publication_checks import main
     return main(args.action, args.expected_sha256)
 
 
