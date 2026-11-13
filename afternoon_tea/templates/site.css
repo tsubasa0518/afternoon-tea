@@ -1,8 +1,9 @@
 :root{--bg:#EEF1F4;--paper:#FFFFFF;--ink:#1C2733;--sub:#5E6B78;--mute:#98A3AE;--line:#DCE2E8;
 --hotel:#2F5D86;--hotel-t:#E4EDF5;--lux:#8F6C22;--lux-t:#F4EDDC;--cafe:#4F6F55;--cafe-t:#E3EDE4;--ok:#2E6B4F;--ok-t:#DCEFE4;--no:#9AA3AC;
+--weekend:#A6366B;--weekend-t:#FCE7F1;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12181E;--paper:#1A222B;--ink:#E6EBF0;--sub:#A4AFBA;--mute:#6D7985;--line:#2B3540;
---hotel:#8DB4D8;--hotel-t:#1F2E3C;--lux:#D9B770;--lux-t:#35301F;--cafe:#9EC3A3;--cafe-t:#1F3024;--ok:#8FD1AE;--ok-t:#1E3629;--no:#5F6B76}}
+--hotel:#8DB4D8;--hotel-t:#1F2E3C;--lux:#D9B770;--lux-t:#35301F;--cafe:#9EC3A3;--cafe-t:#1F3024;--ok:#8FD1AE;--ok-t:#1E3629;--no:#5F6B76;--weekend:#F2A6CB;--weekend-t:#3D2433}}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-size:15px;line-height:1.7}
 .hero{background:var(--paper);border-bottom:1px solid var(--line)}
@@ -21,6 +22,8 @@ h1{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif;font-size:clamp(26p
 .fb[aria-pressed="true"]{border-color:currentColor;font-weight:700}
 .fb.f-hotel[aria-pressed="true"]{color:var(--hotel);background:var(--hotel-t)}.fb.f-lux[aria-pressed="true"]{color:var(--lux);background:var(--lux-t)}.fb.f-cafe[aria-pressed="true"]{color:var(--cafe);background:var(--cafe-t)}
 .fb.f-x[aria-pressed="true"]{color:var(--ok);background:var(--ok-t)}
+.fb.f-x[data-x="we"][aria-pressed="true"]{color:var(--weekend);background:var(--weekend-t)}
+.fb[data-x="we"]:focus-visible{outline-color:var(--weekend)}
 .legendline{margin-top:12px;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}.lg{white-space:nowrap;display:inline-flex;gap:6px;align-items:center}
 .area-btn{color:var(--ink);text-decoration:none;font-size:13px;line-height:1.4;border:1.5px solid var(--line);background:var(--paper);border-radius:10px;padding:5px 8px;display:flex;gap:6px;align-items:center;justify-content:center;text-align:center;min-width:0;word-break:keep-all}
 .area-btn:hover{border-color:var(--ink);background:var(--bg)}
