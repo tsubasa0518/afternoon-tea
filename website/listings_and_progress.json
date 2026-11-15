@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-12T22:16:23+09:00",
+  "generated_at": "2026-11-16T07:18:04+09:00",
   "period": {
-    "start": "2026-11-12",
-    "end": "2026-12-22"
+    "start": "2026-11-16",
+    "end": "2026-12-26"
   },
   "shops": [
     {
@@ -2620,7 +2620,7 @@
     }
   ],
   "progress": {
-    "updated_at": "2026-11-12T22:22:19+09:00",
+    "updated_at": "2026-11-16T07:19:00+09:00",
     "entries": {
       "c64": {
         "key": "c64",
@@ -4020,6 +4020,38 @@
         "urls": [
           "https://www.peninsula.com/en/tokyo/special-offers/festive/afternoon-tea",
           "https://www.peninsula.com/en/tokyo/hotel-fine-dining/the-lobby-afternoon-tea"
+        ]
+      },
+      "c15": {
+        "key": "c15",
+        "origin": "list",
+        "name": "ブルガリ ラウンジ",
+        "hotel_name": "ブルガリ ホテル 東京",
+        "area_no": 1,
+        "genre": "ラウンジ",
+        "status": "general_only",
+        "attempted_at": "2026-11-16T07:18:44+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "公式ページでアフタヌーンティー提供（120分制）を確認。価格・期間はPDFメニューのみで読めず、プラン未確認。一休.comはrobots.txtで取得拒否",
+        "urls": [
+          "https://www.bulgarihotels.com/ja-JP/tokyo/dining/the-bvlgari-lounge"
+        ]
+      },
+      "c21": {
+        "key": "c21",
+        "origin": "list",
+        "name": "ザ・ラウンジ ＆ ザ・バー",
+        "hotel_name": "ウェスティンホテル東京",
+        "area_no": 9,
+        "genre": "ロビーラウンジ＆バー",
+        "status": "failed",
+        "attempted_at": "2026-11-16T07:19:00+09:00",
+        "confirmed_at": null,
+        "reason": "HTTP_403",
+        "note": "検索結果は終了済み企画のみ。ozmallはHTTP 403で取得不能、現行プランを読めず",
+        "urls": [
+          "https://www.ozmall.co.jp/restaurant/afternoontea/43473/"
         ]
       }
     }
