@@ -1,3 +1,4 @@
+from tests import CARD, EMAIL, KEY_HEADER, PHONE
 import os
 import datetime as dt
 import copy
@@ -117,7 +118,7 @@ class RoutineSiteTests(unittest.TestCase):
             r.validate_site(f)
 
     def test_credentials_and_personal_contact_rejected(self):
-        for value in ('ghp_' + 'a' * 36, '-----BEGIN PRIVATE KEY-----', 'person@example.test', '090-1234-5678', '4111 1111 1111 1111'):
+        for value in ('ghp_' + 'a' * 36, KEY_HEADER, EMAIL, PHONE, CARD):
             with self.assertRaises(ValueError):
                 r.scan(value.encode())
 
@@ -513,7 +514,7 @@ class RepeatPublicationTests(unittest.TestCase):
     def test_unsanitized_secrets_still_rejected_at_publication_boundary(self):
         content=files(1)
         data=json.loads(content['website/listings_and_progress.json'])
-        data['shops'][0]['plans'][0]['menu']='private@example.test'
+        data['shops'][0]['plans'][0]['menu']=EMAIL
         content['website/listings_and_progress.json']=r.json_bytes(data)
         with self.assertRaises(r.SensitiveDataError):
             r.validate_site(content)

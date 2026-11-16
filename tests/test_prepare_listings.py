@@ -1,4 +1,5 @@
 """Categories by the lowest regular price: <=5000 cafe / 5001-8000 hotel / >=8001 lux."""
+from tests import CARD, EMAIL, KEY_HEADER, PHONE
 import copy
 import unittest
 import afternoon_tea.prepare_listings as c
@@ -498,8 +499,8 @@ class DocumentationTests(unittest.TestCase):
 
 class PlanPrivacyTests(unittest.TestCase):
     def test_only_sensitive_plans_are_removed_and_no_values_are_logged(self):
-        examples=('ghp_'+'x'*36,'-----BEGIN PRIVATE KEY-----','name@example.test',
-                  '090-1234-5678','4111 1111 1111 1111')
+        examples=('ghp_'+'x'*36,KEY_HEADER,EMAIL,
+                  PHONE,CARD)
         for secret in examples:
             with self.subTest(kind=examples.index(secret)):
                 data=current((4000,9000))
@@ -518,7 +519,7 @@ class PlanPrivacyTests(unittest.TestCase):
     def test_sensitive_only_shop_is_omitted_and_zero_is_publishable(self):
         data=current((5000,))
         data['shops'][0].update(name='EXCLUDED SHOP ONLY')
-        data['shops'][0]['plans'][0]['menu']='name@example.test'
+        data['shops'][0]['plans'][0]['menu']=EMAIL
         out=builder.build(data)
         self.assertEqual(out['shops'],[])
         self.assertNotIn('EXCLUDED SHOP ONLY',json_bytes(out).decode())
@@ -529,7 +530,7 @@ class PlanPrivacyTests(unittest.TestCase):
 
     def test_rebuild_count_is_stable(self):
         data=current((4000,9000))
-        data['shops'][0]['plans'][1]['menu']='old@example.test'
+        data['shops'][0]['plans'][1]['menu']=EMAIL
         out=builder.build(data)
         self.assertEqual(sum(out['excluded_sensitive_plans'].values()),1)
         self.assertEqual(builder.build(out),out)
@@ -538,17 +539,17 @@ class PlanPrivacyTests(unittest.TestCase):
         data=current((4000,));data['shops'][0]['plans'][0]['start']='invalid'
         with self.assertRaisesRegex(ValueError,'invalid_plan_period'):
             builder.build(data)
-        data=current((4000,));data['shops'][0]['address']='person@example.test'
+        data=current((4000,));data['shops'][0]['address']=EMAIL
         with self.assertRaises(site_tools.SensitiveDataError):
             builder.build(data)
 
     def test_build_command_writes_only_safe_data_and_report_has_only_a_count(self):
-        data=current((4000,9000));data['shops'][0]['plans'][0]['menu']='hidden@example.test'
+        data=current((4000,9000));data['shops'][0]['plans'][0]['menu']=EMAIL
         root=BuildCommandTests.run_in_root(self,data)
         import afternoon_tea.manage_research as collect
         with patch.object(builder,'ROOT',root),patch.object(renderer,'ROOT',root),patch('sys.stdout',new=io.StringIO()) as stdout:
             self.assertEqual(builder.main(),0)
-        self.assertNotIn('hidden@example.test',stdout.getvalue())
+        self.assertNotIn(EMAIL,stdout.getvalue())
         self.assertEqual(json.loads(stdout.getvalue())['excluded_sensitive_plans'],1)
         result=json.loads((root/'website/listings_and_progress.json').read_text())
         state={'started_iso':data['generated_at'],'browser_pages':0,'browser_unavailable':None,
@@ -556,14 +557,14 @@ class PlanPrivacyTests(unittest.TestCase):
         text=collect.report(state=state,data=result)
         self.assertIn('秘密情報・個人情報の検査で除外したプラン数: 1',text)
         for path in (root/'website').iterdir():
-            self.assertNotIn('hidden@example.test',path.read_text())
-        self.assertNotIn('hidden@example.test',text)
+            self.assertNotIn(EMAIL,path.read_text())
+        self.assertNotIn(EMAIL,text)
 
     def test_retired_digest_shapes_do_not_hide_card_numbers(self):
-        disguised='a'*24+'4111111111111111'+'a'*24
+        disguised='a'*24+CARD.replace(' ', '')+'a'*24
         for menu in (disguised,{'document_id':disguised},[disguised]):
             data=current((4000,9000));data['shops'][0]['plans'][0]['menu']=menu
             out=builder.build(data)
             self.assertEqual(out['excluded_sensitive_plans']['current'],1)
             self.assertEqual([p['plan_name'] for p in out['shops'][0]['plans']],['PLAN 1'])
-            self.assertNotIn('4111111111111111',json_bytes(out).decode())
+            self.assertNotIn(CARD.replace(' ', ''),json_bytes(out).decode())

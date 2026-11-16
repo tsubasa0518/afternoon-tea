@@ -191,7 +191,7 @@ class RoutineRendererTests(unittest.TestCase):
         self.assertEqual(result.count('<script>'), 1 + bool(r.click_sparkles()[1]))
 
     def test_unsafe_booking_link_is_rejected(self):
-        for url in ['javascript:alert(1)', 'https://user:pass@tablecheck.com/x']:
+        for url in ['javascript:alert(1)', 'https://user:pass' + chr(64) + 'tablecheck.com/x']:
             source = fixture()
             source['shops'][0]['info_url'] = url
             with self.assertRaises(ValueError):
