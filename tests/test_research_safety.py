@@ -14,6 +14,7 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 import afternoon_tea.manage_research as research
+from tests import EMAIL
 from afternoon_tea.research_settings import candidates, excluded_genre, main_genre, same_venue, search_queries, settings
 from afternoon_tea.read_public_pages import (JST, AccessRefused, BudgetExhausted, ForbiddenOperation, Policy, Reader, RunState,
                                  Unusable)
@@ -98,7 +99,7 @@ class PolicyTests(unittest.TestCase):
                 self.policy.check(url)
 
     def test_only_https_public_hosts_without_credentials_and_only_get(self):
-        for url in ('http://www.example.com/', 'https://user:pass@www.example.com/', 'https://127.0.0.1/',
+        for url in ('http://www.example.com/', 'https://user:pass' + chr(64) + 'www.example.com/', 'https://127.0.0.1/',
                     'https://localhost/', 'https://intranet.local/', 'https://www.example.com:8443/', 'ftp://x.com/'):
             with self.subTest(url=url), self.assertRaises(ForbiddenOperation):
                 self.policy.check(url)
@@ -357,9 +358,9 @@ class ProgressTests(Temp):
         url = 'https://www.example-hotel.co.jp/at/'
         self.visit(url)
         result = research.record({'key': 'c1', 'status': 'plan_confirmed',
-                                  'shop': {'plans': [self.plan(url, menu='連絡先 person@example.test')]}}, run=self.run, rows=ROWS)
+                                  'shop': {'plans': [self.plan(url, menu='連絡先 {}'.format(EMAIL))]}}, run=self.run, rows=ROWS)
         self.assertEqual(result['excluded_sensitive_plans'], 1)
-        self.assertNotIn('person@example.test', self.research.read_text())
+        self.assertNotIn(EMAIL, self.research.read_text())
 
 
 class MigrationTests(unittest.TestCase):
