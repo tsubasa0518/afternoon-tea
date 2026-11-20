@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-16T07:18:04+09:00",
+  "generated_at": "2026-11-21T06:54:45+09:00",
   "period": {
-    "start": "2026-11-16",
-    "end": "2026-12-26"
+    "start": "2026-11-21",
+    "end": "2026-12-31"
   },
   "shops": [
     {
@@ -34,33 +34,6 @@
       "candidate_no": 64,
       "origin": "list",
       "genre": "カフェ／カジュアル"
-    },
-    {
-      "address": null,
-      "station": "二重橋前駅／東京駅",
-      "source_site": "一休.com",
-      "plans": [
-        {
-          "plan_name": "【アフタヌーンティーセット】秋を感じるスイーツ＆セイボリー",
-          "price_yen": 6325,
-          "price_note": "税サ込（1人あたり）",
-          "start": null,
-          "end": null,
-          "cc": null,
-          "menu": null,
-          "checked_at": "2026-11-07T18:25:55+09:00",
-          "source_url": "https://restaurant.ikyu.com/110781/plan12803085"
-        }
-      ],
-      "category": "hotel",
-      "category_price_yen": 6325,
-      "name": "ROSSINI TERRACE（東京會舘）",
-      "hotel_name": null,
-      "area_no": 1,
-      "id": "x-ffd6bf5b02",
-      "candidate_no": null,
-      "origin": "explore",
-      "genre": null
     },
     {
       "address": null,
@@ -289,62 +262,6 @@
       "candidate_no": 36,
       "origin": "list",
       "genre": "ラウンジバー"
-    },
-    {
-      "address": null,
-      "station": "東京駅",
-      "source_site": "一休.com",
-      "plans": [
-        {
-          "plan_name": "香港スイーツの贅沢アフタヌーンティーコース＋お好きなティー又はソフトドリンク×2杯（Aプラン）",
-          "price_yen": 4600,
-          "price_note": "税サ込（1人あたり）",
-          "start": null,
-          "end": null,
-          "cc": "hk",
-          "menu": null,
-          "checked_at": "2026-11-07T18:25:57+09:00",
-          "source_url": "https://restaurant.ikyu.com/122278/plan12649319"
-        }
-      ],
-      "category": "cafe",
-      "category_price_yen": 4600,
-      "name": "真不同 HONG KONG TEA ROOM 1946",
-      "hotel_name": null,
-      "area_no": 1,
-      "id": "x-1252d0968c",
-      "candidate_no": null,
-      "origin": "explore",
-      "genre": null
-    },
-    {
-      "address": null,
-      "station": "三越前駅",
-      "source_site": "一休.com",
-      "plans": [
-        {
-          "plan_name": "【LE GOUTER】ル・ショコラ・アラン・デュカスの秋冬のアフタヌーンティーセット（土・日・祝日）",
-          "price_yen": 6800,
-          "price_note": "税サ込（1人あたり）・通常価格",
-          "start": null,
-          "end": null,
-          "weekday_available": false,
-          "weekend_available": true,
-          "cc": null,
-          "menu": null,
-          "checked_at": "2026-11-07T18:26:00+09:00",
-          "source_url": "https://restaurant.ikyu.com/112311/plan12739895"
-        }
-      ],
-      "category": "hotel",
-      "category_price_yen": 6800,
-      "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
-      "hotel_name": null,
-      "area_no": 1,
-      "id": "x-0afc0f63c5",
-      "candidate_no": null,
-      "origin": "explore",
-      "genre": null
     },
     {
       "address": null,
@@ -2617,10 +2534,678 @@
       ],
       "category": "lux",
       "category_price_yen": 10000
+    },
+    {
+      "id": "c46",
+      "candidate_no": 46,
+      "origin": "list",
+      "name": "ル サロン ド ニナス 日比谷",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ",
+      "address": "東京都千代田区有楽町1-5-2 東宝日比谷プロムナードビル 2F",
+      "station": "日比谷駅／銀座駅／有楽町駅",
+      "source_site": "公式サイト",
+      "info_url": "https://www.les-deux.co.jp/nns/menu/",
+      "plans": [
+        {
+          "plan_name": "「マリー・アントワネット・スタイル」展 スペシャルコラボレーションアフタヌーンティー For HIBIYA",
+          "source_url": "https://www.les-deux.co.jp/nns/menu/",
+          "checked_at": "2026-11-21T06:59:13+09:00",
+          "price_yen": null,
+          "discount_price_yen": null,
+          "start": "2026-07-01",
+          "end": "2026-11-23",
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "料金は公式ページに記載なし。2名様より",
+          "time_note": null,
+          "menu": "[1ère assiette] ヴェリーヌ・パレス、オペラ・フラングレ、パヴェ・ド・ショコラ（大理石模様／オレンジ／ヤグルマギク） [2ème assiette] ルリジューズ、アールグレイ香るロカイユ、フランボワーズマカロン、マリー・アントワネットケーキ [3ème assiette] 鶏胸肉とフロマージュブランのブリオッシュサンド、ジャガイモと山羊チーズの村里風キッシュ、ラベンダー香るムース・オ・ココ、スコーン（ピーチとパインのココナッツジャム＆クロテッドクリーム）。日比谷店限定メニュー",
+          "cc": null,
+          "season": [
+            "collab"
+          ]
+        }
+      ],
+      "category": "unknown",
+      "category_price_yen": null
+    },
+    {
+      "id": "c60",
+      "candidate_no": 60,
+      "origin": "list",
+      "name": "LOUANGE TOKYO Le Musee",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ・パティスリー",
+      "address": "東京都中央区銀座1-9-5",
+      "station": "銀座一丁目駅／京橋駅",
+      "source_site": "ホットペッパーグルメ",
+      "info_url": "https://www.hotpepper.jp/strJ004661011/",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンティー\"クリスマス 2026\"",
+          "source_url": "https://www.hotpepper.jp/strJ004661011/course_cnod12/",
+          "checked_at": "2026-11-21T07:04:18+09:00",
+          "price_yen": 10000,
+          "discount_price_yen": null,
+          "start": "2026-12-03",
+          "end": "2026-12-27",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "平日（12/23〜25除く）10,000円（税込・別途サービス料15%）。土日10,500円、12/23〜25は13,000円（いずれも税込・サ別）。テディベア追加プランあり",
+          "time_note": "5部制（11:00／13:00／15:00／17:00／19:00）、105分制",
+          "menu": "【ウェルカムドリンク】クランベリーとチェリーのノンアルコールカクテル【スウィーツ】苺とバニラクリームのケーキ 煌めくオーナメント、スノーマン ライチとチーズムース フリュイルージュ、苺とベリーのプティパフェ、苺とバジルのマカロン、ジャスミン薫る 苺とチョコレートのムース、ピスタチオとバニラムース グリオットのケーキ、苺と洋梨のパンナコッタ 柚子とベルガモットのソース、キャラメルクリームと林檎の紅茶薫るタルト【セイボリー】A5黒毛和牛の自家製ローストビーフ 赤ワインソース、トリュフ薫るチキンドラムスティック、オマール海老とキャビアのアスピック風サラダ、鮪とアボカドのタルトレット ノエル、グリーン ヴィシソワーズ ミルクの泡【10種類のティーフリーフロー】Mighty Leaf",
+          "cc": null,
+          "season": [
+            "xmas"
+          ]
+        },
+        {
+          "plan_name": "アフタヌーンティー\"モノトーン 2026\"",
+          "source_url": "https://www.hotpepper.jp/strJ004661011/course_cnod07/",
+          "checked_at": "2026-11-21T07:04:26+09:00",
+          "price_yen": 12075,
+          "discount_price_yen": 11270,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税・サービス料込。土日祝12,075円、平日割引価格11,270円",
+          "time_note": "5部制（11:00／13:00／15:00／17:00／19:00）、105分制",
+          "menu": "【ウェルカムドリンク】モノトーン ラテ（オレンジ カフェラテ）【スウィーツ】ショコレーヌ ドーナツ マラカイボ65、ショコレーヌ ドーナツ ホワイトチョコレート、パードドフリュイ モノトーン ベリー、ラフランス カプレーゼ カルダモンの薫り、栗とカシスのフォンダンショコラ、オリジナルブレンドのコーヒーゼリー、マカロン モノトーン ホワイトチョコとバニラ トンカの香り、キャラメルとヘーゼルナッツのサントノーレ【セイボリー】A5黒毛和牛の自家製ローストビーフ ソース ペリグー、ポルチーニ茸のフラン マスカルポーネクリーム、ホワイトアスパラのスープ 黒胡麻とパルメザンのチュイル、海老と帆立カツのデミグラスチーズバーガー、フォアグラムースのトリュフボールとテテドモアンヌ【10種類のティーフリーフロー】Mighty Leaf",
+          "cc": null
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 10000
+    },
+    {
+      "id": "c61",
+      "candidate_no": 61,
+      "origin": "list",
+      "name": "TENSHODO CAFE",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ",
+      "address": "東京都中央区銀座2-4-5 2階",
+      "station": "銀座一丁目駅／有楽町駅",
+      "source_site": "公式サイト",
+      "info_url": "https://ginzatenshodocafe.owst.jp/",
+      "plans": [
+        {
+          "plan_name": "【Xmas2026】クリスマスアフタヌーンティー",
+          "source_url": "https://ginzatenshodocafe.owst.jp/courses/227037437",
+          "checked_at": "2026-11-21T07:05:31+09:00",
+          "price_yen": 5300,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税込。平日5,300円（12月24・25日は別途300円）、土日・祝日限定プランは5,600円。2時間カフェフリー",
+          "time_note": "予約可能時間11:00〜17:30、2時間制",
+          "menu": "彩りフルーツのカクテルゼリー、苺のマカロン、苺のクリスマスショートケーキ、クリスマス ブッシュ・ド・ノエル、ホワイトツリーのバニラムース、季節のスコーン2種、ツナとポテトのメルトサンド、ズワイガニとトマトのグラタン、サーモンとほうれん草のキッシュ、ローストビーフ ～バルサミコソース～",
+          "cc": null,
+          "season": [
+            "xmas"
+          ]
+        },
+        {
+          "plan_name": "<PREMIUM>12種類も楽しめる4段の天賞堂プレミアムアフタヌーンティー",
+          "source_url": "https://ginzatenshodocafe.owst.jp/courses/214384818",
+          "checked_at": "2026-11-21T07:05:34+09:00",
+          "price_yen": 4980,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税込。平日4,980円、土日・祝日限定プランは5,280円。2時間カフェフリー",
+          "time_note": "予約可能時間11:00〜17:30、2時間制",
+          "menu": "チーズムース オレンジ＆キウイソース、ロールケーキ、マロンケーキ、ティラミス、季節のミニタルト、キッシュ、パンナコッタ ミックスベリーソース、2種のスコーン&季節のジャム＆ホイップクリーム、2種のミニブリニ、インサラータ・ルッサ、ミニパニーニ、天賞堂コーヒーゼリー",
+          "cc": null
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4980
+    },
+    {
+      "id": "c63",
+      "candidate_no": 63,
+      "origin": "list",
+      "name": "ガーデンラウンジ",
+      "hotel_name": "リーガロイヤルホテル東京",
+      "area_no": 13,
+      "genre": "ラウンジ",
+      "address": "東京都新宿区戸塚町1-104-19",
+      "station": null,
+      "source_site": "公式サイト",
+      "info_url": "https://www.rihga.co.jp/tokyo/restaurant/list/garden_lounge",
+      "plans": [
+        {
+          "plan_name": "ショコラアフタヌーンティー「Voyage du Cacao（ヴォワヤージュ・デュ・カカオ）」",
+          "source_url": "https://www.rihga.co.jp/tokyo/restaurant/list/garden_lounge/sweets",
+          "checked_at": "2026-11-21T07:07:05+09:00",
+          "price_yen": 8000,
+          "discount_price_yen": null,
+          "start": "2026-10-01",
+          "end": "2026-12-30",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "1名様。税金・サービス料込。前日12:00までの予約制",
+          "time_note": "14:00〜17:00（120分制、平日16:00予約は90分制）",
+          "menu": "［スイーツ］タルト・ショコラ、ムース・ショコラ・マロン、カカオフルーツのブランマンジェ～洋梨とりんごとともに～、生チョコ～カルダモンの香り～、マカロン・ショコラ、フィナンシェ・ショコラ・グリオット［セイボリー］合鴨胸肉のロースト～ココナッツの香り～ カカオ風味のポルトソース、スモークサーモンとクリームチーズのクロワッサンサンドイッチ、栗の冷たいポタージュスープ シナモン風味のカプチーノ仕立て［スコーン］スコーン・ショコラ、プレーンスコーン（フランボワーズのジャム、クロテッドクリーム、はちみつ）［お飲み物］紅茶・フレーバーティー・ハーブティー・コーヒー",
+          "cc": null
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 8000
+    },
+    {
+      "id": "c65",
+      "candidate_no": 65,
+      "origin": "list",
+      "name": "JUNCTION",
+      "hotel_name": "プルマン東京田町",
+      "area_no": 10,
+      "genre": "バー・ラウンジ",
+      "address": "東京都港区芝浦3-1-21 2F",
+      "station": "田町駅／三田駅",
+      "source_site": "公式サイト",
+      "info_url": "https://www.pullmantokyotamachi.com/ja/offers/xmas-afternoon-tea/",
+      "plans": [
+        {
+          "plan_name": "クリスマスアフタヌーンティー",
+          "source_url": "https://www.pullmantokyotamachi.com/ja/offers/xmas-afternoon-tea/",
+          "checked_at": "2026-11-21T07:08:16+09:00",
+          "price_yen": 7500,
+          "discount_price_yen": null,
+          "start": "2026-11-01",
+          "end": "2026-12-25",
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税込・サービス料なし。2時間制7,500円、3時間制8,000円、滞在時間無制限8,500円。クリスマス限定カクテルまたはモクテル1杯、ロンネフェルト紅茶のプチギフト付き。前日までの予約制",
+          "time_note": "14:30〜",
+          "menu": "7種のスイーツ（苺のミルフィーユ、バナナとチョコレートのトナカイムース、マンゴーと杏仁のクーゲル、ジンジャーブレッドサンド、フランボワーズのサヴァラン、シュトーレン、バタースコッチマカロン）、日替わりセイボリー3種（ブロッコリーと卵のサンドイッチ、白舞茸とフェタチーズのライスクラッカー、カリフラワーのポタージュなどから）、焼き立てスコーン（苺のジャム、クロテッドクリーム）、ロンネフェルトティー14種＆コーヒーのフリーフロー",
+          "cc": null,
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7500
+    },
+    {
+      "id": "c66",
+      "candidate_no": 66,
+      "origin": "list",
+      "name": "ラデュレ 日比谷店",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "ティーサロン",
+      "address": "東京都千代田区有楽町1-2-2 日比谷シャンテ 1F",
+      "station": null,
+      "source_site": "公式サイト",
+      "info_url": "https://www.laduree.jp/view/page/shoplist",
+      "plans": [
+        {
+          "plan_name": "クリスマス アフタヌーンティー",
+          "source_url": "https://www.laduree.jp/view/page/christmas_afternoontea2026",
+          "checked_at": "2026-11-21T07:09:19+09:00",
+          "price_yen": null,
+          "discount_price_yen": null,
+          "start": "2026-11-27",
+          "end": "2026-12-18",
+          "weekday_available": true,
+          "weekend_available": null,
+          "price_note": "2名様 ¥14,300（税込）～。平日限定でおひとり様プランあり",
+          "time_note": null,
+          "menu": "マカロン1種（プリントマカロンノエル）、ミニパティスリー2種（サントノレ・フレーズ・ピスタッシュ、プレジール・シュクレ）、セイボリー3種（小さなウエリントン、プティ・エッグベネディクト、根セロリとコンテチーズ）、ウェルカムドリンク、ホットドリンク（コーヒーまたは紅茶）",
+          "cc": null,
+          "season": [
+            "xmas"
+          ]
+        },
+        {
+          "plan_name": "ホーリークリスマス アフタヌーンティー",
+          "source_url": "https://www.laduree.jp/view/page/holychristmas_afternoontea2026",
+          "checked_at": "2026-11-21T07:09:24+09:00",
+          "price_yen": null,
+          "discount_price_yen": null,
+          "start": "2026-12-19",
+          "end": "2026-12-25",
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "2名様 ¥18,700（税込）～",
+          "time_note": null,
+          "menu": "マカロン1種（プリントマカロンノエル）、パティスリー2種（ビュシェット・イスパハン、ビュシェット・ショコラ・キャラメル・ノワゼット）、セイボリー3種（小さなウエリントン、プティ・エッグベネディクト、根セロリとコンテチーズ）、ミニャルディーズ2種（フランボワーズとピスタチオのタルトレット、パンナコッタのヴェリーヌ）、ウェルカムドリンク、ホットドリンク（コーヒーまたは紅茶）",
+          "cc": null,
+          "season": [
+            "xmas"
+          ]
+        }
+      ],
+      "category": "unknown",
+      "category_price_yen": null
+    },
+    {
+      "id": "c72",
+      "candidate_no": 72,
+      "origin": "list",
+      "name": "CAFe&BAR STROPSe",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ",
+      "address": "東京都中央区銀座一丁目11番1号",
+      "station": null,
+      "source_site": "公式サイト",
+      "info_url": "https://www.konami.com/ginza/stropse/",
+      "plans": [
+        {
+          "plan_name": "【秋季限定】実り、彩り、香り。秋が満ちるアフタヌーンティー",
+          "source_url": "https://www.konami.com/ginza/stropse/afternoon.html",
+          "checked_at": "2026-11-21T07:13:19+09:00",
+          "price_yen": 4000,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税込。2〜4名様、2時間・フリーフロー付き。3日前17:00までの予約制",
+          "time_note": "14:30〜18:00（最終入店受付16:00）",
+          "menu": "■デザート：りんごとシナモンのタルト、紅茶香るモンブラン、ブルーベリーとチーズのマカロン、カシスのパンナコッタ、ロイヤルミルクティーのクレームブリュレ ■セイボリー：ローストビーフ リンゴ、ケールのサラダ仕立て、ローストいちじくと生ハムのカプレーゼ、塩キャラメルナッツとリンゴのブルスケッタ ■ウェルカムドリンク：りんごのアールグレイスパークリング（ノンアルコール）■フリーフロー：コーヒー、カフェラテ、ロンネフェルト紅茶3種",
+          "cc": null
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4000
+    },
+    {
+      "id": "c81",
+      "candidate_no": 81,
+      "origin": "list",
+      "name": "サラベス 表参道店",
+      "hotel_name": null,
+      "area_no": 8,
+      "genre": "カフェ、アメリカ料理",
+      "address": "東京都港区北青山三丁目8番15号 GREEN TERRACE 表参道2階",
+      "station": "表参道駅",
+      "source_site": "公式サイト",
+      "info_url": "https://sarabethsrestaurants.jp/location/omotesando/",
+      "plans": [
+        {
+          "plan_name": "アフタヌーンセット 3段 乾杯スパークリングワイン付",
+          "source_url": "https://sarabethsrestaurants.jp/news/ja/5089",
+          "checked_at": "2026-11-21T07:17:16+09:00",
+          "price_yen": 3990,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "price_note": "税サ込。平日限定。2時間制（紅茶・コーヒーのフリーフローは90分でラストオーダー）",
+          "time_note": "ランチ・ティータイム",
+          "menu": "3段のティースタンドにホームメイドのサンドウィッチ、スコーン、ビスケット、クッキー、ケーキ、旬のフルーツなど。コーヒーとHarney & Sonsの紅茶5〜6種類のフリーフロー、乾杯スパークリングワイン",
+          "cc": null
+        },
+        {
+          "plan_name": "夜アフタヌーンセット3段 乾杯スパークリング＆サイドディッシュ付",
+          "source_url": "https://sarabethsrestaurants.jp/news/ja/5089",
+          "checked_at": "2026-11-21T07:17:16+09:00",
+          "price_yen": 4777,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "price_note": "税サ込。平日限定。2時間制",
+          "time_note": "ディナータイム",
+          "menu": "3段のアフタヌーンセットに、別皿で「トリュフフレンチフライ」「フライドチキン」「ワカモレ＆チップス」から1品、乾杯スパークリング、コーヒー・紅茶のフリーフロー",
+          "cc": null
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 3990
+    },
+    {
+      "id": "c84",
+      "candidate_no": 84,
+      "origin": "list",
+      "name": "Minimal The Specialty 麻布台ヒルズ",
+      "hotel_name": null,
+      "area_no": 5,
+      "genre": "チョコレート、カフェ、スイーツ",
+      "address": "東京都港区虎ノ門5-8-1 麻布台ヒルズ ガーデンプラザA 2F",
+      "station": "神谷町駅",
+      "source_site": "AutoReserve",
+      "info_url": "https://autoreserve.com/ja/restaurants/ZbqLFXmiT6SyqGFYgQgt",
+      "plans": [
+        {
+          "plan_name": "【10～11月】Minimal チョコレートアフタヌーンティー vol.12",
+          "source_url": "https://autoreserve.com/ja/restaurants/ZbqLFXmiT6SyqGFYgQgt",
+          "checked_at": "2026-11-21T07:19:16+09:00",
+          "price_yen": 7900,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "1名。90分制。予約は2日前9:00締切",
+          "time_note": "90分制（時間ごとに一斉スタート）",
+          "menu": "茨城県笠間の和栗とチョコレートを楽しむ秋限定のアフタヌーンティー。スペシャルデザートの和栗のモンブラングラスパフェ（チョコレートアイス、栗ペースト、フィアンティーヌ）、三段のティースタンドに秋の味覚を取り入れたスイーツとセイボリー",
+          "cc": null,
+          "season": [
+            "season"
+          ]
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 7900
+    },
+    {
+      "id": "c85",
+      "candidate_no": 85,
+      "origin": "list",
+      "name": "ティーラウンジ 佳風",
+      "hotel_name": null,
+      "area_no": 4,
+      "genre": "カフェ",
+      "address": "東京都千代田区平河町2-16-15 ザ・キタノホテル東京 2階",
+      "station": "永田町駅",
+      "source_site": "AutoReserve",
+      "info_url": "https://autoreserve.com/ja/restaurants/SSmW4vMhKKMJiSGUWNkj",
+      "plans": [
+        {
+          "plan_name": "薫り栗のアフタヌーンティー グルテンフリーのやさしい味わい",
+          "source_url": "https://autoreserve.com/ja/restaurants/SSmW4vMhKKMJiSGUWNkj",
+          "checked_at": "2026-11-21T07:19:44+09:00",
+          "price_yen": 8625,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "平日・土日祝日とも8,625円の表示",
+          "time_note": null,
+          "menu": "オールグルテンフリー。栗アイテム、モンブラン、シュー生地仕立てのフォンダン、ポットサービスで燻製香とともに味わうチーズケーキなどをメインに、ブドウや洋梨などの季節の素材を取り入れたセット",
+          "cc": null
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 8625
+    },
+    {
+      "id": "c86",
+      "candidate_no": 86,
+      "origin": "list",
+      "name": "上野 アクアリウムレストラン Nautilus",
+      "hotel_name": null,
+      "area_no": 11,
+      "genre": "ダイニングバー、イタリアン、フレンチ",
+      "address": "東京都台東区上野2-12-23 上野ユーワンビル 5F",
+      "station": "京成上野駅",
+      "source_site": "AutoReserve",
+      "info_url": "https://autoreserve.com/ja/restaurants/K1683aXrBepnn8kiLZ3i",
+      "plans": [
+        {
+          "plan_name": "【プリンセスジュエリーボックス】選べるMighty Leaf紅茶付き♪ ミニアフタヌーンティーセット (平日限定)",
+          "source_url": "https://autoreserve.com/ja/restaurants/K1683aXrBepnn8kiLZ3i",
+          "checked_at": "2026-11-21T07:20:10+09:00",
+          "price_yen": 4200,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "price_note": "平日限定",
+          "time_note": null,
+          "menu": "ジュエリーボックス入りのミニアフタヌーンティー。トリュフ、キャビアなどの食材、マカロンやカヌレをはじめ6種のスイーツ。Mighty Leaf社の9種の紅茶付き",
+          "cc": null
+        },
+        {
+          "plan_name": "【平日限定】シンデレラアフタヌーンティー付き・ランチセット！乾杯スパークリング＆選べるパスタ♪",
+          "source_url": "https://autoreserve.com/ja/restaurants/K1683aXrBepnn8kiLZ3i",
+          "checked_at": "2026-11-21T07:20:10+09:00",
+          "price_yen": 4800,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": false,
+          "price_note": "平日限定。プリフィクスランチ＋アフタヌーンティー",
+          "time_note": null,
+          "menu": "乾杯ドリンク、選べるパスタ、食後のドリンクのプリフィクスランチと、シンデレラ・アフタヌーンティー（メッセージ添え可）",
+          "cc": null
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4200
+    },
+    {
+      "id": "c89",
+      "candidate_no": 89,
+      "origin": "list",
+      "name": "CAFÉ DIOR by Anne-Sophie Pic Ginza",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ／スイーツ",
+      "address": "東京都中央区銀座6-10-1 ハウスオブディオールギンザ4F",
+      "station": "銀座駅／東銀座駅／新橋駅",
+      "source_site": "TableCheck",
+      "info_url": "https://www.tablecheck.com/ja/cafe-dior-by-anne-sophie-pic-ginza",
+      "plans": [
+        {
+          "plan_name": "L’INSTANT COUTURE アフタヌーンティーセット",
+          "source_url": "https://www.tablecheck.com/ja/cafe-dior-by-anne-sophie-pic-ginza",
+          "checked_at": "2026-11-21T07:22:22+09:00",
+          "price_yen": null,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "¥20,900（税込）の表示。人数単位の記載なし。偶数人数でのご用意（1名・3名は不可）。シャンパーニュ追加は1グラス3,500円",
+          "time_note": "予約可能時間14:00〜18:00、ドリンクは90分制フリーフロー",
+          "menu": "セットのドリンクはコーヒー類（エスプレッソ、ラテ、カプチーノなど）とDior Tea 3種類から選択、90分制のフリーフロー",
+          "cc": null
+        }
+      ],
+      "category": "unknown",
+      "category_price_yen": null
+    },
+    {
+      "id": "c90",
+      "candidate_no": 90,
+      "origin": "list",
+      "name": "BVLGARI GINZA CAFÉ",
+      "hotel_name": null,
+      "area_no": 2,
+      "genre": "カフェ／アフタヌーンティー",
+      "address": "東京都中央区銀座2-7-12",
+      "station": "銀座一丁目駅／銀座駅／東銀座駅",
+      "source_site": "TableCheck",
+      "info_url": "https://www.tablecheck.com/ja/bvlgari-ginza",
+      "plans": [
+        {
+          "plan_name": "ギンザ カフェ フェスティブ アフタヌーンティー / スイーツ",
+          "source_url": "https://www.tablecheck.com/ja/bvlgari-ginza",
+          "checked_at": "2026-11-21T07:22:42+09:00",
+          "price_yen": 12500,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税サ込",
+          "time_note": null,
+          "menu": "ミシュラン3つ星シェフ ニコ・ロミート監修。ブルガリ銀座タワーで作るスイーツとセイボリー",
+          "cc": null
+        },
+        {
+          "plan_name": "ギンザ カフェ フェスティブ テイスト・オブ・アフタヌーンティー / スイーツ",
+          "source_url": "https://www.tablecheck.com/ja/bvlgari-ginza",
+          "checked_at": "2026-11-21T07:22:42+09:00",
+          "price_yen": 9500,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税サ込",
+          "time_note": null,
+          "menu": "ミシュラン3つ星シェフ ニコ・ロミート監修。ブルガリ銀座タワーで作るスイーツとセイボリー",
+          "cc": null
+        },
+        {
+          "plan_name": "ギンザ カフェ アフタヌーンティー / スイーツ",
+          "source_url": "https://www.tablecheck.com/ja/bvlgari-ginza",
+          "checked_at": "2026-11-21T07:22:42+09:00",
+          "price_yen": 12500,
+          "discount_price_yen": null,
+          "start": "2027-01-02",
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税サ込",
+          "time_note": null,
+          "menu": "ミシュラン3つ星シェフ ニコ・ロミート監修。ブルガリ銀座タワーで作るスイーツとセイボリー",
+          "cc": null
+        },
+        {
+          "plan_name": "ギンザ カフェ テイスト・オブ・アフタヌーンティー / セイボリー",
+          "source_url": "https://www.tablecheck.com/ja/bvlgari-ginza",
+          "checked_at": "2026-11-21T07:22:42+09:00",
+          "price_yen": 9500,
+          "discount_price_yen": null,
+          "start": "2027-01-02",
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "税サ込",
+          "time_note": "12:00〜",
+          "menu": "ミシュラン3つ星シェフ ニコ・ロミート監修。ブルガリ銀座タワーで作るスイーツとセイボリー",
+          "cc": null
+        }
+      ],
+      "category": "lux",
+      "category_price_yen": 9500
+    },
+    {
+      "id": "x-ffd6bf5b02",
+      "candidate_no": null,
+      "origin": "explore",
+      "name": "ROSSINI TERRACE（東京會舘）",
+      "hotel_name": null,
+      "area_no": 1,
+      "genre": "オールデイダイニング",
+      "address": "東京都千代田区丸の内3-2-1 1F",
+      "station": "二重橋前駅／東京駅／有楽町駅",
+      "source_site": "公式サイト",
+      "info_url": "https://www.kaikan.co.jp/restaurant/rossini-terrace/",
+      "plans": [
+        {
+          "plan_name": "笠間の新栗と宇治抹茶のプレミアムアフタヌーンティーセット",
+          "source_url": "https://www.kaikan.co.jp/restaurant/rossini-terrace/menu/afternoon_tea_set2611.html",
+          "checked_at": "2026-11-21T07:24:25+09:00",
+          "price_yen": 5500,
+          "discount_price_yen": null,
+          "start": "2026-09-16",
+          "end": "2026-11-30",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税込・サービス料別（15%）。グラスシャンパーニュ付き8,800円。予約制",
+          "time_note": "14:30〜16:30、2時間制（ドリンクは90分制）",
+          "menu": "笠間の栗と宇治抹茶モンブラン、芝庭の宇治抹茶ロール、笠間の栗と白ごまのムース、笠間の栗と宇治抹茶のミルフィーユ、宇治抹茶ガナッシュのタルト、ほうじ茶香るぜんざい仕立て、柿とカラマンシーのグラスジュレ、キウイフルーツのフロマージュブラン、フォア・グラ入りのじゃがいものブルテ、自家製ハムのクロックムッシュ、スコーン2種（プレーン・宇治抹茶ホワイトチョコチップ）、フルーツジャム・クロテッドクリーム、紅茶またはコーヒー",
+          "cc": null
+        },
+        {
+          "plan_name": "白雪に実る果実のプレミアムアフタヌーンティーセット",
+          "source_url": "https://www.kaikan.co.jp/restaurant/rossini-terrace/menu/afternoon_tea_set.html",
+          "checked_at": "2026-11-21T07:24:28+09:00",
+          "price_yen": 5500,
+          "discount_price_yen": null,
+          "start": "2026-12-26",
+          "end": "2027-02-28",
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税込・サービス料別（15%）。グラスシャンパーニュ付き8,800円。予約制。1/2〜4の利用は12/28までの要予約",
+          "time_note": "14:30〜16:30、2時間制（ドリンクは90分制）",
+          "menu": "白雪のもちもちロール～フランボワーズ～、ホワイトシュー、レアチーズケーキ、温州みかんのホワイトチョコムース、雪の贈り物ショートケーキ、リンゴとノンアルコールスパークリングワインのヴェリーヌ、柚子香る雪だるまギモーブ、金柑コンポートのフロマージュブラン、フォア・グラ入りチキンのブルテ、コーングリッツバンズのパストラミバーガー、スコーン2種（プレーン・ホワイトバニラチョコチップ）、フルーツジャム・クロテッドクリーム、紅茶またはコーヒー",
+          "cc": null
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 5500
+    },
+    {
+      "id": "x-1252d0968c",
+      "candidate_no": null,
+      "origin": "explore",
+      "name": "真不同 HONG KONG TEA ROOM 1946",
+      "hotel_name": null,
+      "area_no": 1,
+      "genre": "カフェ",
+      "address": "東京都千代田区丸の内1-5-1 新丸の内ビルディング B1F",
+      "station": "東京駅／二重橋前駅",
+      "source_site": "AutoReserve",
+      "info_url": "https://autoreserve.com/ja/restaurants/tkCuHTVpR8c9hYHkXtyz",
+      "plans": [
+        {
+          "plan_name": "秋の恵みを味わう香港スタイルのオータムアフタヌーンティーコース",
+          "source_url": "https://autoreserve.com/ja/restaurants/tkCuHTVpR8c9hYHkXtyz",
+          "checked_at": "2026-11-21T07:25:07+09:00",
+          "price_yen": 4600,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": null,
+          "weekend_available": null,
+          "price_note": "ドリンクは一人ずつプランを選択。平日（月〜木）は+550円で2.5時間に延長可",
+          "time_note": "2時間制",
+          "menu": "手作り点心、エッグタルト、香港スイーツ。英国ブランド バーレイの茶器で提供",
+          "cc": "hk"
+        }
+      ],
+      "category": "cafe",
+      "category_price_yen": 4600
+    },
+    {
+      "id": "x-0afc0f63c5",
+      "candidate_no": null,
+      "origin": "explore",
+      "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
+      "hotel_name": null,
+      "area_no": 1,
+      "genre": "デザートサロン",
+      "address": null,
+      "station": "三越前駅",
+      "source_site": "公式サイト",
+      "info_url": "https://lechocolat-alainducasse.jp/le-gouter",
+      "plans": [
+        {
+          "plan_name": "Le goûter（ル・グテ）ショコラ尽くしのアフタヌーンティーセット",
+          "source_url": "https://lechocolat-alainducasse.jp/le-gouter",
+          "checked_at": "2026-11-21T07:26:09+09:00",
+          "price_yen": 6300,
+          "discount_price_yen": null,
+          "start": null,
+          "end": null,
+          "weekday_available": true,
+          "weekend_available": true,
+          "price_note": "税込。平日6,300円、土日祝日6,800円。ハーフボトルのシャンパーニュ付き+4,400円。予約限定（電話は前日12:00まで）",
+          "time_note": null,
+          "menu": "10種のクリエイション（メニュー例：フイユテ・ショコラ・ピスターシュ、パリ・ブレスト・ノワゼット、ビスキュイ・キャラメル・ノワゼット、ケーク・ショコラ・ココ、サブレ・マロン・ミルティーユ、クルスティアン・ショコラ・ヴァニーユ、ティラミス・ショコラ・カフェ、パン・ペルデュ・ショコラ、ショコラ3種）と紅茶・フレーバーティーまたはコーヒーのフリーフロー",
+          "cc": null
+        }
+      ],
+      "category": "hotel",
+      "category_price_yen": 6300
     }
   ],
   "progress": {
-    "updated_at": "2026-11-16T07:19:00+09:00",
+    "updated_at": "2026-11-21T07:26:27+09:00",
     "entries": {
       "c64": {
         "key": "c64",
@@ -2642,13 +3227,17 @@
         "name": "ROSSINI TERRACE（東京會舘）",
         "hotel_name": null,
         "area_no": 1,
-        "genre": null,
+        "genre": "オールデイダイニング",
         "status": "plan_confirmed",
-        "attempted_at": "2026-11-07T18:25:55+09:00",
-        "confirmed_at": "2026-11-07T18:25:55+09:00",
+        "attempted_at": "2026-11-21T07:24:50+09:00",
+        "confirmed_at": "2026-11-21T07:24:28+09:00",
         "reason": null,
-        "note": "Git履歴の公開データから確認日時を変えずに復旧",
-        "urls": []
+        "note": "東京會舘公式のRossini Terraceメニューページで再確認",
+        "urls": [
+          "https://www.kaikan.co.jp/restaurant/rossini-terrace/",
+          "https://www.kaikan.co.jp/restaurant/rossini-terrace/menu/afternoon_tea_set2611.html",
+          "https://www.kaikan.co.jp/restaurant/rossini-terrace/menu/afternoon_tea_set.html"
+        ]
       },
       "c18": {
         "key": "c18",
@@ -2782,13 +3371,15 @@
         "name": "真不同 HONG KONG TEA ROOM 1946",
         "hotel_name": null,
         "area_no": 1,
-        "genre": null,
+        "genre": "カフェ",
         "status": "plan_confirmed",
-        "attempted_at": "2026-11-07T18:25:57+09:00",
-        "confirmed_at": "2026-11-07T18:25:57+09:00",
+        "attempted_at": "2026-11-21T07:25:16+09:00",
+        "confirmed_at": "2026-11-21T07:25:07+09:00",
         "reason": null,
-        "note": "Git履歴の公開データから確認日時を変えずに復旧",
-        "urls": []
+        "note": "AutoReserveの店舗ページのコースで再確認（提供期間の日付記載なし）",
+        "urls": [
+          "https://autoreserve.com/ja/restaurants/tkCuHTVpR8c9hYHkXtyz"
+        ]
       },
       "x-0afc0f63c5": {
         "key": "x-0afc0f63c5",
@@ -2796,13 +3387,16 @@
         "name": "LE CHOCOLAT ALAIN DUCASSE 東京工房",
         "hotel_name": null,
         "area_no": 1,
-        "genre": null,
+        "genre": "デザートサロン",
         "status": "plan_confirmed",
-        "attempted_at": "2026-11-07T18:26:00+09:00",
-        "confirmed_at": "2026-11-07T18:26:00+09:00",
+        "attempted_at": "2026-11-21T07:26:27+09:00",
+        "confirmed_at": "2026-11-21T07:26:09+09:00",
         "reason": null,
-        "note": "Git履歴の公開データから確認日時を変えずに復旧",
-        "urls": []
+        "note": "公式サイトの「ル・グテ」ページで再確認（提供期間の記載なし）",
+        "urls": [
+          "https://lechocolat-alainducasse.jp/le-gouter",
+          "https://lechocolat-alainducasse.jp/"
+        ]
       },
       "x-45b69b54ac": {
         "key": "x-45b69b54ac",
@@ -3995,14 +4589,13 @@
         "area_no": 2,
         "genre": "カフェ・ラウンジ",
         "status": "failed",
-        "attempted_at": "2026-11-12T22:20:13+09:00",
+        "attempted_at": "2026-11-21T07:23:46+09:00",
         "confirmed_at": null,
-        "reason": "access_refused_or_booking_step",
-        "note": "OZmallはHTTP 403、ヒトサラはrobots.txtが403、TableCheckはプラン表示に予約カート初期化(POST)が必要で拒否。公式サイトは検索で未発見",
+        "reason": "robots_txt_unavailable",
+        "note": "公式サイトはrobots.txt確認不能、一休はrobots.txtで拒否、オズモールはHTTP 403で今回も現行プランを読めず",
         "urls": [
-          "https://www.ozmall.co.jp/restaurant/3288/afternoontea/",
-          "https://hitosara.com/0004030506/",
-          "https://www.tablecheck.com/the-grand-lounge/reserve/experiences"
+          "https://www.the-grand-ginza.jp/",
+          "https://the-grand-ginza.jp/lounge/"
         ]
       },
       "c8": {
@@ -4052,6 +4645,482 @@
         "note": "検索結果は終了済み企画のみ。ozmallはHTTP 403で取得不能、現行プランを読めず",
         "urls": [
           "https://www.ozmall.co.jp/restaurant/afternoontea/43473/"
+        ]
+      },
+      "c43": {
+        "key": "c43",
+        "origin": "list",
+        "name": "Cafe&Bar Lounge Celecroix",
+        "hotel_name": "ホテル ザ セレスティン 東京芝",
+        "area_no": 3,
+        "genre": "カフェ＆バーラウンジ",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T06:57:34+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "公式サイトの店舗紹介でアフタヌーンティー提供の記載のみ。現行プランの詳細ページは見つからず。一休はrobots.txtで拒否、オズモールはHTTP 403",
+        "urls": [
+          "https://www.celestinehotels.jp/tokyo-shiba/restaurant/",
+          "https://www.celestinehotels.jp/tokyo-shiba/"
+        ]
+      },
+      "c46": {
+        "key": "c46",
+        "origin": "list",
+        "name": "ル サロン ド ニナス 日比谷",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T06:59:27+09:00",
+        "confirmed_at": "2026-11-21T06:59:13+09:00",
+        "reason": null,
+        "note": "公式メニューページで日比谷店限定コラボアフタヌーンティー（〜11/23）を確認。料金は公式に記載なし（オズモールはHTTP 403で今回取得不能）。11/24からの冬メニューは日比谷店は内容が異なると告知のみで詳細未掲載",
+        "urls": [
+          "https://www.les-deux.co.jp/nns/menu/",
+          "https://www.les-deux.co.jp/nns/news/2026/20261116.html",
+          "https://www.enjoytokyo.jp/spot/l_20113068/",
+          "https://baila.hpplus.jp/blogs/ohno_mio/83857"
+        ]
+      },
+      "c51": {
+        "key": "c51",
+        "origin": "list",
+        "name": "Ginger’s Beach Sunshine",
+        "hotel_name": null,
+        "area_no": 14,
+        "genre": "モダンリゾートダイニング",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:00:22+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "紹介記事（2026年8月時点の掲載例）のみで現行プラン未確認。一休はrobots.txt、オズモールはHTTP 403で今回取得不能。公式サイトは検索で見つからず",
+        "urls": [
+          "https://matcha-jp.com/jp/27545",
+          "https://hamoni.jp/shop/ZnGegNd4F10n4URNd0ES"
+        ]
+      },
+      "c53": {
+        "key": "c53",
+        "origin": "list",
+        "name": "OPERA",
+        "hotel_name": "OPERAHOUSE 東京",
+        "area_no": 6,
+        "genre": "ティーラウンジ",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:02:02+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "公式でアフタヌーンティー提供と12/26からのストロベリーアフタヌーンティー告知を確認（料金・メニュー記載なし）。現行のクリスマスメニューPDFはpage_too_largeで読めず。一休はrobots.txt、ひとさらもrobots.txtで拒否",
+        "urls": [
+          "https://operahouse-tokyo.com/desert-restaurant/",
+          "https://operahouse-tokyo.com/news/news-449-2-2-3-3-2-2-3-2/",
+          "https://operahouse-tokyo.com/news/news-449-2-2-3-3-2-2/",
+          "https://rurubu.jp/andmore/article/23252"
+        ]
+      },
+      "c55": {
+        "key": "c55",
+        "origin": "list",
+        "name": "dunhill BAR",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ・バー",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:02:58+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "2019年の紹介記事でアフタヌーンティーセットの記載のみ（現行未確認）。dunhill公式の店舗ページはHTTP 404、一休はrobots.txt、食べログはrobots.txt確認不能",
+        "urls": [
+          "https://precious.jp/articles/-/16177"
+        ]
+      },
+      "c60": {
+        "key": "c60",
+        "origin": "list",
+        "name": "LOUANGE TOKYO Le Musee",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ・パティスリー",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:04:48+09:00",
+        "confirmed_at": "2026-11-21T07:04:26+09:00",
+        "reason": null,
+        "note": "ホットペッパーグルメの店舗・コース詳細ページで確認",
+        "urls": [
+          "https://www.hotpepper.jp/strJ004661011/",
+          "https://www.hotpepper.jp/strJ004661011/course/",
+          "https://www.hotpepper.jp/strJ004661011/course_cnod12/",
+          "https://www.hotpepper.jp/strJ004661011/course_cnod07/"
+        ]
+      },
+      "c61": {
+        "key": "c61",
+        "origin": "list",
+        "name": "TENSHODO CAFE",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:05:48+09:00",
+        "confirmed_at": "2026-11-21T07:05:34+09:00",
+        "reason": null,
+        "note": "店舗公式予約ページ（owst）のコース一覧・詳細で確認",
+        "urls": [
+          "https://ginzatenshodocafe.owst.jp/",
+          "https://ginzatenshodocafe.owst.jp/courses",
+          "https://ginzatenshodocafe.owst.jp/courses/227037437",
+          "https://ginzatenshodocafe.owst.jp/courses/214384818"
+        ]
+      },
+      "c63": {
+        "key": "c63",
+        "origin": "list",
+        "name": "ガーデンラウンジ",
+        "hotel_name": "リーガロイヤルホテル東京",
+        "area_no": 13,
+        "genre": "ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:07:27+09:00",
+        "confirmed_at": "2026-11-21T07:07:05+09:00",
+        "reason": null,
+        "note": "ホテル公式のガーデンラウンジ スイーツページで確認",
+        "urls": [
+          "https://www.rihga.co.jp/tokyo/restaurant/list/garden_lounge/sweets",
+          "https://www.rihga.co.jp/tokyo/restaurant/list/garden_lounge"
+        ]
+      },
+      "c65": {
+        "key": "c65",
+        "origin": "list",
+        "name": "JUNCTION",
+        "hotel_name": "プルマン東京田町",
+        "area_no": 10,
+        "genre": "バー・ラウンジ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:08:34+09:00",
+        "confirmed_at": "2026-11-21T07:08:16+09:00",
+        "reason": null,
+        "note": "ホテル公式オファーページで料金・期間・内容を確認。スイーツ名はるるぶ&more.記事で確認",
+        "urls": [
+          "https://www.pullmantokyotamachi.com/ja/offers/xmas-afternoon-tea/",
+          "https://rurubu.jp/andmore/article/25635",
+          "https://www.enjoytokyo.jp/event/2067196/"
+        ]
+      },
+      "c66": {
+        "key": "c66",
+        "origin": "list",
+        "name": "ラデュレ 日比谷店",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "ティーサロン",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:10:01+09:00",
+        "confirmed_at": "2026-11-21T07:09:24+09:00",
+        "reason": null,
+        "note": "ラデュレ公式「今月のアフタヌーンティー」で確認。アフタヌーンティーページに店舗名の明記はないが、公式店舗一覧で首都圏のサロン・ド・テは日比谷店のみ。料金は2名様分の表記",
+        "urls": [
+          "https://www.laduree.jp/view/page/afternoontea",
+          "https://www.laduree.jp/view/page/christmas_afternoontea2026",
+          "https://www.laduree.jp/view/page/holychristmas_afternoontea2026",
+          "https://www.laduree.jp/view/page/shoplist"
+        ]
+      },
+      "c69": {
+        "key": "c69",
+        "origin": "list",
+        "name": "TEPPANYAKI 10 TAKANAWA GATEWAY",
+        "hotel_name": null,
+        "area_no": 10,
+        "genre": "港区",
+        "status": "no_at_found",
+        "attempted_at": "2026-11-21T07:11:08+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "公式サイトとTableCheckの店舗ページ（鉄板焼のランチ・ディナーコース）にアフタヌーンティーの記載なし。公開検索でも見つからず。一休・ぐるなび・EPARKは今回取得不能",
+        "urls": [
+          "https://teppan-yaki10takanawa.com/",
+          "https://www.tablecheck.com/ja/teppan-yaki10takanawa"
+        ]
+      },
+      "c70": {
+        "key": "c70",
+        "origin": "list",
+        "name": "GINZA CAFE",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ",
+        "status": "failed",
+        "attempted_at": "2026-11-21T07:11:37+09:00",
+        "confirmed_at": null,
+        "reason": "robots_txt_refused",
+        "note": "店舗名「GINZA CAFE」が一般的で公開検索では同一店舗を特定できず（天賞堂カフェ等の別店舗のみ）。参考URLの一休はrobots.txtで拒否され、今回は所在地・施設名を確認できず",
+        "urls": [
+          "https://restaurant.ikyu.com/120875/"
+        ]
+      },
+      "c71": {
+        "key": "c71",
+        "origin": "list",
+        "name": "アプローズスクエア東京迎賓館",
+        "hotel_name": null,
+        "area_no": 13,
+        "genre": "宴会場/期間限定レストラン",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:12:26+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "2025年秋の日程限定アフタヌーンティー（終了済み）の記事のみ。2026年の現行企画は公開検索で見つからず、一休はrobots.txtで拒否",
+        "urls": [
+          "https://rurubu.jp/andmore/article/23940"
+        ]
+      },
+      "c72": {
+        "key": "c72",
+        "origin": "list",
+        "name": "CAFe&BAR STROPSe",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:13:36+09:00",
+        "confirmed_at": "2026-11-21T07:13:19+09:00",
+        "reason": null,
+        "note": "公式サイトのアフタヌーンティーページで秋季限定プランを確認（提供期間の日付は記載なし）",
+        "urls": [
+          "https://www.konami.com/ginza/stropse/",
+          "https://www.konami.com/ginza/stropse/afternoon.html",
+          "https://autoreserve.com/ja/restaurants/6Ehwf19LUj2aYUS7rJfx"
+        ]
+      },
+      "c73": {
+        "key": "c73",
+        "origin": "list",
+        "name": "ザ・カフェ by アマン",
+        "hotel_name": "アマン東京",
+        "area_no": 1,
+        "genre": "カフェ",
+        "status": "no_at_found",
+        "attempted_at": "2026-11-21T07:14:13+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "アマン東京公式ダイニングページでザ・カフェ by アマンはフランス料理（ランチ・ディナー・フランス菓子のティータイム）と紹介され、アフタヌーンティーは別店舗のザ・ラウンジ by アマン（候補c22）で提供。一休はrobots.txtで拒否",
+        "urls": [
+          "https://www.aman.com/ja-jp/hotels/aman-tokyo/dining"
+        ]
+      },
+      "c74": {
+        "key": "c74",
+        "origin": "list",
+        "name": "アートラウンジ デュエット",
+        "hotel_name": "京王プラザホテル",
+        "area_no": 6,
+        "genre": "ラウンジ",
+        "status": "no_at_found",
+        "attempted_at": "2026-11-21T07:14:56+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "公式の店舗ページのメニューはロールケーキセット・焼き菓子セット等でアフタヌーンティーの記載なし（同ホテルのアフタヌーンティーはスカイラウンジ＜オーロラ＞で告知）",
+        "urls": [
+          "https://www.keioplaza.co.jp/restaurant/list/duet/",
+          "https://www.keioplaza.co.jp/restaurant/"
+        ]
+      },
+      "c76": {
+        "key": "c76",
+        "origin": "list",
+        "name": "KANADE LOUNGE",
+        "hotel_name": "雅叙園東京",
+        "area_no": 10,
+        "genre": "ラウンジ",
+        "status": "failed",
+        "attempted_at": "2026-11-21T07:15:32+09:00",
+        "confirmed_at": null,
+        "reason": "robots_txt_unavailable",
+        "note": "公式サイトはrobots.txt確認不能、一休はrobots.txtで拒否、オズモールはHTTP 403で今回は読めず。公開検索ではKANADE LOUNGEの現行プランは見つからず（同館のカナデ テラス等の別店舗のみ）",
+        "urls": [
+          "https://www.hotelgajoen-tokyo.com/restaurant",
+          "https://www.hotelgajoen-tokyo.com/"
+        ]
+      },
+      "c78": {
+        "key": "c78",
+        "origin": "list",
+        "name": "新宿 アクアリウムダイニング JeMare",
+        "hotel_name": null,
+        "area_no": 6,
+        "genre": "ダイニングバー、イタリアン、居酒屋",
+        "status": "failed",
+        "attempted_at": "2026-11-21T07:16:15+09:00",
+        "confirmed_at": null,
+        "reason": "HTTP_403",
+        "note": "検索ではいちごの深海アフタヌーンティーの案内があるが、食べログ・オズモールはHTTP 403、ぐるなびはrobots.txt確認不能で今回はプラン本文を読めず。公式サイトは見つからず",
+        "urls": [
+          "https://tabelog.com/tokyo/A1304/A130401/13248660/party/"
+        ]
+      },
+      "c81": {
+        "key": "c81",
+        "origin": "list",
+        "name": "サラベス 表参道店",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": "カフェ、アメリカ料理",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:17:34+09:00",
+        "confirmed_at": "2026-11-21T07:17:16+09:00",
+        "reason": null,
+        "note": "サラベス公式のお知らせ（表参道店 平日限定アフタヌーンティー）と店舗案内で確認",
+        "urls": [
+          "https://sarabethsrestaurants.jp/news/ja/5089",
+          "https://sarabethsrestaurants.jp/location/omotesando/"
+        ]
+      },
+      "c82": {
+        "key": "c82",
+        "origin": "list",
+        "name": "サロン ド テ ジャンナッツ",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": "カフェ、ケーキ",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:18:16+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "2022年の紹介記事でアフタヌーンティー提供の記載のみ（現行プラン未確認）。公式サイトはrobots.txt確認不能、食べログはHTTP 403",
+        "urls": [
+          "https://rurubu.jp/andmore/article/17341"
+        ]
+      },
+      "c83": {
+        "key": "c83",
+        "origin": "list",
+        "name": "MOSKA by GingerGarden",
+        "hotel_name": null,
+        "area_no": 8,
+        "genre": "カフェ、レストラン、スイーツ",
+        "status": "general_only",
+        "attempted_at": "2026-11-21T07:18:59+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "るるぶ&more.のスポット情報でアフタヌーンティー提供（時間帯）を確認。現行の季節プランの料金・内容は今回読めた公開ページになし（食べログはHTTP 403、公式サイトは見つからず）",
+        "urls": [
+          "https://rurubu.jp/andmore/spot/80128253"
+        ]
+      },
+      "c84": {
+        "key": "c84",
+        "origin": "list",
+        "name": "Minimal The Specialty 麻布台ヒルズ",
+        "hotel_name": null,
+        "area_no": 5,
+        "genre": "チョコレート、カフェ、スイーツ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:19:25+09:00",
+        "confirmed_at": "2026-11-21T07:19:16+09:00",
+        "reason": null,
+        "note": "AutoReserveの店舗ページ（【公式】表記）のコースで確認。提供月は「10～11月」の表記のみで年の記載なし",
+        "urls": [
+          "https://autoreserve.com/ja/restaurants/ZbqLFXmiT6SyqGFYgQgt"
+        ]
+      },
+      "c85": {
+        "key": "c85",
+        "origin": "list",
+        "name": "ティーラウンジ 佳風",
+        "hotel_name": null,
+        "area_no": 4,
+        "genre": "カフェ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:19:53+09:00",
+        "confirmed_at": "2026-11-21T07:19:44+09:00",
+        "reason": null,
+        "note": "AutoReserveの店舗ページのコースで確認（提供期間の日付記載なし。10月限定のハロウィン版は除外）",
+        "urls": [
+          "https://autoreserve.com/ja/restaurants/SSmW4vMhKKMJiSGUWNkj"
+        ]
+      },
+      "c86": {
+        "key": "c86",
+        "origin": "list",
+        "name": "上野 アクアリウムレストラン Nautilus",
+        "hotel_name": null,
+        "area_no": 11,
+        "genre": "ダイニングバー、イタリアン、フレンチ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:20:20+09:00",
+        "confirmed_at": "2026-11-21T07:20:10+09:00",
+        "reason": null,
+        "note": "AutoReserveの店舗ページのコースで確認（提供期間の記載なし）",
+        "urls": [
+          "https://autoreserve.com/ja/restaurants/K1683aXrBepnn8kiLZ3i"
+        ]
+      },
+      "c87": {
+        "key": "c87",
+        "origin": "list",
+        "name": "White Monkey coffee and bar",
+        "hotel_name": null,
+        "area_no": 7,
+        "genre": "カフェ、スイーツ",
+        "status": "failed",
+        "attempted_at": "2026-11-21T07:20:46+09:00",
+        "confirmed_at": null,
+        "reason": "HTTP_403",
+        "note": "公開検索で店舗を特定できる公開ページが見つからず、参考URLの食べログは今回HTTP 403で取得不能",
+        "urls": [
+          "https://tabelog.com/tokyo/A1317/A131705/13302347/party/"
+        ]
+      },
+      "c88": {
+        "key": "c88",
+        "origin": "list",
+        "name": "Blue Box Café by Natsuko Shoji",
+        "hotel_name": "ティファニー銀座",
+        "area_no": 2,
+        "genre": "カフェ／アフタヌーンティー",
+        "status": "no_at_found",
+        "attempted_at": "2026-11-21T07:22:05+09:00",
+        "confirmed_at": null,
+        "reason": null,
+        "note": "TableCheckの店舗ページで表示されたメニュー（朝食等）と特集ページ（掲載なし）、ティファニー公式の銀座店ページにはアフタヌーンティーの記載なし。メニューの追加表示ボタンは役割不明のため押していない。検索では季節限定アフタヌーンティーの報道あり",
+        "urls": [
+          "https://www.tablecheck.com/ja/tiffany-blueboxcafe",
+          "https://www.tablecheck.com/ja/tiffany-blueboxcafe/reserve/experiences",
+          "https://www.tiffany.co.jp/stories/tiffany-ginza/"
+        ]
+      },
+      "c89": {
+        "key": "c89",
+        "origin": "list",
+        "name": "CAFÉ DIOR by Anne-Sophie Pic Ginza",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ／スイーツ",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:22:40+09:00",
+        "confirmed_at": "2026-11-21T07:22:22+09:00",
+        "reason": null,
+        "note": "TableCheckの店舗ページでアフタヌーンティーセットを確認。料金表示の人数単位は記載なし",
+        "urls": [
+          "https://www.tablecheck.com/ja/cafe-dior-by-anne-sophie-pic-ginza"
+        ]
+      },
+      "c90": {
+        "key": "c90",
+        "origin": "list",
+        "name": "BVLGARI GINZA CAFÉ",
+        "hotel_name": null,
+        "area_no": 2,
+        "genre": "カフェ／アフタヌーンティー",
+        "status": "plan_confirmed",
+        "attempted_at": "2026-11-21T07:23:03+09:00",
+        "confirmed_at": "2026-11-21T07:22:42+09:00",
+        "reason": null,
+        "note": "TableCheckの店舗ページでブルガリ ギンザ カフェのアフタヌーンティーを確認（会場の主ジャンルは候補リストのカフェ／アフタヌーンティーに従う）。フェスティブ版は期間の日付表示なし、通常版は1月2日（土）〜の表示",
+        "urls": [
+          "https://www.tablecheck.com/ja/bvlgari-ginza"
         ]
       }
     }
